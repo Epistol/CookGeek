@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/contact', 'PageController@show_contact');
-Route::group(['prefix' => 'login'], function () {
+/*Route::group(['prefix' => 'login'], function () {
 	Route::group(['prefix' => 'google'], function () {
 		Route::get('','Auth\GoogleController@redirectToProvider');
 		Route::get('callback', 'Auth\GoogleController@handleProviderCallback');
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'login'], function () {
 		Route::get('callback', 'Auth\FacebookController@handleProviderCallback');
 	});
 
-});
+});*/
 
 Route::group(['prefix' => 'recette'], function () {
 	Route::get('','Recipe\RecipesController@show');
