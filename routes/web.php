@@ -37,8 +37,9 @@ Route::get('/contact', 'PageController@show_contact');
 });*/
 
 Route::group(['prefix' => 'recette'], function () {
-	Route::get('','Recipe\RecipesController@show')->name("recette_index");
+	Route::get('','Recipe\RecipesController@index')->name("recette_index");
 	Route::get('ajout','Recipe\RecipesController@add');
+	Route::get('{post}','Recipe\RecipesController@show');
 });
 
 Route::group(['prefix' => 'admin'], function () {

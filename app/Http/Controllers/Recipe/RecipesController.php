@@ -12,12 +12,16 @@ class RecipesController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function show()
+	public function index()
 	{
 		return 'CDG'; /*view('user.profile', ['user' => User::findOrFail($id)]);*/
 	}
 
 	public function add(){
 		return view('recipes.add');
+	}
+
+	public function show($slug){
+		return $slug;
 	}
 }

@@ -15,6 +15,7 @@ class CreateRecipesTable extends Migration
     {
 	    Schema::create('recipes', function (Blueprint $table) {
 		    $table->increments('id');
+		    $table->string("slug");
 		    $table->string('title');
 		    $table->tinyInteger('difficulty');
 		    $table->tinyInteger('type');
