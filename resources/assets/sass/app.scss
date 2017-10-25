@@ -21,11 +21,57 @@
   font-family: "Conviction";
   src: url("/fonts/Conviction.ttf") format("ttf");
 }
-
-.logo{
-  font-family: "Conviction", sans-serif;
-  font-size:2rem;
+html, body {
+  height: 100%;
+  box-sizing: border-box;
 }
 
+.onboard_login{
+  display: flex;
+  position: relative;
+  height: 100%;
+}
 
+.left_login_side{
 
+}
+
+.right_login_side{
+  min-height:92vh;
+}
+.footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #1c1c1c;
+  text-align: center;
+}
+
+.logo{
+  font-family: $typotitle;
+  font-size:2rem;
+  color:$white;
+  padding: 0.5rem 1rem;
+}
+
+body, button, input, select, textarea{
+  font-family:$typocontent;
+}
+
+nav.navbar, .navbar-dropdown, a.navbar-item, a.navbar-link {
+
+  background: $brand-primary;
+}
+a.navbar-item , a.navbar-link {
+  color:$white;
+}
+
+.left_login_side {
+  background: url("/img/bg_space/Asset_1.png");
+  background-repeat: repeat;
+}
+
+footer {
+  background: #1c1c1c;
+}
