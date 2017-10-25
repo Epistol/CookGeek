@@ -21,7 +21,7 @@
                         <div class="file is-centered is-boxed has-name">
 
                             <label class="file-label">
-                               {{-- Fichier input--}}
+                                {{-- Fichier input--}}
 
 
 
@@ -35,8 +35,8 @@
                                       Ajouter une photo
                                     </span>
                                   </span>
-                               {{-- Nom du fichier--}}
-                     {{--           <input id="filename" class="file-name" disabled>--}}
+                                {{-- Nom du fichier--}}
+                                {{--           <input id="filename" class="file-name" disabled>--}}
                             </label>
 
                         </div>
@@ -64,16 +64,16 @@
 
 
 
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Submit</button>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-text">Cancel</button>
+                    </div>
                 </div>
-                <div class="control">
-                    <button class="button is-text">Cancel</button>
-                </div>
-            </div>
 
             </div>
         </form>
-
+    </div>
 @endsection
