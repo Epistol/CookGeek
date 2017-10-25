@@ -68,8 +68,9 @@ a.navbar-item , a.navbar-link {
 }
 
 .left_login_side {
-  background: url("/img/bg_space/Asset_1.png");
-  background-repeat: repeat;
+  background: url("/img/bg_space/Asset_1.png") repeat;
+  background-position-y: -5px;
+  display:flex;justify-content:center;align-items:center;
 }
 
 footer {

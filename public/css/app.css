@@ -11227,8 +11227,17 @@ a.navbar-link {
 }
 
 .left_login_side {
-  background: url("/img/bg_space/Asset_1.png");
-  background-repeat: repeat;
+  background: url("/img/bg_space/Asset_1.png") repeat;
+  background-position-y: -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 footer {

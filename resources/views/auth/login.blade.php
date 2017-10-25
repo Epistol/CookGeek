@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="onboard_login">
-        <div class="columns">
+        <div class="columns is-marginless	">
             <div class="column is-two-fifths left_login_side">
                 <img id="chat_horizontal" src="img/chat_mascotte.png">
             </div>
