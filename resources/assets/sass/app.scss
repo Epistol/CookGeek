@@ -72,7 +72,18 @@ a.navbar-item , a.navbar-link {
   background-position-y: -5px;
   display:flex;justify-content:center;align-items:center;
 }
+.search_header {
+  text-align: right;
+  display: table-cell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.searchheadbutton{
+  position: absolute;
+  right: 2rem;
+}
 footer {
   background: #1c1c1c;
 }

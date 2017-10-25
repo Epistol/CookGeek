@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name("home");
 Route::get('/contact', 'PageController@show_contact');
 /*Route::group(['prefix' => 'login'], function () {
 	Route::group(['prefix' => 'google'], function () {
@@ -37,7 +37,7 @@ Route::get('/contact', 'PageController@show_contact');
 });*/
 
 Route::group(['prefix' => 'recette'], function () {
-	Route::get('','Recipe\RecipesController@show');
+	Route::get('','Recipe\RecipesController@show')->name("recette_index");
 	Route::get('ajout','Recipe\RecipesController@add');
 });
 

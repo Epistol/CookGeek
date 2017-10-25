@@ -66,13 +66,10 @@
 
     <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Home
-            </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    Docs
+                <a class="navbar-link" href="{{ route('recette_index') }}">
+                    Recettes
                 </a>
 
                 <div class="navbar-dropdown">
@@ -85,12 +82,40 @@
                     <a class="navbar-item">
                         Components
                     </a>
-                    <hr class="navbar-divider">
-                    <div class="navbar-item">
-                        Version 0.6.0
-                    </div>
+
                 </div>
             </div>
+
+            <a class="navbar-item">
+                Catégories
+            </a>
+
+            <a class="navbar-item">
+                Univers
+            </a>
+
+            <a class="navbar-item">
+                Tendances
+            </a>
+            <a class="navbar-item">
+                Tutos
+            </a>
+
+            <a class="navbar-item">
+                🎲
+            </a>
+
+            <div class="field search_header navbar-item">
+
+                        <input class="input" type="text" placeholder="" style="padding: 0 50px 0 25px;">
+                        <a class="searchheadbutton" style="position: absolute;">
+                            🔍
+                        </a>
+
+
+            </div>
+
+
 
         </div>
 
@@ -105,6 +130,7 @@
                         </a>
 
                         <div class="navbar-dropdown">
+                            <a class="navbar-item" href="{{ route('home') }}">Dashboard</a>
 
                                 <a class="navbar-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
