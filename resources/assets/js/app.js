@@ -21,6 +21,7 @@ const app = new Vue({
     el: '#app'
 });
 
+<<<<<<< HEAD
 $('#upload').change(function() {
     readURL(this);
     var filename = $(this).val();
@@ -45,6 +46,8 @@ function readURL(input) {
 }
 
 
+=======
+>>>>>>> 9e02ede10f00ec3ae8504ebafa9ca1c0f84599b7
 
 document.addEventListener('DOMContentLoaded', function () {
 
