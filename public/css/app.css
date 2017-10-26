@@ -11257,6 +11257,10 @@ textarea {
   text-align: center;
 }
 
+footer {
+  background: #1c1c1c;
+}
+
 .logo {
   font-family: "Conviction", Tahoma, Geneva, sans-serif;
   font-size: 2rem;
@@ -11293,10 +11297,6 @@ a.navbar-link {
 .searchheadbutton {
   position: absolute;
   right: 2rem;
-}
-
-footer {
-  background: #1c1c1c;
 }
 
 .ajout_recette_img {
@@ -11420,35 +11420,35 @@ input.input_modal.blck {
 }
 
 .anime {
-  background-image: url("/img/pictos/anime.png");
+  background-image: url("/img/pictos/svg/anime.svg");
 }
 
 .art {
-  background-image: url("/img/pictos/art.png");
+  background-image: url("/img/pictos/svg/art.svg");
 }
 
 .cartes {
-  background-image: url("/img/pictos/cartes.png");
+  background-image: url("/img/pictos/svg/cartes.svg");
 }
 
 .comics {
-  background-image: url("/img/pictos/comics.png");
+  background-image: url("/img/pictos/svg/comics.svg");
 }
 
 .gaming {
-  background-image: url("/img/pictos/gaming.png");
+  background-image: url("/img/pictos/svg/games.svg");
 }
 
 .livres {
-  background-image: url("/img/pictos/livres.png");
+  background-image: url("/img/pictos/svg/livres.svg");
 }
 
 .musique {
-  background-image: url("/img/pictos/musique.png");
+  background-image: url("/img/pictos/svg/song.svg");
 }
 
 .tv {
-  background-image: url("/img/pictos/TV.png");
+  background-image: url("/img/pictos/svg/tv.svg");
 }
 
 .drinkcard-cc {
