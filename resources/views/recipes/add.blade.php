@@ -20,16 +20,17 @@
                     <div class="column  is-paddingless left_recipe_add is-4 is-offset-1">
                         <div class="padding-sides">
                             @include('recipes.add.image')
-                           @include("recipes.add.difficulty")
+                            @include("recipes.add.difficulty")
                         </div>
                     </div>
 
                     <div class="column right_recipe_add is-6 ">
 
                         {{--Titre recette--}}
-                       @include("recipes.add.titre")
+                        @include("recipes.add.titre")
+                        @include("recipes.add.type")
                         {{--Liste des ingrédients --}}
-                         @include("recipes.add.ingredients")
+                        @include("recipes.add.ingredients")
                         <div>
                             <button type="button" class="button is-medium is-primary" @click="addRow"><i class="fa fa-plus" aria-hidden="true"></i></button>
                         </div>
@@ -38,14 +39,7 @@
                     </div>
 
                 </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">Submit</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-text">Cancel</button>
-                    </div>
-                </div>
+              @include("recipes.add.submit")
             </form>
         </div>
     </div>
