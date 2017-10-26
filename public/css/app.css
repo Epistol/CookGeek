@@ -11347,3 +11347,25 @@ footer {
   letter-spacing: 1px;
 }
 
+.padding-sides {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.left_recipe_add {
+  margin-top: 1rem;
+  z-index: 1;
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.4);
+}
+
+.column.right_recipe_add {
+  padding-top: 3.5rem;
+  z-index: 1;
+  padding-left: 2rem;
+  background: #ffe9c1;
+  -webkit-box-shadow: -3px 5px 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: -3px 5px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
