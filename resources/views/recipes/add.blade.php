@@ -1,101 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <section class="section">
-            <div style="    align-items: center;    justify-content: center; display: flex;">
-                <h1 class="title ">Ajoutez votre recette</h1>
-            </div>
+    <div class="recipeaddbg">
+        <div class="container">
+            <section class="section">
+                <div style="    align-items: center;    justify-content: center; display: flex;">
+                    <h1 class="title ">Ajoutez votre recette</h1>
+                </div>
 
-            <hr>
-        </section>
-
-
-
-        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-
-
-            <div class="columns">
-                <div class="column  is-paddingless left_recipe_add is-3 is-offset-one-fifth">
-                    <div class="padding-sides">
-                        <div class="field">
-                            <div class="file is-centered is-boxed has-name">
-
-                                <label class="file-label">
-                                    {{-- Fichier input--}}
+                <hr>
+            </section>
 
 
 
+            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
 
-                                    <input class="file-input" id="upload"  type="file" name="resume">
-                                    <span class="file-cta">
-                                    <span class="file-icon">
-                                      <i class="fa fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                      Ajouter une photo
-                                    </span>
-                                  </span>
-                                    {{-- Nom du fichier--}}
-                                    {{--           <input id="filename" class="file-name" disabled>--}}
-                                </label>
-
-                            </div>
-                            <div class="image ajout_recette_img">
-                                <img id="blah" src="#" alt="" />
-                            </div>
-
-
-                        </div>
-                        <div class="field">
-
-                            <div class="control">
-                                <input class="input_modal" type="text" placeholder="Nom de la recette">
-                            </div>
+                <div class="columns">
+                    <div class="column  is-paddingless left_recipe_add is-4 is-offset-1">
+                        <div class="padding-sides">
+                            @include('recipes.add.image')
+                           @include("recipes.add.difficulty")
                         </div>
                     </div>
 
+                    <div class="column right_recipe_add is-6 ">
+
+                        {{--Titre recette--}}
+                       @include("recipes.add.titre")
+                        {{--Liste des ingrédients --}}
+                         @include("recipes.add.ingredients")
+                        <div>
+                            <button type="button" class="button is-medium is-primary" @click="addRow"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
 
 
-                </div>
-
-                <div class="column right_recipe_add is-4 ">
-<h1 class="title">Ingredients</h1>
-
-
-                    <table class="table" style="background:transparent;">
-
-                        <tbody>
-                        <tr v-for="(row, index) in rows" >
-                            <td>  @{{index+1}} ) </td>
-                            <td>  <input class="input" type="text" v-model="row.qtt " placeholder="Quantité"></td>
-                            <td>
-                                <input class="input" type="text" v-model="row.name" placeholder="ingrédient">
-                            </td>
-
-
-                            <td><a @click="removeElement(index)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div>
-
-                        <button type="button" class="button is-medium is-primary" @click="addRow"><i class="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
 
-
                 </div>
-
-            </div>
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Submit</button>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-text">Cancel</button>
+                    </div>
                 </div>
-                <div class="control">
-                    <button class="button is-text">Cancel</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+
 @endsection
