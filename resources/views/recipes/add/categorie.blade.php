@@ -1,11 +1,12 @@
 <div class="field">
+
     <div class="control">
         <div class="select">
             <select>
-                <option disabled value="" selected="selected">Difficulté</option>
+                <option disabled value="" selected="selected">Type de plat</option>
                 <option>Entrée</option>
-                <option>Moyen</option>
-                <option>Difficile</option>
+                <option>Plat</option>
+                <option>Dessert</option>
             </select>
         </div>
     </div>

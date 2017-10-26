@@ -4,21 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusStepsTable extends Migration
+class CreateDifficultyTable extends Migration
 {
     /**
      * Run the migrations.
      *
+     * Difficulté d'une recette : simple;moyen,dur
      * @return void
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('difficulty', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('type');
-            $table->string('url');
-
+	        $table->char("name");
         });
     }
 
@@ -29,6 +27,6 @@ class CreateMenusStepsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('difficulty');
     }
 }

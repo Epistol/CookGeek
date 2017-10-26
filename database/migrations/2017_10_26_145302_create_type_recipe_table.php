@@ -4,23 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUniversesCategTable extends Migration
+class CreateTypeRecipeTable extends Migration
 {
     /**
      * Run the migrations.
      *
+     * Type de recette : entrée, plat, dessert, etc
      * @return void
      */
     public function up()
     {
-        Schema::create('universes_category', function (Blueprint $table) {
+        Schema::create('type_recipe', function (Blueprint $table) {
             $table->increments('id');
-	        $table->string('name');
-	        $table->string('img_url');
-            $table->timestamps();
+            $table->char("name");
         });
-
-
     }
 
     /**
@@ -30,6 +27,6 @@ class CreateUniversesCategTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universes_category');
+        Schema::dropIfExists('type_recipe');
     }
 }

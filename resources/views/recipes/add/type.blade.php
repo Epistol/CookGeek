@@ -6,7 +6,7 @@
         </div>
 
 		<?php
-
+// A ajouter en BDD
 		$types = array("anime", "art", "cartes", "comics", "gaming", "livres", "musique", "tv")
 
 		?>

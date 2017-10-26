@@ -21,6 +21,7 @@
                         <div class="padding-sides">
                             @include('recipes.add.image')
                             @include("recipes.add.difficulty")
+                            @include("recipes.add.categorie")
                         </div>
                     </div>
 
