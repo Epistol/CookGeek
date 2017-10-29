@@ -10,7 +10,18 @@
 
 nav.navbar, .navbar-dropdown, a.navbar-item, a.navbar-link {
   background: $brand-primary;
+
+
 }
+
+  .navbar-link::after {
+    border: 1px solid #fbfdfa;
+    border-right: 0;
+    border-top: 0;
+  }
+
+
+
 a.navbar-item , a.navbar-link {
   color:$white;
 }

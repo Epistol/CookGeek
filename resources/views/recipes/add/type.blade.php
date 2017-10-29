@@ -5,31 +5,27 @@
             <label class="title is-4">Type </label>
         </div>
 
-		<?php
-// A ajouter en BDD
-		$types = array("anime", "art", "cartes", "comics", "gaming", "livres", "musique", "tv")
 
-		?>
-        <div class="columns is-mobile">
+        <div class="columns">
 
 
             @foreach ($types as $key=>$type)
                 @php(++$key)
-            <div class="column">
+                <div class="column">
 
-                <label class="radio">
+                    <label class="radio">
 
-                    <input type="radio" id="{{$type}}" name="type">
-                    <label class="drinkcard-cc {{$type}}" for="{{$type}}"></label>
-                    <p>
-		                <?php echo ucfirst($type);?>
-                    </p>
-                </label>
+                        <input type="radio" id="{{$type->name}}" name="type">
+                        <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
+                        <p>
+							<?php echo ucfirst($type->name);?>
+                        </p>
+                    </label>
 
-            </div>
+                </div>
 
                 @if($key == 4)
-             </div> <div class="columns is-mobile">
+        </div> <div class="columns ">
 
             @endif
             @endforeach

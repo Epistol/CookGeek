@@ -71,7 +71,7 @@
 
                         <input class="input" type="text" placeholder="" style="padding: 0 50px 0 25px;">
                         <a class="searchheadbutton" style="position: absolute;">
-                            🔍
+                            <i class="fa fa-search" aria-hidden="true"></i>
                         </a>
 
 

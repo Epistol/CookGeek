@@ -20,8 +20,12 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app',
     data: {
+        titre: '',
             rows: [
                 { name : "", qtt :""}
+            ],
+            steps:[
+                { etape : ""}
             ]
 
     },
@@ -35,6 +39,16 @@ const app = new Vue({
         },
         removeElement: function (index) {
             this.rows.splice(index, 1);
+        },
+        addStep: function () {
+            var elem = document.createElement('tr');
+            this.steps.push({
+                etape: "",
+
+            });
+        },
+        removeStep: function (index) {
+            this.steps.splice(index, 1);
         },
 
     }

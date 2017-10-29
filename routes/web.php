@@ -38,7 +38,7 @@ Route::get('/contact', 'PageController@show_contact');
 
 Route::group(['prefix' => 'recette'], function () {
 	Route::get('','Recipe\RecipesController@index')->name("recette_index");
-	Route::get('ajout','Recipe\RecipesController@add')->name("recette_ajout");
+	Route::get('ajout','Recipe\RecipesController@add')->name("recette_ajout")->middleware('auth');;
 	Route::get('{post}','Recipe\RecipesController@show');
 });
 

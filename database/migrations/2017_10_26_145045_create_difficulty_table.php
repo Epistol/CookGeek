@@ -16,7 +16,7 @@ class CreateDifficultyTable extends Migration
     {
         Schema::create('difficulty', function (Blueprint $table) {
             $table->increments('id');
-	        $table->char("name");
+	        $table->string("name");
         });
     }
 

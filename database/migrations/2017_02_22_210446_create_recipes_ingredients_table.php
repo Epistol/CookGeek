@@ -15,10 +15,10 @@ class CreateRecipesIngredientsTable extends Migration
     {
 	    Schema::create('recipes_ingredients', function (Blueprint $table) {
 		    $table->increments('id');
-		    $table->integer('id_recipe');
-		    $table->integer('id_ingredient');
-		    $table->string('lib_ingredient');
-		    $table->string('qtt');
+		    $table->integer('id_recipe')->nullable();
+		    $table->integer('id_ingredient')->nullable();
+		    $table->string('lib_ingredient')->nullable();
+		    $table->string('qtt')->nullable();
 	    });
 
 

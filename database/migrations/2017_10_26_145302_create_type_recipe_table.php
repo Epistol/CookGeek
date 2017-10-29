@@ -16,7 +16,7 @@ class CreateTypeRecipeTable extends Migration
     {
         Schema::create('type_recipe', function (Blueprint $table) {
             $table->increments('id');
-            $table->char("name");
+            $table->string("name");
         });
     }
 

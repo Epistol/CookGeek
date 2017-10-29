@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+    	// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
         return view('home');
     }
 }

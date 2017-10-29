@@ -15,22 +15,33 @@ class CreateRecipesTable extends Migration
     {
 	    Schema::create('recipes', function (Blueprint $table) {
 		    $table->increments('id');
-		    $table->string("slug");
 		    $table->string('title');
-		    $table->tinyInteger('difficulty');
-		    $table->tinyInteger('type');
-		    $table->tinyInteger('cost');
-		    $table->smallInteger('prep_time');
-		    $table->smallInteger('cook_time');
-		    $table->smallInteger('rest_time');
-			$table->longText('commentary_author');
-		    $table->string('url_img');
-			$table->smallInteger('nb_guests');
-			$table->integer('id_universe');
-		    $table->integer('id_universe_category');
+		    // Slug = titre+id
+		    $table->string("slug")->nullable();
+		    // Difficulte : simple, moyen, difficile
+		    $table->tinyInteger('difficulty')->nullable();
+		    // Type : Entrée, plat, dessert
+		    $table->tinyInteger('type')->nullable();
+			// Cout des ingrédients
+		    $table->tinyInteger('cost')->nullable();
+		    // TEMPS
+		    $table->smallInteger('prep_time')->nullable();
+		    $table->smallInteger('cook_time')->nullable();
+		    $table->smallInteger('rest_time')->nullable();
+		    // Remarque
+			$table->longText('commentary_author')->nullable();
+			// Nombre de parts
+			$table->smallInteger('nb_guests')->nullable();
+			// Univers associé :
+			$table->string('univers')->nullable();
+			// Type univers : manga, livre, film, etc
+		    $table->integer('type_univers')->nullable();
+		    // Auteur ID
 		    $table->integer('id_user');
-			$table->integer('nb_views');
-			$table->text('origin_url_website');
+		    // Vege ? Oui / Non
+		    $table->boolean("vegetarien")->nullable();
+		    // Site d'origine
+			$table->text('origin_url_website')->nullable();
 		    $table->timestamps();
 	    });
 

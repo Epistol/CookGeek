@@ -27,6 +27,7 @@ table.bgborder.table td, .table th {
 
   &:hover {
     color:$red;
+    border-color: $red;
   }
 }
 
@@ -48,7 +49,7 @@ table.bgborder.table td, .table th {
 }
 
 input.input_modal{
-  background-color: transparent;
+  background-color: #fbfdfa;
   border: none;
   border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
@@ -65,7 +66,7 @@ input.input_modal{
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   color: white;
-  text-align: center;
+  padding-left: 1rem;
 
   &:focus{
     border-bottom: 1px solid $comp-green;
@@ -80,26 +81,170 @@ input.input_modal.blck{
 }
 
 .padding-sides{
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
+
+input#prep-heure,  input#prep-minute, input#cook-heure,input#cook-minute, input#rest-heure, input#rest-minute {
+  text-align: center;
+}
+
+.columns.timing:before{
+  font-family: FontAwesome;
+  content: "\F017";
+  font-size: 10em;
+  position: absolute;
+  z-index: -1;
+  color: hsla(0, 0%, 100%, 0.2);
+  left: 0.1rem;
+  transform: rotate(140deg);
+}
+
+span.timing {
+  padding-left: 0.5rem;
+}
+
+.field.prep {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover  .fa {
+    color:$orange;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+}
+.field.cook  {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover  .fa {
+    color: $rouge;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+.field.sleep {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover  .fa {
+    color:$violet;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.field.vegan  {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover  .fa {
+    color: $vert;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.columns.timing {
+  margin-top: 1rem;
+}
+
 .left_recipe_add{
-  background: $blanc_casse;
+  background: #d8d8d8;
   margin-top: 1rem;z-index: 1;
   margin-bottom: 1rem;
-  -webkit-box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
 .column.right_recipe_add {
   padding-top: 3.5rem;z-index: 1;
   padding-left: 2rem;
   background: white;
-  -webkit-box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.4);
-
-  box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
+
+.column.steps {
+  z-index: 1;
+  margin-top: 2rem;
+  background: white;
+  -webkit-box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3)
+}
+
 
 .recipeaddbg{
   background: lighten($greenlight, 3%);
+}
+
+.addsteprecipe {
+  width: 33%;
+  margin-left: 33%;
+}
+
+span.ajout-recette-titre{
+  color: $text-color;
+}
+section.ajoutrecipe{
+    padding: 3rem 1.5rem 1rem 1.5rem;
+
+}
+fieldset.rating {
+  float: left;
+  border:none
+}
+
+.rating > label {
+  float:right;
+}
+
+.lecout input{
+  margin:0;padding:0;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+
+.lecout > label {
+  cursor:pointer;
+}
+label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:checked  label.cost.button:hover{
+  background: rgba($vert, 0.9);
+  color:white;
+}
+
+
+.lecout input:checked  ~ label.cost, .lecout:not(:checked) > input:hover ~ label {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background: rgba($vert, 0.8);
+  color: #fbfdfa;
 }

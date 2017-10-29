@@ -17,8 +17,7 @@ class CreateCateguniversTable extends Migration
         Schema::create('categunivers', function (Blueprint $table) {
 		        $table->increments('id');
 		        $table->string('name');
-		        $table->string('img_url');
-		        $table->timestamps();
+		        $table->string('img_url')->nullable();
 	        });
     }
 

@@ -4,7 +4,7 @@
         <label class="file-label">
             {{-- Fichier input--}}
 
-            <input class="file-input" id="upload"  type="file" name="resume">
+            <input class="file-input" id="upload"  type="file" name="resume" accept="image/x-png,image/jpeg">
 
             <div class="image ajout_recette_img">
 

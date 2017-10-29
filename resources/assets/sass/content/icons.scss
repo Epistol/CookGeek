@@ -4,7 +4,6 @@
   -webkit-appearance:none;
   -moz-appearance:none;
   appearance:none;
-
 }
 
 .anime{background-image:url("/img/pictos/svg/anime.svg");}
@@ -22,17 +21,26 @@
   background-repeat:no-repeat;
   display:inline-block;
   width:100px;height:70px;
-  -webkit-transition: all 100ms ease-in;
-  -moz-transition: all 100ms ease-in;
-  transition: all 100ms ease-in;
-  -webkit-filter:  grayscale(1) opacity(.8);
-  -moz-filter: grayscale(1) opacity(.8);
-  filter: grayscale(1) opacity(.8);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-filter:  grayscale(1) opacity(1) brightness(1.2);
+  -moz-filter: grayscale(1) opacity(1) brightness(1.2);
+  filter: grayscale(1) opacity(1) brightness(1.2);
 }
 .drinkcard-cc:hover{
-  -webkit-filter:  grayscale(.5) opacity(.9);
-  -moz-filter:  grayscale(.5) opacity(.9);
-  filter:  grayscale(.5) opacity(.9);
+  -webkit-filter:  grayscale(.2) opacity(.9);
+  -moz-filter:  grayscale(.2) opacity(.9);
+  filter:  grayscale(.2) opacity(.9);
+  filter: drop-shadow(0 0 7px #d7cfe3);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
 }
 
 .cc-selector input:active +.drinkcard-cc{opacity: .9;}
@@ -40,4 +48,5 @@
   -webkit-filter: none;
   -moz-filter: none;
   filter: none;
+
 }

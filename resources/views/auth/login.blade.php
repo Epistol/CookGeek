@@ -2,19 +2,26 @@
 
 @section('content')
 
+  {{--  A faire : <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+    <input class="form-control" type="text" placeholder="Email address">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+        <input class="form-control" type="password" placeholder="Password">--}}
+
     <div class="onboard_login">
         <div class="columns is-marginless	">
             <div class="column is-two-fifths left_login_side">
                 <img id="chat_horizontal" src="img/chat_mascotte.png">
             </div>
             <div class="column right_login_side">
-                <div class="container">
+                <div class=" roundwhite">
 
                     <div class="panel-heading">Login</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
 
@@ -23,18 +30,18 @@
                                 <div class="control">
                                     <input id="email" type="email" class="input form-control" name="email" value="{{ old('email') }}" required autofocus>
                                 </div>
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                    @endif
+                                @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="field form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="input form-control" name="password" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">

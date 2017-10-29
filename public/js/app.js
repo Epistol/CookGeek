@@ -802,7 +802,9 @@ Vue.component('example', __webpack_require__(36));
 var app = new Vue({
     el: '#app',
     data: {
-        rows: [{ name: "", qtt: "" }]
+        titre: '',
+        rows: [{ name: "", qtt: "" }],
+        steps: [{ etape: "" }]
 
     },
     methods: {
@@ -815,6 +817,16 @@ var app = new Vue({
         },
         removeElement: function removeElement(index) {
             this.rows.splice(index, 1);
+        },
+        addStep: function addStep() {
+            var elem = document.createElement('tr');
+            this.steps.push({
+                etape: ""
+
+            });
+        },
+        removeStep: function removeStep(index) {
+            this.steps.splice(index, 1);
         }
 
     }
