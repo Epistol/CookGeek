@@ -92,6 +92,10 @@ input#prep-heure,  input#prep-minute, input#cook-heure,input#cook-minute, input#
   text-align: center;
 }
 
+section.ingredients {
+  margin-top: 2rem;
+}
+
 .columns.timing:before{
   font-family: FontAwesome;
   content: "\F017";

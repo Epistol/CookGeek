@@ -11419,6 +11419,10 @@ input#rest-minute {
   text-align: center;
 }
 
+section.ingredients {
+  margin-top: 2rem;
+}
+
 .columns.timing:before {
   font-family: FontAwesome;
   content: "\F017";

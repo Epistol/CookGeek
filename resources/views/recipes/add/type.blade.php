@@ -1,7 +1,7 @@
 <div class="field">
     <div class="control type-selector cc-selector">
 
-        <div class="field-label" style="text-align: left;">
+        <div class="field-label" style="text-align: left;padding-bottom: 2rem;">
             <label class="title is-4">Type </label>
         </div>
 
