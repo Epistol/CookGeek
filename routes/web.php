@@ -37,8 +37,9 @@ Route::get('/contact', 'PageController@show_contact');
 });*/
 
 Route::group(['prefix' => 'recette'], function () {
-	Route::get('','Recipe\RecipesController@index')->name("recette_index");
-	Route::get('ajout','Recipe\RecipesController@add')->name("recette_ajout")->middleware('auth');;
+	Route::get('','Recipe\RecipesController@index')->name("recipe.index");
+	Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
+	Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
 	Route::get('{post}','Recipe\RecipesController@show');
 });
 

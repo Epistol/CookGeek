@@ -12,7 +12,9 @@
 .file-cta.darker{
   color:$text-color;
 }
-.addphoto {
+.field.addphoto {
+  margin-bottom: 2rem;
+
   padding-top: 2rem;
 }
 table.bgborder {
@@ -83,6 +85,7 @@ input.input_modal.blck{
 .padding-sides{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  padding-bottom: 1.5rem;
 }
 
 input#prep-heure,  input#prep-minute, input#cook-heure,input#cook-minute, input#rest-heure, input#rest-minute {
@@ -100,9 +103,10 @@ input#prep-heure,  input#prep-minute, input#cook-heure,input#cook-minute, input#
   transform: rotate(140deg);
 }
 
-span.timing {
+span.timing, span.parts {
   padding-left: 0.5rem;
 }
+
 
 .field.prep {
   -webkit-transition: all 0.3s ease-in-out;
@@ -121,6 +125,26 @@ span.timing {
   }
 
 }
+
+.field.parts {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover  .fa {
+    color:$comp-green;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+}
+
+
 .field.cook  {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;

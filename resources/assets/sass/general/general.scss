@@ -6,3 +6,7 @@ html, body {
 body, button, input, select, textarea{
   font-family:$typocontent;
 }
+
+.is-fullwidth, .is-fullwidth select {
+  width:100%;
+}

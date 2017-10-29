@@ -11222,6 +11222,11 @@ textarea {
   font-family: "AvenirMedium", Arial, Helvetica, sans-serif;
 }
 
+.is-fullwidth,
+.is-fullwidth select {
+  width: 100%;
+}
+
 .onboard_login {
   /*  display: flex;
   position: relative;
@@ -11332,7 +11337,8 @@ a.navbar-link {
   color: #636b6f;
 }
 
-.addphoto {
+.field.addphoto {
+  margin-bottom: 2rem;
   padding-top: 2rem;
 }
 
@@ -11401,6 +11407,7 @@ input.input_modal.blck {
 .padding-sides {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  padding-bottom: 1.5rem;
 }
 
 input#prep-heure,
@@ -11424,7 +11431,8 @@ input#rest-minute {
           transform: rotate(140deg);
 }
 
-span.timing {
+span.timing,
+span.parts {
   padding-left: 0.5rem;
 }
 
@@ -11435,6 +11443,17 @@ span.timing {
 
 .field.prep:hover .fa {
   color: #F59B1A;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.field.parts {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.field.parts:hover .fa {
+  color: #76db8e;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }

@@ -12,24 +12,20 @@
             </section>
 
 
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
                 <div class="columns">
                     <div class="column  is-paddingless left_recipe_add is-5">
                         <div class="padding-sides">
                             @include('recipes.add.image')
-                            <div class="columns">
-                                <div class="column is-offset-2 is-4">
-                                    @include("recipes.add.difficulty")
-                                </div>
-                                <div class="column is-4">
-                                    @include("recipes.add.categorie")
-                                </div>
-                            </div>
+
                             <div class="columns">
                                 <div class="column is-8 is-offset-2">
                                     @include("recipes.add.vegan")
+                                    @include("recipes.add.difficulty")
+                                    @include("recipes.add.categorie")
+
                                     @include("recipes.add.cost")
                                 </div>
                             </div>
@@ -39,12 +35,13 @@
                                     @include("recipes.add.timing.tps_preparation")
                                     @include("recipes.add.timing.tps_cuisson")
                                     @include("recipes.add.timing.tps_repos")
+                                    @include("recipes.add.nb_parts")
                                     {{--// Nombre de portions--}}
                                 </div>
                             </div>
 
 
-                            @include("recipes.add.nb_parts")
+
                         </div>
                     </div>
 
@@ -64,9 +61,10 @@
                     <div class="column  steps  is-10 is-offset-1">
                         @include("recipes.add.step")
                         @include("recipes.add.comment")
+                        @include("recipes.add.submit")
                     </div>
                 </div>
-                @include("recipes.add.submit")
+
             </form>
         </div>
     </div>

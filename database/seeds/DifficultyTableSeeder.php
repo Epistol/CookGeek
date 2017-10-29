@@ -15,9 +15,7 @@ class DifficultyTableSeeder extends Seeder
 		    'name' => "Noob"
 	    ]);
 
-	    DB::table('difficulty')->insert([
-		    'name' => "Facile"
-	    ]);
+
 
 	    DB::table('difficulty')->insert([
 		    'name' => "Moyen"

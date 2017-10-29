@@ -1,7 +1,16 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ASUS
- * Date: 29/10/2017
- * Time: 00:31
- */
+<div class="field parts is-clearfix">
+    <label class="label"><i class="fa fa-child" aria-hidden="true"></i><span class="parts">Pour</span></label>
+    <div class="field-body">
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" id="unite_part" name="unite_part" type="number" placeholder="ex : 4" value="">
+            </div>
+            <div class="control">
+                <input class="input" id="value_part" name="value_part" type="text" placeholder="personnes, parts, etc" value="">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -3,7 +3,7 @@
     <div class="field-body">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="prep-heure" name="prep-heure" type="number" placeholder="0">
+                <input class="input" id="prep_heure" name="prep_heure" type="number" placeholder="0" value="">
             </div>
             <div class="control">
                 <a class="button is-static" >
@@ -14,7 +14,7 @@
         </div>
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="prep-minute" name="prep-minute" type="number" placeholder="0">
+                <input class="input" id="prep_minute" name="prep_minute" type="number" placeholder="0" value="">
             </div>
             <div class="control">
                 <a class="button is-static" >

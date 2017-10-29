@@ -30,12 +30,12 @@
         <div class="navbar-start">
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="{{ route('recette_index') }}">
+                <a class="navbar-link" href="{{ route('recipe.index') }}">
                     Recettes
                 </a>
 
                 <div class="navbar-dropdown">
-                    <a class="navbar-item" href="{{ route('recette_ajout') }}">
+                    <a class="navbar-item" href="{{ route('recipe.add') }}">
                         Ajouter
                     </a>
                     <a class="navbar-item">

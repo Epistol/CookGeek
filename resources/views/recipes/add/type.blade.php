@@ -14,12 +14,19 @@
                 <div class="column">
 
                     <label class="radio">
-
-                        <input type="radio" id="{{$type->name}}" name="type">
+                        @if($type->name== 'tv')
+                            <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
+                            <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
+                            <p>
+			                    Cinéma / Tv
+                            </p>
+                        @else
+                        <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
                         <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                         <p>
 							<?php echo ucfirst($type->name);?>
                         </p>
+                        @endif
                     </label>
 
                 </div>

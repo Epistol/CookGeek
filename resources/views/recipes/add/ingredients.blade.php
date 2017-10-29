@@ -6,9 +6,9 @@
     <tbody>
     <tr v-for="(row, index) in rows" >
 
-        <td>  <input class="input" type="text" v-model="row.qtt " placeholder="Quantité"></td>
+        <td>  <input class="input" type="text" v-model="row.qtt " placeholder="Quantité" value="" name="qtt_ingredient[]" id="qtt_ingredient[]" ></td>
         <td>
-            <input class="input" type="text" v-model="row.name" placeholder="ingrédient">
+            <input class="input" type="text" v-model="row.name" placeholder="ingrédient" value="" name="ingredient[]" id="ingredient[]">
         </td>
 
         <td><a @click="removeElement(index)" class="button deleteicon"><i class="fa fa-times" aria-hidden="true"></i></a></td>

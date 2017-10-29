@@ -4,7 +4,7 @@
     </div>
     <div class="field-body">
 
-        <input class="input_modal blck" type="text" placeholder="" v-model="titre">
+        <input class="input_modal blck" type="text" placeholder="" v-model="titre" name="title" id="title" value="">
 
 
     </div>
