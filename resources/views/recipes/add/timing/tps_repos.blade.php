@@ -3,7 +3,7 @@
     <div class="field-body">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="rest-heure" name="rest-heure" type="number" placeholder="0">
+                <input class="input" id="" name="rest_heure" type="number" placeholder="0">
             </div>
             <div class="control">
                 <a class="button is-static" >
@@ -14,7 +14,7 @@
         </div>
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="rest-minute" name="rest-minute" type="number" placeholder="0">
+                <input class="input" id="rest_minute" name="rest_minute" type="number" placeholder="0">
             </div>
             <div class="control">
                 <a class="button is-static" >

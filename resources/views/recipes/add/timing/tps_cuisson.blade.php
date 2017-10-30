@@ -3,7 +3,7 @@
     <div class="field-body">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="cook-heure" name="cook-heure" type="number" placeholder="0">
+                <input class="input" id="cook_heure" name="cook_heure" type="number" placeholder="0">
             </div>
             <div class="control">
                 <a class="button is-static" >
@@ -14,7 +14,7 @@
         </div>
         <div class="field has-addons">
             <div class="control">
-                <input class="input" id="cook-minute" name="cook-minute" type="number" placeholder="0">
+                <input class="input" id="cook_minute" name="cook_minute" type="number" placeholder="0">
             </div>
             <div class="control">
                 <a class="button is-static" >

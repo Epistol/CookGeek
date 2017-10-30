@@ -32,8 +32,9 @@ class CreateRecipesTable extends Migration
 			$table->longText('commentary_author')->nullable();
 			// Nombre de parts
 			$table->smallInteger('nb_guests')->nullable();
+			$table->string("guest_type");
 			// Univers associé :
-			$table->string('univers')->nullable();
+			$table->integer('univers')->nullable();
 			// Type univers : manga, livre, film, etc
 		    $table->integer('type_univers')->nullable();
 		    // Auteur ID
@@ -41,7 +42,7 @@ class CreateRecipesTable extends Migration
 		    // Vege ? Oui / Non
 		    $table->boolean("vegetarien")->nullable();
 		    // Site d'origine
-			$table->text('origin_url_website')->nullable();
+			$table->text('comment')->nullable();
 		    $table->timestamps();
 	    });
 
