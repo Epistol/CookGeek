@@ -17,7 +17,7 @@
             <div class="column right_login_side">
                 <div class=" roundwhite">
 
-                    <div class="panel-heading">Login</div>
+                    <div class="panel-heading">Connexion</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -26,7 +26,8 @@
 
 
                             <div class=" field form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="label col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="label col-md-4 control-label">Pseudo ou Email.
+                                </label>
                                 <div class="control">
                                     <input id="email" type="email" class="input form-control" name="email" value="{{ old('email') }}" required autofocus>
                                 </div>
