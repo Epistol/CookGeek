@@ -163,7 +163,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-	    Jenssegers\Mongodb\Auth\PasswordResetServiceProvider::class,
 
         /*
          * Package Service Providers...
