@@ -26,14 +26,13 @@ const app = new Vue({
             ],
             steps:[
                 { }
-            ]
+            ],
 
     },
     methods: {
         addRow: function () {
             var elem = document.createElement('tr');
             this.rows.push({
-
             });
         },
         removeElement: function (index) {
@@ -42,8 +41,7 @@ const app = new Vue({
         addStep: function () {
             var elem1 = document.createElement('tr');
             this.steps.push({
-
-            });
+            var elem = document.createElement('tr');
         },
         removeStep: function (index) {
             this.steps.splice(index, 1);
