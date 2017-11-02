@@ -1,0 +1,28 @@
+<div class="field prep is-clearfix">
+    <label class="label"><i class="fa fa-cutlery" aria-hidden="true"></i><span class="timing">Temps de préparation</span></label>
+    <div class="field-body">
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" id="prep_heure" name="prep_heure" type="number" placeholder="0" value="">
+            </div>
+            <div class="control">
+                <a class="button is-static" >
+                    heure(s)
+                </a>
+
+            </div>
+        </div>
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" id="prep_minute" name="prep_minute" type="number" placeholder="0" value="">
+            </div>
+            <div class="control">
+                <a class="button is-static" >
+                    minute(s)
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>

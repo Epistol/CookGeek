@@ -1,0 +1,12 @@
+
+html, body {
+  height: 100%;
+  box-sizing: border-box;
+}
+body, button, input, select, textarea{
+  font-family:$typocontent;
+}
+
+.is-fullwidth, .is-fullwidth select {
+  width:100%;
+}

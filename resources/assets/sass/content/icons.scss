@@ -1,0 +1,52 @@
+
+.type-selector input{
+  margin:0;padding:0;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+
+.anime{background-image:url("/img/pictos/svg/anime.svg");}
+.art{background-image:url("/img/pictos/svg/art.svg");}
+.cartes{background-image:url("/img/pictos/svg/cartes.svg");}
+.comics{background-image:url("/img/pictos/svg/comics.svg");}
+.gaming{background-image:url("/img/pictos/svg/games.svg");}
+.livres{background-image:url("/img/pictos/svg/livres.svg");}
+.musique{background-image:url("/img/pictos/svg/song.svg");}
+.tv{background-image:url("/img/pictos/svg/tv.svg");}
+
+.drinkcard-cc{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:100px;height:70px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-filter:  grayscale(1) opacity(1) brightness(1.2);
+  -moz-filter: grayscale(1) opacity(1) brightness(1.2);
+  filter: grayscale(1) opacity(1) brightness(1.2);
+}
+.drinkcard-cc:hover{
+  -webkit-filter:  grayscale(.2) opacity(.9);
+  -moz-filter:  grayscale(.2) opacity(.9);
+  filter:  grayscale(.2) opacity(.9);
+  filter: drop-shadow(0 0 7px #d7cfe3);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+
+}

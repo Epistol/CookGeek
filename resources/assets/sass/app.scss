@@ -1,0 +1,45 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+/*
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";*/
+
+
+$primary: $violet;
+$danger : $red;
+$success : $vert;
+$warning : $orange;
+
+
+// BULMA
+@import "~bulma/bulma";
+
+
+// TYPOS
+@import "general/typo";
+
+// GENERAL
+@import "general/general";
+
+// LOGIN
+@import "content/login";
+
+// FOOTER
+@import "content/footer";
+
+// MENU
+
+@import "content/menu";
+
+/// RECIPES ADD 
+
+@import "content/recipe/add";
+
+// Input button add
+@import "content/icons";

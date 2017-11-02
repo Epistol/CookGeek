@@ -1,0 +1,40 @@
+
+.logo{
+  font-family: $typotitle;
+  font-size:2rem;
+  color:$white;
+  padding: 0.5rem 1rem;
+}
+
+
+
+nav.navbar, .navbar-dropdown, a.navbar-item, a.navbar-link {
+  background: $brand-primary;
+
+
+}
+
+  .navbar-link::after {
+    border: 1px solid #fbfdfa;
+    border-right: 0;
+    border-top: 0;
+  }
+
+
+
+a.navbar-item , a.navbar-link {
+  color:$white;
+}
+
+.search_header {
+  text-align: right;
+  display: table-cell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchheadbutton{
+  position: absolute;
+  right: 2rem;
+}
