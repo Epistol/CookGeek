@@ -27,6 +27,7 @@
 
                             <div class=" field form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="label col-md-4 control-label">Pseudo ou Email.
+
                                 </label>
                                 <div class="control">
                                     <input id="email" type="email" class="input form-control" name="email" value="{{ old('email') }}" required autofocus>
