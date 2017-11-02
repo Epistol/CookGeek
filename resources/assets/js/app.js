@@ -22,30 +22,26 @@ const app = new Vue({
     data: {
         titre: '',
             rows: [
-                { name : "", qtt :""}
+                { }
             ],
             steps:[
-                { etape : ""}
-            ]
+                { }
+            ],
 
     },
     methods: {
         addRow: function () {
             var elem = document.createElement('tr');
             this.rows.push({
-                name: "",
-                qtt: ""
             });
         },
         removeElement: function (index) {
             this.rows.splice(index, 1);
         },
         addStep: function () {
-            var elem = document.createElement('tr');
+            var elem1 = document.createElement('tr');
             this.steps.push({
-                etape: "",
-
-            });
+            var elem = document.createElement('tr');
         },
         removeStep: function (index) {
             this.steps.splice(index, 1);
