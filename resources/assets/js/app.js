@@ -21,12 +21,12 @@ const app = new Vue({
     el: '#app',
     data: {
         titre: '',
-            rows: [
-                { }
-            ],
-            steps:[
-                { }
-            ],
+        rows: [
+            { }
+        ],
+        steps:[
+            { }
+        ]
 
     },
     methods: {
@@ -41,14 +41,12 @@ const app = new Vue({
         addStep: function () {
             var elem1 = document.createElement('tr');
             this.steps.push({
-            var elem = document.createElement('tr');
+            })
         },
         removeStep: function (index) {
             this.steps.splice(index, 1);
-        },
-
-    }
-});
+        }
+    }});
 
 $('#upload').change(function() {
     readURL(this);

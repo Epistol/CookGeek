@@ -8,7 +8,7 @@
     <div class="navbar-brand">
         <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
             <img src="/img/logoo_rond.png"  alt="CDG : Cuisine De geek" style="
-    max-height: fit-content;
+    max-height: fit-content;max-height: 100%;
 ">
         </a>
 
