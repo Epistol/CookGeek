@@ -16,7 +16,7 @@
                 {{ csrf_field() }}
 
                 <div class="columns">
-                    <div class="column  is-paddingless left_recipe_add is-4 is-offset-1">
+                    <div class="column  is-paddingless left_recipe_add is-4">
                         <div class="padding-sides">
                             @include('recipes.add.image')
 
