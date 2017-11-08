@@ -32,15 +32,11 @@ class RecipesController extends Controller
 
     public function store(Request $request){
         $input = $request->all();
-
+       // TODO finir le traitement
         $id_ingredients = array();
 
         foreach ($request->ingredient as $key => $ingredient){
-
-
-
             $id = DB::table('ingredients')->where('name','=', $ingredient)->get();
-            dd($id->all());
 
             if($id->isEmpty()){
 
@@ -49,15 +45,11 @@ class RecipesController extends Controller
                 );
                 $id = $id_univers;
             }
-
-
             $id_ingredients[] .= [ '$id' =>  '$ingredient'];
-
-
         }
 
-
         dd($id_ingredients);
+
         // User ID :
         $iduser = Auth::user()->id;
 
@@ -134,7 +126,7 @@ class RecipesController extends Controller
 
         // Partie ingrédients
 
-            // On associe chaque nom d'ingrédient à un ID
+        // On associe chaque nom d'ingrédient à un ID
         $id_ingredients = array();
 
         foreach ($request->ingredient as $ingredient){
@@ -151,7 +143,7 @@ class RecipesController extends Controller
         foreach($id_ingredients as $id_i){
             $idIngrRecette = DB::table('recipes_ingredients')->insertGetId(
                 ['id_recipe' => $idRecette,
-                'id_ingredient' => $id_i,]);
+                    'id_ingredient' => $id_i,]);
 
         }
 

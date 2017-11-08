@@ -39,9 +39,7 @@
                                     {{--// Nombre de portions--}}
                                 </div>
                             </div>
-
-
-
+                            
                         </div>
                     </div>
 
