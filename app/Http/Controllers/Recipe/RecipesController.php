@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
 use App\Http\Controllers\Controller;
+use App\Recette;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,50 +33,22 @@ class RecipesController extends Controller
 
     public function store(Request $request){
         $input = $request->all();
-       // TODO finir le traitement
-        $id_ingredients = array();
-
-        foreach ($request->ingredient as $key => $ingredient){
-            $id = DB::table('ingredients')->where('name','=', $ingredient)->get();
-
-            if($id->isEmpty()){
-
-                $id_univers = DB::table( 'ingredients' )->insertGetId(
-                    [ 'name' => $ingredient ]
-                );
-                $id = $id_univers;
-            }
-            $id_ingredients[] .= [ '$id' =>  '$ingredient'];
-        }
-
-        dd($id_ingredients);
 
         // User ID :
         $iduser = Auth::user()->id;
 
         // Verification des champs null
+        // TODO : à finir
 
-        if($request->prep_minute->isEmpty()){
-            $request->prep_minute = 0;
-        }
-        if($request->prep_heure->isEmpty()){
-            $request->prep_heure = 0;
-        }
-        if($request->cook_minute->isEmpty()){
-            $request->cook_minute = 0;
-        }
-        if($request->cook_heure->isEmpty()){
-            $request->cook_heure = 0;
-        }
-        if($request->rest_minute->isEmpty()){
-            $request->rest_minute = 0;
-        }
-        if($request->rest_heure->isEmpty()){
-            $request->rest_heure = 0;
-        }
-        if($request->value_part->isEmpty()){
-            $request->value_part = "personnes";
-        }
+        $request->prep_minute = $this->verify_time($request->prep_minute);
+        $request->cook_minute = $this->verify_time($request->cook_minute);
+        $request->rest_minute = $this->verify_time($request->rest_minute);
+        $request->prep_heure = $this->verify_time($request->prep_heure);
+        $request->cook_heure = $this->verify_time($request->cook_heure);
+        $request->rest_heure = $this->verify_time($request->rest_heure);
+        $request->value_part = $this->verify_time($request->value_part);
+
+        dd($request->prep_heure);
 
         $prep = ( $request->prep_heure * 60 ) + $request->prep_minute;
         $cook = ( $request->cook_heure * 60 ) + $request->cook_minute;
@@ -126,28 +99,35 @@ class RecipesController extends Controller
 
         // Partie ingrédients
 
-        // On associe chaque nom d'ingrédient à un ID
-        $id_ingredients = array();
+        // TODO finir le traitement
+        $id_ingr = array();
 
-        foreach ($request->ingredient as $ingredient){
+        foreach ($request->ingredient as $key => $ingredient){
             $id = DB::table('ingredients')->where('name','=', $ingredient)->get();
-            if(!isset($id) || $id == ''){
-                $id_univers = DB::table( 'ingredients' )->insertGetId(
+            // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
+            if($id->isEmpty()){
+
+                $id_ingredient_ajout = DB::table( 'ingredients' )->insertGetId(
                     [ 'name' => $ingredient ]
                 );
-                $id = $id_univers;
+                $id_ingr = $id_ingredient_ajout;
             }
-            $id_ingredients = array_add($id, $request->ingredient);
+            dd($id);
+
+            $id_ingr[] = [ '$key' =>  '$ingredient'];
         }
 
-        foreach($id_ingredients as $id_i){
+        dd($id_ingr);
+
+
+
+
+        foreach($id_ingr as $id_i){
             $idIngrRecette = DB::table('recipes_ingredients')->insertGetId(
                 ['id_recipe' => $idRecette,
                     'id_ingredient' => $id_i,]);
 
         }
-
-
 
 
 
@@ -169,4 +149,17 @@ class RecipesController extends Controller
 
         return $slug;
     }
+
+    private function verify_time($time){
+        if (empty($time) || isset($time) || $time == NULL) {
+            return $time = 0;
+        }
+
+        else {
+            return $time;
+        }
+    }
+
+
+
 }

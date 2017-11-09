@@ -43,6 +43,7 @@ const app = new Vue({
             this.steps.push({
             })
         },
+
         removeStep: function (index) {
             this.steps.splice(index, 1);
         }

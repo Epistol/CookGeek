@@ -17,7 +17,6 @@ class CreateRecipesIngredientsTable extends Migration
 		    $table->increments('id');
 		    $table->integer('id_recipe')->nullable();
 		    $table->integer('id_ingredient')->nullable();
-		    $table->string('lib_ingredient')->nullable();
 		    $table->string('qtt')->nullable();
 	    });
 
