@@ -31,7 +31,7 @@ class RecipesController extends Controller
         return view('recipes.add', array( 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat ) );
     }
 
-    public function store(Request $request){
+	    public function store(Request $request){
         $input = $request->all();
 
         // User ID :
