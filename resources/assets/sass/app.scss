@@ -12,9 +12,10 @@
 
 
 $primary: $violet;
-$danger : $red;
+$danger : $rouge;
 $success : $vert;
 $warning : $orange;
+
 
 
 // BULMA
@@ -37,7 +38,7 @@ $warning : $orange;
 
 @import "content/menu";
 
-/// RECIPES ADD 
+/// RECIPES ADD
 
 @import "content/recipe/add";
 

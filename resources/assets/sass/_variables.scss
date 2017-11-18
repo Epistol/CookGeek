@@ -1,7 +1,25 @@
-
-
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #fcefde;
+
+
+// Couleurs de base
+$vert : #019341;
+$rouge : #E1334E;
+$orange : #f7c263;
+$bleu : #4392f1;
+$violet : #7f5fbf;
+
+
+/* RGB */
+$red: $rouge;
+$blanc_casse: rgba(183, 173, 153, 1);
+$gris : #898989;
+$gris_granite : #6a605c;
+$blck: rgba(3, 3, 1, 1);
+$white : white;
+$eerieblck : #1C1C1C;
+
+
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -10,42 +28,25 @@ $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
+
+
 // Brands
-$brand-primary: #6c548f;
-$brand-info: #8eb4cb;
+$brand-primary: $violet;
+$accent : #ff8cc6;
+$accentsecondary : $bleu;
+
+$brand-info: #8fb8de;
 $brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #E1334E;
-
-$white : white;
+$brand-warning: #ffc145;
+$brand-danger: #ff6b6c;
 
 
-$violet : #6C548F;
+
+
+
 $comp-green : #76db8e;
 $violet-txt : #47424a;
-$vert : #019341;
-$rouge : #E1334E;
-$orange : #F59B1A;
 
-
-// Charte graphique
-
-/* Coolors Exported Palette - coolors.co/e63946-f1faee-6c548f-b7ad99-030301 */
-
-/* HSL */
-$red: hsla(355%, 78%, 56%, 1);
-$greenlight: hsla(105%, 55%, 96%, 1);
-$violet: hsla(264%, 26%, 45%, 1);
-$blanc_casse: hsla(40%, 17%, 66%, 1);
-$blck: hsla(60%, 50%, 1%, 1);
-
-/* RGB */
-$red: rgba(230, 57, 70, 1);
-$greenlight: rgba(241, 250, 238, 1);
-$violet: rgba(108, 84, 143, 1);
-$blanc_casse: rgba(183, 173, 153, 1);
-$gris : #d8d8d8;
-$blck: rgba(3, 3, 1, 1);
 
 
   // Typography
@@ -53,13 +54,13 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: $violet;
 
 $typotitle : "Conviction",Tahoma, Geneva, sans-serif;
 $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: $white;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -71,5 +72,4 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
-
 $taille_minimale_photo : 640px;

@@ -2,6 +2,7 @@
 html, body {
   height: 100%;
   box-sizing: border-box;
+  background-color:$body-bg;
 }
 body, button, input, select, textarea{
   font-family:$typocontent;
@@ -9,4 +10,8 @@ body, button, input, select, textarea{
 
 .is-fullwidth, .is-fullwidth select {
   width:100%;
+}
+.blockcontent{
+  background: $white;
+  padding: 2rem;
 }
