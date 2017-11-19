@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/* RGB */
+@import url(https://fonts.googleapis.com/css?family=Karla:300,400,600);/* RGB */
 
 /*
 
@@ -10892,7 +10892,7 @@ body {
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fcefde;
+  background-color: #fef8f1;
 }
 
 body,
@@ -10986,6 +10986,7 @@ footer {
 a.navbar-item,
 a.navbar-link {
   color: #7f5fbf;
+  font-size: 1.1rem;
 }
 
 .navbar {
@@ -11089,9 +11090,9 @@ input.input_modal {
 }
 
 input.input_modal:focus {
-  border-bottom: 1px solid #76db8e;
-  -webkit-box-shadow: 0 1px 0 0 #76db8e;
-  box-shadow: 0 1px 0 0 #76db8e;
+  border-bottom: 2px solid #ff8cc6;
+  -webkit-box-shadow: 0 2px 0 0 #ff8cc6;
+  box-shadow: 0 2px 0 0 #ff8cc6;
 }
 
 input.input_modal.blck {
@@ -11194,7 +11195,7 @@ span.parts {
 }
 
 .left_recipe_add {
-  background: #d8d8d8;
+  background: #f3f3f3;
   margin-top: 1rem;
   z-index: 1;
   margin-bottom: 1rem;
@@ -11217,10 +11218,6 @@ span.parts {
   background: white;
   -webkit-box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
-}
-
-.recipeaddbg {
-  background: #ff9bce;
 }
 
 .addsteprecipe {

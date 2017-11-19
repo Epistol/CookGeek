@@ -71,9 +71,9 @@ input.input_modal{
   padding-left: 1rem;
 
   &:focus{
-    border-bottom: 1px solid $comp-green;
-    -webkit-box-shadow: 0 1px 0 0 $comp-green;
-    box-shadow: 0 1px 0 0 $comp-green;
+    border-bottom: 2px solid $accent;
+    -webkit-box-shadow: 0 2px 0 0 $accent;
+    box-shadow: 0 2px 0 0 $accent;
   }
 
 }
@@ -204,7 +204,7 @@ span.timing, span.parts {
 }
 
 .left_recipe_add{
-  background: #d8d8d8;
+  background: $antiwhite;
   margin-top: 1rem;z-index: 1;
   margin-bottom: 1rem;
   -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
@@ -229,7 +229,7 @@ span.timing, span.parts {
 
 
 .recipeaddbg{
-  background: lighten($accent, 3%);
+
 }
 
 .addsteprecipe {

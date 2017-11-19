@@ -21,7 +21,7 @@
                             @include('recipes.add.image')
 
                             <div class="columns">
-                                <div class="column is-8 is-offset-2">
+                                <div class="column is-10 is-offset-1">
                                     @include("recipes.add.vegan")
                                     @include("recipes.add.difficulty")
                                     @include("recipes.add.categorie")
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="columns timing">
-                                <div class="column is-8 is-offset-2 ">
+                                <div class="column is-10 is-offset-1 ">
                                     {{--// Timing--}}
                                     @include("recipes.add.timing.tps_preparation")
                                     @include("recipes.add.timing.tps_cuisson")
@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="column right_recipe_add is-6 ">
+                    <div class="column right_recipe_add is-7 ">
                         {{--Titre recette--}}
                         @include("recipes.add.titre")
                         @include("recipes.add.univers")
