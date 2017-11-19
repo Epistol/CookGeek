@@ -10913,6 +10913,13 @@ textarea {
   padding: 2rem;
 }
 
+/*
+.is-centered {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  display:flex;justify-content:center;align-items:center;
+}*/
+
 .onboard_login {
   /*  display: flex;
   position: relative;

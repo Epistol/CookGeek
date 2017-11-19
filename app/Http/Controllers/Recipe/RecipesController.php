@@ -21,19 +21,20 @@ class RecipesController extends Controller
         return 'CDG'; /*view('user.profile', ['user' => User::findOrFail($id)]);*/
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function add(){
         $types_univ = DB::table('categunivers')->get();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipe')->get();
-
-
-
         return view('recipes.add', array( 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat ) );
     }
 
+
 	    public function store(Request $request){
         $input = $request->all();
-
+            dd($input);
         // User ID :
         $iduser = Auth::user()->id;
 
@@ -48,7 +49,7 @@ class RecipesController extends Controller
         $request->rest_heure = $this->verify_time($request->rest_heure);
         $request->value_part = $this->verify_time($request->value_part);
 
-        dd($request->prep_heure);
+
 
         $prep = ( $request->prep_heure * 60 ) + $request->prep_minute;
         $cook = ( $request->cook_heure * 60 ) + $request->cook_minute;
