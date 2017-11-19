@@ -10911,6 +10911,12 @@ textarea {
 .blockcontent {
   background: white;
   padding: 2rem;
+  margin-top: 2rem;
+}
+
+.image.is-256x256 {
+  height: 256px;
+  width: 256px;
 }
 
 /*
@@ -10958,13 +10964,13 @@ textarea {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #1C1C1C;
+  background-color: #47424a;
   text-align: center;
   color: white;
 }
 
 footer {
-  background: #1C1C1C;
+  background: #47424a;
 }
 
 .logo {
@@ -11316,6 +11322,16 @@ label.cost.button:hover,
 
 .tv {
   background-image: url("/img/pictos/svg/tv.svg");
+}
+
+.icones {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 100px;
+  height: 70px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .drinkcard-cc {

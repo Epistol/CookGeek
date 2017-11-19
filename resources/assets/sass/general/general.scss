@@ -14,7 +14,15 @@ body, button, input, select, textarea{
 .blockcontent{
   background: $white;
   padding: 2rem;
+  margin-top: 2rem;
 }
+
+.image.is-256x256 {
+  height: 256px;
+  width: 256px;
+
+}
+
 /*
 .is-centered {
   -webkit-box-pack: center;

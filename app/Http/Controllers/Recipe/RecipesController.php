@@ -28,7 +28,7 @@ class RecipesController extends Controller
     public function add(){
         $types_univ = DB::table('categunivers')->get();
         $difficulty = DB::table('difficulty')->get();
-        $types_plat = DB::table('type_recipe')->get();
+        $types_plat = DB::table('type_recipes')->get();
         return view('recipes.add', array( 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat ) );
     }
 
@@ -165,7 +165,11 @@ class RecipesController extends Controller
         $steps =  DB::table('recipes_steps')
             ->where('recipe_id', '=', $recette->id)
             ->get();
-        $images =  Recipe_img::where('recipe_id', $recette->id)->get();
+        $typeuniv =  DB::table('categunivers')
+            ->where('id', '=', $recette->type_univers)
+            ->first();
+
+        $images =  Recipe_img::where(['recipe_id' => $recette->id, ['user_id' , '!=',  $recette->id_user]])->get();
 
         $firstimg = DB::table('recipe_imgs')
             ->where('recipe_id', '=', $recette->id)
@@ -173,7 +177,7 @@ class RecipesController extends Controller
             ->first();
 
         // On charge les données dans la vue
-        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg ) );
+        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg, 'typeuniv'  => $typeuniv) );
     }
 
 
