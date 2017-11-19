@@ -5,19 +5,30 @@
         <div class="container">
             <section class="section ">
 
-                <nav class="breadcrumb" aria-label="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Recettes</a></li>
-                        <li><a href="#">{{$recette->getType()}}</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">{{$recette->title}}</a></li>
-                    </ul>
-                </nav>
-                <div style="    align-items: center;    justify-content: center; display: flex;">
-                    <h1 class="title">{{$recette->title}}</h1>
+                @include("recipes.show.bread")
 
-                </div>
-                <hr>
+                {{-- Nom du produit--}}
+                <h1 class="title">{{$recette->title}}</h1>
+                {{-- AVIS --}}
+                <section class="section">
+
+                </section>
+                {{-- Images--}}
+                <section class="section">
+                    <figure class="image is-128x128 principale">
+
+
+
+                        <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
+                    </figure>
+                </section>
+
+
+
+
+
+
+
             </section>
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
 use App\Http\Controllers\Controller;
+use App\Recipe_img;
 use App\Recipes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -164,13 +165,15 @@ class RecipesController extends Controller
         $steps =  DB::table('recipes_steps')
             ->where('recipe_id', '=', $recette->id)
             ->get();
-        $images =  DB::table('recipe_img')
+        $images =  Recipe_img::where('recipe_id', $recette->id)->get();
+
+        $firstimg = DB::table('recipe_imgs')
             ->where('recipe_id', '=', $recette->id)
-            ->get();
+            ->where('user_id', '=', $recette->id_user)
+            ->first();
 
-
-       // On charge les données dans la vue
-        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images ) );
+        // On charge les données dans la vue
+        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg ) );
     }
 
 
@@ -182,7 +185,7 @@ class RecipesController extends Controller
 
 
     private function ajouter_image($rq, $userid, $recipe){
-        DB::table('recipe_img')->insertGetId(
+        DB::table('recipe_imgs')->insertGetId(
             ['recipe_id' => $recipe,
                 'image_name' => $rq,
                 'user_id' => $userid,

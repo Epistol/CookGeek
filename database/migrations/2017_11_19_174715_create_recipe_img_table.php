@@ -13,7 +13,7 @@ class CreateRecipeImgTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipe_img', function (Blueprint $table) {
+        Schema::create('recipe_imgs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('recipe_id');
             $table->string('image_name');
@@ -29,6 +29,6 @@ class CreateRecipeImgTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipe_img');
+        Schema::dropIfExists('recipe_imgs');
     }
 }

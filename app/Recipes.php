@@ -19,11 +19,13 @@ class Recipes extends Model
     public function getType(){
         $mytypeid = $this->type;
         return (new Type_recipe)->getnamefromid($mytypeid);
-
     }
 
-
-
+    public function getTypeLower(){
+        $mytypeid = $this->type;
+        $typename =  (new Type_recipe)->getnamefromid($mytypeid);
+        return strtolower($typename);
+    }
     public function verify_time($time){
         if (empty($time) || !isset($time) || $time == NULL ) {
             return  0;
