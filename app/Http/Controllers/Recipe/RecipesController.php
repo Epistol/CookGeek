@@ -32,43 +32,48 @@ class RecipesController extends Controller
     }
 
 
-	    public function store(Request $request){
+    public function store(Request $request){
         $input = $request->all();
-            dd($input);
+
         // User ID :
         $iduser = Auth::user()->id;
 
         // Verification des champs null
         // TODO : à finir
 
-        $request->prep_minute = $this->verify_time($request->prep_minute);
-        $request->cook_minute = $this->verify_time($request->cook_minute);
-        $request->rest_minute = $this->verify_time($request->rest_minute);
-        $request->prep_heure = $this->verify_time($request->prep_heure);
-        $request->cook_heure = $this->verify_time($request->cook_heure);
-        $request->rest_heure = $this->verify_time($request->rest_heure);
-        $request->value_part = $this->verify_time($request->value_part);
+        // Minutes
+        $prep_minute = $this->verify_time($request->prep_minute);
+        $cook_minute = $this->verify_time($request->cook_minute);
+        $rest_minute = $this->verify_time($request->rest_minute);
+        // Heures
+        $prep_heure = $this->verify_time($request->prep_heure);
+        $cook_heure = $this->verify_time($request->cook_heure);
+        $rest_heure = $this->verify_time($request->rest_heure);
 
 
 
-        $prep = ( $request->prep_heure * 60 ) + $request->prep_minute;
-        $cook = ( $request->cook_heure * 60 ) + $request->cook_minute;
-        $rest = ( $request->rest_heure * 60 ) + $request->rest_minute;
+        $prep = ( $prep_heure * 60 ) + $prep_minute;
+        $cook = ( $cook_heure * 60 ) + $cook_minute;
+        $rest = ( $rest_heure * 60 ) + $rest_minute;
 
         $univers = DB::table('univers')->select('id')->where('name', 'like', '%'.$request->universe.'%')->get();
+
         // Si aucun univers n'est associé à la recherche
-        if($univers == NULL || (!isset($univers))) {
+        if($univers->isEmpty()) {
+            // On l'ajoute à la DB
             $id_univers = DB::table( 'univers' )->insertGetId(
                 [ 'name' => $request->universe ]
             );
+
             $univers  = $id_univers;
         }
 
+        $univers = $univers->first();
 
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
             ['title' => $request->title,
-                'vegan' => $request->vegan,
+                'vegetarien' => $request->vegan,
                 'difficulty' => $request->difficulty,
                 'type' => $request->categ_plat,
                 'cost' => $request->cost,
@@ -77,22 +82,21 @@ class RecipesController extends Controller
                 'rest_time' => $rest,
                 'nb_guests' => $request->unite_part,
                 'guest_type' => $request->value_part,
-                'univers' => $univers,
+                'univers' => $univers->id,
                 'type_univers' => $request->type,
                 'id_user' => $iduser,
                 'slug' => '',
                 'vegetarien' => $request->vegan,
-                'comment' => $request->comment,
+                'commentary_author' => $request->comment,
 
             ]
         );
 
-
         // Partie SLUG
+        $slug = $this->slugtitre($request, $idRecette);
 
-        $slug = slugtitre($request, $idRecette);
 
-
+        dd($slug);
         DB::table('recipes')
             ->where('id', $idRecette)
             ->update(['slug' => $slug]);
@@ -145,15 +149,13 @@ class RecipesController extends Controller
 
     private function slugtitre($requt, $idrecipe){
         $titreslug= str_slug($requt->title, '-');
-        $univslug = str_slug($requt->universe, '-');
-        $slug = $titreslug."-".$univslug."-".$idrecipe;
-
+        $slug = $titreslug."-".$idrecipe;
         return $slug;
     }
 
     private function verify_time($time){
-        if (empty($time) || isset($time) || $time == NULL) {
-            return $time = 0;
+        if (empty($time) || !isset($time) || $time == NULL ) {
+            return  0;
         }
 
         else {
