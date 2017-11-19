@@ -40,7 +40,7 @@ Route::group(['prefix' => 'recette'], function () {
 	Route::get('','Recipe\RecipesController@index')->name("recipe.index");
 	Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
 	Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
-	Route::get('{post}','Recipe\RecipesController@show');
+	Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show");
 });
 
 Route::group(['prefix' => 'admin'], function () {

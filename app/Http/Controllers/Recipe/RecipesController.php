@@ -32,6 +32,9 @@ class RecipesController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     */
     public function store(Request $request){
         $input = $request->all();
 
@@ -39,17 +42,16 @@ class RecipesController extends Controller
         $iduser = Auth::user()->id;
 
         // Verification des champs null
-        // TODO : à finir
+
 
         // Minutes
-        $prep_minute = $this->verify_time($request->prep_minute);
-        $cook_minute = $this->verify_time($request->cook_minute);
-        $rest_minute = $this->verify_time($request->rest_minute);
+        $prep_minute = (new \App\Recette)->verify_time($request->prep_minute);
+        $cook_minute = (new \App\Recette)->verify_time($request->cook_minute);
+        $rest_minute = (new \App\Recette)->verify_time($request->rest_minute);
         // Heures
-        $prep_heure = $this->verify_time($request->prep_heure);
-        $cook_heure = $this->verify_time($request->cook_heure);
-        $rest_heure = $this->verify_time($request->rest_heure);
-
+        $prep_heure = (new \App\Recette)->verify_time($request->prep_heure);
+        $cook_heure = (new \App\Recette)->verify_time($request->cook_heure);
+        $rest_heure = (new \App\Recette)->verify_time($request->rest_heure);
 
 
         $prep = ( $prep_heure * 60 ) + $prep_minute;
@@ -88,6 +90,8 @@ class RecipesController extends Controller
                 'slug' => '',
                 'vegetarien' => $request->vegan,
                 'commentary_author' => $request->comment,
+                'created_at' => now(),
+                'updated_at' => now(),
 
             ]
         );
@@ -95,8 +99,6 @@ class RecipesController extends Controller
         // Partie SLUG
         $slug = $this->slugtitre($request, $idRecette);
 
-
-        dd($slug);
         DB::table('recipes')
             ->where('id', $idRecette)
             ->update(['slug' => $slug]);
@@ -104,42 +106,51 @@ class RecipesController extends Controller
 
         // Partie ingrédients
 
-        // TODO finir le traitement
         $id_ingr = array();
+        $id_qtt = array();
 
         foreach ($request->ingredient as $key => $ingredient){
-            $id = DB::table('ingredients')->where('name','=', $ingredient)->get();
+            $id_ingredient_ajout = DB::table('ingredients')->where('name','=', $ingredient)->get();
             // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-            if($id->isEmpty()){
-
-                $id_ingredient_ajout = DB::table( 'ingredients' )->insertGetId(
+            if($id_ingredient_ajout->isEmpty()){
+                $ingredientID = DB::table( 'ingredients' )->insertGetId(
                     [ 'name' => $ingredient ]
                 );
-                $id_ingr = $id_ingredient_ajout;
             }
-            dd($id);
+            else {
+                $ingredientID = $id_ingredient_ajout->first();
+                $ingredientID = $ingredientID->id;
+            }
+            // Pour chaque ingrédient, on l'associe à la recette
 
-            $id_ingr[] = [ '$key' =>  '$ingredient'];
-        }
-
-        dd($id_ingr);
-
-
-
-
-        foreach($id_ingr as $id_i){
-            $idIngrRecette = DB::table('recipes_ingredients')->insertGetId(
+            DB::table('recipes_ingredients')->insertGetId(
                 ['id_recipe' => $idRecette,
-                    'id_ingredient' => $id_i,]);
-
+                    'id_ingredient' => $ingredientID,
+                    'qtt' => $request->qtt_ingredient[$key],
+                ]);
         }
 
+        // Gestion des étapes
+        foreach ($request->step as $key => $step){
+            DB::table('recipes_steps')->insertGetId(
+                ['recipe_id' => $idRecette,
+                    'step_number' => $key,
+                    'instruction' => $request->step[$key],
+
+                ]);
+        }
+
+        // Parties image
 
 
-        // Parties étapes
+        $this->validate($request, [
+            'resume' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $photoName = time().'.'.$request->resume->getClientOriginalExtension();
+        $img = $this->ajouter_image($photoName, $iduser, $idRecette);
+        $request->resume->move(public_path('recipes/'.$idRecette.'/'.$iduser.'/'), $photoName);
 
-
-
+        return redirect()->route('recipe.show', ['post' => $idRecette]);
     }
 
     public function show($slug){
@@ -153,16 +164,16 @@ class RecipesController extends Controller
         return $slug;
     }
 
-    private function verify_time($time){
-        if (empty($time) || !isset($time) || $time == NULL ) {
-            return  0;
-        }
 
-        else {
-            return $time;
-        }
+    private function ajouter_image($rq, $userid, $recipe){
+        DB::table('recipe_img')->insertGetId(
+            ['recipe_id' => $recipe,
+                'image_name' => $rq,
+                'user_id' => $userid,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
     }
-
 
 
 }

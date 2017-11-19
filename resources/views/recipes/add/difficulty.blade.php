@@ -2,7 +2,7 @@
 
     <div class="control">
         <div class="select is-fullwidth">
-            <select name="difficulty" id="difficulty">
+            <select required name="difficulty" id="difficulty">
                 <option disabled value="" selected="selected">Difficulté</option>
                 @foreach ($difficulty as $key=>$diff)
                     @php(++$key)

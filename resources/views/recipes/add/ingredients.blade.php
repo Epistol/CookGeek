@@ -8,7 +8,7 @@
         <tbody>
         <tr v-for="(row, index) in rows" >
 
-            <td>  <input class="input" type="text" v-model="row.qtt" placeholder="Quantité" name="qtt_ingredient[]" id="qtt_ingredient[]" ></td>
+            <td>  <input class="input" type="number" v-model="row.qtt" placeholder="Quantité" name="qtt_ingredient[]" id="qtt_ingredient[]" ></td>
             <td>
                 <input class="input" type="text" v-model="row.name" placeholder="ingrédient" name="ingredient[]" id="ingredient[]">
             </td>
