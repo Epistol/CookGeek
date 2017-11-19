@@ -14,7 +14,7 @@ class CreateTypeRecipeTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_recipe', function (Blueprint $table) {
+        Schema::create('type_recipes', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
         });
@@ -27,6 +27,6 @@ class CreateTypeRecipeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_recipe');
+        Schema::dropIfExists('type_recipes');
     }
 }

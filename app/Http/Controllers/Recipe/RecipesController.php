@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
 use App\Http\Controllers\Controller;
-use App\Recette;
+use App\Recipes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +34,7 @@ class RecipesController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request){
         $input = $request->all();
@@ -45,13 +46,13 @@ class RecipesController extends Controller
 
 
         // Minutes
-        $prep_minute = (new \App\Recette)->verify_time($request->prep_minute);
-        $cook_minute = (new \App\Recette)->verify_time($request->cook_minute);
-        $rest_minute = (new \App\Recette)->verify_time($request->rest_minute);
+        $prep_minute = (new \App\Recipes)->verify_time($request->prep_minute);
+        $cook_minute = (new \App\Recipes)->verify_time($request->cook_minute);
+        $rest_minute = (new \App\Recipes)->verify_time($request->rest_minute);
         // Heures
-        $prep_heure = (new \App\Recette)->verify_time($request->prep_heure);
-        $cook_heure = (new \App\Recette)->verify_time($request->cook_heure);
-        $rest_heure = (new \App\Recette)->verify_time($request->rest_heure);
+        $prep_heure = (new \App\Recipes)->verify_time($request->prep_heure);
+        $cook_heure = (new \App\Recipes)->verify_time($request->cook_heure);
+        $rest_heure = (new \App\Recipes)->verify_time($request->rest_heure);
 
 
         $prep = ( $prep_heure * 60 ) + $prep_minute;
@@ -150,11 +151,26 @@ class RecipesController extends Controller
         $img = $this->ajouter_image($photoName, $iduser, $idRecette);
         $request->resume->move(public_path('recipes/'.$idRecette.'/'.$iduser.'/'), $photoName);
 
-        return redirect()->route('recipe.show', ['post' => $idRecette]);
+        return redirect()->route('recipe.show', ['post' => $slug]);
     }
 
     public function show($slug){
-        return $slug;
+
+        $recette = Recipes::where('slug', $slug)->first();
+
+        $ingredients =  DB::table('recipes_ingredients')
+            ->where('id_recipe', '=', $recette->id)
+            ->get();
+        $steps =  DB::table('recipes_steps')
+            ->where('recipe_id', '=', $recette->id)
+            ->get();
+        $images =  DB::table('recipe_img')
+            ->where('recipe_id', '=', $recette->id)
+            ->get();
+
+
+       // On charge les données dans la vue
+        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images ) );
     }
 
 
