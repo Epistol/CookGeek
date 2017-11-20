@@ -19,7 +19,16 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        return 'CDG'; /*view('user.profile', ['user' => User::findOrFail($id)]);*/
+        $recette = DB::table('recipes')->orderBy('updated_at', 'desc')->get();
+        $universcateg = DB::table('categunivers')->get();
+
+/*        $firstimg = DB::table('recipe_imgs')
+            ->where('recipe_id', '=', $recette->id)
+            ->where('user_id', '=', $recette->id_user)
+            ->first();*/
+
+        // On charge les données dans la vue
+        return view('recipes.index', array( 'recette' => $recette, 'universcateg' => $universcateg) );
     }
 
     /**

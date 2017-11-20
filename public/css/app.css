@@ -11284,6 +11284,25 @@ label.cost.button:hover,
   color: #fbfdfa;
 }
 
+.bordered-cdg {
+  /*  border: 1px solid $brand-primary;*/
+  padding: 1rem;
+}
+
+.horizontalover {
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+.horizontalover::-webkit-scrollbar {
+  display: none;
+}
+
+.content figure {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .type-selector input {
   margin: 0;
   padding: 0;
