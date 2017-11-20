@@ -1,28 +1,35 @@
 {{--Pour chaque univers, on va charger  1 SEULE recette--}}
 <section class=" bordered-cdg">
     <div class="columns">
+        <?php $i=0;?>
+
+        {{--   -> tout les univers--}}
+        @foreach($universcateg as $index=>$c)
+            <?php $i = $index+1;?>
 
 
-
-        {{-- On va charger la première recette--}}
-        @forelse($recettes as $r)
-            @if($r != null)
-                @foreach($universcateg as $c)
-                    @if($r->type_univers == $c->id)
-                        <div class="column">
-                            @include("recipes.index.excerpt")
-                        </div>
-                    @endif
-
-                @endforeach
+            {{--  -> si la recette n'est pas nulle--}}
+            @if($recettes[$i] != null)
+                {{-- -> si la categorie correspond à celle de la recette--}}
+                @if($recettes[$i]->type_univers == $c->id)
+                    <div class="column">
+                        @include("recipes.index.excerpt")
+                    </div>
+                @endif
+                {{-- -> Si la recette est nulle--}}
             @else
-                <div class="column">
 
-                </div>
+                {{-- Si l'index de la recette correspond à l'id universcateg--}}
+                @if($i == $c->id)
+
+                    <div class="column">
+                        @include("recipes.index.empty")
+                    </div>
+                @endif
             @endif
-        @empty
+        @endforeach
 
-        @endforelse
+
 
 
     </div>
