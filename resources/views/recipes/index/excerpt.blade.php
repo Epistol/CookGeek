@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card cdg">
     <div class="card-image">
         <figure class="image is-4by3">
             <?php
@@ -13,15 +13,20 @@
 
         </figure>
     </div>
-    <div class="card-content">
+    <a href="{{route('media.show', $c->name)}}">
+    <div class="medaillon ">
+        @if($c->name== 'tv')
+            <div class="icones {{strtolower($c->name)}}" ></div>
+        @else
+            <div class="icones {{strtolower($c->name)}}"></div>
+        @endif
+    </div>
+    </a>
+    <div class="card-content indexrecipe">
         <div class="media">
-            <div class="media-content">
+            <div class="media-content is-centered">
                 <p class="title is-4"><a href="{{route('recipe.show', $recettes[$i]->slug)}}"> {{$recettes[$i]->title}}</a></p>
-                @if($c->name== 'tv')
-                    <div class="icones {{strtolower($c->name)}}" ></div>
-                @else
-                    <div class="icones {{strtolower($c->name)}}"></div>
-                @endif
+
             </div>
         </div>
 
