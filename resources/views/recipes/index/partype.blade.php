@@ -27,10 +27,16 @@
                     </div>
                 @endif
             @endif
-        @endforeach
 
-
-
+            @if($i % 4 == 0)
 
     </div>
+    <div class="columns">
+                @endif
+        @endforeach
+
+    </div>
+
+
+
 </section>

@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-image">
         <figure class="image is-4by3">
-           <img src="http://via.placeholder.com/300x200?text={{$c->name}} / CDG">
+           <img src="http://via.placeholder.com/300x200?text={{ucfirst($c->name)}}">
 
 
         </figure>
