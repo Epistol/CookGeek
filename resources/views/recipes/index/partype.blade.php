@@ -1,19 +1,29 @@
-@foreach($universcateg as $c)
+{{--Pour chaque univers, on va charger  1 SEULE recette--}}
+<section class=" bordered-cdg">
+    <div class="columns">
 
-    <section class=" bordered-cdg">
 
-        @if($c->name== 'tv')
-            <div class="icones {{strtolower($c->name)}}" ></div>
-        @else
-            <div class="icones {{strtolower($c->name)}}"></div>
-        @endif
 
-        <h1 class="title">{{ucfirst($c->name)}}</h1>
+        {{-- On va charger la première recette--}}
+        @forelse($recettes as $r)
+            @if($r != null)
+                @foreach($universcateg as $c)
+                    @if($r->type_univers == $c->id)
+                        <div class="column">
+                            @include("recipes.index.excerpt")
+                        </div>
+                    @endif
 
-<div class="horizontalover">
-    @include("recipes.index.liste")
-</div>
+                @endforeach
+            @else
+                <div class="column">
 
-    </section>
+                </div>
+            @endif
+        @empty
 
-@endforeach
+        @endforelse
+
+
+    </div>
+</section>

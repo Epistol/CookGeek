@@ -2,8 +2,8 @@
     <div class="card-image">
         <figure class="image is-4by3">
             <?php
-                $img = DB::table('recipe_imgs')->where('user_id','=',$r->id_user)->where('recipe_id', '=', $r->id)->first();
 
+                $img = DB::table('recipe_imgs')->where('user_id','=',$r->id_user)->where('recipe_id', '=', $r->id)->first();
             ?>
             @if($img == null or empty($img))
                     <img src="http://via.placeholder.com/300x200?text={{$r->title}}" alt="{{$r->title}} / CDG">
@@ -17,6 +17,11 @@
         <div class="media">
             <div class="media-content">
                 <p class="title is-4"><a href="{{route('recipe.show', $r->slug)}}"> {{$r->title}}</a></p>
+                @if($c->name== 'tv')
+                    <div class="icones {{strtolower($c->name)}}" ></div>
+                @else
+                    <div class="icones {{strtolower($c->name)}}"></div>
+                @endif
             </div>
         </div>
 

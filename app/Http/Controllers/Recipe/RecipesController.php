@@ -19,16 +19,22 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        $recette = DB::table('recipes')->orderBy('updated_at', 'desc')->get();
-        $universcateg = DB::table('categunivers')->get();
 
-/*        $firstimg = DB::table('recipe_imgs')
-            ->where('recipe_id', '=', $recette->id)
-            ->where('user_id', '=', $recette->id_user)
-            ->first();*/
+        $universcateg = DB::table('categunivers')->get();
+        $recettesrand = array();
+
+        // Pour chaque categ, on va charger la dernière recette postée
+        foreach ($universcateg as $u){
+            $recettes = DB::table('recipes')->where('type_univers','=',$u->id )->orderBy('updated_at', 'desc')->first();
+            $recettesrand[$u->id] = $recettes;
+        }
+
+
+        $recettes = collect($recettesrand);
+
 
         // On charge les données dans la vue
-        return view('recipes.index', array( 'recette' => $recette, 'universcateg' => $universcateg) );
+        return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg) );
     }
 
     /**

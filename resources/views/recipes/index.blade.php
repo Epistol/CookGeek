@@ -11,7 +11,6 @@
                     @include("recipes.index.partype")
                 </div>
 
-
             </section>
         </div>
     </div>
