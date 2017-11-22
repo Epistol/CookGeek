@@ -23,6 +23,15 @@ body, button, input, select, textarea{
 
 }
 
+.is-accent{
+  color:$accent;
+}
+
+.is-brand{
+  color:$brand-primary;
+}
+
+
 /*
 .is-centered {
   -webkit-box-pack: center;
