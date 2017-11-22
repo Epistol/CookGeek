@@ -5,7 +5,7 @@
         <div class="container">
             <section class="section blockcontent">
                 @include("recipes.show.bread")
-                <div class="content">
+                <div class="content" style="margin-bottom: 2.5rem;">
                     <div class="has-text-centered">
                         <h1 class="title is-1">{{$recette->title}}</h1>
                     </div>
@@ -17,13 +17,13 @@
                         @include("recipes.show.images")
                         @include("recipes.show.stars")
 
-                        {{--// Auteur--}}
-                        @include("recipes.show.author")
                         {{--// Is-premium (afficher son yt, fb, creations)--}}
+
+                        @include("recipes.show.ingredient")
 
                     </div>
                     {{--    Infos + steps--}}
-                    <div class="column is-7">
+                    <div class="column is-6">
 
                         {{--// Budget--}}
 
@@ -52,20 +52,21 @@
                                     @include("recipes.show.parts")
                                 </div>
                             </div>
+
+
+                            {{--// Auteur--}}
+
+
                         </div>
 
 
-                        {{--// Parts--}}
-                      {{--  @include("recipes.show.parts")--}}
-                        {{--// Temps--}}
-                     {{--   @include("recipes.show.timing")--}}
-                        {{--// Liking--}}
-                    {{--    @include("recipes.show.like")--}}
                         <div class="content">
-
-
-
-
+                            {{--// Parts--}}
+                            {{--  @include("recipes.show.parts")--}}
+                            {{--// Temps--}}
+                            {{--   @include("recipes.show.timing")--}}
+                            {{--// Liking--}}
+                            {{--    @include("recipes.show.like")--}}
                         </div>
                         <div class="content">
                             @include("recipes.show.steps")
@@ -74,10 +75,12 @@
 
                     </div>
                     {{--Menu--}}
-                    <div class="column">
+                    <div class="column is-offset-1">
 
-                        Menu latéral<br />
-                        Like / Print / Share
+                        <div class="has-text-centered">
+                            @include("recipes.show.author")
+                        </div>
+
                     </div>
                 </div>
             </section>

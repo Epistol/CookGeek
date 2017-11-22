@@ -88,7 +88,7 @@
   margin-bottom: 1.2rem;
   padding:0.5rem;
 }
-.column.is-1{
+.step .column.is-1{
 
   font-size: 2rem;
   color: $brand-primary;
@@ -110,7 +110,7 @@
   }
 }
 
-.is-lateral{
+.step  .is-lateral{
   border-right: 1px solid #f3f2fd;
   border-top: 1px solid #f3f2fd;
   border-bottom: 1px solid #f3f2fd;

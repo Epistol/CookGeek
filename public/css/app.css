@@ -15644,8 +15644,20 @@ body, button, input, select, textarea {
   width: 256px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #7f5fbf;
+}
+
+.section-nomargin-side {
+  padding: 3rem 0px 1.5rem 0px;
+}
+
 .is-accent {
   color: #ff8cc6;
+}
+
+.breadcrumb:not(:last-child) {
+  margin-bottom: .5rem;
 }
 
 .is-brand {
@@ -16105,14 +16117,14 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   padding: 0.5rem;
 }
 
-.column.is-1 {
+.step .column.is-1 {
   font-size: 2rem;
   color: #7f5fbf;
   background: #f3f2fd;
   border-radius: 10px 0 0 10px;
 }
 
-.column.is-1::after {
+.step .column.is-1::after {
   content: " ";
   position: absolute;
   /*white-space: pre;*/
@@ -16122,7 +16134,7 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   font-size: 2rem;
 }
 
-.is-lateral {
+.step .is-lateral {
   border-right: 1px solid #f3f2fd;
   border-top: 1px solid #f3f2fd;
   border-bottom: 1px solid #f3f2fd;

@@ -22,11 +22,21 @@ body, button, input, select, textarea{
   width: 256px;
 
 }
+h1, h2, h3, h4, h5, h6{
+  color:$brand-primary;
+}
+
+.section-nomargin-side {
+  padding: 3rem 0px 1.5rem 0px;
+}
+
 
 .is-accent{
   color:$accent;
 }
-
+.breadcrumb:not(:last-child) {
+  margin-bottom: .5rem;
+}
 .is-brand{
   color:$brand-primary;
 }
