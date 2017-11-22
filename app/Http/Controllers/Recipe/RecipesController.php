@@ -191,8 +191,16 @@ class RecipesController extends Controller
             ->where('user_id', '=', $recette->id_user)
             ->first();
 
+        $stars = DB::table('recipe_likes')
+            ->where('id_recipe', '=', $recette->id)
+            ->avg('note');
+        $stars = number_format($stars, 1, '.', '');
+        $stars =  explode('.', $stars, 2);
+
+
+
         // On charge les données dans la vue
-        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg, 'typeuniv'  => $typeuniv) );
+        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg, 'typeuniv'  => $typeuniv, 'stars' => $stars) );
     }
 
 
