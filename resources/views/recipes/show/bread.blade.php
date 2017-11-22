@@ -2,7 +2,8 @@
     <ul>
         <li><a href="#">Accueil</a></li>
         <li><a href="#">Recettes</a></li>
-        <li><a class="tag" href="{{$recette->getTypeLower()}}">{{$recette->getType()}}</a></li>
-        <li class="is-active"><a href="#" aria-current="page">{{$recette->title}}</a></li>
+        <li class="is-active"><a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="{{$recette->getTypeLower()}}">{{$recette->getType()}}</a></li>
+        <li  > <span style="margin-left: 0.5rem" > @include("recipes.show.type_univers")</span></li>
+
     </ul>
 </nav>

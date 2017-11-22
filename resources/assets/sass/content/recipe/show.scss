@@ -1,5 +1,5 @@
 .bordered-cdg{
-/*  border: 1px solid $brand-primary;*/
+  /*  border: 1px solid $brand-primary;*/
   padding: 1rem;
 }
 
@@ -37,6 +37,11 @@
 
 .is-centered{
   text-align: center;
+}
+
+.show-recipe-title{
+  padding-bottom: 0.3rem;
+
 }
 .is-flex-center{
   display:flex;justify-content:center;align-items:center;
@@ -78,3 +83,35 @@
     border-color:$rouge;
   }
 }
+
+.step {
+
+  padding:0.5rem;
+}
+
+.step .column.is-1 {
+  font-size: 2rem;
+  color: $brand-primary;
+  background: $body-bg;
+  margin-bottom: 1.2rem;
+
+  &::after{
+    content : " ";
+    position: absolute;
+    /*white-space: pre;*/
+    -moz-transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    margin-top: 0.2rem;
+    font-size: 2rem;
+  }
+
+
+}
+
+span.step{
+}
+
+

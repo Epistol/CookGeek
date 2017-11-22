@@ -1,4 +1,4 @@
-<p class="is-brand">Difficulté</p>
+<p class="is-brand show-recipe-title">Difficulté</p>
 
 <?php
 

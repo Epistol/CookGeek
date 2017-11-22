@@ -16,12 +16,15 @@
 
                         @include("recipes.show.images")
                         @include("recipes.show.stars")
-                    </div>
-                    {{--    Infos + steps--}}
-                    <div class="column is-7">
+
                         {{--// Auteur--}}
                         @include("recipes.show.author")
                         {{--// Is-premium (afficher son yt, fb, creations)--}}
+
+                    </div>
+                    {{--    Infos + steps--}}
+                    <div class="column is-7">
+
                         {{--// Budget--}}
 
                         <div class="columns">
@@ -29,11 +32,24 @@
                                <div class="has-text-centered">
                                    @include("recipes.show.diff")
                                </div>
+                            </div><div class="is-divider-vertical" data-content=""></div>
+                            <div class="column">
+                                {{--// Timing--}}
+                                <div class="has-text-centered">
+                                    @include("recipes.show.timing")
+                                </div>
                             </div>
                             <div class="is-divider-vertical" data-content=""></div>
                             <div class="column">
                                 <div class="has-text-centered">
                                     @include("recipes.show.price")
+                                </div>
+                            </div>
+                            <div class="is-divider-vertical" data-content=""></div>
+                            <div class="column">
+                                {{--// Parts--}}
+                                <div class="has-text-centered">
+                                    @include("recipes.show.parts")
                                 </div>
                             </div>
                         </div>
@@ -47,7 +63,12 @@
                     {{--    @include("recipes.show.like")--}}
                         <div class="content">
 
-                            @include("recipes.show.type_univers")
+
+
+
+                        </div>
+                        <div class="content">
+                            @include("recipes.show.steps")
                         </div>
 
 
@@ -55,7 +76,8 @@
                     {{--Menu--}}
                     <div class="column">
 
-                        Menu latéral
+                        Menu latéral<br />
+                        Like / Print / Share
                     </div>
                 </div>
             </section>

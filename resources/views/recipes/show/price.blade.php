@@ -1,4 +1,4 @@
-<p class="is-brand">Budget</p>
+<p class="is-brand show-recipe-title">Budget</p>
 
 <?php $count = 0;
 
