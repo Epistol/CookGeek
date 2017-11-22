@@ -16101,17 +16101,18 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
 }
 
 .step {
+  margin-bottom: 1.2rem;
   padding: 0.5rem;
 }
 
-.step .column.is-1 {
+.column.is-1 {
   font-size: 2rem;
   color: #7f5fbf;
   background: #f3f2fd;
-  margin-bottom: 1.2rem;
+  border-radius: 10px 0 0 10px;
 }
 
-.step .column.is-1::after {
+.column.is-1::after {
   content: " ";
   position: absolute;
   /*white-space: pre;*/
@@ -16119,6 +16120,13 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   transform: rotate(40deg);
   margin-top: 0.2rem;
   font-size: 2rem;
+}
+
+.is-lateral {
+  border-right: 1px solid #f3f2fd;
+  border-top: 1px solid #f3f2fd;
+  border-bottom: 1px solid #f3f2fd;
+  border-radius: 0 10px 10px 0;
 }
 
 .type-selector input {

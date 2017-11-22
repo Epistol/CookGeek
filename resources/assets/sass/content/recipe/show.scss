@@ -85,15 +85,16 @@
 }
 
 .step {
-
+  margin-bottom: 1.2rem;
   padding:0.5rem;
 }
+.column.is-1{
 
-.step .column.is-1 {
   font-size: 2rem;
   color: $brand-primary;
   background: $body-bg;
-  margin-bottom: 1.2rem;
+  -webkit-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
 
   &::after{
     content : " ";
@@ -107,8 +108,14 @@
     margin-top: 0.2rem;
     font-size: 2rem;
   }
+}
 
-
+.is-lateral{
+  border-right: 1px solid #f3f2fd;
+  border-top: 1px solid #f3f2fd;
+  border-bottom: 1px solid #f3f2fd;
+  -webkit-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
 }
 
 span.step{
