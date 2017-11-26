@@ -57,6 +57,9 @@
             </a>
 
             <a class="navbar-item">
+                Médias
+            </a>
+            <a class="navbar-item">
                 Tendances
             </a>
             <a class="navbar-item">

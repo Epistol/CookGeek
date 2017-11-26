@@ -13,9 +13,9 @@
                 </ul>
             </nav>
         </div>
-        <div class="column is-6 has-text-centered">
+        <div class="column is-5 has-text-centered">
 
-            <h1 class="title is-1">{{$recette->title}}</h1>
+            <h1 class="title ">{{$recette->title}}</h1>
 
         </div>
         <div class="column is-2 ">

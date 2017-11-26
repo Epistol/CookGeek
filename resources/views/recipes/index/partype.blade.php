@@ -1,4 +1,22 @@
 {{--Pour chaque univers, on va charger  1 SEULE recette--}}
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Les dernières recettes de chaque média
+            </h1>
+            <h2 class="subtitle">
+
+            </h2>
+        </div>
+    </div>
+</section>
+
+
+
+
 <section class=" bordered-cdg">
     <div class="columns">
         <?php $i=0;?>

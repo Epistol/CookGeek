@@ -32,7 +32,7 @@ class CreateRecipesTable extends Migration
 			$table->longText('commentary_author')->nullable();
 			// Nombre de parts
 			$table->smallInteger('nb_guests')->nullable();
-			$table->string("guest_type")->default("personnes");
+			$table->string("guest_type")->nullable()->default("personnes");
 			// Univers associé :
 			$table->integer('univers')->nullable();
 			// Type univers : manga, livre, film, etc

@@ -10,7 +10,7 @@
     </tr>
     </tbody>
 </table>
+<button type="button" class="button is-medium is-primary addsteprecipe" @click="addStep"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
-<div >
-    <button type="button" class="button is-medium is-primary addsteprecipe" @click="addStep"><i class="fa fa-plus" aria-hidden="true"></i></button>
-</div>
+
+

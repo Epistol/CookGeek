@@ -80,12 +80,13 @@ class RecipesController extends Controller
             $id_univers = DB::table( 'univers' )->insertGetId(
                 [ 'name' => $request->universe ]
             );
-
             $univers  = $id_univers;
+
         }
-
-        $univers = $univers->first();
-
+        else {
+            $univers = $univers->first();
+            $univers = $univers->id;
+        }
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
             ['title' => $request->title,
@@ -98,7 +99,7 @@ class RecipesController extends Controller
                 'rest_time' => $rest,
                 'nb_guests' => $request->unite_part,
                 'guest_type' => $request->value_part,
-                'univers' => $univers->id,
+                'univers' => $univers,
                 'type_univers' => $request->type,
                 'id_user' => $iduser,
                 'slug' => '',

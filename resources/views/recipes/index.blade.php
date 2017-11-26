@@ -9,6 +9,7 @@
 
                 <div class="content">
                     @include("recipes.index.partype")
+                    @include("recipes.index.searchbar")
                 </div>
 
             </section>

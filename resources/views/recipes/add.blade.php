@@ -1,22 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="recipeaddbg">
-        <div class="container">
-            <section class="section ajoutrecipe">
-                <div style="    align-items: center;    justify-content: center; display: flex;">
-                    <h1 class="title">Ajoutez votre recette
-                        <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
+
+    <div class="container">
+        <div class="breadbg">
+            <div class="columns">
+                <div class="column">
+                    <div class="has-text-centered">
+                        <h1 class="title">Ajoutez votre recette
+                            <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
+                    </div>
                 </div>
-                <hr>
-            </section>
+            </div>
 
+        </div>
 
+        <section class="section">
             <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
                 <div class="columns">
-                    <div class="column  is-paddingless left_recipe_add is-4">
+                    <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
                             @include('recipes.add.image')
 
@@ -39,11 +43,11 @@
                                     {{--// Nombre de portions--}}
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
-                    <div class="column right_recipe_add is-7 ">
+                    <div class="column right_recipe_add is87 ">
                         {{--Titre recette--}}
                         @include("recipes.add.titre")
                         @include("recipes.add.univers")
@@ -53,18 +57,23 @@
                     </div>
                 </div>
 
+                <section class="section page" style="margin-bottom: 1rem">
+                    @include("recipes.add.step")
+                </section>
+                <section class="section page" style="margin-bottom: 1rem">
+
+                    @include("recipes.add.comment")
+                </section>
+                <section class="section page">
+                    @include("recipes.add.submit")
+                </section>
 
 
-                <div class="columns">
-                    <div class="column  steps  is-10 is-offset-1">
-                        @include("recipes.add.step")
-                        @include("recipes.add.comment")
-                        @include("recipes.add.submit")
-                    </div>
-                </div>
+    </div>
 
-            </form>
-        </div>
+    </form>
+    </section>
+
     </div>
 
 @endsection
