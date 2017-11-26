@@ -5,5 +5,4 @@ $nom = DB::table('users')->where('id', $id_auteur)->value('name');
 
 
         ?>
-
-Par <a href="/user/{{$nom}}">{{$nom}}</a>
+<a href="/user/{{$nom}}">{{$nom}}</a>

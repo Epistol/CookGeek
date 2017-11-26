@@ -1,6 +1,6 @@
 <section class="section-nomargin-side">
 
-    <h3 class="title is-5">Liste d'ingrédients</h3>
+    <h3 class="title is-5">@lang("recipe.ingredients")</h3>
 
     @forelse($ingredients as $index=>$ingr)
         <div class="ingr">

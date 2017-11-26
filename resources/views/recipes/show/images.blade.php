@@ -1,6 +1,6 @@
-<div class="content">
+<div class=" has-text-centered">
     {{--Image principale--}}
-    <figure class="image is-256x256 is-marginless">
+    <figure class="image" >
         <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
     </figure>
     @if($images->isEmpty())
@@ -15,4 +15,24 @@
         @endforeach
 
     @endif
+
+
+
+
+
+</div>
+<div class="is-flex-center">
+    <div class="field">
+        <p class="control">
+
+            <a href="" class="button">
+                          <span class="icon is-small">
+                                         <i class="material-icons">&#xE439;</i>
+                          </span>
+                <span>
+                                            Ajouter votre photo
+                                   </span>
+            </a>
+        </p>
+    </div>
 </div>

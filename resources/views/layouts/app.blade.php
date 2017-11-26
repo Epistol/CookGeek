@@ -29,5 +29,28 @@
 
     <script src="https://use.fontawesome.com/403c56d95d.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/konami.js"></script>
+    <script src="/js/toasty/jquery.toasty.js"></script>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <script type="application/javascript">
+        $(document).ready( function(){
+            $("body").toasty();
+
+            var easter_egg = new Konami(function() {
+                $("body").toasty('pop');
+            });
+        });
+    </script>
+
 </body>
 </html>

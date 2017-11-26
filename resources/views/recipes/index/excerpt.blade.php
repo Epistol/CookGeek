@@ -16,9 +16,9 @@
     <a href="{{route('media.show', $c->name)}}">
     <div class="medaillon ">
         @if($c->name== 'tv')
-            <div class="icones {{strtolower($c->name)}}" ></div>
+            <div class="medail {{strtolower($c->name)}}" ></div>
         @else
-            <div class="icones {{strtolower($c->name)}}"></div>
+            <div class="medail {{strtolower($c->name)}}"></div>
         @endif
     </div>
     </a>

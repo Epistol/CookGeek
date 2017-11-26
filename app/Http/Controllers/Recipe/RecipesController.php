@@ -28,10 +28,7 @@ class RecipesController extends Controller
             $recettes = DB::table('recipes')->where('type_univers','=',$u->id )->orderBy('updated_at', 'desc')->first();
             $recettesrand[$u->id] = $recettes;
         }
-
-
         $recettes = collect($recettesrand);
-
 
         // On charge les données dans la vue
         return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg) );

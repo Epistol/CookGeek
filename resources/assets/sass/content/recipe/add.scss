@@ -97,7 +97,9 @@ input#prep-heure,  input#prep-minute, input#cook-heure,input#cook-minute, input#
 section.ingredients {
   margin-top: 2rem;
 }
-
+.times {
+  margin-top: 2rem;
+}
 .columns.timing:before{
   font-family: FontAwesome;
   content: "\F017";

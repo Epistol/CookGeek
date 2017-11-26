@@ -15618,6 +15618,10 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   src: url("/fonts/Conviction.ttf") format("truetype");
 }
 
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .title {
+  color: #7192be;
+}
+
 html, body {
   height: 100%;
   -webkit-box-sizing: border-box;
@@ -15653,7 +15657,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .is-accent {
-  color: #ff8cc6;
+  color: #7192be;
 }
 
 .breadcrumb:not(:last-child) {
@@ -15711,6 +15715,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #47424a;
   text-align: center;
   color: white;
+  margin-top: 2rem;
 }
 
 footer {
@@ -15845,9 +15850,9 @@ input.input_modal {
 }
 
 input.input_modal:focus {
-  border-bottom: 2px solid #ff8cc6;
-  -webkit-box-shadow: 0 2px 0 0 #ff8cc6;
-  box-shadow: 0 2px 0 0 #ff8cc6;
+  border-bottom: 2px solid #7192be;
+  -webkit-box-shadow: 0 2px 0 0 #7192be;
+  box-shadow: 0 2px 0 0 #7192be;
 }
 
 input.input_modal.blck {
@@ -15865,6 +15870,10 @@ input#prep-heure, input#prep-minute, input#cook-heure, input#cook-minute, input#
 }
 
 section.ingredients {
+  margin-top: 2rem;
+}
+
+.times {
   margin-top: 2rem;
 }
 
@@ -16030,6 +16039,24 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   display: none;
 }
 
+.breadbg {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.medail {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
 .content figure {
   margin-left: 0px;
   margin-right: 0px;
@@ -16074,10 +16101,17 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
 }
 
 .dollar {
-  color: #ff8cc6;
+  color: #dc6bad;
   font-weight: bold;
   font-size: 1.3rem;
-  padding-right: 0.5rem;
+}
+
+.ficheinfo {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border: 1px solid #b6c2d9;
+  border-radius: 5px;
+  background: #fcfbfe;
 }
 
 .dollar_null {
@@ -16087,29 +16121,46 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   font-size: 1.3rem;
 }
 
+.fb-commentaire {
+  border: 0.5rem solid #7192be;
+  -webkit-box-shadow: 7px 7px 0 0 #7192be;
+  box-shadow: 7px 7px 0 0 #7192be;
+  padding: 1rem;
+}
+
+.dollarsum {
+  padding-left: 1rem;
+}
+
 .full-circle {
-  background-color: rgba(204, 0, 102, 0);
-  border: 3px solid #333;
   height: 2rem;
   width: 2rem;
   -moz-border-radius: 10rem;
   -webkit-border-radius: 10rem;
   line-height: 1.6rem;
+  margin-left: 0.5rem;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 
-.full-circle.easy {
+.full-circle.easy:hover {
   color: #01b650;
   border-color: #01b650;
 }
 
-.full-circle.mid {
+.full-circle.mid:hover {
   color: #f7c263;
   border-color: #f7c263;
 }
 
-.full-circle.hard {
+.full-circle.hard:hover {
   color: #E1334E;
   border-color: #E1334E;
+}
+
+.full-circle:hover {
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 
 .step {
@@ -16117,10 +16168,27 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   padding: 0.5rem;
 }
 
+.page {
+  background: #fdfdfd;
+  padding: 0.5rem 1.5rem;
+}
+
+.side_recipe {
+  -webkit-box-shadow: 0rem 1.5rem 0 0 #FDFDFD;
+  box-shadow: 0rem 1.5rem 0 0 #FDFDFD;
+}
+
+.list-h-show {
+  background: #b6c2d9;
+  border-radius: 0px;
+  border: 0px solid #f5f5f5;
+  color: white;
+}
+
 .step .column.is-1 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #7f5fbf;
-  background: #f3f2fd;
+  background: #fcfbfe;
   border-radius: 10px 0 0 10px;
 }
 
@@ -16139,6 +16207,19 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   border-top: 1px solid #f3f2fd;
   border-bottom: 1px solid #f3f2fd;
   border-radius: 0 10px 10px 0;
+}
+
+.fa-facebook-official, .fa-twitter, .fa-tumblr, .fa-pinterest-p {
+  font-size: 1.5rem !important;
+}
+
+table.times th {
+  padding-right: 0.5rem;
+}
+
+.is-marginmore {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .type-selector input {
@@ -16223,4 +16304,39 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   -webkit-filter: none;
   -moz-filter: none;
   filter: none;
+}
+
+.show-dan {
+  -webkit-animation: showToastyGuy 1.2s;
+  animation: showToastyGuy 1.2s;
+}
+
+@-webkit-keyframes showToastyGuy {
+  0% {
+    right: -12%;
+  }
+  40% {
+    right: 0px;
+  }
+  60% {
+    right: 0px;
+  }
+  100% {
+    right: -12%;
+  }
+}
+
+@keyframes showToastyGuy {
+  0% {
+    right: -12%;
+  }
+  40% {
+    right: 0px;
+  }
+  60% {
+    right: 0px;
+  }
+  100% {
+    right: -12%;
+  }
 }

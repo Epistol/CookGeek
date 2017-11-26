@@ -3,7 +3,7 @@
 
 
 <div class="is-flex-center">
-
+<b>
         {{$recette->nb_guests}}
-
+</b>
 </div>

@@ -1,5 +1,3 @@
-<p class="is-brand show-recipe-title">Difficulté</p>
-
 <?php
 
         if($recette->difficulty == 1){
@@ -14,11 +12,6 @@
 
 ?>
 
-<div class="is-flex-center">
-
     <div class="full-circle {{$diff}}">
         {{$recette->difficulty}}
     </div>
-
-
-</div>

@@ -1,4 +1,4 @@
-<p class="is-brand show-recipe-title">Temps total</p>
+<p class="is-brand show-recipe-title">@lang('recipe.time-total')</p>
 
 <?php
 
@@ -8,7 +8,7 @@ $somme_m = $somme_t-((int)$somme_h*60);
 ?>
 
 <div class="is-flex-center">
-
+<b>
     {{(int)$somme_h}} H {{$somme_m}}
-
+</b>
 </div>
