@@ -1,33 +1,40 @@
-version: 2
-
-jobs:
-  build:
-    docker:
-      - image: circleci/php:7.1-node-browsers
-    working_directory: ~/laravel
-    steps:
-      - checkout
-      - run: sudo apt install -y libsqlite3-dev
-      - run: sudo composer self-update
-      - restore_cache:
-          keys:
-            - composer-v1-{{ checksum "composer.json" }}
-            - composer-v1-
-      - run: composer install -n --prefer-dist
-      - save_cache:
-          key: composer-v1-{{ checksum "composer.json" }}
-          paths:
-            - vendor
-      - restore_cache:
-          keys:
-            - node-v1-{{ checksum "package.json" }}
-            - node-v1-
-      - run: yarn install
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run
+machine:
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+  timezone:
+    Europe/London
+  php:
+    version: 7.1.0
+  environment:
+    APP_ENV: "testing"
+  hosts:
+      testing: 127.0.0.1
+ 
+general:
+  artifacts:
+    - "tests/Browser/screenshots"
+    - "tests/Browser/console"
+ 
+dependencies:
+  pre:
+    - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
+ 
+  override:
+    - composer install
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    - sudo apt-get update
+    - sudo apt-get install google-chrome-stable
+ 
+test:
+  pre:
+    - "./vendor/laravel/dusk/bin/chromedriver-linux":
+        background: true
+    - cp .env.testing .env
+    - cp .env.testing .env.dusk
+    - "php artisan serve":
+        background: true
+ 
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
+    - php artisan dusk --log-junit $CIRCLE_TEST_REPORTS/phpunit/junit.xml tests
