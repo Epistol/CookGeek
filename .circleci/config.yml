@@ -42,7 +42,7 @@ jobs:
       #   command: sudo docker-php-ext-install zip
       - run:
           name: Install PHP extensions
-          command: docker-php-ext-install pdo
+          command: sudo apt-get install pdo-mysql
       - run:
          name: Setup Laravel testing environment variables for CircleCI test
          command: cp .env.testing .env
