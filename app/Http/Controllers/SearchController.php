@@ -17,7 +17,7 @@ class SearchController extends Controller
     {
         $rq = $request->q;
         $result = $this->apisearch->search($rq);
-        return $result;
+        return view('search.result',$result);
     }
 
 }
