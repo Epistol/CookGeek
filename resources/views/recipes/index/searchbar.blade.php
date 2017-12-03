@@ -1,4 +1,4 @@
-<form action="{{route('api.search')}}" method="POST" role="search">
+<form action="{{route('search')}}" method="POST" role="search">
     {{ csrf_field() }}
 
 

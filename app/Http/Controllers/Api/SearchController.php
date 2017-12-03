@@ -5,24 +5,23 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
 class SearchController extends Controller
 {
-    public function search(Request $request)
+    public function search($recherche)
     {
-        // we will be back to this soon! TODO
-
-        $rq = $request->q;
+        $rq = $recherche;
         $pieces = explode(" ", $rq);
 
         foreach ($pieces as $p){
             // Searching in recipes
-            $recipe = DB::table('recipes')->where('title', 'like', $p.'%')->get();
-            $ingredient = DB::table('ingredients')->where('name', 'like', $p.'%')->get();
-            $categ = DB::table('categunivers')->where('name', 'like', $p.'%')->get();
-            $type_recipe = DB::table('type_recipes')->where('name', 'like', $p.'%')->get();
-            $univers = DB::table('univers')->where('name', 'like', $p.'%')->get();
+            // TODO : Réduire le nombre de champs retournés par element ?
+            $recipe = DB::table('recipes')->where('title', 'like', $p.'%')->paginate(10);
+            $ingredient = DB::table('ingredients')->where('name', 'like', $p.'%')->paginate(10);
+            $categunivers = DB::table('categunivers')->where('name', 'like', $p.'%')->paginate(10);
+            $type_recipes = DB::table('type_recipes')->where('name', 'like', $p.'%')->paginate(10);
+            $univers = DB::table('univers')->where('name', 'like', $p.'%')->paginate(10);
         }
+
 
         /*
          *  Detail de la proc :
@@ -48,12 +47,18 @@ class SearchController extends Controller
          * Pour l'univers :
          *      - on affiche la liste de résultat en triant par categ
          */
-        if($recipe->isNotEmpty()){
-            dd($recipe);
-        }
-        if($ingredient->isNotEmpty()){
 
+
+        $response = array();
+        $elements = array($recipe, $ingredient, $categunivers, $type_recipes, $univers );
+        $titres = array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers' );
+
+        foreach ($elements as $key => $el){
+            if($el->isNotEmpty()){
+                $response[$titres[$key]] = $el;
+            }
         }
+        return $response;
 
     }
 }

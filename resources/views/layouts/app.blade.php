@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
+    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');</script>
 </head>
 <body>
     <div id="app">

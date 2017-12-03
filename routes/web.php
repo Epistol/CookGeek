@@ -52,6 +52,7 @@ Route::group(['prefix' => 'recette'], function () {
 
 });
 
+Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@postSearch']);
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', 'AdminController@index')->middleware('auth', 'admin');
