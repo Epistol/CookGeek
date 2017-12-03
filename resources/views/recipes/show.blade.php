@@ -9,7 +9,7 @@
 
             <div class="section">
 
-                <div class="columns">
+                <div class="columns shadowbox">
                     {{--Photo + ingredients--}}
                     <div class="column  is-marginless is-3 is-paddingless" style=" background: #fdfdfd;">
 
@@ -22,7 +22,7 @@
 
                     </div>
                     {{--    Infos + steps--}}
-                    <div class="column is-marginless is-paddingless is-9 side_recipe">
+                    <div class="column is-marginless is-paddingless is-9 ">
 
                         {{--// Budget--}}
 

@@ -49,7 +49,7 @@
             </div>
 
             <a class="navbar-item">
-                Catégories
+                Types
             </a>
 
             <a class="navbar-item">

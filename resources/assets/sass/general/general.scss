@@ -15,7 +15,10 @@ body, button, input, select, textarea{
   background: $white;
   padding: 2rem;
   margin-top: 2rem;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
+  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
 }
+
 
 .image.is-256x256 {
   height: 256px;
@@ -25,6 +28,7 @@ body, button, input, select, textarea{
 h1, h2, h3, h4, h5, h6{
   color:$brand-primary;
 }
+
 
 .section-nomargin-side {
   padding: 1.5rem 0px;

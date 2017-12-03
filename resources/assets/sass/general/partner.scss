@@ -1,0 +1,14 @@
+.button.is-direct{
+  background:#03bea3;
+  color:#f9f9f9;
+
+  &:before{
+    content:'';
+    background-image:url("/img/partners/led.jpg");
+    display: block;
+    width: 1.9rem;
+    height: 1.9rem;
+    background-size: contain;
+
+  }
+}

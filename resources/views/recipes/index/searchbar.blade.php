@@ -1,11 +1,16 @@
 <form action="{{route('api.search')}}" method="POST" role="search">
     {{ csrf_field() }}
-    <div class="input-group">
-        <input type="text" class="form-control" name="q"
-               placeholder="Search users"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
+
+
+<div class="field has-addons">
+    <div class="control">
+        <input class="input" type="text"  name="q" placeholder="Find a repository">
     </div>
+    <div class="control">
+        <button type="submit" class="button is-info">
+            Search
+        </button>
+    </div>
+</div>
+
 </form>
