@@ -19,7 +19,7 @@
                 <div class="column">
                     @include("search.advanced.type")
                   @include("search.advanced.diff")
-                    {{-- @include("search.advanced.prix")
+                   @include("search.advanced.prix")
                   {{--  @include("search.advanced.temps")
                    @include("search.advanced.note")
                    @include("search.advanced.parts")--}}
