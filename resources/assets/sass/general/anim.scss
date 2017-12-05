@@ -1,0 +1,22 @@
+
+
+
+
+.slide-active, .slide-leave-active {
+  transition:all 0.5s ease;
+  transition-timing-function: ease;
+  max-height: 100vh;
+  opacity: 1;
+}
+.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+.slide-leave-to, .slide-leave-active{
+  animation-name: slideInUp;
+}
+.slide-enter{
+  animation-name: slideInDown;
+
+}

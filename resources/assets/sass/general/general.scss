@@ -18,7 +18,16 @@ body, button, input, select, textarea{
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
 }
-
+.searchresult{
+  background: $white;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
+  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
+}
+.results{
+  background: $body-bg;
+}
 
 .image.is-256x256 {
   height: 256px;

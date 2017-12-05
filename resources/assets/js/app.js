@@ -22,6 +22,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 
+
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -31,7 +33,8 @@ const app = new Vue({
         ],
         steps:[
             { }
-        ]
+        ],
+        seen: false
 
     },
     methods: {

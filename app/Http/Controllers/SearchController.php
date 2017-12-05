@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -17,7 +18,11 @@ class SearchController extends Controller
     {
         $rq = $request->q;
         $result = $this->apisearch->search($rq);
-        return view('search.result',$result);
+	    $types_univ = DB::table('categunivers')->get();
+	    $difficulty = DB::table('difficulty')->get();
+	    $types_plat = DB::table('type_recipes')->get();
+
+        return view('search.result', ['result' =>  $result, 'value' =>  $rq, 'types' => $types_univ, 'difficulty' => $difficulty,'types_plat' => $types_plat] );
     }
 
 }
