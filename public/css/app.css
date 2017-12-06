@@ -16249,6 +16249,20 @@ table.times th {
   margin-top: 12%;
 }
 
+.left_register:before {
+  content: "";
+  display: block;
+  background: #7f5fbf;
+  position: absolute;
+  width: 40%;
+  height: 85%;
+  z-index: 0;
+  top: 8%;
+  left: 10%;
+  margin-top: 2rem;
+  border-radius: 15px 0 0 15px;
+}
+
 .type-selector input {
   margin: 0;
   padding: 0;
