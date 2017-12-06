@@ -16245,6 +16245,10 @@ table.times th {
   margin-right: 2rem;
 }
 
+.left_register {
+  margin-top: 12%;
+}
+
 .type-selector input {
   margin: 0;
   padding: 0;

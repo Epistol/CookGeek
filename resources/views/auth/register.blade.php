@@ -5,13 +5,13 @@
 
         <div class="container">
                 <div class="columns">
-                    <div class="column is-5 is-offset-1 ">
+                    <div class="column is-5 is-offset-1 is-paddingless">
                         <div class="left_register">
                             <img src="/img/chat_mascotte.png" alt="">
                         </div>
 
                     </div>
-                    <div class="column is-two-fifths">
+                    <div class="column is-two-fifths is-paddingless">
                             <H1 class="title">Inscription</H1>
 
                             <div class="blockcontent">
@@ -80,7 +80,6 @@
                         </div>
                     </div>
             </div>
-        </div>
 
     </section>
 
