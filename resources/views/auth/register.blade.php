@@ -5,9 +5,9 @@
 
         <div class="container">
                 <div class="columns">
-                    <div class="column is-5 is-offset-1 is-paddingless">
+                    <div class="column is-5 is-paddingless">
                         <div class="left_register">
-                            <img src="/img/chat_mascotte.png" alt="">
+                            <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
                         </div>
 
                     </div>
@@ -71,7 +71,7 @@
                                     <div class="field ">
                                         <div class="control is-centered">
                                             <button type="submit" class="button is-primary  is-large">
-                                                Register
+                                                Inscription
                                             </button>
                                         </div>
                                     </div>

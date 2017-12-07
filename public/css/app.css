@@ -15740,6 +15740,14 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   color: white;
   margin-top: 2rem;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+#app {
+  min-height: 100%;
+  position: relative;
 }
 
 footer {
@@ -15774,8 +15782,14 @@ a.navbar-item, a.navbar-link {
   font-size: 1.1rem;
 }
 
-.navbar {
-  border-bottom: 0.5rem solid #7f5fbf;
+.navbar:after {
+  content: '';
+  display: block;
+  height: 0.5rem;
+  background: #7f5fbf;
+  width: 100%;
+  position: absolute;
+  top: 4rem;
 }
 
 .search_header {
@@ -15795,6 +15809,7 @@ a.navbar-item, a.navbar-link {
 .searchheadbutton {
   position: absolute;
   right: 2rem;
+  top: 33%;
 }
 
 .ajout_recette_img {
@@ -16258,9 +16273,19 @@ table.times th {
   height: 85%;
   z-index: 0;
   top: 8%;
-  left: 10%;
+  left: 2%;
   margin-top: 2rem;
   border-radius: 15px 0 0 15px;
+}
+
+@media (min-width: 1200px) {
+  .chat_hover {
+    z-index: 16;
+    position: absolute;
+    width: 42%;
+    left: 4%;
+    top: 11%;
+  }
 }
 
 .type-selector input {

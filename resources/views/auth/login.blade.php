@@ -5,9 +5,9 @@
 
         <div class="container">
             <div class="columns">
-                <div class="column is-5 is-offset-1 is-paddingless">
+                <div class="column is-5 is-paddingless">
                     <div class="left_register">
-                        <img src="/img/chat_mascotte.png" alt="">
+                        <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
                     </div>
 
                 </div>
@@ -63,9 +63,9 @@
 
                                     <div class="field is-grouped is-grouped-right">
                                         <p class="control">
-                                            <a type="submit" class="button is-primary">
+                                            <button type="submit" class="button is-primary">
                                                 Connexion
-                                            </a>
+                                            </button>
                                         </p>
                                         {{-- <p class="control">
                                              <a class="button is-light">
