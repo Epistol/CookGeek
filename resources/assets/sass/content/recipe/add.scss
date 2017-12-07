@@ -9,6 +9,10 @@
   border: 2px dashed $violet;
 
 }
+.addrecipe input[type="number"]{
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
 .file-cta.darker{
   color:$text-color;
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container addrecipe">
         <div class="breadbg">
             <div class="columns">
                 <div class="column">

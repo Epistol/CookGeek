@@ -34,7 +34,11 @@ const app = new Vue({
         steps:[
             { }
         ],
-        seen: false
+        seen: false,
+        node: {
+            cuisson: 15,
+
+        }
 
     },
     methods: {
@@ -54,6 +58,15 @@ const app = new Vue({
 
         removeStep: function (index) {
             this.steps.splice(index, 1);
+        },
+        onChg1 : function (e) {
+            this.node.cuisson = e.target.value;
+        },
+        onChg2 : function (e) {
+            this.node.cuisson = e.target.value;
+        },
+        onChg3 : function (e) {
+            this.node.cuisson = e.target.value;
         }
     }});
 

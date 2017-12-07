@@ -95,6 +95,7 @@ $screen-md-max: ($screen-lg-min - 1);
   }
 }
 
+
 // Large devices
 @mixin lg {
   @media (min-width: #{$screen-lg-min}) {

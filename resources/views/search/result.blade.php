@@ -31,30 +31,44 @@
 
             </div>
 
-            <div class="results">
+
+            <div class="resultats">
 
                 <div class="linesmall">
                     @if(array_key_exists('categunivers', $result))
-                        @foreach($result['categunivers'] as $cat)
-                            {{$cat->name}}
-                            @endforeach
+                            @foreach($result['categunivers'] as $c)
 
+                            <a href="{{route('media.show', $c->name)}}">
+                                <div class=" ">
+                                    @if($c->name== 'tv')
+                                        <div class="medail {{strtolower($c->name)}}" ></div>
+                                    @else
+                                        <div class="medail {{strtolower($c->name)}}"></div>
+                                    @endif
+                                </div>
+                            </a>
+
+                            @endforeach
                     @endif
+
                     @if(array_key_exists('univers', $result))
-                            @foreach($result['univers'] as $cat)
-                                {{$cat->name}}
+                            @foreach($result['univers'] as $univ)
+                                <a class="button is-rounded"> {{$cat->name}}</a>
                             @endforeach
                     @endif
-                    @if(array_key_exists('type_recipes', $result))
+
+                        @if(array_key_exists('type_recipes', $result))
                             @foreach($result['type_recipes'] as $cat)
-                                {{$cat->name}}
+                                <a class="button is-rounded"> {{$cat->name}}</a>
                             @endforeach
                     @endif
+
                     @if(array_key_exists('ingredient', $result))
                             @foreach($result['ingredient'] as $cat)
-                                {{$cat->name}}
+                                <a class="button is-rounded"> {{$cat->name}}</a>
                             @endforeach
                     @endif
+
                 </div>
 
 

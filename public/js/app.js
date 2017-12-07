@@ -994,7 +994,11 @@ var app = new Vue({
         titre: '',
         rows: [{}],
         steps: [{}],
-        seen: false
+        seen: false,
+        node: {
+            cuisson: 15
+
+        }
 
     },
     methods: {
@@ -1012,6 +1016,15 @@ var app = new Vue({
 
         removeStep: function removeStep(index) {
             this.steps.splice(index, 1);
+        },
+        onChg1: function onChg1(e) {
+            this.node.cuisson = e.target.value;
+        },
+        onChg2: function onChg2(e) {
+            this.node.cuisson = e.target.value;
+        },
+        onChg3: function onChg3(e) {
+            this.node.cuisson = e.target.value;
         }
     } });
 
