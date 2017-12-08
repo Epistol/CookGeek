@@ -968,8 +968,9 @@ module.exports = __webpack_require__(42);
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -994,11 +995,7 @@ var app = new Vue({
         titre: '',
         rows: [{}],
         steps: [{}],
-        seen: false,
-        node: {
-            cuisson: 15
-
-        }
+        seen: false
 
     },
     methods: {
@@ -1016,15 +1013,6 @@ var app = new Vue({
 
         removeStep: function removeStep(index) {
             this.steps.splice(index, 1);
-        },
-        onChg1: function onChg1(e) {
-            this.node.cuisson = e.target.value;
-        },
-        onChg2: function onChg2(e) {
-            this.node.cuisson = e.target.value;
-        },
-        onChg3: function onChg3(e) {
-            this.node.cuisson = e.target.value;
         }
     } });
 

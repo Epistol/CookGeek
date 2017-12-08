@@ -15678,6 +15678,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
 }
 
+.button.is-round.is-small {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
 /*
 .is-centered {
   -webkit-box-pack: center;

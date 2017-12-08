@@ -58,12 +58,16 @@
                 </div>
 
                 <section class="section page" style="margin-bottom: 1rem">
-                    @include("recipes.add.step")
-                </section>
-                <section class="section page" style="margin-bottom: 1rem">
+                    <div class="columns">
+                        <div class="column is-4"> @include("recipes.add.comment")
 
-                    @include("recipes.add.comment")
+                        </div>
+                        <div class="column">
+                            @include("recipes.add.step")
+                        </div>
+                    </div>
                 </section>
+
                 <section class="section page">
                     @include("recipes.add.submit")
                 </section>
