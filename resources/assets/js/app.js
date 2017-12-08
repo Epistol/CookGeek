@@ -40,7 +40,14 @@ const app = new Vue({
             {
                 name : '',
                 qtt : '',
-            }],
+            },
+            {
+                name : '',
+                qtt : '',
+            },
+
+
+        ],
         seen: false
 
     },
@@ -50,6 +57,9 @@ const app = new Vue({
             console.log($index);
             this.rows.push({
             });
+        },
+        removeRow: function (index) {
+            this.rows.splice(index, 1);
         },
 
         addStep: function () {

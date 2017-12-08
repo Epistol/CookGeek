@@ -11736,6 +11736,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         rows: [{
             name: '',
             qtt: ''
+        }, {
+            name: '',
+            qtt: ''
         }],
         seen: false
 
@@ -11745,6 +11748,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         addRow: function addRow($index) {
             console.log($index);
             this.rows.push({});
+        },
+        removeRow: function removeRow(index) {
+            this.rows.splice(index, 1);
         },
 
         addStep: function addStep() {

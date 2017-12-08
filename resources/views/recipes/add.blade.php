@@ -26,10 +26,8 @@
 
                             <div class="columns">
                                 <div class="column is-10 is-offset-1">
-                                    @include("recipes.add.vegan")
                                     @include("recipes.add.difficulty")
                                     @include("recipes.add.categorie")
-
                                     @include("recipes.add.cost")
                                 </div>
                             </div>
@@ -40,6 +38,8 @@
                                     @include("recipes.add.timing.tps_cuisson")
                                     @include("recipes.add.timing.tps_repos")
                                     @include("recipes.add.nb_parts")
+
+                                    @include("recipes.add.vegan")
                                     {{--// Nombre de portions--}}
                                 </div>
                             </div>
@@ -47,13 +47,15 @@
                         </div>
                     </div>
 
-                    <div class="column right_recipe_add is87 ">
+                    <div class="column right_recipe_add  ">
                         {{--Titre recette--}}
                         @include("recipes.add.titre")
                         @include("recipes.add.univers")
-                        @include("recipes.add.type")
-                        {{--Liste des ingrédients --}}
                         @include("recipes.add.ingredients")
+
+                        @include("recipes.add.step")
+                        {{--Liste des ingrédients --}}
+
                     </div>
                 </div>
 
@@ -62,8 +64,7 @@
                         <div class="column is-4"> @include("recipes.add.comment")
 
                         </div>
-                        <div class="column">
-                            @include("recipes.add.step")
+                        <div class="column">  @include("recipes.add.type")
                         </div>
                     </div>
                 </section>

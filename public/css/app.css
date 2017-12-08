@@ -13921,7 +13921,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.5rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -13971,11 +13971,11 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-outlined:checked + label::before {
@@ -14024,7 +14024,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.125rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14074,11 +14074,11 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-small.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-small.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-small.is-outlined:checked + label::before {
@@ -14127,7 +14127,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.875rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14177,11 +14177,11 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-medium.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-medium.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-medium.is-outlined:checked + label::before {
@@ -14230,7 +14230,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 2.25rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14280,11 +14280,11 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-large.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-large.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-large.is-outlined:checked + label::before {
@@ -15686,6 +15686,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   width: 32px;
   height: 32px;
+}
+
+.navbar-dropdown {
+  padding-top: 0px;
 }
 
 /*

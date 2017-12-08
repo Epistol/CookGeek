@@ -15,10 +15,14 @@
 
 
 
-            <div class="column" v-if="index === (rows.length-1)">
-                <a  @click="addRow()" class="button is-primary deleteicon"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            <div class="column is-flex-center" v-cloak  v-if="index === (rows.length-1)">
+                <a  @click="addRow()" class="button is-primary  is-small deleteicon"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
-            <div class="column" v-else="index === (rows.length-1)">
+            <div class="column is-flex-center" v-cloak v-else-if="index === (rows.length-2)">
+                <a  @click="removeRow(index)" class="button is-small deleteicon"><i class="fa fa-minus" aria-hidden="true"></i></a>
+            </div>
+
+           <div class="column" v-cloak v-else="index === (rows.length-1)">
 
             </div>
         </div>
