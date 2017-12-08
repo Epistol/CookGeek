@@ -22,52 +22,39 @@ Vue.use(VeeValidate);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('example', require('./components/Example.vue'));
-
+/*
+Vue.component('example', require('./components/Example.vue'));*/
 
 
 const app = new Vue({
     el: '#app',
     data: {
         titre: '',
+
+        steps:[
+            {
+                etape : '',
+            }
+        ],
         rows: [
             {
                 name : '',
                 qtt : '',
-            }
-        ],
-        steps:[
-            { }
-        ],
+            }],
         seen: false
 
     },
+
     methods: {
-        addRow: function () {
-
-            this.$validator.validateAll().then((result)=>{
-                if(result){
-                    this.rows.push({
-                    });
-                    return ;
-                }
-
-            }).catch(() => {
-                return false;
+        addRow: function ($index) {
+            console.log($index);
+            this.rows.push({
             });
-
-
-
-
-
         },
-        removeElement: function (index) {
-            this.rows.splice(index, 1);
-        },
+
         addStep: function () {
             this.steps.push({
-            })
+            });
         },
 
         removeStep: function (index) {
