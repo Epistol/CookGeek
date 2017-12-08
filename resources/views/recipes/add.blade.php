@@ -16,7 +16,7 @@
         </div>
 
         <section class="section">
-            <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ route('recipe.store') }}">
+            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST" action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
                 <div class="columns">

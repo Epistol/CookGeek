@@ -15678,6 +15678,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .button.is-round.is-small {
   border-radius: 50%;
   width: 32px;
@@ -16073,6 +16077,10 @@ label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:c
   filter: none;
   background: rgba(1, 182, 80, 0.8);
   color: #fbfdfa;
+}
+
+form.addrecipe .field {
+  padding-top: 1rem;
 }
 
 .bordered-cdg {

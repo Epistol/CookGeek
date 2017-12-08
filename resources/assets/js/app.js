@@ -11,7 +11,10 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 
+Vue.use(VeeValidate);
 
 
 /**
@@ -29,7 +32,10 @@ const app = new Vue({
     data: {
         titre: '',
         rows: [
-            { }
+            {
+                name : '',
+                qtt : '',
+            }
         ],
         steps:[
             { }
@@ -39,15 +45,27 @@ const app = new Vue({
     },
     methods: {
         addRow: function () {
-            var elem = document.createElement('tr');
-            this.rows.push({
+
+            this.$validator.validateAll().then((result)=>{
+                if(result){
+                    this.rows.push({
+                    });
+                    return ;
+                }
+
+            }).catch(() => {
+                return false;
             });
+
+
+
+
+
         },
         removeElement: function (index) {
             this.rows.splice(index, 1);
         },
         addStep: function () {
-            var elem1 = document.createElement('tr');
             this.steps.push({
             })
         },
