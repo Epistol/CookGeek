@@ -20,6 +20,23 @@
                 {{ csrf_field() }}
 
                 <div class="columns">
+
+
+                    <div class="column  right_recipe_add  ">
+                        {{--Titre recette--}}
+                        <div class="columns">
+                            <div class="column is-10 is-offset-1">
+                                @include("recipes.add.titre")
+                                @include("recipes.add.univers")
+                                @include("recipes.add.ingredients")
+
+                                @include("recipes.add.step")
+                                {{--Liste des ingrédients --}}
+                            </div>
+                        </div>
+
+
+                    </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
                             @include('recipes.add.image')
@@ -45,17 +62,6 @@
                             </div>
 
                         </div>
-                    </div>
-
-                    <div class="column right_recipe_add  ">
-                        {{--Titre recette--}}
-                        @include("recipes.add.titre")
-                        @include("recipes.add.univers")
-                        @include("recipes.add.ingredients")
-
-                        @include("recipes.add.step")
-                        {{--Liste des ingrédients --}}
-
                     </div>
                 </div>
 

@@ -34,6 +34,9 @@ const app = new Vue({
         steps:[
             {
                 etape : '',
+            },
+            {
+                etape : '',
             }
         ],
         rows: [
