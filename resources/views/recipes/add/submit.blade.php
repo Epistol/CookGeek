@@ -1,15 +1,11 @@
 <div class="columns">
     <div class="column is-half is-offset-one-quarter ">
         <div class="columns">
-            <div class="column is-centered">
-                <div class="has-text-centered">
-                    <button class="button is-text is-large is-outlined">Annuler</button>
-                </div>
+            <div class="column is-flex-center">
+                    <button class="button is-text  is-outlined">Brouillon </button>
             </div>
-            <div class="column is-centered">
-                <div class="has-text-centered">
+            <div class="column is-centered is-flex-cente">
                     <button class="button  is-primary is-large publish">Publier ma recette</button>
-                </div>
             </div>
         </div>
     </div>

@@ -1,13 +1,15 @@
 <div class="field addphoto">
     <div class="file is-centered is-boxed has-name">
 
-        <label class="file-label">
+
             {{-- Fichier input--}}
 
-            <input class="file-input" id="upload"  type="file" name="resume" accept="image/x-png,image/jpeg">
+         {{--   TODO : ICI--}}
 
+
+            <label class="file-label">
             <div class="image ajout_recette_img">
-
+                <input class="file-input" id="upload"  type="file" name="resume" accept="image/x-png,image/jpeg">
                                               <span class="file-cta darker">
                                             <span class="file-icon">
                                               <i class="fa fa-upload"></i>

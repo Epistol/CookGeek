@@ -8,11 +8,14 @@
 
 
 require('./bootstrap');
+require('./dropzone');
+
 window.Vue = require('vue');
 
 
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
+import draggable from 'vuedraggable'
 
 Vue.use(VeeValidate);
 
@@ -28,6 +31,10 @@ Vue.component('example', require('./components/Example.vue'));*/
 
 const app = new Vue({
     el: '#app',
+    components: {
+        draggable,
+    },
+
     data: {
         titre: '',
 

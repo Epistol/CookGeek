@@ -29,7 +29,6 @@
                                 @include("recipes.add.titre")
                                 @include("recipes.add.univers")
                                 @include("recipes.add.ingredients")
-
                                 @include("recipes.add.step")
                                 {{--Liste des ingrédients --}}
                             </div>
