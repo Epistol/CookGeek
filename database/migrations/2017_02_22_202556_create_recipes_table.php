@@ -41,6 +41,8 @@ class CreateRecipesTable extends Migration
 		    $table->integer('id_user');
 		    // Vege ? Oui / Non
 		    $table->boolean("vegetarien")->nullable();
+
+            $table->string("video")->nullable();
 		    $table->timestamps();
 	    });
 

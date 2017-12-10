@@ -19,6 +19,7 @@ return [
     'ingredients' => 'Ingrédients',
     'rating' => "Note moyenne",
     "univers" => "Univers",
-    "of" => "de"
+    "of" => "de",
+    "video" => "La vidéo"
 
 ];

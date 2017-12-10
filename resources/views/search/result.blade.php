@@ -15,7 +15,7 @@
 
                 </div>
                 <transition name="slide">
-                    <div class="columns is-marginless results" v-if="seen" v-cloak>
+                    <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active "  v-if="seen" v-cloak>
                         <div class="column">
                             @include("search.advanced.type")
                             @include("search.advanced.diff")
@@ -65,6 +65,7 @@
 
                     @if(array_key_exists('ingredient', $result))
                             @foreach($result['ingredient'] as $cat)
+
                                 <a class="button is-rounded"> {{$cat->name}}</a>
                             @endforeach
                     @endif
@@ -74,7 +75,7 @@
 
                 @if(array_key_exists('recipe', $result))
                     @foreach($result['recipe'] as $cat)
-                        {{$cat->name}}
+                        {{$cat->title}}
                     @endforeach
                 @endif
 

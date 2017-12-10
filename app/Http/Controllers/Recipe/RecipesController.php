@@ -104,6 +104,7 @@ class RecipesController extends Controller
                 'id_user' => $iduser,
                 'slug' => '',
                 'vegetarien' => $request->vegan,
+                'video' => $request->video,
                 'commentary_author' => $request->comment,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -156,8 +157,6 @@ class RecipesController extends Controller
         }
 
         // Parties image
-
-
         $this->validate($request, [
             'resume' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

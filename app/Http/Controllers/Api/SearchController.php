@@ -15,7 +15,7 @@ class SearchController extends Controller
         foreach ($pieces as $p){
             // Searching in recipes
             // TODO : Réduire le nombre de champs retournés par element ?
-            $recipe = DB::table('recipes')->where('title', 'like', $p.'%')->paginate(10);
+            $recipe = DB::table('recipes')->where('title', 'like', '%'.$p.'%')->paginate(10);
             $ingredient = DB::table('ingredients')->where('name', 'like', $p.'%')->paginate(10);
             $categunivers = DB::table('categunivers')->where('name', 'like', $p.'%')->paginate(10);
             $type_recipes = DB::table('type_recipes')->where('name', 'like', $p.'%')->paginate(10);

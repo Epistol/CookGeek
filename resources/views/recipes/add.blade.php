@@ -19,7 +19,8 @@
             <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST" action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
-                <div class="columns">
+                <div class="columns" style="
+  margin-bottom: 2rem;">
 
 
                     <div class="column  right_recipe_add  ">
@@ -64,7 +65,7 @@
                     </div>
                 </div>
 
-                <section class="section page" style="margin-bottom: 1rem">
+                <section class="section page">
                     <div class="columns">
                         <div class="column is-4"> @include("recipes.add.comment")
                          @include("recipes.add.video")
@@ -79,7 +80,6 @@
                 </section>
 
 
-    </div>
 
     </form>
     </section>
