@@ -6,7 +6,7 @@
         <section class="searchresult">
             <div class="advanced">
                 <div class="columns ">
-                    <div class="column is-half is-offset-one-quarter">
+                    <div class="column is-8 is-offset-2">
                         @include("search.searchbar")
                     </div>
                     <div class="column">
@@ -33,51 +33,54 @@
 
 
             <div class="resultats">
+                <div class="columns ">
+                    <div class="column is-8 is-offset-2">
+                        <div class="linesmall">
+                            @if(array_key_exists('categunivers', $result))
+                                @foreach($result['categunivers'] as $c)
 
-                <div class="linesmall">
-                    @if(array_key_exists('categunivers', $result))
-                            @foreach($result['categunivers'] as $c)
+                                    <a href="{{route('media.show', $c->name)}}">
+                                        <div class=" ">
+                                            @if($c->name== 'tv')
+                                                <div class="medail {{strtolower($c->name)}}" ></div>
+                                            @else
+                                                <div class="medail {{strtolower($c->name)}}"></div>
+                                            @endif
+                                        </div>
+                                    </a>
 
-                            <a href="{{route('media.show', $c->name)}}">
-                                <div class=" ">
-                                    @if($c->name== 'tv')
-                                        <div class="medail {{strtolower($c->name)}}" ></div>
-                                    @else
-                                        <div class="medail {{strtolower($c->name)}}"></div>
-                                    @endif
-                                </div>
-                            </a>
+                                @endforeach
+                            @endif
 
-                            @endforeach
-                    @endif
+                            @if(array_key_exists('univers', $result))
+                                @foreach($result['univers'] as $univ)
+                                    <a class="button is-rounded"> {{$cat->name}}</a>
+                                @endforeach
+                            @endif
 
-                    @if(array_key_exists('univers', $result))
-                            @foreach($result['univers'] as $univ)
-                                <a class="button is-rounded"> {{$cat->name}}</a>
-                            @endforeach
-                    @endif
+                            @if(array_key_exists('type_recipes', $result))
+                                @foreach($result['type_recipes'] as $cat)
+                                    <a class="button is-rounded"> {{$cat->name}}</a>
+                                @endforeach
+                            @endif
 
-                        @if(array_key_exists('type_recipes', $result))
-                            @foreach($result['type_recipes'] as $cat)
-                                <a class="button is-rounded"> {{$cat->name}}</a>
-                            @endforeach
-                    @endif
+                            @if(array_key_exists('ingredient', $result))
+                                @foreach($result['ingredient'] as $cat)
 
-                    @if(array_key_exists('ingredient', $result))
-                            @foreach($result['ingredient'] as $cat)
+                                    <a class="button is-rounded"> {{$cat->name}}</a>
+                                @endforeach
+                            @endif
 
-                                <a class="button is-rounded"> {{$cat->name}}</a>
-                            @endforeach
-                    @endif
+                        </div>
 
+                        @include("search.recipe_categ")
+
+                        @include("search.recipe_name")
+                        @include("search.recipe_ingr")
+                    </div>
                 </div>
 
 
-                @if(array_key_exists('recipe', $result))
-                    @foreach($result['recipe'] as $cat)
-                        {{$cat->title}}
-                    @endforeach
-                @endif
 
             </div>
 
