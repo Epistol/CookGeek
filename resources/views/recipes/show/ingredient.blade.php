@@ -15,7 +15,7 @@
                     <?php
                     $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
                     ?>
-                    <p>  {{$ingr->qtt}} {{$nom_in}}</p>
+                    <label for="exampleCheckbox[{{$index}}]">  {{$ingr->qtt}} {{$nom_in}}</label>
                 </div>
 
             </div>

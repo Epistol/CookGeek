@@ -12,6 +12,10 @@
 
 ?>
 
+
+<p>  @lang('recipe.diff') :</p>
+
+
     <div class="full-circle {{$diff}}">
         {{$recette->difficulty}}
     </div>

@@ -15622,7 +15622,7 @@ html, body {
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f3f2fd;
+  background-color: #ebeaf5;
 }
 
 body, button, input, select, textarea {
@@ -15650,7 +15650,7 @@ body, button, input, select, textarea {
 }
 
 .results {
-  background: #f3f2fd;
+  background: #ebeaf5;
 }
 
 .image.is-256x256 {
@@ -15838,7 +15838,7 @@ a.navbar-item, a.navbar-link {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #f3f2fd;
+  background: #ebeaf5;
   border: 0px solid #7f5fbf;
 }
 
@@ -16189,7 +16189,7 @@ form.addrecipe .field {
   padding: 0.5rem;
   border: 1px solid #b6c2d9;
   border-radius: 5px;
-  background: #fcfbfe;
+  background: #f2f1f8;
 }
 
 .dollar_null {
@@ -16256,6 +16256,26 @@ form.addrecipe .field {
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
 }
 
+.rating img {
+  max-width: 16px;
+}
+
+span.star {
+  padding-right: 0.5rem;
+}
+
+.greyed {
+  -webkit-filter: grayscale(70%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(70%);
+}
+
+.greyed:hover {
+  -webkit-filter: grayscale(0%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+
 .list-h-show {
   background: #E5E1FB;
   border-radius: 0px;
@@ -16265,7 +16285,7 @@ form.addrecipe .field {
 .step .column.is-1 {
   font-size: 1.2rem;
   color: #7f5fbf;
-  background: #fcfbfe;
+  background: #f2f1f8;
   border-radius: 10px 0 0 10px;
 }
 

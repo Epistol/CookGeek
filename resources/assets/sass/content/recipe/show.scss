@@ -155,6 +155,20 @@
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
 
 }
+.rating img {
+  max-width:16px;
+}
+span.star{
+  padding-right: 0.5rem;
+}
+.greyed {
+  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(70%);
+  &:hover{
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+}
 .list-h-show{
   background: #E5E1FB;
   border-radius: 0px;

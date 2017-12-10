@@ -27,6 +27,8 @@
 
 
 
+
+
                     <div class="column is-3 is-flex-center " v-cloak  v-if="index === (rows.length-1)">
                         <a  @click="addRow()" class="button is-primary  is-small deleteicon"><i class="fa fa-plus" aria-hidden="true"></i></a>
                     </div>

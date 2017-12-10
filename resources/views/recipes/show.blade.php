@@ -58,7 +58,7 @@
 
                         <div class="page">
                             <div class="columns">
-                                <div class="column is-half is-offset-one-quarter">
+                                <div class="column is-half  ">
                                     <div class="content ficheinfo">
                                         <div class="columns">
                                             <div class="column">
@@ -67,11 +67,11 @@
                                                     @include("recipes.show.author")
                                                 </p>
                                                 <div style="display:flex;" class="">
-                                                    <p>  @lang('recipe.diff') :</p>@include("recipes.show.diff")
+                                                  @include("recipes.show.diff")
                                                 </div>
 
                                                 <div style="display:flex;" class="">
-                                                    <p>    @include("recipes.show.price")
+                                                      @include("recipes.show.price")
                                                 </div>
 
                                             </div>
