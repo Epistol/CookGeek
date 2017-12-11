@@ -76,9 +76,12 @@ class RecipesController extends Controller
 
         // Si aucun univers n'est associé à la recherche
         if($univers->isEmpty()) {
+
+            $string = app('profanityFilter')->filter($request->universe);
+
             // On l'ajoute à la DB
             $id_univers = DB::table( 'univers' )->insertGetId(
-                [ 'name' => $request->universe ]
+                [ 'name' => $string ]
             );
             $univers  = $id_univers;
 
@@ -87,9 +90,12 @@ class RecipesController extends Controller
             $univers = $univers->first();
             $univers = $univers->id;
         }
+
+        $comm = app('profanityFilter')->filter($request->comment);
+        dd($comm);
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
-            ['title' => $request->title,
+            ['title' => app('profanityFilter')->filter($request->title),
                 'vegetarien' => $request->vegan,
                 'difficulty' => $request->difficulty,
                 'type' => $request->categ_plat,
@@ -98,14 +104,14 @@ class RecipesController extends Controller
                 'cook_time' => $cook,
                 'rest_time' => $rest,
                 'nb_guests' => $request->unite_part,
-                'guest_type' => $request->value_part,
+                'guest_type' => app('profanityFilter')->filter($request->value_part) ,
                 'univers' => $univers,
                 'type_univers' => $request->type,
                 'id_user' => $iduser,
                 'slug' => '',
                 'vegetarien' => $request->vegan,
-                'video' => $request->video,
-                'commentary_author' => $request->comment,
+                'video' => app('profanityFilter')->filter($request->video),
+                'commentary_author' => $comm ,
                 'created_at' => now(),
                 'updated_at' => now(),
 
@@ -129,8 +135,10 @@ class RecipesController extends Controller
             $id_ingredient_ajout = DB::table('ingredients')->where('name','=', $ingredient)->get();
             // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
             if($id_ingredient_ajout->isEmpty()){
+               $in =  app('profanityFilter')->filter($ingredient);
+
                 $ingredientID = DB::table( 'ingredients' )->insertGetId(
-                    [ 'name' => $ingredient ]
+                    [ 'name' => $in ]
                 );
             }
             else {
@@ -151,7 +159,7 @@ class RecipesController extends Controller
             DB::table('recipes_steps')->insertGetId(
                 ['recipe_id' => $idRecette,
                     'step_number' => $key,
-                    'instruction' => $request->step[$key],
+                    'instruction' => app('profanityFilter')->filter($request->step[$key]) ,
 
                 ]);
         }

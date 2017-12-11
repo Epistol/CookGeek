@@ -50,5 +50,6 @@ return [
     'defaults' => [
         'fuck',
         'shit',
+        "merde"
     ],
 ];
