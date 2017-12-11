@@ -4,20 +4,24 @@
     <section class="section">
 
         <div class="container">
-            <div class="blockcontent">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Inscription</div>
+                <div class="columns">
+                    <div class="column is-5 is-paddingless">
+                        <div class="left_register">
+                            <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
+                        </div>
 
-                            <div class="panel-body">
+                    </div>
+                    <div class="column is-two-fifths is-paddingless">
+                            <H1 class="title">Inscription</H1>
+
+                            <div class="blockcontent">
                                 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
 
-                                    <div class="form-group{{ $errors->has('pseudo') ? ' has-error' : '' }}">
-                                        <label for="pseudo" class="col-md-4 control-label">Pseudo</label>
+                                    <div class="field {{ $errors->has('pseudo') ? ' has-error' : '' }}">
+                                        <label for="pseudo" class="label control-label">Pseudo</label>
 
-                                        <div class="col-md-6">
+                                        <div class="control">
                                             <input id="pseudo" name="pseudo" type="text" class="form-control input " value="{{ old('pseudo') }}" required autofocus>
 
                                             @if ($errors->has('pseudo'))
@@ -28,10 +32,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                    <div class="field {{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="email" class="label control-label">E-Mail Address</label>
 
-                                        <div class="col-md-6">
+                                        <div class="control">
                                             <input id="email" type="email" class="form-control input " name="email" value="{{ old('email') }}" required>
 
                                             @if ($errors->has('email'))
@@ -42,10 +46,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="password" class="col-md-4 control-label">Password</label>
+                                    <div class="field {{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <label for="password" class="label control-label">Password</label>
 
-                                        <div class="col-md-6">
+                                        <div class="control">
                                             <input id="password" type="password" class="form-control input " name="password" required>
 
                                             @if ($errors->has('password'))
@@ -56,18 +60,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                    <div class="field ">
+                                        <label for="password-confirm" class="label control-label">Confirm Password</label>
 
-                                        <div class="col-md-6">
+                                        <div class="control">
                                             <input id="password-confirm" type="password" class="form-control input " name="password_confirmation" required>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <button type="submit" class="button is-primary">
-                                                Register
+                                    <div class="field ">
+                                        <div class="control is-centered">
+                                            <button type="submit" class="button is-primary  is-large">
+                                                Inscription
                                             </button>
                                         </div>
                                     </div>
@@ -75,9 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
-        </div>
 
     </section>
 

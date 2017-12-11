@@ -1,9 +1,8 @@
-<div class="field is-horizontal">
-    <div class="field-label" style="text-align: left;">
+<div class="columns">
+    <div class="column is-3" style="text-align: left;">
         <label class="title is-4 is-">Univers</label>
     </div>
-    <div class="field-body">
-
+    <div class="column">
         <input class="input_modal blck" type="text" placeholder="" name="universe" id="universe" value="">
 
 

@@ -3,34 +3,24 @@
 @section('content')
     <div class="recipeaddbg">
         <div class="container">
-
             @include("recipes.show.bread")
-
-
             <div class="section">
-
-                <div class="columns">
+                <div class="columns shadowbox">
                     {{--Photo + ingredients--}}
                     <div class="column  is-marginless is-3 is-paddingless" style=" background: #fdfdfd;">
-
-                            @include("recipes.show.images")
+                        @include("recipes.show.images")
                         <div class="page">
-                            @include("recipes.show.ingredient")
-
+                        @include("recipes.show.ficheinfo")
                         </div>
-
-
                     </div>
                     {{--    Infos + steps--}}
-                    <div class="column is-marginless is-paddingless is-9 side_recipe">
-
+                    <div class="column is-marginless is-paddingless is-9 ">
                         {{--// Budget--}}
-
                         <div class="columns list-h-show  is-marginless is-paddingless" >
                             <div class="column">
-                               <div class="has-text-centered">
-                                   @include("recipes.show.timing")
-                               </div>
+                                <div class="has-text-centered">
+                                    @include("recipes.show.timing")
+                                </div>
                             </div>
                             <div class="column">
                                 {{--// Timing--}}
@@ -57,52 +47,22 @@
                         </div>
 
                         <div class="page">
-                            <div class="columns">
-                                <div class="column is-half is-offset-one-quarter">
-                                    <div class="content ficheinfo">
-                                        <div class="columns">
-                                            <div class="column">
-                                                <p>
-                                                    Auteur :
-                                                    @include("recipes.show.author")
-                                                </p>
-                                                <div style="display:flex;" class="">
-                                                    <p>  @lang('recipe.diff') :</p>@include("recipes.show.diff")
-                                                </div>
+                            <div class="content">
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        @include("recipes.show.steps")
+                                    </div>
+                                    <div class="column is-4  ">
+                                        @include("recipes.show.ingredient")
 
-                                                <div style="display:flex;" class="">
-                                                    <p>    @include("recipes.show.price")
-                                                </div>
-
-                                            </div>
-                                            <div class="column">
-                                                @include("recipes.show.times")
-
-                                            </div>
-                                        </div>
-
-
-
-                                        {{--// Is-premium (afficher son yt, fb, creations)--}}
-
-
-                                        {{--// Parts--}}
-                                        {{--  @include("recipes.show.parts")--}}
-                                        {{--// Temps--}}
-                                        {{--   @include("recipes.show.timing")--}}
-                                        {{--// Liking--}}
-                                        {{--    @include("recipes.show.like")--}}
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="content">
-
-                                @include("recipes.show.steps")
+                                @if($recette->video)
+                                    @include("recipes.show.video")
+                                @endif
                             </div>
                         </div>
-
-
 
                     </div>
 
@@ -114,7 +74,7 @@
     <div class="recipeaddbg">
         <div class="container">
             <section class="section blockcontent">
-            {{-- RECETTE SIMILAIRES (4 BLOCS) --}}
+                {{-- RECETTE SIMILAIRES (4 BLOCS) --}}
             </section>
         </div>
     </div>

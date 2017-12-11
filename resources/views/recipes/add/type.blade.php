@@ -12,7 +12,7 @@
 
             @foreach ($types as $key=>$type)
                 @php(++$key)
-                <div class="column">
+                <div class="column has-text-centered">
 
                     <label class="radio">
                         @if($type->name== 'tv')

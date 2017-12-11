@@ -8,10 +8,16 @@
 
 
 require('./bootstrap');
+require('./dropzone');
+
 window.Vue = require('vue');
 
 
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
+import draggable from 'vuedraggable'
 
+Vue.use(VeeValidate);
 
 
 /**
@@ -19,34 +25,56 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+/*
+Vue.component('example', require('./components/Example.vue'));*/
 
-Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
     el: '#app',
+    components: {
+        draggable,
+    },
+
     data: {
         titre: '',
-        rows: [
-            { }
-        ],
+
         steps:[
-            { }
-        ]
+            {
+                etape : '',
+            },
+            {
+                etape : '',
+            }
+        ],
+        rows: [
+            {
+                name : '',
+                qtt : '',
+            },
+            {
+                name : '',
+                qtt : '',
+            },
+
+
+        ],
+        seen: false
 
     },
+
     methods: {
-        addRow: function () {
-            var elem = document.createElement('tr');
+        addRow: function ($index) {
+            console.log($index);
             this.rows.push({
             });
         },
-        removeElement: function (index) {
+        removeRow: function (index) {
             this.rows.splice(index, 1);
         },
+
         addStep: function () {
-            var elem1 = document.createElement('tr');
             this.steps.push({
-            })
+            });
         },
 
         removeStep: function (index) {

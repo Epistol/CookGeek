@@ -31,7 +31,7 @@
         </div>
 
         <div class="content">
-            {{$recettes[$i]->commentary_author}}
+        {{--    {{$recettes[$i]->commentary_author}}--}}
 
         </div>
     </div>

@@ -1,5 +1,5 @@
 // Body
-$body-bg: #f3f2fd;
+$body-bg: #ebeaf5;
 
 
 // Couleurs de base
@@ -33,16 +33,14 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: $violet;
-$accent : #7192be;
-$pink : #dc6bad;
+$accent : #4c6ee6;
+$pink : #fe688e;
 $accentsecondary : $pink;
 
 $brand-info: #8fb8de;
 $brand-success: #2ab27b;
 $brand-warning: #ffc145;
 $brand-danger: #ff6b6c;
-
-
 
 
 
@@ -75,3 +73,39 @@ $input-color-placeholder: lighten($text-color, 30%);
 // Panels
 $panel-default-heading-bg: #fff;
 $taille_minimale_photo : 640px;
+
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}

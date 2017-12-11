@@ -7,12 +7,14 @@
     "require": {
         "php": ">=7.0.0",
         "algolia/algoliasearch-client-php": "^1.20",
+        "askedio/laravel5-profanity-filter": "^1.0",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.4",
         "laravel/cashier": "~7.0",
         "laravel/framework": "5.5.*",
         "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
+        "sentry/sentry": "^1.8",
         "spatie/laravel-permission": "^2.7"
     },
     "require-dev": {

@@ -12,19 +12,20 @@
                     </div>
                 </div>
                 <div class="column is-offset-1">
-
                     <?php
                     $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
                     ?>
-
-                    <p>  {{$ingr->qtt}} {{$nom_in}}</p>
-
+                    <label for="exampleCheckbox[{{$index}}]">  {{$ingr->qtt}} {{$nom_in}}</label>
                 </div>
 
             </div>
         </div>
-
-
     @empty
     @endforelse
+
+
+    <div class="is-flex-center" style="margin-top: 2rem;"><div class="field"><p class="control">    <a class="button is-direct">Ajouter à mes courses</a></div></div>
+
+
+
 </section>

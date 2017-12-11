@@ -15,6 +15,29 @@ body, button, input, select, textarea{
   background: $white;
   padding: 2rem;
   margin-top: 2rem;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
+  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
+}
+.searchresult{
+  background: $white;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
+  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
+}
+.results{
+  background: $body-bg;
+}
+
+.not-active{
+  display:none;
+  visibility: hidden;
+  height: 0px;
+}
+.active {
+  display:block;
+  visibility: visible;
+  height: initial;
 }
 
 .image.is-256x256 {
@@ -25,6 +48,7 @@ body, button, input, select, textarea{
 h1, h2, h3, h4, h5, h6{
   color:$brand-primary;
 }
+
 
 .section-nomargin-side {
   padding: 1.5rem 0px;
@@ -42,6 +66,23 @@ h1, h2, h3, h4, h5, h6{
 }
 
 
+
+[v-cloak] { display:none; }
+
+.button.is-round.is-small{
+
+
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   border-radius: 50%;
+
+    width:32px;
+    height:32px;
+}
+
+.navbar-dropdown{
+  padding-top:0px;
+}
 /*
 .is-centered {
   -webkit-box-pack: center;

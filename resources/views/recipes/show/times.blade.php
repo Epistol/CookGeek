@@ -39,27 +39,29 @@ function sumerise_t($val){
 $prep = sumerise_t($recette->prep_time);
 $cook = sumerise_t($recette->cook_time);
 $rest = sumerise_t($recette->rest_time);
+$somme_t = $recette->prep_time +  $recette->cook_time +  $recette->rest_time;
 ?>
+@if($somme_t == 0)
 
+    @else
 <div class="columns">
-    <div class="column is-three-quarters">
-        <p>{{$prep}} @lang("recipe.of") @lang('recipe.making-t')</p>
-        <p>
+
+
+    <div class="column ">
+        @if($recette->prep_time !== 0)
+        <p>  <i aria-hidden="true" class="fa fa-cutlery"></i>
+            {{$prep}} @lang("recipe.of") @lang('recipe.making-t')</p>
+        @endif
+        @if($recette->cook_time !== 0)
+
+            <p> <i aria-hidden="true" class="fa fa-thermometer-three-quarters"></i>
             {{$cook}} @lang("recipe.of") @lang('recipe.cooking-t')
         </p>
-        <p>
+            @endif  @if($recette->rest_time !== 0)
+        <p>  <i aria-hidden="true" class="fa fa-clock-o"></i>
             {{$rest}} @lang("recipe.of") @lang('recipe.resting-t')
-        </p>
+        </p>  @endif
     </div>
-    <div class="column">
-        <p>
-            <i aria-hidden="true" class="fa fa-cutlery"></i>
-        </p>
-        <p>
-            <i aria-hidden="true" class="fa fa-thermometer-three-quarters"></i>
-        </p>
-        <p>
-            <i aria-hidden="true" class="fa fa-clock-o"></i>
-        </p>
-    </div>
+
 </div>
+@endif
