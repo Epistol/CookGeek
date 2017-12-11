@@ -92,7 +92,7 @@ class RecipesController extends Controller
         }
 
         $comm = $request->comment;
-        dd($comm);
+       
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
             ['title' => $request->title,

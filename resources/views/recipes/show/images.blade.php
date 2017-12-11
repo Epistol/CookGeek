@@ -1,9 +1,12 @@
 <div class=" has-text-centered">
     {{--Image principale--}}
+    @if($firstimg != null )
     <figure class="image" >
         <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
     </figure>
+    @endif
     @if($images->isEmpty())
+
         {{--<p>Ajouter votre réalisation</p>--}}
 
     @else
