@@ -92,6 +92,12 @@ class RecipesController extends Controller
         }
 
         $comm = $request->comment;
+            if($request->vegan == "on"){
+                $vege = true;
+            }
+            else {
+                $vege = false;
+            }
        
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
@@ -109,7 +115,7 @@ class RecipesController extends Controller
                 'type_univers' => $request->type,
                 'id_user' => $iduser,
                 'slug' => '',
-                'vegetarien' => $request->vegan,
+                'vegetarien' => $vege,
                 'video' => $request->video,
                 'commentary_author' => $comm ,
                 'created_at' => now(),

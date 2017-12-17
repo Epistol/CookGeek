@@ -16147,6 +16147,12 @@ form.addrecipe .field {
   transition: all 0.3s ease-in-out;
 }
 
+.is-result {
+  background: #FAFAFA;
+  border-radius: 15px;
+  margin-right: 1rem;
+}
+
 .content figure {
   margin-left: 0px;
   margin-right: 0px;

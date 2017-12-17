@@ -22,7 +22,8 @@ class SearchController extends Controller
 	    $difficulty = DB::table('difficulty')->get();
 	    $types_plat = DB::table('type_recipes')->get();
 
-        return view('search.result', ['result' =>  $result, 'value' =>  $rq, 'types' => $types_univ, 'difficulty' => $difficulty,'types_plat' => $types_plat] );
+
+        return view('search.result', ['resultats' =>  $result, 'value' =>  $rq, 'types' => $types_univ, 'difficulty' => $difficulty,'types_plat' => $types_plat] );
     }
 
 }
