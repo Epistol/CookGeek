@@ -39,6 +39,9 @@
   src: url("/fonts/Conviction.ttf") format("truetype");
 }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .title{
+.content h1,  h1.title{
   color: $accentsecondary;
+}
+h2.title{
+  color: $brand-primary;
 }

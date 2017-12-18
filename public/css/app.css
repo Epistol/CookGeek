@@ -15614,8 +15614,12 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   src: url("/fonts/Conviction.ttf") format("truetype");
 }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .title {
+.content h1, h1.title {
   color: #fe688e;
+}
+
+h2.title {
+  color: #7f5fbf;
 }
 
 html, body {
@@ -16280,7 +16284,7 @@ form.addrecipe .field {
 }
 
 span.star {
-  padding-right: 0.5rem;
+  padding-right: 0.3rem;
 }
 
 .greyed {
@@ -16364,6 +16368,24 @@ table.times th {
     left: 4%;
     top: 11%;
   }
+}
+
+.top {
+  max-height: 25%;
+  overflow: hidden;
+}
+
+.middle {
+  margin-top: 1rem;
+  max-height: 65%;
+  max-height: 4rem;
+  min-height: 65%;
+  overflow: hidden;
+}
+
+.bottom {
+  max-height: 25%;
+  overflow: hidden;
 }
 
 .type-selector input {
