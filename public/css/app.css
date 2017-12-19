@@ -16283,10 +16283,6 @@ form.addrecipe .field {
   max-width: 16px;
 }
 
-span.star {
-  padding-right: 0.3rem;
-}
-
 .greyed {
   -webkit-filter: grayscale(70%);
   /* Safari 6.0 - 9.0 */
@@ -16386,6 +16382,16 @@ table.times th {
 .bottom {
   max-height: 25%;
   overflow: hidden;
+}
+
+.hovered {
+  display: none;
+}
+
+.to-hover:hover > .hovered {
+  display: block;
+  position: absolute;
+  z-index: 5;
 }
 
 .type-selector input {

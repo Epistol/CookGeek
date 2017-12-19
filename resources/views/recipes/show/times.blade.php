@@ -36,9 +36,18 @@ function sumerise_t($val){
     }
 }
 
+
+
+
 $prep = sumerise_t($recette->prep_time);
 $cook = sumerise_t($recette->cook_time);
 $rest = sumerise_t($recette->rest_time);
+
+
+
+
+
+
 $somme_t = $recette->prep_time +  $recette->cook_time +  $recette->rest_time;
 ?>
 @if($somme_t == 0)

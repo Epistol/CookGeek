@@ -9,6 +9,8 @@ use App\Recipes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\SchemaOrg\Schema;
+use Carbon\Carbon;
 
 class RecipesController extends Controller
 {
@@ -92,13 +94,13 @@ class RecipesController extends Controller
         }
 
         $comm = $request->comment;
-            if($request->vegan == "on"){
-                $vege = true;
-            }
-            else {
-                $vege = false;
-            }
-       
+        if($request->vegan == "on"){
+            $vege = true;
+        }
+        else {
+            $vege = false;
+        }
+
         // Insert recette
         $idRecette = DB::table('recipes')->insertGetId(
             ['title' => $request->title,
@@ -141,7 +143,7 @@ class RecipesController extends Controller
             $id_ingredient_ajout = DB::table('ingredients')->where('name','=', $ingredient)->get();
             // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
             if($id_ingredient_ajout->isEmpty()){
-               $in = $ingredient;
+                $in = $ingredient;
 
                 $ingredientID = DB::table( 'ingredients' )->insertGetId(
                     [ 'name' => $in ]
@@ -202,19 +204,60 @@ class RecipesController extends Controller
             ->where('user_id', '=', $recette->id_user)
             ->first();
 
-        $stars = DB::table('recipe_likes')
+        $stars1 = DB::table('recipe_likes')
             ->where('id_recipe', '=', $recette->id)
             ->avg('note');
-        $stars = number_format($stars, 1, '.', '');
+        $stars = number_format($stars1, 1, '.', '');
         $stars =  explode('.', $stars, 2);
+        $countrating = DB::table('recipe_likes')
+            ->where('id_recipe', '=', $recette->id)
+            ->count();
+        $id_auteur = $recette->id_user;
+        $nom = DB::table('users')->where('id', $id_auteur)->value('name');
 
+        // TIMES ISO
+
+        $preptimeiso = "PT".$this->sumerise($recette->prep_time);
+        $cooktimeiso = "PT".$this->sumerise($recette->cook_time);
+        $resttimeiso = "PT".$this->sumerise($recette->rest_time);
+
+        $totaliso = "PT".$this->sumerise($recette->prep_time+$recette->cook_time+$recette->rest_time);
 
 
         // On charge les données dans la vue
-        return view('recipes.show', array( 'recette' => $recette, 'ingredients' => $ingredients, 'steps' => $steps, 'images' => $images, 'firstimg' => $firstimg, 'typeuniv'  => $typeuniv, 'stars' => $stars) );
+        return view('recipes.show', array(
+            'recette' => $recette,
+            'ingredients' => $ingredients,
+            'steps' => $steps,
+            'images' => $images,
+            'firstimg' => $firstimg,
+            'typeuniv'  => $typeuniv,
+            'stars' => $stars,
+            "countrating" => $countrating,
+            'stars1' => $stars1,
+            'nom' => $nom,
+            'preptimeiso' => $preptimeiso,
+            'cooktimeiso' => $cooktimeiso,
+            'totaliso' => $totaliso,
+
+
+        ) );
     }
 
+    private function sumerise($val){
+        // si il y'a + d'1heure
+        if($val > 60){
+            $somme_h = $val/60;
+            $somme_m = $val-((int)$somme_h*60);
+            return $somme_h."H".$somme_m."M";
+        }
+        else {
+            $somme_h = 0;
+            $somme_m = $val-((int)$somme_h*60);
+            return $somme_m."M";
 
+        }
+    }
     private function slugtitre($requt, $idrecipe){
         $titreslug= str_slug($requt->title, '-');
         $slug = $titreslug."-".$idrecipe;

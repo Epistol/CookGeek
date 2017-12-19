@@ -6,11 +6,12 @@
         <section class="searchresult">
             <div class="advanced">
                 <div class="columns ">
-                    <div class="column is-8 is-offset-2">
-                        @include("search.searchbar")
-                    </div>
+                  {{--  <div class="column is-8 is-offset-2">
+
+                    </div>--}}
                     <div class="column">
-                        @include("search.settings")
+                        @include("search.searchbar")
+                      {{--  @include("search.settings")--}}
                     </div>
 
                 </div>

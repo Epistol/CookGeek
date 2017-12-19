@@ -1,4 +1,4 @@
-<div class=" has-text-centered">
+<div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
     {{--Image principale--}}
     @if($firstimg != null )
     <figure class="image" >
@@ -18,9 +18,6 @@
         @endforeach
 
     @endif
-
-
-
 
 
 </div>

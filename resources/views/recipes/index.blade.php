@@ -8,7 +8,7 @@
     @include("recipes.index.bread")
 
                 <div class="content">
-                    @include("recipes.index.searchbar")
+                    {{--@include("recipes.index.searchbar")--}}
                     @include("recipes.index.partype")
 
                 </div>

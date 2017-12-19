@@ -13,3 +13,13 @@
   max-height: 25%;
   overflow:hidden;
 }
+.hovered{
+  display: none;
+
+}
+
+.to-hover:hover > .hovered {
+  display: block;
+  position: absolute;
+  z-index: 5;
+}

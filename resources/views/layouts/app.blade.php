@@ -17,12 +17,14 @@
           rel="stylesheet">
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');</script>
+
 </head>
 <body>
 <div id="app">
     @include("layouts.menu")
 
     @yield('content')
+
 </div>
 
 @include("layouts.footer")

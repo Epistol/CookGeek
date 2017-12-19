@@ -24,10 +24,17 @@
 
                 <div class="column is-6 is-result" style="max-height: 190px;">
                     <div class="columns">
-                        <div class="column is-4 is-paddingless is-marginless">
+                        <div class="column is-4 to-hover is-paddingless is-marginless">
+                            <div class="hovered">
+                                <?php
+                                $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
+                                ?>
+                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>
+                            </div>
                             <figure class="image is-1by1" >
                                 <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
                             </figure>
+
                         </div>
                         <div class="column is-7">
                             <div class="top is-flex">
@@ -38,7 +45,7 @@
 
                             </div>
                             <div class="middle">
-                                {{-- Auteur / Ingredients--}}
+                                {{-- Ingredients--}}
 
                                 <?php
                                 $ingredients =  DB::table('recipes_ingredients')
@@ -64,10 +71,7 @@
                             <div class="bottom">
                                 <div class="is-flex">
                                        @include("recipes.show.author")<br />
-                                    <?php
-                                    $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
-                                    ?>
-                                    <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>   @include("recipes.show.staronly")
+                                    @include("recipes.show.staronly")
                                 </div>
                             </div>
 
@@ -79,7 +83,7 @@
                                     ->where('id', '=', $recette->type_univers)
                                     ->first();
                                 ?>
-                                @include("recipes.show.type_univers")
+                                @include("recipes.show.type_univers_no_tool")
                             </div>
                             <div class="middle">
 

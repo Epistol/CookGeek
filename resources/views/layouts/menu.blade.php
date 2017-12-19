@@ -38,12 +38,6 @@
                     <a class="navbar-item" href="{{ route('recipe.add') }}">
                         Ajouter
                     </a>
-                    <a class="navbar-item">
-                        Elements
-                    </a>
-                    <a class="navbar-item">
-                        Components
-                    </a>
 
                 </div>
             </div>
@@ -71,11 +65,17 @@
             </a>
 
             <div class="field search_header navbar-item">
+                <form action="{{route('search')}}" method="POST" role="search">
+                    {{ csrf_field() }}
 
-                        <input class="input" type="text" placeholder="" style="padding: 0 50px 0 25px;">
-                        <a class="searchheadbutton" style="position: absolute;">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </a>
+                    <input class="input" type="text" placeholder="" style="padding: 0 50px 0 25px;">
+                    <button type="submit" class="searchheadbutton" style="position: absolute;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+
+
+                </form>
+
 
 
             </div>

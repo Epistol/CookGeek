@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <div class="recipeaddbg">
         <div class="container">
             @include("recipes.show.bread")
@@ -96,7 +98,28 @@
         </div>
     </div>
 
+    <?php
+    use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = "";
+     foreach ( $ingredients as $ingr){
+          $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
+        $ingredientliste.=   $ingr->qtt." ".$nom_in . ",";
+    }
 
+    // Shema.org
+    $datas = Schema::Recipe()
+        ->name($recette->title)
+        ->image(url('/')."/recipes/".$recette->id."/".$recette->id_user."/".$firstimg->image_name)
+        ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
+        ->aggregateRating(Schema::AggregateRating()->ratingValue($stars1)->reviewCount($countrating))
+        ->author(Schema::person()->name($nom))
+        ->prepTime($preptimeiso)
+        ->cookTime($cooktimeiso)
+        ->totalTime($totaliso)
+        ->description($recette->title . " - CDG")
+        ->recipeIngredient([$ingredientliste])
+    ?>
+
+    {!! $datas->toScript()  !!}
 @endsection
 
 

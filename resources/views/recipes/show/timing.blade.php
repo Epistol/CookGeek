@@ -8,7 +8,7 @@ $somme_m = $somme_t-((int)$somme_h*60);
 ?>
 
 <div class="is-flex-center">
-<b>
-    {{(int)$somme_h}} H {{$somme_m}}
-</b>
+    <b>
+        {{(int)$somme_h}} H {{$somme_m}}
+    </b>
 </div>
