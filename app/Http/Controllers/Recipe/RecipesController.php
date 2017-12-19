@@ -183,6 +183,10 @@ class RecipesController extends Controller
         return redirect()->route('recipe.show', ['post' => $slug]);
     }
 
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($slug){
 
         $recette = Recipes::where('slug', $slug)->first();
@@ -207,11 +211,17 @@ class RecipesController extends Controller
         $stars1 = DB::table('recipe_likes')
             ->where('id_recipe', '=', $recette->id)
             ->avg('note');
+        if($stars1 == NULL){
+            $stars1 = 1;
+        }
         $stars = number_format($stars1, 1, '.', '');
         $stars =  explode('.', $stars, 2);
         $countrating = DB::table('recipe_likes')
             ->where('id_recipe', '=', $recette->id)
             ->count();
+        if($countrating == NULL || $countrating == 0){
+            $countrating = 1;
+        }
         $id_auteur = $recette->id_user;
         $nom = DB::table('users')->where('id', $id_auteur)->value('name');
 

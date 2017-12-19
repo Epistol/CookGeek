@@ -99,10 +99,10 @@
     </div>
 
     <?php
-    use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = "";
+    use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = array();
      foreach ( $ingredients as $ingr){
           $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
-        $ingredientliste.=   $ingr->qtt." ".$nom_in . ",";
+        $ingredientliste[] =  $ingr->qtt . " " . $nom_in ;
     }
 
     // Shema.org
