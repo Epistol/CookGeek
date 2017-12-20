@@ -100,7 +100,7 @@
 
             @endforeach
             <span>
-                 {{ $resultats['recipe']->links() }}
+                 {{ $recipe->links() }}
         </span>
 
         </div>

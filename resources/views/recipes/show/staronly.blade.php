@@ -9,7 +9,7 @@
         <?php $count++;?>
     @endfor
 
-    @if($stars[1] >= 5)
+    @if($starsget[1] >= 5)
         <span class="star">
                 <img src="/img/rating/muf_half.png" />
                 </span>

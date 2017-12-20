@@ -1,4 +1,4 @@
-@foreach($par_categunivers as $c)
+@foreach($categunivers as $c)
 
     <a href="{{route('media.show', $c->name)}}">
         <div class=" ">
