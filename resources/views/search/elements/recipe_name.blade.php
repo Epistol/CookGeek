@@ -1,6 +1,6 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-    @foreach($valeurs['recipe']->chunk(2)  as  $recettechunk)
+    @foreach($recipe->chunk(2)  as  $recettechunk)
 
 
         <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">

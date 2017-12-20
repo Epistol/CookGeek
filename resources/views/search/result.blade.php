@@ -38,11 +38,11 @@
                     <div class="column is-10 is-offset-1">
                         <div class="linesmall">
                              {{--Medaillons--}}
-                            @if($valeurs['categunivers'])
+                            @if($categunivers)
                                @includeIf("search.elements.categ")
                             @endif
                              {{--HP, Narnia, etc--}}
-                            @if($valeurs['univers'])
+                            @if($univers)
                               @includeIf("search.elements.univers")
                             @endif
 
@@ -55,7 +55,7 @@
                         </div>
 
 
-                        @if($valeurs['recipe'])
+                        @if($recipe)
                         @include("search.elements.recipe_name")
                        @endif
 

@@ -43,7 +43,7 @@ class SearchController extends Controller
             $valeurs[$s] = $retour[$key];
         }
 
-        dd($valeurs);
+
 
 
 //            dd($result['recipe']);
