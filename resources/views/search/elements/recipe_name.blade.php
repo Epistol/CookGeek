@@ -1,39 +1,37 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-@if(array_key_exists('recipe', $resultats))
-
-    @foreach($resultats['recipe']->chunk(2)  as  $recettechunk)
+    @foreach($valeurs['recipe']->chunk(2)  as  $recettechunk)
 
 
         <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">
 
             @foreach ($recettechunk as $recette)
                 <?php
+
                 $firstimg = DB::table('recipe_imgs')
                     ->where('recipe_id', '=', $recette->id)
                     ->where('user_id', '=', $recette->id_user)
-                    ->first();
+                    ->get();
 
-                $stars = DB::table('recipe_likes')
-                    ->where('id_recipe', '=', $recette->id)
-                    ->avg('note');
-                $stars = number_format($stars, 1, '.', '');
-                $stars =  explode('.', $stars, 2);
+                $starsget = (new \App\Search)->explode_star($recette->id);
 
+
+                $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
                 ?>
 
                 <div class="column is-6 is-result" style="max-height: 190px;">
                     <div class="columns">
                         <div class="column is-4 to-hover is-paddingless is-marginless">
                             <div class="hovered">
-                                <?php
-                                $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
-                                ?>
                                 <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                             </div>
-                            <figure class="image is-1by1" >
-                                <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
-                            </figure>
+
+                            @if($recette->id_user != NULL  )
+                                <figure class="image is-1by1" >
+
+                                   <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->first()->image_name}}">
+                                </figure>
+                            @endif
 
                         </div>
                         <div class="column is-7">
@@ -53,16 +51,16 @@
                                     ->get();
                                 ?>
                                 <p><b>@lang("recipe.ingredients") : </b>
-                                @foreach($ingredients as $index=>$in)
-                                    <?php
-                                    $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
-                                    ?>
-                                    @if($loop->last)
-                                        {{$nom_in}}
-                                    @else
-                                        {{$nom_in}},
-                                    @endif
-                                @endforeach
+                                    @foreach($ingredients as $index=>$in)
+                                        <?php
+                                        $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
+                                        ?>
+                                        @if($loop->last)
+                                            {{$nom_in}}
+                                        @else
+                                            {{$nom_in}},
+                                        @endif
+                                    @endforeach
                                 </p>
 
 
@@ -70,7 +68,10 @@
                             </div>
                             <div class="bottom">
                                 <div class="is-flex">
-                                       @include("recipes.show.author")<br />
+                                    <?php
+                                    $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
+                                    ?>
+                                    @include("recipes.show.author")<br />
                                     @include("recipes.show.staronly")
                                 </div>
                             </div>
@@ -89,7 +90,7 @@
 
                             </div>
                             <div class="bottom">
-                               <a class="tag"><i class="material-icons">favorite</i></a>
+                                <a class="tag"><i class="material-icons">favorite</i></a>
                             </div>
 
                         </div>
@@ -108,4 +109,3 @@
     @endforeach
 
 
-@endif

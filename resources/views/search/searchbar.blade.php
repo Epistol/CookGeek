@@ -1,6 +1,6 @@
 <div class="field has-addons">
     <div class="control is-expanded">
-        @if($value)
+        @if($value != null)
 
             <input class="input" type="text" placeholder="Chercher" value="{{$value}}">
 

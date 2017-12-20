@@ -2,7 +2,7 @@
 <div class="content rating">
 
     <?php $count = 0;?>
-    @for($i = 0; $i < $stars[0]; $i++)
+    @for($i = 0; $i < $starsget[0]; $i++)
         <span class="star">
                         <img src="/img/rating/muf_full.png" />
                         </span>
@@ -16,12 +16,12 @@
         <?php $count++;?>
     @endif
 
-    @if(!isset($stars[0]) or $stars[0] == NULL OR $stars[0] == 0 )
+    @if(!isset($starsget[0]) or $starsget[0] == NULL OR $starsget[0] == 0 )
 
         <?php $count = 5;?>
     @endif
 
-    @for($i = $count; $i > $stars[0]; $i--)
+    @for($i = $count; $i > $starsget[0]; $i--)
         <span class="star">
                 <img class="greyed" src="/img/rating/muf_full.png" />
                 </span>

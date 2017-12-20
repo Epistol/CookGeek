@@ -18,9 +18,9 @@
                 <transition name="slide">
                     <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active "  v-if="seen" v-cloak>
                         <div class="column">
-                            @include("search.advanced.type")
-                            @include("search.advanced.diff")
-                            @include("search.advanced.prix")
+                            {{--@include("search.advanced.type")--}}
+                            {{--@include("search.advanced.diff")--}}
+                            {{--@include("search.advanced.prix")--}}
                             {{--  @include("search.advanced.temps")
                              @include("search.advanced.note")
                              @include("search.advanced.parts")--}}
@@ -37,47 +37,28 @@
                 <div class="columns ">
                     <div class="column is-10 is-offset-1">
                         <div class="linesmall">
-                            @if(array_key_exists('categunivers', $resultats))
-                                @foreach($resultats['categunivers'] as $c)
-
-                                    <a href="{{route('media.show', $c->name)}}">
-                                        <div class=" ">
-                                            @if($c->name== 'tv')
-                                                <div class="medail {{strtolower($c->name)}}" ></div>
-                                            @else
-                                                <div class="medail {{strtolower($c->name)}}"></div>
-                                            @endif
-                                        </div>
-                                    </a>
-
-                                @endforeach
+                             {{--Medaillons--}}
+                            @if($valeurs['categunivers'])
+                               @includeIf("search.elements.categ")
+                            @endif
+                             {{--HP, Narnia, etc--}}
+                            @if($valeurs['univers'])
+                              @includeIf("search.elements.univers")
                             @endif
 
-                            @if(array_key_exists('univers', $resultats))
-                                @foreach($resultats['univers'] as $univ)
-                                    <a class="button is-rounded"> {{$cat->name}}</a>
-                                @endforeach
-                            @endif
+                            {{--@if($valeurs['type_recipes'])--}}
+                               {{--@includeIf("search.elements.type_univ")--}}
+                            {{--@endif--}}
 
-                            @if(array_key_exists('type_recipes', $resultats))
-                                @foreach($resultats['type_recipes'] as $cat)
-                                    <a class="button is-rounded"> {{$cat->name}}</a>
-                                @endforeach
-                            @endif
-
-                            @if(array_key_exists('ingredient', $resultats))
-                                @foreach($resultats['ingredient'] as $cat)
-
-                                    <a class="button is-rounded"> {{$cat->name}}</a>
-                                @endforeach
-                            @endif
-
+                            {{--Ingrédients--}}
+                           @includeIf("search.elements.recipe_ingr")
                         </div>
 
-                        @include("search.recipe_categ")
 
-                        @include("search.recipe_name")
-                       {{-- @include("search.recipe_ingr")--}}
+                        @if($valeurs['recipe'])
+                        @include("search.elements.recipe_name")
+                       @endif
+
                     </div>
                 </div>
 

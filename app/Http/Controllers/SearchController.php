@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api;
 use Illuminate\Support\Facades\DB;
+use App\Search;
 
 class SearchController extends Controller
 {
@@ -16,14 +17,49 @@ class SearchController extends Controller
     }
     public function postSearch(Request $request)
     {
+
         $rq = $request->q;
+
         $result = $this->apisearch->search($rq);
-	    $types_univ = DB::table('categunivers')->get();
-	    $difficulty = DB::table('difficulty')->get();
-	    $types_plat = DB::table('type_recipes')->get();
+        // Anime, cartes, comics, etc
+        $types_univ = DB::table('categunivers')->get();
+        $difficulty = DB::table('difficulty')->get();
+        // Entree plats desserts
+        $types_plat = DB::table('type_recipes')->get();
+
+        $search_type =  array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers' );
+
+        foreach ($search_type as $key => $item) {
+            if (array_key_exists($item, $result)) {
+                $retour[$key] = $result[$item];
+            }
+            else {
+                $retour[$key] = null;
+            }
+        }
+        $valeurs = ["value" => $rq];
+
+        foreach ($search_type as $key => $s){
+            $valeurs[$s] = $retour[$key];
+        }
+
+        dd($valeurs);
 
 
-        return view('search.result', ['resultats' =>  $result, 'value' =>  $rq, 'types' => $types_univ, 'difficulty' => $difficulty,'types_plat' => $types_plat] );
+//            dd($result['recipe']);
+        /* foreach ($result['recipe']->items as $recip){
+             $first_img = DB::table('recipe_imgs')
+                 ->where('recipe_id', '=', $recip->id)
+                 ->where('user_id', '=', $recip->id_user)
+                 ->first();
+         }
+
+
+     }*/
+
+        return view('search.result',$valeurs);
+
     }
-
 }
+
+

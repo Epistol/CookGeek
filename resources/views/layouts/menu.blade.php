@@ -68,7 +68,7 @@
                 <form action="{{route('search')}}" method="POST" role="search">
                     {{ csrf_field() }}
 
-                    <input class="input" type="text" placeholder="" style="padding: 0 50px 0 25px;">
+                    <input class="input" type="text" placeholder="" name="q"  style="padding: 0 50px 0 25px;">
                     <button type="submit" class="searchheadbutton" style="position: absolute;">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>

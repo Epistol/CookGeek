@@ -11,16 +11,27 @@ class SearchController extends Controller
     {
         $rq = $recherche;
         $pieces = explode(" ", $rq);
-
-        foreach ($pieces as $p){
-            // Searching in recipes
-            // TODO : Réduire le nombre de champs retournés par element ?
-            $recipe = DB::table('recipes')->where('title', 'like', '%'.$p.'%')->paginate(10);
-            $ingredient = DB::table('ingredients')->where('name', 'like', '%'.$p.'%')->paginate(10);
-            $categunivers = DB::table('categunivers')->where('name', 'like', '%'.$p.'%')->paginate(10);
-            $type_recipes = DB::table('type_recipes')->where('name', 'like', '%'.$p.'%')->paginate(10);
-            $univers = DB::table('univers')->where('name', 'like', '%'.$p.'%')->paginate(10);
+        if($rq != null){
+            foreach ($pieces as $p){
+                // Searching in recipes
+                // TODO : Réduire le nombre de champs retournés par element ?
+                $recipe = DB::table('recipes')->where('title', 'like', '%'.$p.'%')->paginate(10);
+                $ingredient = DB::table('ingredients')->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $categunivers = DB::table('categunivers')->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $type_recipes = DB::table('type_recipes')->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $univers = DB::table('univers')->where('name', 'like', '%'.$p.'%')->paginate(10);
+            }
         }
+        else {
+                // Searching in recipes
+                // TODO : Réduire le nombre de champs retournés par element ?
+                $recipe = DB::table('recipes')->paginate(10);
+                $ingredient = DB::table('ingredients')->paginate(10);
+                $categunivers = DB::table('categunivers')->paginate(10);
+                $type_recipes = DB::table('type_recipes')->paginate(10);
+                $univers = DB::table('univers')->paginate(10);
+        }
+
 
 
         /*
