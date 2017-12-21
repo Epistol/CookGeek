@@ -35,14 +35,16 @@ class SearchController extends Controller
                 $retour[$key] = $result[$item];
                 if (array_key_exists('recipe', $result)) {
                     foreach ($result['recipe'] as $key => $recip){
+
                         $images_first[$recip->id] =  DB::table('recipe_imgs')
                             ->where('recipe_id', '=', $recip->id)
                             ->where('user_id', '=', $recip->id_user)
                             ->first();
                     }
 
-                    dd($images_first);
-//                    $valeurs[""] = $firstimg->first()->image_name;
+
+
+                    $valeurs["images"] = $images_first;
                 }
             }
             else {
@@ -54,6 +56,7 @@ class SearchController extends Controller
         foreach ($search_type as $key => $s){
             $valeurs[$s] = $retour[$key];
         }
+
 
 
 
