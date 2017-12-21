@@ -11824,6 +11824,23 @@ function readURL(input) {
     }
 }
 
+// Like system
+
+$('.like').on("click", function (event) {
+    console.log(event);
+    event.preventDefault();
+    var postId = event.currentTarget.attributes['data'].value;
+    console.log(postId);
+    $.ajax({
+        method: "POST",
+        url: "/api/like",
+        data: { postId: postId }
+    }).done(function (event) {
+        console.log(event);
+    });
+});
+
+// Navbar burger
 document.addEventListener('DOMContentLoaded', function () {
 
     // Get all "navbar-burger" elements

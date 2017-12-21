@@ -36,15 +36,19 @@
             <div class="resultats">
                 <div class="columns ">
                     <div class="column is-10 is-offset-1">
-                        <div class="linesmall">
+                        <div class="is-flex">
                              {{--Medaillons--}}
                             @if($categunivers)
                                @includeIf("search.elements.categ")
                             @endif
+                        </div>
+                        <div class="is-flex">
                              {{--HP, Narnia, etc--}}
                             @if($univers)
                               @includeIf("search.elements.univers")
                             @endif
+                        </div>
+                        <div class="is-flex">
 
                             {{--@if($valeurs['type_recipes'])--}}
                                {{--@includeIf("search.elements.type_univ")--}}

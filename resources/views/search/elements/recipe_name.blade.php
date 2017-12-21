@@ -35,7 +35,7 @@
                         @if($recette->id_user != NULL && isset($recette) && isset($first))
                                 <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first}}">
                                 @else
-                                <img src="">
+                                <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
                                 @endif
                             </figure>
 
@@ -97,7 +97,7 @@
 
                         </div>
                         <div class="bottom">
-                            <a class="tag"><i class="material-icons">favorite</i></a>
+                            <a class="tag like" data="{{$recette->id}}"><i class="material-icons">favorite</i></a>
                         </div>
 
                     </div>
