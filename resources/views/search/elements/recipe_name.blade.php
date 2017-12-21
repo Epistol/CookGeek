@@ -29,7 +29,7 @@
                             @if($recette->id_user != NULL  )
                                 <figure class="image is-1by1" >
 
-                                   <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->first()->image_name}}">
+                                   {{--<img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->first()->image_name}}">--}}
                                 </figure>
                             @endif
 

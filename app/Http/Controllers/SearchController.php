@@ -28,16 +28,28 @@ class SearchController extends Controller
         $types_plat = DB::table('type_recipes')->get();
 
         $search_type =  array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers' );
+        $valeurs = ["value" => $rq];
 
         foreach ($search_type as $key => $item) {
             if (array_key_exists($item, $result)) {
                 $retour[$key] = $result[$item];
+                if (array_key_exists('recipe', $result)) {
+                    foreach ($result['recipe'] as $key => $recip){
+                        $images_first[$recip->id] =  DB::table('recipe_imgs')
+                            ->where('recipe_id', '=', $recip->id)
+                            ->where('user_id', '=', $recip->id_user)
+                            ->first();
+                    }
+
+                    dd($images_first);
+//                    $valeurs[""] = $firstimg->first()->image_name;
+                }
             }
             else {
                 $retour[$key] = null;
             }
         }
-        $valeurs = ["value" => $rq];
+
 
         foreach ($search_type as $key => $s){
             $valeurs[$s] = $retour[$key];
