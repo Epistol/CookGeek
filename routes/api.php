@@ -21,3 +21,5 @@ Route::post('/search', [
     'as' => 'api.search',
     'uses' => 'Api\SearchController@search'
 ]);
+
+Route::post("/like", 'Recipe\RecipesController@index')->name("recipe.index");

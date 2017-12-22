@@ -118,7 +118,7 @@ $('.like').on("click", function (event) {
         data : {postId: postId }
     })
         .done(function(event){
-            console.log(event);
+
         })
 });
 
