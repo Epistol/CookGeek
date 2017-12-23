@@ -2,11 +2,14 @@
 
     <div class="field has-addons">
         <p class="control">
-            <a class="button tooltip is-tooltip-left" data-tooltip="Ajouter aux coups de coeur" >
+            <a class="button tooltip is-tooltip-left like
+{{$controller->check_liked($recette->id)}}
+                    " id="{{$recette->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur" >
                   <span class="icon is-small">
                     <i class="material-icons">&#xE87E;</i>
                   </span>
             </a>
+
         </p>
         <p class="control">
             <a class="button tooltip is-tooltip-left" data-tooltip="Imprimer" >

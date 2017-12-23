@@ -251,8 +251,24 @@ class RecipesController extends Controller
             'totaliso' => $totaliso,
 
 
-        ) );
+        ) )->with(['controller'=>$this]);
     }
+
+    public function check_liked($id){
+        $u_id = Auth::id();
+        $l_id =  DB::table('user_recipe_likes')
+            ->where(
+                ['user_id' => $u_id, 'recipe_id' => $id]
+            )->first();
+        if($l_id){
+            return "liked";
+        }
+        else {
+            return false;
+        }
+
+    }
+
 
     private function sumerise($val){
         // si il y'a + d'1heure
