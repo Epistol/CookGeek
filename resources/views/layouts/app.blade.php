@@ -30,7 +30,7 @@
 @include("layouts.footer")
 
 <!-- Scripts -->
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script src="https://use.fontawesome.com/403c56d95d.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>{{--

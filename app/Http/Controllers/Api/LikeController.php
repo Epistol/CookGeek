@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\UserRecipeLike;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LikeController extends Controller
 {
@@ -20,11 +23,38 @@ class LikeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $data
      * @return string
      */
     public function create(Request $data)
     {
-       return $data;
+
+            $u_id = Auth::id();
+
+
+
+            // Check if user hasn't faved it yet :
+
+            $id =  DB::table('user_recipe_likes')
+                ->where(
+                ['user_id' => $u_id, 'recipe_id' => $data->recette]
+            )->first();
+
+            if($id == ""){
+                $id =  DB::table('user_recipe_likes')
+                    ->insertGetId(
+                        [ 'user_id' => $u_id , 'recipe_id' => $data->recette]
+                    );
+
+            }
+            if($id == "" OR $id == NULL){
+                return response('Nop', 500);
+            }
+
+
+
+            return response('OK', 200);
+
     }
 
     /**

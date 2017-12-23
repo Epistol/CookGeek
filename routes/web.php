@@ -58,6 +58,6 @@ Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@post
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', 'AdminController@index')->middleware('auth', 'admin');
 	Route::resource('page', 'PageController');
-
-
 });
+
+Route::post("/like", 'Api\LikeController@create')->name("api.like.create")->middleware('web');

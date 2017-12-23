@@ -22,4 +22,3 @@ Route::post('/search', [
     'uses' => 'Api\SearchController@search'
 ]);
 
-Route::post("/like", 'Api\LikeController@create')->name("api.like.create");

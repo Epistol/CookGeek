@@ -99,7 +99,7 @@
 
                         </div>
                         <div class="bottom">
-                            <a class="tag like" data="{{$recette->id}}"><i class="material-icons">favorite</i></a>
+                            <a class="tag like" data="{{$recette->id}}" verif="{{ csrf_token() }}"><i class="material-icons">favorite</i></a>
                         </div>
 
                     </div>
@@ -108,13 +108,13 @@
 
 
         @endforeach
-        <span>
-                 {{ $recipe->links() }}
-        </span>
+
 
     </div>
 
 
 @endforeach
-
+<span>
+                 {{ $recipe->links() }}
+        </span>
 

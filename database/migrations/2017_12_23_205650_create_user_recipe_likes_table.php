@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRecipeFavsTable extends Migration
+class CreateUserRecipeLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateUserRecipeFavsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_recipe_favs', function (Blueprint $table) {
+        Schema::create('user_recipe_likes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('recipe_id');
-            $table->longText('comment');
-            $table->boolean('todo');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ class CreateUserRecipeFavsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_recipe_favs');
+        Schema::dropIfExists('user_recipe_likes');
     }
 }
