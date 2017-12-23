@@ -28,9 +28,11 @@
             <div class="column is-6 is-result" style="max-height: 190px;">
                 <div class="columns">
                     <div class="column is-4 to-hover is-paddingless is-marginless">
+                        @if(isset($type))
                         <div class="hovered">
                             <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                         </div>
+                        @endif
                         <figure class="image is-1by1" >
                         @if($recette->id_user != NULL && isset($recette) && isset($first))
                                 <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first}}">
