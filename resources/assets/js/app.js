@@ -109,7 +109,7 @@ function readURL(input) {
 
 $('.like').on("click", function (event) {
    event.preventDefault();
-    var postId = event.currentTarget.attributes['data'].value;
+    var postId = event.currentTarget.attributes['id'].value;
     var verif = event.currentTarget.attributes['verif'].value;
 
 
@@ -120,6 +120,16 @@ $('.like').on("click", function (event) {
     })
         .then(function (response) {
             console.log(response);
+            if(response.data == "unliked"){
+               $("#"+postId).removeClass("liked");
+            }
+            else if(response.data == "liked"){
+                $("#"+postId).addClass("liked");
+            }
+            else {
+
+            }
+
         })
         .catch(function (error) {
             if (error.response) {

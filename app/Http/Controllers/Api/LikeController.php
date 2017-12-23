@@ -26,6 +26,12 @@ class LikeController extends Controller
      * @param Request $data
      * @return string
      */
+
+
+
+
+
+
     public function create(Request $data)
     {
 
@@ -40,20 +46,32 @@ class LikeController extends Controller
                 ['user_id' => $u_id, 'recipe_id' => $data->recette]
             )->first();
 
-            if($id == ""){
-                $id =  DB::table('user_recipe_likes')
+            // IF it's liked, then we add it
+            if($id == ""  OR $id == NULL){
+                $id2 =  DB::table('user_recipe_likes')
                     ->insertGetId(
                         [ 'user_id' => $u_id , 'recipe_id' => $data->recette]
                     );
-
-            }
-            if($id == "" OR $id == NULL){
-                return response('Nop', 500);
+                // we return the new-like state
+                return response("liked", 200);
             }
 
+            // if it was already liked
+        else {
+            DB::table('user_recipe_likes')->where('user_id', '=', $u_id)->where('recipe_id', '=', $data->recette)->delete();
+            return response("unliked", 200);
+        }
 
 
-            return response('OK', 200);
+
+
+        // Error handling
+        if($id == "" OR $id == NULL){
+            return response('Nop', 500);
+        }
+
+
+
 
     }
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\UserRecipeLike;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Search;
 
@@ -14,6 +16,21 @@ class SearchController extends Controller
     public function __construct(Api\SearchController $apisearch)
     {
         $this->apisearch = $apisearch;
+    }
+
+    public function check_liked($id){
+        $u_id = Auth::id();
+        $l_id =  DB::table('user_recipe_likes')
+            ->where(
+                ['user_id' => $u_id, 'recipe_id' => $id]
+            )->first();
+        if($l_id){
+            return "liked";
+        }
+        else {
+            return false;
+        }
+
     }
     public function postSearch(Request $request)
     {
@@ -58,21 +75,7 @@ class SearchController extends Controller
         }
 
 
-
-
-
-//            dd($result['recipe']);
-        /* foreach ($result['recipe']->items as $recip){
-             $first_img = DB::table('recipe_imgs')
-                 ->where('recipe_id', '=', $recip->id)
-                 ->where('user_id', '=', $recip->id_user)
-                 ->first();
-         }
-
-
-     }*/
-
-        return view('search.result',$valeurs);
+        return view('search.result',$valeurs)->with(['controller'=>$this]);
 
     }
 }
