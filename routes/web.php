@@ -52,6 +52,8 @@ Route::group(['prefix' => 'recette'], function () {
 
 });
 
+
+
 Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@postSearch']);
 
@@ -61,3 +63,4 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post("/like", 'Api\LikeController@create')->name("api.like.create")->middleware('web');
+Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");

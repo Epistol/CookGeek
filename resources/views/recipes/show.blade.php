@@ -105,11 +105,18 @@
         $ingredientliste[] =  $ingr->qtt . " " . $nom_in ;
     }
 
+    if(isset($firstimg->image_name)){
+       $img =  $firstimg->image_name;
+    }
+    else {
+         $img = null;
+    }
+
     // Shema.org
     $datas = Schema::Recipe()
         ->name($recette->title)
-        ->image(url('/')."/recipes/".$recette->id."/".$recette->id_user."/".$firstimg->image_name)
-        ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
+        ->image(url('/')."/recipes/".$recette->id."/".$recette->id_user."/".$img)
+            ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
         ->aggregateRating(Schema::AggregateRating()->ratingValue($stars1)->reviewCount($countrating))
         ->author(Schema::person()->name($nom))
         ->prepTime($preptimeiso)

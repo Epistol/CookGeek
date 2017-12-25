@@ -254,6 +254,18 @@ class RecipesController extends Controller
         ) )->with(['controller'=>$this]);
     }
 
+
+    public function random(){
+        $rand = DB::table('recipes')
+            ->inRandomOrder()
+            ->first();
+        $sl = $rand->slug;
+
+
+        return redirect()->route('recipe.show', ['post' => $sl]);
+        // TODO
+    }
+
     public function check_liked($id){
         $u_id = Auth::id();
         $l_id =  DB::table('user_recipe_likes')

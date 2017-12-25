@@ -60,7 +60,7 @@
                 Tutos
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="{{route("recipe.random")}}">
                 🎲
             </a>
 
