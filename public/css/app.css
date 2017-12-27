@@ -16528,7 +16528,7 @@ table.times th {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   display: table;
   -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
@@ -16540,21 +16540,21 @@ table.times th {
 }
 
 .modal-container {
-  width: 300px;
+  width: 25%;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 2rem 3rem;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 5px;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+  color: #7f5fbf;
+  font-weight: bold;
 }
 
 .modal-body {
@@ -16563,6 +16563,19 @@ table.times th {
 
 .modal-default-button {
   float: right;
+  background: transparent;
+  color: #898989;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+  /* for input */
+  -webkit-user-select: none;
+  /* for button */
+}
+
+.modal-default-button:hover {
+  color: #47424a;
 }
 
 /*
