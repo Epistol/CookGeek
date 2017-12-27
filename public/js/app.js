@@ -55299,8 +55299,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -55317,86 +55315,72 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "modal" } }, [
-    _c("div", { staticClass: "modal-mask" }, [
+    _c("div", { staticClass: "modal is-active" }, [
+      _c("div", {
+        staticClass: "modal-background",
+        on: {
+          click: function($event) {
+            _vm.$emit("close")
+          }
+        }
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "modal-wrapper",
+          staticClass: "modal-content",
           on: {
             click: function($event) {
-              _vm.$emit("close")
+              $event.stopPropagation()
             }
           }
         },
         [
+          _c("div", { staticClass: "boxmodal is-marginless" }, [
+            _c(
+              "div",
+              { staticClass: "modal-header" },
+              [
+                _vm._t("header", [
+                  _vm._v(
+                    "\n                        default header\n                    "
+                  )
+                ])
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal-body" },
+              [
+                _vm._t("body", [
+                  _vm._v(
+                    "\n                        default body\n                    "
+                  )
+                ])
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
           _c(
             "div",
-            {
-              staticClass: "modal-container",
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                }
-              }
-            },
+            { staticClass: "modal-footer" },
             [
-              _c("div", { staticClass: "closingcross" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "modal-default-button",
-                    on: {
-                      click: function($event) {
-                        _vm.$emit("close")
-                      }
-                    }
-                  },
-                  [_vm._v("\n                        X\n                    ")]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-header" },
-                [
-                  _vm._t("header", [
-                    _vm._v(
-                      "\n                        default header\n                    "
-                    )
-                  ])
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _vm._t("body", [
-                    _vm._v(
-                      "\n                        default body\n                    "
-                    )
-                  ])
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-footer" },
-                [
-                  _vm._t("footer", [
-                    _vm._v(
-                      "\n                        default footer\n                    "
-                    )
-                  ])
-                ],
-                2
-              )
-            ]
+              _vm._t("footer", [
+                _vm._v("\n                    default footer\n                ")
+              ])
+            ],
+            2
           )
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "modal-close is-large",
+        attrs: { "aria-label": "close" }
+      })
     ])
   ])
 }

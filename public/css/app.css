@@ -15774,7 +15774,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #47424a;
+  background-color: #524d55;
   text-align: center;
   color: white;
   margin-top: 2rem;
@@ -15789,7 +15789,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 footer {
-  background: #47424a;
+  background: #524d55;
 }
 
 .logo {
@@ -16529,31 +16529,24 @@ table.times th {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  display: table;
   -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
+/*
 .modal-container {
   width: 25%;
   margin: 0px auto;
   padding: 2rem 3rem;
   background-color: #fff;
   border-radius: 5px;
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  -webkit-transition: all .3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
 }
-
+*/
 .modal-header h3 {
   margin-top: 0;
-  color: #7f5fbf;
+  color: #47424a;
   font-weight: bold;
 }
 
@@ -16575,7 +16568,7 @@ table.times th {
 }
 
 .modal-default-button:hover {
-  color: #47424a;
+  color: #524d55;
 }
 
 /*
@@ -16586,12 +16579,41 @@ table.times th {
  * You can easily play with the modal transition by editing
  * these styles.
  */
+.boxmodal {
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  color: #4a4a4a;
+  display: block;
+  padding: 1.25rem;
+}
+
 .modal-enter {
   opacity: 0;
 }
 
 .modal-leave-active {
   opacity: 0;
+}
+
+.modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-radius: 0 0 5px 5px;
+  background: white;
+}
+
+.modal-footer .bg {
+  background: #F1F3F5;
 }
 
 .modal-enter .modal-container,

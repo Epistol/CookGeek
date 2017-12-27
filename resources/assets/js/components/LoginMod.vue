@@ -1,14 +1,11 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" >
-            <div class="modal-wrapper" @click="$emit('close')" >
-                <div class="modal-container" @click.stop>
+        <div class="modal is-active" >
+            <div class="modal-background" @click="$emit('close')" >
+            </div>
+            <div class="modal-content" @click.stop>
+                <div class="boxmodal is-marginless">
 
-                    <div class="closingcross">
-                        <button class="modal-default-button" @click="$emit('close')">
-                            X
-                        </button>
-                    </div>
                     <div class="modal-header">
                         <slot name="header">
                             default header
@@ -21,13 +18,14 @@
                         </slot>
                     </div>
 
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            default footer
-                        </slot>
-                    </div>
+                </div>
+                <div class="modal-footer" >
+                    <slot name="footer">
+                        default footer
+                    </slot>
                 </div>
             </div>
+            <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </transition>
 </template>
