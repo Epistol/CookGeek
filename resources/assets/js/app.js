@@ -25,8 +25,7 @@ Vue.use(VeeValidate);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-/*
-Vue.component('example', require('./components/Example.vue'));*/
+Vue.component('modal', require('./components/LoginMod.vue'));
 
 
 const app = new Vue({
@@ -37,6 +36,7 @@ const app = new Vue({
 
     data: {
         titre: '',
+        showModalLike : false,
 
         steps:[
             {
@@ -113,42 +113,53 @@ $('.like').on("click", function (event) {
     var verif = event.currentTarget.attributes['verif'].value;
 
 
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
+    if(userIsLoggedIn === 1){
 
-    axios.post('/like', {
-        recette: postId
-    })
-        .then(function (response) {
-            console.log(response);
-            if(response.data == "unliked"){
-               $("#"+postId).removeClass("liked");
-            }
-            else if(response.data == "liked"){
-                $("#"+postId).addClass("liked");
-            }
-            else {
 
-            }
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
 
+        axios.post('/like', {
+            recette: postId
         })
-        .catch(function (error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                // http.ClientRequest in node.js
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
-        });
+            .then(function (response) {
+                console.log(response);
+                if(response.data == "unliked"){
+                    $("#"+postId).removeClass("liked");
+                }
+                else if(response.data == "liked"){
+                    $("#"+postId).addClass("liked");
+                }
+                else {
+
+                }
+
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            });
+    }
+    else {
+        app.showModalLike = true;
+        console.log('pas co');
+        return false;
+    }
+
+
 
 
 });

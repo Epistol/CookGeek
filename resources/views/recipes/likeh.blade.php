@@ -27,6 +27,15 @@
             </a>
         </p>
 
+        <modal v-if="showModalLike" @close="showModalLike = false">
+            <h3 slot="header">Connexion requise</h3>
+            <p slot="body">Vous ne pouvez pas ajouter de recette en favori sans être connecté</p>
+            <div slot="footer">
+                <button>Connexion</button>
+            </div>
+        </modal>
+
+
         {{-- ON click share :
 
          <p class="control">
@@ -65,14 +74,4 @@
     </div>
 </div>
 
-<script>
-    <?php
-     if(Auth::check() == FALSE || Auth::check() == ''){
-        echo "var userIsLoggedIn = 0;";
-        }
-        else {
-                echo "var userIsLoggedIn = 1;";
-            }
 
- ?>
-</script>

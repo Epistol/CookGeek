@@ -72,4 +72,8 @@ class SearchController extends Controller
         return $response;
 
     }
+
+    public function index(Request $request){
+        dd($request);
+    }
 }
