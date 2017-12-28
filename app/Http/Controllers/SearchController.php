@@ -32,7 +32,7 @@ class SearchController extends Controller
         }
 
     }
-    public function postSearch(Request $request)
+    public function index(Request $request)
     {
 
         $rq = $request->q;

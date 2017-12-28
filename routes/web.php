@@ -39,14 +39,15 @@ Route::get('/contact', 'PageController@show_contact');
 Route::group(['prefix' => 'recette'], function () {
 	Route::get('/','Recipe\RecipesController@index')->name("recipe.index");
 	Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
+	Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
 	Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
 	Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show");
 
     Route::group(['prefix' => 'media'], function () {
-        Route::get('/','Recipe\RecipesController@index')->name("media.index");
+        Route::get('/','Recipe\RecipesController@indexmedia')->name("media.index");
         Route::get('ajout','Recipe\RecipesController@add')->name("media.add")->middleware('auth');
         Route::post('ajout','Recipe\RecipesController@store')->name("media.store");
-        Route::get('{post}','Recipe\RecipesController@show')->name("media.show");
+        Route::get('{post}','Recipe\RecipesController@indexmediatype')->name("media.show");
     });
 
 
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'recette'], function () {
 
 
 Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
-Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@postSearch']);
+Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', 'AdminController@index')->middleware('auth', 'admin');

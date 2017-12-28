@@ -1,8 +1,5 @@
 
 .ajout_recette_img {
-  /* width: 200px; */
-  min-height: 120px;
-  display: flex;
   justify-content: center;
   align-items: center;
   background: $body-bg;
@@ -19,13 +16,13 @@
 }
 .columns .close-hover{
   display:none;
-
 }
 .columns.draggable:hover .close-hover{
   display:flex;
-
 }
-
+.file-cta{
+  display: block;
+}
 .file-cta.darker{
   color:$text-color;
 }
@@ -50,20 +47,14 @@ table.bgborder.table td, .table th {
 }
 
 .ajout_recette_img img{
-  position: relative;
   z-index: 2;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-
-  max-height: 150px;  max-width:   150px;
   width: auto;
 }
 
 .file-cta {
   background-color: transparent;
   color: #ffffff;
-  border: 0px solid transparent;
+  border-bottom: 1px solid $brand-primary;
 }
 
 input.input_modal, textarea.input_modal{

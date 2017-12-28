@@ -82,6 +82,13 @@ const app = new Vue({
         }
     }});
 
+
+/**
+ * Quand on ajoute une img dans le formulaire ajout img recette
+ * @param this
+ * @return val
+ */
+
 $('#upload').change(function() {
     readURL(this);
     var filename = $(this).val();
@@ -92,6 +99,12 @@ $('#upload').change(function() {
     $('#filename').val(filename);
 });
 
+
+/**
+ * Lecture de l'img pour l'upload d'img
+ * @param input
+ * @return readasDataUrl()
+ */
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -99,13 +112,19 @@ function readURL(input) {
 
         reader.onload = function(e) {
             $('#blah').attr('src', e.target.result);
+            $('span.file-label').text("Changer l'image");
         };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-// Like system
+/**
+ * Navbar burger
+ * @param PostID = id de la recette
+ * @param verif = csrf
+ * @return axios state
+ */
 
 $('.like').on("click", function (event) {
    event.preventDefault();
@@ -123,10 +142,10 @@ $('.like').on("click", function (event) {
         })
             .then(function (response) {
                 console.log(response);
-                if(response.data == "unliked"){
+                if(response.data === "unliked"){
                     $("#"+postId).removeClass("liked");
                 }
-                else if(response.data == "liked"){
+                else if(response.data === "liked"){
                     $("#"+postId).addClass("liked");
                 }
                 else {
@@ -164,8 +183,9 @@ $('.like').on("click", function (event) {
 
 });
 
-
-// Navbar burger
+/**
+ * Navbar burger
+ */
 document.addEventListener('DOMContentLoaded', function () {
 
     // Get all "navbar-burger" elements

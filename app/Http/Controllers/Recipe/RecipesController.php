@@ -14,11 +14,16 @@ use Carbon\Carbon;
 
 class RecipesController extends Controller
 {
+
+
+
     /**
      * Show the profile for the given user.
      *
      * @return Response
      */
+
+
     public function index()
     {
 
@@ -32,8 +37,35 @@ class RecipesController extends Controller
         }
         $recettes = collect($recettesrand);
 
+        $recipes = DB::table('recipes')->latest()->paginate(12);
+
+
         // On charge les données dans la vue
-        return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg) );
+        return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg, 'recipes'=>$recipes) )->with(['controller'=>$this]);
+    }
+
+
+    /**
+     *  Index des recettes par type de média
+     * @param $type
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function indexmediatype($type)
+    {
+
+        $universcateg = DB::table('categunivers')->where("name", "=", $type)->get();
+
+        if($universcateg != null){
+           $recipes = DB::table('recipes')->where("type_univers", "=", $universcateg[0]->id)->latest()->paginate(12);
+
+            // On charge les données dans la vue
+            return view('types.index', array( 'universcateg' => $universcateg[0], 'recipes'=>$recipes) )->with(['controller'=>$this]);
+
+        }
+        else {
+            return back();
+        }
+
     }
 
     /**
@@ -46,12 +78,173 @@ class RecipesController extends Controller
         return view('recipes.add', array( 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat ) );
     }
 
+    /** TODO finish
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($numero){
+        $recette = DB::table('recipes')->where("id", "=", $numero)->get();
+
+        if($recette != "" OR $recette != NULL){
+            if($recette[0]->id_user != Auth::id()){
+                return back();
+            }
+            else {
+                $univers = DB::table("univers")->where("id", "=", $recette[0]->univers)->select('name')->get();
+                $types_univ = DB::table('categunivers')->get();
+                $difficulty = DB::table('difficulty')->get();
+                $types_plat = DB::table('type_recipes')->get();
+                return view('recipes.edit', array( 'univers' => $univers[0]->name, 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat, 'recette' => $recette[0] ) );
+            }
+        }
+        else {
+            return back();
+        }
+
+    }
+
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request){
+        $input = $request->all();
+
+        // User ID :
+        $iduser = Auth::user()->id;
+
+        // Verification des champs null
+
+
+        // Minutes
+        $prep_minute = (new \App\Recipes)->verify_time($request->prep_minute);
+        $cook_minute = (new \App\Recipes)->verify_time($request->cook_minute);
+        $rest_minute = (new \App\Recipes)->verify_time($request->rest_minute);
+        // Heures
+        $prep_heure = (new \App\Recipes)->verify_time($request->prep_heure);
+        $cook_heure = (new \App\Recipes)->verify_time($request->cook_heure);
+        $rest_heure = (new \App\Recipes)->verify_time($request->rest_heure);
+
+
+        $prep = ( $prep_heure * 60 ) + $prep_minute;
+        $cook = ( $cook_heure * 60 ) + $cook_minute;
+        $rest = ( $rest_heure * 60 ) + $rest_minute;
+
+        $univers = DB::table('univers')->select('id')->where('name', 'like', '%'.$request->universe.'%')->get();
+
+        // Si aucun univers n'est associé à la recherche
+        if($univers->isEmpty()) {
+
+            $string =$request->universe;
+
+            // On l'ajoute à la DB
+            $id_univers = DB::table( 'univers' )->insertGetId(
+                [ 'name' => $string ]
+            );
+            $univers  = $id_univers;
+
+        }
+        else {
+            $univers = $univers->first();
+            $univers = $univers->id;
+        }
+
+        $comm = $request->comment;
+        if($request->vegan == "on"){
+            $vege = true;
+        }
+        else {
+            $vege = false;
+        }
+
+        // Insert recette
+        $idRecette = DB::table('recipes')->insertGetId(
+            ['title' => $request->title,
+                'vegetarien' => $request->vegan,
+                'difficulty' => $request->difficulty,
+                'type' => $request->categ_plat,
+                'cost' => $request->cost,
+                'prep_time' => $prep,
+                'cook_time' => $cook,
+                'rest_time' => $rest,
+                'nb_guests' => $request->unite_part,
+                'guest_type' => $request->value_part ,
+                'univers' => $univers,
+                'type_univers' => $request->type,
+                'id_user' => $iduser,
+                'slug' => '',
+                'vegetarien' => $vege,
+                'video' => $request->video,
+                'commentary_author' => $comm ,
+                'created_at' => now(),
+                'updated_at' => now(),
+
+            ]
+        );
+
+        // Partie SLUG
+        $slug = $this->slugtitre($request, $idRecette);
+
+        DB::table('recipes')
+            ->where('id', $idRecette)
+            ->update(['slug' => $slug]);
+
+
+        // Partie ingrédients
+
+        $id_ingr = array();
+        $id_qtt = array();
+
+        foreach ($request->ingredient as $key => $ingredient){
+            $id_ingredient_ajout = DB::table('ingredients')->where('name','=', $ingredient)->get();
+            // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
+            if($id_ingredient_ajout->isEmpty()){
+                $in = $ingredient;
+
+                $ingredientID = DB::table( 'ingredients' )->insertGetId(
+                    [ 'name' => $in ]
+                );
+            }
+            else {
+                $ingredientID = $id_ingredient_ajout->first();
+                $ingredientID = $ingredientID->id;
+            }
+            // Pour chaque ingrédient, on l'associe à la recette
+
+            DB::table('recipes_ingredients')->insertGetId(
+                ['id_recipe' => $idRecette,
+                    'id_ingredient' => $ingredientID,
+                    'qtt' => $request->qtt_ingredient[$key],
+                ]);
+        }
+
+        // Gestion des étapes
+        foreach ($request->step as $key => $step){
+            DB::table('recipes_steps')->insertGetId(
+                ['recipe_id' => $idRecette,
+                    'step_number' => $key,
+                    'instruction' => $request->step[$key] ,
+
+                ]);
+        }
+
+        // Parties image
+        $this->validate($request, [
+            'resume' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $photoName = time().'.'.$request->resume->getClientOriginalExtension();
+        $img = $this->ajouter_image($photoName, $iduser, $idRecette);
+        $request->resume->move(public_path('recipes/'.$idRecette.'/'.$iduser.'/'), $photoName);
+
+        return redirect()->route('recipe.show', ['post' => $slug]);
+    }
+
+
+    /** TODO
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request){
         $input = $request->all();
 
         // User ID :

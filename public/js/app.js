@@ -11718,7 +11718,7 @@ module.exports = Vue$3;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(46);
 
 
 /***/ }),
@@ -11755,7 +11755,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vee_
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(47));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(42));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -11801,6 +11801,12 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         }
     } });
 
+/**
+ * Quand on ajoute une img dans le formulaire ajout img recette
+ * @param this
+ * @return val
+ */
+
 $('#upload').change(function () {
     readURL(this);
     var filename = $(this).val();
@@ -11811,6 +11817,11 @@ $('#upload').change(function () {
     $('#filename').val(filename);
 });
 
+/**
+ * Lecture de l'img pour l'upload d'img
+ * @param input
+ * @return readasDataUrl()
+ */
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -11818,13 +11829,19 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#blah').attr('src', e.target.result);
+            $('span.file-label').text("Modifier l'image");
         };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-// Like system
+/**
+ * Navbar burger
+ * @param PostID = id de la recette
+ * @param verif = csrf
+ * @return axios state
+ */
 
 $('.like').on("click", function (event) {
     event.preventDefault();
@@ -11839,9 +11856,9 @@ $('.like').on("click", function (event) {
             recette: postId
         }).then(function (response) {
             console.log(response);
-            if (response.data == "unliked") {
+            if (response.data === "unliked") {
                 $("#" + postId).removeClass("liked");
-            } else if (response.data == "liked") {
+            } else if (response.data === "liked") {
                 $("#" + postId).addClass("liked");
             } else {}
         }).catch(function (error) {
@@ -11869,7 +11886,9 @@ $('.like').on("click", function (event) {
     }
 });
 
-// Navbar burger
+/**
+ * Navbar burger
+ */
 document.addEventListener('DOMContentLoaded', function () {
 
     // Get all "navbar-burger" elements
@@ -55096,24 +55115,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(48)
+var normalizeComponent = __webpack_require__(43)
 /* script */
-var __vue_script__ = __webpack_require__(49)
+var __vue_script__ = __webpack_require__(44)
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = __webpack_require__(45)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55153,7 +55162,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 43 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -55262,7 +55271,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 49 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55307,7 +55316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 50 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55393,6 +55402,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-2b75acd0", module.exports)
   }
 }
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -15682,6 +15682,10 @@ body, button, input, select, textarea {
   width: 256px;
 }
 
+.navbar-item.has-dropdown.is-hoverable {
+  z-index: 1000;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
 }
@@ -15851,11 +15855,6 @@ a.navbar-item, a.navbar-link {
 }
 
 .ajout_recette_img {
-  /* width: 200px; */
-  min-height: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -15885,6 +15884,10 @@ a.navbar-item, a.navbar-link {
   display: flex;
 }
 
+.file-cta {
+  display: block;
+}
+
 .file-cta.darker {
   color: #7f5fbf;
 }
@@ -15908,20 +15911,14 @@ table.bgborder.table td, .table th {
 }
 
 .ajout_recette_img img {
-  position: relative;
   z-index: 2;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  max-height: 150px;
-  max-width: 150px;
   width: auto;
 }
 
 .file-cta {
   background-color: transparent;
   color: #ffffff;
-  border: 0px solid transparent;
+  border-bottom: 1px solid #7f5fbf;
 }
 
 input.input_modal, textarea.input_modal {

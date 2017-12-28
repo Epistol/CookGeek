@@ -50,6 +50,11 @@ body, button, input, select, textarea{
   width: 256px;
 
 }
+
+.navbar-item.has-dropdown.is-hoverable {
+  z-index: 1000;
+}
+
 h1, h2, h3, h4, h5, h6{
   color:$brand-primary;
 }
