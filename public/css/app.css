@@ -15686,6 +15686,10 @@ body, button, input, select, textarea {
   z-index: 1000;
 }
 
+.content li + li {
+  margin-top: 0em;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
 }
@@ -16390,11 +16394,12 @@ table.times th {
 }
 
 .hovered {
-  display: none;
+  visibility: hidden;
+  height: 0px;
 }
 
 .to-hover:hover > .hovered {
-  display: block;
+  visibility: visible;
   position: absolute;
   z-index: 5;
 }

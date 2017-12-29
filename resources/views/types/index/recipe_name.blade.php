@@ -11,7 +11,8 @@
             $img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
             $first = $img;
             $starsget = (new \App\Search)->explode_star($recette->id);
-            $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
+            $type = DB::table('type_recipes')->where('id', $recette->type)->first();
+
             ?>
 
             <div class="column is-6 is-result" >
@@ -22,6 +23,7 @@
                             <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                         </div>
                         @endif
+                        <a href="/recette/{{$recette->slug}}">
                         <figure class="image is-1by1" >
                         @if($recette->id_user != NULL  && isset($first))
                                 <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
@@ -29,14 +31,14 @@
                                 <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
                                 @endif
                             </figure>
-
+                        </a>
 
                     </div>
                     <div class="column is-7">
                         <div class="top is-flex">
-                            <h2 class="title">
+                            <a href="/recette/{{$recette->slug}}"> <h2 class="title">
                                 {{$recette->title}}
-                            </h2>
+                                </h2></a>
 
 
                         </div>

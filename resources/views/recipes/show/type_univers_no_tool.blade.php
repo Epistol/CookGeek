@@ -1,9 +1,9 @@
     @if($typeuniv->name== 'tv')
-     <div class="icones {{strtolower($typeuniv->name)}} " >
-     </div>
+        <a href="/type/{{strtolower($typeuniv->name)}}"> <div class="icones {{strtolower($typeuniv->name)}} " >
+            </div></a>
 
     @else
-                <div class="icones {{strtolower($typeuniv->name)}}   ">
-                </div>
+        <a href="/type/{{strtolower($typeuniv->name)}}">  <div class="icones {{strtolower($typeuniv->name)}}   ">
+                </div></a>
 
     @endif

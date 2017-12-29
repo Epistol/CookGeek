@@ -50,6 +50,11 @@ Route::group(['prefix' => 'recette'], function () {
         Route::get('{post}','Recipe\RecipesController@indexmediatype')->name("media.show");
     });
 
+    Route::group(['prefix' => 'type'], function () {
+        Route::get('/','Recipe\TypeController@index')->name("type.index");
+        Route::get('{post}','Recipe\TypeController@show')->name("type.show");
+    });
+
 
 });
 

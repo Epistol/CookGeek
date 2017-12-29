@@ -55,6 +55,9 @@ body, button, input, select, textarea{
   z-index: 1000;
 }
 
+.content li + li {
+  margin-top: 0em;
+}
 h1, h2, h3, h4, h5, h6{
   color:$brand-primary;
 }

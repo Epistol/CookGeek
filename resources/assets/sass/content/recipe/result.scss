@@ -14,12 +14,12 @@
   overflow:hidden;
 }
 .hovered{
-  display: none;
-
+  visibility: hidden;
+  height: 0px;
 }
 
 .to-hover:hover > .hovered {
-  display: block;
+  visibility: visible;
   position: absolute;
   z-index: 5;
 }

@@ -7,11 +7,13 @@
 
     <div class="card-content indexrecipe">
         <div class="is-centered ">
+            <a href="{{route('media.show', $c->name)}}">
             @if($c->name== 'tv')
                 <div class="medail {{strtolower($c->name)}}" ></div>
             @else
                 <div class="medail {{strtolower($c->name)}}"></div>
             @endif
+            </a>
         </div>
     </div>
 </div>
