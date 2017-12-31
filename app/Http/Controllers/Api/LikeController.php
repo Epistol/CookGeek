@@ -37,8 +37,6 @@ class LikeController extends Controller
 
             $u_id = Auth::id();
 
-
-
             // Check if user hasn't faved it yet :
 
             $id =  DB::table('user_recipe_likes')

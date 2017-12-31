@@ -110,3 +110,34 @@ $screen-md-max: ($screen-lg-min - 1);
     @content;
   }
 }
+
+//////
+
+// Small devices
+@mixin sm_1 {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md_1 {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+
+// Large devices
+@mixin lg_1 {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl_1 {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}

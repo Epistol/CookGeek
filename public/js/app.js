@@ -11829,7 +11829,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#blah').attr('src', e.target.result);
-            $('span.file-label').text("Modifier l'image");
+            $('span.file-label').text("Changer l'image");
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -11850,17 +11850,26 @@ $('.like').on("click", function (event) {
 
     if (userIsLoggedIn === 1) {
 
+        if ($(this).hasClass("liked")) {
+            $("#" + postId).addClass("liked");
+        }
+
+        if ($(this).hasClass("liked")) {
+            $("#" + postId).removeClass("liked");
+        }
+
         axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
 
         axios.post('/like', {
             recette: postId
         }).then(function (response) {
-            console.log(response);
             if (response.data === "unliked") {
-                $("#" + postId).removeClass("liked");
+                if ($(this).hasClass("liked")) {
+                    $("#" + postId).removeClass("liked");
+                }
             } else if (response.data === "liked") {
                 $("#" + postId).addClass("liked");
-            } else {}
+            }
         }).catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
@@ -55311,7 +55320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        console.log('Component mounted.');
+        //console.log('Component mounted.')
     }
 });
 
@@ -55388,7 +55397,12 @@ var render = function() {
       _vm._v(" "),
       _c("button", {
         staticClass: "modal-close is-large",
-        attrs: { "aria-label": "close" }
+        attrs: { "aria-label": "close" },
+        on: {
+          click: function($event) {
+            _vm.$emit("close")
+          }
+        }
       })
     ])
   ])

@@ -55,7 +55,6 @@ Route::group(['prefix' => 'recette'], function () {
         Route::get('{post}','Recipe\TypeController@show')->name("type.show");
     });
 
-
 });
 
 

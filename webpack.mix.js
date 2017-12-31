@@ -16,3 +16,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 
 
+    // .js('node_modules/lightbox2/src/js/lightbox.js', 'public/js').css('node_modules/lightbox2/src/css/lightbox.css', 'public/css');
+
+
+

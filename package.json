@@ -21,6 +21,7 @@
   "dependencies": {
     "bulma": "^0.5.3",
     "bulma-extensions": "^0.3.1",
+    "lightbox2": "^2.10.0",
     "nouislider": "^10.1.0",
     "vee-validate": "^2.0.0-rc.25",
     "vuedraggable": "^2.15.0"

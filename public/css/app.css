@@ -15698,6 +15698,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.5rem 0px;
 }
 
+.hero-body {
+  padding: 2rem 1.5rem;
+}
+
 .is-accent {
   color: #4c6ee6;
 }
@@ -16365,13 +16369,20 @@ table.times th {
   border-radius: 15px 0 0 15px;
 }
 
+@media (max-width: 992px) {
+  .left_register:before {
+    content: "";
+    display: none;
+  }
+}
+
 @media (min-width: 1200px) {
   .chat_hover {
-    z-index: 16;
+    z-index: 17;
     position: absolute;
     width: 42%;
-    left: 4%;
-    top: 11%;
+    left: 3%;
+    top: 10%;
   }
 }
 
@@ -16525,7 +16536,7 @@ table.times th {
 
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
@@ -16622,6 +16633,11 @@ table.times th {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.modal.is-active {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .slide-active, .slide-leave-active {

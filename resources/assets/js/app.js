@@ -135,23 +135,30 @@ $('.like').on("click", function (event) {
     if(userIsLoggedIn === 1){
 
 
+        if($(this).hasClass("liked")){
+            $("#"+postId).addClass("liked");
+        }
+
+        if($(this).hasClass("liked")){
+            $("#"+postId).removeClass("liked");
+        }
+
+
         axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
 
         axios.post('/like', {
             recette: postId
         })
             .then(function (response) {
-                console.log(response);
                 if(response.data === "unliked"){
-                    $("#"+postId).removeClass("liked");
+                    if($(this).hasClass("liked")) {
+                        $("#" + postId).removeClass("liked");
+                    }
                 }
                 else if(response.data === "liked"){
-                    $("#"+postId).addClass("liked");
-                }
-                else {
+                        $("#" + postId).addClass("liked");
 
                 }
-
             })
             .catch(function (error) {
                 if (error.response) {

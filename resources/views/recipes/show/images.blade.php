@@ -1,9 +1,11 @@
 <div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
     {{--Image principale--}}
     @if($firstimg != null )
-    <figure class="image" >
-        <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
-    </figure>
+        <a href="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}" data-lightbox="{{$recette->slug}}" data-title="{{$recette->title}}">
+            <figure class="image" >
+                <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
+            </figure>
+         </a>
     @endif
     @if($images->isEmpty())
 

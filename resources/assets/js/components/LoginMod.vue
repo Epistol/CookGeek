@@ -25,7 +25,7 @@
                     </slot>
                 </div>
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
+            <button class="modal-close is-large" aria-label="close"  @click="$emit('close')"></button>
         </div>
     </transition>
 </template>
@@ -33,7 +33,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            //console.log('Component mounted.')
         }
     }
 </script>

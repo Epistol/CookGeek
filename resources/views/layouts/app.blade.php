@@ -15,6 +15,7 @@
     <link href="/css/nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');</script>
 
@@ -42,8 +43,13 @@
 
     ?>
 </script>
+
 <script src="https://use.fontawesome.com/403c56d95d.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>{{--
+<script src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ asset('js/lightbox.js') }}" defer async></script>
+
+{{--
     <script src="/js/konami.js"></script>
     <script src="/js/toasty/jquery.toasty.js"></script>--}}
 <script src="/js/nouislider.min.js" ></script>
