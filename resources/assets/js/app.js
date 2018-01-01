@@ -9,6 +9,7 @@
 
 require('./bootstrap');
 require('./dropzone');
+require('./star-rating');
 
 window.Vue = require('vue');
 
@@ -16,7 +17,7 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
-
+import StarRating from './star-rating'
 Vue.use(VeeValidate);
 
 
@@ -26,7 +27,7 @@ Vue.use(VeeValidate);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('modal', require('./components/LoginMod.vue'));
-
+Vue.component('star-rating', StarRating);
 
 const app = new Vue({
     el: '#app',
@@ -79,7 +80,7 @@ const app = new Vue({
 
         removeStep: function (index) {
             this.steps.splice(index, 1);
-        }
+        },
     }});
 
 
@@ -120,14 +121,14 @@ function readURL(input) {
 }
 
 /**
- * Navbar burger
+ * Like system
  * @param PostID = id de la recette
  * @param verif = csrf
  * @return axios state
  */
 
 $('.like').on("click", function (event) {
-   event.preventDefault();
+    event.preventDefault();
     var postId = event.currentTarget.attributes['id'].value;
     var verif = event.currentTarget.attributes['verif'].value;
 
@@ -156,7 +157,7 @@ $('.like').on("click", function (event) {
                     }
                 }
                 else if(response.data === "liked"){
-                        $("#" + postId).addClass("liked");
+                    $("#" + postId).addClass("liked");
 
                 }
             })
@@ -189,6 +190,16 @@ $('.like').on("click", function (event) {
 
 
 });
+
+// $('.star').on("click",function (event) {
+//     event.preventDefault();
+//     var postId = event.currentTarget.attributes['id'].value;
+//     var verif = event.currentTarget.attributes['verif'].value;
+//
+//     console.log(postId);
+//
+// });
+
 
 /**
  * Navbar burger

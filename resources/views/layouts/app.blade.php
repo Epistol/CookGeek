@@ -17,8 +17,9 @@
           rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
-    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');</script>
+    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
 
+    </script>
 </head>
 <body>
 <div id="app">
@@ -42,9 +43,12 @@
     }
 
     ?>
+
+
 </script>
 
 <script src="https://use.fontawesome.com/403c56d95d.js"></script>
+
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>

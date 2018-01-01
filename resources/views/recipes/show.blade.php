@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="recipeaddbg">
         <div class="container">
             @include("recipes.show.bread")
@@ -125,6 +124,7 @@
         ->description($recette->title . " - CDG")
         ->recipeIngredient([$ingredientliste])
     ?>
+
 
     {!! $datas->toScript()  !!}
 @endsection
