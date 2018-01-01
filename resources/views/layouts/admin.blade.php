@@ -55,7 +55,7 @@
         ?>
     </script>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.1/classic/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
     <script src="https://use.fontawesome.com/403c56d95d.js"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
@@ -78,6 +78,7 @@
 
     <script type="application/javascript">
         $(document).ready( function(){
+            CKEDITOR.replace( 'contenu' );
             /*       $("body").toasty();
 
                    var easter_egg = new Konami(function() {

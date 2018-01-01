@@ -20,6 +20,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name("home");
 Route::get('/contact', 'PageController@show_contact');
+
+
+
 /*Route::group(['prefix' => 'login'], function () {
 	Route::group(['prefix' => 'google'], function () {
 		Route::get('','Auth\GoogleController@redirectToProvider');

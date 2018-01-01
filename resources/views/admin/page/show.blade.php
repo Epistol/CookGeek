@@ -5,7 +5,7 @@
 
     <div class="container">
         <section class="section blockcontent">
-        <h1>{{$page->name}}</h1>
+        <h1 class="title">{{$page->name}}</h1>
 
 
         {!!$page->content!!}

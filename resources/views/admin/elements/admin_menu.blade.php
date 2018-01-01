@@ -6,11 +6,14 @@
         <li><a>Accueil</a></li>
         <li><a>Paramètres</a></li>
     </ul>
+
+
     <ul class="menu-list">
         <li>
-            <a href="" {{ Request::path() == 'admin/choristes' ? ' class=is-active' : NULL  }} >Membres</a>
-            <a href="" {{ Request::path() == 'admin/choristes' ? ' class=is-active' : NULL  }} >Recettes</a>
-            <a href="{{route("page.index")}}" {{ Request::path() == 'admin/choristes' ? ' class=is-active' : NULL  }} >Pages</a>
+
+            <a href="" {{ Request::path() == '' ?  ' class=is-active' : NULL  }} >Membres</a>
+            <a href="{{route("recipe.index")}}" {{ Request::path() == substr(route("recipe.index", '', FALSE), 1, -1) ? ' class=is-active' : NULL  }} >Recettes</a>
+            <a href="{{route("page.index")}}" {{ Request::path() ==  substr(route("page.index", '', FALSE), 1, -1) ? ' class=is-active' : NULL  }} >Pages</a>
             {{--<ul>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/ajouter' ? ' class=is-active' : NULL }} href="">Ajouter un choriste</a></li>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/migration' ? ' class=is-active' : NULL }} href="">Migrer la base !2017 </a></li>--}}

@@ -86,7 +86,13 @@ class PageController extends Controller
 	}
 
 
+    public function show_contact()
+    {
+        $page = Page::where('name', 'Contact')->first();
+//        dd($page);
 
+        return view('admin.page.show', ['page' => $page]);
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
