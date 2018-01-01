@@ -55619,7 +55619,7 @@ exports = module.exports = __webpack_require__(47)(undefined);
 
 
 // module
-exports.push([module.i, "\n.vue-star-rating-star[data-v-222f81e5] {\n    display: inline-block;\n}\n.vue-star-rating-pointer[data-v-222f81e5] {\n    cursor: pointer;\n}\n.vue-star-rating[data-v-222f81e5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.vue-star-rating-inline[data-v-222f81e5] {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-top: 0px;\n    margin-left: 7px;\n    position: absolute;\n    right: 6%;\n}\n.vue-star-rating-rtl[data-v-222f81e5] {\n    direction: rtl;\n}\n.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-right: 10px;\n    direction:rtl;\n}\n", ""]);
+exports.push([module.i, "\n.vue-star-rating-star[data-v-222f81e5] {\n    display: inline-block;\n}\n.vue-star-rating-pointer[data-v-222f81e5] {\n    cursor: pointer;\n}\n.vue-star-rating[data-v-222f81e5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.vue-star-rating-inline[data-v-222f81e5] {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-top: 0px;\n    margin-left: 7px;\n    position: absolute;\n    right: 3%;\n    display: none;\n}\n.vue-star-rating-rtl[data-v-222f81e5] {\n    direction: rtl;\n}\n.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-right: 10px;\n    direction:rtl;\n}\n", ""]);
 
 // exports
 
@@ -56093,14 +56093,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         recette: this.recipe_id,
                         note: this.selectedRating
                     }).then(function (response) {
-                        if (response.data === "note_update") {
-                            if ($(this).hasClass("note_update")) {
-                                $(this).removeClass("note_update");
-                            }
-                        } else if (response.data === "note_new") {
-                            console.log("note_new");
-                            $(this).addClass("note_new");
-                        }
+                        /* if(response.data === "note_update"){
+                             if($(this).hasClass("note_update")) {
+                                 $(this).removeClass("note_update");
+                             }
+                         }
+                         else if(response.data === "note_new"){
+                             console.log("note_new");
+                             $(this).addClass("note_new");
+                          }*/
                     }).catch(function (error) {
                         if (error.response) {
                             // The request was made and the server responded with a status code
@@ -56369,7 +56370,7 @@ var render = function() {
   return _c(
     "span",
     {
-      staticStyle: { overflow: "visible" },
+      staticStyle: { overflow: "visible", padding: "0.1rem" },
       attrs: { height: _vm.getSize, width: _vm.getSize },
       on: { mousemove: _vm.mouseMoving, click: _vm.selected }
     },

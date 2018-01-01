@@ -122,7 +122,7 @@
                                 recette: this.recipe_id,
                                 note : this.selectedRating
                             }).then(function (response) {
-                                    if(response.data === "note_update"){
+                                   /* if(response.data === "note_update"){
                                         if($(this).hasClass("note_update")) {
                                             $(this).removeClass("note_update");
                                         }
@@ -131,7 +131,7 @@
                                         console.log("note_new");
                                         $(this).addClass("note_new");
 
-                                    }
+                                    }*/
                                 }).catch(function (error) {
                                     if (error.response) {
                                         // The request was made and the server responded with a status code
@@ -226,7 +226,8 @@
         margin-top: 0px;
         margin-left: 7px;
         position: absolute;
-        right: 6%;
+        right: 3%;
+        display: none;
     }
     .vue-star-rating-rtl {
         direction: rtl;

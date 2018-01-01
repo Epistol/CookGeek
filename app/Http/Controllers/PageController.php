@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -36,6 +37,11 @@ class PageController extends Controller
 		return view('admin.page.create');
 
 	}
+    private function slugtitre($titre, $idrecipe){
+        $titreslug= str_slug($titre, '-');
+        $slug = $titreslug."-".$idrecipe;
+        return $slug;
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -45,14 +51,25 @@ class PageController extends Controller
 	 */
 	public function store(Request $request)
 	{
+        $idRecette = DB::table('pages')->insertGetId(
+            ['name' => $request->name,
+                'content' => $request->contenu,
+                'author_id' =>Auth::id(),
+                'created_at' => now(),
+                'updated_at' => now(),
 
-		$page = new Page;
-		$page->name = request('name') ;
-		$page->slug = strtolower(preg_replace('/\s+/', '-', request('name')));
-		$page->content = request('content') ;
-		$page->save();
+            ]
+        );
 
-		return redirect()->route('page.index');
+        // Partie SLUG
+        $slug = $this->slugtitre($request->name, $idRecette);
+
+        DB::table('pages')
+            ->where('id', $idRecette)
+            ->update(['slug' => $slug]);
+
+
+        return redirect()->route('page.show', $slug);
 	}
 
 	/**
@@ -63,13 +80,12 @@ class PageController extends Controller
 	 */
 	public function show(Page $page)
 	{
-		return view('admin.page.show', ['page' => Page::findOrFail($page)]);
+//        dd($page);
+
+		return view('admin.page.show', ['page' => $page]);
 	}
 
-	public function show_contact(Page $page)
-	{
-		return view('admin.page.show', ['page' => Page::findOrFail('3')]);
-	}
+
 
 
 	/**
@@ -80,8 +96,6 @@ class PageController extends Controller
 	 */
 	public function edit(Page $page)
 	{
-		$page = Page::find($page);
-		/*dd($page);*/
 		// show the edit form and pass the nerd
 		return view('admin.page.edit', ['page' => $page]);
 	}
@@ -95,18 +109,20 @@ class PageController extends Controller
 	 */
 	public function update(Request $request, Page $page)
 	{
-		$task = Page::findOrFail($page);
 
-		$this->validate($request, [
-			'name' => 'required',
-			'content' => 'required'
-		]);
 
-		$input = $request->all();
+//		$this->validate($request, [
+//			'name' => 'required',
+//			'content' => 'required'
+//		]);
+		$page->name = $request->name;
+		$page->content = $request->contenu;
+		$page->slug = $this->slugtitre($request->name, $page->id) ;
 
-		$task->fill($input)->save();
 
-		return redirect('admin/page')->with('status', 'Profile updated!');
+        $page->save();
+
+		return redirect(route('page.index'))->with('status', 'Profile updated!');
 	}
 
 	/**

@@ -17,7 +17,7 @@ return [
     'cooking-t' => 'cuisson',
     'resting-t' => 'repos',
     'ingredients' => 'Ingrédients',
-    'rating' => "Note moyenne",
+    'rating' => "Note",
     "univers" => "Univers",
     "of" => "de",
     "video" => "La vidéo"

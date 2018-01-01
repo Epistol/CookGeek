@@ -16,7 +16,8 @@
         "laravel/tinker": "~1.0",
         "sentry/sentry": "^1.8",
         "spatie/laravel-permission": "^2.7",
-        "spatie/schema-org": "^1.4"
+        "spatie/schema-org": "^1.4",
+        "torann/geoip": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

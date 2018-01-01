@@ -1,5 +1,5 @@
 <template>
-    <span :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected" style="overflow:visible;">
+    <span :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected" style="overflow:visible; padding: 0.1rem">
 
       <span v-if="getFill === '100%'">
             <img src="/img/rating/muf_full.png" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />

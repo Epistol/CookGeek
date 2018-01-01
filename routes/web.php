@@ -51,8 +51,8 @@ Route::group(['prefix' => 'recette'], function () {
     });
 
     Route::group(['prefix' => 'type'], function () {
-        Route::get('/','Recipe\TypeController@index')->name("type.index");
-        Route::get('{post}','Recipe\TypeController@show')->name("type.show");
+//        Route::get('/','Recipe\TypeController@index')->name("type.index");
+//        Route::get('{post}','Recipe\TypeController@show')->name("type.show");
     });
 
 });
@@ -63,10 +63,12 @@ Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index
 Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 
 Route::group(['prefix' => 'admin'], function () {
-	Route::get('/', 'AdminController@index')->middleware('auth', 'admin');
+//	Route::get('/', 'Admin\AdminController@index')->middleware('auth', 'admin');
+Route::get('/', 'Admin\AdminController@index');
 	Route::resource('page', 'PageController');
 });
 
 Route::post("/like", 'Api\LikeController@create')->name("api.like.create")->middleware('web');
 Route::post("/note", 'Api\NoteController@create')->name("api.like.create")->middleware('web');
 Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
+
