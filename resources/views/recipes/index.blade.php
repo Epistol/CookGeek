@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titrepage', "Recettes")
 @section('content')
     <div class="recipeaddbg">
         <div class="container">

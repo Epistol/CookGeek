@@ -1,10 +1,13 @@
 @extends('layouts.app')
-
+@section('titrepage', $page->name)
 
 @section('content')
 
     <div class="container">
         <section class="section blockcontent">
+
+@include("admin.page.bread")
+
         <h1 class="title">{{$page->name}}</h1>
 
 

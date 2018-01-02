@@ -33,8 +33,14 @@ class PageController extends Controller
 	 */
 	public function create()
 	{
+	    if(Auth::check()){
+            return view('admin.page.create');
+        }
+        else {
+	        return back();
+        }
 
-		return view('admin.page.create');
+
 
 	}
     private function slugtitre($titre, $idrecipe){
@@ -51,6 +57,7 @@ class PageController extends Controller
 	 */
 	public function store(Request $request)
 	{
+
         $idRecette = DB::table('pages')->insertGetId(
             ['name' => $request->name,
                 'content' => $request->contenu,
@@ -69,7 +76,7 @@ class PageController extends Controller
             ->update(['slug' => $slug]);
 
 
-        return redirect()->route('page.show', $slug);
+        return redirect()->route('page.show', $idRecette);
 	}
 
 	/**

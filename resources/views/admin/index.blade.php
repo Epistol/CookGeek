@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('titrepage', 'Admin')
 @section('content')
     <div class="container">
         <h1>Espace administration </h1>

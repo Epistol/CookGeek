@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('titrepage', "Ajouter une recette")
+
 @section('content')
 
     <div class="container addrecipe">

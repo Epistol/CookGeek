@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titrepage', "Mot de passe oublié")
 @section('content')
 <div class="container">
     <div class="row">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('titrepage', "Modification de : ".$recette->title)
+
 @section('content')
 
     <div class="container addrecipe">

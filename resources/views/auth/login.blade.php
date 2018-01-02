@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titrepage', "Connexion")
 @section('content')
     <section class="section">
 

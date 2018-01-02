@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('titrepage', $recette->title)
 @section('content')
 
     <div class="recipeaddbg">

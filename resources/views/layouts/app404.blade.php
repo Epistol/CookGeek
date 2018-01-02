@@ -29,10 +29,11 @@
     </script>
 </head>
 <body>
-<div id="app">
-    @include("layouts.menu")
+<div id="app" style="background: black;"> @include("layouts.menu")
+    <div class="main_eror">
+        @yield('content')
+    </div>
 
-    @yield('content')
 
 </div>
 

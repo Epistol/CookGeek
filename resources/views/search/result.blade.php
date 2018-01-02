@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titrepage', "Résultats de la recherche")
 @section('content')
 
     <div class="container">
