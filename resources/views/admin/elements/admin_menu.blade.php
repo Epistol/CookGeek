@@ -10,10 +10,11 @@
 
     <ul class="menu-list">
         <li>
+            {{Route::currentRouteName()}}
 
             <a href="" {{ Request::path() == '' ?  ' class=is-active' : NULL  }} >Membres</a>
-            <a href="{{route("recipe.index")}}" {{ Request::path() == substr(route("recipe.index", '', FALSE), 1, -1) ? ' class=is-active' : NULL  }} >Recettes</a>
-            <a href="{{route("page.index")}}" {{ Request::path() ==  substr(route("page.index", '', FALSE), 1, -1) ? ' class=is-active' : NULL  }} >Pages</a>
+            <a href="{{route("recipe.index")}}" {{ Route::currentRouteNamed('recipe.index') ? ' class=is-active' : NULL  }} >Recettes</a>
+            <a href="{{route("page.index")}}" {{ Route::currentRouteNamed('page.index') ? ' class=is-active' : NULL  }} >Pages</a>
             {{--<ul>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/ajouter' ? ' class=is-active' : NULL }} href="">Ajouter un choriste</a></li>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/migration' ? ' class=is-active' : NULL }} href="">Migrer la base !2017 </a></li>--}}
