@@ -22,6 +22,7 @@
     <link href="/css/nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
@@ -52,7 +53,6 @@
 
     ?>
 
-
 </script>
 
 <script src="https://use.fontawesome.com/403c56d95d.js"></script>
@@ -82,6 +82,20 @@
                var easter_egg = new Konami(function() {
                    $("body").toasty('pop');
                });*/
+
+
+        const red = document.querySelector('#sorry');
+
+        function setProperty(duration) {
+            red.style.setProperty('--animation-time', duration +'s');
+        }
+
+        function changeAnimationTime() {
+            const animationDuration = Math.floor(Math.random() * 50) + 1;
+            setProperty(animationDuration);
+        }
+
+        setInterval(changeAnimationTime, 2000);
 
         var slider = document.getElementById('slider');
 

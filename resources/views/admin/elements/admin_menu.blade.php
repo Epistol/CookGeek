@@ -10,7 +10,6 @@
 
     <ul class="menu-list">
         <li>
-            {{Route::currentRouteName()}}
 
             <a href="" {{ Request::path() == '' ?  ' class=is-active' : NULL  }} >Membres</a>
             <a href="{{route("recipe.index")}}" {{ Route::currentRouteNamed('recipe.index') ? ' class=is-active' : NULL  }} >Recettes</a>

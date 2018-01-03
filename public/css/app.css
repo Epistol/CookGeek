@@ -15614,6 +15614,16 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   src: url("/fonts/Conviction.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Futura";
+  src: url("/fonts/futura/futur.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EurostileBQ";
+  src: url("/fonts/EurostileBQ-BoldExtended.otf") format("opentype");
+}
+
 .content h1, h1.title {
   color: #fe688e;
 }
@@ -15748,18 +15758,28 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #9B0002;
   display: block;
   color: #de1a19;
-  min-height: 90vh;
-  margin-top: 2rem;
-  padding: 34vh 0.5rem 0.5rem;
+  font-family: 'Futura', sans-serif;
+}
+
+@media (min-width: 1200px) {
+  .err404 {
+    margin-top: 2rem;
+    min-height: 90vh;
+    padding: 34vh 0.5rem 0.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .err404 {
+    margin-top: 2rem;
+    min-height: 10vh;
+    padding: 30vh 0.5rem 0.5rem;
+  }
 }
 
 .err404 p {
   text-transform: uppercase;
   padding-bottom: 0px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#cb0306), color-stop(50%, #de1a19), to(#cb0306));
-  background: linear-gradient(to bottom, #cb0306 0%, #de1a19 50%, #cb0306 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
 
@@ -15767,39 +15787,86 @@ h1, h2, h3, h4, h5, h6 {
   background: -webkit-gradient(linear, left top, right top, from(rgba(180, 3, 6, 0.71)), color-stop(50%, rgba(238, 26, 25, 0.71)), to(rgba(180, 3, 6, 0.71)));
   background: linear-gradient(to right, rgba(180, 3, 6, 0.71) 0%, rgba(238, 26, 25, 0.71) 50%, rgba(180, 3, 6, 0.71) 100%);
   display: block;
-  min-height: 350px;
-  width: 85%;
-  position: absolute;
+  width: 100%;
   top: 45%;
   z-index: 99;
   padding: 2rem;
 }
 
+@media (min-width: 1200px) {
+  .big_404 {
+    min-height: 350px;
+    width: 85%;
+    position: absolute;
+  }
+}
+
 .big_bg_404 {
   background: black;
   display: block;
-  min-height: 350px;
-  width: 85%;
-  position: absolute;
+  width: 100%;
   top: 45%;
   z-index: 98;
-  padding: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .big_bg_404 {
+    min-height: 350px;
+    width: 85%;
+    position: absolute;
+    padding: 2rem;
+  }
 }
 
 .full_404 {
   font-size: 5rem;
   color: white;
-  font-family: helvetica, sans-serif;
+  font-family: 'Michroma', sans-serif;
+}
+
+a.quatre {
+  font-family: 'EurostileBQ', sans-serif;
+  color: #28272F;
+  letter-spacing: 1px;
+  background: #e7e9ff;
+  -webkit-box-shadow: 0 3px 0 0 rgba(252, 252, 252, 0.41);
+  box-shadow: 0 3px 0 0 rgba(252, 252, 252, 0.41);
+  margin-left: 0.5rem;
+}
+
+@media (min-width: 1200px) {
+  a.quatre {
+    margin-left: 2rem;
+  }
+}
+
+a.quatre:hover {
+  background: #FDEDEF;
 }
 
 .eye {
   background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  position: absolute;
-  top: 16%;
-  right: 5%;
+  display: block;
   height: 150px;
   width: 150px;
   border-radius: 1000px;
+}
+
+@media (min-width: 1200px) {
+  .eye {
+    position: absolute;
+    top: 16%;
+    right: 5%;
+  }
+}
+
+:root {
+  --animation-time: 5s;
+}
+
+#sorry {
+  -webkit-animation: flicker var(--animation-time) ease alternate infinite;
+          animation: flicker var(--animation-time) ease alternate infinite;
 }
 
 /*
@@ -15866,7 +15933,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2rem;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
 }
 
 #app {
@@ -16712,6 +16779,24 @@ table.times th {
 .modal.is-active {
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .slide-active, .slide-leave-active {

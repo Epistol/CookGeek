@@ -10,7 +10,7 @@
         </div>
         <div class="column is-2 ">
             <div class="err404">
-                <p >
+                <p id="sorry">
                     @guest
                         I’m sorry, Dave.
                         @else
@@ -36,6 +36,15 @@
     <span class="full_404">
         404
     </span>
+<div style="display:flex;justify-content:center;align-items:flex-end;">
+    <a class="button quatre" href="/" >
+        ACCUEIL
+    </a>
+    <a class="button quatre" href="{{ url()->previous() }}" >
+        RETOUR
+    </a>
+</div>
+
 </div>
 
     <div class="eye">
