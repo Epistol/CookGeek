@@ -46,10 +46,5 @@ return [
             'z' => '(z|z\.|z\-|Ζ)',
     ],
 
-    /* Replace these words no matter what language. */
-    'defaults' => [
-        'fuck',
-        'shit',
-        "merde"
-    ],
+
 ];

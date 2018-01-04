@@ -22,8 +22,9 @@
             </div>
             <div class="column is-lateral "  style="display:flex;align-items:center;">
                 <div class="content">
-
-                    <p>   {{ucfirst($step->instruction)}}</p>
+                    <p>{{App::getLocale()}}</p>
+<?php  $etape = app('profanityFilter')->filter($step->instruction) ;?>
+                    <p>   {{ucfirst($etape)}}</p>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "algolia/algoliasearch-client-php": "^1.20",
-        "askedio/laravel5-profanity-filter": "^1.0",
+        "askedio/laravel5-profanity-filter": "dev-master",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.4",
         "laravel/cashier": "~7.0",

@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\SchemaOrg\Schema;
 use Carbon\Carbon;
-
 class RecipesController extends Controller
 {
 
