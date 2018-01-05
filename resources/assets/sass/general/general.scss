@@ -41,6 +41,13 @@ body, button, input, select, textarea{
   visibility: visible;
   height: initial;
 }
+.likedanimation {
+
+  -webkit-animation: pulse ;
+  animation: pulse;
+  animation-duration: .55s;
+
+}
 .liked > i {
   color: red;
 }

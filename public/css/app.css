@@ -15683,6 +15683,13 @@ body, button, input, select, textarea {
   height: initial;
 }
 
+.likedanimation {
+  -webkit-animation: pulse;
+  animation: pulse;
+  -webkit-animation-duration: .55s;
+          animation-duration: .55s;
+}
+
 .liked > i {
   color: red;
 }
@@ -16799,6 +16806,15 @@ table.times th {
   }
 }
 
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg) scale(2) skew(0deg);
+  }
+}
+
 .slide-active, .slide-leave-active {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -16822,4 +16838,40 @@ table.times th {
 .slide-enter {
   -webkit-animation-name: slideInDown;
           animation-name: slideInDown;
+}
+
+/* Generated with Bounce.js. Edit at https://goo.gl/y3FSYm */
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05);
+    color: #F398B6;
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05);
+    color: #F398B6;
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
 }

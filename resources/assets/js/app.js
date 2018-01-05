@@ -135,15 +135,14 @@ $('.like').on("click", function (event) {
 
     if(userIsLoggedIn === 1){
 
+        $("#"+postId).toggleClass('liked');
 
         if($(this).hasClass("liked")){
-            $("#"+postId).addClass("liked");
+            $("#"+postId).children('span').children('i').addClass("likedanimation");
         }
-
-        if($(this).hasClass("liked")){
-            $("#"+postId).removeClass("liked");
+        if(!$(this).hasClass("liked")){
+            $("#"+postId).children('span').children('i').removeClass("likedanimation");
         }
-
 
         axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
 

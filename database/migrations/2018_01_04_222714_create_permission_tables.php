@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreatePermissionTables extends Migration
 {
@@ -68,7 +69,7 @@ class CreatePermissionTables extends Migration
 
             $table->primary(['permission_id', 'role_id']);
 
-            Cache::forget('spatie.permission.cache');
+            app('cache')->forget('spatie.permission.cache');
         });
     }
 
