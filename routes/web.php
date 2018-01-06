@@ -70,7 +70,9 @@ Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@inde
 
 Route::middleware(['role:admin'])->group(function () {
     Route::group(['prefix' => 'admin'], function(){
-        Route::get('/', 'Admin\AdminController@index');
+        Route::get('/', 'Admin\AdminController@index')->name("admin.index");
+        Route::get('user', 'Admin\GestionUtil@index')->name("admin.user.index");
+        Route::get('user/edit/{id}', 'Admin\GestionUtil@edit')->name("admin.user.edit");
         Route::resource('page', 'PageController');
     });
 });

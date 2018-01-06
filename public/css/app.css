@@ -16007,7 +16007,14 @@ a.navbar-item, a.navbar-link {
 .searchheadbutton {
   position: absolute;
   right: 2rem;
-  top: 33%;
+  top: 35%;
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+.searchheadbutton:hover {
+  color: #7f5fbf;
 }
 
 .ajout_recette_img {

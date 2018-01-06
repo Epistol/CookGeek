@@ -5,9 +5,6 @@
 
     <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une page</a>
 
-
-
-
     <table class="table">
         <thead>
         <tr>
@@ -20,17 +17,6 @@
             <th>Auteur</th>
         </tr>
         </thead>
-        <tfoot>
-        <tr>
-            <th><abbr title="Position">Id</abbr></th>
-            <th>Nom</th>
-            <th><abbr title="Played">Slug</abbr></th>
-            <th><abbr title="Won">Date</abbr></th>
-            <th>Editer</th>
-            <th>Supprimer</th>
-            <th>Auteur</th>
-        </tr>
-        </tfoot>
         <tbody>
         @foreach($pages as $key => $value)
             <tr>
@@ -46,7 +32,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <div class="caution">
                             <modal v-if="showModal" @close="showModal = false">
-                            <p>Yo</p>
+                                <p>Yo</p>
                             </modal>
                             <button class="button is-danger" @click="showModal = true">Supprimer</button>
                         </div>

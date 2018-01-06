@@ -1,6 +1,6 @@
 <aside class="menu" xmlns:Request="http://www.w3.org/1999/xhtml">
     <p class="menu-label">
-        Admin
+        <a href="{{route("admin.index")}}"> Admin</a>
     </p>
     <ul class="menu-list">
         <li><a>Accueil</a></li>
@@ -11,9 +11,10 @@
     <ul class="menu-list">
         <li>
 
-            <a href="" {{ Request::path() == '' ?  ' class=is-active' : NULL  }} >Membres</a>
+            <a href="{{route("admin.user.index")}}"  {{ Route::currentRouteNamed('admin.user.index') ? ' class=is-active' : NULL  }} >Membres</a>
             <a href="{{route("recipe.index")}}" {{ Route::currentRouteNamed('recipe.index') ? ' class=is-active' : NULL  }} >Recettes</a>
             <a href="{{route("page.index")}}" {{ Route::currentRouteNamed('page.index') ? ' class=is-active' : NULL  }} >Pages</a>
+
             {{--<ul>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/ajouter' ? ' class=is-active' : NULL }} href="">Ajouter un choriste</a></li>--}}
                 {{--<li><a {{ Request::path() == 'admin/choristes/migration' ? ' class=is-active' : NULL }} href="">Migrer la base !2017 </a></li>--}}
