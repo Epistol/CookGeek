@@ -12067,10 +12067,10 @@ $('.like').on("click", function (event) {
         $("#" + postId).toggleClass('liked');
 
         if ($(this).hasClass("liked")) {
-            $("#" + postId).children('span').addClass("likedanimation");
+            $("#" + postId).children('span').children('i').addClass("likedanimation");
         }
         if (!$(this).hasClass("liked")) {
-            $("#" + postId).children('span').removeClass("likedanimation");
+            $("#" + postId).children('span').children('i').removeClass("likedanimation");
         }
 
         axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;

@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+
+
                         {{Auth::user()->getRoleNames()}}
                 </div>
             </div>

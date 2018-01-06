@@ -13,11 +13,11 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+    return view('welcome');
 })->name('index');
 
 Route::get('/teapot', function () {
-	abort(418);
+    abort(418);
 })->name('teapot');
 
 Auth::routes();
@@ -44,11 +44,11 @@ Route::get('/contact', 'PageController@show_contact');
 });*/
 
 Route::group(['prefix' => 'recette'], function () {
-	Route::get('/','Recipe\RecipesController@index')->name("recipe.index");
-	Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
-	Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
-	Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
-	Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show");
+    Route::get('/','Recipe\RecipesController@index')->name("recipe.index");
+    Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
+    Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
+    Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
+    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show");
 
     Route::group(['prefix' => 'media'], function () {
         Route::get('/','Recipe\RecipesController@indexmedia')->name("media.index");
@@ -64,17 +64,19 @@ Route::group(['prefix' => 'recette'], function () {
 
 });
 
-
-
 Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 
-Route::group(['prefix' => 'admin'], function () {
-//	Route::get('/', 'Admin\AdminController@index')->middleware('auth', 'admin');
-Route::get('/', 'Admin\AdminController@index');
-	Route::resource('page', 'PageController');
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::group(['prefix' => 'admin'], function(){
+        Route::get('/', 'Admin\AdminController@index');
+        Route::resource('page', 'PageController');
+    });
 });
 
+
+/// API
 Route::post("/like", 'Api\LikeController@create')->name("api.like.create")->middleware('web');
 Route::post("/note", 'Api\NoteController@create')->name("api.like.create")->middleware('web');
 Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
