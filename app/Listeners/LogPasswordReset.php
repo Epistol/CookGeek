@@ -5,6 +5,8 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LogPasswordReset
 {
@@ -26,6 +28,10 @@ class LogPasswordReset
      */
     public function handle(PasswordReset $event)
     {
-        //
+        $ip = geoip()->getClientIP();
+
+        if($event->user != null){
+            Log::notice('IP '. $ip. " resetted password of account ".$event->user->id. " on ". now());
+        }
     }
 }

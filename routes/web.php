@@ -16,10 +16,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
+// Parce que
 Route::get('/teapot', function () {
     abort(418);
 })->name('teapot');
 
+Route::get('/auth/logout', ['middleware' => 'doNotCacheResponse', 'uses' => 'AuthController@getLogout']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name("home");
@@ -43,13 +45,15 @@ Route::get('/contact', 'PageController@show_contact');
 
 });*/
 
+// RECETTE
 Route::group(['prefix' => 'recette'], function () {
-    Route::get('/','Recipe\RecipesController@index')->name("recipe.index");
+    Route::get('/','Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
     Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
     Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
     Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
-    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show");
+    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
 
+ // RECETTE/MEDIA
     Route::group(['prefix' => 'media'], function () {
         Route::get('/','Recipe\RecipesController@indexmedia')->name("media.index");
         Route::get('ajout','Recipe\RecipesController@add')->name("media.add")->middleware('auth');
@@ -57,22 +61,32 @@ Route::group(['prefix' => 'recette'], function () {
         Route::get('{post}','Recipe\RecipesController@indexmediatype')->name("media.show");
     });
 
+//RECETTE/TYPE
     Route::group(['prefix' => 'type'], function () {
 //        Route::get('/','Recipe\TypeController@index')->name("type.index");
 //        Route::get('{post}','Recipe\TypeController@show')->name("type.show");
     });
-
 });
 
+
+
+// RECHERCHE
 Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 
 
-Route::middleware(['role:admin'])->group(function () {
+//ADMIN
+Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {
     Route::group(['prefix' => 'admin'], function(){
+        // OVERVIEW
         Route::get('/', 'Admin\AdminController@index')->name("admin.index");
+        // USERS
         Route::get('user', 'Admin\GestionUtil@index')->name("admin.user.index");
         Route::get('user/edit/{id}', 'Admin\GestionUtil@edit')->name("admin.user.edit");
+        // RECIPES
+        Route::get('recipes', 'Admin\RecipesAdmin@index')->name("admin.recipe.index");
+        Route::get('recipes/edit/{id}', 'Admin\RecipesAdmin@edit')->name("admin.recipe.edit");
+        // PAGES
         Route::resource('page', 'PageController');
     });
 });

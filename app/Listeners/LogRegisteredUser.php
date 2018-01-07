@@ -5,6 +5,8 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LogRegisteredUser
 {
@@ -26,6 +28,9 @@ class LogRegisteredUser
      */
     public function handle(Registered $event)
     {
-        //
+        $ip = geoip()->getClientIP();
+
+            Log::notice('IP '. $ip. " registred new account :  ".$event->user->id. " on ". now());
+
     }
 }

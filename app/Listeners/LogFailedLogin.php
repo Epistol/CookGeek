@@ -5,6 +5,9 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class LogFailedLogin
 {
@@ -26,6 +29,14 @@ class LogFailedLogin
      */
     public function handle(Failed $event)
     {
-        //
+        $ip = geoip()->getClientIP();
+
+        if($event->user != null){
+            Log::notice('IP '. $ip. " tried to connect to account ".$event->user->id. " but failed");
+        }
+        else {
+            Log::notice('IP '. $ip. " tried to connect to an inexistant account (bad mail/username");
+        }
+
     }
 }

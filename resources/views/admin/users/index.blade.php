@@ -48,7 +48,13 @@
 
                     </td>
                     <td>
-
+                        {{$user->nb_visites}}
+                    </td>
+                    <td>
+                        <?php
+                        $rec = DB::table('recipes')->where('id_user', '=', $user->id)->count();
+                        ?>
+                        {{$rec}}
                     </td>
                 </tr>
             @endforeach
@@ -56,7 +62,7 @@
             </tbody>
         </table>
 
-
+        {{ $users->links() }}
 
     </div>
 @endsection

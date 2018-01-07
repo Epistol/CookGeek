@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LogSuccessfulLogin
 {
@@ -30,5 +31,11 @@ class LogSuccessfulLogin
         DB::table('users')
             ->where('id', $event->user->id)
             ->increment('nb_visites' , 1);
+
+        $ip = geoip()->getClientIP();
+
+        if($event->user != null){
+            Log::notice('IP '. $ip. "  logged in ".$event->user->id. " on ". now());
+        }
     }
 }
