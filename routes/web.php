@@ -51,9 +51,13 @@ Route::group(['prefix' => 'recette'], function () {
     Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
     Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
     Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
-    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
 
- // RECETTE/MEDIA
+    Route::group(['prefix' => 'type'], function () {
+        Route::get('/','TypeController@index')->name("type.index");
+//       Route::get('{post}','Recipe\TypeController@show')->name("type.show");
+    });
+
+// RECETTE/MEDIA
     Route::group(['prefix' => 'media'], function () {
         Route::get('/','Recipe\RecipesController@indexmedia')->name("media.index");
         Route::get('ajout','Recipe\RecipesController@add')->name("media.add")->middleware('auth');
@@ -61,11 +65,12 @@ Route::group(['prefix' => 'recette'], function () {
         Route::get('{post}','Recipe\RecipesController@indexmediatype')->name("media.show");
     });
 
+    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
+
+
+
 //RECETTE/TYPE
-    Route::group(['prefix' => 'type'], function () {
-//        Route::get('/','Recipe\TypeController@index')->name("type.index");
-//        Route::get('{post}','Recipe\TypeController@show')->name("type.show");
-    });
+
 });
 
 

@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="{{ route('type.index') }}">
                 Types
             </a>
 
@@ -56,9 +56,7 @@
             <a class="navbar-item">
                 Tendances
             </a>
-            <a class="navbar-item">
-                Tutos
-            </a>
+
 
             <a class="navbar-item" href="{{route("recipe.random")}}">
                 🎲
