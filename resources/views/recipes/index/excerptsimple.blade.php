@@ -26,7 +26,7 @@
         <div class="media">
             <div class="media-content is-centered">
                 <p class="title is-4"><a href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a></p>
-                {{$type->name}}
+
             </div>
         </div>
 

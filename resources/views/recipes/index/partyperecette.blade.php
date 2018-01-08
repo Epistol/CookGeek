@@ -3,6 +3,7 @@
 $recettes = DB::table('recipes')->where('type', '=', $type->id)->latest()->limit(4)->get();
 $i=0;
 ?>
+<a class="tag is-primary is-medium" href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
 
 <section class=" bordered-cdg">
     <div class="columns">
@@ -10,20 +11,10 @@ $i=0;
             <?php $i = $index+1;
             $c = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
             ?>
-            <div class="column">
+            <div class="column is-one-quarter">
                 @include("recipes.index.excerptsimple")
             </div>
-            {{$i}}
-
-            @if($i % 4 == 0)
-
-    </div>
-    <div class="columns">
-        @endif
         @endforeach
-
     </div>
-
-
 
 </section>

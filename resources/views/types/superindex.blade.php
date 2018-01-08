@@ -3,15 +3,14 @@
 @section('content')
     <div class="recipeaddbg">
         <div class="container">
-            <section class="section blockcontent">
-
-                @include("types.index.bread")
+            <section class="">
+                <div class="breadbg">
+                    @include("types.index.bread")
+                </div>
 
                 <div class="content">
-
                     <section class="section ficheinfo">
                         <div class="columns is-multiline is-mobile">
-
                             @foreach($types as $type)
                                 <div class="column is-one-third is-flex-center">
                                     {{--On affiche la liste des types de recettes--}}
@@ -21,9 +20,10 @@
                         </div>
 
                     </section>
+
                     @foreach($types as $type)
                         {{--On affiche 4 recettes par type--}}
-                        <section class="section">
+                        <section class="section blockcontent">
                             <div>
                                 @include("recipes.index.partyperecette")
 
