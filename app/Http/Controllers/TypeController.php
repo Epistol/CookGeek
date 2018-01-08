@@ -48,7 +48,8 @@ class TypeController extends Controller
      */
     public function show($id)
     {
-        //
+        $type = DB::table('type_recipes')->where("name", "=",$id)->get();
+        return view("types.show", ["types" => $type]);
     }
 
     /**

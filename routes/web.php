@@ -54,7 +54,7 @@ Route::group(['prefix' => 'recette'], function () {
 
     Route::group(['prefix' => 'type'], function () {
         Route::get('/','TypeController@index')->name("type.index");
-//       Route::get('{post}','Recipe\TypeController@show')->name("type.show");
+      Route::get('{post}','TypeController@show')->name("type.show");
     });
 
 // RECETTE/MEDIA

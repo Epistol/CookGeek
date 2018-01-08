@@ -20,7 +20,7 @@
                     <div class="column is-4 to-hover is-paddingless is-marginless">
                         @if(isset($type))
                             <div class="hovered">
-                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{strtolower($type->name)}}">{{$type->name}}</a>
+                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                             </div>
                         @endif
                         <a href="/recette/{{$recette->slug}}">
