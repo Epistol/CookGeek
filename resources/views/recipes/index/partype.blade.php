@@ -5,7 +5,7 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
-                Les dernières recettes de chaque média
+                Les dernières recettes
             </h1>
             <h2 class="subtitle">
 

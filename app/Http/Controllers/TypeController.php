@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
@@ -13,6 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
+        $all_types = DB::table('type_recipes')->get();
+        return view("types.superindex", ["types" => $all_types]);
 
     }
 

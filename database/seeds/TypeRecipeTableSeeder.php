@@ -39,7 +39,7 @@ class TypeRecipeTableSeeder extends Seeder
 		    'name' => "Sauce"
 	    ]);
 	    DB::table('type_recipes')->insert([
-		    'name' => "Tutoriel"
+		    'name' => "Astuce"
 	    ]);
 
     }

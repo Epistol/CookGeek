@@ -15632,10 +15632,9 @@ h2.title {
   color: #7f5fbf;
 }
 
-p {
+/*p {
   padding-bottom: 1rem;
-}
-
+}*/
 html, body {
   height: 100%;
   -webkit-box-sizing: border-box;
