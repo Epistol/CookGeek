@@ -15706,6 +15706,31 @@ body, button, input, select, textarea {
   z-index: 1000;
 }
 
+.sharing-block {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: auto;
+}
+
+.sharing {
+  position: relative;
+  display: inline-block;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.sharing:hover > .sharing-block {
+  display: block;
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+  visibility: visible;
+  padding-top: 0.5rem;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
 .content li + li {
   margin-top: 0em;
 }

@@ -54,10 +54,8 @@
 
 </script>
 
-<script src="https://use.fontawesome.com/403c56d95d.js"></script>
-
+<link defer async href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}"></script>
-
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 
 {{--

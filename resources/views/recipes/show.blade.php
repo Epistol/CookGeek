@@ -56,6 +56,7 @@
                                         @include("recipes.show.steps")
                                     </div>
                                     <div class="column is-4  ">
+                                        @include('recipes.show.social')
                                         @include("recipes.show.ingredient")
 
                                     </div>

@@ -24,6 +24,5 @@ $i=0;
     @endforeach
     </div>
     {{$recettes->links()}}
-
-
+    
 </section>
