@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use App\Type_recipe;
 use PHPUnit\Util\Type;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Recipes extends Model
+class Recipes extends Model implements Feedable
 {
 	use Searchable;
 
@@ -34,6 +36,27 @@ class Recipes extends Model
         else {
             return $time;
         }
+    }
+
+    public function toFeedItem()
+    {
+        if($this->commentary_author  == NULL){
+            $contenu = $this->title . ", Pour ". $this->nb_guests. " " .  $this->guest_type;
+        }
+        else {
+            $contenu = $this->commentary_author ;
+        }
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($contenu)
+            ->updated($this->updated_at)
+            ->link(url("/")."/recette/".$this->slug)
+            ->author($this->id_user);
+    }
+
+    public static  function getAllFeedItems(){
+        return Recipes::all();
     }
 
 }

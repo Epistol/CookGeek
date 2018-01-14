@@ -1,0 +1,21 @@
+/* TEAM */
+	Chef:Michaël Lebeau
+	Contact: epistolshow [at] gmail.com
+	Twitter: @_Epistol_
+	From:Paris,France
+
+
+/* THANKS */
+
+	My mom, family and friends, without them I couldn't had achieve this dream.
+	Laura, with her advices and permanent questioning.
+	Hetic, great school
+	Geek Faeries
+
+
+/* SITE */
+	Last update:14/01/2018
+	Language:French
+	Doctype:HTML5
+	IDE: PhpStorm
+	Framework : Laravel

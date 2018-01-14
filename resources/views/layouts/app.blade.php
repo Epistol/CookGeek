@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,19 +14,47 @@
         @else
             {{ config('app.name', 'Laravel') }}
         @endif
-
     </title>
+    <meta name="description" content="
+        @hasSection('description')
+            @yield('description') - {{ config('app.name', 'Laravel') }}
+    @else
+        {{ config('app.name', 'Laravel') }}
+    @endif
+            ">
+
+    <!-- ROBOTS -->
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="generator" content="Laravel">
+    <meta name="subject" content="
+        @hasSection('subject')
+    @yield('subject') - {{ config('app.name', 'Laravel') }}
+    @else
+    {{ config('app.name', 'Laravel') }}
+    @endif
+">
+    <meta name="rating" content="  @hasSection('rating')
+    @yield('rating') - {{ config('app.name', 'Laravel') }}
+    @else
+    {{ config('app.name', 'Laravel') }}
+    @endif">
+    <!-- Links to information about the author(s) of the document -->
+    <link rel="author" href="humans.txt">
+    <link rel="index" href="{{url('/')}}">
+    <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+
+    <!-- Feeds -->
+    {{--<link rel="alternate"  href="/rss" type="application/rss+xml" title="RSS">--}}
+    <link rel="alternate" type="application/atom+xml" title="New recipes" href="/rss">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/css/nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
-    <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
-    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
+    <link href="{{ asset('css/lightbox.css') }}"  rel="stylesheet">
 
-    </script>
 </head>
 <body>
 <div id="app">
@@ -51,10 +79,18 @@
 
     ?>
 
+    (function () {
+        var sn = document.createElement("script"), s = document.getElementsByTagName("script")[0], url;
+        url = document.querySelectorAll ? document.querySelectorAll("link[rel~=canonical]") : false;
+        url = url && url[0] ? url[0].href : false;
+        sn.type = "text/javascript"; sn.async = true;
+        sn.src = "//webmention.herokuapp.com/api/embed?url=" + encodeURIComponent(url || window.location);
+        s.parentNode.insertBefore(sn, s);
+    }());
 
 </script>
 
-<link defer async href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 

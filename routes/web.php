@@ -21,7 +21,6 @@ Route::get('/teapot', function () {
     abort(418);
 })->name('teapot');
 
-Route::get('/auth/logout', ['middleware' => 'doNotCacheResponse', 'uses' => 'AuthController@getLogout']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name("home");
@@ -79,6 +78,9 @@ Route::group(['prefix' => 'recette'], function () {
 Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
 
+// RSS
+
+Route::feeds();
 
 //ADMIN
 Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {

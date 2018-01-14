@@ -15706,31 +15706,6 @@ body, button, input, select, textarea {
   z-index: 1000;
 }
 
-.sharing-block {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  width: auto;
-}
-
-.sharing {
-  position: relative;
-  display: inline-block;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-
-.sharing:hover > .sharing-block {
-  display: block;
-  position: absolute;
-  z-index: 999;
-  opacity: 1;
-  visibility: visible;
-  padding-top: 0.5rem;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-
 .content li + li {
   margin-top: 0em;
 }
@@ -15906,6 +15881,63 @@ a.quatre:hover {
   -ms-flex-pack: center;
   display:flex;justify-content:center;align-items:center;
 }*/
+.sharing-block {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: auto;
+}
+
+.sharing {
+  position: relative;
+  display: inline-block;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.sharing:hover > .sharing-block {
+  display: block;
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+  visibility: visible;
+  padding-top: 0.5rem;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.facebook:hover {
+  border-color: #3B5998;
+}
+
+.facebook:hover i {
+  color: #3B5998;
+}
+
+.twitter:hover {
+  border-color: #1DA1F3;
+}
+
+.twitter:hover i {
+  color: #1DA1F3;
+}
+
+.pinterest:hover {
+  border-color: #BD081B;
+}
+
+.pinterest:hover i {
+  color: #BD081B;
+}
+
+.tumblr:hover {
+  border-color: #35455C;
+}
+
+.tumblr:hover i {
+  color: #35455C;
+}
+
 .button.is-direct {
   background: #03bea3;
   color: #f9f9f9;
