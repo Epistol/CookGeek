@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="container">
-        <div >
+        {{--TODO : Changer ça vite fait--}}
+        <div>
+            @include("recipes.index.partype")
+            @include("recipes.index.favorise")
+
             <img src="/img/tempo/img1.png" style="margin-left: auto;
 	margin-right: auto;
 	display: block;">

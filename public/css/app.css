@@ -13921,7 +13921,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.5rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -13953,7 +13953,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-rtl + label::after {
   left: auto;
-  right: 0.25rem;
+  right: 1.625rem;
 }
 
 .switch[type="checkbox"]:checked + label::before {
@@ -13966,16 +13966,16 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"]:checked.is-rtl + label::after {
   left: auto;
-  right: 1.625rem;
+  right: 0.25rem;
 }
 
 .switch[type="checkbox"].is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-outlined:checked + label::before {
@@ -14024,7 +14024,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.125rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14056,7 +14056,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-small.is-rtl + label::after {
   left: auto;
-  right: 0.25rem;
+  right: 1.25rem;
 }
 
 .switch[type="checkbox"].is-small:checked + label::before {
@@ -14069,16 +14069,16 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-small:checked.is-rtl + label::after {
   left: auto;
-  right: 1.25rem;
+  right: 0.25rem;
 }
 
 .switch[type="checkbox"].is-small.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-small.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-small.is-outlined:checked + label::before {
@@ -14127,7 +14127,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 1.875rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14159,7 +14159,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-medium.is-rtl + label::after {
   left: auto;
-  right: 0.25rem;
+  right: 2rem;
 }
 
 .switch[type="checkbox"].is-medium:checked + label::before {
@@ -14172,16 +14172,16 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-medium:checked.is-rtl + label::after {
   left: auto;
-  right: 2rem;
+  right: 0.25rem;
 }
 
 .switch[type="checkbox"].is-medium.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-medium.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-medium.is-outlined:checked + label::before {
@@ -14230,7 +14230,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   height: 2.25rem;
   border: 0.1rem solid transparent;
   border-radius: 3px;
-  background: #b5b5b5;
+  background: #ffa9a9;
   content: '';
 }
 
@@ -14262,7 +14262,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-large.is-rtl + label::after {
   left: auto;
-  right: 0.25rem;
+  right: 2.375rem;
 }
 
 .switch[type="checkbox"].is-large:checked + label::before {
@@ -14275,16 +14275,16 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 
 .switch[type="checkbox"].is-large:checked.is-rtl + label::after {
   left: auto;
-  right: 2.375rem;
+  right: 0.25rem;
 }
 
 .switch[type="checkbox"].is-large.is-outlined + label::before {
   background-color: transparent;
-  border-color: #b5b5b5;
+  border-color: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-large.is-outlined + label::after {
-  background: #b5b5b5;
+  background: #ffa9a9;
 }
 
 .switch[type="checkbox"].is-large.is-outlined:checked + label::before {

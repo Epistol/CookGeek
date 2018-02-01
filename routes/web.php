@@ -12,9 +12,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', 'PageController@accueil')->name('index');
 
 // Parce que
 Route::get('/teapot', function () {
@@ -44,6 +42,8 @@ Route::get('/contact', 'PageController@show_contact');
 
 });*/
 
+
+
 // RECETTE
 Route::group(['prefix' => 'recette'], function () {
     Route::get('/','Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'recette'], function () {
 
     Route::group(['prefix' => 'type'], function () {
         Route::get('/','TypeController@index')->name("type.index");
-      Route::get('{post}','TypeController@show')->name("type.show");
+        Route::get('{post}','TypeController@show')->name("type.show");
     });
 
 // RECETTE/MEDIA
@@ -82,7 +82,9 @@ Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@inde
 
 Route::feeds();
 
+
 //ADMIN
+
 Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {
     Route::group(['prefix' => 'admin'], function(){
         // OVERVIEW

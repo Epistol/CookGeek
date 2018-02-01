@@ -42,7 +42,8 @@
 
 </head>
 <body>
-<div id="app">@include("layouts.menu")@yield('content')</div>
+<div id="app">@include("layouts.menu")
+    @yield('content')</div>
 @include("layouts.footer")
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -68,9 +69,10 @@
 <link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" ></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 <script src="/js/konami.js"></script>
+<script defer src="/static/fontawesome/fa-v4-shim.js"></script>
 <script src="/js/toasty/jquery.toasty.js"></script>
 <script src="/js/nouislider.min.js" ></script>
 

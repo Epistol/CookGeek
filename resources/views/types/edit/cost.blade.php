@@ -11,7 +11,7 @@
 
                     <input type="radio" id="{{$i}}" value="{{$i}}" name="cost" />
                     <label class="cost button" for="{{$i}}">
-                        <i class="fa fa-usd" aria-hidden="true"></i>
+                        <i class="fas fa-dollar-sign" aria-hidden="true"></i>
                     </label>
 
                 @endfor

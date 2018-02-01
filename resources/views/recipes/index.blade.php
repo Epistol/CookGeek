@@ -9,7 +9,7 @@
 
                 <div class="content">
                     {{--@include("recipes.index.searchbar")--}}
-                    @include("recipes.index.partype")
+                    {{--@include("recipes.index.partype")--}}
 
                     @if($recipes)
 

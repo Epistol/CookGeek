@@ -18,6 +18,7 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
+
 Vue.use(VeeValidate);
 
 
