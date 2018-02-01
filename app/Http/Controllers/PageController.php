@@ -27,7 +27,9 @@ class PageController extends Controller
             $recettesrand[$u->id] = $recettes;
         }
         $recettes = collect($recettesrand);
-        $heartbeat = DB::table("heartbeat")->get();
+        // Petit texte sur l'accueil
+        $heartbeat = DB::table("heartbeat")->latest()->first();
+        // Recettes
         $recipes = DB::table('recipes')->latest()->paginate(12);
 
 

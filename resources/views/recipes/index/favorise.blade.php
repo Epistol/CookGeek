@@ -4,12 +4,12 @@
         {{--Colonne image--}}
         <div class="column">
 
-            @empty($heartbeat)
-            @endempty
+
 
             @isset($heartbeat->recipe_id)
                 <?php
                 $img = DB::table('recipe_imgs')->where('recipe_id', '=', $heartbeat->recipe_id)->first();
+//                dd($img);
                 ?>
                 <img src="{{$img}}">
             @endif

@@ -239,7 +239,8 @@ class RecipesController extends Controller
             $this->validate($request, [
                 'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
             ]);
-            if($request->resume['size'] != 0 OR  $request->resume['size'] != NULL){
+        dd($request->resume);
+            if($request->resume['error'] == 0 ){
 
                 $photoName = time().'.'.$request->resume->getClientOriginalExtension();
                 $img = $this->ajouter_image($photoName, $iduser, $idRecette);
