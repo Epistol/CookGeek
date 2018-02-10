@@ -45,7 +45,7 @@ class LikeController extends Controller
             )->first();
 
             // IF it's liked, then we add it
-            if($id == ""  OR $id == NULL){
+            if($id == ""  || $id == NULL){
                 $id2 =  DB::table('user_recipe_likes')
                     ->insertGetId(
                         [ 'user_id' => $u_id , 'recipe_id' => $data->recette]
@@ -64,7 +64,7 @@ class LikeController extends Controller
 
 
         // Error handling
-        if($id == "" OR $id == NULL){
+        if($id == "" || $id == NULL){
             return response('Nop', 500);
         }
 

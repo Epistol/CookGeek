@@ -46,7 +46,7 @@ class NoteController extends Controller
             )->first();
 
             // IF it's noted, then we update it
-            if($id != "" OR $id != NULL ){
+            if($id != "" || $id != NULL ){
                 $id2 =  DB::table('recipe_likes')->where('id_user', $u_id)->where('id_recipe', $data->recette)
                     ->update(['note' => $data->note]);
 

@@ -65,8 +65,7 @@ class PageController extends Controller
 	}
     private function slugtitre($titre, $idrecipe){
         $titreslug= str_slug($titre, '-');
-        $slug = $titreslug."-".$idrecipe;
-        return $slug;
+        return $titreslug."-".$idrecipe;
     }
 
 	/**

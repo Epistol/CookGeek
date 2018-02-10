@@ -38,11 +38,11 @@ class SearchController extends Controller
         $rq = $request->q;
 
         $result = $this->apisearch->search($rq);
-        // Anime, cartes, comics, etc
+/*        // Anime, cartes, comics, etc
         $types_univ = DB::table('categunivers')->get();
         $difficulty = DB::table('difficulty')->get();
         // Entree plats desserts
-        $types_plat = DB::table('type_recipes')->get();
+        $types_plat = DB::table('type_recipes')->get();*/
 
         $search_type =  array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers' );
         $valeurs = ["value" => $rq];

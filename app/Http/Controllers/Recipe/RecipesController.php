@@ -14,6 +14,8 @@ use Carbon\Carbon;
 class RecipesController extends Controller
 {
 
+const CATEGU = 'categunivers';
+const RECIPES = 'recipes';
 
 
     /**
@@ -26,21 +28,21 @@ class RecipesController extends Controller
     public function index()
     {
 
-        $universcateg = DB::table('categunivers')->get();
+        $universcateg = DB::table(CATEGU)->get();
         $recettesrand = array();
 
         // Pour chaque categ, on va charger la dernière recette postée
         foreach ($universcateg as $u){
-            $recettes = DB::table('recipes')->where('type_univers','=',$u->id )->orderBy('updated_at', 'desc')->first();
+            $recettes = DB::table(RECIPES)->where('type_univers','=',$u->id )->orderBy('updated_at', 'desc')->first();
             $recettesrand[$u->id] = $recettes;
         }
         $recettes = collect($recettesrand);
 
-        $recipes = DB::table('recipes')->latest()->paginate(12);
+        $recipes = DB::table(RECIPES)->latest()->paginate(12);
 
 
         // On charge les données dans la vue
-        return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg, 'recipes'=>$recipes) )->with(['controller'=>$this]);
+        return view('recipes.index', array( 'recettes' => $recettes, 'universcateg' => $universcateg, RECIPES=>$recipes) )->with(['controller'=>$this]);
     }
 
 
@@ -52,13 +54,13 @@ class RecipesController extends Controller
     public function indexmediatype($type)
     {
 
-        $universcateg = DB::table('categunivers')->where("name", "=", $type)->get();
+        $universcateg = DB::table(CATEGU)->where("name", "=", $type)->get();
 
         if($universcateg != null){
-            $recipes = DB::table('recipes')->where("type_univers", "=", $universcateg[0]->id)->latest()->paginate(12);
+            $recipes = DB::table(RECIPES)->where("type_univers", "=", $universcateg[0]->id)->latest()->paginate(12);
 
             // On charge les données dans la vue
-            return view('types.index', array( 'universcateg' => $universcateg[0], 'recipes'=>$recipes) )->with(['controller'=>$this]);
+            return view('types.index', array( 'universcateg' => $universcateg[0], RECIPES=>$recipes) )->with(['controller'=>$this]);
 
         }
         else {
@@ -71,7 +73,7 @@ class RecipesController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function add(){
-        $types_univ = DB::table('categunivers')->get();
+        $types_univ = DB::table(CATEGU)->get();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipes')->get();
         return view('recipes.add', array( 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat ) );
@@ -81,15 +83,15 @@ class RecipesController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($numero){
-        $recette = DB::table('recipes')->where("id", "=", $numero)->get();
+        $recette = DB::table(RECIPES)->where("id", "=", $numero)->get();
 
-        if($recette != "" OR $recette != NULL){
+        if($recette != "" || $recette != NULL){
             if($recette[0]->id_user != Auth::id()){
                 return back();
             }
             else {
                 $univers = DB::table("univers")->where("id", "=", $recette[0]->univers)->select('name')->get();
-                $types_univ = DB::table('categunivers')->get();
+                $types_univ = DB::table(CATEGU)->get();
                 $difficulty = DB::table('difficulty')->get();
                 $types_plat = DB::table('type_recipes')->get();
                 return view('recipes.edit', array( 'univers' => $univers[0]->name, 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat, 'recette' => $recette[0] ) );
@@ -161,7 +163,7 @@ class RecipesController extends Controller
         }
 
         // Insert recette
-        $idRecette = DB::table('recipes')->insertGetId(
+        $idRecette = DB::table(RECIPES)->insertGetId(
             ['title' => app('profanityFilter')->filter($request->title),
                 'vegetarien' => $request->vegan,
                 'difficulty' => $request->difficulty,
@@ -188,15 +190,15 @@ class RecipesController extends Controller
         // Partie SLUG
         $slug = $this->slugtitre($request, $idRecette);
 
-        DB::table('recipes')
+        DB::table(RECIPES)
             ->where('id', $idRecette)
             ->update(['slug' => app('profanityFilter')->filter($slug)]);
 
 
         // Partie ingrédients
 
-        $id_ingr = array();
-        $id_qtt = array();
+//        $id_ingr = array();
+//        $id_qtt = array();
 
         foreach ($request->ingredient as $key => $ingredient) {
             $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
@@ -239,11 +241,11 @@ class RecipesController extends Controller
             $this->validate($request, [
                 'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
             ]);
-        dd($request->resume);
+//        dd($request->resume);
             if($request->resume['error'] == 0 ){
 
                 $photoName = time().'.'.$request->resume->getClientOriginalExtension();
-                $img = $this->ajouter_image($photoName, $iduser, $idRecette);
+                $this->ajouter_image($photoName, $iduser, $idRecette);
                 $request->resume->move(public_path('recipes/'.$idRecette.'/'.$iduser.'/'), $photoName);
             }
             return redirect()->route('recipe.show', ['post' => $slug]);
@@ -305,7 +307,7 @@ class RecipesController extends Controller
             }
 
             // Insert recette
-            $idRecette = DB::table('recipes')->insertGetId(
+            $idRecette = DB::table(RECIPES)->insertGetId(
                 ['title' => $request->title,
                     'vegetarien' => $request->vegan,
                     'difficulty' => $request->difficulty,
@@ -332,15 +334,15 @@ class RecipesController extends Controller
             // Partie SLUG
             $slug = $this->slugtitre($request, $idRecette);
 
-            DB::table('recipes')
+            DB::table(RECIPES)
                 ->where('id', $idRecette)
                 ->update(['slug' => $slug]);
 
 
             // Partie ingrédients
 
-            $id_ingr = array();
-            $id_qtt = array();
+//            $id_ingr = array();
+//            $id_qtt = array();
 
             foreach ($request->ingredient as $key => $ingredient){
                 $id_ingredient_ajout = DB::table('ingredients')->where('name','=', $ingredient)->get();
@@ -379,9 +381,9 @@ class RecipesController extends Controller
             $this->validate($request, [
                 'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            if($request->resume['size'] != 0 OR  $request->resume['size'] != NULL){
+            if($request->resume['size'] != 0 ||  $request->resume['size'] != NULL){
                 $photoName = time().'.'.$request->resume->getClientOriginalExtension();
-                $img = $this->ajouter_image($photoName, $iduser, $idRecette);
+                $this->ajouter_image($photoName, $iduser, $idRecette);
                 $request->resume->move(public_path('recipes/'.$idRecette.'/'.$iduser.'/'), $photoName);
             }
             return redirect()->route('recipe.show', ['post' => $slug]);
@@ -401,7 +403,7 @@ class RecipesController extends Controller
             $steps =  DB::table('recipes_steps')
                 ->where('recipe_id', '=', $recette->id)
                 ->get();
-            $typeuniv =  DB::table('categunivers')
+            $typeuniv =  DB::table(CATEGU)
                 ->where('id', '=', $recette->type_univers)
                 ->first();
 
@@ -433,7 +435,7 @@ class RecipesController extends Controller
 
             $preptimeiso = "PT".$this->sumerise($recette->prep_time);
             $cooktimeiso = "PT".$this->sumerise($recette->cook_time);
-            $resttimeiso = "PT".$this->sumerise($recette->rest_time);
+//            $resttimeiso = "PT".$this->sumerise($recette->rest_time);
 
             $totaliso = "PT".$this->sumerise($recette->prep_time+$recette->cook_time+$recette->rest_time);
 
@@ -460,7 +462,7 @@ class RecipesController extends Controller
 
 
         public function random(){
-            $rand = DB::table('recipes')
+            $rand = DB::table(RECIPES)
                 ->inRandomOrder()
                 ->first();
             $sl = $rand->slug;
@@ -501,9 +503,8 @@ class RecipesController extends Controller
             }
         }
         private function slugtitre($requt, $idrecipe){
-            $titreslug= str_slug($requt->title, '-');
-            $slug = $titreslug."-".$idrecipe;
-            return $slug;
+            $titreslug = str_slug($requt->title, '-');
+            return $titreslug."-".$idrecipe;
         }
 
 

@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use App\Type_recipe;
+use PHPUnit\Util\Type;
 
-
-class Type_recipe extends Model
+class RecipeImg extends Model
 {
-	use Searchable;
+    use Searchable;
 
     public function getFirstNameAttribute($value)
     {
@@ -16,10 +17,9 @@ class Type_recipe extends Model
     }
 
 
-    public function getnamefromid($id){
-        $type = $this->where('id', $id)->first();
-        return "{$type->name}";
-    }
+
+
+
 
 
 }
