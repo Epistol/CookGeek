@@ -12,7 +12,6 @@ use Spatie\Permission\Models\Permission;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
-    const ADMIN = 'admin';
     public function run()
     {
         // Reset cached roles and permissions
@@ -23,7 +22,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'delete articles']);
         Permission::create(['name' => 'publish articles']);
         Permission::create(['name' => 'unpublish articles']);
-        Permission::create(['name' => ADMIN ]);
+        Permission::create(['name' => 'admin' ]);
 
         // create roles and assign existing permissions
         $role = Role::create(['name' => 'writer']);
@@ -33,7 +32,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo('publish articles');
         $role->givePermissionTo('unpublish articles');
-        $role->givePermissionTo(ADMIN);
+        $role->givePermissionTo('admin');
 
         $role = Role::create(['name' => 'user']);
 

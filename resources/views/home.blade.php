@@ -2,25 +2,22 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
 
 
-                        {{Auth::user()->getRoleNames()}}
-                </div>
-            </div>
+    <div class="columns">
+        <div class="column" id="left_column">
+            First column
+        </div>
+        <div class="column">
+            Second column
+        </div>
+        <div class="column">
+            Third column
+        </div>
+        <div class="column">
+            Fourth column
         </div>
     </div>
+
 </div>
 @endsection
