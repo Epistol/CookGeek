@@ -18,7 +18,8 @@
         </div>
 
         <section class="section">
-            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="PUT" action="{{ route('recipe.store') }}">
+            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="PUT"
+                  action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
                 <div class="columns" style="
@@ -70,7 +71,7 @@
                 <section class="section page">
                     <div class="columns">
                         <div class="column is-4"> @include("recipes.edit.comment")
-                         @include("recipes.edit.video")
+                            @include("recipes.edit.video")
                         </div>
                         <div class="column">  @include("recipes.edit.type")
                         </div>
@@ -82,9 +83,8 @@
                 </section>
 
 
-
-    </form>
-    </section>
+            </form>
+        </section>
 
     </div>
 

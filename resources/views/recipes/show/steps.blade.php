@@ -20,9 +20,9 @@
             </span>
 
             </div>
-            <div class="column is-lateral "  style="display:flex;align-items:center;">
+            <div class="column is-lateral " style="display:flex;align-items:center;">
                 <div class="content">
-<?php  $etape = app('profanityFilter')->filter($step->instruction) ;?>
+                    <?php  $etape = app('profanityFilter')->filter($step->instruction);?>
                     <p>   {{ucfirst($etape)}}</p>
                 </div>
             </div>

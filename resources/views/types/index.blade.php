@@ -5,7 +5,7 @@
         <div class="container">
             <section class="section blockcontent">
 
-    @include("types.index.bread")
+                @include("types.index.bread")
 
                 <div class="content">
 

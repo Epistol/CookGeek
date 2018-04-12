@@ -3,7 +3,7 @@
 
         <label class="file-label">
             <div class="image ajout_recette_img" id="limage">
-                <input class="file-input" id="upload"  type="file" name="resume" accept="image/x-png,image/jpeg">
+                <input class="file-input" id="upload" type="file" name="resume" accept="image/x-png,image/jpeg">
                 <span class="file-cta darker">
 
                                             <span class="file-label">
@@ -12,7 +12,7 @@
                                         </span>
 
 
-                <img id="blah" class="is-clearfix" src="#" alt="" />
+                <img id="blah" class="is-clearfix" src="#" alt=""/>
             </div>
 
             {{-- Nom du fichier--}}

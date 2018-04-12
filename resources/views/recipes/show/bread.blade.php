@@ -1,6 +1,6 @@
 <div class="breadbg">
 
-    <?php $type = DB::table('type_recipes')->where("id","=", $recette->type)->first();?>
+    <?php $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();?>
 
     <div class="columns">
         <div class="column is-4">
@@ -8,8 +8,11 @@
                 <ul>
                     <li><a href="/">Accueil</a></li>
                     <li><a href="{{route("recipe.index")}}">Recettes</a></li>
-                    <li class=""><a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a></li>
-                    <li  > <div style="margin-left: 0.5rem" > @include("recipes.show.type_univers")</div></li>
+                    <li class=""><a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
+                                    href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a></li>
+                    <li>
+                        <div style="margin-left: 0.5rem"> @include("recipes.show.type_univers")</div>
+                    </li>
 
                 </ul>
             </nav>
@@ -24,9 +27,6 @@
             @include('recipes.likeh')
         </div>
     </div>
-
-
-
 
 
 </div>

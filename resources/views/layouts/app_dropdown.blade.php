@@ -33,10 +33,9 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     <?php
-    if(Auth::check() == FALSE || Auth::check() == ''){
+    if (Auth::check() == FALSE || Auth::check() == '') {
         echo "var userIsLoggedIn = 0;";
-    }
-    else {
+    } else {
         echo "var userIsLoggedIn = 1;";
     }
 
@@ -46,27 +45,33 @@
 <script src="{{ asset('js/app.js') }}"></script>
 
 
-
 <script src="/js/dropzone.js"></script>
 {{--
 
     <script src="/js/konami.js"></script>
     <script src="/js/toasty/jquery.toasty.js"></script>--}}
-<script src="/js/nouislider.min.js" ></script>
+<script src="/js/nouislider.min.js"></script>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
 
 <script type="application/javascript">
-    $(document).ready( function(){
+    $(document).ready(function () {
         Dropzone.autoDiscover = false;
-        $("div#myId").dropzone({ url: "/file/post", maxFiles: 1, autoProcessQueue: false, addRemoveLinks: true, acceptedFiles: 'image/*' });
+        $("div#myId").dropzone({
+            url: "/file/post",
+            maxFiles: 1,
+            autoProcessQueue: false,
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*'
+        });
 
         /*       $("body").toasty();
 
@@ -84,7 +89,6 @@
                 'max': 100
             }
         });
-
 
 
     });

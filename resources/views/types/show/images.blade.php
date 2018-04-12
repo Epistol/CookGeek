@@ -1,9 +1,9 @@
 <div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
     {{--Image principale--}}
     @if($firstimg != null )
-    <figure class="image" >
-        <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
-    </figure>
+        <figure class="image">
+            <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}">
+        </figure>
     @endif
     @if($images->isEmpty())
 

@@ -15,16 +15,17 @@
 
             ?>
 
-            <div class="column is-6 is-result" >
+            <div class="column is-6 is-result">
                 <div class="columns">
                     <div class="column is-4 to-hover is-paddingless is-marginless">
                         @if(isset($type))
                             <div class="hovered">
-                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem" href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
+                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
+                                   href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                             </div>
                         @endif
                         <a href="/recette/{{$recette->slug}}">
-                            <figure class="image is-1by1" >
+                            <figure class="image is-1by1">
                                 @if($recette->id_user != NULL  && isset($first))
                                     <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
                                 @else
@@ -36,7 +37,7 @@
                     </div>
                     <div class="column is-7">
                         <div class="top is-flex">
-                            <a href="/recette/{{$recette->slug}}"> <h2 class="title">
+                            <a href="/recette/{{$recette->slug}}"><h2 class="title">
                                     {{$recette->title}}
                                 </h2></a>
 
@@ -46,7 +47,7 @@
                             {{-- Ingredients--}}
 
                             <?php
-                            $ingredients =  DB::table('recipes_ingredients')
+                            $ingredients = DB::table('recipes_ingredients')
                                 ->where('id_recipe', '=', $recette->id)
                                 ->get();
                             ?>
@@ -64,14 +65,13 @@
                             </p>
 
 
-
                         </div>
                         <div class="bottom">
                             <div class="is-flex">
                                 <?php
                                 $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
                                 ?>
-                                @include("recipes.show.author")<br />
+                                @include("recipes.show.author")<br/>
                                 @include("recipes.show.staronly")
                             </div>
                         </div>

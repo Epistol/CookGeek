@@ -4,11 +4,11 @@
 
             <input class="input" type="text" placeholder="Chercher" value="{{$value}}">
 
-            @else
+        @else
 
             <input class="input" type="text" placeholder="Chercher" value="{{old('value')}}">
 
-            @endif
+        @endif
 
     </div>
     <div class="control">

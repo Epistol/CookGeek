@@ -8,7 +8,7 @@
                 @foreach ($difficulty as $key=>$diff)
                     @php(++$key)
 
-                    <input class="is-checkradio" value="{{$key}}" id="diff{{$key}}" type="checkbox" name="diff" >
+                    <input class="is-checkradio" value="{{$key}}" id="diff{{$key}}" type="checkbox" name="diff">
                     <label for="diff{{$key}}">{{$diff->name}}</label>
                 @endforeach
             </div>

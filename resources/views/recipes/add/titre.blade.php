@@ -4,7 +4,8 @@
     </div>
     <div class="column">
 
-        <input class="input_modal blck" type="text" placeholder="" v-model="titre" name="title" id="title" value="" required>
+        <input class="input_modal blck" type="text" placeholder="" v-model="titre" name="title" id="title" value=""
+               required>
 
 
     </div>

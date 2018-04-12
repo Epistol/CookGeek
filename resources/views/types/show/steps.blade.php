@@ -20,7 +20,7 @@
             </span>
 
             </div>
-            <div class="column is-lateral "  style="display:flex;align-items:center;">
+            <div class="column is-lateral " style="display:flex;align-items:center;">
                 <div class="content">
 
                     <p>   {{ucfirst($step->instruction)}}</p>

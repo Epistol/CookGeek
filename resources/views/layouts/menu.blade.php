@@ -4,7 +4,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
-                <img src="/img/logoo_rond.png"  alt="CDG : Cuisine De geek" style="
+                <img src="/img/logoo_rond.png" alt="CDG : Cuisine De geek" style="
     max-height: fit-content;max-height: 100%;
 ">
             </a>
@@ -54,7 +54,7 @@
                     <form action="{{route('search')}}" method="POST" role="search">
                         {{ csrf_field() }}
 
-                        <input class="input" type="text" placeholder="" name="q"  style="padding: 0 50px 0 25px;">
+                        <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
                         <button type="submit" class="searchheadbutton" style="position: absolute;">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
@@ -68,7 +68,7 @@
                     <a class="navbar-item" href="{{ route('register') }}">Register</a>
                 @else
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" >
+                        <a class="navbar-link">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="navbar-dropdown">
@@ -85,7 +85,6 @@
                         </div>
                     </div>
                 @endguest
-
 
 
             </div>

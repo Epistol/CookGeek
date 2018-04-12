@@ -6,15 +6,14 @@
     <div class="container">
         <section class="section blockcontent">
 
-@include("admin.page.bread")
+            @include("admin.page.bread")
 
-        <h1 class="title">{{$page->name}}</h1>
+            <h1 class="title">{{$page->name}}</h1>
 
 
-        {!!$page->content!!}
+            {!!$page->content!!}
 
         </section>
-
 
 
     </div>

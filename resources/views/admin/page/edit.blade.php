@@ -18,7 +18,8 @@
             <div class="field">
                 <label class="label">Message</label>
                 <p class="control">
-                    <textarea id="mytextarea" name="contenu" class="textarea" placeholder="Textarea">{{$page->content}}</textarea>
+                    <textarea id="mytextarea" name="contenu" class="textarea"
+                              placeholder="Textarea">{{$page->content}}</textarea>
                 </p>
             </div>
 

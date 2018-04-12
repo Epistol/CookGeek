@@ -6,17 +6,18 @@
         <section class="searchresult">
             <div class="advanced">
                 <div class="columns ">
-                  {{--  <div class="column is-8 is-offset-2">
+                    {{--  <div class="column is-8 is-offset-2">
 
-                    </div>--}}
+                      </div>--}}
                     <div class="column">
                         @include("search.searchbar")
-                      {{--  @include("search.settings")--}}
+                        {{--  @include("search.settings")--}}
                     </div>
 
                 </div>
                 <transition name="slide">
-                    <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active "  v-if="seen" v-cloak>
+                    <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active " v-if="seen"
+                         v-cloak>
                         <div class="column">
                             {{--@include("search.advanced.type")--}}
                             {{--@include("search.advanced.diff")--}}
@@ -29,7 +30,6 @@
                 </transition>
 
 
-
             </div>
 
 
@@ -37,31 +37,31 @@
                 <div class="columns ">
                     <div class="column is-10 is-offset-1">
                         <div class="is-flex">
-                             {{--Medaillons--}}
+                            {{--Medaillons--}}
                             @if($categunivers)
-                               @includeIf("search.elements.categ")
+                                @includeIf("search.elements.categ")
                             @endif
                         </div>
                         <div class="is-flex">
-                             {{--HP, Narnia, etc--}}
+                            {{--HP, Narnia, etc--}}
                             @if($univers)
-                              @includeIf("search.elements.univers")
+                                @includeIf("search.elements.univers")
                             @endif
                         </div>
                         <div class="is-flex">
 
                             {{--@if($valeurs['type_recipes'])--}}
-                               {{--@includeIf("search.elements.type_univ")--}}
+                            {{--@includeIf("search.elements.type_univ")--}}
                             {{--@endif--}}
 
                             {{--Ingrédients--}}
-                           @includeIf("search.elements.recipe_ingr")
+                            @includeIf("search.elements.recipe_ingr")
                         </div>
 
 
                         @if($recipe)
-                        @include("search.elements.recipe_name")
-                       @endif
+                            @include("search.elements.recipe_name")
+                        @endif
 
                     </div>
                 </div>

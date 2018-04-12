@@ -6,14 +6,14 @@
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="/">Accueil</a></li>
-                    <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem" href="/{{$page->name}}">{{$page->name}}</a></li>
+                    <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem"
+                                    href="/{{$page->name}}">{{$page->name}}</a></li>
 
                 </ul>
             </nav>
         </div>
 
     </div>
-
 
 
 </div>

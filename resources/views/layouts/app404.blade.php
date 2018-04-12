@@ -44,10 +44,9 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     <?php
-    if(Auth::check() == FALSE || Auth::check() == ''){
+    if (Auth::check() == FALSE || Auth::check() == '') {
         echo "var userIsLoggedIn = 0;";
-    }
-    else {
+    } else {
         echo "var userIsLoggedIn = 1;";
     }
 
@@ -64,19 +63,20 @@
 {{--
     <script src="/js/konami.js"></script>
     <script src="/js/toasty/jquery.toasty.js"></script>--}}
-<script src="/js/nouislider.min.js" ></script>
+<script src="/js/nouislider.min.js"></script>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
 
 <script type="application/javascript">
-    $(document).ready( function(){
+    $(document).ready(function () {
         /*       $("body").toasty();
 
                var easter_egg = new Konami(function() {
@@ -87,7 +87,7 @@
         const red = document.querySelector('#sorry');
 
         function setProperty(duration) {
-            red.style.setProperty('--animation-time', duration +'s');
+            red.style.setProperty('--animation-time', duration + 's');
         }
 
         function changeAnimationTime() {
@@ -107,7 +107,6 @@
                 'max': 100
             }
         });
-
 
 
     });

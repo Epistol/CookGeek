@@ -1,11 +1,10 @@
-
 <div class="is-pulled-right">
 
     <div class="field has-addons">
         <p class="control">
             <a class="button tooltip is-tooltip-left like
 {{$controller->check_liked($recette->id)}}
-                    " id="{{$recette->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur" >
+                    " id="{{$recette->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur">
                   <span class="icon is-small">
                     <i class="material-icons">&#xE87E;</i>
                   </span>
@@ -29,18 +28,18 @@
                 </a>
             </p>--}}
 
-            @endif
+        @endif
 
 
         <p class="control">
-            <a class="button tooltip is-tooltip-left" data-tooltip="Partager" >
+            <a class="button tooltip is-tooltip-left" data-tooltip="Partager">
                           <span class="icon is-small">
                             <i class="material-icons">&#xE80D;</i>
                           </span>
             </a>
         </p>
 
-        <modal v-if="showModalLike" @close="showModalLike = false" v-cloak >
+        <modal v-if="showModalLike" @close="showModalLike = false" v-cloak>
             <h3 slot="header">Connexion requise</h3>
             <p slot="body">Vous ne pouvez pas ajouter de recette en favori sans être connecté ! </p>
             <div slot="footer">

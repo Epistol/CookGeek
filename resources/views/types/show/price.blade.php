@@ -1,28 +1,27 @@
 <div class="is-flex">
 
-        @lang('recipe.budget') :
+    @lang('recipe.budget') :
 
-        <div class="dollarsum">
+    <div class="dollarsum">
 
-            <?php $count = 0;
+        <?php $count = 0;
 
-            if($recette->cost == null){
-                $recette->cost = 0;
-            }?>
+        if ($recette->cost == null) {
+            $recette->cost = 0;
+        }?>
 
-                @for($i = 0; $i < $recette->cost; $i++)
+        @for($i = 0; $i < $recette->cost; $i++)
 
-                        <span class="dollar">$</span>
-                <?php $count++;?>
-                @endfor
+            <span class="dollar">$</span>
+            <?php $count++;?>
+        @endfor
 
-                @for($i = 3 ; $i > $count; $i--)
+        @for($i = 3 ; $i > $count; $i--)
 
-                        <span class="dollar_null">$</span>
+            <span class="dollar_null">$</span>
 
-                @endfor
+        @endfor
 
 
-
-        </div>
+    </div>
 </div>

@@ -13,15 +13,13 @@
 </section>
 
 
-
-
 <section class=" bordered-cdg">
     <div class="columns">
-        <?php $i=0;?>
+        <?php $i = 0;?>
 
         {{--   -> tout les univers--}}
         @foreach($universcateg as $index=>$c)
-            <?php $i = $index+1;?>
+            <?php $i = $index + 1;?>
 
 
             {{--  -> si la recette n'est pas nulle--}}
@@ -48,11 +46,10 @@
 
     </div>
     <div class="columns">
-                @endif
+        @endif
         @endforeach
 
     </div>
-
 
 
 </section>

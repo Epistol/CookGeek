@@ -7,7 +7,8 @@
             <div class="columns">
                 <div class="column is-1">
                     <div class="field">
-                        <input class="is-checkradio" id="exampleCheckbox[{{$index}}]" type="checkbox" name="exampleCheckbox[{{$index}}]" >
+                        <input class="is-checkradio" id="exampleCheckbox[{{$index}}]" type="checkbox"
+                               name="exampleCheckbox[{{$index}}]">
                         <label for="exampleCheckbox[{{$index}}]"></label>
                     </div>
                 </div>
@@ -25,7 +26,6 @@
 
 
     {{--<div class="is-flex-center" style="margin-top: 2rem;"><div class="field"><p class="control">    <a class="button is-direct">Ajouter à mes courses</a></div></div>--}}
-
 
 
 </section>

@@ -8,15 +8,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@hasSection('titrepage')@yield('titrepage') - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif</title>
-    <meta name="description" content="@hasSection('description')@yield('description') - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif">
+    <title>@hasSection('titrepage')@yield('titrepage')
+        - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif</title>
+    <meta name="description"
+          content="@hasSection('description')@yield('description') - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif">
 
     <!-- ROBOTS -->
-    @include("layouts.app_element.robot")
-    <!-- Links to information about the author(s) of the document -->
+@include("layouts.app_element.robot")
+<!-- Links to information about the author(s) of the document -->
     <link rel="author" href="humans.txt">
     <link rel="index" href="{{url('/')}}">
-    <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+    <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention"/>
 
     <!-- Feeds -->
     {{--<link rel="alternate"  href="/rss" type="application/rss+xml" title="RSS">--}}
@@ -24,7 +26,7 @@
 
     @include("layouts.app_element.icons")
 
-    <!-- Meta OG -->
+<!-- Meta OG -->
     @include("layouts.app_element.meta_og")
     @include("layouts.app_element.twitter")
     @include("layouts.app_element.gplus")
@@ -38,7 +40,7 @@
     <link href="/css/nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}"  rel="stylesheet">
+    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -48,10 +50,9 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script><?php
-    if(Auth::check() == FALSE || Auth::check() == ''){
+    if (Auth::check() == FALSE || Auth::check() == '') {
         echo "var userIsLoggedIn = 0;";
-    }
-    else {
+    } else {
         echo "var userIsLoggedIn = 1;";
     }
     ?>
@@ -69,31 +70,32 @@
 <link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 
 
-<script src="{{ asset('js/app.js') }}" ></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 <script src="/js/konami.js"></script>
 <script defer src="/static/fontawesome/fa-v4-shim.js"></script>
 <script src="/js/toasty/jquery.toasty.js"></script>
-<script src="/js/nouislider.min.js" ></script>
+<script src="/js/nouislider.min.js"></script>
 
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
 
 <script type="application/javascript">
-    $(document).ready( function(){
-               $("body").toasty();
+    $(document).ready(function () {
+        $("body").toasty();
 
-               var easter_egg = new Konami(function() {
-                   $("body").toasty('pop');
-               });
+        var easter_egg = new Konami(function () {
+            $("body").toasty('pop');
+        });
 
         var slider = document.getElementById('slider');
 

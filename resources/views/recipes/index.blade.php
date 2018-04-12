@@ -12,7 +12,6 @@
                     {{--@include("recipes.index.partype")--}}
 
                     @if($recipes)
-
                         <section class="hero">
                             <div class="hero-body">
                                 <div class="container">
@@ -26,8 +25,6 @@
                             </div>
                         </section>
 
-
-
                         @include("recipes.index.recipe_name")
                     @endif
 
@@ -37,7 +34,7 @@
         </div>
     </div>
 
-    <modal v-if="showModalLike" @close="showModalLike = false" v-cloak >
+    <modal v-if="showModalLike" @close="showModalLike = false" v-cloak>
         <h3 slot="header">Connexion requise</h3>
         <p slot="body">Vous ne pouvez pas ajouter de recette en favori sans être connecté ! </p>
         <div slot="footer">

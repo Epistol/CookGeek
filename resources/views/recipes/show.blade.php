@@ -13,13 +13,13 @@
                     <div class="column  is-marginless is-3 is-paddingless" style=" background: #fdfdfd;">
                         @include("recipes.show.images")
                         <div class="page">
-                        @include("recipes.show.ficheinfo")
+                            @include("recipes.show.ficheinfo")
                         </div>
                     </div>
                     {{--    Infos + steps--}}
                     <div class="column is-marginless is-paddingless is-9 ">
                         {{--// Budget--}}
-                        <div class="columns list-h-show  is-marginless is-paddingless" >
+                        <div class="columns list-h-show  is-marginless is-paddingless">
                             <div class="column">
                                 <div class="has-text-centered">
                                     @include("recipes.show.timing")
@@ -90,7 +90,8 @@
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
                         <div class="fb-commentaire">
-                            <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%" data-numposts="21"></div>
+                            <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"
+                                 data-numposts="21"></div>
 
                         </div>
                     </div>
@@ -102,23 +103,22 @@
 
     <?php
     use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = array();
-     foreach ( $ingredients as $ingr){
-          $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
-        $ingredientliste[] =  $ingr->qtt . " " . $nom_in ;
+    foreach ($ingredients as $ingr) {
+        $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
+        $ingredientliste[] = $ingr->qtt . " " . $nom_in;
     }
 
-    if(isset($firstimg->image_name)){
-       $img =  $firstimg->image_name;
-    }
-    else {
-         $img = null;
+    if (isset($firstimg->image_name)) {
+        $img = $firstimg->image_name;
+    } else {
+        $img = null;
     }
 
     // Shema.org
     $datas = Schema::Recipe()
         ->name($recette->title)
-        ->image(url('/')."/recipes/".$recette->id."/".$recette->id_user."/".$img)
-            ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
+        ->image(url('/') . "/recipes/" . $recette->id . "/" . $recette->id_user . "/" . $img)
+        ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
         ->aggregateRating(Schema::AggregateRating()->ratingValue($stars1)->reviewCount($countrating))
         ->author(Schema::person()->name($nom))
         ->prepTime($preptimeiso)

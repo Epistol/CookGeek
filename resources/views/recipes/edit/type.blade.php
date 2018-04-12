@@ -19,21 +19,22 @@
                             <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>
-			                    Cinéma / Tv
+                                Cinéma / Tv
                             </p>
                         @else
-                        <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
-                        <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
-                        <p>
-							<?php echo ucfirst($type->name);?>
-                        </p>
+                            <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
+                            <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
+                            <p>
+                                <?php echo ucfirst($type->name);?>
+                            </p>
                         @endif
                     </label>
 
                 </div>
 
                 @if($key == 4)
-        </div> <div class="columns ">
+        </div>
+        <div class="columns ">
 
             @endif
             @endforeach

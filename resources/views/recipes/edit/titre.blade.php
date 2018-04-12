@@ -4,7 +4,7 @@
     </div>
     <div class="column">
 
-        <input class="input_modal blck" type="text" placeholder="" name="title" id="title" value="{{$recette->title}}" >
+        <input class="input_modal blck" type="text" placeholder="" name="title" id="title" value="{{$recette->title}}">
 
 
     </div>

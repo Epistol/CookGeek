@@ -24,7 +24,8 @@
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->slug }}</td>
                 <td>{{ Carbon\Carbon::parse($value->created_at)->format('d-m-Y H:i:s ') }} </td>
-                <td> <a class="btn btn-small btn-info" href="{{ URL::to('admin/page/' . $value->id . '/edit') }}">Editer</a>
+                <td><a class="btn btn-small btn-info"
+                       href="{{ URL::to('admin/page/' . $value->id . '/edit') }}">Editer</a>
                 </td>
                 <td>
                     <form method="POST" action="/admin/page/{{$value->id}}">

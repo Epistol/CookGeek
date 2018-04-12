@@ -14,7 +14,8 @@
                             @foreach($types as $type)
                                 <div class="column is-one-third is-flex-center">
                                     {{--On affiche la liste des types de recettes--}}
-                                    <a class="tag is-primary is-medium" href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
+                                    <a class="tag is-primary is-medium"
+                                       href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
                                 </div>
                             @endforeach
                         </div>
@@ -30,7 +31,6 @@
                             </div>
                         </section>
                     @endforeach
-
 
 
                 </div>

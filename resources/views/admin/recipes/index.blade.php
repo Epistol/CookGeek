@@ -7,8 +7,6 @@
         <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une recette</a>
 
 
-
-
         <table class="table">
             <thead>
             <tr>
@@ -32,14 +30,14 @@
                     <td>{{ $r->difficulty }}</td>
                     <td>
                         <?php $type = DB::table("type_recipes")->where('id', $r->type)->first();?>
-                       {{$type->name}}
+                        {{$type->name}}
                     </td>
                     <td>
                         {{$r->cost}}
                     </td>
                     <td>
                         <?php $univ = DB::table("univers")->where('id', $r->univers)->first();?>
-                            {{$univ->name}}
+                        {{$univ->name}}
                     </td>
                     <td>
                         <?php $media = DB::table("categunivers")->where('id', $r->type_univers)->first();?>
@@ -52,7 +50,7 @@
                         {{$r->nb_views}}
                     </td>
                     <td>
-                                <a href="{{route("admin.user.edit", $r->id)}}" class="button is-info">EDIT</a>
+                        <a href="{{route("admin.user.edit", $r->id)}}" class="button is-info">EDIT</a>
                     </td>
 
 
