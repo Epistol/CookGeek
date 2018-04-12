@@ -25,6 +25,6 @@ class HomeController extends Controller
     {
 
     	// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
-        return view('home');
+        return view('user_space.home');
     }
 }
