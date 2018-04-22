@@ -77,6 +77,15 @@ class RecipesController extends Controller
         return view('recipes.add', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function test()
+    {
+        return view('recipes.test');
+    }
+
+
     /** TODO finish
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -235,16 +244,46 @@ class RecipesController extends Controller
         $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
-//        dd($request->resume);
-        if ($request->resume['error'] == 0) {
 
-            $photoName = time() . '.' . $request->resume->getClientOriginalExtension();
-            $this->ajouter_image($photoName, $iduser, $idRecette);
-            $request->resume->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
+        foreach ($request->resume as $file) {
+            dd($file);
+            if ($file['error'] == 0) {
+                $photoName = time() . '.' . $file->getClientOriginalExtension();
+                $this->ajouter_image($photoName, $iduser, $idRecette);
+                $file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
+            }
         }
-        return redirect()->route('recipe.show', ['post' => $slug]);
-    }
+        dd("hey");
 
+//        return redirect()->route('recipe.show', ['post' => $slug]);
+    }
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store_test(Request $request)
+    {
+        $input = $request->all();
+        dd($input['resume']);
+
+
+        // Parties image
+        $this->validate($request, [
+            'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        ]);
+
+        foreach ($request->resume as $file) {
+            dd($file);
+            if ($file['error'] == 0) {
+                $photoName = time() . '.' . $file->getClientOriginalExtension();
+                $this->ajouter_image($photoName, $iduser, $idRecette);
+                $file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
+            }
+        }
+        dd("hey");
+
+//        return redirect()->route('recipe.show', ['post' => $slug]);
+    }
 
     /** TODO
      * @param Request $request

@@ -1,5 +1,5 @@
+<!-- Image part -->
 <div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
-    {{--Image principale--}}
     @if($firstimg != null )
         <a href="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$firstimg->image_name}}"
            data-lightbox="{{$recette->slug}}" data-title="{{$recette->title}}">
@@ -24,20 +24,3 @@
 
 
 </div>
-{{--
-<div class="is-flex-center" style="margin-top: 2rem">
-    <div class="field">
-        <p class="control">
-
-            <a href="" class="button">
-                          <span class="icon is-small">
-                                         <i class="material-icons">&#xE439;</i>
-                          </span>
-                <span>
-                                            Ajouter votre photo
-                                   </span>
-            </a>
-        </p>
-    </div>
-</div>
---}}

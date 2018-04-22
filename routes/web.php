@@ -25,7 +25,6 @@ Route::get('/home', 'HomeController@index')->name("home");
 Route::get('/contact', 'PageController@show_contact');
 
 
-
 /*Route::group(['prefix' => 'login'], function () {
 	Route::group(['prefix' => 'google'], function () {
 		Route::get('','Auth\GoogleController@redirectToProvider');
@@ -43,29 +42,29 @@ Route::get('/contact', 'PageController@show_contact');
 });*/
 
 
-
 // RECETTE
 Route::group(['prefix' => 'recette'], function () {
-    Route::get('/','Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
-    Route::get('ajout','Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
-    Route::get('edit/{post}','Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
-    Route::post('ajout','Recipe\RecipesController@store')->name("recipe.store");
+    Route::get('/', 'Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
+    Route::get('ajout', 'Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
+    Route::get('test', 'Recipe\RecipesController@test')->name("recipe.test")->middleware('auth');
+    Route::get('edit/{post}', 'Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
+    Route::post('ajout', 'Recipe\RecipesController@store')->name("recipe.store");
+    Route::post('store_test', 'Recipe\RecipesController@store_test')->name("recipe.store_test");
 
     Route::group(['prefix' => 'type'], function () {
-        Route::get('/','TypeController@index')->name("type.index");
-        Route::get('{post}','TypeController@show')->name("type.show");
+        Route::get('/', 'TypeController@index')->name("type.index");
+        Route::get('{post}', 'TypeController@show')->name("type.show");
     });
 
 // RECETTE/MEDIA
     Route::group(['prefix' => 'media'], function () {
-        Route::get('/','Recipe\RecipesController@indexmedia')->name("media.index");
-        Route::get('ajout','Recipe\RecipesController@add')->name("media.add")->middleware('auth');
-        Route::post('ajout','Recipe\RecipesController@store')->name("media.store");
-        Route::get('{post}','Recipe\RecipesController@indexmediatype')->name("media.show");
+        Route::get('/', 'Recipe\RecipesController@indexmedia')->name("media.index");
+        Route::get('ajout', 'Recipe\RecipesController@add')->name("media.add")->middleware('auth');
+        Route::post('ajout', 'Recipe\RecipesController@store')->name("media.store");
+        Route::get('{post}', 'Recipe\RecipesController@indexmediatype')->name("media.show");
     });
 
-    Route::get('{post}','Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
-
+    Route::get('{post}', 'Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
 
 
 //RECETTE/TYPE
@@ -73,10 +72,9 @@ Route::group(['prefix' => 'recette'], function () {
 });
 
 
-
 // RECHERCHE
-Route::get('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
-Route::post('search', [    'as' => 'search',    'uses' => 'SearchController@index']);
+Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 
 // RSS
 
@@ -86,7 +84,7 @@ Route::feeds();
 //ADMIN
 
 Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {
-    Route::group(['prefix' => 'admin'], function(){
+    Route::group(['prefix' => 'admin'], function () {
         // OVERVIEW
         Route::get('/', 'Admin\AdminController@index')->name("admin.index");
         // USERS

@@ -11,7 +11,9 @@ return [
 
     'fetch'             => "Fetchez la vache !
      - Monty Python, sacré Graal.",
-    'ingr'             => "Ajoutez le nom de votre ingrédient",
+    'house'             => "Je vous ai appris à tricher, truander, resquiller et vous redevenez honnête dès que j’ai le dos tourné !
+
+Docteur House, House.",
 ];
 
 ?>
