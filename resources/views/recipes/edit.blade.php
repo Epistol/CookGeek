@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container addrecipe">
-        <div class="breadbg">
+        <div class="round_bg">
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">

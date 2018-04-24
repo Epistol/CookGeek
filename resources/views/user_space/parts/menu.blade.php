@@ -1,4 +1,4 @@
-<div class="column" id="left_column">
+
 
     <aside class="menu">
         <div class="user">
@@ -16,8 +16,8 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a href="#">Paramètres</a>
-                        <a href="#">Mes données</a>
+                        <a href="{{route('account.param')}}">Paramètres</a>
+                        <a href="{{route('account.data')}}">Mes données</a>
                     </li>
                 </ul>
             </div>
@@ -27,8 +27,8 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a href="#">Favoris</a>
-                        <a href="#">Mes recettes</a>
+                        <a href="{{route('account.fav')}}">Favoris</a>
+                        <a href="{{route('account.recipe')}}">Mes recettes</a>
                     </li>
                 </ul>
             </div>
@@ -47,5 +47,3 @@
         </div>
     </aside>
 
-
-</div>

@@ -1,8 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Providers\UniverseProvider;
+use App\RecipeImg;
+use App\Recipes;
+use App\Univers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Spatie\SchemaOrg\Schema;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {

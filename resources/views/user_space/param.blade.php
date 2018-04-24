@@ -10,7 +10,7 @@
                     @include('user_space.parts.menu')
                 </div>
                 <div class="column is-three-quarters round_bg">
-                 @include("user_space.parts.account.info")
+                 @include("user_space.parts.account.param")
                 </div>
             </div>
 
