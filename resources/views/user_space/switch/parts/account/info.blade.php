@@ -6,14 +6,9 @@
     {{ csrf_field() }}
 
     <div class="columns">
-        {{--Photo profil--}}
-        <div class="column">
-            @include("user_space.switch.parts.account.informations.avatar")
-        </div>
-        {{--Infos classique--}}
+        {{--Infos complémentaires--}}
         <div class="column">
             @include("user_space.switch.parts.account.informations.basic")
-            @include("user_space.switch.parts.account.informations.switch")
         </div>
     </div>
     <div class="is-flex-center">
