@@ -6,7 +6,7 @@
             </a>
         </li>
         <li>
-            <a>
+            <a href="{{route('account.info')}}">
                 <span>Informations</span>
             </a>
         </li>

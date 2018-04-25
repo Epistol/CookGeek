@@ -43,7 +43,12 @@ class HomeController extends Controller
 
     public function parameters()
     {
-        return view('user_space.param');
+        return view('user_space.switch.param');
+    }
+
+    public function info()
+    {
+        return view('user_space.switch.info');
     }
 
 

@@ -11,6 +11,7 @@ Route::get('/home', 'User\HomeController@index')->name("home");
 Route::prefix('home')->group(function () {
     Route::get('parameters', 'User\HomeController@parameters')->name("account.param");
     Route::get('data', 'User\HomeController@data')->name("account.data");
+    Route::get('info', 'User\HomeController@info')->name("account.info");
     Route::get('fav', 'User\HomeController@fav')->name("account.fav");
     Route::get('recipe', 'User\HomeController@recipe')->name("account.recipe");
 });

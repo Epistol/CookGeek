@@ -3,17 +3,14 @@
 @section('content')
     <div class="section">
         <div class="container">
-
-
             <div class="columns">
-                <div class="column round_bg" id="left_column">
+                <div class="column is-2 "  id="left_column">
                     @include('user_space.parts.menu')
                 </div>
                 <div class="column is-three-quarters round_bg">
-               ACCCUEIL
+                 @include("user_space.switch.parts.account.param")
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
