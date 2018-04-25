@@ -1,19 +1,26 @@
-@extends('layouts.app')
-
-@section('content')
-    <div class="section">
-        <div class="container">
+@include('user_space.parts.account.tabs')
 
 
-            <div class="columns">
-                <div class="column round_bg" id="left_column">
-                    @include('user_space.parts.menu')
-                </div>
-                <div class="column is-three-quarters round_bg">
-                    @include("user_space.parts.account.info")
-                </div>
-            </div>
+<form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
+      action="{{ route('recipe.store') }}">
+    {{ csrf_field() }}
+
+
+    <div class="columns">
+        {{--Photo profil--}}
+        <div class="column">
+            @include("user_space.parts.account.informations.avatar")
 
         </div>
+        {{--Infos classique--}}
+        <div class="column">
+            @include("user_space.parts.account.informations.basic")
+            @include("user_space.parts.account.informations.switch")
+
+        </div>
+
+
     </div>
-@endsection
+
+
+</form>

@@ -14,3 +14,4 @@ Route::prefix('home')->group(function () {
     Route::get('fav', 'User\HomeController@fav')->name("account.fav");
     Route::get('recipe', 'User\HomeController@recipe')->name("account.recipe");
 });
+
