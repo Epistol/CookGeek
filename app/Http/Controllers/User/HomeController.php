@@ -38,7 +38,7 @@ class HomeController extends Controller
 
     public function data()
     {
-        return view('user_space.data');
+        return view('user_space.switch.data');
     }
 
     public function parameters()

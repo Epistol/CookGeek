@@ -1,7 +1,7 @@
 <div class="tabs">
     <ul>
-        <li {{ Route::currentRouteNamed('home') ? ' class=is-active' : NULL  }}>
-            <a href="{{route("home")}}" >
+        <li {{ Route::currentRouteNamed('account.param') ? ' class=is-active' : NULL  }}>
+            <a href="{{route("account.param")}}" >
                 <span>Profil</span>
             </a>
         </li>
