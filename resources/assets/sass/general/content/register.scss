@@ -1,0 +1,35 @@
+.left_register {
+  margin-top: 12%;
+
+  &:before {
+    content: "";
+    display: block;
+    background: #7f5fbf;
+    position: absolute;
+    width: 40%;
+    height: 85%;
+    z-index: 0;
+    top: 8%;
+    left: 2%;
+    margin-top: 2rem;
+    border-radius: 15px 0 0 15px;
+  }
+  @include md_1 {
+    &:before {
+      content: "";
+      display: none;
+    }
+  }
+}
+
+.chat_hover {
+  @include lg {
+
+    z-index: 17;
+    position: absolute;
+    width: 42%;
+    left: 3%;
+    top: 10%;
+  }
+
+}

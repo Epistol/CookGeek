@@ -1,17 +1,20 @@
 
-.onboard_login{
-/*  display: flex;
-  position: relative;
-  height: 100%;*/
+.onboard_login {
+  /*  display: flex;
+    position: relative;
+    height: 100%;*/
 }
 
 .left_login_side {
   background: url("/img/bg_space/Asset_1.png") repeat;
   background-position-y: -5px;
-  display:flex;justify-content:center;align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.right_login_side{
-  min-height:92vh;
+
+.right_login_side {
+  min-height: 92vh;
   background: #847ee0;
   background: linear-gradient(to bottom right, #847ee0, #359869);
 }

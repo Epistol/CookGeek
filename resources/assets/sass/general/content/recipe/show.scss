@@ -3,17 +3,6 @@
   padding: 1rem;
 }
 
-.horizontalover {
-
-  overflow-x: auto;
-  padding: 1rem;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-}
-
 .round_bg {
   margin-top: 2rem;
   background: white;
@@ -22,15 +11,7 @@
   padding-right: 1rem;
 }
 
-.medail {
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-  width: 4rem;
-  height: 4rem;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
+
 
 .is-result {
   background: #FAFAFA;
@@ -51,31 +32,19 @@
   border-radius: 5px;
 }
 
-.medaillon {
-  position: absolute;
-  margin: auto;
-  top: 56%;
-  left: 40%;
-}
 
 .indexrecipe {
   padding-top: 2.5rem;
 }
 
-.is-centered {
-  text-align: center;
-}
+
 
 .show-recipe-title {
   padding-bottom: 0.3rem;
 
 }
 
-.is-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .dollar {
   color: $accentsecondary;
@@ -158,11 +127,6 @@
   padding: 0.5rem;
 }
 
-.page {
-  background: #fdfdfd;
-  padding: 2.5rem;
-}
-
 .shadowbox {
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
@@ -174,9 +138,6 @@
   max-width: 19px;
 }
 
-
-
-
 .list-h-show {
   background: #E5E1FB;
   border-radius: 0px;
@@ -184,7 +145,6 @@
 }
 
 .step .column.is-1 {
-
   font-size: 1.2rem;
   color: $brand-primary;
   background: lighten($body-bg, 2.1);
@@ -213,16 +173,7 @@
   border-radius: 0 10px 10px 0;
 }
 
-
 .fa-facebook-official, .fa-twitter, .fa-tumblr, .fa-pinterest-p {
   font-size: 1.5rem !important;
 }
 
-table.times th {
-  padding-right: 0.5rem;
-}
-
-.is-marginmore {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}

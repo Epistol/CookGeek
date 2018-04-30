@@ -1,0 +1,82 @@
+
+.page {
+  background: #fdfdfd;
+  padding: 2.5rem;
+}
+
+table.times th {
+  padding-right: 0.5rem;
+}
+
+.columns .close-hover {
+  display: none;
+}
+
+.columns.draggable:hover .close-hover {
+  display: flex;
+}
+
+.left_recipe_add {
+  background: $antiwhite;
+  margin-top: 1rem;
+  z-index: 1;
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+.column.right_recipe_add {
+  padding-top: 3.5rem;
+  z-index: 1;
+  padding-left: 2rem;
+  background: white;
+  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+
+.columns.timing {
+  margin-top: 1rem;
+}
+
+.column.steps {
+  z-index: 1;
+  margin-top: 2rem;
+  background: white;
+  -webkit-box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3)
+}
+
+.addsteprecipe {
+  width: 33%;
+  margin-left: 33%;
+}
+
+
+// REsult recipe
+
+top{
+  max-height: 25%;
+  overflow:hidden;
+}
+.middle{
+  margin-top: 1rem;
+  max-height: 65%;
+  max-height: 4rem;
+  min-height: 65%;
+  overflow:hidden;
+}
+.bottom{
+  max-height: 25%;
+  overflow:hidden;
+}
+.hovered{
+  visibility: hidden;
+  height: 0px;
+}
+
+.to-hover:hover > .hovered {
+  visibility: visible;
+  position: absolute;
+  z-index: 5;
+}

@@ -1,0 +1,40 @@
+
+
+.greyed {
+  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(70%);
+  &:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+}
+
+
+.draggable {
+  cursor: move;
+}
+
+.horizontalover {
+
+  overflow-x: auto;
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.is-marginmore {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.is-centered {
+  text-align: center;
+}
+
+.is-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

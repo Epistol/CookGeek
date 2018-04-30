@@ -18,20 +18,21 @@ $warning : $brand-warning;
 
 
 @import "general/typo";
-@import "general/functions";
+@import "general/mix";
+@import "general/modifiers";
+@import "general/structure";
 @import "general/general";
 @import "general/social";
 @import "general/partner";
-@import "content/login";
-@import "content/footer";
-@import "content/menu";
+@import "general/content/login";
+@import "general/content/footer";
+@import "general/content/menu";
 
-@import "content/recipe/add";
-@import "content/recipe/show";
-@import "content/register";
-@import "content/recipe/result";
+@import "general/content/recipe/add";
+@import "general/content/recipe/show";
+@import "general/content/register";
 
-@import "content/icons";
+@import "general/content/icons";
 @import "general/toast";
 @import "general/anim";
 

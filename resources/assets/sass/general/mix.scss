@@ -112,13 +112,3 @@ $screen-md-max: ($screen-lg-min - 1);
     @content;
   }
 }*/
-
-
-.greyed {
-  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(70%);
-  &:hover {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-  }
-}
