@@ -5,9 +5,9 @@
       action="{{ route('recipe.store') }}">
     {{ csrf_field() }}
 
-    <div class="columns">
+    <div class="columns ">
         {{--Photo profil--}}
-        <div class="column">
+        <div class="column is-5" >
             @include("user_space.switch.parts.account.informations.avatar")
 
         </div>
