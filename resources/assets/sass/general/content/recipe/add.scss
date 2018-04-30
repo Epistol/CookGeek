@@ -1,0 +1,165 @@
+
+.ajout_recette_img {
+  justify-content: center;
+  align-items: center;
+  background: $body-bg;
+  border: 0px solid $brand-primary;
+}
+
+.addrecipe input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+
+table.bgborder {
+  background: transparent;
+}
+
+table.bgborder.table td, .table th {
+  border: 0px;
+}
+
+.deleteicon {
+
+  &:hover {
+    color: $brand-danger;
+    border-color: $brand-danger;
+  }
+}
+
+.ajout_recette_img img {
+  z-index: 2;
+  width: auto;
+}
+
+
+.padding-sides {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+
+input#prep-heure, input#prep-minute, input#cook-heure, input#cook-minute, input#rest-heure, input#rest-minute {
+  text-align: center;
+}
+
+section.ingredients {
+  margin-top: 2rem;
+}
+
+.times {
+  margin-top: 2rem;
+}
+
+.columns.timing:before {
+  font-family: FontAwesome;
+  content: "\F017";
+  font-size: 10em;
+  position: absolute;
+  z-index: -1;
+  color: hsla(0, 0%, 100%, 0.2);
+  left: 0.1rem;
+  transform: rotate(140deg);
+}
+
+span.timing, span.parts {
+  padding-left: 0.5rem;
+}
+
+.field.prep {
+  @include transition_all();
+
+  &:hover .fa {
+    color: $brand-warning;
+    @include transition_all();
+  }
+
+}
+
+.field.parts {
+  @include transition_all();
+
+  &:hover .fa {
+    color: $comp-green;
+    @include transition_all();
+  }
+
+}
+
+.field.cook {
+  @include transition_all();
+
+  &:hover .fa {
+    color: $rouge;
+    @include transition_all();
+  }
+}
+
+.field.sleep {
+  @include transition_all();
+
+  &:hover .fa {
+    color: $violet;
+    @include transition_all();
+  }
+}
+
+.field.vegan {
+  @include transition_all();
+
+  &:hover .fa {
+    color: $brand-success;
+    @include transition_all();
+  }
+}
+
+
+span.ajout-recette-titre {
+  color: $text-color;
+}
+
+section.ajoutrecipe {
+  padding: 3rem 1.5rem 1rem 1.5rem;
+
+}
+
+fieldset.rating {
+  float: left;
+  border: none
+}
+
+.rating > label {
+  float: right;
+}
+
+.lecout input {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.lecout > label {
+  cursor: pointer;
+}
+
+label.cost.button:hover ~ label.cost, label.cost.button:hover, .lecout > input:checked label.cost.button:hover {
+  background: rgba($brand-success, 0.9);
+  color: white;
+}
+
+.lecout input:checked ~ label.cost, .lecout:not(:checked) > input:hover ~ label {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background: rgba($brand-success, 0.8);
+  color: #fbfdfa;
+}
+
+form.addrecipe .field {
+  padding-top: 0.7rem;
+}

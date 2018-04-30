@@ -1,14 +1,13 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Karla:300,400,600");
 
 // Variables
 @import "variables";
 
-$primary: $violet;
-$danger : $rouge;
-$success : $vert;
-$warning : $orange;
+$primary: $brand-primary;
+$danger : $brand-danger;
+$success : $brand-success;
+$warning : $brand-warning;
 
 
 
@@ -18,39 +17,22 @@ $warning : $orange;
 @import "~bulma-extensions/extensions";
 
 
-// TYPOS
 @import "general/typo";
-
-// GENERAL
+@import "general/mix";
+@import "general/modifiers";
+@import "general/structure";
 @import "general/general";
 @import "general/social";
-
-// partner
 @import "general/partner";
+@import "general/content/login";
+@import "general/content/footer";
+@import "general/content/menu";
 
-// LOGIN
-@import "content/login";
+@import "general/content/recipe/add";
+@import "general/content/recipe/show";
+@import "general/content/register";
 
-// FOOTER
-@import "content/footer";
-
-// MENU
-
-@import "content/menu";
-
-
-
-/// RECIPES ADD
-
-@import "content/recipe/add";
-@import "content/recipe/show";
-@import "content/register";
-@import "content/recipe/result";
-
-// Input button add
-@import "content/icons";
-
+@import "general/content/icons";
 @import "general/toast";
-
 @import "general/anim";
 

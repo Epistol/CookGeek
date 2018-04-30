@@ -1,12 +1,10 @@
 
-.logo{
+.logo {
   font-family: $typotitle;
-  font-size:2rem;
-  color:$brand-primary;
+  font-size: 2rem;
+  color: $brand-primary;
   padding: 0.5rem 1rem;
 }
-
-
 
 .navbar-dropdown {
   background-color: white;
@@ -18,7 +16,6 @@
   border-right: 0.5rem solid $brand-primary;
   border-bottom: 0.5rem solid $brand-primary;
 
-
 }
 
 /*  .navbar-link::after {
@@ -27,26 +24,22 @@
     border-top: 0;
   }*/
 
-
-
-a.navbar-item , a.navbar-link {
-  color:$brand-primary;
+a.navbar-item, a.navbar-link {
+  color: $brand-primary;
   font-size: 1.1rem;
 }
 
-
-
 .navbar {
-    &:after{
-      content: '';
-      display: block;
-      height: 0.5rem;
-      //background: linear-gradient(to left, #ffc914 0%,#fe296d 9%,#7f5fbf 50%);
-      background: $brand-primary;
-      width: 100%;
-      position: absolute;
-      top: 4rem;
-    }
+  &:after {
+    content: '';
+    display: block;
+    height: 0.5rem;
+    //background: linear-gradient(to left, #ffc914 0%,#fe296d 9%,#7f5fbf 50%);
+    background: $brand-primary;
+    width: 100%;
+    position: absolute;
+    top: 4rem;
+  }
 }
 
 .search_header {
@@ -57,14 +50,14 @@ a.navbar-item , a.navbar-link {
   align-items: center;
 }
 
-.searchheadbutton{
+.searchheadbutton {
   position: absolute;
   right: 2rem;
-  top:35%;
+  top: 35%;
   background: transparent;
   border: 0px;
   cursor: pointer;
-  &:hover{
-    color:$brand-primary;
+  &:hover {
+    color: $brand-primary;
   }
 }

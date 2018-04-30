@@ -1,4 +1,30 @@
 
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: $violet;
+
+/**
+ * Set the Conviction font face
+ * @nuclide
+ * @section Fonts
+ *  The font weight to be used.
+ */
+
+$typotitle : "Conviction",Tahoma, Geneva, sans-serif;
+
+/**
+ * Set the Avenir font face
+ * @nuclide
+ * @section Fonts
+ *  The font weight to be used.
+ */
+$typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
+
+
 @font-face {
   font-family: 'AvenirBlack';
   src: url('/fonts/avenir-black-webfont.ttf') format('truetype');
