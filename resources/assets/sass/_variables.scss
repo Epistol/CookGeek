@@ -1,24 +1,44 @@
-// Body
+
+/** @color Body background */
 $body-bg: #ebeaf5;
 
-
-// Couleurs de base
-$vert : #01b650;
-$rouge : #E1334E;
-$orange : #f7c263;
-$bleu : #4392f1;
-$violet : #7f5fbf;
-
-
-
-/* RGB */
-$red: $rouge;
-$blanc_casse: rgba(183, 173, 153, 1);
-$antiwhite : #f3f3f3;
-$gris : #898989;
-$gris_granite : #524d55;
-$blck: rgba(3, 3, 1, 1);
+/**
+ * White
+ * @color
+ * @section Grayscale
+ */
 $white : white;
+/**
+ * Not so white
+ * @color
+ * @section Grayscale
+ */
+$antiwhite : #f3f3f3;
+/**
+ * Cut white
+ * @color
+ * @section Grayscale
+ */
+$blanc_casse: rgba(183, 173, 153, 1);
+/**
+ * Grey
+ * @color
+ * @section Grayscale
+ */
+$gris : #898989;
+/**
+ * Brown grey
+ * @color
+ * @section Grayscale
+ */
+$gris_granite : #524d55;
+/**
+ * Black
+ * @color
+ * @section Grayscale
+ */
+$blck: rgba(3, 3, 1, 1);
+
 $eerieblck : $gris_granite;
 
 
@@ -33,14 +53,45 @@ $panel-inner-border: $laravel-border-color;
 
 
 // Brands
+
+/**
+ * @color Brand Violet
+*/
+$violet : #7f5fbf;
 $brand-primary: $violet;
+/**
+ @color Accent Purple */
 $accent : #4c6ee6;
+/**
+ * @nuclide
+ @color Accent Pink */
 $pink : #fe688e;
 $accentsecondary : $pink;
 
+/**
+ * Info
+ * @color PaleBlue
+ * @section Background informations
+ */
 $brand-info: #8fb8de;
+
+/**
+ * Success
+ * @color Green
+ * @section Background informations
+ */
 $brand-success: #2ab27b;
+/**
+ * Warning
+ * @color Yellow
+ * @section Background informations
+ */
 $brand-warning: #ffc145;
+/**
+ * Danger
+ * @color Red
+ * @section Background informations
+ */
 $brand-danger: #ff6b6c;
 
 
@@ -48,96 +99,3 @@ $brand-danger: #ff6b6c;
 $comp-green : #76db8e;
 $violet-txt : #47424a;
 
-
-
-  // Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: $violet;
-
-$typotitle : "Conviction",Tahoma, Geneva, sans-serif;
-$typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
-
-// Navbar
-$navbar-default-bg: $white;
-
-// Buttons
-$btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
-$taille_minimale_photo : 640px;
-
-$screen-sm-min: 768px;
-$screen-xs-max: ($screen-sm-min - 1);
-$screen-md-min: 992px;
-$screen-sm-max: ($screen-md-min - 1);
-$screen-lg-min: 1200px;
-$screen-md-max: ($screen-lg-min - 1);
-
-// Small devices
-@mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
-    @content;
-  }
-}
-
-// Medium devices
-@mixin md {
-  @media (min-width: #{$screen-md-min}) {
-    @content;
-  }
-}
-
-
-// Large devices
-@mixin lg {
-  @media (min-width: #{$screen-lg-min}) {
-    @content;
-  }
-}
-
-// Extra large devices
-@mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
-    @content;
-  }
-}
-
-//////
-
-// Small devices
-@mixin sm_1 {
-  @media (max-width: #{$screen-sm-min}) {
-    @content;
-  }
-}
-
-// Medium devices
-@mixin md_1 {
-  @media (max-width: #{$screen-md-min}) {
-    @content;
-  }
-}
-
-
-// Large devices
-@mixin lg_1 {
-  @media (max-width: #{$screen-lg-min}) {
-    @content;
-  }
-}
-
-// Extra large devices
-@mixin xl_1 {
-  @media (max-width: #{$screen-xl-min}) {
-    @content;
-  }
-}

@@ -1,0 +1,124 @@
+
+// Navbar
+$navbar-default-bg: $white;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+$taille_minimale_photo : 640px;
+
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+
+/**
+ * Auto resize for small devices
+ * @mixin
+ * @section Media queries
+ */
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+/**
+ * Auto resize for medium devices
+ * @mixin
+ * @section Media queries
+ */
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+/**
+ * Auto resize for large devices
+ * @mixin
+ * @section Media queries
+ */
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+/**
+ * Auto resize for x-large devices
+ * @mixin
+ * @section Media queries
+ */
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+/**
+ * Transition function
+ * @mixin
+ * @section Functions
+ * @param $time
+ *  Ex : 0,3s
+ * @example
+ *  @include transition_all();
+ *  @include transition_all(0.3s);
+ */
+@mixin transition_all($transition : 0.3s) {
+  -webkit-transition: all $transition ease-in-out;
+  -moz-transition: all $transition ease-in-out;
+  -ms-transition: all $transition ease-in-out;
+  -o-transition: all $transition ease-in-out;
+  transition: all $transition ease-in-out;
+}
+/*
+
+// Small devices
+@mixin sm_1 {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md_1 {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+
+// Large devices
+@mixin lg_1 {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl_1 {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}*/
+
+
+.greyed {
+  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(70%);
+  &:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+}
