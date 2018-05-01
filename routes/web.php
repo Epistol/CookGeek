@@ -12,7 +12,6 @@
 |
 */
 
-Route::get('/','PageController@accueil')->name('index');
 
 // Parce que
 Route::get('/teapot',function (){abort(418);})->name('teapot');
@@ -38,6 +37,8 @@ Route::feeds();
 
 
 //ADMIN
+require base_path('routes/web/design.php');
+
 require base_path('routes/web/admin.php');
 
 /// API
@@ -45,3 +46,4 @@ Route::post("/like", 'Api\LikeController@create')->name("api.like.create")->midd
 Route::post("/note", 'Api\NoteController@create')->name("api.like.create")->middleware('web');
 Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
 
+Route::get('/','PageController@accueil')->name('index');
