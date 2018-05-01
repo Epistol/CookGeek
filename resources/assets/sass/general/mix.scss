@@ -20,6 +20,7 @@ $screen-md-min: 992px;
 $screen-sm-max: ($screen-md-min - 1);
 $screen-lg-min: 1200px;
 $screen-md-max: ($screen-lg-min - 1);
+$screen-xl-min: ($screen-lg-min - 1);
 
 /**
  * Auto resize for small devices
@@ -82,7 +83,7 @@ $screen-md-max: ($screen-lg-min - 1);
   -o-transition: all $transition ease-in-out;
   transition: all $transition ease-in-out;
 }
-/*
+
 
 // Small devices
 @mixin sm_1 {
@@ -111,4 +112,4 @@ $screen-md-max: ($screen-lg-min - 1);
   @media (max-width: #{$screen-xl-min}) {
     @content;
   }
-}*/
+}

@@ -86,11 +86,7 @@
   line-height: 1.6rem;
   margin-left: 0.5rem;
 
-  -webkit-transition: all 0.35s ease-in-out;
-  -moz-transition: all 0.35s ease-in-out;
-  -ms-transition: all 0.35s ease-in-out;
-  -o-transition: all 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
+  @include transition_all();
 
   &.easy {
     &:hover {
@@ -108,17 +104,13 @@
   &.hard {
     &:hover {
 
-      color: $rouge;
-      border-color: $rouge;
+      color: $brand-danger;
+      border-color: $brand-danger;
     }
   }
 
   &:hover {
-    -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-    -ms-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
-    transition: all 0.35s ease-in-out;
+    @include transition_all();
   }
 }
 
