@@ -16,8 +16,11 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a href="{{route('account.param')}}">Paramètres</a>
-                        <a href="{{route('account.data')}}">Mes données</a>
+                        <a href="{{route('account.param')}}" class="
+                        @if(Route::currentRouteNamed('account.param') || Route::currentRouteNamed('account.data') || Route::currentRouteNamed('account.info'))
+                            {{'is-active'}}
+                        @endif">Paramètres</a>
+                        {{--<a href="{{route('account.data')}}">Mes données</a>--}}
                     </li>
                 </ul>
             </div>

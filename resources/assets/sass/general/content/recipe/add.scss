@@ -91,7 +91,7 @@ span.timing, span.parts {
   @include transition_all();
 
   &:hover .fa {
-    color: $rouge;
+    color: $brand-danger;
     @include transition_all();
   }
 }
