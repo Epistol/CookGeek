@@ -8,5 +8,6 @@
 	
 	
 	Route::group(['prefix' => 'design'], function () {
-	
+		Route::get('', 'DesignController@index')->name("design.index");
+		
 	});
