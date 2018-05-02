@@ -13,10 +13,41 @@ class CreateUserRecompensesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_recompenses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+	
+	
+/*
+* +---------------+---------+
+| Nom           | Type    |
++---------------+---------+
+| id        | AI      |
++---------------+---------+
+| user_id       | integer |
++---------------+---------+
+| recompense_id | integer |
++---------------+---------+
+	*/
+    	
+    	
+	    Schema::create('user_recompenses', function (Blueprint $table) {
+	    	$table->increments('id');
+		    $table->integer('user_id')->unsigned();
+		    $table->integer('recompense_id')->unsigned();
+		
+		    $table->foreign('user_id')
+			    ->references('id')
+			    ->on('user');
+		    
+		    $table->foreign('recompense_id')
+			    ->references('id')
+			    ->on('receompense');
+		    
+		    $table->primary(['id', 'user_id', 'recompense_id']);
+		    
+		    $table->timestamps();
+		
+	    });
+	    
+
     }
 
     /**
@@ -26,6 +57,10 @@ class CreateUserRecompensesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_recompenses');
+        Schema::dropIfExists('user_recompenses', function (Blueprint $table){
+	        $table->dropForeign('user_recompenses_user_id_foreign');
+	        $table->dropForeign('user_recompenses_recompense_id_foreign');
+        });
+        
     }
 }

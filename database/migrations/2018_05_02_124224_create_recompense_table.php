@@ -4,23 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRecipeLikesTable extends Migration
+class CreateRecompenseTable extends Migration
 {
     /**
+     * TODO Penser au systeme de recompense, pour l'instant je laisse un id, title et roule
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('user_recipe_likes', function (Blueprint $table) {
+        Schema::create('recompense', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('recipe_id');
-            
-            
-            
-            
+            $table->string("title");
         });
     }
 
@@ -31,6 +27,6 @@ class CreateUserRecipeLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_recipe_likes');
+        Schema::dropIfExists('recompense');
     }
 }
