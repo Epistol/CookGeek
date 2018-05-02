@@ -18,7 +18,8 @@ Route::get('/teapot',function (){abort(418);})->name('teapot');
 
 require base_path('routes/web/social.php');
 require base_path('routes/web/account.php');
-
+	
+	Route::get('/design', 'DesignController@index')->name("design.index");
 
 
 Route::get('/contact', 'PageController@show_contact');

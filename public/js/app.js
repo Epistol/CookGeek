@@ -11971,6 +11971,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vee_
  */
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(55));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('star-rating', __WEBPACK_IMPORTED_MODULE_3__star_rating__["default"]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('design', DesignRender);
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',

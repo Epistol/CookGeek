@@ -2,11 +2,15 @@
 
 @section('content')
     <div class="container">
-        {{--TODO : Changer ça vite fait--}}
+        {{--TODO : --}}
       <div class="columns">
           <div class="column">
               @include("design.menu")
-          </div>ddfgdfgfddfg
+          </div>
+          <div class="column">
+              {{--@include("design.ariane", ['some' => 'data'])--}}
+              {{--@include("design.content")--}}
+          </div>
       </div>
 
     </div>
