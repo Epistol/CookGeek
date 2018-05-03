@@ -16,13 +16,13 @@
     <!-- ROBOTS -->
 @include("layouts.app_element.robot")
 <!-- Links to information about the author(s) of the document -->
-    <link rel="author" href="humans.txt">
+    <link rel="author" href="{{asset('humans.txt')}}">
     <link rel="index" href="{{url('/')}}">
     <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention"/>
 
     <!-- Feeds -->
     {{--<link rel="alternate"  href="/rss" type="application/rss+xml" title="RSS">--}}
-    <link rel="alternate" type="application/atom+xml" title="New recipes" href="/rss">
+    <link rel="alternate" type="application/atom+xml" title="New recipes" href="{{url('/rss')}}">
 
     @include("layouts.app_element.icons")
 
@@ -37,7 +37,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/css/nouislider.min.css" rel="stylesheet">
+    <link href="{{asset('css/nouislider.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
@@ -82,10 +82,10 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
-<script src="/js/konami.js"></script>
-<script defer src="/static/fontawesome/fa-v4-shim.js"></script>
-<script src="/js/toasty/jquery.toasty.js"></script>
-<script src="/js/nouislider.min.js"></script>
+<script src="{{ asset('js/konami.js') }}"></script>
+<script defer src="{{ asset('static/fontawesome/fa-v4-shim.js') }}"></script>
+<script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
+<script src="{{asset('js/nouislider.min.js')}}"></script>
 
 
 <div id="fb-root"></div>

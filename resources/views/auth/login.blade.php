@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="column is-5 is-paddingless">
                     <div class="left_register">
-                        <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
+                        <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat_hover">
                     </div>
 
                 </div>

@@ -5,11 +5,13 @@
         {{--TODO : --}}
       <div class="columns">
           <div class="column">
-              @include("design.menu")
+              {{--@include("design.menu")--}}
           </div>
           <div class="column">
               {{--@include("design.ariane", ['some' => 'data'])--}}
               {{--@include("design.content")--}}
+
+              HEYHEYEYEEHEHEHGEHEH
           </div>
       </div>
 
