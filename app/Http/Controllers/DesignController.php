@@ -16,11 +16,11 @@
 		public function index()
 		{
 			try {
-				return view('design.welcome');
+				return view('design.atom');
 			} catch (Exception $e) {
 				report($e);
 			}
-			return view('design.welcome');
+			return view('design.atom');
 			
 		}
 	}

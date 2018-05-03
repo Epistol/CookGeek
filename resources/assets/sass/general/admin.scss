@@ -1,0 +1,23 @@
+p.menu-label{
+  display: flex;
+  align-items: center;
+}
+aside.menu{
+  padding-top:3%;
+}
+
+.left-menu{
+  background:$antiwhite;
+  padding-right:0px;
+  padding-left:5%;
+}
+
+ul.menu-list > li {
+  margin-left:7%;
+}
+
+.entity{
+  border-bottom: 3px solid $body-bg;
+  padding: 1rem;
+}
+
