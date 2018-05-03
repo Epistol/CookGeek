@@ -21,3 +21,15 @@ ul.menu-list > li {
   padding: 1rem;
 }
 
+
+.box-color {
+  background:transparent;
+  border-radius: 2px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.1), inset 0 0 0 1px rgba(0,0,0,.1);
+  display: inline-block;
+  float: left;
+  height: 24px;
+  margin-right: 8px;
+  width: 24px;
+}
+

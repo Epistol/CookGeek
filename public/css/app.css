@@ -30,31 +30,8 @@
  * @section Grayscale
  */
 /**
- * @color Brand Violet
-*/
-/**
- @color Accent Purple */
-/**
- * @nuclide
- @color Accent Pink */
-/**
  * Info
  * @color PaleBlue
- * @section Background informations
- */
-/**
- * Success
- * @color Green
- * @section Background informations
- */
-/**
- * Warning
- * @color Yellow
- * @section Background informations
- */
-/**
- * Danger
- * @color Red
  * @section Background informations
  */
 /*! bulma.io v0.5.3 | MIT License | github.com/jgthms/bulma */
@@ -16998,4 +16975,16 @@ ul.menu-list > li {
 .entity {
   border-bottom: 3px solid #ebeaf5;
   padding: 1rem;
+}
+
+.box-color {
+  background: transparent;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  float: left;
+  height: 24px;
+  margin-right: 8px;
+  width: 24px;
 }

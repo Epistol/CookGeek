@@ -14,7 +14,8 @@
             <li><a>Buttons</a></li>
             <li><a>Formulaires</a></li>
             <li><a>Animations</a></li>
-            <li><a></a></li>
+            <li><a>Mixins</a></li>
+            <li><a>Javascript</a></li>
         </ul>
     </div>
     <div class="entity">

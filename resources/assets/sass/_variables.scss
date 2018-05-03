@@ -51,20 +51,11 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 
-
-// Brands
-
-/**
- * @color Brand Violet
-*/
 $violet : #7f5fbf;
 $brand-primary: $violet;
-/**
- @color Accent Purple */
+
 $accent : #4c6ee6;
-/**
- * @nuclide
- @color Accent Pink */
+
 $pink : #fe688e;
 $accentsecondary : $pink;
 
@@ -74,27 +65,9 @@ $accentsecondary : $pink;
  * @section Background informations
  */
 $brand-info: #8fb8de;
-
-/**
- * Success
- * @color Green
- * @section Background informations
- */
 $brand-success: #2ab27b;
-/**
- * Warning
- * @color Yellow
- * @section Background informations
- */
 $brand-warning: #ffc145;
-/**
- * Danger
- * @color Red
- * @section Background informations
- */
 $brand-danger: #ff6b6c;
-
-
 
 $comp-green : #76db8e;
 $violet-txt : #47424a;
