@@ -16,11 +16,11 @@
 		public function index()
 		{
 			try {
-				return view('admin.page.show');
+				return view('design.welcome');
 			} catch (Exception $e) {
 				report($e);
 			}
-			return view('admin.page.show');
+			return view('design.welcome');
 			
 		}
 	}

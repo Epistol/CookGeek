@@ -60,12 +60,12 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script><?php
-    if (Auth::check() == FALSE || Auth::check() == '') {
-        echo "var userIsLoggedIn = 0;";
-    } else {
-        echo "var userIsLoggedIn = 1;";
-    }
-    ?>
+	if (Auth::check() == FALSE || Auth::check() == '') {
+		echo "var userIsLoggedIn = 0;";
+	} else {
+		echo "var userIsLoggedIn = 1;";
+	}
+	?>
 
     /*(function () {
         var sn = document.createElement("script"), s = document.getElementsByTagName("script")[0], url;
@@ -77,15 +77,16 @@
     }());*/
 </script>
 
-<link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+      integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 <script src="{{ asset('js/konami.js') }}"></script>
-<script defer src="{{ asset('static/fontawesome/fa-v4-shim.js') }}"></script>
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
 <script src="{{asset('js/nouislider.min.js')}}"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
 
 <div id="fb-root"></div>
