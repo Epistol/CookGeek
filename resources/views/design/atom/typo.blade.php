@@ -7,15 +7,19 @@
 
 @php
 
-    $fonts = array(
-    array( "Font-size base","",  "", "14px"),
-    array( "Title website",  "typotitle", "","Conviction"),
-    array( "Title Content", "", "h1.title", "Avenir"),
-    array( "Content",  "typocontent", "","Avenir (medium)"),
-    array( "404 title", "", "", "Futura"),
-    array( "404 content","",  "", "EurostileBQ"),
-    );
+    $fonts = [
+
+        ['font' => ['function' => 'Font-size base', 'variable' => '', 'class' => 'p', 'value' => '14px']],
+        ['font' => ['function' => "Title website", 'variable' => 'typotitle', 'class' => 'navbar-brand logo', 'value' => 'Conviction']],
+        ['font' => ['function' => "Title Content", 'variable' => '', 'class' => 'title', 'value' => 'Avenir']],
+        ['font' => ['function' => "Content", 'variable' => 'typocontent', 'class' => 'p', 'value' => 'Avenir (medium)']],
+        ['font' => ['function' => "404 title", 'variable' => '', 'class' => 'full_404', 'value' => 'Michroma']],
+        ['font' => ['function' => "404 content", 'variable' => 'typocontent', 'class' => 'err404', 'value' => 'EurostileBQ']],
+    ];
+
+
 @endphp
+
 
 <table class="table is-bordered">
     <thead>
@@ -29,17 +33,21 @@
     </tr>
     </thead>
     <tbody>
+
+
     @foreach($fonts as $font)
         <tr>
-
             @foreach($font as $key=> $c)
-                @if($key == 1  )
-                    <td> <code>$<?= $c ?></code></td>
-                @else
-                    <td><?= $c ?></td>
-                @endif
+
+                <td @if($c["class"] == "full_404") style="background:#898989;" @endif><p style="font-size:1rem; padding:0px;" class="{{$c["class"]}}">{{$c["function"]}}</p></td>
+                <td>@if(!empty($c["variable"]))<code>${{$c["variable"]}}</code>@endif</td>
+                <td><code>{{$c["class"]}}</code></td>
+                <td>{{$c["value"]}}</td>
+
             @endforeach
+
         </tr>
     @endforeach
+
     </tbody>
 </table>

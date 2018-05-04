@@ -23,8 +23,18 @@ $shade = array(
     array( "Gris granite", "gris_granite", "gris_granite", "#524d55"),
     array( "Eree black", "eerieblck", "blck", "rgba(3, 3, 1, 1)"),
     );
+
+$alerts = array(
+    array( "brand-info", "brand-info", "info", "#8fb8de"),
+    array( "brand-success", "brand-success", "success", "#2ab27b"),
+    array( "brand-warning", "brand-warning", "warning", "#ffc145"),
+    array( "brand-danger", "brand-danger", "danger", "#ff6b6c"),
+    );
+
 @endphp
-<table class="table is-bordered">
+
+
+<table class="table is-bordered  is-fullwidth">
     <thead>
     <tr>
         <th>
@@ -52,10 +62,11 @@ $shade = array(
     </tbody>
 </table>
 
+<h2 class="title is-size-4">
+    Black shades
+</h2>
 
-Black shades
-
-<table class="table is-bordered">
+<table class="table is-bordered  is-fullwidth">
     <thead>
     <tr>
         <th>
@@ -68,6 +79,38 @@ Black shades
     </thead>
     <tbody>
     @foreach($shade as $color)
+        <tr>
+
+            @foreach($color as $key=> $c)
+                @if($key == 1  || $key == 2 )
+                    <td> <code>$<?= $c ?></code></td>
+                @else
+                    <td><?= $c ?></td>
+                @endif
+            @endforeach
+            <td><span class="box-color" style="background-color:<?= $color[3] ?>"></span></td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
+<h2 class="title is-size-4">
+    Alerts
+</h2>
+
+<table class="table is-bordered  is-fullwidth">
+    <thead>
+    <tr>
+        <th>
+            Color
+        </th>
+        <th>Variable</th>
+        <th>Value</th>
+        <th>Hex</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($alerts as $color)
         <tr>
 
             @foreach($color as $key=> $c)
