@@ -34,7 +34,7 @@ $alerts = array(
 @endphp
 
 
-<table class="table is-bordered  is-fullwidth">
+<table class="table is-bordered  ">
     <thead>
     <tr>
         <th>
@@ -52,6 +52,8 @@ $alerts = array(
             @foreach($color as $key=> $c)
                 @if($key == 1  || $key == 2 )
                     <td> <code>$<?= $c ?></code></td>
+                @elseif($key == 3 )
+                    <td> <code class="css"><?= $c ?></code></td>
                 @else
                     <td><?= $c ?></td>
                 @endif
@@ -66,7 +68,7 @@ $alerts = array(
     Black shades
 </h2>
 
-<table class="table is-bordered  is-fullwidth">
+<table class="table is-bordered  ">
     <thead>
     <tr>
         <th>
@@ -84,6 +86,8 @@ $alerts = array(
             @foreach($color as $key=> $c)
                 @if($key == 1  || $key == 2 )
                     <td> <code>$<?= $c ?></code></td>
+                @elseif($key == 3 )
+                    <td> <code class="css"><?= $c ?></code></td>
                 @else
                     <td><?= $c ?></td>
                 @endif
@@ -98,7 +102,7 @@ $alerts = array(
     Alerts
 </h2>
 
-<table class="table is-bordered  is-fullwidth">
+<table class="table is-bordered  ">
     <thead>
     <tr>
         <th>
@@ -116,6 +120,9 @@ $alerts = array(
             @foreach($color as $key=> $c)
                 @if($key == 1  || $key == 2 )
                     <td> <code>$<?= $c ?></code></td>
+
+               @elseif($key == 3 )
+                   <td> <code class="css"><?= $c ?></code></td>
                 @else
                     <td><?= $c ?></td>
                 @endif

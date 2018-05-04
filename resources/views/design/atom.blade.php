@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_design')
 
 @section('content')
     {{--TODO : --}}
@@ -9,11 +9,18 @@
                 @include("design.menu")
             </div>
             <div class="column page">
-                <section class="color">
+                <section class="section">
                     @include('design.atom.color')
+                </section>
+                <section class="section">
                     @include('design.atom.typo')
+                </section>
+                <section class="section">
+                    @include('design.atom.image')
 
                 </section>
+
+
             </div>
         </div>
     </section>
