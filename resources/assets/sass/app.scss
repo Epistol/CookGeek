@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Karla:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Karla:300,400,600");
 
 // Variables
 @import "variables";
@@ -31,6 +31,7 @@ $warning : $brand-warning;
 @import "general/content/recipe/add";
 @import "general/content/recipe/show";
 @import "general/content/register";
+@import "general/content/file";
 
 @import "general/content/icons";
 @import "general/toast";

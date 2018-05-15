@@ -54,6 +54,14 @@
                                 <div class="columns">
                                     <div class="column is-8">
                                         @include("recipes.show.steps")
+                                        @if($recette->video)
+                                            @include("recipes.show.video")
+                                        @endif
+                                        <div class="fb-commentaire">
+                                            <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"
+                                                 data-numposts="21"></div>
+
+                                        </div>
                                     </div>
                                     <div class="column is-4  ">
                                         @include('recipes.show.social')
@@ -62,9 +70,10 @@
                                     </div>
                                 </div>
 
-                                @if($recette->video)
-                                    @include("recipes.show.video")
-                                @endif
+
+
+
+
                             </div>
                         </div>
 
@@ -83,23 +92,6 @@
         </div>
     </div>
 
-    <div class="recipeaddbg">
-        <div class="container">
-            <section class="section blockcontent">
-                {{-- COMMMENTAIRES --}}
-                <div class="columns">
-                    <div class="column is-8 is-offset-2">
-                        <div class="fb-commentaire">
-                            <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"
-                                 data-numposts="21"></div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-        </div>
-    </div>
 
     <?php
     use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = array();

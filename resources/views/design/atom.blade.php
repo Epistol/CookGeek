@@ -16,7 +16,7 @@
                     @include('design.atom.typo')
                 </section>
                 <section class="section">
-                    @include('design.atom.image')
+                    {{--@include('design.atom.image')--}}
                 </section>
                 <section class="section">
                     @include('design.atom.icones')

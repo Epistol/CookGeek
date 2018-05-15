@@ -9,7 +9,7 @@
                     <img src="http://via.placeholder.com/300x200?text={{$recettes[$i]->title}}"
                          alt="{{$recettes[$i]->title}} / CDG">
                 @else
-                    <img src="/recipes/{{$recettes[$i]->id}}/{{$recettes[$i]->id_user}}/{{$img->image_name}}"
+                    <img src="{{url("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)}}"
                          alt="{{$recettes[$i]->title}} / CDG">
                 @endif
 

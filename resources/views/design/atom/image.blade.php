@@ -20,6 +20,15 @@
             'class' => 'image',
             'code' => '
             <figure class="image">
+                        <img src="{ {url ("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)} }"
+                        <img src=@{{url ("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)}}"
+                         alt="{ { $recettes[$i]->title } } / CDG">
+            </figure>']],
+            ['image' =>
+            ['type' => "Recipe image",
+            'class' => 'image',
+            'code' => '
+            <figure class="image">
                 <img src="https://api.adorable.io/avatars/64/Recipes">
             </figure>']],
               ['image' =>
@@ -55,8 +64,13 @@
 
                 <td>{{$c["type"]}}</td>
                 <td>@if(!empty($c["class"]))<code class="css">${{$c["class"]}}</code>@endif</td>
+
+
                 <td style="max-width: 64px;">{!!$c["code"]!!}</td>
-                <td><pre><code class="html">{{$c["code"]}}</code></pre></td>
+
+                    <td>
+                        <pre><code class="html">{{$c["code"]}}</code></pre>
+                    </td>
 
 
 

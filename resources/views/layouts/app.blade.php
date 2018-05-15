@@ -84,10 +84,6 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 <script src="{{ asset('js/konami.js') }}"></script>
-<script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
-<script src="{{asset('js/nouislider.min.js')}}"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
-
 
 <div id="fb-root"></div>
 <script>(function (d, s, id) {
@@ -97,8 +93,14 @@
         js.id = id;
         js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
 
+    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+</script>
+<script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
+<script src="{{asset('js/nouislider.min.js')}}"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
 <script type="application/javascript">
     $(document).ready(function () {

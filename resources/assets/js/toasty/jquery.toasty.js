@@ -69,8 +69,8 @@
 
     $.fn.toasty.defaults = {
         sound: true,
-        image:  "js/toasty/toasty.png",
-        sound:  "js/toasty/toasty.mp3",
+        image:  toast_png,
+        sound:  toast_mp3
     };
 
 })(jQuery);

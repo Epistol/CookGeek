@@ -1,8 +1,11 @@
 <template>
-    <div :class="['vue-star-rating', {'vue-star-rating-rtl':rtl}, {'vue-star-rating-inline': inline}]"  >
-        <div @mouseleave="resetRating" class="vue-star-rating" >
+    <div :class="['vue-star-rating', {'vue-star-rating-rtl':rtl}, {'vue-star-rating-inline': inline}]">
+        <div @mouseleave="resetRating" class="vue-star-rating">
             <span v-for="n in maxRating" :class="[{'vue-star-rating-pointer': !readOnly }, 'vue-star-rating-star']">
-              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl"></star>
+              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor"
+                    :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth"
+                    :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating"
+                    :rtl="rtl"></star>
             </span>
             <span v-if="showRating" :class="['vue-star-rating-rating-text', textClass]"> {{formattedRating}}</span>
         </div>
@@ -12,6 +15,7 @@
 
 <script type="text/javascript">
     import star from './star.vue'
+
     export default {
         components: {
             star
@@ -116,40 +120,40 @@
                         // Traitement du choix
 
 
-                            axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-                            axios.post('/note', {
-                                recette: this.recipe_id,
-                                note : this.selectedRating
-                            }).then(function (response) {
-                                   /* if(response.data === "note_update"){
-                                        if($(this).hasClass("note_update")) {
-                                            $(this).removeClass("note_update");
-                                        }
-                                    }
-                                    else if(response.data === "note_new"){
-                                        console.log("note_new");
-                                        $(this).addClass("note_new");
+                        axios.post('/note', {
+                            recette: this.recipe_id,
+                            note: this.selectedRating
+                        }).then(function (response) {
+                            /* if(response.data === "note_update"){
+                                 if($(this).hasClass("note_update")) {
+                                     $(this).removeClass("note_update");
+                                 }
+                             }
+                             else if(response.data === "note_new"){
+                                 console.log("note_new");
+                                 $(this).addClass("note_new");
 
-                                    }*/
-                                }).catch(function (error) {
-                                    if (error.response) {
-                                        // The request was made and the server responded with a status code
-                                        // that falls out of the range of 2xx
-                                        console.log(error.response.data);
-                                        console.log(error.response.status);
-                                        console.log(error.response.headers);
-                                    } else if (error.request) {
-                                        // The request was made but no response was received
-                                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                                        // http.ClientRequest in node.js
-                                        console.log(error.request);
-                                    } else {
-                                        // Something happened in setting up the request that triggered an Error
-                                        console.log('Error', error.message);
-                                    }
-                                    console.log(error.config);
-                                });
+                             }*/
+                        }).catch(function (error) {
+                            if (error.response) {
+                                // The request was made and the server responded with a status code
+                                // that falls out of the range of 2xx
+                                console.log(error.response.data);
+                                console.log(error.response.status);
+                                console.log(error.response.headers);
+                            } else if (error.request) {
+                                // The request was made but no response was received
+                                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                                // http.ClientRequest in node.js
+                                console.log(error.request);
+                            } else {
+                                // Something happened in setting up the request that triggered an Error
+                                console.log('Error', error.message);
+                            }
+                            console.log(error.config);
+                        });
 
                     } else {
                         this.$emit('current-rating', this.currentRating)
@@ -212,16 +216,20 @@
         display: inline-block;
 
     }
+
     .vue-star-rating-pointer {
         cursor: pointer;
     }
+
     .vue-star-rating {
         display: flex;
         align-items: center;
     }
+
     .vue-star-rating-inline {
         display: inline-flex;
     }
+
     .vue-star-rating-rating-text {
         margin-top: 0px;
         margin-left: 7px;
@@ -229,11 +237,13 @@
         right: 3%;
         display: none;
     }
+
     .vue-star-rating-rtl {
         direction: rtl;
     }
+
     .vue-star-rating-rtl .vue-star-rating-rating-text {
         margin-right: 10px;
-        direction:rtl;
+        direction: rtl;
     }
 </style>

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Karla:300,400,600);/** @color Body background */
+/** @color Body background */
 /**
  * White
  * @color
@@ -16511,9 +16511,7 @@ form.addrecipe .field {
 }
 
 .fb-commentaire {
-  border: 0.5rem solid #4c6ee6;
-  -webkit-box-shadow: 7px 7px 0 0 #4c6ee6;
-  box-shadow: 7px 7px 0 0 #4c6ee6;
+  border: 2px solid #ebeaf5;
   padding: 1rem;
 }
 
@@ -16636,6 +16634,58 @@ form.addrecipe .field {
   }
 }
 
+.file-cta {
+  display: block;
+}
+
+.file-cta.darker {
+  color: #7f5fbf;
+}
+
+.field.addphoto {
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.file-cta {
+  background-color: transparent;
+  color: #ffffff;
+  border-bottom: 1px solid #7f5fbf;
+}
+
+input.input_modal, textarea.input_modal {
+  background-color: #fbfdfa;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  min-height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  padding-left: 1rem;
+}
+
+input.input_modal:focus, textarea.input_modal:focus {
+  border-bottom: 2px solid #4c6ee6;
+  -webkit-box-shadow: 0 2px 0 0 #4c6ee6;
+  box-shadow: 0 2px 0 0 #4c6ee6;
+}
+
+textarea.input_modal {
+  padding-top: 1rem;
+}
+
+input.input_modal.blck, textarea.input_modal.blck {
+  color: #7f5fbf;
+}
+
 .type-selector input {
   margin: 0;
   padding: 0;
@@ -16645,35 +16695,35 @@ form.addrecipe .field {
 }
 
 .anime {
-  background-image: url("/img/pictos/svg/anime.svg");
+  background-image: url("../img/pictos/svg/anime.svg");
 }
 
 .art {
-  background-image: url("/img/pictos/svg/art.svg");
+  background-image: url("../img/pictos/svg/art.svg");
 }
 
 .cartes {
-  background-image: url("/img/pictos/svg/cartes.svg");
+  background-image: url("../img/pictos/svg/cartes.svg");
 }
 
 .comics {
-  background-image: url("/img/pictos/svg/comics.svg");
+  background-image: url("../img/pictos/svg/comics.svg");
 }
 
 .gaming {
-  background-image: url("/img/pictos/svg/games.svg");
+  background-image: url("../img/pictos/svg/games.svg");
 }
 
 .livres {
-  background-image: url("/img/pictos/svg/livres.svg");
+  background-image: url("../img/pictos/svg/livres.svg");
 }
 
 .musique {
-  background-image: url("/img/pictos/svg/song.svg");
+  background-image: url("../img/pictos/svg/song.svg");
 }
 
 .tv {
-  background-image: url("/img/pictos/svg/tv.svg");
+  background-image: url("../img/pictos/svg/tv.svg");
 }
 
 .icones {

@@ -11971,7 +11971,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vee_
  */
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(55));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('star-rating', __WEBPACK_IMPORTED_MODULE_3__star_rating__["default"]);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('design', DesignRender);
+// Vue.component('design', DesignRender);
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -46527,7 +46527,7 @@ exports = module.exports = __webpack_require__(42)(undefined);
 
 
 // module
-exports.push([module.i, "\n.vue-star-rating-star[data-v-222f81e5] {\n    display: inline-block;\n}\n.vue-star-rating-pointer[data-v-222f81e5] {\n    cursor: pointer;\n}\n.vue-star-rating[data-v-222f81e5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.vue-star-rating-inline[data-v-222f81e5] {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-top: 0px;\n    margin-left: 7px;\n    position: absolute;\n    right: 3%;\n    display: none;\n}\n.vue-star-rating-rtl[data-v-222f81e5] {\n    direction: rtl;\n}\n.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-right: 10px;\n    direction:rtl;\n}\n", ""]);
+exports.push([module.i, "\n.vue-star-rating-star[data-v-222f81e5] {\n    display: inline-block;\n}\n.vue-star-rating-pointer[data-v-222f81e5] {\n    cursor: pointer;\n}\n.vue-star-rating[data-v-222f81e5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.vue-star-rating-inline[data-v-222f81e5] {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-top: 0px;\n    margin-left: 7px;\n    position: absolute;\n    right: 3%;\n    display: none;\n}\n.vue-star-rating-rtl[data-v-222f81e5] {\n    direction: rtl;\n}\n.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-222f81e5] {\n    margin-right: 10px;\n    direction: rtl;\n}\n", ""]);
 
 // exports
 
@@ -46888,6 +46888,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47172,6 +47176,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
+
         fill: {
             type: Number,
             default: 0
@@ -47262,6 +47267,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
             grad: ''
+
         };
     }
 });
@@ -47270,62 +47276,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "span",
-    {
-      staticStyle: { overflow: "visible", padding: "0.1rem" },
-      attrs: { height: _vm.getSize, width: _vm.getSize },
-      on: { mousemove: _vm.mouseMoving, click: _vm.selected }
-    },
-    [
-      _vm.getFill === "100%"
-        ? _c("span", [
-            _c("img", {
-              attrs: {
-                src: "/img/rating/muf_full.png",
-                id: _vm.grad,
-                offset: _vm.getFill,
-                "stop-color": _vm.rtl ? _vm.inactiveColor : _vm.activeColor,
-                points: _vm.starPointsToString,
-                fill: _vm.getGradId,
-                stroke: _vm.borderColor,
-                "stroke-width": _vm.borderWidth
-              }
-            })
-          ])
-        : _vm.getFill === "50%"
-          ? _c("span", [
-              _c("img", {
-                attrs: {
-                  src: "/img/rating/muf_half.png",
-                  id: _vm.grad,
-                  offset: _vm.getFill,
-                  "stop-color": _vm.rtl ? _vm.inactiveColor : _vm.activeColor,
-                  points: _vm.starPointsToString,
-                  fill: _vm.getGradId,
-                  stroke: _vm.borderColor,
-                  "stroke-width": _vm.borderWidth
-                }
-              })
-            ])
-          : _vm.getFill === "0%"
-            ? _c("span", [
-                _c("img", {
-                  staticClass: "greyed",
-                  attrs: { src: "/img/rating/muf_full.png" }
-                })
-              ])
-            : _vm._e()
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function(){},staticRenderFns:[]}
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

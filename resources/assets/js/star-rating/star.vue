@@ -2,13 +2,13 @@
     <span :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected" style="overflow:visible; padding: 0.1rem">
 
       <span v-if="getFill === '100%'">
-            <img src="/img/rating/muf_full.png" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
+            <img src="{{asset('/img/rating/muf_full.png')}}" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
     </span>
         <span v-else-if="getFill === '50%'">
-         <img src="/img/rating/muf_half.png" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
+         <img src="{{asset('/img/rating/muf_half.png')}}" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
     </span>
         <span v-else-if="getFill === '0%'">
-         <img src="/img/rating/muf_full.png" class="greyed" />
+         <img src="baseUrl+'/img/rating/muf_full.png')}}" class="greyed" />
     </span>
 
 
@@ -32,6 +32,7 @@
 <script type="text/javascript">
     export default {
         props: {
+
             fill: {
                 type: Number,
                 default: 0
@@ -102,9 +103,9 @@
             },
             getPosition($event) {
                 // calculate position in percentage.
-                var starWidth = (92 / 100) * this.size
-                const offset = (this.rtl) ? Math.min($event.offsetX, 45) : Math.max($event.offsetX, 1)
-                var position = Math.round((100 / starWidth) * offset)
+                var starWidth = (92 / 100) * this.size;
+                const offset = (this.rtl) ? Math.min($event.offsetX, 45) : Math.max($event.offsetX, 1);
+                var position = Math.round((100 / starWidth) * offset);
 
                 return Math.min(position, 100)
             },
@@ -118,7 +119,8 @@
         data() {
             return {
                 starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
-                grad: ''
+                grad: '',
+
             }
         }
     }

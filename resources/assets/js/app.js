@@ -29,7 +29,7 @@ Vue.use(VeeValidate);
  */
 Vue.component('modal', require('./components/LoginMod.vue'));
 Vue.component('star-rating', StarRating);
-Vue.component('design', DesignRender);
+// Vue.component('design', DesignRender);
 
 const app = new Vue({
     el: '#app',

@@ -6,14 +6,14 @@
     <?php $count = 0;?>
     @for($i = 0; $i < $stars[0]; $i++)
         <span class="star">
-                        <img src="/img/rating/muf_full.png"/>
+                        <img src="{{asset('/img/rating/muf_full.png')}}"/>
                         </span>
         <?php $count++;?>
     @endfor
 
     @if($stars[1] >= 5)
         <span class="star">
-                <img src="/img/rating/muf_half.png"/>
+                <img src="{{asset('/img/rating/muf_half.png')}}"/>
                 </span>
         <?php $count++;?>
     @endif
@@ -25,7 +25,7 @@
 
     @for($i = $count; $i > $stars[0]; $i--)
         <span class="star">
-                <img class="greyed" src="/img/rating/muf_full.png"/>
+                <img class="greyed" src="{{asset('/img/rating/muf_full.png')}}"/>
                 </span>
     @endfor
 

@@ -11,8 +11,6 @@
   padding-right: 1rem;
 }
 
-
-
 .is-result {
   background: #FAFAFA;
   -webkit-border-radius: 15px;
@@ -32,19 +30,14 @@
   border-radius: 5px;
 }
 
-
 .indexrecipe {
   padding-top: 2.5rem;
 }
-
-
 
 .show-recipe-title {
   padding-bottom: 0.3rem;
 
 }
-
-
 
 .dollar {
   color: $accentsecondary;
@@ -68,9 +61,7 @@
 }
 
 .fb-commentaire {
-  border: 0.5rem solid $accent;
-  -webkit-box-shadow: 7px 7px 0 0 $accent;
-  box-shadow: 7px 7px 0 0 $accent;
+  border: 2px solid $body-bg;
   padding: 1rem;
 }
 

@@ -27,7 +27,7 @@
                         <a href="/recette/{{$recette->slug}}">
                             <figure class="image is-1by1">
                                 @if($recette->id_user != NULL  && isset($first))
-                                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
+                                    <img src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}">
                                 @else
                                     <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
                                 @endif
@@ -37,7 +37,7 @@
                     </div>
                     <div class="column is-7">
                         <div class="top is-flex">
-                            <a href="/recette/{{$recette->slug}}"><h2 class="title">
+                            <a href="{{url('/recette/'.$recette->slug)}}"><h2 class="title">
                                     {{$recette->title}}
                                 </h2></a>
 

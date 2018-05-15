@@ -1,3 +1,6 @@
+@mixin file_url($url) {
+  background-image: url("../img/pictos/svg/#{$url}.svg")
+}
 
 .type-selector input {
   margin: 0;
@@ -7,14 +10,37 @@
   appearance: none;
 }
 
-.anime{background-image:url("/img/pictos/svg/anime.svg");}
-.art{background-image:url("/img/pictos/svg/art.svg");}
-.cartes{background-image:url("/img/pictos/svg/cartes.svg");}
-.comics{background-image:url("/img/pictos/svg/comics.svg");}
-.gaming{background-image:url("/img/pictos/svg/games.svg");}
-.livres{background-image:url("/img/pictos/svg/livres.svg");}
-.musique{background-image:url("/img/pictos/svg/song.svg");}
-.tv{background-image:url("/img/pictos/svg/tv.svg");}
+.anime {
+  @include file_url("anime")
+}
+
+.art {
+  @include file_url("art")
+}
+
+.cartes {
+  @include file_url("cartes")
+}
+
+.comics {
+  @include file_url("comics")
+}
+
+.gaming {
+  @include file_url("games")
+}
+
+.livres {
+  @include file_url("livres")
+}
+
+.musique {
+  @include file_url("song")
+}
+
+.tv {
+  @include file_url("tv")
+}
 
 .icones {
   background-size: contain;
