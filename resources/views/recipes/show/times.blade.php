@@ -50,16 +50,16 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
 
         <div class="column ">
             @if($recette->prep_time !== 0)
-                <p><i aria-hidden="true" class="fa fa-cutlery"></i>
+                <p><i aria-hidden="true" class="fas fa-utensils"></i>
                     {{$prep}} @lang("recipe.of") @lang('recipe.making-t')</p>
             @endif
             @if($recette->cook_time !== 0)
 
-                <p><i aria-hidden="true" class="fa fa-thermometer-three-quarters"></i>
+                <p><i aria-hidden="true" class="fas fa-thermometer-three-quarters"></i>
                     {{$cook}} @lang("recipe.of") @lang('recipe.cooking-t')
                 </p>
             @endif  @if($recette->rest_time !== 0)
-                <p><i aria-hidden="true" class="fa fa-clock-o"></i>
+                <p><i aria-hidden="true" class="far fa-clock"></i>
                     {{$rest}} @lang("recipe.of") @lang('recipe.resting-t')
                 </p>  @endif
         </div>

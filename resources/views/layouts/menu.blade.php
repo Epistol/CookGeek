@@ -56,7 +56,7 @@
 
                         <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
                         <button type="submit" class="searchheadbutton" style="position: absolute;">
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>

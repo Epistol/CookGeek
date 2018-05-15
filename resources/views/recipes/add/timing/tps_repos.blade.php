@@ -1,5 +1,5 @@
 <div class="field sleep  is-clearfix">
-    <label class="label"><i class="fa fa-clock-o" aria-hidden="true"></i><span
+    <label class="label"><i class="far fa-clock" aria-hidden="true"></i><span
                 class="timing">Temps de repos</span></label>
     <div class="field-body">
         <div class="field has-addons">

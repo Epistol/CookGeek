@@ -1,5 +1,5 @@
 <div class="field prep is-clearfix">
-    <label class="label"><i class="fa fa-cutlery" aria-hidden="true"></i><span
+    <label class="label"><i class="fas fa-utensils" aria-hidden="true"></i><span
                 class="timing">Temps de préparation</span></label>
     <div class="field-body">
         <div class="field has-addons">

@@ -70,12 +70,6 @@
 }
 
 .full-circle {
-  height: 2rem;
-  width: 2rem;
-  -moz-border-radius: 10rem;
-  -webkit-border-radius: 10rem;
-  line-height: 1.6rem;
-  margin-left: 0.5rem;
 
   @include transition_all();
 

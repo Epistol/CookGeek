@@ -40,6 +40,7 @@ const app = new Vue({
     data: {
         titre: '',
         showModalLike : false,
+        showModal : false,
 
         steps:[
             {

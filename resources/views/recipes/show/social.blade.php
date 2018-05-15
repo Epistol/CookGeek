@@ -1,12 +1,15 @@
 <div class="sharing-block">
     <div class="field has-addons" style="margin-left: 1rem">
         <p class="control">
-            <a class="button facebook ">
+            <a class="button facebook" @click="showModal = true" >
                           <span class="icon is-small">
                    <i class="fab fa-facebook-f fa-fw  fa-lg"></i>
 
                           </span>
             </a>
+
+
+
         </p>
         <p class="control">
             <a class="button twitter ">
@@ -33,3 +36,7 @@
         </p>
     </div>
 </div>
+<modal v-if="showModal" @close="showModal = false" v-cloak>
+    <h3 slot="header">Partage Facebook</h3>
+    <p slot="body"><iframe src="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}"></iframe> </p>
+</modal>

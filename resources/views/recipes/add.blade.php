@@ -37,8 +37,6 @@
                                 {{--Liste des ingrédients --}}
                             </div>
                         </div>
-
-
                     </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">

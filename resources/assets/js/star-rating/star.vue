@@ -2,13 +2,13 @@
     <span :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected" style="overflow:visible; padding: 0.1rem">
 
       <span v-if="getFill === '100%'">
-            <img src="{{asset('/img/rating/muf_full.png')}}" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
+            <img src="/img/rating/muf_full.png" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
     </span>
         <span v-else-if="getFill === '50%'">
-         <img src="{{asset('/img/rating/muf_half.png')}}" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
+         <img src="/img/rating/muf_half.png" :id="grad" :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor"  :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
     </span>
         <span v-else-if="getFill === '0%'">
-         <img src="baseUrl+'/img/rating/muf_full.png')}}" class="greyed" />
+         <img src="/img/rating/muf_full.png" class="greyed" />
     </span>
 
 

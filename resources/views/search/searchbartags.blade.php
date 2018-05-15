@@ -13,7 +13,7 @@
     </div>
     <div class="control">
         <a class="button is-info">
-            <i aria-hidden="true" class="fa fa-search"></i>
+            <i aria-hidden="true" class="fas fa-search"></i>
         </a>
     </div>
 </div>

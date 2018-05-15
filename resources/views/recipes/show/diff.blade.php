@@ -1,19 +1,10 @@
-<?php
-
-if ($recette->difficulty == 1) {
-    $diff = 'easy';
-} elseif ($recette->difficulty == 1) {
-    $diff = 'mid';
-} else {
-    $diff = 'hard';
-}
-
-?>
+<p>@lang('recipe.diff') :</p>
 
 
-<p>  @lang('recipe.diff') :</p>
+<div class="">
+        @for ($i = 0; $i < $recette->difficulty; $i++)
+                <i class="fas fa-star"></i>
+        @endfor
 
 
-<div class="full-circle {{$diff}}">
-    {{$recette->difficulty}}
 </div>

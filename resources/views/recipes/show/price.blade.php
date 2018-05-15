@@ -12,13 +12,15 @@
 
         @for($i = 0; $i < $recette->cost; $i++)
 
-            <span class="dollar">$</span>
+                <i class="fas fa-dollar-sign"></i>
             <?php $count++;?>
         @endfor
 
         @for($i = 3 ; $i > $count; $i--)
+                <span style="opacity:0.5">
+                    <i class="fas fa-dollar-sign"></i>
+                </span>
 
-            <span class="dollar_null">$</span>
 
         @endfor
 

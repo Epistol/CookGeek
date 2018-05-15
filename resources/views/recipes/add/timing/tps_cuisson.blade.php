@@ -1,5 +1,5 @@
 <div class="field cook  is-clearfix">
-    <label class="label"><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i><span class="timing">Temps de cuisson</span></label>
+    <label class="label"><i class="fas fa-thermometer-three-quarters" aria-hidden="true"></i><span class="timing">Temps de cuisson</span></label>
     <div class="field-body">
         <div class="field has-addons">
             <div class="control">
