@@ -15760,6 +15760,10 @@ h2.title {
   padding: 2.5rem;
 }
 
+.page_no_padding {
+  background: #fdfdfd;
+}
+
 table.times th {
   padding-right: 0.5rem;
 }
@@ -15775,7 +15779,7 @@ table.times th {
 }
 
 .left_recipe_add {
-  background: #f3f3f3;
+  background: #fdfdfd;
   margin-top: 1rem;
   z-index: 1;
   margin-bottom: 1rem;
@@ -15921,7 +15925,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-nomargin-side {
-  padding: 1.5rem 0px;
+  padding: 2.5rem 0px;
 }
 
 .hero-body {
@@ -16495,14 +16499,6 @@ form.addrecipe .field {
   font-size: 1.3rem;
 }
 
-.ficheinfo {
-  margin-top: 2rem;
-  padding: 0.5rem;
-  border: 1px solid #b6c2d9;
-  border-radius: 5px;
-  background: #f2f1f8;
-}
-
 .dollar_null {
   color: white;
   text-shadow: 2px 0 0 #b9a8dc, -2px 0 0 #b9a8dc, 1px 1px 0 #b9a8dc;
@@ -17007,7 +17003,7 @@ aside.menu {
 }
 
 .left-menu {
-  background: #f3f3f3;
+  background: #fdfdfd;
   padding-right: 0px;
   padding-left: 5%;
 }
