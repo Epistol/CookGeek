@@ -40,62 +40,27 @@
 
 @endphp
 
-<b-tabs v-model="activeTab">
-    <b-tab-item label="Pictures">
-        Lorem ipsum dolor sit amet.
-    </b-tab-item>
 
-    <b-tab-item label="Music">
-        Lorem <br>
-        ipsum <br>
-        dolor <br>
-        sit <br>
-        amet.
-    </b-tab-item>
+@foreach($pictos as $font)
 
-    <b-tab-item :visible="showBooks" label="Books">
-        What light is light, if Silvia be not seen? <br>
-        What joy is joy, if Silvia be not by <br>
-        Unless it be to think that she is by <br>
-        And feed upon the shadow of perfection? <br>
-        Except I be by Silvia in the night, <br>
-        There is no music in the nightingale.
-    </b-tab-item>
-
-    <b-tab-item label="Videos" disabled>
-        Nunc nec velit nec libero vestibulum eleifend.
-        Curabitur pulvinar congue luctus.
-        Nullam hendrerit iaculis augue vitae ornare.
-        Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
-    </b-tab-item>
-</b-tabs>
-
-<table class="table is-bordered">
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Path</th>
-        <th>Fichiers</th>
-
-    </tr>
-    </thead>
-    <tbody>
-
-    @foreach($pictos as $font)
-        <tr>
-            @foreach($font as $key=> $c)
-
-                <td>{{$c["Nom"]}}</td>
-                <td>{{$c["Path"]}}</td>
-                <td>@if(!empty($c["Fichiers"]))<code class="css">{{$c["Fichiers"]}}</code>@endif</td>
-        </tr><tr><td width="64px">{!!$c["code"]!!}</td>
-            <td >
-                <pre><code class="html">{{$c["code"]}}</code></pre>
-            </td>
-            @endforeach
-
-        </tr>
+    @foreach($font as $key=> $c)
+        <h2 class="title"><a href="#{{$c["Nom"]}}">{{$c["Nom"]}}</a></h2>
     @endforeach
 
-    </tbody>
-</table>
+
+    <b-tabs v-model="activeTab">
+        @foreach($font as $key=> $c)
+
+            <b-tab-item label="Preview">
+                <div style="max-width:64px">{!!$c["code"]!!}</div>
+            </b-tab-item>
+
+            <b-tab-item label="Path">    <pre>{{$c["Path"]}} </pre>  </b-tab-item>
+            <b-tab-item label="Markup">    <pre><code class="html">{{$c["code"]}}</code></pre>   </b-tab-item>
+
+        @endforeach
+
+
+
+    </b-tabs>
+@endforeach
