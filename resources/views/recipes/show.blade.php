@@ -45,14 +45,14 @@
 
 
                             {{--// Auteur--}}
-
-
                         </div>
 
-                        <div class="page">
+
+
+                        <div class="page_no_padding" >
                             <div class="content">
-                                <div class="columns">
-                                    <div class="column is-8">
+                                <div class="columns is-marginless">
+                                    <div class="column is-8" style="padding: 2.5rem;">
                                         @include("recipes.show.steps")
                                         @if($recette->video)
                                             @include("recipes.show.video")
@@ -63,7 +63,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="column is-4  ">
+                                    <div class="column is-4  list-h-show ">
                                         @include('recipes.show.social')
                                         @include("recipes.show.ingredient")
 

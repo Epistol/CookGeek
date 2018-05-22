@@ -1,7 +1,11 @@
 
 .page {
-  background: #fdfdfd;
+  background: $antiwhite;
   padding: 2.5rem;
+}
+
+.page_no_padding {
+  background: $antiwhite;
 }
 
 table.times th {
@@ -34,7 +38,6 @@ table.times th {
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
-
 .columns.timing {
   margin-top: 1rem;
 }
@@ -52,25 +55,27 @@ table.times th {
   margin-left: 33%;
 }
 
-
 // REsult recipe
 
-top{
+top {
   max-height: 25%;
-  overflow:hidden;
+  overflow: hidden;
 }
-.middle{
+
+.middle {
   margin-top: 1rem;
   max-height: 65%;
   max-height: 4rem;
   min-height: 65%;
-  overflow:hidden;
+  overflow: hidden;
 }
-.bottom{
+
+.bottom {
   max-height: 25%;
-  overflow:hidden;
+  overflow: hidden;
 }
-.hovered{
+
+.hovered {
   visibility: hidden;
   height: 0px;
 }
