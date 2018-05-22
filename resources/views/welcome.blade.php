@@ -7,12 +7,12 @@
             @include("recipes.index.partype")
             @include("recipes.index.favorise")
 
-            <img src="/img/tempo/img1.png" style="margin-left: auto;
+            <img src="{{ asset('/img/tempo/img1.png')}}" style="margin-left: auto;
 	margin-right: auto;
 	display: block;">
         </div>
      <div>
-         <img src="/img/tempo/img2.png" style="margin-left: auto;
+         <img src="{{ asset('/img/tempo/img2.png')}}" style="margin-left: auto;
 	margin-right: auto;
 	display: block;">
      </div>
