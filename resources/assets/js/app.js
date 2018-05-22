@@ -18,9 +18,12 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
+import Buefy from 'buefy'
+import 'buefy/lib/buefy.css'
+
 
 Vue.use(VeeValidate);
-
+Vue.use(Buefy);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

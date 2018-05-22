@@ -89,6 +89,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 <script src="{{ asset('js/konami.js') }}"></script>
+<script src="{{ asset('js/bulma.js') }}"></script>
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
 <script src="{{asset('js/nouislider.min.js')}}"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
