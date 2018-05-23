@@ -19,7 +19,7 @@ import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
 import Buefy from 'buefy'
-import 'buefy/lib/buefy.css'
+// import 'buefy/lib/buefy.css'
 
 
 Vue.use(VeeValidate);

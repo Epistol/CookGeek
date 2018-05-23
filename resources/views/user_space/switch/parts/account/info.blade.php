@@ -1,4 +1,4 @@
-@include('user_space.switch.parts.account.tabs')
+
 
 
 <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"

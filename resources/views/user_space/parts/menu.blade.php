@@ -1,14 +1,20 @@
 
 
     <aside class="menu">
-        <div class="user">
-            <div class="user_picture">
-                <img src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+        <div class="columns">
+            <div class="column is-3">
+                <div class="user_picture">
+                    <img src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                </div>
+
             </div>
-            <span class="pseudo">
+            <div class="column">
+                <span class="pseudo">
                 {{Auth::user()->name}}
             </span>
+            </div>
         </div>
+
         <div class="menu">
             <div class="sous_cat">
                 <p class="menu-label">

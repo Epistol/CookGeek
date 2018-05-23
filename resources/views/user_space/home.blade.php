@@ -6,11 +6,11 @@
 
 
             <div class="columns">
-                <div class="column round_bg" id="left_column">
+                <div class="column " id="left_column">
                     @include('user_space.parts.menu')
                 </div>
-                <div class="column is-three-quarters round_bg">
-               ACCCUEIL
+                <div class="column is-three-quarters blockcontent">
+               ACCUEIL
                 </div>
             </div>
 

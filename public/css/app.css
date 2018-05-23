@@ -16462,7 +16462,6 @@ form.addrecipe .field {
 .round_bg {
   margin-top: 2rem;
   background: white;
-  border-radius: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -16990,6 +16989,7 @@ input.input_modal.blck, textarea.input_modal.blck {
 }
 
 p.menu-label {
+  color: #7f5fbf;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

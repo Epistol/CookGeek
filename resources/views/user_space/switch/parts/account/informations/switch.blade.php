@@ -1,12 +1,12 @@
 <div class="field">
-    <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded">
-    <label for="switchRoundedDefault">Demander la limitation de l'utilisation des données</label>
+    <input id="limit_donnees" type="checkbox" name="limit_donnees" class="switch is-rounded">
+    <label for="limit_donnees">Demander la limitation de l'utilisation des données</label>
 </div>
 <div class="field">
-    <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" >
-    <label for="switchRoundedDefault">S'opposer au traitement des données </label>
+    <input id="no_traitement_donnees" type="checkbox" name="no_traitement_donnees" class="switch is-rounded" >
+    <label for="no_traitement_donnees">S'opposer au traitement des données </label>
 </div>
 <div class="field">
-    <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" checked="checked">
-    <label for="switchRoundedDefault">Notification email</label>
+    <input id="notif_mail" type="checkbox" name="notif_mail" class="switch is-rounded" checked="checked">
+    <label for="notif_mail">Notification email</label>
 </div>
