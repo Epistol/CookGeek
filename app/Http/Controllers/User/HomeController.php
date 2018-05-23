@@ -62,7 +62,10 @@
 				
 			}
 			$user->save();
-			return redirect()->route('account.param')->with('status', 'Profil mis à jour ! ');
+			$request->session()->flash('status', 'Profil mis à jour ! ');
+			$request->session()->reflash();
+			$request->session()->keep(['status', 'Profil mis à jour !']);
+			return redirect()->route('account.param');
 		}
 		
 		public function parameters_store(Request $request)
