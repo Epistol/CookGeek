@@ -53,11 +53,26 @@
                 <div class="field search_header navbar-item">
                     <form action="{{route('search')}}" method="POST" role="search">
                         {{ csrf_field() }}
+                        <ais-index app-id="{{ config('scout.algolia.id') }}"
+                                   api-key="{{ env('ALGOLIA_SEARCH') }}"
+                                   index-name="recipes">
 
-                        <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
-                        <button type="submit" class="searchheadbutton" style="position: absolute;">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                        </button>
+                            <ais-search-box></ais-search-box>
+
+                            {{--<button type="submit" class="searchheadbutton" style="position: absolute;">--}}
+                            {{--<i class="fas fa-search" aria-hidden="true"></i>--}}
+                            {{--</button>--}}
+                            <ais-results>
+                                <template slot-scope="{ result }">
+                                    <div>
+                                        <p>@{{ result.title }}</p>
+                                    </div>
+                                </template>
+                            </ais-results>
+
+                        </ais-index>
+
+
                     </form>
                 </div>
             </div>

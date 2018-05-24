@@ -42,10 +42,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+          integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 </head>
 <body>
 <div id="app">@include("layouts.menu")
+
     <div class="container">
         @if ($errors->any())
             <div class="notification alert alert-danger">
@@ -65,7 +69,6 @@
     </div>
 
 
-
     @yield('content')</div>
 @include("layouts.footer")
 <!-- Scripts -->
@@ -78,19 +81,11 @@
 	}
 	?>
 
-    /*(function () {
-        var sn = document.createElement("script"), s = document.getElementsByTagName("script")[0], url;
-        url = document.querySelectorAll ? document.querySelectorAll("link[rel~=canonical]") : false;
-        url = url && url[0] ? url[0].href : false;
-        sn.type = "text/javascript"; sn.async = true;
-        sn.src = "//webmention.herokuapp.com/api/embed?url=" + encodeURIComponent(url || window.location);
-        s.parentNode.insertBefore(sn, s);
-    }());*/
+
 </script>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
-      integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>

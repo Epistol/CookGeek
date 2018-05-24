@@ -2,28 +2,33 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Recipes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 class SearchController extends Controller
 {
 
-    const CATEGUNIV = "categunivers";
-    const TYPER = 'type_recipes';
-    const UNIV = 'univers';
     public function search($recherche)
     {
         $rq = $recherche;
         $pieces = explode(" ", $rq);
         if($rq != null){
+	
+	       
+	        
+	        
             foreach ($pieces as $p){
+	            $orders = Recipes::search($p)->get();
+	            dd($orders);
+	            
                 // Searching in recipes
                 // TODO : Réduire le nombre de champs retournés par element ?
                 $recipe = DB::table('recipes')->where('title', 'like', '%'.$p.'%')->paginate(10);
                 $ingredient = DB::table('ingredients')->where('name', 'like', '%'.$p.'%')->paginate(10);
-                $categunivers = DB::table(CATEGUNIV)->where('name', 'like', '%'.$p.'%')->paginate(10);
-                $type_recipes = DB::table(TYPER)->where('name', 'like', '%'.$p.'%')->paginate(10);
-                $univers = DB::table(UNIV)->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $categunivers = DB::table("categunivers")->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $type_recipes = DB::table("type_recipes")->where('name', 'like', '%'.$p.'%')->paginate(10);
+                $univers = DB::table("univers")->where('name', 'like', '%'.$p.'%')->paginate(10);
             }
         }
         else {
@@ -31,9 +36,9 @@ class SearchController extends Controller
                 // TODO : Réduire le nombre de champs retournés par element ?
                 $recipe = DB::table('recipes')->paginate(10);
                 $ingredient = DB::table('ingredients')->paginate(10);
-                $categunivers = DB::table(CATEGUNIV)->paginate(10);
-                $type_recipes = DB::table(TYPER)->paginate(10);
-                $univers = DB::table(UNIV)->paginate(10);
+                $categunivers = DB::table("categunivers")->paginate(10);
+                $type_recipes = DB::table("type_recipes")->paginate(10);
+                $univers = DB::table("univers")->paginate(10);
         }
 
 

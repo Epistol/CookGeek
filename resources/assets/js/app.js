@@ -19,12 +19,15 @@ import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
 import Buefy from 'buefy'
+import InstantSearch from 'vue-instantsearch'
+
+
 // import 'buefy/lib/buefy.css'
 
 
 Vue.use(VeeValidate);
 Vue.use(Buefy);
-
+Vue.use(InstantSearch);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,8 +37,12 @@ Vue.component('modal', require('./components/LoginMod.vue'));
 Vue.component('star-rating', StarRating);
 // Vue.component('design', DesignRender);
 
+
+
+
 const app = new Vue({
     el: '#app',
+    // render: h => h(App),
     components: {
         draggable,
     },
