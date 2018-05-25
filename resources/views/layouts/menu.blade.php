@@ -55,17 +55,16 @@
                         {{ csrf_field() }}
                         <ais-index app-id="{{ config('scout.algolia.id') }}"
                                    api-key="{{ env('ALGOLIA_SEARCH') }}"
-                                   index-name="recipes">
+                                   index-name="recipes" autofocus=false>
 
-                            <ais-search-box></ais-search-box>
+                            <ais-input placeholder="Search contacts..."></ais-input>
 
-                            {{--<button type="submit" class="searchheadbutton" style="position: absolute;">--}}
-                            {{--<i class="fas fa-search" aria-hidden="true"></i>--}}
-                            {{--</button>--}}
                             <ais-results>
                                 <template slot-scope="{ result }">
                                     <div>
-                                        <p>@{{ result.title }}</p>
+                                        <h1>@{{ result.title }}</h1>
+
+
                                     </div>
                                 </template>
                             </ais-results>
