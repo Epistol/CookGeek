@@ -1,0 +1,127 @@
+// 404 page
+
+.main_eror {
+  background: black no-repeat center center;
+  //background-image: url("/img/404_bg.jpg") ;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  height: 100%;
+  min-height: 100vh;
+  /* Set up proportionate scaling */
+  width: 100%;
+
+  /* Set up positioning */
+  top: 0;
+  left: 0;
+}
+
+.err404 {
+  border: 2px solid #9B0002;
+  display: block;
+  color: #de1a19;
+  font-family: 'Futura', sans-serif;
+
+  @include lg {
+    margin-top: 2rem;
+    min-height: 90vh;
+    padding: 34vh 0.5rem 0.5rem;
+  }
+  @include md {
+    margin-top: 2rem;
+    min-height: 10vh;
+    padding: 30vh 0.5rem 0.5rem;
+  }
+
+  p {
+    text-transform: uppercase;
+    padding-bottom: 0px;
+
+    font-weight: bold;
+  }
+}
+
+.big_404 {
+  background: linear-gradient(to right, rgba(180, 3, 6, 0.71) 0%, rgba(238, 26, 25, 0.71) 50%, rgba(180, 3, 6, 0.71) 100%);
+  display: block;
+  @include lg {
+    min-height: 350px;
+    width: 85%;
+    position: absolute;
+  }
+  width: 100%;
+
+  top: 45%;
+  z-index: 99;
+  padding: 2rem;
+
+}
+
+.big_bg_404 {
+  background: black;
+  display: block;
+  @include lg {
+    min-height: 350px;
+    width: 85%;
+    position: absolute;
+    padding: 2rem;
+  }
+  width: 100%;
+  top: 45%;
+  z-index: 98;
+
+}
+
+.full_404 {
+  font-size: 5rem;
+  color: white;
+  font-family: 'Michroma', sans-serif;
+}
+
+a.quatre {
+  font-family: 'EurostileBQ', sans-serif;
+  color: #28272F;
+  letter-spacing: 1px;
+  background: #e7e9ff;
+  -webkit-box-shadow: 0 3px 0 0 rgba(252, 252, 252, 0.41);
+  box-shadow: 0 3px 0 0 rgba(252, 252, 252, 0.41);
+  @include lg {
+    margin-left: 2rem;
+  }
+  margin-left: 0.5rem;
+
+  &:hover {
+    background: #FDEDEF;
+
+  }
+
+}
+
+.eye {
+  background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  display: block;
+  height: 150px;
+  width: 150px;
+  border-radius: 1000px;
+  @include lg {
+    position: absolute;
+    top: 16%;
+    right: 5%;
+  }
+
+}
+
+:root {
+  --animation-time: 5s;
+}
+
+#sorry {
+  animation: flicker var(--animation-time) ease alternate infinite;
+}
+
+/*
+.is-centered {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  display:flex;justify-content:center;align-items:center;
+}*/

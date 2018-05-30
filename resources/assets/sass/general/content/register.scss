@@ -4,7 +4,9 @@
   &:before {
     content: "";
     display: block;
-    background: #7f5fbf;
+    //background: #7f5fbf;
+    background: linear-gradient(to left, $brand-primary 0%, lighten($brand-primary, 10%) 30%, lighten($brand-primary, 10%) 60%, $brand-primary 100%);
+
     position: absolute;
     width: 40%;
     height: 85%;

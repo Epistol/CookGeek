@@ -27,9 +27,15 @@
   font-size: 2rem;
   color: $brand-primary;
   padding: 0.5rem 1rem;
+  @include transition_all();
+
+  &:hover {
+    @include transition_all();
+  }
 }
 
 .navbar-dropdown {
+  padding-top: 0px;
   background-color: white;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -38,18 +44,15 @@
   box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
   border-right: 0.5rem solid $brand-primary;
   border-bottom: 0.5rem solid $brand-primary;
-
+  @include transition_all();
 }
 
-/*  .navbar-link::after {
-    border: 1px solid #fbfdfa;
-    border-right: 0;
-    border-top: 0;
-  }*/
+
 
 a.navbar-item, a.navbar-link {
   color: $brand-primary;
   font-size: 1.1rem;
+  @include transition_all();
 }
 
 .navbar {
@@ -57,8 +60,8 @@ a.navbar-item, a.navbar-link {
     content: '';
     display: block;
     height: 0.5rem;
-    //background: linear-gradient(to left, #ffc914 0%,#fe296d 9%,#7f5fbf 50%);
-    background: $brand-primary;
+    background: linear-gradient(to left, $brand-primary 0%, lighten($brand-primary, 10%) 30%, lighten($brand-primary, 10%) 60%, $brand-primary 100%);
+    //background: $brand-primary;
     width: 100%;
     position: absolute;
     top: 4rem;

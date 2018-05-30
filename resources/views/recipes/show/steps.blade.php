@@ -12,7 +12,7 @@
 
 
 @forelse($steps as $step)
-    <div class="step">
+    <div class="step shadowbox">
         <div class="columns">
             <div class="column is-1 is-flex-center">
             <span class="">

@@ -15914,7 +15914,9 @@ body, button, input, select, textarea {
 }
 
 .navbar-item.has-dropdown.is-hoverable {
-  z-index: 1000;
+  z-index: 800;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .content li + li {
@@ -15959,8 +15961,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 32px;
 }
 
-.navbar-dropdown {
-  padding-top: 0px;
+.recipeaddbg {
+  padding-top: 2rem;
 }
 
 .main_eror {
@@ -16243,9 +16245,17 @@ footer {
   font-size: 2rem;
   color: #7f5fbf;
   padding: 0.5rem 1rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo:hover {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar-dropdown {
+  padding-top: 0px;
   background-color: white;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -16254,23 +16264,23 @@ footer {
   box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
   border-right: 0.5rem solid #7f5fbf;
   border-bottom: 0.5rem solid #7f5fbf;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-/*  .navbar-link::after {
-    border: 1px solid #fbfdfa;
-    border-right: 0;
-    border-top: 0;
-  }*/
 a.navbar-item, a.navbar-link {
   color: #7f5fbf;
   font-size: 1.1rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar:after {
   content: '';
   display: block;
   height: 0.5rem;
-  background: #7f5fbf;
+  background: -webkit-gradient(linear, right top, left top, from(#7f5fbf), color-stop(30%, #9c83ce), color-stop(60%, #9c83ce), to(#7f5fbf));
+  background: linear-gradient(to left, #7f5fbf 0%, #9c83ce 30%, #9c83ce 60%, #7f5fbf 100%);
   width: 100%;
   position: absolute;
   top: 4rem;
@@ -16618,7 +16628,8 @@ form.addrecipe .field {
 .left_register:before {
   content: "";
   display: block;
-  background: #7f5fbf;
+  background: -webkit-gradient(linear, right top, left top, from(#7f5fbf), color-stop(30%, #9c83ce), color-stop(60%, #9c83ce), to(#7f5fbf));
+  background: linear-gradient(to left, #7f5fbf 0%, #9c83ce 30%, #9c83ce 60%, #7f5fbf 100%);
   position: absolute;
   width: 40%;
   height: 85%;
@@ -16674,14 +16685,13 @@ input.input_modal, textarea.input_modal {
   min-height: 3rem;
   width: 100%;
   font-size: 1rem;
-  padding: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  padding-left: 1rem;
+  padding: 0 0 0 1rem;
 }
 
 input.input_modal:focus, textarea.input_modal:focus {
