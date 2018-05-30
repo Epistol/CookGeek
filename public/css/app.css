@@ -15944,6 +15944,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
 }
 
+.container .navbar-brand {
+  margin-left: 0 !important;
+}
+
 [v-cloak] {
   display: none;
 }
@@ -16209,13 +16213,29 @@ a.quatre:hover {
   min-height: 50px;
 }
 
+footer {
+  background: #524d55;
+}
+
 #app {
   min-height: 100%;
   position: relative;
+  padding-top: 4rem;
 }
 
-footer {
-  background: #524d55;
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 901;
+  box-shadow: 0 0 5px 7px #6C548F;
+  -webkit-box-shadow: 0 0 5px 7px #6C548F;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .logo {

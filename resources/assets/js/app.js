@@ -7,7 +7,9 @@
 
 require('./bootstrap');
 require('./dropzone');
+require('./sticky');
 require('./star-rating');
+
 
 window.Vue = require('vue');
 
@@ -93,6 +95,7 @@ const app = new Vue({
             this.steps.splice(index, 1);
         },
     }});
+
 
 
 /**

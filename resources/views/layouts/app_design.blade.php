@@ -65,12 +65,12 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script><?php
-	if (Auth::check() == FALSE || Auth::check() == '') {
-		echo "var userIsLoggedIn = 0;";
-	} else {
-		echo "var userIsLoggedIn = 1;";
-	}
-	?>
+    if (Auth::check() == FALSE || Auth::check() == '') {
+        echo "var userIsLoggedIn = 0;";
+    } else {
+        echo "var userIsLoggedIn = 1;";
+    }
+    ?>
 
     /*(function () {
         var sn = document.createElement("script"), s = document.getElementsByTagName("script")[0], url;

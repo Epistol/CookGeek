@@ -42,8 +42,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">
+{{--    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
           integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
 </head>
@@ -71,7 +71,10 @@
 
     @yield('content')</div>
 @include("layouts.footer")
-<!-- Scripts -->
+
+
+
+<!-- SCRIPTS  -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script><?php
 	if (Auth::check() == FALSE || Auth::check() == '') {
@@ -84,11 +87,10 @@
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
-<script src="{{ asset('js/konami.js') }}"></script>
+<script src="{{ asset('js/konami.js') }}" defer async></script>
 
 <div id="fb-root"></div>
 <script>(function (d, s, id) {
@@ -104,7 +106,6 @@
     var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 </script>
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
-<script src="{{asset('js/nouislider.min.js')}}"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
 <script type="application/javascript">
