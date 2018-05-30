@@ -3,12 +3,12 @@
     <?php $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();?>
 
     <div class="columns">
-        <div class="column is-4">
+        <div class="column">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="/">Accueil</a></li>
                     <li><a href="{{route("recipe.index")}}">Recettes</a></li>
-                    <li class=""><a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
+                    <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem"
                                     href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a></li>
                     <li>
                         <div style="margin-left: 0.5rem"> @include("recipes.show.type_univers")</div>
@@ -17,12 +17,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="column is-5 has-text-centered">
+        <div class="column has-text-centered">
 
             <h1 class="title ">{{$recette->title}}</h1>
 
         </div>
-        <div class="column is-2 ">
+        <div class="column ">
             {{--// Likes--}}
             @include('recipes.likeh')
         </div>

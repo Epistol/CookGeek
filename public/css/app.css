@@ -15672,7 +15672,7 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
 }
 
 .content h1, h1.title {
-  color: #fe688e;
+  color: #fa5c86;
 }
 
 h2.title {
@@ -16516,7 +16516,7 @@ form.addrecipe .field {
 }
 
 .dollar {
-  color: #fe688e;
+  color: #fa5c86;
   font-weight: bold;
   font-size: 1.3rem;
 }

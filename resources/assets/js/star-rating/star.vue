@@ -114,7 +114,7 @@
                     id: this.starId,
                     position: this.getPosition($event)
                 })
-            }
+            },
         },
         data() {
             return {

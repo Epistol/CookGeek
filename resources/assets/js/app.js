@@ -20,6 +20,8 @@ import draggable from 'vuedraggable'
 import StarRating from './star-rating'
 import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
+import Notifications from 'vue-notification'
+
 
 // import 'buefy/lib/buefy.css'
 
@@ -27,6 +29,7 @@ import InstantSearch from 'vue-instantsearch'
 Vue.use(VeeValidate);
 Vue.use(Buefy);
 Vue.use(InstantSearch);
+Vue.use(Notifications)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

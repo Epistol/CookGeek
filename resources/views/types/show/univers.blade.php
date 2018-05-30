@@ -10,4 +10,4 @@
 $univers = DB::table('univers')->where('id', $recette->univers)->first();
 ?>
 <p class="is-brand show-recipe-title"> @lang("recipe.univers")</p>
-{{$univers->name}}
+{{strtolower($univers->name, 20, ' (...)')}}
