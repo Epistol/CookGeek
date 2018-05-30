@@ -57,16 +57,17 @@ table.times th {
 
 // REsult recipe
 
-top {
+.top {
+  overflow: auto;
   max-height: 25%;
   overflow: hidden;
 }
 
 .middle {
-  margin-top: 1rem;
-  max-height: 65%;
+  margin-top: 0.5rem;
+  max-height: 60%;
   max-height: 4rem;
-  min-height: 65%;
+  min-height: 60%;
   overflow: hidden;
 }
 

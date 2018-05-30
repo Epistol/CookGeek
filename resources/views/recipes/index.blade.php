@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('titrepage', "Recettes")
 @section('content')
-    <div class="recipeaddbg">
+
         <div class="container">
             <section class="section blockcontent">
 
@@ -32,7 +32,7 @@
 
             </section>
         </div>
-    </div>
+
 
     <modal v-if="showModalLike" @close="showModalLike = false" v-cloak>
         <h3 slot="header">Connexion requise</h3>

@@ -1,4 +1,3 @@
-
 // Navbar
 $navbar-default-bg: $white;
 
@@ -12,7 +11,7 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
-$taille_minimale_photo : 640px;
+$taille_minimale_photo: 640px;
 
 $screen-sm-min: 768px;
 $screen-xs-max: ($screen-sm-min - 1);
@@ -33,6 +32,7 @@ $screen-xl-min: ($screen-lg-min - 1);
     @content;
   }
 }
+
 /**
  * Auto resize for medium devices
  * @mixin
@@ -84,7 +84,6 @@ $screen-xl-min: ($screen-lg-min - 1);
   transition: all $transition ease-in-out;
 }
 
-
 // Small devices
 @mixin sm_1 {
   @media (max-width: #{$screen-sm-min}) {
@@ -98,7 +97,6 @@ $screen-xl-min: ($screen-lg-min - 1);
     @content;
   }
 }
-
 
 // Large devices
 @mixin lg_1 {

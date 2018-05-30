@@ -12,10 +12,13 @@
 }
 
 .is-result {
-  background: #FAFAFA;
+  background: $antiwhite;
   -webkit-border-radius: 15px;
   border-radius: 15px;
   margin-right: 1rem;
+  border:1rem $body-bg;
+  box-shadow: 0 10px 40px 0 rgba($gris_granite,  0.1), 0 2px 9px 0 rgba($gris_granite,  0.11);
+
 }
 
 .content figure {

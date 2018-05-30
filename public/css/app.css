@@ -15813,16 +15813,17 @@ table.times th {
   margin-left: 33%;
 }
 
-top {
+.top {
+  overflow: auto;
   max-height: 25%;
   overflow: hidden;
 }
 
 .middle {
-  margin-top: 1rem;
-  max-height: 65%;
+  margin-top: 0.5rem;
+  max-height: 60%;
   max-height: 4rem;
-  min-height: 65%;
+  min-height: 60%;
   overflow: hidden;
 }
 
@@ -16220,22 +16221,21 @@ footer {
 #app {
   min-height: 100%;
   position: relative;
-  padding-top: 4rem;
 }
 
 .navbar {
   width: 100%;
-  position: fixed;
   top: 0;
   z-index: 901;
-  box-shadow: 0 0 5px 7px #6C548F;
-  -webkit-box-shadow: 0 0 5px 7px #6C548F;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+  box-shadow: 0 0 5px 9px #6C548F;
+  -webkit-box-shadow: 0 0 5px 9px #6C548F;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .logo {
@@ -16487,9 +16487,12 @@ form.addrecipe .field {
 }
 
 .is-result {
-  background: #FAFAFA;
+  background: #fdfdfd;
   border-radius: 15px;
   margin-right: 1rem;
+  border: 1rem #ebeaf5;
+  -webkit-box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
+          box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
 }
 
 .content figure {

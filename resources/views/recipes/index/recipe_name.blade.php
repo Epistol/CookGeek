@@ -20,8 +20,7 @@
                     <div class="column is-4 to-hover is-paddingless is-marginless">
                         @if(isset($type))
                             <div class="hovered">
-                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
-                                   href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
+                                <a class="tag" style="margin:0.5rem" href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                             </div>
                         @endif
                         <a href="/recette/{{$recette->slug}}">
@@ -38,7 +37,9 @@
                     <div class="column is-7">
                         <div class="top is-flex">
                             <a href="{{url('/recette/'.$recette->slug)}}"><h2 class="title">
-                                    {{$recette->title}}
+
+                                    @php echo str_limit($recette->title, 20, ' (...)'); @endphp
+
                                 </h2></a>
 
 
@@ -68,16 +69,19 @@
                         </div>
                         <div class="bottom">
                             <div class="is-flex">
-                                <?php
-                                $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
-                                ?>
-                                @include("recipes.show.author")<br/>
-                                @include("recipes.show.staronly")
+                                <span>
+                                    <?php
+                                    $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
+                                    ?>
+                                    @include("recipes.show.author")<br/>
+                                </span>
+
+                                <span style="padding-left:1rem"> @include("recipes.show.staronly")</span>
                             </div>
                         </div>
 
                     </div>
-                    <div class="column is-1 is-marginless is-paddingless">
+                    <div class="column is-1 ">
                         <div class="top">
                             <?php
                             $typeuniv = DB::table('categunivers')

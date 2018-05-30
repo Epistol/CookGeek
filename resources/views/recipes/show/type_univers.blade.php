@@ -1,11 +1,11 @@
 @if($typeuniv->name== 'tv')
-    <div class="icones {{strtolower($typeuniv->name)}} tooltip is-tooltip-right"
+    <a href="{{route("media.show", strtolower($typeuniv->name))}}"><div class="icones {{strtolower($typeuniv->name)}} tooltip is-tooltip-right"
          data-tooltip="{{strtolower($typeuniv->name)}} ">
-    </div>
+    </div></a>
 
 @else
-    <div class="icones {{strtolower($typeuniv->name)}}  tooltip is-tooltip-right"
+    <a href="{{route("media.show", strtolower($typeuniv->name))}}"><div class="icones {{strtolower($typeuniv->name)}}  tooltip is-tooltip-right"
          data-tooltip="{{ucfirst($typeuniv->name)}} ">
-    </div>
+    </div></a>
 
 @endif
