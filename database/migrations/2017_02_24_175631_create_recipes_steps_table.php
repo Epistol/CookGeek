@@ -19,10 +19,10 @@
 				$table->integer('step_number');
 				$table->longText('instruction');
 				
-				$table->foreign('recipe_id')
-					->references('id')
-					->on('recipes');
-				
+//				$table->foreign('recipe_id')
+//					->references('id')
+//					->on('recipes');
+//
 			});
 			
 			

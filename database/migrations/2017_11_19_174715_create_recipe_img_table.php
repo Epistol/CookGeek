@@ -20,13 +20,13 @@
 				$table->string('image_name');
 				$table->timestamps();
 				
-				$table->foreign('recipe_id')
-					->references('id')
-					->on('recipes');
-				
-				$table->foreign('user_id')
-					->references('id')
-					->on('users');
+//				$table->foreign('recipe_id')
+//					->references('id')
+//					->on('recipes');
+//
+//				$table->foreign('user_id')
+//					->references('id')
+//					->on('users');
 				
 			});
 			

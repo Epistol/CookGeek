@@ -21,9 +21,9 @@
 				$table->integer('author_id');
 				$table->timestamps();
 				
-				$table->foreign('author_id')
-					->references('id')
-					->on('users');
+//				$table->foreign('author_id')
+//					->references('id')
+//					->on('users');
 				
 			});
 			

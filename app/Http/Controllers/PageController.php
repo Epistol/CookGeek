@@ -171,4 +171,19 @@ class PageController extends Controller
 
 		return redirect('admin/page')->with('status', 'Page supprimée !');
 	}
+
+	public function store_gf(Request $request){
+        $idRecette = DB::table('form18')->insertGetId(
+            ['email' => $request->email,
+                'contenu' => $request->contenu,
+                'created_at' => now(),
+                'updated_at' => now(),
+
+            ]
+        );
+
+        return redirect()->route('index');
+
+
+    }
 }

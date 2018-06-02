@@ -18,7 +18,7 @@
             {{--image principale--}}
         </div>
         <div class="column">
-            <h1 class="title">Le coup de coeur</h1>
+            {{--<h1 class="title">Le coup de coeur</h1>--}}
             @isset($heartbeat->texte)
                 <p>{{$heartbeat->texte}}</p>
             @endif

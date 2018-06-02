@@ -18,15 +18,15 @@
 				$table->integer('user_id');
 				$table->integer('recipe_id');
 				
-				$table->foreign('user_id')
-					->references('id')
-					->on('users');
-				
-				$table->foreign('recipe_id')
-					->references('id')
-					->on('recipes');
-				
-				$table->primary(['id', 'user_id', 'recipe_id']);
+//				$table->foreign('user_id')
+//					->references('id')
+//					->on('users');
+//
+//				$table->foreign('recipe_id')
+//					->references('id')
+//					->on('recipes');
+//
+//				$table->primary(['id', 'user_id', 'recipe_id']);
 			});
 		}
 		

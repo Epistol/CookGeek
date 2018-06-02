@@ -19,15 +19,15 @@
 				$table->integer('id_ingredient')->nullable();
 				$table->string('qtt')->nullable();
 				
-				$table->foreign('id_recipe')
-					->references('id')
-					->on('recipe');
+//				$table->foreign('id_recipe')
+//					->references('id')
+//					->on('recipe');
+//
+//				$table->foreign('id_ingredient')
+//					->references('id')
+//					->on('ingredients');
 				
-				$table->foreign('id_ingredient')
-					->references('id')
-					->on('ingredients');
-				
-				$table->primary(['id', 'id_recipe', 'id_ingredient']);
+//				$table->primary(['id', 'id_recipe', 'id_ingredient']);
 			});
 			
 			

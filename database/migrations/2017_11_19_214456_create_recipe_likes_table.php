@@ -21,13 +21,13 @@
 				$table->timestamps();
 				
 				
-				$table->foreign('id_recipe')
-					->references('id')
-					->on('recipes');
-				
-				$table->foreign('id_user')
-					->references('id')
-					->on('users');
+//				$table->foreign('id_recipe')
+//					->references('id')
+//					->on('recipes');
+//
+//				$table->foreign('id_user')
+//					->references('id')
+//					->on('users');
 				
 				
 			});

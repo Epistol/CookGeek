@@ -35,3 +35,5 @@ Route::group(['prefix' => 'recette'], function () {
 //RECETTE/TYPE
 
 });
+
+Route::post('gf18', 'PageController@store_gf')->name("form.store");

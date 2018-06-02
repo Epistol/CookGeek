@@ -47,27 +47,27 @@
 				
 				
 				
-				
-				$table->foreign('difficulty')
-					->references('id')
-					->on('difficulty');
-				
-				$table->foreign('type')
-					->references('id')
-					->on('type_recipes');
-				
-				$table->foreign('univers')
-					->references('id')
-					->on('univers');
-				
-				$table->foreign('type_univers')
-					->references('id')
-					->on('categunivers');
-				
-				$table->foreign('id_user')
-					->references('id')
-					->on('users');
-				
+//
+//				$table->foreign('difficulty')
+//					->references('id')
+//					->on('difficulty');
+//
+//				$table->foreign('type')
+//					->references('id')
+//					->on('type_recipes');
+//
+//				$table->foreign('univers')
+//					->references('id')
+//					->on('univers');
+//
+//				$table->foreign('type_univers')
+//					->references('id')
+//					->on('categunivers');
+//
+//				$table->foreign('id_user')
+//					->references('id')
+//					->on('users');
+//
 				
 				
 			});

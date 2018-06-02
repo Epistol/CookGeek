@@ -32,16 +32,16 @@
 				$table->increments('id');
 				$table->integer('user_id')->unsigned();
 				$table->integer('recompense_id')->unsigned();
-				
-				$table->foreign('user_id')
-					->references('id')
-					->on('user');
-				
-				$table->foreign('recompense_id')
-					->references('id')
-					->on('receompense');
-				
-				$table->primary(['id', 'user_id', 'recompense_id']);
+//
+//				$table->foreign('user_id')
+//					->references('id')
+//					->on('user');
+//
+//				$table->foreign('recompense_id')
+//					->references('id')
+//					->on('receompense');
+//
+//				$table->primary(['id', 'user_id', 'recompense_id']);
 				
 				$table->timestamps();
 				
@@ -58,8 +58,8 @@
 		public function down()
 		{
 			Schema::dropIfExists('user_recompenses', function (Blueprint $table) {
-				$table->dropForeign('user_recompenses_user_id_foreign');
-				$table->dropForeign('user_recompenses_recompense_id_foreign');
+//				$table->dropForeign('user_recompenses_user_id_foreign');
+//				$table->dropForeign('user_recompenses_recompense_id_foreign');
 			});
 			
 		}
