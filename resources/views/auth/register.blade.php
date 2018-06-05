@@ -64,7 +64,8 @@
                             </div>
 
                             <div class="field ">
-                                <label for="password-confirm" class="label control-label">Répétez votre mot de passe (au cas où)</label>
+                                <label for="password-confirm" class="label control-label">Répétez votre mot de passe (au
+                                    cas où)</label>
 
                                 <div class="control">
                                     <input id="password-confirm" type="password" class="form-control input "

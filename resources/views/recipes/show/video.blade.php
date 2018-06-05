@@ -8,8 +8,8 @@
     $yt = str_replace("watch?v=", "embed/", $recette->video)
     ?>
     <div class="youtube_player">
-        <iframe  width="560" height="315" src="{{$yt}}" frameborder="0" gesture="media" allow="encrypted-media"
-                 allowfullscreen></iframe>
+        <iframe width="560" height="315" src="{{$yt}}" frameborder="0" gesture="media" allow="encrypted-media"
+                allowfullscreen></iframe>
     </div>
 
 

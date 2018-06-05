@@ -48,8 +48,7 @@
                         </div>
 
 
-
-                        <div class="page_no_padding" >
+                        <div class="page_no_padding">
                             <div class="content">
                                 <div class="columns is-marginless">
                                     <div class="column is-8" style="padding: 2.5rem;">
@@ -61,7 +60,8 @@
 
                                         <div id="#fb-commentaire_container">
                                             <div class="fb-commentaire">
-                                                <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"  data-numposts="5" data-colorscheme="light" ></div>
+                                                <div class="fb-comments" data-href="{{url()->current()}}"
+                                                     data-width="100%" data-numposts="5" data-colorscheme="light"></div>
 
                                             </div>
                                         </div>
@@ -74,9 +74,6 @@
 
                                     </div>
                                 </div>
-
-
-
 
 
                             </div>

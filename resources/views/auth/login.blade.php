@@ -59,13 +59,15 @@
                                         </div>
                                     </div>
 
-                                    <a class=" help" href="{{ route('password.request') }}">
+                                    <a class=" help"  @click="showModal = true">
                                         Mot de passe oublié ?
                                     </a>
 
                                     <div class="field is-grouped is-grouped-right">
                                         <p class="control">
-                                            <button type="submit" class="button is-primary">
+                                            <button type="submit" class="button is-primary g-recaptcha"
+                                                    data-sitekey="6LfLKxAUAAAAAGdkRuwgdbi_lyCSvCQhPBiCYm9j"
+                                                    data-callback="SubmitFn">
                                                 Connexion
                                             </button>
                                         </p>
@@ -90,5 +92,10 @@
     </section>
 
     @include("auth.donnes_perso")
+
+
+@include("auth.passwords.reinit_mdp")
+
+
 
 @endsection

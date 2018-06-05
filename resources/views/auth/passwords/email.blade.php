@@ -1,18 +1,22 @@
 @extends('layouts.app')
 @section('titrepage', "Mot de passe oublié")
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+    <section class="section">
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="container">
+            <div class="columns">
+                <div class="column is-5 is-paddingless">
+                    <div class="left_register">
+                        <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
+                    </div>
+
+                </div>
+                <div class="column is-two-fifths is-paddingless">
+                    <H1 class="title">Mot de passe oublié ? </H1>
+
+                    <div class="blockcontent">
+
+
 
                     <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
@@ -21,7 +25,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="input form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -39,9 +43,10 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+    </section>
 @endsection

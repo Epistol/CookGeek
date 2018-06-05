@@ -16661,6 +16661,15 @@ form.addrecipe .field {
   }
 }
 
+@media (min-width: 992px) {
+  .chat_hover {
+    position: absolute;
+    width: 45%;
+    top: 15%;
+    left: 2%;
+  }
+}
+
 .file-cta {
   display: block;
 }

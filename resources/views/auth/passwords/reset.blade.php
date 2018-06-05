@@ -1,13 +1,26 @@
 @extends('layouts.app')
 @section('titrepage', "Mot de passe oublié")
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
 
-                <div class="panel-body">
+
+    <section class="section">
+
+        <div class="container">
+            <div class="columns">
+                <div class="column is-5 is-paddingless">
+                    <div class="left_register">
+                        <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
+                    </div>
+
+                </div>
+                <div class="column is-two-fifths is-paddingless">
+                    <H1 class="title">Mot de passe oublié ? </H1>
+
+                    <div class="blockcontent">
+
+
+
+
                     <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
                         {{ csrf_field() }}
 
@@ -57,14 +70,15 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Reset Password
+                                    Réinitialiser le mot de passe
                                 </button>
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+    </section>
 @endsection

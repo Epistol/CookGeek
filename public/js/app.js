@@ -81021,43 +81021,12 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "boxmodal is-marginless" }, [
-            _c(
-              "div",
-              { staticClass: "modal-header" },
-              [
-                _vm._t("header", [
-                  _vm._v(
-                    "\n                        default header\n                    "
-                  )
-                ])
-              ],
-              2
-            ),
+            _c("div", { staticClass: "modal-header" }, [_vm._t("header")], 2),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
-                _vm._t("body", [
-                  _vm._v(
-                    "\n                        default body\n                    "
-                  )
-                ])
-              ],
-              2
-            )
+            _c("div", { staticClass: "modal-body" }, [_vm._t("body")], 2)
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "modal-footer" },
-            [
-              _vm._t("footer", [
-                _vm._v("\n                    default footer\n                ")
-              ])
-            ],
-            2
-          )
+          _c("div", { staticClass: "modal-footer" }, [_vm._t("footer")], 2)
         ]
       ),
       _vm._v(" "),

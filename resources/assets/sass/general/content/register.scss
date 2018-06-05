@@ -35,4 +35,10 @@
     top: 10%;
   }
 
+  @include md{
+    position: absolute;
+    width: 45%;
+    top: 15%;
+    left: 2%;
+  }
 }
