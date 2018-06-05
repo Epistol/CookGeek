@@ -192,18 +192,22 @@
 					
 					]);
 			}
+
+			
 			// Parties image
 			$this->validate($request, [
 				'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
 			]);
-			
-			$file = $request->resume;
-			
-			if ($file->getError() == 0) {
-				$photoName = time() . '.' . $file->getClientOriginalExtension();
-				$this->ajouter_image($photoName, $iduser, $idRecette);
-				$file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
-			}
+
+			if(!empty($request->resume)){
+                $file = $request->resume;
+                if ($file->getError() == 0) {
+                    $photoName = time() . '.' . $file->getClientOriginalExtension();
+                    $this->ajouter_image($photoName, $iduser, $idRecette);
+                    $file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
+                }
+            }
+
 			
 			return redirect()->route('recipe.show', ['post' => $slug]);
 		}

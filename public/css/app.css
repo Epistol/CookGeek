@@ -16647,6 +16647,10 @@ form.addrecipe .field {
   }
 }
 
+.chat_hover {
+  z-index: 17;
+}
+
 @media (min-width: 1200px) {
   .chat_hover {
     z-index: 17;

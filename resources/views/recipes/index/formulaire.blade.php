@@ -2,6 +2,15 @@
 <p>Bonjour ! Vous souhaitez rejoindre la bêta fermée de Cuisine De Geek ? Renseignez votre mail ci-dessous !<br/>
 Pas de pub ! Et des bonbons en récompense ! </p>
 
+
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+
+
 <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
       action="{{ route('form.store') }}">
 {{ csrf_field() }}

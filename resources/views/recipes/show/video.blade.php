@@ -7,8 +7,12 @@
     <?php
     $yt = str_replace("watch?v=", "embed/", $recette->video)
     ?>
-    <iframe width="560" height="315" src="{{$yt}}" frameborder="0" gesture="media" allow="encrypted-media"
-            allowfullscreen></iframe>
+    <div class="youtube_player">
+        <iframe  width="560" height="315" src="{{$yt}}" frameborder="0" gesture="media" allow="encrypted-media"
+                 allowfullscreen></iframe>
+    </div>
+
+
 
 @elseif(strpos($recette->video, 'www.dailymotion.com') !== false)
 
@@ -17,7 +21,10 @@
         $recette->video;
     $daily = str_replace("video", "embed/video", $daily)
     ?>
-    <iframe src="{{$daily}}?autoPlay=1" allowfullscreen="" height="270" frameborder="0" width="480"></iframe>
+    <div class="dailymotion_player">
+        <iframe src="{{$daily}}?autoPlay=1" allowfullscreen="" height="270" frameborder="0" width="480"></iframe>
+
+    </div>
 
 
 

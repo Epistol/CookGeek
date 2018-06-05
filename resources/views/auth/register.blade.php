@@ -15,7 +15,7 @@
                     <H1 class="title">Inscription</H1>
 
                     <div class="blockcontent">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        <form id="formulaire" class="form-horizontal" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
                             <div class="field {{ $errors->has('pseudo') ? ' has-error' : '' }}">
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="field {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="label control-label">E-Mail Address</label>
+                                <label for="email" class="label control-label">Adresse email </label>
 
                                 <div class="control">
                                     <input id="email" type="email" class="form-control input " name="email"
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="field {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="label control-label">Password</label>
+                                <label for="password" class="label control-label">Mot de passe </label>
 
                                 <div class="control">
                                     <input id="password" type="password" class="form-control input " name="password"
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="field ">
-                                <label for="password-confirm" class="label control-label">Confirm Password</label>
+                                <label for="password-confirm" class="label control-label">Répétez votre mot de passe (au cas où)</label>
 
                                 <div class="control">
                                     <input id="password-confirm" type="password" class="form-control input "
@@ -74,7 +74,9 @@
 
                             <div class="field ">
                                 <div class="control is-centered">
-                                    <button type="submit" class="button is-primary  is-large">
+                                    <button class="button is-primary  is-large g-recaptcha"
+                                            data-sitekey="6LfLKxAUAAAAAGdkRuwgdbi_lyCSvCQhPBiCYm9j"
+                                            data-callback="SubmitFn">
                                         Inscription
                                     </button>
                                 </div>
@@ -86,5 +88,9 @@
         </div>
 
     </section>
+
+    @include("auth.donnes_perso")
+
+
 
 @endsection

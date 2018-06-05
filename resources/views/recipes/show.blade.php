@@ -57,11 +57,16 @@
                                         @if($recette->video)
                                             @include("recipes.show.video")
                                         @endif
-                                        <div class="fb-commentaire">
-                                            <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"
-                                                 data-numposts="21"></div>
 
+
+                                        <div id="#fb-commentaire_container">
+                                            <div class="fb-commentaire">
+                                                <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%"  data-numposts="5" data-colorscheme="light" ></div>
+
+                                            </div>
                                         </div>
+
+
                                     </div>
                                     <div class="column is-4  list-h-show ">
                                         @include('recipes.show.social')

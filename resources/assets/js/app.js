@@ -29,7 +29,7 @@ import Notifications from 'vue-notification'
 Vue.use(VeeValidate);
 Vue.use(Buefy);
 Vue.use(InstantSearch);
-Vue.use(Notifications)
+Vue.use(Notifications);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -101,6 +101,7 @@ const app = new Vue({
 
 
 
+
 /**
  * Quand on ajoute une img dans le formulaire ajout img recette
  * @param this
@@ -116,6 +117,10 @@ $('#upload').change(function() {
     }
     $('#filename').val(filename);
 });
+
+function SubmitFn(token) {
+    document.getElementById("formulaire").submit();
+}
 
 
 /**
@@ -206,15 +211,6 @@ $('.like').on("click", function (event) {
 
 
 });
-
-// $('.star').on("click",function (event) {
-//     event.preventDefault();
-//     var postId = event.currentTarget.attributes['id'].value;
-//     var verif = event.currentTarget.attributes['verif'].value;
-//
-//     console.log(postId);
-//
-// });
 
 
 /**

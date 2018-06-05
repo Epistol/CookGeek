@@ -173,6 +173,10 @@ class PageController extends Controller
 	}
 
 	public function store_gf(Request $request){
+
+	    if($request->contenu == ""){
+            $request->contenu = "GF18";
+        }
         $idRecette = DB::table('form18')->insertGetId(
             ['email' => $request->email,
                 'contenu' => $request->contenu,
@@ -182,7 +186,7 @@ class PageController extends Controller
             ]
         );
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('status', "Bien enregistré, merci ! <3 ");
 
 
     }

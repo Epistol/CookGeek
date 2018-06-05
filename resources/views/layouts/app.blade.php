@@ -75,7 +75,6 @@
 
 
 <!-- SCRIPTS  -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script><?php
 	if (Auth::check() == FALSE || Auth::check() == '') {
 		echo "var userIsLoggedIn = 0;";
@@ -83,17 +82,21 @@
 		echo "var userIsLoggedIn = 1;";
 	}
 	?>
-
 </script>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
-<script src="{{ asset('js/konami.js') }}" defer async></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <div id="fb-root"></div>
-<script>(function (d, s, id) {
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
+
+<script type="application/javascript">
+
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s);
@@ -104,11 +107,7 @@
 
     var toast_png = "{{ asset('js/toasty/toasty.png')}}";
     var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
-</script>
-<script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
-<script type="application/javascript">
     $(document).ready(function () {
         $("body").toasty();
 
@@ -129,6 +128,17 @@
 
     });
 </script>
+
+<script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
+<script src="{{ asset('js/konami.js') }}" defer async></script>
+
+
+
+
+@include("layouts.js.analytics")
+@include("layouts.js.tartecitron")
+
+
 
 </body>
 </html>
