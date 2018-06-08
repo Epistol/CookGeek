@@ -118,9 +118,7 @@ $('#upload').change(function() {
     $('#filename').val(filename);
 });
 
-function SubmitFn(token) {
-    document.getElementById("formulaire").submit();
-}
+
 
 
 /**

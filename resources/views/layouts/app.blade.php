@@ -84,11 +84,26 @@
     ?>
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function SubmitFn(token) {
 
+        $.ajax({
+            type: "POST",
+            url: "https://www.google.com/recaptcha/api/siteverify",
+            data: { token: token },
+            success: function (response) {
+                if (response == true) {
+                    document.getElementById("formulaire").submit();
 
+                }
+            }
+        });
+
+    }
+</script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <div id="fb-root"></div>
 

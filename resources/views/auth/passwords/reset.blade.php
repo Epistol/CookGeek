@@ -14,7 +14,7 @@
 
                 </div>
                 <div class="column is-two-fifths is-paddingless">
-                    <H1 class="title">Mot de passe oublié ? </H1>
+                    <h1 class="title">Changement de mot de passe </h1>
 
                     <div class="blockcontent">
 

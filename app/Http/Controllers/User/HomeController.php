@@ -31,8 +31,9 @@
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function index()
+		public function index(Request $request)
 		{
+            $request->session()->flash('status', 'Task was successful!');
 			// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
 			return view('user_space.home');
 		}

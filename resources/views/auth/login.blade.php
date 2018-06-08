@@ -65,9 +65,7 @@
 
                                     <div class="field is-grouped is-grouped-right">
                                         <p class="control">
-                                            <button type="submit" class="button is-primary g-recaptcha"
-                                                    data-sitekey="6LfLKxAUAAAAAGdkRuwgdbi_lyCSvCQhPBiCYm9j"
-                                                    data-callback="SubmitFn">
+                                            <button  class="button is-primary " data-sitekey="{{env("RECAPTCHA_SITE_KEY")}}" data-callback="SubmitFn">
                                                 Connexion
                                             </button>
                                         </p>
