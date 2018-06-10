@@ -75,11 +75,7 @@
 
                             <div class="field ">
                                 <div class="control is-centered">
-                                    <button class="button is-primary  is-large g-recaptcha"
-                                            data-sitekey="6LfLKxAUAAAAAGdkRuwgdbi_lyCSvCQhPBiCYm9j"
-                                            data-callback="SubmitFn">
-                                        Inscription
-                                    </button>
+                                    <validationform></validationform>
                                 </div>
                             </div>
                         </form>

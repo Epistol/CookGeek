@@ -46,6 +46,7 @@
               href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
           integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <script src='https://www.google.com/recaptcha/api.js?render=6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU'></script>
 </head>
 <body>
 <div id="app">@include("layouts.menu")
@@ -60,13 +61,16 @@
                 </ul>
             </div>
         @endif
-
-        @if (session('status'))
-            <div class="notification alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
     </div>
+        @if (session('status'))
+            <section class="section">
+                <div class="notification alert alert-success">
+                    {{ session('status') }}
+                </div>
+            </section>
+
+        @endif
+
 
     @yield('content')
 </div>
@@ -84,24 +88,7 @@
     ?>
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-    function SubmitFn(token) {
 
-        $.ajax({
-            type: "POST",
-            url: "https://www.google.com/recaptcha/api/siteverify",
-            data: { token: token },
-            success: function (response) {
-                if (response == true) {
-                    document.getElementById("formulaire").submit();
-
-                }
-            }
-        });
-
-    }
-</script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 

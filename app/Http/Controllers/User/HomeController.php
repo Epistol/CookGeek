@@ -33,19 +33,20 @@
 		 */
 		public function index(Request $request)
 		{
-            $request->session()->flash('status', 'Task was successful!');
 			// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
 			return view('user_space.home');
 		}
 		
-		public function parameters()
+		public function parameters(Request $request)
 		{
+//		    dd($request);
+		    $request->session()->reflash();
 			return view('user_space.switch.param');
 		}
 		
 		
 		// Validation forms
-		
+
 		public function param_store(Request $request)
 		{
 			$user = $request->user();
@@ -63,21 +64,12 @@
 				
 			}
 			$user->save();
-			$request->session()->flash('status', 'Profil mis à jour ! ');
-			$request->session()->reflash();
-			$request->session()->keep(['status', 'Profil mis à jour !']);
-			return redirect()->route('account.param');
+            $request->session()->flash('status', 'Profil mis à jour ! ');
+			return redirect()->back();
+
 		}
 		
-		public function parameters_store(Request $request)
-		{
-		
-		}
-		
-		public function info_store(Request $request)
-		{
-		
-		}
+
 		
 		private function is_dirty($param)
 		{

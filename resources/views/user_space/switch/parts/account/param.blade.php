@@ -19,7 +19,7 @@
     <div class="is-flex-center">
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-primary">Submit</button>
+                <button class="button is-primary">Sauvegarder</button>
             </div>
 
         </div>

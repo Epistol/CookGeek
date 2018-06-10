@@ -9,9 +9,9 @@
 Route::get('/home', 'User\HomeController@index')->name("home");
 
 Route::prefix('home')->group(function () {
+    Route::post('parameters', 'User\HomeController@param_store')->name("param.store");
     Route::get('parameters', 'User\HomeController@parameters')->name("account.param");
-	Route::post('parameters', 'User\HomeController@param_store')->name("param.store");
-	
+
     Route::get('fav', 'User\HomeController@fav')->name("account.fav");
     Route::get('recipe', 'User\HomeController@recipe')->name("account.recipe");
 

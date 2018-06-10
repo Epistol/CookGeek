@@ -8,6 +8,7 @@
                 <div class="column is-2 "  id="left_column">
                     @include('user_space.parts.menu')
                 </div>
+
                 <div class="column is-three-quarters blockcontent">
                     <b-tabs position="is-centered" class="block">
                         <b-tab-item label="Paramètres">
