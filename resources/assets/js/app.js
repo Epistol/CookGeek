@@ -20,7 +20,7 @@ import draggable from 'vuedraggable'
 import StarRating from './star-rating'
 import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
-import Notifications from 'vue-notification'
+
 
 
 // import 'buefy/lib/buefy.css'
@@ -29,7 +29,6 @@ import Notifications from 'vue-notification'
 Vue.use(VeeValidate);
 Vue.use(Buefy);
 Vue.use(InstantSearch);
-Vue.use(Notifications);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,6 +39,7 @@ Vue.component('modal', require('./components/LoginMod.vue'));
 Vue.component('star-rating', StarRating);
 Vue.component('recherche', require('./components/Recherche.vue'));
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
+Vue.component('notif', require('./components/NotifAlert.vue'));
 
 // Vue.component('design', DesignRender);
 
@@ -76,7 +76,7 @@ const app = new Vue({
 
 
         ],
-        seen: false
+        seen: true,
 
     },
 

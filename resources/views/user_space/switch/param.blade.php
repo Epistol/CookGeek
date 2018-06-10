@@ -22,7 +22,6 @@
                         {{--</b-tab-item>--}}
                     </b-tabs>
 
-
                 </div>
             </div>
         </div>

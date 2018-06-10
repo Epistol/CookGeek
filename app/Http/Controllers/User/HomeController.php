@@ -37,9 +37,8 @@
 			return view('user_space.home');
 		}
 		
-		public function parameters(Request $request)
+		public function parameters()
 		{
-		    $request->session()->reflash();
 			return view('user_space.switch.param');
 		}
 		

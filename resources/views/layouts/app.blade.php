@@ -61,16 +61,15 @@
                 </ul>
             </div>
         @endif
-    </div>
+
         @if (session('status'))
-            <section class="section">
-                <div class="notification alert alert-success">
-                    {{ session('status') }}
-                </div>
-            </section>
+
+                <notif title="is-success" v-if="seen"  @close="seen = false">
+                    <span slot="text">   {{ session('status') }}</span>
+                </notif>
 
         @endif
-
+    </div>
 
     @yield('content')
 </div>
