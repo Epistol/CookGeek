@@ -39,7 +39,6 @@
 		
 		public function parameters(Request $request)
 		{
-//		    dd($request);
 		    $request->session()->reflash();
 			return view('user_space.switch.param');
 		}
@@ -49,6 +48,7 @@
 
 		public function param_store(Request $request)
 		{
+
 			$user = $request->user();
 			$user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp];
 			
@@ -65,6 +65,7 @@
 			}
 			$user->save();
             $request->session()->flash('status', 'Profil mis à jour ! ');
+
 			return redirect()->back();
 
 		}

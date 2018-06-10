@@ -1,10 +1,15 @@
 <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
       action="{{ route('param.store') }}">
     {{ csrf_field() }}
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
 
     <div class="columns ">
         {{--Photo profil--}}
-        <div class="column is-5" >
+        <div class="column is-5">
             @include("user_space.switch.parts.account.informations.avatar")
 
         </div>
