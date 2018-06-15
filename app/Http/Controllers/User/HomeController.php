@@ -49,9 +49,12 @@
 		{
 
 			$user = $request->user();
-			$user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp];
-			
-			
+			$refus = $request->no_traitement_donnees;
+            $traitement = $refus == true ? false : true;
+
+			$user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp, 'traitement_donnees' => $traitement];
+
+
 			foreach ($user_data as $column => $value) {
 				if ($this->is_dirty($value)) {
 					if ($column == 'password') {

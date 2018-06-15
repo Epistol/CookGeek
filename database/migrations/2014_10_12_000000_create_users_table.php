@@ -20,6 +20,7 @@
 				$table->string('img');
 				$table->string('password');
 				$table->integer('nb_visites')->default(0);
+				$table->boolean('traitement_donnees')->default(true);
 				$table->rememberToken();
 				$table->timestamps();
 			});
