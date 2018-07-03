@@ -1,31 +1,30 @@
 <template>
     <transition name="modal">
-        <div class="modal is-active" >
-            <div class="modal-background" @click="$emit('close')" >
+        <div class="modal is-active">
+            <div class="modal-background" @click="$emit('close')">
             </div>
             <div class="modal-content" @click.stop>
                 <div class="boxmodal is-marginless">
 
-                    <div class="modal-header">
-                        <slot name="header">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title"><slot name="header"></slot></p>
+                        <button class="delete" aria-label="close" @click="$emit('close')"></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <slot name="body"></slot>
+                    </section>
+
+
+                    <footer class="modal-card-foot">
+                        <slot name="footer">
 
                         </slot>
-                    </div>
+                        <button class="button">Annuler</button>
+                    </footer>
 
-                    <div class="modal-body">
-                        <slot name="body">
-
-                        </slot>
-                    </div>
-
-                </div>
-                <div class="modal-footer" >
-                    <slot name="footer">
-
-                    </slot>
                 </div>
             </div>
-            <button class="modal-close is-large" aria-label="close"  @click="$emit('close')"></button>
+            <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
         </div>
     </transition>
 </template>
@@ -34,6 +33,7 @@
     export default {
         mounted() {
             //console.log('Component mounted.')
+
         }
     }
 </script>

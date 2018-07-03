@@ -34,7 +34,8 @@
 		public function index(Request $request)
 		{
 			// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
-			return view('user_space.home');
+            return redirect()->route("account.param");
+//			return view('user_space.home');
 		}
 		
 		public function parameters()

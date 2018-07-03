@@ -1,4 +1,4 @@
-<modal v-if="showModal" @close="showModal = false" v-cloak>
+<modal v-if="showModal" @keyup.esc="$emit('close')" @close="showModal = false" v-cloak>
     <h3 slot="header">Mot de passe oublié ? </h3>
     <div slot="body">
 

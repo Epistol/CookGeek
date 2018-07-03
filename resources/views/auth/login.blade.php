@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_captcha')
 @section('titrepage', "Connexion")
 @section('content')
     <section class="section">

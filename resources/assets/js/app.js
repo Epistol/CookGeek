@@ -98,7 +98,12 @@ const app = new Vue({
         removeStep: function (index) {
             this.steps.splice(index, 1);
         },
-    }});
+
+
+    },
+
+
+});
 
 
 

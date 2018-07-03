@@ -46,6 +46,7 @@
               href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
           integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <script src='https://www.google.com/recaptcha/api.js?render=6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU'></script>
 </head>
 <body>
 <div id="app">@include("layouts.menu")
