@@ -4,10 +4,10 @@
     <div class="container">
         {{--TODO : Changer ça vite fait--}}
 
-            <section class="section">
-                @include("recipes.index.formulaire")
+            {{--<section class="section">--}}
+                {{--@include("recipes.index.formulaire")--}}
 
-            </section>
+            {{--</section>--}}
             @include("recipes.index.partype")
             @include("recipes.index.favorise")
 

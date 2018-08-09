@@ -36,7 +36,7 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">
+    {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/nouislider.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"

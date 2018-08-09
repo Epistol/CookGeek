@@ -68,8 +68,16 @@
                     <a class="navbar-item" href="{{ route('register') }}">Inscription</a>
                 @else
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                        <a class="navbar-item">
+                                    <div class="user_picture">
+                                        <figure class="image is-32x32">
+                                           <img class="is-rounded" src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                                        </figure>
+                                    </div>
+                                    <a class="navbar-link">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
                         </a>
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="{{ route('home') }}">Mon espace</a>
