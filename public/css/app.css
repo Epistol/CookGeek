@@ -15755,6 +15755,20 @@ h2.title {
           align-items: center;
 }
 
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .is-fixed-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+  }
+}
+
+.sticky {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
 .page {
   background: #fdfdfd;
   padding: 2.5rem;
@@ -16233,11 +16247,27 @@ footer {
   transition: all 0.3s ease-in-out;
 }
 
-.sticky {
-  box-shadow: 0 0 5px 9px #6C548F;
-  -webkit-box-shadow: 0 0 5px 9px #6C548F;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+.second_menu {
+  background: #ebeaf5;
+  -webkit-box-shadow: 0 1px 10px 0 #7f5fbf;
+  box-shadow: 0 1px 10px 0 #7f5fbf;
+}
+
+span.item_navbar_second {
+  padding-left: 1rem;
+}
+
+.nav-item-centered {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .logo {
@@ -16273,17 +16303,6 @@ a.navbar-item, a.navbar-link {
   font-size: 1.1rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-
-.navbar:after {
-  content: '';
-  display: block;
-  height: 0.5rem;
-  background: -webkit-gradient(linear, right top, left top, from(#7f5fbf), color-stop(30%, #9c83ce), color-stop(60%, #9c83ce), to(#7f5fbf));
-  background: linear-gradient(to left, #7f5fbf 0%, #9c83ce 30%, #9c83ce 60%, #7f5fbf 100%);
-  width: 100%;
-  position: absolute;
-  top: 4rem;
 }
 
 .search_header {

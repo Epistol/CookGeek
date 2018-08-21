@@ -18,16 +18,14 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
-import Buefy from 'buefy'
+// import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
-
-
 
 // import 'buefy/lib/buefy.css'
 
 
 Vue.use(VeeValidate);
-Vue.use(Buefy);
+// Vue.use(Buefy);
 Vue.use(InstantSearch);
 
 /**

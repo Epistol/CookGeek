@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
+
 use App\Http\Controllers\Controller;
 use App\Providers\UniverseProvider;
 use App\RecipeImg;
@@ -213,10 +214,6 @@ class RecipesController extends Controller
     }
 
 
-    /*TEST
-    TEST
-    TEST*/
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -315,14 +312,9 @@ class RecipesController extends Controller
             ->where('id', $idRecette)
             ->update(['slug' => $slug]);
 
-
-        // Partie ingrédients
-
-//            $id_ingr = array();
-//            $id_qtt = array();
-
         foreach ($request->ingredient as $key => $ingredient) {
             $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
+
             // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
             if ($id_ingredient_ajout->isEmpty()) {
                 $in = $ingredient;
@@ -330,7 +322,8 @@ class RecipesController extends Controller
                 $ingredientID = DB::table('ingredients')->insertGetId(
                     ['name' => $in]
                 );
-            } else {
+            }
+            else {
                 $ingredientID = $id_ingredient_ajout->first();
                 $ingredientID = $ingredientID->id;
             }
@@ -357,6 +350,7 @@ class RecipesController extends Controller
         $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
         if ($request->resume['size'] != 0 || $request->resume['size'] != NULL) {
             $photoName = time() . '.' . $request->resume->getClientOriginalExtension();
             $this->ajouter_image($photoName, $iduser, $idRecette);
@@ -440,7 +434,7 @@ class RecipesController extends Controller
         $sl = $rand->slug;
 
         return redirect()->route('recipe.show', ['post' => $sl]);
-        // TODO
+
     }
 
     /**

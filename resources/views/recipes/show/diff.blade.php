@@ -2,9 +2,9 @@
 
 
 <div class="">
-        @for ($i = 0; $i < $recette->difficulty; $i++)
-                <i class="fas fa-star"></i>
-        @endfor
+    @for ($i = 0; $i < $recette->difficulty; $i++)
+        <i class="fas fa-star"></i>
+    @endfor
 
 
 </div>

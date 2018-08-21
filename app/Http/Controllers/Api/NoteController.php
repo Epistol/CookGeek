@@ -28,44 +28,34 @@ class NoteController extends Controller
      */
 
 
-
-
-
-
     public function create(Request $data)
     {
 
 
-            $u_id = Auth::id();
+        $u_id = Auth::id();
 
-            // Check if user hasn't faved it yet :
+        // Check if user hasn't faved it yet :
 
-            $id =  DB::table('recipe_likes')
-                ->where(
+        $id = DB::table('recipe_likes')
+            ->where(
                 ['id_user' => $u_id, 'id_recipe' => $data->recette]
             )->first();
 
-            // IF it's noted, then we update it
-            if($id != "" || $id != NULL ){
-                $id2 =  DB::table('recipe_likes')->where('id_user', $u_id)->where('id_recipe', $data->recette)
-                    ->update(['note' => $data->note]);
+        // IF it's noted, then we update it
+        if ($id != "" || $id != NULL) {
+            $id2 = DB::table('recipe_likes')->where('id_user', $u_id)->where('id_recipe', $data->recette)
+                ->update(['note' => $data->note]);
 
-                // we return the new-like state
-                return response("note_update", 200);
-            }
-
-            // si aucune note n'est deja enregistrée pour cette recette
+            // we return the new-like state
+            return response("note_update", 200);
+        } // si aucune note n'est deja enregistrée pour cette recette
         else {
             DB::table('recipe_likes')
                 ->insertGetId(
-                    [ 'id_user' => $u_id , 'id_recipe' => $data->recette, 'note' => $data->note]
+                    ['id_user' => $u_id, 'id_recipe' => $data->recette, 'note' => $data->note]
                 );
             return response("note_new", 200);
         }
-
-
-
-
 
 
     }
@@ -73,7 +63,7 @@ class NoteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -84,7 +74,7 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -95,7 +85,7 @@ class NoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -106,8 +96,8 @@ class NoteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -118,7 +108,7 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

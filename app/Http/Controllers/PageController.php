@@ -11,19 +11,20 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
-	/**
-	 * Liste des pages
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Liste des pages
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-	public function accueil(){
+    public function accueil()
+    {
         $universcateg = DB::table('categunivers')->get();
         $recettesrand = array();
 
         // Pour chaque categ, on va charger la dernière recette postée
-        foreach ($universcateg as $u){
-            $recettes = DB::table('recipes')->where('type_univers','=',$u->id )->orderBy('updated_at', 'desc')->first();
+        foreach ($universcateg as $u) {
+            $recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->orderBy('updated_at', 'desc')->first();
             $recettesrand[$u->id] = $recettes;
         }
         $recettes = collect($recettesrand);
@@ -34,53 +35,50 @@ class PageController extends Controller
 
 
         // On charge les données dans la vue
-        return view('welcome', array( 'recettes' => $recettes, 'universcateg' => $universcateg, 'recipes'=>$recipes, 'heartbeat' => $heartbeat) )->with(['controller'=>$this]);
-    }
-	public function index()
-	{
-
-		$pages= Page::all();
-		Carbon::setLocale('fr');
-		$location = geoip()->getLocation($ip = null);
-		return view('admin.page.index', ['pages'=>$pages, 'lieu'=>$location->iso_code]);
-
-	}
-
-	/**
-	 * Création d'une nouvelle page
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-	    if(Auth::check()){
-            return view('admin.page.create');
-        }
-        else {
-	        return back();
-        }
-
-
-
-	}
-    private function slugtitre($titre, $idrecipe){
-        $titreslug= str_slug($titre, '-');
-        return $titreslug."-".$idrecipe;
+        return view('welcome', array('recettes' => $recettes, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
     }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
+    public function index()
+    {
+
+        $pages = Page::all();
+        Carbon::setLocale('fr');
+        $location = geoip()->getLocation($ip = null);
+        return view('admin.page.index', ['pages' => $pages, 'lieu' => $location->iso_code]);
+
+    }
+
+    /**
+     * Création d'une nouvelle page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return Auth::check() ? view('admin.page.create') : back();
+
+
+    }
+
+    private function slugtitre($titre, $idrecipe)
+    {
+        $titreslug = str_slug($titre, '-');
+        return $titreslug . "-" . $idrecipe;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
 
         $idRecette = DB::table('pages')->insertGetId(
             ['name' => $request->name,
                 'content' => $request->contenu,
-                'author_id' =>Auth::id(),
+                'author_id' => Auth::id(),
                 'created_at' => now(),
                 'updated_at' => now(),
 
@@ -96,85 +94,75 @@ class PageController extends Controller
 
 
         return redirect()->route('page.show', $idRecette);
-	}
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Page  $page
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Page $page)
-	{
-//        dd($page);
-
-		return view('admin.page.show', ['page' => $page]);
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Page $page
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Page $page)
+    {
+        return view('admin.page.show', ['page' => $page]);
+    }
 
 
     public function show_contact()
     {
         $page = Page::where('name', 'Contact')->first();
-//        dd($page);
-
         return view('admin.page.show', ['page' => $page]);
     }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Page  $page
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Page $page)
-	{
-		// show the edit form and pass the nerd
-		return view('admin.page.edit', ['page' => $page]);
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Page $page
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Page $page)
+    {
+        return view('admin.page.edit', ['page' => $page]);
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Page  $page
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Page $page)
-	{
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Page $page
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Page $page)
+    {
 
 
-//		$this->validate($request, [
-//			'name' => 'required',
-//			'content' => 'required'
-//		]);
-		$page->name = $request->name;
-		$page->content = $request->contenu;
-		$page->slug = $this->slugtitre($request->name, $page->id) ;
 
+        $page->name = $request->name;
+        $page->content = $request->contenu;
+        $page->slug = $this->slugtitre($request->name, $page->id);
 
         $page->save();
 
-		return redirect(route('page.index'))->with('status', 'Profile updated!');
-	}
+        return redirect(route('page.index'))->with('status', 'Profile updated!');
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Page  $page
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Page $page)
-	{
-		$page2 = Page::findOrFail($page);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Page $page
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Page $page)
+    {
+        $page2 = Page::findOrFail($page);
+        $page2->delete();
+        return redirect('admin/page')->with('status', 'Page supprimée !');
+    }
 
-		$page2->delete();
+    public function store_gf(Request $request)
+    {
 
-		return redirect('admin/page')->with('status', 'Page supprimée !');
-	}
-
-	public function store_gf(Request $request){
-
-	    if($request->contenu == ""){
+        if ($request->contenu == "") {
             $request->contenu = "GF18";
         }
         $idRecette = DB::table('form18')->insertGetId(

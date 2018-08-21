@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class GestionUtil extends Controller
 {
-    //
 
-    public function index(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
         $users = DB::table('users')->latest()->paginate(10);
         return view("admin.users.index", array(
             'users' => $users
