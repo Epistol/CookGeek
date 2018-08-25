@@ -164,10 +164,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
-
+        TCG\Voyager\VoyagerServiceProvider::class,
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
 
         /*

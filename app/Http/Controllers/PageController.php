@@ -136,7 +136,6 @@ class PageController extends Controller
     {
 
 
-
         $page->name = $request->name;
         $page->content = $request->contenu;
         $page->slug = $this->slugtitre($request->name, $page->id);

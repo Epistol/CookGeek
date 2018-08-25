@@ -36,7 +36,7 @@ Route::feeds();
 //ADMIN
 require base_path('routes/web/design.php');
 
-require base_path('routes/web/admin.php');
+//require base_path('routes/web/admin.php');
 
 
 /// API
@@ -46,3 +46,9 @@ Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
 
 
 Route::get('/','PageController@accueil')->name('index');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+//    Route::resource('page', 'PageController');
+});
