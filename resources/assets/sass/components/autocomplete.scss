@@ -11,7 +11,7 @@
   overflow: auto;
   position: absolute;
   background: white;
-  min-width: 30%;
+  min-width: 33rem;
   -webkit-border-radius: 0 0 25px 25px;
   border-radius: 0 0 25px 25px;
 }
@@ -24,11 +24,15 @@
 }
 
 .autocomplete-result:hover {
-  background-color: #4AAE9B;
+  background-color: $accent;
   color: white;
 }
 
 li.autocomplete-result.is-active {
   background: $accent;
   color: white;
+}
+
+.is-selected {
+  display:none;
 }

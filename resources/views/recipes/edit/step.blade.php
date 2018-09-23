@@ -3,7 +3,7 @@
     <h2 class="title is-4">Etapes</h2>
 
 
-    <div v-for="(step, index) in steps">
+    <div v-for="(step, index) in steps" v-cloak>
         <div class="columns">
 
             <div class="column is-3">

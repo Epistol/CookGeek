@@ -78832,6 +78832,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'autocomplete',
@@ -78841,11 +78845,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             searchquery: '',
             data_results: [],
             isOpen: false,
-            arrowCounter: -1
+            arrowCounter: -1,
+            search_more: true
         };
-    },
-    mounted: function mounted() {
-        console.log(this.searchtype);
     },
 
     methods: {
@@ -78860,6 +78862,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     // console.log(response);
                     _this.data_results = response.data;
                 });
+                this.search_more = false;
+            } else {
+                this.search_more = true;
             }
         },
         setResult: function setResult(result) {
@@ -78881,7 +78886,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.searchquery = result.name;
             this.isOpen = false;
             this.arrowCounter = -1;
+        },
+        handleClickOutside: function handleClickOutside(evt) {
+            if (!this.$el.contains(evt.target)) {
+                this.isOpen = false;
+                this.arrowCounter = -1;
+            }
         }
+    },
+
+    mounted: function mounted() {
+        // document.addEventListener('click', this.handleClickOutside);
+    },
+    destroyed: function destroyed() {
+        // document.removeEventListener('click', this.handleClickOutside);
     }
 });
 
@@ -78947,7 +78965,13 @@ var render = function() {
             }
             return _vm.onEnter($event)
           }
-        ]
+        ],
+        focus: function($event) {
+          _vm.isOpen = true
+        },
+        blur: function($event) {
+          _vm.isOpen = false
+        }
       }
     }),
     _vm._v(" "),
@@ -78958,8 +78982,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.isOpen,
-            expression: "isOpen"
+            value: _vm.isOpen && this.search_more === false,
+            expression: "isOpen && this.search_more === false"
           }
         ],
         staticClass: "autocomplete-results"
@@ -78978,7 +79002,15 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            " + _vm._s(result.name) + "\n        ")]
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(i) +
+                  " = " +
+                  _vm._s(result.name) +
+                  "\n        "
+              )
+            ]
           )
         }),
         _vm._v(" "),
@@ -78989,10 +79021,13 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.data_results.length === 0,
-                expression: "data_results.length === 0"
+                value:
+                  _vm.data_results.length === 0 && this.search_more === true,
+                expression:
+                  "data_results.length === 0 && this.search_more === true"
               }
-            ]
+            ],
+            staticClass: "autocomplete-result"
           },
           [_vm._v("\n            Pas de résultats\n        ")]
         )

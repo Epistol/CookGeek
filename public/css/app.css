@@ -17084,7 +17084,7 @@ ul.menu-list > li {
   overflow: auto;
   position: absolute;
   background: white;
-  min-width: 30%;
+  min-width: 33rem;
   border-radius: 0 0 25px 25px;
 }
 
@@ -17096,11 +17096,15 @@ ul.menu-list > li {
 }
 
 .autocomplete-result:hover {
-  background-color: #4AAE9B;
+  background-color: #4c6ee6;
   color: white;
 }
 
 li.autocomplete-result.is-active {
   background: #4c6ee6;
   color: white;
+}
+
+.is-selected {
+  display: none;
 }
