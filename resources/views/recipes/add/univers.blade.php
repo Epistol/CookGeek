@@ -3,7 +3,9 @@
         <label class="title is-4 is-">Univers</label>
     </div>
     <div class="column">
-        <input class="input_modal blck" type="text" placeholder="" name="universe" id="universe" value="">
+            <searchautocomplete searchtype="univers"></searchautocomplete>
+
+        {{--<input class="input_modal blck" type="text" placeholder="" name="universe" id="universe" value="">--}}
 
 
     </div>

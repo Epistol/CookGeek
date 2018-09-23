@@ -9,6 +9,7 @@ use App\Providers\UniverseProvider;
 use App\RecipeImg;
 use App\Recipes;
 use App\Univers;
+use App\Http\Controllers\UniversController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,13 +19,19 @@ use Carbon\Carbon;
 class RecipesController extends Controller
 {
 
+    private $univers_service;
+
+    public function __construct(UniversController $univers_service)
+    {
+        $this->univers_service = $univers_service;
+    }
+
 
     /**
      * Show the profile for the given user.
      *
      * @return Response
      */
-
 
     public function index()
     {
@@ -135,7 +142,7 @@ class RecipesController extends Controller
         $rest = $recipe->return_time($rest_heure, $rest_minute);
 
 
-        $univers = $this->first_found_universe($request->universe);
+        $univers = $this->first_found_universe($request->univers);
 
 
         //Filtering the comment
@@ -554,26 +561,7 @@ class RecipesController extends Controller
      */
     public function first_found_universe($text)
     {
-        $univ = DB::table('univers')->select('id')->where('name', 'like', '%' . $text . '%')->get();
-
-        if ($univ->isEmpty()) {
-            $string = app('profanityFilter')->filter($text);
-
-            if (preg_match("/^(?:.*)[\*\*](?:.*)$/", $string)) {
-                $string = '';
-            }
-
-            // Adding to the DB
-            $id_univers = DB::table('univers')->insertGetId(
-                ['name' => $string]
-            );
-            $univ = $id_univers;
-
-        } else {
-            $univ = $univ->first();
-            $univ = $univ->id;
-        }
-
+        $univ = $this->univers_service->FirstOrCreate($text);
         return $univ;
     }
 

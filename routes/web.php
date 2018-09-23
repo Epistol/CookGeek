@@ -50,5 +50,5 @@ Route::get('/','PageController@accueil')->name('index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-//    Route::resource('page', 'PageController');
+    Route::resource('page', 'PageController');
 });

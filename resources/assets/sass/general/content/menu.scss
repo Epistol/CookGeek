@@ -17,9 +17,15 @@
 .second_menu{
   background: $body-bg;
   //border-bottom: 0.1rem $brand-primary solid;
-  -webkit-box-shadow: 0 1px 10px 0 $brand-primary;
-  box-shadow: 0 1px 10px 0 $brand-primary;
+  -webkit-box-shadow: -1px -2px 8px 0  $brand-primary;
+  box-shadow: -1px -2px 8px 0  $brand-primary;
 }
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+  color: $accentsecondary;
+}
+
+
 
 span.item_navbar_second {
   padding-left: 1rem;

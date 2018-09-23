@@ -10,6 +10,9 @@ class TypeRecipe extends Model
 {
 	use Searchable;
 
+    protected $table = 'type_recipes';
+    public $timestamps = false;
+
     public function getFirstNameAttribute($value)
     {
         return ucfirst($value);

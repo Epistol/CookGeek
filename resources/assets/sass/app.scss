@@ -38,12 +38,12 @@ $warning: $brand-warning;
 @import "general/toast";
 @import "general/anim";
 
-@import "general/admin";
+@import "admin/admin";
 
+@import "components/autocomplete"
+;
 // ----------------------------------------------------------------------
-
 // Margin auto
-
 // ----------------------------------------------------------------------
 
 @mixin margin-auto {

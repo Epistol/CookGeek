@@ -28,17 +28,17 @@
                                        <div class="is-divider" data-content="OU"></div>--}}
 
 
-                                    <div class=" field form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email" class="label col-md-4 control-label">Pseudo ou Email
+                                    <div class=" field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
+                                        <label for="identity" class="label col-md-4 control-label">Pseudo ou Email
 
                                         </label>
                                         <div class="control">
-                                            <input id="email" type="email" class="input form-control" name="email"
+                                            <input id="identity" type="text" class="input form-control" name="identity"
                                                    value="{{ old('email') }}" required autofocus>
                                         </div>
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('identity'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('identity') }}</strong>
                                     </span>
                                         @endif
                                     </div>

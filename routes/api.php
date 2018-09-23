@@ -22,3 +22,5 @@ Route::post('/search', [
     'uses' => 'Api\SearchController@search'
 ]);
 
+Route::get("/autocomplete/search/univers", 'Api\SearchController@search_univers')->name("api.search.univers");
+

@@ -13,7 +13,7 @@
     <ul class="menu-list">
         <li>
 
-            {{--<a href="{{route("admin.user.index")}}" {{ Route::currentRouteNamed('admin.user.index') ? ' class=is-active' : NULL  }} >Membres</a>--}}
+            <a href="{{route("voyager.users.index")}}" {{ Route::currentRouteNamed('voyager.users.index') ? ' class=is-active' : NULL  }} >Membres</a>
             {{--<a href="{{route("admin.recipe.index")}}" {{ Route::currentRouteNamed('admin.recipe.index') ? ' class=is-active' : NULL  }} >Recettes</a>--}}
             {{--<a href="{{route("page.index")}}" {{ Route::currentRouteNamed('page.index') ? ' class=is-active' : NULL  }} >Pages</a>--}}
 

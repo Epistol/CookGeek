@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Recipes;
+use App\Univers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -79,8 +80,20 @@ class SearchController extends Controller
 
     }
 
+    public function search_univers(Request $recherche) {
+
+
+        $searchquery = $recherche->searchquery;
+        $data = Univers::where('name','like','%'.$searchquery.'%')->get();
+
+        return response()->json($data);
+
+    }
+
+
     public function index(Request $request)
     {
         dd($request);
     }
+
 }

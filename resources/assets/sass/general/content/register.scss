@@ -24,6 +24,7 @@
   }
 }
 
+// Cat picture
 .chat_hover {
 
   z-index: 17;
@@ -37,7 +38,7 @@
 
   @include md{
     position: absolute;
-    width: 45%;
+    width: 42%;
     top: 15%;
     left: 2%;
   }

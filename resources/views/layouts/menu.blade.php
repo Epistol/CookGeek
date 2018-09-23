@@ -6,7 +6,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
                     <img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek" style="
-    max-height: fit-content;max-height: 90%;
+    max-height: fit-content;max-height: 100%;padding: 0.2rem;
 ">
                 </a>
 
@@ -66,14 +66,23 @@
 
                 <div class="navbar-end">
                     @guest
-                        <a class="navbar-item" href="{{ route('login') }}">Connexion</a>
-                        <a class="navbar-item" href="{{ route('register') }}">Inscription</a>
+                        <div class="navbar-item"><a class="button" href="{{ route('register') }}">Inscription</a></div>
+                        <div class="navbar-item"><a class="button is-primary" href="{{ route('login') }}">Connexion</a>
+                        </div>
+
+                        {{--TODO Changer l'href en modale--}}
+
+                        {{--<div class="navbar-item" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
+                        {{--@include("auth.modal.login")--}}
+
+
                     @else
                         <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-item">
                                 <div class="user_picture">
                                     <figure class="image is-32x32">
-                                        <img class="is-rounded" src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                                        <img class="is-rounded"
+                                             src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
                                     </figure>
                                 </div>
                                 <a class="navbar-link">
@@ -89,7 +98,8 @@
                                                      document.getElementById('logout-form').submit();">
                                     Déconnexion
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>
