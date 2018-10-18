@@ -46,6 +46,11 @@
               href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
           integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+{{--@include("layouts.cookie")--}}
+    @include("layouts.cookiebot")
+
 </head>
 <body>
 <div id="app">@include("layouts.menu")
@@ -134,7 +139,6 @@
 
 
 @include("layouts.js.analytics")
-@include("layouts.js.tartecitron")
 
 
 </body>

@@ -48,6 +48,10 @@ class PageController extends Controller
 
     }
 
+    public function cookie(){
+        return view("admin.page.cookie");
+    }
+
     /**
      * Création d'une nouvelle page
      *

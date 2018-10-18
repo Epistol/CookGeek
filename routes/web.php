@@ -25,6 +25,7 @@ Route::get('/contact', 'PageController@show_contact');
 require base_path('routes/web/recipe.php');
 
 
+
 // RECHERCHE
 Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
@@ -52,3 +53,5 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::resource('page', 'PageController');
 });
+
+Route::get("/cookies", 'PageController@cookie')->name("cookie");

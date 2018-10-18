@@ -35,7 +35,7 @@ Vue.use(InstantSearch);
  */
 Vue.component('modal', require('./components/LoginMod.vue'));
 Vue.component('star-rating', StarRating);
-Vue.component('recherche', require('./components/Recherche.vue'));
+// Vue.component('recherche', require('./components/Recherche.vue'));
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
 Vue.component('notif', require('./components/NotifAlert.vue'));
 Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
