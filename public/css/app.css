@@ -8937,39 +8937,39 @@ label.panel-block:hover {
 }
 
 .columns.is-variable.is-0 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 0rem;
 }
 
 .columns.is-variable.is-1 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 0.25rem;
 }
 
 .columns.is-variable.is-2 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 0.5rem;
 }
 
 .columns.is-variable.is-3 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 0.75rem;
 }
 
 .columns.is-variable.is-4 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 1rem;
 }
 
 .columns.is-variable.is-5 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 1.25rem;
 }
 
 .columns.is-variable.is-6 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 1.5rem;
 }
 
 .columns.is-variable.is-7 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 1.75rem;
 }
 
 .columns.is-variable.is-8 {
-  --columnGap: $i * 0.25rem;
+  --columnGap: 2rem;
 }
 
 .tile {
