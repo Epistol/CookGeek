@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
 		    CategUnivTableSeeder::class,
 		    DifficultyTableSeeder::class,
 		    TypeRecipeTableSeeder::class,
-            RolesAndPermissionsSeeder::class,
 	    ]);
     }
 }
