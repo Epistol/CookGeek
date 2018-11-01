@@ -11,10 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/css/nouislider.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    @include("layouts.style")
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');</script>
 

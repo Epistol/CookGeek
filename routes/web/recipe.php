@@ -11,6 +11,7 @@
 Route::group(['prefix' => 'recette'], function () {
     Route::get('/', 'Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
     Route::get('ajout', 'Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
+    Route::get('ajouttest', 'Recipe\RecipesController@addtest')->name("recipe.addtest")->middleware('auth');
     Route::get('test', 'Recipe\RecipesController@test')->name("recipe.test")->middleware('auth');
     Route::get('edit/{post}', 'Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
     Route::post('ajout', 'Recipe\RecipesController@store')->name("recipe.store");

@@ -40,12 +40,7 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset('css/nouislider.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/default.css')}}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
+    @include("layouts.style")
 
 </head>
 <body>

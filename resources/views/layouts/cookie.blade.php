@@ -6,7 +6,7 @@
     function setCookie(name, value, expirationInDays) {
         var date = new Date();
         date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
-        document.cookie = name + '=' + value + '; ' + 'expires=' + date.toUTCString() +';path=/{{ config('session.secure') ? ';secure' : null }}';
+        document.cookie = name + '=' + value + '; ' + 'expires=' + date.toUTCString() + ';path=/{{ config('session.secure') ? ';secure' : null }}';
     }
 
     function cookieExists(name, COOKIE_VALUE) {
@@ -14,13 +14,13 @@
     }
 
 
-    if(cookieExists('cookie_allowed')) {
+    if (cookieExists('cookie_allowed')) {
         // hideCookieDialog();
         console.log("RGPD OK");
     }
     else {
 
-        window.addEventListener("load", function(){
+        window.addEventListener("load", function () {
             window.cookieconsent.initialise({
                 "palette": {
                     "popup": {
@@ -55,7 +55,7 @@
                     }
                 },
 
-                onStatusChange: function(status, chosenBefore) {
+                onStatusChange: function (status, chosenBefore) {
                     var type = this.options.type;
                     var didConsent = this.hasConsented();
                     if (type == 'opt-in' && didConsent) {
@@ -69,7 +69,7 @@
                     }
                 },
 
-                onRevokeChoice: function() {
+                onRevokeChoice: function () {
                     var type = this.options.type;
                     if (type == 'opt-in') {
                         // disable cookies
@@ -81,7 +81,8 @@
                         setCookie("cookie_allowed", true, 90)
                     }
                 },
-            })});
+            })
+        });
     }
 
 </script>

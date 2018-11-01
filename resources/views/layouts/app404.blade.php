@@ -18,12 +18,8 @@
     </title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/css/nouislider.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
+    @include("layouts.style")
+
     <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
 

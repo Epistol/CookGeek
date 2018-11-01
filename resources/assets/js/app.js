@@ -18,14 +18,11 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
-// import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
 
-// import 'buefy/lib/buefy.css'
-
+import 'vue2-dropzone/dist/vue2Dropzone.css'
 
 Vue.use(VeeValidate);
-// Vue.use(Buefy);
 Vue.use(InstantSearch);
 
 /**
@@ -39,8 +36,9 @@ Vue.component('star-rating', StarRating);
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
 Vue.component('notif', require('./components/NotifAlert.vue'));
 Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
+Vue.component('ingredient_form', require('./components/Ingredients.vue'));
+Vue.component('add_recipe_form', require('./components/Step_Recipe_Add.vue'));
 
-// Vue.component('design', DesignRender);
 
 
 const app = new Vue({

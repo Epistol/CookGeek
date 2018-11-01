@@ -22,8 +22,7 @@
                   action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
-                <div class="columns" style="
-  margin-bottom: 2rem;">
+                <div class="columns" style="  margin-bottom: 2rem;">
 
 
                     <div class="column  right_recipe_add  ">

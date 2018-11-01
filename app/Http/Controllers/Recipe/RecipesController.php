@@ -86,6 +86,16 @@ class RecipesController extends Controller
         return view('recipes.add', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addtest()
+    {
+        $types_univ = DB::table('categunivers')->get();
+        $difficulty = DB::table('difficulty')->get();
+        $types_plat = DB::table('type_recipes')->get();
+        return view('recipes.addtest', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
+    }
 
     /** TODO finish
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -329,8 +339,7 @@ class RecipesController extends Controller
                 $ingredientID = DB::table('ingredients')->insertGetId(
                     ['name' => $in]
                 );
-            }
-            else {
+            } else {
                 $ingredientID = $id_ingredient_ajout->first();
                 $ingredientID = $ingredientID->id;
             }
