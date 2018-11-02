@@ -3,20 +3,20 @@
         <template v-for="(item, index) in liste">
             <div class="columns">
                 <div class="column is-3">
-                    <input class="input_modal blck" type="text" v-validate="'required'" v-model="item.qtt"
+                    <input class="input_modal blck" type="text"  v-model="item.qtt"
                            placeholder="Quantité" name="qtt_ingredient[]" id="qtt_ingredient[]">
                 </div>
                 <div class="column is-7">
-                    <input class="input_modal blck" type="text" v-validate="'required'" v-model="item.name"
+                    <input class="input_modal blck" type="text"  v-model="item.name"
                            placeholder="ingrédient" name="ingredient[]" id="ingredient[]">
                 </div>
 
-                <div class="column is-3 is-flex-center " v-cloak
-                     v-if="index === counter">
+                <div class="column is-3 is-flex-center " v-cloak v-if="index === counter">
                     <a @click="addRow()" class="button is-primary  is-small deleteicon">
                         <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
-                <div class="column is-3  is-flex-center close-hover" v-cloak v-else="index > 0">
+
+                <div class="column is-3  is-flex-center " v-cloak v-if="index === countminus">
                     <a @click="removeRow(index)" class="button is-small deleteicon">
                         <i class="fa fa-minus" aria-hidden="true"></i></a>
                 </div>
@@ -56,6 +56,18 @@
         },
         mounted() {
             console.log('Component mounted.')
+        },
+        computed: {
+          countminus: function(){
+                return this.counter - 1 ;
+            }
+        },
+        watch: {
+            'liste': function() {
+                // When the internal value changes, we $emit an event. Because this event is
+                // named 'input', v-model will automatically update the parent value
+                this.$emit('applicant', this.liste);
+            }
         }
     }
 </script>

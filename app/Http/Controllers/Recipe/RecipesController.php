@@ -39,7 +39,7 @@ class RecipesController extends Controller
         $recettesrand = array();
 
         // Pour chaque categ, on va charger la dernière recette postée
-        foreach ($universcateg as $u) {
+        foreach($universcateg as $u) {
             $recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->orderBy('updated_at', 'desc')->first();
             $recettesrand[$u->id] = $recettes;
         }
@@ -63,7 +63,7 @@ class RecipesController extends Controller
 
         $universcateg = DB::table('categunivers')->where("name", "=", $type)->get();
 
-        if ($universcateg != null) {
+        if($universcateg != null) {
             $recipes = DB::table('recipes')->where("type_univers", "=", $universcateg[0]->id)->latest()->paginate(12);
 
             // On charge les données dans la vue
@@ -104,8 +104,8 @@ class RecipesController extends Controller
     {
         $recette = DB::table('recipes')->where("id", "=", $numero)->get();
 
-        if ($recette != "" || $recette != NULL) {
-            if ($recette[0]->id_user != Auth::id()) {
+        if($recette != "" || $recette != NULL) {
+            if($recette[0]->id_user != Auth::id()) {
                 return back();
             } else {
                 $univers = DB::table("univers")->where("id", "=", $recette[0]->univers)->select('name')->get();
@@ -127,12 +127,12 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-        /*        $input = $request->all();
-                dd($input);*/
+/*        $input = $request->all();
+        dd($input);*/
         $recipe = new Recipes();
 
         // User ID :
-        if (isset(Auth::user()->id)) {
+        if(isset(Auth::user()->id)) {
             $iduser = Auth::user()->id;
         }
 
@@ -172,54 +172,31 @@ class RecipesController extends Controller
 
 
         // Partie ingrédients
-//        TODO : clean that
-        foreach ($request->ingredient as $key => $ingredient) {
-
-            $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
-            // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-            if ($id_ingredient_ajout->isEmpty()) {
-                $in = app('profanityFilter')->filter($ingredient);
-                if (preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
-                    $in = '';
-                }
-
-                $ingredientID = DB::table('ingredients')->insertGetId(
-                    ['name' => $in]
-                );
-            } else {
-                $ingredientID = $id_ingredient_ajout->first();
-                $ingredientID = $ingredientID->id;
-            }
-            // Pour chaque ingrédient, on l'associe à la recette
-
-            DB::table('recipes_ingredients')->insertGetId(
-                ['id_recipe' => $idRecette,
-                    'id_ingredient' => $ingredientID,
-                    'qtt' => app('profanityFilter')->filter($request->qtt_ingredient[$key]),
-                ]);
-
-
+        foreach($request->ingredient as $key => $ingredient) {
+            $this->rangerIngredient($key, $ingredient, $idRecette, $request->qtt_ingredient[$key]);
         }
 
         // Gestion des étapes
-        foreach ($request->step as $key => $step) {
-            DB::table('recipes_steps')->insertGetId(
-                ['recipe_id' => $idRecette,
-                    'step_number' => $key,
-                    'instruction' => app('profanityFilter')->filter($request->step[$key]),
+        foreach($request->step as $key => $step) {
+            if($step){
+                DB::table('recipes_steps')->insertGetId(
+                    ['recipe_id' => $idRecette,
+                        'step_number' => $key,
+                        'instruction' => app('profanityFilter')->filter($request->step[$key]),
 
-                ]);
+                    ]);
+            }
+
         }
-
 
         // Parties image
         $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
-        if (!empty($request->resume)) {
+        if(!empty($request->resume)) {
             $file = $request->resume;
-            if ($file->getError() == 0) {
+            if($file->getError() == 0) {
                 $photoName = time() . '.' . $file->getClientOriginalExtension();
                 $this->ajouter_image($photoName, $iduser, $idRecette);
                 $file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
@@ -256,7 +233,7 @@ class RecipesController extends Controller
 
         $file = $request->resume;
 
-        if ($input['resume']->getError() == 0) {
+        if($input['resume']->getError() == 0) {
             $photoName = time() . '.' . $file->getClientOriginalExtension();
             $this->ajouter_image($photoName);
             $file->move(public_path('test/'), $photoName);
@@ -297,7 +274,7 @@ class RecipesController extends Controller
         $univers = DB::table('univers')->select('id')->where('name', 'like', '%' . $request->universe . '%')->get();
 
         // Si aucun univers n'est associé à la recherche
-        if ($univers->isEmpty()) {
+        if($univers->isEmpty()) {
 
             $string = $request->universe;
 
@@ -313,7 +290,7 @@ class RecipesController extends Controller
         }
 
         $comm = $request->comment;
-        if ($request->vegan == "on") {
+        if($request->vegan == "on") {
             $vege = true;
         } else {
             $vege = false;
@@ -329,11 +306,11 @@ class RecipesController extends Controller
             ->where('id', $idRecette)
             ->update(['slug' => $slug]);
 
-        foreach ($request->ingredient as $key => $ingredient) {
+        foreach($request->ingredient as $key => $ingredient) {
             $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
 
             // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-            if ($id_ingredient_ajout->isEmpty()) {
+            if($id_ingredient_ajout->isEmpty()) {
                 $in = $ingredient;
 
                 $ingredientID = DB::table('ingredients')->insertGetId(
@@ -353,7 +330,7 @@ class RecipesController extends Controller
         }
 
         // Gestion des étapes
-        foreach ($request->step as $key => $step) {
+        foreach($request->step as $key => $step) {
             DB::table('recipes_steps')->insertGetId(
                 ['recipe_id' => $idRecette,
                     'step_number' => $key,
@@ -367,7 +344,7 @@ class RecipesController extends Controller
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->resume['size'] != 0 || $request->resume['size'] != NULL) {
+        if($request->resume['size'] != 0 || $request->resume['size'] != NULL) {
             $photoName = time() . '.' . $request->resume->getClientOriginalExtension();
             $this->ajouter_image($photoName, $iduser, $idRecette);
             $request->resume->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
@@ -394,7 +371,7 @@ class RecipesController extends Controller
 
         // STARS
         $stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
-        if ($stars1 == NULL) {
+        if($stars1 == NULL) {
             $stars1 = 1;
         }
 
@@ -406,7 +383,7 @@ class RecipesController extends Controller
         $countrating = DB::table('recipe_likes')
             ->where('id_recipe', '=', $recette->id)
             ->count();
-        if ($countrating == NULL || $countrating == 0) {
+        if($countrating == NULL || $countrating == 0) {
             $countrating = 1;
         }
         $id_auteur = $recette->id_user;
@@ -476,7 +453,7 @@ class RecipesController extends Controller
     private function sumerise($val)
     {
         // si il y'a + d'1heure
-        if ($val > 60) {
+        if($val > 60) {
             $somme_h = $val / 60;
             $somme_m = $val - ((int)$somme_h * 60);
             return $somme_h . "H" . $somme_m . "M";
@@ -574,5 +551,31 @@ class RecipesController extends Controller
         return $univ;
     }
 
+    private  function rangerIngredient($index, $ingredient, $idRecette, $qtt){
+        $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
+        // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
+        if($id_ingredient_ajout->isEmpty()) {
+            $in = app('profanityFilter')->filter($ingredient);
+            if(preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
+                $in = '';
+            }
+            if($in) {
+                $ingredientID = DB::table('ingredients')->insertGetId(
+                    ['name' => $in]
+                );
+            }
+        } else {
+            $ingredientID = $id_ingredient_ajout->first();
+            $ingredientID = $ingredientID->id;
+        }
+        // Pour chaque ingrédient, on l'associe à la recette
+
+        DB::table('recipes_ingredients')->insertGetId(
+            ['id_recipe' => $idRecette,
+                'id_ingredient' => $ingredientID,
+                'qtt' => app('profanityFilter')->filter($qtt),
+            ]);
+
+    }
 
 }

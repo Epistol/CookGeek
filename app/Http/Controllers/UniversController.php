@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Univers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UniversController extends Controller
 {
@@ -106,7 +107,7 @@ class UniversController extends Controller
      */
     public function FirstOrCreate($text)
     {
-        $univ = Univers::get_first($text);
+        $univ = (new \App\Univers)->get_first($text);
 //        dd($univ);
         if ($univ->isEmpty()) {
             $univ =  $this->store_api($text);

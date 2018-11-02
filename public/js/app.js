@@ -498,7 +498,7 @@ module.exports = isObject;
 
 var baseMatches = __webpack_require__(269),
     baseMatchesProperty = __webpack_require__(286),
-    identity = __webpack_require__(13),
+    identity = __webpack_require__(14),
     isArray = __webpack_require__(0),
     property = __webpack_require__(292);
 
@@ -640,176 +640,6 @@ module.exports = g;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(17),
-    getRawTag = __webpack_require__(230),
-    objectToString = __webpack_require__(231);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayMap = __webpack_require__(10),
-    baseIteratee = __webpack_require__(5),
-    baseMap = __webpack_require__(126),
-    isArray = __webpack_require__(0);
-
-/**
- * Creates an array of values by running each element in `collection` thru
- * `iteratee`. The iteratee is invoked with three arguments:
- * (value, index|key, collection).
- *
- * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
- *
- * The guarded methods are:
- * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
- * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
- * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
- * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- * @example
- *
- * function square(n) {
- *   return n * n;
- * }
- *
- * _.map([4, 8], square);
- * // => [16, 64]
- *
- * _.map({ 'a': 4, 'b': 8 }, square);
- * // => [16, 64] (iteration order is not guaranteed)
- *
- * var users = [
- *   { 'user': 'barney' },
- *   { 'user': 'fred' }
- * ];
- *
- * // The `_.property` iteratee shorthand.
- * _.map(users, 'user');
- * // => ['barney', 'fred']
- */
-function map(collection, iteratee) {
-  var func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, baseIteratee(iteratee, 3));
-}
-
-module.exports = map;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsNative = __webpack_require__(240),
-    getValue = __webpack_require__(243);
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */
-function identity(value) {
-  return value;
-}
-
-module.exports = identity;
-
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -918,6 +748,176 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(17),
+    getRawTag = __webpack_require__(230),
+    objectToString = __webpack_require__(231);
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(11),
+    baseIteratee = __webpack_require__(5),
+    baseMap = __webpack_require__(126),
+    isArray = __webpack_require__(0);
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseIsNative = __webpack_require__(240),
+    getValue = __webpack_require__(243);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+module.exports = getNative;
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+module.exports = identity;
+
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
@@ -970,7 +970,7 @@ module.exports = Symbol;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isObject = __webpack_require__(4);
 
 /** `Object#toString` result references. */
@@ -1056,7 +1056,7 @@ module.exports = eq;
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(13),
+var identity = __webpack_require__(14),
     overRest = __webpack_require__(108),
     setToString = __webpack_require__(68);
 
@@ -1670,7 +1670,7 @@ var DataView = __webpack_require__(282),
     Promise = __webpack_require__(283),
     Set = __webpack_require__(284),
     WeakMap = __webpack_require__(121),
-    baseGetTag = __webpack_require__(9),
+    baseGetTag = __webpack_require__(10),
     toSource = __webpack_require__(104);
 
 /** `Object#toString` result references. */
@@ -1729,7 +1729,7 @@ module.exports = getTag;
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isObjectLike = __webpack_require__(3);
 
 /** `Object#toString` result references. */
@@ -2015,7 +2015,7 @@ module.exports = isEmpty;
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isArray = __webpack_require__(0),
     isObjectLike = __webpack_require__(3);
 
@@ -2430,7 +2430,7 @@ module.exports = isPrototype;
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12);
+var getNative = __webpack_require__(13);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -2923,7 +2923,7 @@ var intersection = __webpack_require__(235);
 var forOwn = __webpack_require__(265);
 var forEach = __webpack_require__(21);
 var filter = __webpack_require__(70);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var reduce = __webpack_require__(36);
 var omit = __webpack_require__(127);
 var indexOf = __webpack_require__(58);
@@ -4760,7 +4760,7 @@ module.exports = MapCache;
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12),
+var getNative = __webpack_require__(13),
     root = __webpack_require__(1);
 
 /* Built-in method references that are verified to be native. */
@@ -5068,7 +5068,7 @@ module.exports = toString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(17),
-    arrayMap = __webpack_require__(10),
+    arrayMap = __webpack_require__(11),
     isArray = __webpack_require__(0),
     isSymbol = __webpack_require__(35);
 
@@ -5201,7 +5201,7 @@ module.exports = cloneArrayBuffer;
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     getPrototype = __webpack_require__(78),
     isObjectLike = __webpack_require__(3);
 
@@ -17550,7 +17550,7 @@ module.exports = constant;
 /* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12);
+var getNative = __webpack_require__(13);
 
 var defineProperty = (function() {
   try {
@@ -17671,7 +17671,7 @@ module.exports = baseFor;
 /* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(13);
+var identity = __webpack_require__(14);
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -17900,7 +17900,7 @@ module.exports = stubArray;
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12),
+var getNative = __webpack_require__(13),
     root = __webpack_require__(1);
 
 /* Built-in method references that are verified to be native. */
@@ -18067,7 +18067,7 @@ module.exports = baseMap;
 /* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(10),
+var arrayMap = __webpack_require__(11),
     baseClone = __webpack_require__(297),
     baseUnset = __webpack_require__(313),
     castPath = __webpack_require__(22),
@@ -18362,7 +18362,7 @@ module.exports = flatten;
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isObjectLike = __webpack_require__(3);
 
 /** `Object#toString` result references. */
@@ -18645,7 +18645,7 @@ var get = __webpack_require__(124);
 var sumBy = __webpack_require__(338);
 var find = __webpack_require__(59);
 var includes = __webpack_require__(340);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var orderBy = __webpack_require__(144);
 
 var defaults = __webpack_require__(82);
@@ -19475,7 +19475,7 @@ module.exports = orderBy;
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(13),
+var identity = __webpack_require__(14),
     metaMap = __webpack_require__(146);
 
 /**
@@ -20852,7 +20852,7 @@ var qs = __webpack_require__(376);
 var bind = __webpack_require__(379);
 var forEach = __webpack_require__(21);
 var pick = __webpack_require__(380);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var mapKeys = __webpack_require__(382);
 var mapValues = __webpack_require__(383);
 var isString = __webpack_require__(41);
@@ -21014,7 +21014,7 @@ exports.getQueryStringFromState = function(state, options) {
 
 var constant = __webpack_require__(109),
     createInverter = __webpack_require__(374),
-    identity = __webpack_require__(13);
+    identity = __webpack_require__(14);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -21096,7 +21096,7 @@ module.exports = '2.26.0';
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(164);
-module.exports = __webpack_require__(401);
+module.exports = __webpack_require__(407);
 
 
 /***/ }),
@@ -21150,8 +21150,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('star-rating', __WEBPACK_I
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('validationform', __webpack_require__(392));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('notif', __webpack_require__(395));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('searchautocomplete', __webpack_require__(398));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ingredient_form', __webpack_require__(403));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('add_recipe_form', __webpack_require__(406));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ingredient_form', __webpack_require__(401));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('add_recipe_form', __webpack_require__(404));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -55662,7 +55662,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(191)
 }
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(195)
 /* template */
@@ -56224,7 +56224,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(197)
 /* template */
@@ -70048,7 +70048,7 @@ var events = __webpack_require__(158);
 var flatten = __webpack_require__(135);
 var forEach = __webpack_require__(21);
 var isEmpty = __webpack_require__(40);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 
 var url = __webpack_require__(159);
 var version = __webpack_require__(162);
@@ -71480,7 +71480,7 @@ module.exports = baseTimes;
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isObjectLike = __webpack_require__(3);
 
 /** `Object#toString` result references. */
@@ -71608,7 +71608,7 @@ module.exports = stubFalse;
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(9),
+var baseGetTag = __webpack_require__(10),
     isLength = __webpack_require__(63),
     isObjectLike = __webpack_require__(3);
 
@@ -71686,7 +71686,7 @@ module.exports = nativeKeys;
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(10),
+var arrayMap = __webpack_require__(11),
     baseIntersection = __webpack_require__(236),
     baseRest = __webpack_require__(20),
     castArrayLikeObject = __webpack_require__(264);
@@ -71725,7 +71725,7 @@ module.exports = intersection;
 var SetCache = __webpack_require__(103),
     arrayIncludes = __webpack_require__(105),
     arrayIncludesWith = __webpack_require__(262),
-    arrayMap = __webpack_require__(10),
+    arrayMap = __webpack_require__(11),
     baseUnary = __webpack_require__(31),
     cacheHas = __webpack_require__(107);
 
@@ -72493,7 +72493,7 @@ module.exports = arrayIncludesWith;
 
 var constant = __webpack_require__(109),
     defineProperty = __webpack_require__(110),
-    identity = __webpack_require__(13);
+    identity = __webpack_require__(14);
 
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
@@ -73277,7 +73277,7 @@ module.exports = equalObjects;
 /* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12),
+var getNative = __webpack_require__(13),
     root = __webpack_require__(1);
 
 /* Built-in method references that are verified to be native. */
@@ -73290,7 +73290,7 @@ module.exports = DataView;
 /* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12),
+var getNative = __webpack_require__(13),
     root = __webpack_require__(1);
 
 /* Built-in method references that are verified to be native. */
@@ -73303,7 +73303,7 @@ module.exports = Promise;
 /* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(12),
+var getNative = __webpack_require__(13),
     root = __webpack_require__(1);
 
 /* Built-in method references that are verified to be native. */
@@ -75167,7 +75167,7 @@ module.exports = createAssigner;
 "use strict";
 
 
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var isNumber = __webpack_require__(136);
 var isString = __webpack_require__(41);
 function valToNumber(v) {
@@ -75194,7 +75194,7 @@ module.exports = valToNumber;
 
 var forEach = __webpack_require__(21);
 var filter = __webpack_require__(70);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var isEmpty = __webpack_require__(40);
 var indexOf = __webpack_require__(58);
 
@@ -75625,7 +75625,7 @@ module.exports = values;
 /* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(10);
+var arrayMap = __webpack_require__(11);
 
 /**
  * The base implementation of `_.values` and `_.valuesIn` which creates an
@@ -75650,13 +75650,13 @@ module.exports = baseValues;
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(10),
+var arrayMap = __webpack_require__(11),
     baseIteratee = __webpack_require__(5),
     baseMap = __webpack_require__(126),
     baseSortBy = __webpack_require__(344),
     baseUnary = __webpack_require__(31),
     compareMultiple = __webpack_require__(345),
-    identity = __webpack_require__(13);
+    identity = __webpack_require__(14);
 
 /**
  * The base implementation of `_.orderBy` without param guards.
@@ -76687,7 +76687,7 @@ module.exports = baseClamp;
 module.exports = generateTrees;
 
 var last = __webpack_require__(132);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var reduce = __webpack_require__(36);
 var orderBy = __webpack_require__(144);
 var trim = __webpack_require__(139);
@@ -76813,7 +76813,7 @@ function formatHierarchicalFacetValue(hierarchicalSeparator, currentRefinement) 
 /* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(10),
+var arrayMap = __webpack_require__(11),
     baseIteratee = __webpack_require__(5),
     basePickBy = __webpack_require__(156),
     getAllKeysIn = __webpack_require__(79);
@@ -76997,7 +76997,7 @@ if (typeof Object.create === 'function') {
 
 
 var forEach = __webpack_require__(21);
-var map = __webpack_require__(11);
+var map = __webpack_require__(12);
 var reduce = __webpack_require__(36);
 var merge = __webpack_require__(83);
 
@@ -78663,7 +78663,7 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(390)
 /* template */
@@ -78848,7 +78848,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(393)
 /* template */
@@ -78965,7 +78965,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(396)
 /* template */
@@ -79113,7 +79113,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
 var __vue_script__ = __webpack_require__(399)
 /* template */
@@ -79400,21 +79400,14 @@ if (false) {
 
 /***/ }),
 /* 401 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 402 */,
-/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(404)
+var __vue_script__ = __webpack_require__(402)
 /* template */
-var __vue_template__ = __webpack_require__(405)
+var __vue_template__ = __webpack_require__(403)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79453,7 +79446,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 404 */
+/* 402 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79515,11 +79508,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+
+    computed: {
+        countminus: function countminus() {
+            return this.counter - 1;
+        }
+    },
+    watch: {
+        'liste': function liste() {
+            // When the internal value changes, we $emit an event. Because this event is
+            // named 'input', v-model will automatically update the parent value
+            this.$emit('applicant', this.liste);
+        }
     }
 });
 
 /***/ }),
-/* 405 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79536,12 +79542,6 @@ var render = function() {
             _c("div", { staticClass: "column is-3" }, [
               _c("input", {
                 directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required",
-                    expression: "'required'"
-                  },
                   {
                     name: "model",
                     rawName: "v-model",
@@ -79571,12 +79571,6 @@ var render = function() {
             _c("div", { staticClass: "column is-7" }, [
               _c("input", {
                 directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required",
-                    expression: "'required'"
-                  },
                   {
                     name: "model",
                     rawName: "v-model",
@@ -79623,29 +79617,29 @@ var render = function() {
                     ]
                   )
                 ])
-              : _c(
-                  "div",
-                  { staticClass: "column is-3  is-flex-center close-hover" },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "button is-small deleteicon",
-                        on: {
-                          click: function($event) {
-                            _vm.removeRow(index)
-                          }
+              : _vm._e(),
+            _vm._v(" "),
+            index === _vm.countminus
+              ? _c("div", { staticClass: "column is-3  is-flex-center " }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-small deleteicon",
+                      on: {
+                        click: function($event) {
+                          _vm.removeRow(index)
                         }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-minus",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ]
-                )
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-minus",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              : _vm._e()
           ])
         ]
       })
@@ -79664,15 +79658,15 @@ if (false) {
 }
 
 /***/ }),
-/* 406 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(14)
+var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(407)
+var __vue_script__ = __webpack_require__(405)
 /* template */
-var __vue_template__ = __webpack_require__(408)
+var __vue_template__ = __webpack_require__(406)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79711,7 +79705,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 407 */
+/* 405 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79782,13 +79776,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ["Myliste"],
     data: function data() {
         return {
             step: 1,
             counter: 0,
             titre_recette: "",
+            univers: "",
             liste: [{
                 name: '',
                 qtt: ''
@@ -79823,7 +79826,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 408 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79866,7 +79869,7 @@ var render = function() {
             [
               _vm.step === 1
                 ? _c("div", { key: "1" }, [
-                    _c("h1", [_vm._v("Step One")]),
+                    _c("h1", [_vm._v("ETAPE 1")]),
                     _vm._v(" "),
                     _c("div", { staticClass: "columns" }, [
                       _c(
@@ -79877,7 +79880,7 @@ var render = function() {
                         },
                         [
                           _c("label", { staticClass: "title is-4" }, [
-                            _vm._v("Titre de la recette  ")
+                            _vm._v("Titre de la recette ")
                           ])
                         ]
                       ),
@@ -79914,6 +79917,32 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "column is-3",
+                          staticStyle: { "text-align": "left" }
+                        },
+                        [
+                          _c("label", { staticClass: "title is-4 is-" }, [
+                            _vm._v("Univers")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c("searchautocomplete", {
+                            attrs: { searchtype: "univers" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "button",
                       {
@@ -79933,25 +79962,48 @@ var render = function() {
                 ? _c("div", { key: "2" }, [
                     _c("h1", [_vm._v("Step Two")]),
                     _vm._v(" "),
-                    _c("p"),
-                    _c("legend", { attrs: { for: "name" } }, [
-                      _vm._v("Your Name:")
+                    _c("section", { staticClass: "ingredients" }, [
+                      _c(
+                        "div",
+                        { attrs: { id: "ingr" } },
+                        [
+                          _c(
+                            "draggable",
+                            {
+                              attrs: { options: { group: "people" } },
+                              on: {
+                                start: function($event) {
+                                  _vm.drag = true
+                                },
+                                end: function($event) {
+                                  _vm.drag = false
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "column is-3",
+                                  staticStyle: { "text-align": "left" }
+                                },
+                                [
+                                  _c("h2", { staticClass: "title is-4" }, [
+                                    _vm._v("Ingredients")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("ingredient_form", {
+                                on: { applicant: _vm.Myliste }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ]),
-                    _vm._v(" "),
-                    _c("input", { attrs: { id: "name", name: "name" } }),
-                    _vm._v(" "),
-                    _c("p"),
-                    _vm._v(" "),
-                    _c("p"),
-                    _c("legend", { attrs: { for: "email" } }, [
-                      _vm._v("Your Email:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "email", name: "email", type: "email" }
-                    }),
-                    _vm._v(" "),
-                    _c("p"),
                     _vm._v(" "),
                     _c(
                       "button",
@@ -79997,6 +80049,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-76fa9e1c", module.exports)
   }
 }
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

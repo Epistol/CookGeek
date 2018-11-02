@@ -10,9 +10,11 @@
                     <li><a href="{{route("recipe.index")}}">Recettes</a></li>
                     <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem"
                                     href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a></li>
+                    @if($typeuniv)
                     <li>
                         <div style="margin-left: 0.5rem"> @include("recipes.show.type_univers")</div>
                     </li>
+                        @endif
 
                 </ul>
             </nav>

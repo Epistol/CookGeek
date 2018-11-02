@@ -14,7 +14,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <section class="section">
@@ -23,8 +22,6 @@
                 {{ csrf_field() }}
 
                 <div class="columns" style="  margin-bottom: 2rem;">
-
-
                     <div class="column  right_recipe_add  ">
                         {{--Titre recette--}}
                         <div class="columns">
