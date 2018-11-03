@@ -127,8 +127,8 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-/*        $input = $request->all();
-        dd($input);*/
+        /*        $input = $request->all();
+                dd($input);*/
         $recipe = new Recipes();
 
         // User ID :
@@ -178,7 +178,7 @@ class RecipesController extends Controller
 
         // Gestion des étapes
         foreach($request->step as $key => $step) {
-            if($step){
+            if($step) {
                 DB::table('recipes_steps')->insertGetId(
                     ['recipe_id' => $idRecette,
                         'step_number' => $key,
@@ -551,30 +551,38 @@ class RecipesController extends Controller
         return $univ;
     }
 
-    private  function rangerIngredient($index, $ingredient, $idRecette, $qtt){
-        $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
-        // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-        if($id_ingredient_ajout->isEmpty()) {
-            $in = app('profanityFilter')->filter($ingredient);
-            if(preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
-                $in = '';
+    private function rangerIngredient($index, $ingredient, $idRecette, $qtt)
+    {
+        if($ingredient){
+            $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
+            // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
+            if($id_ingredient_ajout->isEmpty()) {
+                $in = app('profanityFilter')->filter($ingredient);
+                if(preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
+                    $in = '';
+                }
+                if($in) {
+                    $ingredientID = DB::table('ingredients')->insertGetId(
+                        ['name' => $in]
+                    );
+                }
+                else {
+                    $ingredientID = $id_ingredient_ajout;
+                }
+            } else {
+                $ingredientIDRetour = $id_ingredient_ajout->first();
+                $ingredientID = $ingredientIDRetour->id;
             }
-            if($in) {
-                $ingredientID = DB::table('ingredients')->insertGetId(
-                    ['name' => $in]
-                );
-            }
-        } else {
-            $ingredientID = $id_ingredient_ajout->first();
-            $ingredientID = $ingredientID->id;
-        }
-        // Pour chaque ingrédient, on l'associe à la recette
 
-        DB::table('recipes_ingredients')->insertGetId(
-            ['id_recipe' => $idRecette,
-                'id_ingredient' => $ingredientID,
-                'qtt' => app('profanityFilter')->filter($qtt),
-            ]);
+            // Pour chaque ingrédient, on l'associe à la recette
+
+            DB::table('recipes_ingredients')->insertGetId(
+                ['id_recipe' => $idRecette,
+                    'id_ingredient' => $ingredientID,
+                    'qtt' => app('profanityFilter')->filter($qtt),
+                ]);
+
+        }
 
     }
 
