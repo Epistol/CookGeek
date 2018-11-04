@@ -36,20 +36,14 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Styles -->
-    {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset('css/nouislider.min.css')}}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
+    @include("layouts.style")
     {{--    <link rel="stylesheet" type="text/css"
               href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
           integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-{{--@include("layouts.cookie")--}}
-    @include("layouts.cookiebot")
+@include("layouts.cookie")
+    {{--@include("layouts.cookiebot")--}}
 
 </head>
 <body>
