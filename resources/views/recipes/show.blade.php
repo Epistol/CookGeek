@@ -57,7 +57,7 @@
                                             @include("recipes.show.video")
                                         @endif
 
-
+                                        {{--Espace commentaires --}}
                                         <div id="#fb-commentaire_container">
                                             <div class="fb-commentaire">
                                                 <div class="fb-comments" data-href="{{url()->current()}}"
@@ -68,8 +68,8 @@
 
                                     </div>
                                     <div class="column is-4  list-h-show ">
-                                        @include('recipes.show.social')
-                                        @include("recipes.show.ingredient")
+
+                                        @include('recipes.show.fiche_droite')
 
                                     </div>
                                 </div>
