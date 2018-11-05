@@ -15725,8 +15725,31 @@ h2.title {
           align-items: center;
 }
 
+.is-flex-top {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .grecaptcha-badge {
   display: none;
+}
+
+.step_number {
+  border: 2px solid #E3E1F7;
+  padding: 0.2rem;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -16086,13 +16109,6 @@ a.quatre:hover {
   -ms-flex-pack: center;
   display:flex;justify-content:center;align-items:center;
 }*/
-.sharing-block {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  width: auto;
-}
-
 .sharing {
   position: relative;
   display: inline-block;
@@ -16141,6 +16157,42 @@ a.quatre:hover {
 
 .tumblr:hover i {
   color: #35455C;
+}
+
+a.like {
+  background-color: #FCBEE1;
+  border-radius: 100%;
+  border: 0px solid white;
+  margin-left: 1rem;
+  color: white;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+a.like:hover {
+  color: white;
+  box-shadow: 0 0 15px 0px #7f5fbf;
+  -webkit-box-shadow: 0 0 15px 0px #7f5fbf;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+a.print {
+  background-color: #CBC2F6;
+  border-radius: 100%;
+  border: 0px solid white;
+  margin-left: 1rem;
+  color: white;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+a.print:hover {
+  color: white;
+  box-shadow: 0 0 15px 0px #7f5fbf;
+  -webkit-box-shadow: 0 0 15px 0px #7f5fbf;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .button.is-direct {
@@ -16570,7 +16622,7 @@ form.addrecipe .field {
 }
 
 .step {
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
   padding: 0.5rem;
 }
 
@@ -16593,25 +16645,19 @@ form.addrecipe .field {
 .step .column.is-1 {
   font-size: 1.2rem;
   color: #7f5fbf;
-  background: #f2f1f8;
-  border-radius: 10px 0 0 10px;
 }
 
 .step .column.is-1::after {
   content: " ";
   position: absolute;
   /*white-space: pre;*/
-  -webkit-transform: rotate(40deg);
-  transform: rotate(40deg);
   margin-top: 0.2rem;
   font-size: 2rem;
 }
 
 .step .is-lateral {
-  border-right: 1px solid #f3f2fd;
-  border-top: 1px solid #f3f2fd;
-  border-bottom: 1px solid #f3f2fd;
-  border-radius: 0 10px 10px 0;
+  border: 1px solid #f3f2fd;
+  border-radius: 15px;
 }
 
 .fa-facebook-official, .fa-twitter, .fa-tumblr, .fa-pinterest-p {
@@ -16762,8 +16808,9 @@ input.input_modal.blck, textarea.input_modal.blck {
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  margin-left: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }

@@ -103,7 +103,7 @@
 }
 
 .step {
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
   padding: 0.5rem;
 }
 
@@ -127,30 +127,20 @@
 .step .column.is-1 {
   font-size: 1.2rem;
   color: $brand-primary;
-  background: lighten($body-bg, 2.1);
-  -webkit-border-radius: 10px 0 0 10px;
-  border-radius: 10px 0 0 10px;
 
   &::after {
     content: " ";
     position: absolute;
     /*white-space: pre;*/
-    -moz-transform: rotate(40deg);
-    -webkit-transform: rotate(40deg);
-    -o-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    transform: rotate(40deg);
     margin-top: 0.2rem;
     font-size: 2rem;
   }
 }
 
 .step .is-lateral {
-  border-right: 1px solid #f3f2fd;
-  border-top: 1px solid #f3f2fd;
-  border-bottom: 1px solid #f3f2fd;
-  -webkit-border-radius: 0 10px 10px 0;
-  border-radius: 0 10px 10px 0;
+  border: 1px solid #f3f2fd;
+  -webkit-border-radius:15px;
+  border-radius: 15px;
 }
 
 .fa-facebook-official, .fa-twitter, .fa-tumblr, .fa-pinterest-p {

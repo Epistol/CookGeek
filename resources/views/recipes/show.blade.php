@@ -46,8 +46,6 @@
 
                             {{--// Auteur--}}
                         </div>
-
-
                         <div class="page_no_padding">
                             <div class="content">
                                 <div class="columns is-marginless">
@@ -56,6 +54,9 @@
                                         @if($recette->video)
                                             @include("recipes.show.video")
                                         @endif
+
+                                        @include("recipes.show.social")
+
 
                                         {{--Espace commentaires --}}
                                         <div id="#fb-commentaire_container">

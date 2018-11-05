@@ -37,11 +37,25 @@
   align-items: center;
 }
 
+.is-flex-top {
+  margin-left:auto;margin-right:auto;
+}
 .grecaptcha-badge {
   display: none;
 }
 
-
+.step_number {
+  border: 2px solid #E3E1F7;
+  padding: 0.2rem;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 50%;
+  border-radius:50%;
+}
 
 
 @supports(position:sticky){
