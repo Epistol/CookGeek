@@ -11,7 +11,7 @@
 
 
         </p>
-        <?php $univers = DB::table('univers')->where('id', $recette->univers)->first(); ?>
+		<?php $univers = DB::table('univers')->where('id', $recette->univers)->first(); ?>
         <p class="control">
             <a class="button twitter "
                onclick="javascript:window.open('https://twitter.com/intent/tweet?text={{$recette->title}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{$univers->name}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">

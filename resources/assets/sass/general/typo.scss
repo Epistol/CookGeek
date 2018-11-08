@@ -87,3 +87,8 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
 h2.title{
   color: $brand-primary;
 }
+
+h2.mini_title {
+  color: $title_small;
+  font-size:1.4rem;
+}

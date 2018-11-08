@@ -1,7 +1,6 @@
-<div class="content ficheinfo">
+<div class="ficheinfo">
     @include('recipes.show.social')
     @include("recipes.show.ingredient")
-
 
 </div>
 

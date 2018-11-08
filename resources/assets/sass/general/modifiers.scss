@@ -57,6 +57,10 @@
   border-radius:50%;
 }
 
+.left_side {
+  background: #fdfdfd;
+  border-right: 1px solid #EBEAF5;
+}
 
 @supports(position:sticky){
   .is-fixed-top{

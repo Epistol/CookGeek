@@ -1,6 +1,6 @@
 <div class="columns">
-    <div class="column is-three-quarters">
-        <h2 class="title">
+    <div class="column is-three-quarters is-offset-1">
+        <h2 class="title mini_title">
             @lang('recipe.steps')
         </h2>
     </div>
@@ -10,26 +10,29 @@
 
 </div>
 
+<div class="columns">
+    <div class="column">
+        @forelse($steps as $step)
 
+                <div class="columns">
+                    <div class="column is-1 is-flex-top">
+                        <div class="step_number">
+                            <p> {{$step->step_number+1}}</p>
+                        </div>
 
-@forelse($steps as $step)
-    <div class="step ">
-        <div class="columns">
-            <div class="column is-1 is-flex-top">
-            <div class="step_number">
-               <p> {{$step->step_number+1}}</p>
-            </div>
-
-            </div>
-            <div class="column is-lateral " style="display:flex;align-items:center;">
-                <div class="content">
-                    <?php  $etape = app('profanityFilter')->filter($step->instruction);?>
-                    <p>   {{ucfirst($etape)}}</p>
+                    </div>
+                    <div class="column is-lateral " >
+                        <div class="content">
+							<?php  $etape = app('profanityFilter')->filter($step->instruction);?>
+                            <p class="instruction">   {{ucfirst($etape)}}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+        @empty
+        @endforelse
+
+
     </div>
+</div>
 
-
-@empty
-@endforelse

@@ -11,7 +11,6 @@
                     <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem"
                                     href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a></li>
                   
-
                 </ul>
             </nav>
         </div>

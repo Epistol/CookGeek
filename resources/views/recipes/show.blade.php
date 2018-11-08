@@ -10,14 +10,14 @@
             <div class="section">
                 <div class="columns shadowbox">
                     {{--Photo + ingredients--}}
-                    <div class="column  is-marginless is-3 is-paddingless" style=" background: #fdfdfd;">
+                    <div class="column is-one-fifth is-marginless is-paddingless left_side">
                         @include("recipes.show.images")
-                        <div class="page">
+                        <div class="">
                             @include("recipes.show.ficheinfo")
                         </div>
                     </div>
                     {{--    Infos + steps--}}
-                    <div class="column is-marginless is-paddingless is-9 ">
+                    <div class="column is-marginless is-paddingless ">
                         {{--// Budget--}}
                         <div class="columns list-h-show  is-marginless is-paddingless">
                             <div class="column">
@@ -49,7 +49,7 @@
                         <div class="page_no_padding">
                             <div class="content">
                                 <div class="columns is-marginless">
-                                    <div class="column is-8" style="padding: 2.5rem;">
+                                    <div class="column is-9" style="padding: 2.5rem;">
                                         @include("recipes.show.steps")
                                         @if($recette->video)
                                             @include("recipes.show.video")
@@ -68,10 +68,8 @@
 
 
                                     </div>
-                                    <div class="column is-4  list-h-show ">
-
+                                    <div class="column is-3 list-h-show ">
                                         @include('recipes.show.fiche_droite')
-
                                     </div>
                                 </div>
 
@@ -96,33 +94,44 @@
     </div>
 
 
-    <?php
-    use Carbon\Carbon;use Spatie\SchemaOrg\Schema;$ingredientliste = array();
-    foreach ($ingredients as $ingr) {
-        $nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
-        $ingredientliste[] = $ingr->qtt . " " . $nom_in;
-    }
+	<?php
+	use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
 
-    if (isset($firstimg->image_name)) {
-        $img = $firstimg->image_name;
-    } else {
-        $img = null;
-    }
+	$ingredientliste = array();
+	foreach($ingredients as $ingr) {
+		$nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
+		$ingredientliste[] = $ingr->qtt . " " . $nom_in;
+	}
 
-    // Shema.org
-    $datas = Schema::Recipe()
-        ->name($recette->title)
-        ->image(url('/') . "/recipes/" . $recette->id . "/" . $recette->id_user . "/" . $img)
-        ->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
-        ->aggregateRating(Schema::AggregateRating()->ratingValue($stars1)->reviewCount($countrating))
-        ->author(Schema::person()->name($nom))
-        ->prepTime($preptimeiso)
-        ->cookTime($cooktimeiso)
-        ->totalTime($totaliso)
-        ->description($recette->title . " - CDG")
-        ->recipeIngredient([$ingredientliste])
-    ?>
+	$instructions = array();
+	foreach($instructions as $key => $etape) {
+		$nom_in = app('profanityFilter')->filter($steps[$key]->instruction);
+		$instructions[] = $nom_in;
+	}
 
+
+	if(isset($firstimg->image_name)) {
+		$img = $firstimg->image_name;
+	} else {
+		$img = null;
+	}
+
+	$type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
+	// Shema.org TODO STEPS
+	$datas = Schema::Recipe()
+		->name($recette->title)
+		->image(url('/') . "/recipes/" . $recette->id . "/" . $recette->id_user . "/" . $img)
+		->datePublished(Carbon::parse($recette->created_at)->format('Y-m-d'))
+		->aggregateRating(Schema::AggregateRating()->ratingValue($stars1)->reviewCount($countrating))
+		->author(Schema::person()->name($nom))
+		->prepTime($preptimeiso)
+		->cookTime($cooktimeiso)
+		->totalTime($totaliso)
+		->description($recette->title . " - CDG")
+		->recipeIngredient([$ingredientliste])
+		->recipeCategory($type->name)
+		->recipeInstructions([$instructions])
+	?>
 
     {!! $datas->toScript()  !!}
 @endsection
