@@ -14,35 +14,14 @@ $warning: $brand-warning;
 
 // BULMA
 @import "~bulma/bulma";
-
 @import "~bulma-extensions/extensions";
-
-@import "general/typo";
-@import "general/mix";
-@import "general/modifiers";
-@import "general/structure";
-@import "general/general";
-@import "general/fourofour";
-@import "general/social";
-@import "general/partner";
-@import "general/content/login";
-@import "general/content/footer";
-@import "general/content/menu";
-@import "general/content/video";
-
-@import "general/content/recipe/add";
-@import "general/content/recipe/show";
-@import "general/content/register";
-@import "general/content/file";
-
-@import "general/content/icons";
-@import "general/toast";
-@import "general/anim";
+@import "general/indexing";
 
 @import "admin/admin";
 
-@import "components/autocomplete"
-;
+@import "components/autocomplete";
+
+
 // ----------------------------------------------------------------------
 // Margin auto
 // ----------------------------------------------------------------------

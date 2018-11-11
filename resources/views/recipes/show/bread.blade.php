@@ -3,7 +3,7 @@
     <?php $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();?>
 
     <div class="columns">
-        <div class="column">
+        <div class="column" style="display:flex;justify-content:center;align-items:center;">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="/">Accueil</a></li>

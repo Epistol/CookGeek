@@ -17174,6 +17174,10 @@ h2.mini_title {
   transition: all 0.3s ease-in-out;
 }
 
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding-top: 0rem !important;
+}
+
 .page {
   background: #fdfdfd;
   padding: 2.5rem;
@@ -17571,8 +17575,9 @@ a.like {
   background-color: #FCBEE1;
   border-radius: 100%;
   border: 0px solid white;
-  margin-left: 1rem;
   color: white;
+  height: 2rem;
+  width: 2rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -17615,6 +17620,12 @@ a.print:hover {
   width: 1.9rem;
   height: 1.9rem;
   background-size: contain;
+}
+
+.is_recipe_horizontal > img {
+  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
 }
 
 .onboard_login {
@@ -17972,8 +17983,8 @@ form.addrecipe .field {
 .is-result {
   background: #fdfdfd;
   border-radius: 15px;
-  margin-right: 1rem;
   border: 1rem #ebeaf5;
+  padding: 1.2rem;
   -webkit-box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
           box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
 }
@@ -18251,7 +18262,6 @@ input.input_modal.blck, textarea.input_modal.blck {
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  margin-left: 1rem;
   width: 2.2rem;
   height: 2.2rem;
   -webkit-transition: all 0.3s ease-in-out;

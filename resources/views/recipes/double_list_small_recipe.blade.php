@@ -4,8 +4,9 @@
 
 
     <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">
-
+		<?php $i = 0;?>
         @foreach ($recettechunk as $recette)
+
 
 			<?php
 			$img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
@@ -15,19 +16,19 @@
 
 			?>
 
-            <div class="column is-6 is-result">
+            <div class="column is-5 @if($i !== 0) is-offset-1 @endif is-result">
                 <div class="columns">
                     <div class="column is-4 to-hover is-paddingless is-marginless">
                         @if(isset($type))
                             <div class="hovered">
-                                <a class="tag" style="margin:0.5rem"
-                                   href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
+                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
+                                   href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                             </div>
                         @endif
                         <a href="/recette/{{$recette->slug}}">
-                            <figure class="image is-1by1">
+                            <figure class="image is-1by1 is_recipe_horizontal">
                                 @if($recette->id_user != NULL  && isset($first))
-                                    <img src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}">
+                                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
                                 @else
                                     <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
                                 @endif
@@ -37,10 +38,8 @@
                     </div>
                     <div class="column is-7">
                         <div class="top is-flex">
-                            <a href="{{url('/recette/'.$recette->slug)}}"><h2 class="title">
-
-                                    @php echo str_limit($recette->title, 20, ' (...)'); @endphp
-
+                            <a href="/recette/{{$recette->slug}}"><h2 class="title">
+                                    {{$recette->title}}
                                 </h2></a>
 
 
@@ -70,19 +69,16 @@
                         </div>
                         <div class="bottom">
                             <div class="is-flex">
-                                <span>
-                                    <?php
-	                                $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
-	                                ?>
-                                    @include("recipes.show.author")<br/>
-                                </span>
-
-                                <span style="padding-left:1rem"> @include("recipes.show.staronly")</span>
+								<?php
+								$nom = DB::table('users')->where('id', $recette->id_user)->value('name');
+								?>
+                                @include("recipes.show.author")<br/>
+                                @include("recipes.show.staronly")
                             </div>
                         </div>
 
                     </div>
-                    <div class="column is-1 ">
+                    <div class="column is-1 is-marginless is-paddingless">
                         <div class="top">
 							<?php
 							$typeuniv = DB::table('categunivers')
@@ -104,6 +100,7 @@
                 </div>
             </div>
 
+			<?php $i++?>
 
         @endforeach
 

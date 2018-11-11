@@ -47,8 +47,9 @@ a.like {
   background-color: #FCBEE1;
   border-radius: 100%;
   border: 0px solid white;
-  margin-left: 1rem;
   color:white;
+  height:2rem;
+  width:2rem;
   @include transition_all();
 
   &:hover {

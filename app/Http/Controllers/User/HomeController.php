@@ -79,5 +79,35 @@ class HomeController extends Controller
         return empty($param) || $param == '' ? false : true;
     }
 
+    public function favorites(Request $request){
+	    $user_id = Auth::user()->id;
+
+	    $recettes = DB::table('recipes')
+		    ->join('recipe_likes', 'recipes.id', '=', 'recipe_likes.id_recipe')
+		    ->where('recipe_likes.id_user', '=', $user_id)
+		    ->select('recipes.*')
+		    ->paginate(12);
+
+
+	    return view('user_space.favorites.index', array( 'recipes' => $recettes))->with(['controller' => $this]);
+    }
+
+
+	/**
+	 * @param $id
+	 * @return bool|string
+	 */
+	public function check_liked($id)
+	{
+		$u_id = Auth::id();
+		$l_id = DB::table('user_recipe_likes')
+			->where(
+				['user_id' => $u_id, 'recipe_id' => $id]
+			)->first();
+		return $l_id ? "liked" : false;
+
+	}
+
+
 
 }
