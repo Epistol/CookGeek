@@ -83,11 +83,10 @@ class HomeController extends Controller
 	    $user_id = Auth::user()->id;
 
 	    $recettes = DB::table('recipes')
-		    ->join('recipe_likes', 'recipes.id', '=', 'recipe_likes.id_recipe')
-		    ->where('recipe_likes.id_user', '=', $user_id)
+		    ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
+		    ->where('user_recipe_likes.user_id', '=', $user_id)
 		    ->select('recipes.*')
 		    ->paginate(12);
-
 
 	    return view('user_space.favorites.index', array( 'recipes' => $recettes))->with(['controller' => $this]);
     }

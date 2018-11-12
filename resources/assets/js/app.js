@@ -24,7 +24,7 @@ import 'vue2-dropzone/dist/vue2Dropzone.css'
 
 Vue.use(VeeValidate);
 Vue.use(InstantSearch);
-
+Vue.use(require('vue-chunk'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,14 +37,23 @@ Vue.component('validationform', require('./components/ValidateFormButton.vue'));
 Vue.component('notif', require('./components/NotifAlert.vue'));
 Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 Vue.component('ingredient_form', require('./components/Ingredients.vue'));
-Vue.component('add_recipe_form', require('./components/Step_Recipe_Add.vue'));
+Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
 
+
+
+
+/*Vue.component(
+	'like-recipe-example',
+	// The `import` function returns a Promise.
+	() => import('./components/LikeRecipe.vue')
+);*/
 
 
 const app = new Vue({
     el: '#app',
     components: {
         draggable,
+		    'like-recipe-async': () => ('./components/LikeRecipe.vue')
     },
 
     data: {
@@ -150,7 +159,7 @@ function readURL(input) {
  * @return axios state
  */
 
-$('.like').on("click", function (event) {
+/*$('.like').on("click", function (event) {
     event.preventDefault();
     var postId = event.currentTarget.attributes['id'].value;
     var verif = event.currentTarget.attributes['verif'].value;
@@ -211,7 +220,7 @@ $('.like').on("click", function (event) {
 
 
 
-});
+});*/
 
 
 /**

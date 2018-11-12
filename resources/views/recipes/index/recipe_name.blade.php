@@ -95,9 +95,7 @@
 
                         </div>
                         <div class="bottom">
-                            <a class="tag like
-{{$controller->check_liked($recette->id)}}
-                                    " id="{{$recette->id}}" verif="{{ csrf_token() }}"><i class="material-icons">favorite</i></a>
+                            <like-recipe-async :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe-async>
                         </div>
 
                     </div>
