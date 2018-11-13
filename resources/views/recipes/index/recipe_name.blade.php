@@ -95,7 +95,7 @@
 
                         </div>
                         <div class="bottom">
-                            <like-recipe-async :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe-async>
+                            <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
                         </div>
 
                     </div>

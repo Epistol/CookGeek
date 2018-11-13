@@ -21098,7 +21098,7 @@ module.exports = '2.26.0';
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(164);
-module.exports = __webpack_require__(408);
+module.exports = __webpack_require__(411);
 
 
 /***/ }),
@@ -21153,13 +21153,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('validationform', __webpac
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('notif', __webpack_require__(396));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('searchautocomplete', __webpack_require__(399));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ingredient_form', __webpack_require__(402));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('like-recipe', __webpack_require__(413));
-
-/*Vue.component(
-	'like-recipe-example',
-	// The `import` function returns a Promise.
-	() => import('./components/LikeRecipe.vue')
-);*/
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('like-recipe', __webpack_require__(405));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -83302,28 +83296,15 @@ if (false) {
 }
 
 /***/ }),
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(414)
+var __vue_script__ = __webpack_require__(406)
 /* template */
-var __vue_template__ = __webpack_require__(415)
+var __vue_template__ = __webpack_require__(410)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -83362,12 +83343,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 414 */
+/* 406 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(407);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 
 
@@ -83459,48 +83440,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 415 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "a",
-      {
-        staticClass: "tag like",
-        class: { liked: _vm.retour !== false },
-        on: {
-          click: function($event) {
-            _vm.toggleLike(_vm.recipeid)
-          }
-        }
-      },
-      [_c("i", { staticClass: "material-icons" }, [_vm._v("favorite")])]
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-20c2c43c", module.exports)
-  }
-}
-
-/***/ }),
-/* 416 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(417);
+module.exports = __webpack_require__(408);
 
 
 /***/ }),
-/* 417 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -83525,7 +83472,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(418);
+module.exports = __webpack_require__(409);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -83541,7 +83488,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 418 */
+/* 409 */
 /***/ (function(module, exports) {
 
 /**
@@ -84272,6 +84219,46 @@ if (hadRuntime) {
   (function() { return this })() || Function("return this")()
 );
 
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "a",
+      {
+        staticClass: "tag like",
+        class: { liked: _vm.retour !== false },
+        on: {
+          click: function($event) {
+            _vm.toggleLike(_vm.recipeid)
+          }
+        }
+      },
+      [_c("i", { staticClass: "material-icons" }, [_vm._v("favorite")])]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-20c2c43c", module.exports)
+  }
+}
+
+/***/ }),
+/* 411 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -1,12 +1,6 @@
 <div class="is-pulled-right is-flex">
 
-    <a class="button tooltip is-tooltip-left like
-{{$controller->check_liked($recette->id)}}" id="{{$recette->id}}" verif="{{ csrf_token() }}"
-       data-tooltip="Ajouter aux coups de coeur">
-                  <span class="icon is-small">
-                    <i class="fas fa-heart"></i>
-                  </span>
-    </a>
+    <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
 
     <a class="button tooltip is-tooltip-left print" data-tooltip="Imprimer" href="javascript:window.print()">
                   <span class="icon is-small">

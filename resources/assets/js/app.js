@@ -42,12 +42,6 @@ Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
 
 
 
-/*Vue.component(
-	'like-recipe-example',
-	// The `import` function returns a Promise.
-	() => import('./components/LikeRecipe.vue')
-);*/
-
 
 const app = new Vue({
     el: '#app',
