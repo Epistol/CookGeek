@@ -83380,9 +83380,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 					while (1) {
 						switch (_context.prev = _context.next) {
 							case 0:
-								axios.post('/api/like/toggle_like/', { recipeid: this.recipeid, userid: this.userid }).then(function (response) {
-									_this.retour = response.data;
-								});
+								if (this.userid) {
+									axios.post('/api/like/toggle_like/', { recipeid: this.recipeid, userid: this.userid }).then(function (response) {
+										_this.retour = response.data;
+									});
+								} else {
+									console.log("pas connecté");
+									// this.notoggle();
+									this.retour = false;
+								}
 
 							case 1:
 							case "end":
@@ -83406,9 +83412,13 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 					while (1) {
 						switch (_context2.prev = _context2.next) {
 							case 0:
-								axios.post('/api/like/check_liked/', { recipeid: this.recipeid, userid: this.userid }).then(function (response) {
-									_this2.retour = response.data;
-								});
+								if (this.userid) {
+									axios.post('/api/like/check_liked/', { recipeid: this.recipeid, userid: this.userid }).then(function (response) {
+										_this2.retour = response.data;
+									});
+								} else {
+									this.retour = false;
+								}
 
 							case 1:
 							case "end":

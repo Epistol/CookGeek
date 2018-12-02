@@ -16,80 +16,112 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        // If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
-        return redirect()->route("account.param");
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index(Request $request)
+	{
+		// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
+		return redirect()->route("account.param");
 //			return view('user_space.home');
-    }
+	}
 
-    public function parameters()
-    {
-        return view('user_space.switch.param');
-    }
-
-
-    // Validation forms
-
-    public function param_store(Request $request)
-    {
-
-        $user = $request->user();
-        $refus = $request->no_traitement_donnees;
-        $traitement = $refus == true ? false : true;
-
-        $user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp, 'traitement_donnees' => $traitement];
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function parameters()
+	{
+		return view('user_space.switch.param');
+	}
 
 
-        foreach ($user_data as $column => $value) {
-            if ($this->is_dirty($value)) {
-                if ($column == 'password') {
-                    $user->$column = bcrypt($value);
-                } else {
-                    $user->$column = $value;
-                }
-            }
+	// Validation forms
 
-        }
-        $user->save();
-        $request->session()->flash('status', 'Profil mis à jour ! ');
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function param_store(Request $request)
+	{
 
-        return redirect()->back();
+		$user = $request->user();
+		$refus = $request->no_traitement_donnees;
+		$traitement = $refus == true ? false : true;
 
-    }
+		$user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp, 'traitement_donnees' => $traitement];
 
 
-    private function is_dirty($param)
-    {
-        return empty($param) || $param == '' ? false : true;
-    }
+		foreach($user_data as $column => $value) {
+			if($this->is_dirty($value)) {
+				if($column == 'password') {
+					$user->$column = bcrypt($value);
+				} else {
+					$user->$column = $value;
+				}
+			}
 
-    public function favorites(Request $request){
-	    $user_id = Auth::user()->id;
+		}
+		$user->save();
+		$request->session()->flash('status', 'Profil mis à jour ! ');
 
-	    $recettes = DB::table('recipes')
-		    ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-		    ->where('user_recipe_likes.user_id', '=', $user_id)
-		    ->select('recipes.*')
-		    ->paginate(12);
+		return redirect()->back();
 
-	    return view('user_space.favorites.index', array( 'recipes' => $recettes))->with(['controller' => $this]);
-    }
+	}
+
+
+	/**
+	 * @param $param
+	 * @return bool
+	 */
+	private function is_dirty($param)
+	{
+		return empty($param) || $param == '' ? false : true;
+	}
+
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function favorites(Request $request)
+	{
+		$user_id = Auth::user()->id;
+
+		$recettes = DB::table('recipes')
+			->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
+			->where('user_recipe_likes.user_id', '=', $user_id)
+			->select('recipes.*')
+			->paginate(12);
+
+		return view('user_space.favorites.index', array('recipes' => $recettes))->with(['controller' => $this]);
+	}
+
+
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function recipes(Request $request)
+	{
+		$user_id = Auth::user()->id;
+
+		$recettes = DB::table('recipes')
+			->where('id_user', '=', $user_id)
+			->paginate(12);
+
+		return view('user_space.recipes.index', array('recipes' => $recettes))->with(['controller' => $this]);
+	}
 
 
 	/**
@@ -106,7 +138,6 @@ class HomeController extends Controller
 		return $l_id ? "liked" : false;
 
 	}
-
 
 
 }

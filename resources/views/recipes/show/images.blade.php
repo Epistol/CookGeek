@@ -5,8 +5,8 @@
         <a href="{{$url}}"
            data-lightbox="{{$recette->slug}}" data-title="{{$recette->title}}">
             <figure class="image">
-                <?php $image = asset('/recipes/'.$recette->id.'/'.$recette->id_user.'/'.$firstimg->image_name)
-                ?>
+				<?php $image = asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name)
+				?>
                 <img src="<?=  $image?>">
             </figure>
         </a>

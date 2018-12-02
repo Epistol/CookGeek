@@ -15,7 +15,17 @@ class UniversController extends Controller
      */
     public function index()
     {
-        //
+
+        $univers = DB::table('univers')->latest()->paginate(12);
+
+	    if($univers != null) {
+
+		    // On charge les données dans la vue
+		    return view('univers.index', array( 'univers' => $univers))->with(['controller' => $this]);
+
+	    } else {
+		    return back();
+	    }
     }
 
     /**

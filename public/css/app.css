@@ -17628,6 +17628,11 @@ a.print:hover {
   border-radius: 10px;
 }
 
+.notification.is-success {
+  background-color: #23d160;
+  color: #fff;
+}
+
 .onboard_login {
   /*  display: flex;
     position: relative;

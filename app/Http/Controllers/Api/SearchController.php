@@ -20,7 +20,7 @@ class SearchController extends Controller
 
             foreach ($pieces as $p) {
                 $orders = Recipes::search($p)->get();
-                dd($orders);
+//                dd($orders);
 
                 // Searching in recipes
                 // TODO : Réduire le nombre de champs retournés par element ?

@@ -13,7 +13,7 @@ Route::prefix('home')->group(function () {
     Route::get('parameters', 'User\HomeController@parameters')->name("account.param");
 
     Route::get('favorites', 'User\HomeController@favorites')->name("account.fav");
-    Route::get('recipes', 'User\HomeController@recipe')->name("account.recipe");
+    Route::get('recipes', 'User\HomeController@recipes')->name("account.recipe");
 
 });
 

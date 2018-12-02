@@ -16,6 +16,9 @@
 			Schema::create('univers', function (Blueprint $table) {
 				$table->increments('id');
 				$table->string("name");
+				$table->integer("first_creator");
+				$table->timestamps();
+
 			});
 		}
 		

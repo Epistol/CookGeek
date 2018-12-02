@@ -38,7 +38,7 @@
                     <a class="navbar-item" href="{{ route('type.index') }}">
                         Types
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="{{route("univers.index")}}">
                         Univers
                     </a>
                     <a class="navbar-item">

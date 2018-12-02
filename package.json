@@ -27,6 +27,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^1.1.0",
     "buefy": "^0.6.7",
     "bulma": "^0.7.2",
     "bulma-extensions": "^0.3.1",

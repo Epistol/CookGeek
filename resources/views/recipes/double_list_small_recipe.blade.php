@@ -1,7 +1,5 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-
-
 @foreach($recipes->chunk(2)  as  $recettechunk)
 
 
