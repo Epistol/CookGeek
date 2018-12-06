@@ -24,4 +24,20 @@ class RecipeController extends Controller
 		}
 	}
 
+	public function get_ingredients(Request $request)
+	{
+		$recipe_id = $request->recipeid;
+
+		$ingr = DB::table('recipes_ingredients')
+			->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
+			->where('id_recipe', '=', $recipe_id)
+			->get();
+
+		// si un id existe, on le supprime et renvoie false
+		if($ingr) {
+			return response()->json($ingr);
+		} else {
+			return response()->json(false);
+		}
+	}
 }

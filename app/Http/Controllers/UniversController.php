@@ -67,7 +67,20 @@ class UniversController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+
+		// on va charger les univers les plus vus de chaque types
+
+		// 1) Charger les types (anime, manga, etc)
+		$univers  = Univers::where("id", $id)->firstOrFail();
+		$categunivers = (new Categunivers())->alltypes();
+
+		if($univers != null) {
+			// On charge les données dans la vue
+			return view('univers.show', array('univers' => $univers, 'categories' => $categunivers))->with(['controller' => $this]);
+
+		} else {
+			return back();
+		}
 	}
 
 

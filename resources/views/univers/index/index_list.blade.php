@@ -8,7 +8,7 @@
     @if(count($univers_list_id))
         <div class="categ_univers_recette " style="margin-top: 2rem; margin-bottom: 2rem;">
             <h2>{{ucfirst($categ->name)}}</h2> <br/>
-
+            <categ_icon text_icon="{{$categ->name}}"></categ_icon>
             <div class="columns is-marginless">
 				<?php //var_dump(count($univers_list_id)); ?>
                 {{--// On va charger le nb de recettes lié pour chaque univers--}}

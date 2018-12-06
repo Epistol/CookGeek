@@ -12,6 +12,15 @@
             <!--<img :src="'https://picsum.photos/64/?random'" alt=""/>-->
         </template>
         <a :href="'/recette/'+recipe.slug" class="titre_content">{{recipe.title}}</a>
+        <!--Ingredients-->
+        <ul id="example-1">
+            <li v-for="ingredient in ingredients">
+                {{ ingredient.qtt }}    {{ ingredient.name }}
+            </li>
+        </ul>
+
+        <!--Timing   -->
+
     </div>
 </template>
 
@@ -31,6 +40,8 @@
 				retour: '',
 				picture: 'https://picsum.photos/64/?random',
 				test: '',
+				ingredients: '',
+				timing: '',
 			};
 		},
 
@@ -40,10 +51,18 @@
 					this.picture = response.data;
 				});
 			},
+
+			async getIngredients() {
+				axios.post('/api/recipe/get_ingredients/', {recipeid: this.recipe.id}).then(response => {
+					this.ingredients = response.data;
+				});
+			},
+
 		},
 
 		mounted() {
 			this.getFirstPicture();
+			this.getIngredients();
 		}
 
 	}

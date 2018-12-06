@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -12,7 +11,6 @@ require('./star-rating');
 
 
 window.Vue = require('vue');
-
 
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
@@ -37,9 +35,12 @@ Vue.component('validationform', require('./components/ValidateFormButton.vue'));
 Vue.component('notif', require('./components/NotifAlert.vue'));
 Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 Vue.component('ingredient_form', require('./components/Ingredients.vue'));
+
+
 Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
 
 Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
+Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon"));
 
 
 
@@ -73,11 +74,8 @@ const app = new Vue({
                 name : '',
                 qtt : '',
             },
-
-
         ],
         seen: true,
-
     },
 
     methods: {
@@ -98,15 +96,8 @@ const app = new Vue({
         removeStep: function (index) {
             this.steps.splice(index, 1);
         },
-
-
     },
-
-
 });
-
-
-
 
 /**
  * Quand on ajoute une img dans le formulaire ajout img recette
@@ -145,77 +136,6 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-/**
- * Like system
- * @param PostID = id de la recette
- * @param verif = csrf
- * @return axios state
- */
-
-/*$('.like').on("click", function (event) {
-    event.preventDefault();
-    var postId = event.currentTarget.attributes['id'].value;
-    var verif = event.currentTarget.attributes['verif'].value;
-
-
-    if(userIsLoggedIn === 1){
-
-        $("#"+postId).toggleClass('liked');
-
-        if($(this).hasClass("liked")){
-            $("#"+postId).children('span').children('i').addClass("likedanimation");
-        }
-        if(!$(this).hasClass("liked")){
-            $("#"+postId).children('span').children('i').removeClass("likedanimation");
-        }
-
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = verif;
-
-        axios.post('/like', {
-            recette: postId
-        })
-            .then(function (response) {
-                if(response.data === "unliked"){
-                    if($(this).hasClass("liked")) {
-                        $("#" + postId).removeClass("liked");
-                    }
-                }
-                else if(response.data === "liked"){
-                    $("#" + postId).addClass("liked");
-
-                }
-            })
-            .catch(function (error) {
-                if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {
-                    // The request was made but no response was received
-                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                } else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            });
-    }
-    else {
-        app.showModalLike = true;
-        console.log('pas co');
-        return false;
-    }
-
-
-
-
-});*/
-
 
 /**
  * Navbar burger
