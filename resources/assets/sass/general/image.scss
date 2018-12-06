@@ -3,5 +3,9 @@
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.16);
   -webkit-border-radius: 10px;
   border-radius: 10px;
+}
 
+.radiused > img {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }

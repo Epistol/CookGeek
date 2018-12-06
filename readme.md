@@ -1,5 +1,7 @@
 <p align="center"><img src="https://cuisinedegeek.com/img/logoo_rond.png" height="120" ></p>
 
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/Epistol/cdg)
+
 
 <!---
 <p align="center">

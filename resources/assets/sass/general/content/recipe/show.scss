@@ -16,9 +16,9 @@
   -webkit-border-radius: 15px;
   border-radius: 15px;
   //margin-right: 1rem;
-  border:1rem $body-bg;
+  border: 1rem $body-bg;
   padding: 1.2rem;
-  box-shadow: 0 10px 40px 0 rgba($gris_granite,  0.1), 0 2px 9px 0 rgba($gris_granite,  0.11);
+  box-shadow: 0 10px 40px 0 rgba($gris_granite, 0.1), 0 2px 9px 0 rgba($gris_granite, 0.11);
 
 }
 
@@ -57,6 +57,15 @@
   //background: lighten($body-bg, 2.1);
 }
 
+.recipe_list_object {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  margin-bottom: 2%;
+}
+
+
+
 .dollar_null {
   color: white;
   text-shadow: 2px 0 0 lighten($brand-primary, 20), -2px 0 0 lighten($brand-primary, 20), 1px 1px 0 lighten($brand-primary, 20);
@@ -83,6 +92,7 @@
       border-color: $brand-success;
     }
   }
+
   &.mid {
     &:hover {
       color: $brand-warning;
@@ -90,6 +100,7 @@
     }
 
   }
+
   &.hard {
     &:hover {
 
@@ -102,7 +113,6 @@
     @include transition_all();
   }
 }
-
 
 
 .shadowbox {
@@ -137,7 +147,7 @@
 
 .is-lateral {
   border: 1px solid #f3f2fd;
-  -webkit-border-radius:15px;
+  -webkit-border-radius: 15px;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -156,14 +166,14 @@
 
 .is_big {
   color: $brand-primary;
-  font-size:1.2rem;
-  font-weight:400;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .ingr {
   &:hover {
-    background:#EBEAF5;
-    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+    background: #EBEAF5;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   }
 }

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <section class="section blockcontent">
+        <section class="section blockcontent is-paddingless ">
 
             @include("recipes.index.bread")
 
@@ -11,16 +11,16 @@
                 {{--@include("recipes.index.searchbar")--}}
                 {{--@include("recipes.index.partype")--}}
 
-                @if($univers)
+                @if($cateunivers)
                     <section class="hero">
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
                                     Les univers
                                 </h1>
-                                <h2 class="subtitle">
-                                    La liste de tout les univers ajouté grâce à vos recettes
-                                </h2>
+                                <div class="subtitle">
+                                    {{--@include("search.searchbar")--}}
+                                </div>
                             </div>
                         </div>
                     </section>

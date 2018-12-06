@@ -1,68 +1,77 @@
-{{--Recettes ayant dans le nom la recherche --}}
+{{--Pour chaque catégorie d'univers (livre, jeux) , on va devoir savoir si il existe des univers populaire --}}
+@foreach($cateunivers as $categ)
+    {{--Récupération de tout les univers--}}
+    @php
+        $univers_list_id = $controller->get_all_universes_in_categ($categ->id);
+    @endphp
 
-@foreach($univers->chunk(2)  as  $universchunk)
+    @if(count($univers_list_id))
+        <div class="categ_univers_recette " style="margin-top: 2rem; margin-bottom: 2rem;">
+            <h2>{{ucfirst($categ->name)}}</h2> <br/>
 
+            <div class="columns is-marginless">
+				<?php //var_dump(count($univers_list_id)); ?>
+                {{--// On va charger le nb de recettes lié pour chaque univers--}}
+                @foreach($univers_list_id as $univers_id)
+                    {{--// On charge l'info univers--}}
+                    @php
+                        $univers_data = DB::table('univers')->where('id', '=', $univers_id->univers)->get();
+                    @endphp
 
-    <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">
+                    {{--// pour chaque univers, on va compter le nombre de recette--}}
+                    @foreach($univers_data as $univers_datum)
+                        @php
+                            $recipe_count = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_datum->id)->count();
+                            $recettes = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_datum->id)->latest()->orderBy('nb_views', 'desc')->limit(6)->paginate(12);
+                        @endphp
 
-        @foreach ($universchunk as $univers)
+                        @if($recipe_count >= 0)
+                            <div class="univers_element column">
+                                {{--Nom de l'univers--}}
 
-			<?php
-			/*$img = DB::table('recipe_imgs')->where('recipe_id', '=', $univers->id)->first();
-			$first = $img;
-			$starsget = (new \App\Search)->explode_star($univers->id);*/
-//			$type = DB::table('type_recipes')->where('id', $univers->type)->first();
+                                <div class="columns is-marginless is-paddingless    ">
+                                    @endif
 
-			?>
+                                    @switch($recipe_count)
+                                        @case($recipe_count >= 5)
+                                        <div class="column">
+                                            <p>Hello6</p>
+                                            <div class="card">{{$univers_datum->name}}</div>
+                                            @include("univers.index.mega_recipes")
+                                        </div>
+                                        @break
 
-            <div class="column is-6 is-result">
-                <div class="columns">
-                    <div class="column is-4 to-hover is-paddingless is-marginless">
-                        @if(isset($type))
-                            <div class="hovered">
-                                <a class="tag" style="margin:0.5rem"
-                                   href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
+                                        @case($recipe_count >= 3)
+                                        <div class="column">
+                                            <p>Hello4</p>
+                                            <div class="card">{{$univers_datum->name}}</div>
+                                            @include("univers.index.middle_recipes")
+                                        </div>
+                                        @break
+
+                                        @case($recipe_count >= 1)
+
+                                        @include("univers.index.mini_recipes")
+                                        @break
+
+                                        @case($recipe_count < 0)
+										<?php var_dump("hey=0"); ?>
+                                        @break
+                                        {{--@include("univers.index.fallback_recipes")--}}
+                                    @endswitch
+
+                                    @if($recipe_count >= 0)
+                                </div>
                             </div>
                         @endif
-
-
-                    </div>
-                    <div class="column is-7">
-                        <div class=" is-flex">
-                            <a href="{{url('/recette/'.$univers->name)}}"><h2 class="title">
-                                    @php echo str_limit($univers->name, 20, ' (...)'); @endphp
-                                </h2></a>
-                        </div>
-                        <div class="liste_recettes">
-                            {{-- Ingredients--}}
-
-                        </div>
-
-                    </div>
-                    <div class="column is-1 ">
-                        <div class="top">
-
-                        </div>
-                        <div class="middle">
-
-                        </div>
-                        <div class="bottom">
-                            <like-recipe :recipeid="'{{$univers->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
-                        </div>
-
-                    </div>
-                </div>
+                    @endforeach
+                @endforeach
             </div>
+        </div>
+    @else
+        {{--TODO : faire une fiche plus tard--}}
+        <span class="tag">{{ucfirst($categ->name)}}</span>
+        {{--@include("univers.index.fallback_recipes")--}}
 
-
-        @endforeach
-
-
-    </div>
-
-
+    @endif
 @endforeach
-<span>
-                 {{--{{ $univers->links() }}--}}
-        </span>
-

@@ -1,8 +1,11 @@
 <div class="field has-addons">
     <div class="control is-expanded">
-        @if($value != null)
-
-            <input class="input" type="text" placeholder="Chercher" value="{{$value}}">
+        @if(isset($value))
+            @if($value != null)
+                <input class="input" type="text" placeholder="Chercher" value="{{$value}}">
+            @endif
+        @elseif (!isset($value))
+            <input class="input" type="text" placeholder="Chercher">
 
         @else
 

@@ -39,7 +39,7 @@ Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 Vue.component('ingredient_form', require('./components/Ingredients.vue'));
 Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
 
-
+Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
 
 
 

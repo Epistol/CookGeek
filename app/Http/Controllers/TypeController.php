@@ -16,7 +16,11 @@ class TypeController extends Controller
     {
         $all_types = DB::table('type_recipes')->get();
         return view("types.superindex", ["types" => $all_types]);
+    }
 
+    public function alltypes() {
+    	$all_types = DB::table("type_recipes")->get();
+    	return $all_types;
     }
 
     /**

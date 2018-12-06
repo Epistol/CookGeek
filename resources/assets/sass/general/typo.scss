@@ -92,3 +92,17 @@ h2.mini_title {
   color: $title_small;
   font-size:1.4rem;
 }
+
+.titre_content {
+  font-family: 'AvenirMedium';
+  font-weight: 500;
+  font-size: 1.2rem;
+  color:$brand-primary;
+}
+
+.titre_partie {
+  font-family: 'AvenirBlack';
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: $brand-primary;
+}

@@ -2,7 +2,6 @@
   padding-bottom: 1rem;
 }*/
 
-
 html, body {
   height: 100%;
   box-sizing: border-box;
@@ -62,6 +61,7 @@ body, button, input, select, textarea {
 .liked > i {
   color: red;
 }
+
 .liked > span > i {
   color: red;
 }
@@ -109,9 +109,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container .navbar-brand {
-  margin-left: 0!important;
+  margin-left: 0 !important;
 }
-
 
 
 [v-cloak] {
@@ -119,16 +118,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button.is-round.is-small {
-
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-
   width: 32px;
   height: 32px;
 }
 
 .recipeaddbg {
-  padding-top:2rem;
+  padding-top: 2rem;
 }
 
+.block {
+  background: rgba(255, 0, 0, 0.3);
+  border: 2px solid green;
+}
+
+.univers_element {
+  display: block;
+  margin: 1%;
+  background: white;
+}
+
+.categ_univers_recette {
+  background: #ebeaf5;
+}
+
+
+.radiused {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
