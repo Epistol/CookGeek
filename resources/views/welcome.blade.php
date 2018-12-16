@@ -1,25 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        {{--TODO : Changer ça vite fait--}}
+    <div class="container blockcontent">
+        <div class="is-flex-center">
+            <h1 class="title-website">Cuisine De Geek</h1>
+            {{--Petite description--}}
+        </div>
+        {{--Most viewed universes--}}
+        {{--Last recipes--}}
+        @include("recipes.index.all")
+        @include("univers.preview.preview")
 
-            {{--<section class="section">--}}
-                {{--@include("recipes.index.formulaire")--}}
+        {{--Most viewed universes with recipes--}}
+            {{--@include("recipes.index.partype")--}}
+        {{--Meals--}}
+            {{--@include("recipes.index.favorise")--}}
 
-            {{--</section>--}}
-            @include("recipes.index.partype")
-            @include("recipes.index.favorise")
-
-            {{--<img src="{{ asset('/img/tempo/img1.png')}}" style="margin-left: auto;--}}
-	{{--margin-right: auto;--}}
-	{{--display: block;">--}}
-
-     <div>
-         {{--<img src="{{ asset('/img/tempo/img2.png')}}" style="margin-left: auto;--}}
-	{{--margin-right: auto;--}}
-	{{--display: block;">--}}
-     </div>
 
     </div>
 @endsection

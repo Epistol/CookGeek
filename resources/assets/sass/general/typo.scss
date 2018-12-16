@@ -79,13 +79,52 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url("../fonts/EurostileBQ-BoldExtended.otf") format("opentype");
 }
 
-
+h1, h1.title {
+  font-size:2rem;
+}
+h2, h2.title {
+  font-size:1.6rem;
+}
+h3, h3.title {
+  font-size:1.4rem;
+}
+h4, h4.title {
+  font-size:1.2rem;
+}
+h5, h5.title {
+  font-size:1.1rem;
+}
+h6, h6.title {
+  font-size:1.05rem;
+}
 
 .content h1,  h1.title{
   color: $accentsecondary;
 }
 h2.title{
+  color: $accentsecondary;
+}
+
+.split_categ {
+  border-bottom: 1px solid #ebeaf5;
+  padding-bottom: 1rem!important;
+  padding-top: 0.5rem;
+}
+
+.texte_accueil {
+  color: #7f5fbf;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  font-family: 'AvenirMedium', sans-serif;
+  
+}
+
+h1.title-website {
+  font-family: "Conviction", Arial, serif;
   color: $brand-primary;
+  font-weight: normal;
+  font-size: 2.2rem;
 }
 
 h2.mini_title {
@@ -105,4 +144,12 @@ h2.mini_title {
   font-weight: 900;
   font-size: 1.4rem;
   color: $brand-primary;
+}
+
+span.ingr_title{
+  font-weight: 900;
+  font-size: 16px;
+  text-align: left;
+  color: #fe688e;
+  text-transform : uppercase;
 }

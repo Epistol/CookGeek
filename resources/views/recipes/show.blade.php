@@ -97,17 +97,14 @@
 	<?php
 	use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
 
-	$ingredientliste = array();
-	foreach($ingredients as $ingr) {
-		$nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
-		$ingredientliste[] = $ingr->qtt . " " . $nom_in;
-	}
+
 
 	$instructions = array();
 	foreach($instructions as $key => $etape) {
 		$nom_in = app('profanityFilter')->filter($steps[$key]->instruction);
 		$instructions[] = $nom_in;
 	}
+
 
 
 	if(isset($firstimg->image_name)) {
@@ -128,9 +125,8 @@
 		->cookTime($cooktimeiso)
 		->totalTime($totaliso)
 		->description($recette->title . " - CDG")
-		->recipeIngredient([$ingredientliste])
+		->recipeIngredient(json_encode($ingredients))
 		->recipeCategory($type->name)
-		->recipeInstructions([$instructions])
 	?>
 
     {!! $datas->toScript()  !!}

@@ -15,7 +15,7 @@
         <!--Ingredients-->
         <ul id="example-1">
             <li v-for="ingredient in ingredients">
-                {{ ingredient.qtt }}    {{ ingredient.name }}
+                {{ ingredient.qtt }} {{ ingredient.name }}
             </li>
         </ul>
 

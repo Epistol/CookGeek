@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-nomargin-side {
-  padding: 2.5rem 0px;
+  padding: 2.5rem 1rem;
 }
 
 .hero-body {
@@ -130,10 +130,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .block {
-  background: rgba(255, 0, 0, 0.3);
-  border: 2px solid green;
+/*  background: rgba(255, 0, 0, 0.3);
+  border: 2px solid green;*/
 }
-
+.advanced {
+  padding: 2rem;
+}
 .univers_element {
   display: block;
   margin: 1%;
@@ -149,3 +151,66 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
+
+.navbar-item.user_profile img {
+max-height: initial!important;
+}
+
+
+.change-picture {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  z-index: 99;
+  background: hsla(245, 35%, 94%, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #6c548f;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  min-height: 64px;
+  min-width: 64px;
+  top: 25%;
+  left:25%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+figure.image:hover {
+  cursor: pointer;
+  & > .change-picture {
+    opacity: 1;
+    visibility: visible;
+  
+  }
+  & img {
+    opacity:0.8;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+figure.image img {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.sous_cat {
+  margin-bottom: 2rem;
+}
+
+nav.breadcrumb {
+  padding: 1rem;
+}
+

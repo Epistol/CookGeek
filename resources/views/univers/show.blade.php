@@ -5,31 +5,32 @@
     <div class="container">
         <section class="section blockcontent is-paddingless ">
 
-            @include("recipes.index.bread")
+            @include("univers.show.bread")
 
             <div class="content">
                 {{--@include("recipes.index.searchbar")--}}
                 {{--@include("recipes.index.partype")--}}
 
                 @if($univers)
-                    <section class="hero">
-                        <div class="hero-body">
-                            <div class="container">
+                    <div style="max-height:10rem;">
+                        <div class="columns">
+                            <div class="column ">
+                                <univpictureupload></univpictureupload>
+                            </div>
+                            <div class="column">
                                 <h1 class="title">
-                                    Univers :
+                                    {{ $univers->name }}
                                 </h1>
-                                <div class="subtitle">
-                                    {{--@include("search.searchbar")--}}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                {{--Picture of universe--}}
 
-                {{--Ajout votre propre image ? --}}
+                    {{--Picture of universe--}}
 
-                {{--Liste des icones type recette--}}
+                    {{--Ajout votre propre image ? --}}
+
+                    {{--Liste des icones type recette--}}
 
                     {{--<categ-icon :text-icon="{{$typeuniv->name}}"></categ-icon>--}}
 

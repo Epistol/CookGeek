@@ -67,6 +67,7 @@ a.print {
   border: 0px solid white;
   margin-left: 1rem;
   color:white;
+  margin-right: 1rem;
   @include transition_all();
   &:hover {
     color:white;

@@ -9,29 +9,29 @@
 
 function sumerise_t($val)
 {
-    $format = '%1$02d';
-    // si il y'a + d'1heure
-    if ($val > 60) {
-        $somme_h = $val / 60;
-        $somme_m = $val - ((int)$somme_h * 60);
-        // si le nb de minute est supérieur a 0, on les affiches
-        if ($somme_m > 0) {
-            return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) . " min";
-        } else {
-            return sprintf($format, $somme_h) . " h ";
-        }
+	$format = '%1$02d';
+	// si il y'a + d'1heure
+	if($val > 60) {
+		$somme_h = $val / 60;
+		$somme_m = $val - ((int)$somme_h * 60);
+		// si le nb de minute est supérieur a 0, on les affiches
+		if($somme_m > 0) {
+			return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) . " min";
+		} else {
+			return sprintf($format, $somme_h) . " h ";
+		}
 
-    } else {
-        $somme_h = 0;
-        $somme_m = $val - ((int)$somme_h * 60);
-        // si le nb de minute est supérieur a 0, on affiche qqch
-        if ($somme_m > 0) {
-            return sprintf($format, $somme_m) . " min";
-        } else {
-            return '';
-        }
+	} else {
+		$somme_h = 0;
+		$somme_m = $val - ((int)$somme_h * 60);
+		// si le nb de minute est supérieur a 0, on affiche qqch
+		if($somme_m > 0) {
+			return sprintf($format, $somme_m) . " min";
+		} else {
+			return '';
+		}
 
-    }
+	}
 }
 
 

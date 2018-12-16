@@ -15,19 +15,19 @@
                     </div>
 
                 </div>
-                <transition name="slide">
+            {{--    <transition name="slide">
                     <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active " v-if="seen"
                          v-cloak>
                         <div class="column">
-                            {{--@include("search.advanced.type")--}}
-                            {{--@include("search.advanced.diff")--}}
-                            {{--@include("search.advanced.prix")--}}
-                            {{--  @include("search.advanced.temps")
+                            --}}{{--@include("search.advanced.type")--}}{{--
+                            --}}{{--@include("search.advanced.diff")--}}{{--
+                            --}}{{--@include("search.advanced.prix")--}}{{--
+                            --}}{{--  @include("search.advanced.temps")
                              @include("search.advanced.note")
-                             @include("search.advanced.parts")--}}
+                             @include("search.advanced.parts")--}}{{--
                         </div>
                     </div>
-                </transition>
+                </transition>--}}
 
 
             </div>

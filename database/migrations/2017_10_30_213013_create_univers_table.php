@@ -17,6 +17,7 @@
 				$table->increments('id');
 				$table->string("name");
 				$table->integer("first_creator");
+				$table->integer("nb_recipes");
 				$table->timestamps();
 
 			});

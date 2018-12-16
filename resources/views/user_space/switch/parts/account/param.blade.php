@@ -2,27 +2,26 @@
       action="{{ route('param.store') }}">
     {{ csrf_field() }}
 
-
     <div class="columns ">
         {{--Photo profil--}}
-        <div class="column is-5">
-            @include("user_space.switch.parts.account.informations.avatar")
 
-        </div>
         {{--Infos classique--}}
         <div class="column">
             @include("user_space.switch.parts.account.informations.basic")
             @include("user_space.switch.parts.account.informations.switch")
+            <div class="is-flex-center">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <validationform><span slot="text">Sauvegarder</span></validationform>
+                    </div>
 
-        </div>
-    </div>
-
-    <div class="is-flex-center">
-        <div class="field is-grouped">
-            <div class="control">
-                <validationform><span slot="text">Sauvegarder</span></validationform>
+                </div>
             </div>
-
+        </div>
+        <div class="column is-4">
+            @include("user_space.switch.parts.account.informations.avatar")
         </div>
     </div>
+
+
 </form>

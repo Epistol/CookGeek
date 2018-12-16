@@ -9,3 +9,12 @@
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
+
+.radius-index {
+  -webkit-border-radius: 0 0 15px 15px;
+  border-radius: 0 0 15px 15px;
+  & > .img {
+    -webkit-border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 15px;
+  }
+}

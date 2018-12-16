@@ -70,20 +70,27 @@
                         <div class="navbar-item"><a class="button is-primary" href="{{ route('login') }}">Connexion</a>
                         </div>
 
-                        {{--TODO Changer l'href en modale--}}
-
                         {{--<div class="navbar-item" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
                         {{--@include("auth.modal.login")--}}
 
 
                     @else
                         <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-item">
+                            <a class="navbar-item user_profile">
                                 <div class="user_picture">
-                                    <figure class="image is-32x32">
-                                        <img class="is-rounded"
-                                             src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
-                                    </figure>
+                                    @if(Auth::user()->avatar !== 'users/default.png')
+                                        <figure class="image is-48x48">
+                                            <img class="is-rounded "
+                                                 src="/user/{{Auth::user()->id}}/{{Auth::user()->avatar}}"
+                                                 style="height: 100%;width: 100%;">
+                                        </figure>
+                                    @else
+                                        <figure class="image is-48x48">
+                                            <img class="is-rounded"
+                                                 src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                                        </figure>
+                                    @endif
+
                                 </div>
                                 <a class="navbar-link">
                                     {{ Auth::user()->name }} <span class="caret"></span>

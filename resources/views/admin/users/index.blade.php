@@ -33,19 +33,6 @@
                     <td>
                                 <a href="{{route("admin.user.edit", $user->id)}}" class="button is-info">Voir plus</a>
 
-
-                    {{--    <form method="POST" action="/admin/page/{{$user->id}}">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="DELETE">
-                            <div class="caution">
-                                <modal v-if="showModal" @close="showModal = false">
-                                    <p>Yo</p>
-                                </modal>
-                                <button class="button is-warning" @click="showModal = true">Alerte</button>
-                            </div>
-                        </form>
---}}
-
                     </td>
                     <td>
                         {{$user->nb_visites}}

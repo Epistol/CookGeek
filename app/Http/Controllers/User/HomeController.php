@@ -31,7 +31,7 @@ class HomeController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index(Request $request)
+	public function index()
 	{
 		// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
 		return redirect()->route("account.param");
@@ -57,6 +57,17 @@ class HomeController extends Controller
 	{
 
 		$user = $request->user();
+
+		if($request->resume) {
+			$fichier = $request->resume;
+			if($fichier->getError() == 0) {
+				$photoName = time() . '.' . $fichier->getClientOriginalExtension();
+				$fichier->move(public_path('user/' . Auth::id() . '/'), $photoName);
+				$user->avatar = $photoName;
+			}
+		}
+
+
 		$refus = $request->no_traitement_donnees;
 		$traitement = $refus == true ? false : true;
 
@@ -71,9 +82,10 @@ class HomeController extends Controller
 					$user->$column = $value;
 				}
 			}
-
 		}
 		$user->save();
+
+
 		$request->session()->flash('status', 'Profil mis à jour ! ');
 
 		return redirect()->back();

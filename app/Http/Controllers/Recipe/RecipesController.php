@@ -362,7 +362,10 @@ class RecipesController extends Controller
 
 		$recette = Recipes::where('slug', $slug)->first();
 
-		$ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)->get();
+		$ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)
+			->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
+			->get();
+
 		$steps = DB::table('recipes_steps')->where('recipe_id', '=', $recette->id)->get();
 		$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 

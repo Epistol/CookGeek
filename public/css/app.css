@@ -17039,12 +17039,57 @@ input[type=range].slider.is-danger .has-output-tooltip + output {
   src: url("../fonts/EurostileBQ-BoldExtended.otf") format("opentype");
 }
 
+h1, h1.title {
+  font-size: 2rem;
+}
+
+h2, h2.title {
+  font-size: 1.6rem;
+}
+
+h3, h3.title {
+  font-size: 1.4rem;
+}
+
+h4, h4.title {
+  font-size: 1.2rem;
+}
+
+h5, h5.title {
+  font-size: 1.1rem;
+}
+
+h6, h6.title {
+  font-size: 1.05rem;
+}
+
 .content h1, h1.title {
   color: #fa5c86;
 }
 
 h2.title {
+  color: #fa5c86;
+}
+
+.split_categ {
+  border-bottom: 1px solid #ebeaf5;
+  padding-bottom: 1rem !important;
+  padding-top: 0.5rem;
+}
+
+.texte_accueil {
   color: #7f5fbf;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  font-family: 'AvenirMedium', sans-serif;
+}
+
+h1.title-website {
+  font-family: "Conviction", Arial, serif;
+  color: #7f5fbf;
+  font-weight: normal;
+  font-size: 2.2rem;
 }
 
 h2.mini_title {
@@ -17064,6 +17109,14 @@ h2.mini_title {
   font-weight: 900;
   font-size: 1.4rem;
   color: #7f5fbf;
+}
+
+span.ingr_title {
+  font-weight: 900;
+  font-size: 16px;
+  text-align: left;
+  color: #fe688e;
+  text-transform: uppercase;
 }
 
 /**
@@ -17369,7 +17422,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-nomargin-side {
-  padding: 2.5rem 0px;
+  padding: 2.5rem 1rem;
 }
 
 .hero-body {
@@ -17407,8 +17460,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .block {
-  background: rgba(255, 0, 0, 0.3);
-  border: 2px solid green;
+  /*  background: rgba(255, 0, 0, 0.3);
+  border: 2px solid green;*/
+}
+
+.advanced {
+  padding: 2rem;
 }
 
 .univers_element {
@@ -17423,6 +17480,64 @@ h1, h2, h3, h4, h5, h6 {
 
 .radiused {
   border-radius: 10px;
+}
+
+.navbar-item.user_profile img {
+  max-height: initial !important;
+}
+
+.change-picture {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  z-index: 99;
+  background: rgba(235, 234, 245, 0.85);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+  color: #6c548f;
+  border-radius: 50%;
+  min-height: 64px;
+  min-width: 64px;
+  top: 25%;
+  left: 25%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+figure.image:hover {
+  cursor: pointer;
+}
+
+figure.image:hover > .change-picture {
+  opacity: 1;
+  visibility: visible;
+}
+
+figure.image:hover img {
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+figure.image img {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.sous_cat {
+  margin-bottom: 2rem;
+}
+
+nav.breadcrumb {
+  padding: 1rem;
 }
 
 .main_eror {
@@ -17633,6 +17748,7 @@ a.print {
   border: 0px solid white;
   margin-left: 1rem;
   color: white;
+  margin-right: 1rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -17667,6 +17783,14 @@ a.print:hover {
 
 .radiused > img {
   border-radius: 10px;
+}
+
+.radius-index {
+  border-radius: 0 0 15px 15px;
+}
+
+.radius-index > .img {
+  border-radius: 0 0 15px 15px;
 }
 
 .notification.is-success {
@@ -18069,6 +18193,15 @@ form.addrecipe .field {
   margin-bottom: 2%;
 }
 
+.recipe_index_object {
+  border-radius: 10px;
+  background: #e3e1f7;
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  margin-bottom: 2%;
+  margin-right: 1rem;
+}
+
 .dollar_null {
   color: white;
   text-shadow: 2px 0 0 #b9a8dc, -2px 0 0 #b9a8dc, 1px 1px 0 #b9a8dc;
@@ -18170,6 +18303,34 @@ form.addrecipe .field {
   background: #EBEAF5;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.card-cdg {
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+}
+
+p.card-header-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.columns.mini-infos {
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(112, 112, 112, 0.1);
+}
+
+section.bgwhite {
+  background: white;
 }
 
 .left_register {

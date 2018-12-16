@@ -5,9 +5,8 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
-                Les dernières recettes
+                Explorer nos dernières recettes
             </h1>
-
         </div>
     </div>
 </section>
@@ -15,11 +14,11 @@
 
 <section class=" bordered-cdg">
     <div class="columns">
-        <?php $i = 0;?>
+		<?php $i = 0;?>
 
         {{--   -> tout les univers--}}
         @foreach($universcateg as $index=>$c)
-            <?php $i = $index + 1;?>
+			<?php $i = $index + 1;?>
 
 
             {{--  -> si la recette n'est pas nulle--}}
