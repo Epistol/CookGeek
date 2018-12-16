@@ -91,22 +91,15 @@
 
                         </div>
                         <div class="bottom">
-                            <a class="tag like
-{{$controller->check_liked($recette->id)}}
-                                    " id="{{$recette->id}}" verif="{{ csrf_token() }}"><i class="material-icons">favorite</i></a>
+                            <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
                         </div>
 
                     </div>
                 </div>
             </div>
-
 				<?php $i++?>
-
             @endforeach
-
-
     </div>
-
 
 @endforeach
 <span>

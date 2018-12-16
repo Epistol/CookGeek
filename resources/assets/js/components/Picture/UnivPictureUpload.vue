@@ -1,34 +1,35 @@
 <template>
-    <label>
+    <label style="display: table-caption;">
         <template v-if="!showPreview">
-            <template v-if="picture !== 'users/default.png'">
+            <template v-if="picture !== 'users/default.png' && picture !== null && picture !== 'null' ">
                 <figure class="image is-square is-128x128">
                     <img :src="'/universe/' + universe_id + '/' + picture"/>
-                    <div class="change-picture">
+                    <!--<div class="change-picture">
                         <i class="fas fa-camera-retro"></i>
-                    </div>
+                    </div>-->
                 </figure>
             </template>
             <template v-else>
                 <figure class="image is-square is-128x128">
-                    <img :src="'https://api.adorable.io/avatars/'+universe_id" v-show="!showPreview" style="max-height:196px;">
-                    <div class="change-picture">
+                    <img :src="'https://api.adorable.io/avatars/'+universe_id" v-show="!showPreview"
+                         style="max-height:196px;">
+                    <!--<div class="change-picture">
                         <i class="fas fa-camera-retro"></i>
-                    </div>
+                    </div>-->
                 </figure>
             </template>
         </template>
         <template v-else>
             <figure class="image is-square is-128x128">
                 <img v-bind:src="imagePreview" style="max-height:196px;"/>
-                <div class="change-picture">
+                <!--<div class="change-picture">
                     <i class="fas fa-camera-retro"></i>
-                </div>
+                </div>-->
             </figure>
         </template>
 
-        <input @change="previewFiles" ref="myFiles" class="" id="upload" type="file" name="resume"
-               accept="image/x-png,image/jpeg" style="display:none">
+       <!-- <input @change="previewFiles" ref="myFiles" class="" id="upload" type="file" name="resume"
+               accept="image/x-png,image/jpeg" style="display:none">-->
     </label>
 </template>
 

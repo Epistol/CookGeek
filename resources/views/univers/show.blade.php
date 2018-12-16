@@ -2,6 +2,28 @@
 @section('titrepage', "Univers")
 @section('content')
 
+    <section class="entete">
+        <div class="container">
+            <div class="columns">
+                @if(isset($univers->picture))
+                <div class="column">
+                        <univpictureupload :universe_id={{$univers->id}} :picture={{$univers->picture}}></univpictureupload>
+                    {{--@else--}}
+                        {{--<univpictureupload :universe_id={{$univers->id}} :picture="null"></univpictureupload>--}}
+                </div>
+                @endif
+
+                <div class="column">
+                    <h1 class="title">
+                        {{ $univers->name }}
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
     <div class="container">
         <section class="section blockcontent is-paddingless ">
 
@@ -12,30 +34,6 @@
                 {{--@include("recipes.index.partype")--}}
 
                 @if($univers)
-                    <div style="max-height:10rem;">
-                        <div class="columns">
-                            <div class="column ">
-                                <univpictureupload></univpictureupload>
-                            </div>
-                            <div class="column">
-                                <h1 class="title">
-                                    {{ $univers->name }}
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    {{--Picture of universe--}}
-
-                    {{--Ajout votre propre image ? --}}
-
-                    {{--Liste des icones type recette--}}
-
-                    {{--<categ-icon :text-icon="{{$typeuniv->name}}"></categ-icon>--}}
-
-
-
                     {{--Liste des recettes par catégorie avec pagination --}}
                     @include("univers.show.index_list")
                 @endif

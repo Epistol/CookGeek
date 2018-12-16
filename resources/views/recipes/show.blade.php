@@ -68,17 +68,14 @@
 
 
                                     </div>
-                                    <div class="column is-3 list-h-show ">
+                                    <aside class="column is-3 list-h-show ">
                                         @include('recipes.show.fiche_droite')
-                                    </div>
+                                    </aside>
                                 </div>
-
 
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -93,11 +90,8 @@
         </div>
     </div>
 
-
 	<?php
 	use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
-
-
 
 	$instructions = array();
 	foreach($instructions as $key => $etape) {

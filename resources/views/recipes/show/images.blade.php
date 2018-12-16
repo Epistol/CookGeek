@@ -4,10 +4,10 @@
         @php($url = url("/recipes/".$recette->id."/".$recette->id_user."/".$firstimg->image_name) )
         <a href="{{$url}}"
            data-lightbox="{{$recette->slug}}" data-title="{{$recette->title}}">
-            <figure class="image">
+            <figure class="image is-square">
 				<?php $image = asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name)
 				?>
-                <img src="<?=  $image?>">
+                <img src="<?=  $image?>" class="fit-cover">
             </figure>
         </a>
     @endif

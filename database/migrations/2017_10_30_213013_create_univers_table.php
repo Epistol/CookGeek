@@ -18,6 +18,7 @@
 				$table->string("name");
 				$table->integer("first_creator");
 				$table->integer("nb_recipes");
+				$table->string("picture");
 				$table->timestamps();
 
 			});

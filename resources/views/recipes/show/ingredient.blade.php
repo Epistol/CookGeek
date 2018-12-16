@@ -7,16 +7,16 @@
             <div class="columns">
                 <div class="column is-1">
                     <div class="field">
-                        <input class="is-checkradio" id="exampleCheckbox[{{$index}}]" type="checkbox"
-                               name="exampleCheckbox[{{$index}}]">
-                        <label for="exampleCheckbox[{{$index}}]"></label>
+                        <input class="is-checkradio" id="ingredientCheckbox[{{$index}}]" type="checkbox"
+                               name="ingredientCheckbox[{{$index}}]">
+                        <label for="ingredientCheckbox[{{$index}}]"></label>
                     </div>
                 </div>
                 <div class="column is-offset-1">
 					<?php
 					$nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
 					?>
-                    <label for="exampleCheckbox[{{$index}}]">  {{$ingr->qtt}} {{$nom_in}}</label>
+                    <label for="ingredientCheckbox[{{$index}}]">  {{$ingr->qtt}} {{$nom_in}}</label>
                 </div>
 
             </div>

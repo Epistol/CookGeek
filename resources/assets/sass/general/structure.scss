@@ -86,3 +86,46 @@ table.times th {
   position: absolute;
   z-index: 5;
 }
+
+
+section.entete {
+  background: hsla(245, 35%, 85%, 1);
+  padding: 1%;
+}
+
+.recipe-header {
+  position: absolute;
+  bottom: 28.4%;
+  z-index:1;
+  width: 100%;
+  &:before {
+    background-blend-mode: exclusion;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    filter: url(#blur);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='8');
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    box-shadow: 0 0 3px rgba(#000, .1);
+    background-color: rgba(#fff, .8);
+  }
+}
+
+.author {
+  border: 1px solid #6c548f;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 1);
+}
+
+.fit-cover {
+  object-fit: cover;
+}

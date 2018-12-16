@@ -15,61 +15,62 @@
 
     <section class="bordered-cdg">
         <div class="columns">
-            @foreach($recipes as $recette)
-				<?php
+            @foreach($recipes->chunk(2) as $recettechunk)
+                <div class="column is-3">
 
-				$somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
-				$somme = $controller->sum_time($somme_t);
-				?>
-                <div class="column is-2">
-                    <div class="card card-cdg">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                <a href="/recette/{{$recette->slug}}" class="texte_accueil">{{$recette->title}}</a>
-                            </p>
-                        </header>
-                        <div class="card-image">
-                            <figure class="image is-16by9 ">
-								<?php
-								$img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
-								?>
-                                @if($img == null or empty($img))
-                                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}"
-                                         alt="{{$recette->title}} / CDG">
-                                @else
-                                    <img src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$img->image_name)}}"
-                                         alt="{{$recette->title}} / CDG">
-                                @endif
-                            </figure>
-                        </div>
-                        <div class="columns is-paddingless is-marginless mini-infos">
-                            <div class="column"><i class="fas fa-clock"></i>{{$somme}}</div>
-                            <div class="column"><i class="fas fa-utensils"></i> X personnes</div>
-                            <div class="column">icon univers</div>
-                        </div>
+                @foreach($recettechunk as $recette)
 
-                        <!-- <div class="card-content">
-                            <div class="content">
-                                <span class="ingr_title">Ingredients</span>
-                                <ul>
+					<?php
+
+					$somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+					$somme = $controller->sum_time($somme_t);
+					?>
+                        <div class="card card-cdg">
+
+                            <div class="card-image">
+                                <figure class="image is-16by9 ">
 									<?php
-	                                /*$ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)
-		                                ->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
-		                                ->get();*/
+									$img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
 									?>
-                                    {{--@foreach($ingredients as $ingredient)--}}
-                                    <li>
-                                        {{--{{ $ingredient->qtt }} {{ $ingredient->name }}--}}
-                                    </li>
-                                        {{--@endforeach--}}
-                                </ul>
-                               {{-- <pre>
-                                {{$recette->commentary_author}}
-                               </pre>--}}
+                                    @if($img == null or empty($img))
+                                        <img class="fit-cover" src="http://via.placeholder.com/300x200?text={{$recette->title}}"
+                                             alt="{{$recette->title}} / CDG">
+                                    @else
+                                        <img class="fit-cover" src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$img->image_name)}}"
+                                             alt="{{$recette->title}} / CDG">
+                                    @endif
+                                </figure>
                             </div>
-                        </div> -->
-                    </div>
+                            <div class="recipe-header">
+                                <p class="card-header-title">
+                                    <a href="/recette/{{$recette->slug}}" class="texte_accueil">
+                                        @php echo str_limit($recette->title, 70, ' (...)'); @endphp
+                                       </a>
+                                </p>
+                            </div>
+                            <div class="columns is-paddingless is-marginless mini-infos">
+                                <div class="column is-4 is-flex-center"><i class="fas fa-clock" style="margin-right:0.5rem"></i><span>{{$somme}}</span></div>
+                                <div class="column is-2 is-flex-center"><i class="fas fa-utensils" style="margin-right:0.5rem"></i> <span>{{$recette->nb_guests}}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}</div>
+                                <div class="column is-6 is-flex-center" style="display:flex;justify-content:center;align-items:center;">
+                                    {{--Nom de l'univers--}}
+@php
+    $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
+    echo "<p style='margin-right:0.3rem' >".str_limit($univers_data->name, 25, ' ...') . "</p>";
+@endphp
+
+	                                <?php
+	                                $typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
+	                                ?>
+                                    @include('recipes.show.type_univers')
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                @endforeach
                 </div>
+
             @endforeach
         </div>
 

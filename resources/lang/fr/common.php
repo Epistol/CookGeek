@@ -9,5 +9,7 @@ return [
     */
 
     'by' => 'Par',
+	'registered' => 'Inscrit le',
+	'recipes' => 'Recettes'
 
 ];

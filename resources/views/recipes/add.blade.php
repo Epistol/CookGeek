@@ -25,7 +25,7 @@
                     <div class="column  right_recipe_add  ">
                         {{--Titre recette--}}
                         <div class="columns">
-                            <div class="column is-10 is-offset-1">
+                            <div class="column is-12">
                                 @include("recipes.add.titre")
                                 @include("recipes.add.univers")
                                 @include("recipes.add.ingredients")

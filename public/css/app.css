@@ -17102,6 +17102,7 @@ h2.mini_title {
   font-weight: 500;
   font-size: 1.2rem;
   color: #7f5fbf;
+  padding: 0.5rem;
 }
 
 .titre_partie {
@@ -17337,6 +17338,51 @@ table.times th {
   z-index: 5;
 }
 
+section.entete {
+  background: #cecbe6;
+  padding: 1%;
+}
+
+.recipe-header {
+  position: absolute;
+  bottom: 28.4%;
+  z-index: 1;
+  width: 100%;
+}
+
+.recipe-header:before {
+  background-blend-mode: exclusion;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  filter: url(#blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='8');
+}
+
+.recipe-header:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.author {
+  border: 1px solid #6c548f;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: white;
+}
+
+.fit-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*p {
   padding-bottom: 1rem;
 }*/
@@ -17472,6 +17518,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   margin: 1%;
   background: white;
+  margin-top: 0% !important;
 }
 
 .categ_univers_recette {
@@ -18310,6 +18357,7 @@ form.addrecipe .field {
   background: #fff;
   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
 }
 
 p.card-header-title {

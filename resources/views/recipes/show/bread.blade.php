@@ -14,12 +14,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="column has-text-centered">
+        <div class="column has-text-centered" style="display:flex;justify-content:center;align-items:center;">
 
             <h1 class="title ">{{$recette->title}}</h1>
 
         </div>
-        <div class="column ">
+        <div class="column " style="display:flex;justify-content:flex-end;align-items:center;">
             {{--// Likes--}}
             @include('recipes.likeh')
         </div>

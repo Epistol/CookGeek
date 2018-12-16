@@ -1,16 +1,20 @@
 <section class="bordered-cdg">
     <div class="columns">
-        @foreach($univers as $univer)
-
+        @foreach($univers->chunk(2) as $univchunk)
             <div class="column is-2">
-                <div class="card card-cdg">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            <a href="/recette/{{$univer->name}}" class="texte_accueil">{{$univer->name}}</a>
-                        </p>
-                    </header>
 
-                </div>
+                @foreach($univchunk as $univer)
+
+                    <div class="card card-cdg">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                <a href="/recette/{{$univer->name}}" class="texte_accueil">{{$univer->name}}</a>
+                            </p>
+                        </header>
+
+                    </div>
+                @endforeach
+
             </div>
         @endforeach
     </div>

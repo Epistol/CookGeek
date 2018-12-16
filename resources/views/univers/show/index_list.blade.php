@@ -7,8 +7,11 @@
 
     @if(count($univers_list_id))
         <div class="categ_univers_recette " style="margin-top: 2rem; margin-bottom: 2rem;">
-            <h2>{{ucfirst($categ->name)}}</h2> <br/>
-            <categ_icon text_icon="{{$categ->name}}"></categ_icon>
+            <div class="is-flex" style="padding:1rem;">
+                <categ_icon text_icon="{{$categ->name}}"></categ_icon>
+                <h2 style="margin-top: 0px;padding-left:1rem;">{{ucfirst($categ->name)}}</h2>
+            </div>
+
             <div class="columns is-marginless">
 				<?php //var_dump(count($univers_list_id)); ?>
                 {{--// On va charger le nb de recettes lié pour chaque univers--}}
@@ -70,7 +73,7 @@
         </div>
     @else
         {{--TODO : faire une fiche plus tard--}}
-        <span class="tag">{{ucfirst($categ->name)}}</span>
+        {{--<span class="tag">{{ucfirst($categ->name)}}</span>--}}
         {{--@include("univers.index.fallback_recipes")--}}
 
     @endif
