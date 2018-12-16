@@ -17,8 +17,9 @@ import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable'
 import StarRating from './star-rating'
 import InstantSearch from 'vue-instantsearch'
-
+import VueFriendlyIframe from 'vue-friendly-iframe';
 import 'vue2-dropzone/dist/vue2Dropzone.css'
+
 
 Vue.use(VeeValidate);
 Vue.use(InstantSearch);
@@ -29,6 +30,8 @@ Vue.use(require('vue-chunk'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('modal', require('./components/LoginMod.vue'));
+Vue.component('sharemodal', require('./components/ShareModal.vue'));
+Vue.component('socialshare', require('./components/Recipe/Share.vue'));
 Vue.component('star-rating', StarRating);
 // Vue.component('recherche', require('./components/Recherche.vue'));
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
@@ -45,7 +48,7 @@ Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon
 Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
 Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
 
-
+Vue.component('vue-friendly-iframe', VueFriendlyIframe);
 
 const app = new Vue({
     el: '#app',

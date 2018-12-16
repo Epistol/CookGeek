@@ -1,11 +1,11 @@
 <div class="columns">
-    <div class="column is-three-quarters is-offset-1">
+    <div class="column is-half is-offset-1">
         <h2 class="title mini_title">
             @lang('recipe.steps')
         </h2>
     </div>
     <div class="column">
-
+        @include("recipes.show.social")
     </div>
 
 </div>

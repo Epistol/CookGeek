@@ -55,7 +55,6 @@
                                             @include("recipes.show.video")
                                         @endif
 
-                                        @include("recipes.show.social")
 
 
                                         {{--Espace commentaires --}}
