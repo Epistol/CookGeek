@@ -44,6 +44,7 @@ Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
 
 Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
 Vue.component('homerecipes', require("./components/Recipe/Home_Recipes"));
+Vue.component('signalrecipe', require("./components/Recipe/Signal"));
 Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon"));
 Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
 Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));

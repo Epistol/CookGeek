@@ -81,12 +81,11 @@
     </div>
 
 
-    <div class="recipeaddbg">
-        <div class="container">
-            <section class="section blockcontent">
-                {{-- RECETTE SIMILAIRES (4 BLOCS) --}}
-            </section>
-        </div>
+    <div class="container">
+        <section class="section blockcontent">
+            {{-- RECETTE SIMILAIRES (4 BLOCS) --}}
+            @include('recipes.show.more_like_this')
+        </section>
     </div>
 
 	<?php
@@ -97,8 +96,6 @@
 		$nom_in = app('profanityFilter')->filter($steps[$key]->instruction);
 		$instructions[] = $nom_in;
 	}
-
-
 
 	if(isset($firstimg->image_name)) {
 		$img = $firstimg->image_name;

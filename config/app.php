@@ -169,6 +169,7 @@ return [
          * Package Service Providers...
          */
         TCG\Voyager\VoyagerServiceProvider::class,
+
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
 	    Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 

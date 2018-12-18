@@ -17250,6 +17250,16 @@ html.has-navbar-fixed-top, body.has-navbar-fixed-top {
   padding-top: 0rem !important;
 }
 
+.radio-vertical {
+  padding-bottom: 0.5rem;
+}
+
+section.conduite {
+  padding: 0.5rem 1.5em;
+  border-top: 1px solid #dbdbdb;
+  background: #ebeaf5;
+}
+
 .page {
   background: #fdfdfd;
   padding: 2.5rem;
@@ -17372,7 +17382,7 @@ section.entete {
 }
 
 .author {
-  border: 1px solid #6c548f;
+  border: 2px solid #cbc2f6;
   border-radius: 5px;
   padding: 0.5rem;
   background: white;
@@ -17440,12 +17450,16 @@ body, button, input, select, textarea {
           animation-duration: .55s;
 }
 
+a.tag.like:hover {
+  text-decoration: none;
+}
+
 .liked > i {
-  color: red;
+  color: #fa3283;
 }
 
 .liked > span > i {
-  color: red;
+  color: #fa3283;
 }
 
 .image.is-256x256 {
@@ -18631,6 +18645,10 @@ input.input_modal.blck, textarea.input_modal.blck {
 
 .modal-body {
   margin: 20px 0;
+}
+
+.modal {
+  z-index: 999;
 }
 
 .modal-default-button {

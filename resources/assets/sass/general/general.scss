@@ -56,14 +56,16 @@ body, button, input, select, textarea {
 
 }
 
-
+a.tag.like:hover {
+  text-decoration : none;
+}
 // LIKE BUTTON
 .liked > i {
-  color: red;
+  color: #fa3283;
 }
 
 .liked > span > i {
-  color: red;
+  color: #fa3283;
 }
 
 // IMAGE HAND

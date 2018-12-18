@@ -1,6 +1,18 @@
 <div class="ficheinfo">
     {{--@include('recipes.show.social')--}}
-    @include("recipes.show.ingredient")
+    <section class="section-nomargin-side">
+
+        @include("recipes.show.ingredient")
+        <div style="display:flex;justify-content:flex-end;align-items:center; margin-top: 10%">
+            @guest
+        <signalrecipe recipeid="{{$recette->id}}" user_id='null' ></signalrecipe>
+                @elseguest
+                <signalrecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></signalrecipe>
+
+            @endguest
+        </div>
+
+    </section>
 
 </div>
 

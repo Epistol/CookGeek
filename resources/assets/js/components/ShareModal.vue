@@ -7,7 +7,10 @@
                 <div class="boxmodal is-marginless">
 
                     <section class="modal-card-body">
-                        <vue-friendly-iframe :src="url"></vue-friendly-iframe>
+                        <template v-if="network === 'twitter' ">
+                            <!--<a :href="'https://www.facebook.com/sharer/sharer.php?u='+url">Sur facebook</a>-->
+                            <vue-friendly-iframe :src="'https://twitter.com/intent/tweet?text='+titre+'%20'+url"></vue-friendly-iframe>
+                        </template>
                     </section>
 
                     <footer class="modal-card-foot">
@@ -26,7 +29,7 @@
 
 <script>
     export default {
-	    props : ["url", "network"],
+	    props : ["url", "network", "titre"],
 
 	    mounted() {
             //console.log('Component mounted.')

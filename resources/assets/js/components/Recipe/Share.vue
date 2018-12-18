@@ -3,7 +3,7 @@
         <div class="field has-addons" style="margin-left: 1rem">
 
             <p class="control">
-                <a class="button" @click="startframe('facebook')">
+                <a class="button" @click="startframe('twitter')">
                           <span class=" is-small">
                  <i class="fas fa-share"></i>
                     Partager
@@ -11,7 +11,7 @@
                 </a>
             </p>
             <template v-if="componentshow">
-                <component :is="currentComponent" :url="url" :network="reseau"></component>
+                <component :is="currentComponent" :url="url" :network="reseau" :titre="titre"></component>
             </template>
 
         </div>
@@ -22,7 +22,7 @@
 <script>
 	export default {
 		name: "Share.vue",
-		props: ["url"],
+		props: ["url", "titre"],
 
 		data() {
 			return {

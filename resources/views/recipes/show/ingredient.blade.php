@@ -1,4 +1,3 @@
-<section class="section-nomargin-side">
 
     <h3 class="title is_big">@lang("recipe.ingredients")</h3>
 
@@ -28,4 +27,3 @@
     {{--<div class="is-flex-center" style="margin-top: 2rem;"><div class="field"><p class="control">    <a class="button is-direct">Ajouter à mes courses</a></div></div>--}}
 
 
-</section>

@@ -28,6 +28,7 @@ Route::post("/like/toggle_like/", 'Api\LikeController@toggle_like')->name("api.l
 
 Route::post("/recipe/get_picture/", 'Api\RecipeController@get_picture')->name("api.recipe.get_picture");
 Route::post("/recipe/get_ingredients/", 'Api\RecipeController@get_ingredients')->name("api.recipe.get_ingredients");
+Route::post("/recipe/alerte/", 'Api\RecipeController@alerte')->name("api.recipe.alerte");
 
 Route::get("/autocomplete/search/univers", 'Api\SearchController@search_univers')->name("api.search.univers");
 

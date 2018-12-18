@@ -1,40 +1,68 @@
-.show-dan{
-  -webkit-animation:showToastyGuy 1.2s;
-  -moz-animation:showToastyGuy 1.2s;
-  -o-animation:showToastyGuy 1.2s;
-  animation:showToastyGuy 1.2s;
+.show-dan {
+  -webkit-animation: showToastyGuy 1.2s;
+  -moz-animation: showToastyGuy 1.2s;
+  -o-animation: showToastyGuy 1.2s;
+  animation: showToastyGuy 1.2s;
 }
 
-@-webkit-keyframes showToastyGuy
-{
-  0% {right: -12%;}
-  40% {right: 0px;}
-  60% {right: 0px;}
-  100% {right: -12%;}
+@-webkit-keyframes showToastyGuy {
+  0% {
+	right: -12%;
+  }
+  40% {
+	right: 0px;
+  }
+  60% {
+	right: 0px;
+  }
+  100% {
+	right: -12%;
+  }
 }
 
-@-moz-keyframes showToastyGuy
-{
-  0% {right: -12%;}
-  40% {right: 0px;}
-  60% {right: 0px;}
-  100% {right: -12%;}
+@-moz-keyframes showToastyGuy {
+  0% {
+	right: -12%;
+  }
+  40% {
+	right: 0px;
+  }
+  60% {
+	right: 0px;
+  }
+  100% {
+	right: -12%;
+  }
 }
 
-@-o-keyframes showToastyGuy
-{
-  0% {right: -12%;}
-  40% {right: 0px;}
-  60% {right: 0px;}
-  100% {right: -12%;}
+@-o-keyframes showToastyGuy {
+  0% {
+	right: -12%;
+  }
+  40% {
+	right: 0px;
+  }
+  60% {
+	right: 0px;
+  }
+  100% {
+	right: -12%;
+  }
 }
 
-@keyframes showToastyGuy
-{
-  0% {right: -12%;}
-  40% {right: 0px;}
-  60% {right: 0px;}
-  100% {right: -12%;}
+@keyframes showToastyGuy {
+  0% {
+	right: -12%;
+  }
+  40% {
+	right: 0px;
+  }
+  60% {
+	right: 0px;
+  }
+  100% {
+	right: -12%;
+  }
 }
 
 .modal-mask {
@@ -63,7 +91,7 @@
 
 .modal-header h3 {
   margin-top: 0;
-  color:$violet-txt;
+  color: $violet-txt;
   font-weight: bold;
 }
 
@@ -71,19 +99,23 @@
   margin: 20px 0;
 }
 
+.modal {
+  z-index: 999;
+}
+
 
 .modal-default-button {
   float: right;
   background: transparent;
-  color:$gris;
-  font-size:1.2rem;
-  border:none;
+  color: $gris;
+  font-size: 1.2rem;
+  border: none;
   cursor: pointer;
   -webkit-appearance: button; /* for input */
   -webkit-user-select: none; /* for button */
-
-  &:hover{
-    color:$gris_granite
+  
+  &:hover {
+	color: $gris_granite
   }
 }
 
@@ -96,8 +128,7 @@
  * these styles.
  */
 
-.boxmodal
-{
+.boxmodal {
   background-color: white;
   border-radius: 5px 5px 0 0;
   -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
@@ -114,23 +145,28 @@
 .modal-leave-active {
   opacity: 0;
 }
-.modal-footer{
 
-  display:flex;justify-content:flex-end;align-items:center;
+.modal-footer {
+  
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   padding: 1rem;
   -webkit-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   background: white;
-
+  
   .bg {
-    background: #F1F3F5;
+	background: #F1F3F5;
   }
 }
+
 .modal-enter .modal-container,
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-.modal.is-active{
+
+.modal.is-active {
   @include transition_all();
 }
