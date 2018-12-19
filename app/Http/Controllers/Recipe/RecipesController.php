@@ -13,6 +13,7 @@ use App\Http\Controllers\UniversController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\SchemaOrg\Recipe;
 use Spatie\SchemaOrg\Schema;
 use Carbon\Carbon;
 
@@ -87,33 +88,24 @@ class RecipesController extends Controller
 		return view('recipes.add', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
 	}
 
-	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function addtest()
-	{
-		$types_univ = DB::table('categunivers')->get();
-		$difficulty = DB::table('difficulty')->get();
-		$types_plat = DB::table('type_recipes')->get();
-		return view('recipes.addtest', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
-	}
 
-	/** TODO finish
+	/**
+	 * @param $slug
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function edit($numero)
+	public function edit($slug)
 	{
-		$recette = DB::table('recipes')->where("id", "=", $numero)->get();
+		$recette = DB::table('recipes')->where("slug", "=", $slug)->first();
 
 		if($recette != "" || $recette != NULL) {
-			if($recette[0]->id_user != Auth::id()) {
+			if($recette->id_user != Auth::id()) {
 				return back();
 			} else {
-				$univers = DB::table("univers")->where("id", "=", $recette[0]->univers)->select('name')->get();
+				$univers = DB::table("univers")->where("id", "=", $recette->univers)->select('name')->get();
 				$types_univ = DB::table('categunivers')->get();
 				$difficulty = DB::table('difficulty')->get();
 				$types_plat = DB::table('type_recipes')->get();
-				return view('recipes.edit', array('univers' => $univers[0]->name, 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat, 'recette' => $recette[0]));
+				return view('recipes.edit', array('univers' => $univers[0]->name, 'types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat, 'recette' => $recette));
 			}
 		} else {
 			return back();
@@ -125,6 +117,7 @@ class RecipesController extends Controller
 	/**
 	 * @param Request $request
 	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws \Illuminate\Validation\ValidationException
 	 */
 	public function store(Request $request)
 	{
@@ -208,6 +201,88 @@ class RecipesController extends Controller
 		return redirect()->route('recipe.show', ['post' => $slug]);
 	}
 
+	/**
+	 * @param Request $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws \Illuminate\Validation\ValidationException
+	 */
+	public function update(Request $request, $id)
+	{
+		$input = $request->all();
+		$model = new Recipes();
+
+		$recipe = Recipes::where('id', '=', $id)->firstOrFail();
+
+		// User ID :
+		if(isset(Auth::user()->id)) {
+			$iduser = Auth::user()->id;
+		}
+
+		// Minutes
+		$prep_minute = $model->verify_time($request->prep_minute);
+		$cook_minute = $model->verify_time($request->cook_minute);
+		$rest_minute = $model->verify_time($request->rest_minute);
+
+		// Heures
+		$prep_heure = $model->verify_time($request->prep_heure);
+		$cook_heure = $model->verify_time($request->cook_heure);
+		$rest_heure = $model->verify_time($request->rest_heure);
+
+		$prep = $model->return_time($prep_heure, $prep_minute);
+		$cook = $model->return_time($cook_heure, $cook_minute);
+		$rest = $model->return_time($rest_heure, $rest_minute);
+
+		$univers = $this->first_found_universe($request->univers);
+
+		//Filtering the comment
+		$comm = app('profanityFilter')->filter($request->comment);
+		//Vegetarian switch
+		$vege = $request->vegan == "on" ? true : false;
+		//Inserting the recipe
+
+		// Parties image
+		$this->validate($request, [
+			'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+		]);
+
+		if(!empty($request->resume)) {
+			$file = $request->resume;
+			if($file->getError() == 0) {
+				$photoName = time() . '.' . $file->getClientOriginalExtension();
+				$this->ajouter_image($photoName, $iduser, $id);
+				$file->move(public_path('recipes/' . $id . '/' . $iduser . '/'), $photoName);
+			}
+		}
+
+
+		$idRecette = $this->edit_recipe($id, $request->title, $request->vegan, $request->difficulty, $request->categ_plat, $request->cost, $prep, $cook, $rest, $request->unite_part, $request->value_part, $univers, $request->type, $iduser, $vege, $request->video, $comm);
+
+		// Partie ingrédients
+		if($request->ingredient !== null) {
+			foreach($request->ingredient as $key => $ingredient) {
+				$this->editIngredient($key, $ingredient, $id, $request->qtt_ingredient[$key]);
+			}
+		}
+		if($request->ingredient_removed !== null) {
+			foreach($request->ingredient_removed as $key => $ingredient) {
+				$this->removeIngredients($key, $request->ingredient_removed, $id, $request->qtt_removed_ingredient[$key]);
+			}
+		}
+
+
+		// On enlève les ingrédients qui ne sont plus utilisé
+
+		// Gestion des étapes
+		foreach($request->step as $key => $step) {
+			if($step) {
+				$steps_old = DB::table('recipes_steps')->where('instruction', '=', $step)->update(['instruction' => $step]);
+			}
+		}
+
+
+		return redirect()->route('recipe.show', ['post' => $recipe->slug]);
+	}
 
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -219,7 +294,8 @@ class RecipesController extends Controller
 
 	/**
 	 * @param Request $request
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return void
+	 * @throws \Illuminate\Validation\ValidationException
 	 */
 	public function store_test(Request $request)
 	{
@@ -247,111 +323,8 @@ class RecipesController extends Controller
 	/** TODO _ UPDATING
 	 * @param Request $request
 	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws \Illuminate\Validation\ValidationException
 	 */
-	public function update(Request $request)
-	{
-		$input = $request->all();
-
-		// User ID :
-		$iduser = Auth::user()->id;
-
-		// Verification des champs null
-
-
-		// Minutes
-		$prep_minute = (new \App\Recipes)->verify_time($request->prep_minute);
-		$cook_minute = (new \App\Recipes)->verify_time($request->cook_minute);
-		$rest_minute = (new \App\Recipes)->verify_time($request->rest_minute);
-		// Heures
-		$prep_heure = (new \App\Recipes)->verify_time($request->prep_heure);
-		$cook_heure = (new \App\Recipes)->verify_time($request->cook_heure);
-		$rest_heure = (new \App\Recipes)->verify_time($request->rest_heure);
-
-
-		$prep = ($prep_heure * 60) + $prep_minute;
-		$cook = ($cook_heure * 60) + $cook_minute;
-		$rest = ($rest_heure * 60) + $rest_minute;
-
-		$univers = DB::table('univers')->select('id')->where('name', 'like', '%' . $request->universe . '%')->get();
-
-		// Si aucun univers n'est associé à la recherche
-		if($univers->isEmpty()) {
-
-			$string = $request->universe;
-
-			// On l'ajoute à la DB
-			$id_univers = DB::table('univers')->insertGetId(
-				['name' => $string]
-			);
-			$univers = $id_univers;
-
-		} else {
-			$univers = $univers->first();
-			$univers = $univers->id;
-		}
-
-		$comm = $request->comment;
-		if($request->vegan == "on") {
-			$vege = true;
-		} else {
-			$vege = false;
-		}
-
-		$idRecette = $this->insert_recipe($request->title, $request->vegan, $request->difficulty, $request->categ_plat, $request->cost, $prep, $cook, $rest, $request->unite_part, $request->value_part, $univers, $request->type, $iduser, $vege, $request->video, $comm);
-
-
-		// Partie SLUG
-		$slug = $this->slugtitre($request, $idRecette);
-
-		DB::table('recipes')
-			->where('id', $idRecette)
-			->update(['slug' => $slug]);
-
-		foreach($request->ingredient as $key => $ingredient) {
-			$id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
-
-			// Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-			if($id_ingredient_ajout->isEmpty()) {
-				$in = $ingredient;
-
-				$ingredientID = DB::table('ingredients')->insertGetId(
-					['name' => $in]
-				);
-			} else {
-				$ingredientID = $id_ingredient_ajout->first();
-				$ingredientID = $ingredientID->id;
-			}
-			// Pour chaque ingrédient, on l'associe à la recette
-
-			DB::table('recipes_ingredients')->insertGetId(
-				['id_recipe' => $idRecette,
-					'id_ingredient' => $ingredientID,
-					'qtt' => $request->qtt_ingredient[$key],
-				]);
-		}
-
-		// Gestion des étapes
-		foreach($request->step as $key => $step) {
-			DB::table('recipes_steps')->insertGetId(
-				['recipe_id' => $idRecette,
-					'step_number' => $key,
-					'instruction' => $request->step[$key],
-
-				]);
-		}
-
-		// Parties image
-		$this->validate($request, [
-			'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-		]);
-
-		if($request->resume['size'] != 0 || $request->resume['size'] != NULL) {
-			$photoName = time() . '.' . $request->resume->getClientOriginalExtension();
-			$this->ajouter_image($photoName, $iduser, $idRecette);
-			$request->resume->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
-		}
-		return redirect()->route('recipe.show', ['post' => $slug]);
-	}
 
 	/** DISPLAYING A SELECTED RECIPE
 	 * @param $slug
@@ -362,6 +335,10 @@ class RecipesController extends Controller
 
 		$recette = Recipes::where('slug', $slug)->first();
 
+		if(!$recette) {
+			return redirect()->back();
+		}
+
 		$ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)
 			->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
 			->get();
@@ -371,7 +348,7 @@ class RecipesController extends Controller
 
 		$images = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
 
-		$firstimg = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->first();
+		$firstimg = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->orderBy('updated_at', 'desc')->first();
 
 		// STARS
 		$stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
@@ -446,7 +423,6 @@ class RecipesController extends Controller
 				['user_id' => $u_id, 'recipe_id' => $id]
 			)->first();
 		return $l_id ? "liked" : false;
-
 	}
 
 
@@ -488,7 +464,7 @@ class RecipesController extends Controller
 	 */
 	private function ajouter_image($rq, $userid, $recipe)
 	{
-		DB::table('recipe_imgs')->insertGetId(
+		DB::table('recipe_imgs')->updateOrInsert(
 			['recipe_id' => $recipe,
 				'image_name' => $rq,
 				'user_id' => $userid,
@@ -546,6 +522,56 @@ class RecipesController extends Controller
 	}
 
 	/**
+	 * @param $title
+	 * @param $vegan
+	 * @param $diff
+	 * @param $categ_plate
+	 * @param $cost
+	 * @param $prep
+	 * @param $cook
+	 * @param $rest
+	 * @param $unit
+	 * @param $value
+	 * @param $universe
+	 * @param $type
+	 * @param $iduser
+	 * @param $vege
+	 * @param $video_link
+	 * @param $comm
+	 * @return mixed
+	 */
+	public function edit_recipe($recette_id, $title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $vege, $video_link, $comm)
+	{
+		// Get recette
+		$recette = DB::table('recipes')
+			->where('id', '=', $recette_id)
+			->update(
+				['title' => app('profanityFilter')->filter($title),
+					'vegetarien' => $vegan,
+					'difficulty' => $diff,
+					'type' => $categ_plate,
+					'cost' => $cost,
+					'prep_time' => $prep,
+					'cook_time' => $cook,
+					'rest_time' => $rest,
+					'nb_guests' => $unit,
+					'guest_type' => app('profanityFilter')->filter($value),
+					'univers' => app('profanityFilter')->filter($universe),
+					'type_univers' => app('profanityFilter')->filter($type),
+					'id_user' => $iduser,
+					'vegetarien' => $vege,
+					'video' => app('profanityFilter')->filter($video_link),
+					'commentary_author' => $comm,
+					'created_at' => now(),
+					'updated_at' => now(),
+
+				]
+			);
+		return $recette;
+	}
+
+
+	/**
 	 * @param $text
 	 * @return mixed
 	 */
@@ -587,6 +613,54 @@ class RecipesController extends Controller
 
 		}
 
+	}
+
+	private function editIngredient($index, $ingredient, $idRecette, $qtt)
+	{
+		if($ingredient) {
+			$id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
+
+			// Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
+			if($id_ingredient_ajout->isEmpty()) {
+				$in = app('profanityFilter')->filter($ingredient);
+				if(preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
+					$in = '';
+				}
+				$ingredientID = $in ? DB::table('ingredients')->insertGetId(
+					['name' => $in]
+				) : $id_ingredient_ajout;
+			} else {
+				$ingredientIDRetour = $id_ingredient_ajout->first();
+				$ingredientID = $ingredientIDRetour->id;
+			}
+
+			// Pour chaque ingrédient, on l'associe à la recette
+			$test = DB::table('recipes_ingredients')->where('id_ingredient', '=', $ingredientID)->get();
+
+			if($test->isNotEmpty()) {
+				$recingr = DB::table('recipes_ingredients')->where('id', '=', $test[0]->id)->update(
+					['id_ingredient' => $ingredientID,
+						'qtt' => app('profanityFilter')->filter($qtt),
+					]);
+			} else {
+				$recingr = DB::table('recipes_ingredients')->where('id_recipe', '=', $idRecette)->insertGetId(
+					['id_recipe' => $idRecette,
+						'id_ingredient' => $ingredientID,
+						'qtt' => app('profanityFilter')->filter($qtt),
+					]);
+			}
+		}
+	}
+
+	private function removeIngredients($index, $ingredient, $idRecette, $qtt)
+	{
+		// On supprime les ingrédients assigné à la recette
+		$id_ingredient = DB::table('ingredients')->where('name', '=', $ingredient)->first();
+
+		$ingredient_recette = DB::table('recipes_ingredients')->where('id_ingredient', '=', $id_ingredient->id)->where('id_recipe', '=', $idRecette)->where('qtt', '=', $qtt)->first();
+		if($ingredient_recette !== null) {
+			DB::table('recipes_ingredients')->where('id_ingredient', '=', $id_ingredient->id)->where('qtt', '=', $qtt)->delete();
+		}
 	}
 
 }

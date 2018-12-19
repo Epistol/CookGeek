@@ -45,9 +45,10 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
 @if($somme_t == 0)
 
 @else
-    <div class="columns">
 
+	<h4 class="title">Timing</h4>
 
+	<div class="columns">
         <div class="column ">
             @if($recette->prep_time !== 0)
                 <p><i aria-hidden="true" class="fas fa-utensils"></i>

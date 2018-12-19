@@ -1,4 +1,4 @@
-<div class="author">
+<div class="is-flex-center" >
     <?php
         $author = DB::table('users')->where('id', '=', $recette->id_user)->first();
         $nb_recipes = DB::table('recipes')->where('id_user', '=', $recette->id_user )->count();
@@ -17,11 +17,6 @@
                <p> <span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span><a href="/user/{{$nom}}">@php echo str_limit($nom, 20, ' (...)'); @endphp</a></p>
         </div>
 
-            {{--date inscription--}}
-            @lang("common.registered") {{Carbon\Carbon::parse($author->created_at)->format('d/m/Y')}}
-        <br />
-            {{--nb recette--}}
-            {{$nb_recipes}}  @lang("common.recipes")
 
             {{--reseaux sociaux--}}
 

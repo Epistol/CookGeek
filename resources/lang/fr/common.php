@@ -10,6 +10,7 @@ return [
 
     'by' => 'Par',
 	'registered' => 'Inscrit le',
-	'recipes' => 'Recettes'
+	'recipes' => 'Recettes',
+	"edit" => "Editer",
 
 ];

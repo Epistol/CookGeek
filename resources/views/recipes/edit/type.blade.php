@@ -16,16 +16,20 @@
 
                     <label class="radio">
                         @if($type->name== 'tv')
-                            <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
+                            <input type="radio"
+                                   {{ $key === $recette->type_univers ? "checked":"" }}  id="{{$type->name}}"
+                                   name="type" value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>
                                 Cinéma / Tv
                             </p>
                         @else
-                            <input type="radio" id="{{$type->name}}" name="type" value="{{$type->id}}">
+                            <input type="radio" id="{{$type->name}}"
+                                   {{ $key === $recette->type_univers ? "checked":"" }}  name="type"
+                                   value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>
-                                <?php echo ucfirst($type->name);?>
+								<?php echo ucfirst($type->name);?>
                             </p>
                         @endif
                     </label>

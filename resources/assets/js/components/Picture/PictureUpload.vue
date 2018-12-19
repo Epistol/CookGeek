@@ -3,7 +3,12 @@
         <template v-if="!showPreview">
             <template v-if="picture !== 'users/default.png'">
                 <figure class="image is-square is-128x128">
-                    <img :src="'/user/' + user_id + '/' + picture"/>
+                    <template v-if="type === 'recipe'">
+                        <img class="fit-cover" :src="'/recipes/' + recipeid + '/' + user_id + '/' + picture"/>
+                    </template>
+                    <template v-else>
+                        <img class="fit-cover" :src="'/user/' + user_id + '/' + picture"/>
+                    </template>
                     <div class="change-picture">
                         <i class="fas fa-camera-retro"></i>
                     </div>
@@ -11,7 +16,8 @@
             </template>
             <template v-else>
                 <figure class="image is-square is-128x128">
-                    <img :src="'https://api.adorable.io/avatars/'+user" v-show="!showPreview" style="max-height:196px;">
+                    <img class="fit-cover" :src="'https://api.adorable.io/avatars/'+user" v-show="!showPreview"
+                         style="max-height:196px;">
                     <div class="change-picture">
                         <i class="fas fa-camera-retro"></i>
                     </div>
@@ -20,7 +26,7 @@
         </template>
         <template v-else>
             <figure class="image is-square is-128x128">
-                <img v-bind:src="imagePreview" style="max-height:196px;"/>
+                <img v-bind:src="imagePreview" class="fit-cover" style="max-height:196px;"/>
                 <div class="change-picture">
                     <i class="fas fa-camera-retro"></i>
                 </div>
@@ -35,7 +41,7 @@
 <script>
 
 	export default {
-		props: ["picture", "user", "user_id"],
+		props: ["picture", "user", "user_id", "type", "recipeid"],
 		data: function() {
 			return {
 				picture_sent: '',

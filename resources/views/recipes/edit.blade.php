@@ -4,6 +4,10 @@
 
 @section('content')
 
+
+    <?php
+
+   // dd($recette);?>
     <div class="container addrecipe">
         <div class="round_bg">
             <div class="columns">
@@ -18,15 +22,14 @@
         </div>
 
         <section class="section">
-            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="PUT"
-                  action="{{ route('recipe.store') }}">
+            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
+                  action="{{ route('recipe.edition', $recette->id) }}">
                 {{ csrf_field() }}
 
                 <div class="columns" style="
   margin-bottom: 2rem;">
 
-
-                    <div class="column  right_recipe_add  ">
+                    <div class="column right_recipe_add  ">
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-10 is-offset-1">

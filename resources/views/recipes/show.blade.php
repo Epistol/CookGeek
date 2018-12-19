@@ -13,6 +13,7 @@
                     <div class="column is-one-fifth is-marginless is-paddingless left_side">
                         @include("recipes.show.images")
                         <div class="">
+                            {{--Fiche gauche--}}
                             @include("recipes.show.ficheinfo")
                         </div>
                     </div>
@@ -55,8 +56,6 @@
                                             @include("recipes.show.video")
                                         @endif
 
-
-
                                         {{--Espace commentaires --}}
                                         <div id="#fb-commentaire_container">
                                             <div class="fb-commentaire">
@@ -64,7 +63,6 @@
                                                      data-width="100%" data-numposts="5" data-colorscheme="light"></div>
                                             </div>
                                         </div>
-
 
                                     </div>
                                     <aside class="column is-3 list-h-show ">

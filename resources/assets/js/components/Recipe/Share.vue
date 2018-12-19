@@ -21,7 +21,6 @@
 
 <script>
 	export default {
-		name: "Share.vue",
 		props: ["url", "titre"],
 
 		data() {

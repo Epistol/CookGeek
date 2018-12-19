@@ -19,12 +19,12 @@
 
                 </div>
 
-                <div class="column is-3 is-flex-center " v-cloak v-if="index === counter">
+                <div class="column is-3 is-flex-center " v-cloak v-if="index === liste.length -1">
                     <a @click="addRow()" class="button is-primary  is-small deleteicon">
                         <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
 
-                <div class="column is-3  is-flex-center " v-cloak v-if="index === countminus">
+                <div class="column is-3  is-flex-center " v-cloak v-if="index === liste.length -2 ">
                     <a @click="removeRow(index)" class="button is-small deleteicon">
                         <i class="fa fa-minus" aria-hidden="true"></i></a>
                 </div>
@@ -39,7 +39,6 @@
 	export default {
 		data: function() {
 			return {
-				counter: 0,
 				liste: [
 					{
 						name: '',
@@ -50,7 +49,6 @@
 		},
 		methods: {
 			addRow() {
-				this.counter++;
 				this.liste.push({
 					name: '',
 					qtt: '',
@@ -58,24 +56,9 @@
 			},
 
 			removeRow: function(index) {
-				this.counter--;
 				this.liste.splice(index, 1);
 			},
 		},
-		mounted() {
-			console.log('Component mounted.')
-		},
-		computed: {
-			countminus: function() {
-				return this.counter - 1;
-			}
-		},
-		watch: {
-			'liste': function() {
-				// When the internal value changes, we $emit an event. Because this event is
-				// named 'input', v-model will automatically update the parent value
-				this.$emit('applicant', this.liste);
-			}
-		}
+
 	}
 </script>

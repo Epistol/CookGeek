@@ -41,7 +41,21 @@ class RecipeController extends Controller
 			return response()->json(false);
 		}
 	}
+	public function get_steps(Request $request)
+	{
+		$recipe_id = $request->recipeid;
 
+		$steps = DB::table('recipes_steps')
+			->where('recipe_id', '=', $recipe_id)
+			->get();
+
+		// si un id existe, on le supprime et renvoie false
+		if($steps) {
+			return response()->json($steps);
+		} else {
+			return response()->json(false);
+		}
+	}
 	public function alerte(Request $request)
 	{
 		$recipe_id = $request->recipeid;

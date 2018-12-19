@@ -3,16 +3,12 @@
 
         <label class="file-label">
             <div class="image ajout_recette_img" id="limage">
-                <input class="file-input" id="upload" type="file" name="resume" accept="image/x-png,image/jpeg">
-                <span class="file-cta darker">
-
-                                            <span class="file-label">
-                                               <i class="fa fa-upload"></i> Ajouter une photo
-                                            </span>
-                                        </span>
+                <?php
+                			$img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
+                			?>
+                <pictureupload type="recipe" recipeid="{{$recette->id}}"user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture={{$img->image_name}}></pictureupload>
 
 
-                <img id="blah" class="is-clearfix" src="#" alt=""/>
             </div>
 
             {{-- Nom du fichier--}}

@@ -20,7 +20,13 @@
             </a>
         </p>
         <p class="control">
-	        <?php $image = asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name)
+	        <?php
+            if(isset($firstimg)){
+	            $image = asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name);
+            }
+            else {
+            	$image = null;
+            }
 	        ?>
             <a class="button pinterest " href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{$image}}&description={{$recette->title}}">
                           <span class="icon is-medium 	 ">

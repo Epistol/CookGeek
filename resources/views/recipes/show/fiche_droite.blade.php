@@ -2,6 +2,7 @@
 
     @include("recipes.show.author")
 </p>
+<h4 class="title">Informations</h4>
 <div style="display:flex;" class="">
     @include("recipes.show.diff")
 </div>

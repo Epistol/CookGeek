@@ -74,7 +74,7 @@
                                     <?php
 	                                $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
 	                                ?>
-                                    @include("recipes.show.author")<br/>
+                                    @include("recipes.index.author")<br/>
                                 </span>
 
                                 <span style="padding-left:1rem"> @include("recipes.show.staronly")</span>
