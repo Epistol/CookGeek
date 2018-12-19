@@ -17964,6 +17964,15 @@ span.item_navbar_second {
   transition: all 0.3s ease-in-out;
 }
 
+.bg_side {
+  /* background: #ffffffb8; */
+  padding: 1rem 0.5rem 0.5rem;
+  /* -webkit-border-radius: 5px; */
+  /* border-radius: 5px; */
+  margin-top: 5%;
+  border-top: 3px solid #ebeaf5;
+}
+
 .navbar-dropdown {
   padding-top: 0px;
   background-color: white;

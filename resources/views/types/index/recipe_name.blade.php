@@ -49,19 +49,20 @@
 
 							<?php
 							$ingredients = DB::table('recipes_ingredients')
-								->where('id_recipe', '=', $recette->id)
+								->where('id_recipe', '=', $recette->id)->limit(8)
 								->get();
-							?>
+
+	                        ?>
                             <p><b>@lang("recipe.ingredients") : </b>
                                 @foreach($ingredients as $index=>$in)
 									<?php
 									$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
 									?>
                                     @if($loop->last)
-                                        {{$nom_in}}
+                                        {{str_limit($nom_in, 15, '...')}}
                                     @else
-                                        {{$nom_in}},
-                                    @endif
+                                            {{str_limit($nom_in, 15, '...')}},
+                                        @endif
                                 @endforeach
                             </p>
 
@@ -72,7 +73,7 @@
 								<?php
 								$nom = DB::table('users')->where('id', $recette->id_user)->value('name');
 								?>
-                                @include("recipes.show.author")<br/>
+                                @include("recipes.index.author")<br/>
                                 @include("recipes.show.staronly")
                             </div>
                         </div>

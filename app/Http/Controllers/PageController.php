@@ -65,6 +65,32 @@ class PageController extends Controller
 
 		}
 	}
+	public function sum_time_home($val)
+	{
+		$format = '%1$02d';
+		// si il y'a + d'1heure
+		if($val > 60) {
+			$somme_h = $val / 60;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on les affiches
+			if($somme_m > 0) {
+				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) ;
+			} else {
+				return sprintf($format, $somme_h) . " h ";
+			}
+
+		} else {
+			$somme_h = 0;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on affiche qqch
+			if($somme_m > 0) {
+				return sprintf($format, $somme_m) . " min";
+			} else {
+				return '';
+			}
+
+		}
+	}
 
 	public function index()
 	{

@@ -5,7 +5,6 @@
 }
 
 
-
 .navbar {
   width: 100%;
   top: 0;
@@ -14,11 +13,11 @@
   //position: fixed;
 }
 
-.second_menu{
+.second_menu {
   background: $body-bg;
   //border-bottom: 0.1rem $brand-primary solid;
-  -webkit-box-shadow: -1px -2px 8px 0  $brand-primary;
-  box-shadow: -1px -2px 8px 0  $brand-primary;
+  -webkit-box-shadow: -1px -2px 8px 0 $brand-primary;
+  box-shadow: -1px -2px 8px 0 $brand-primary;
 }
 
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
@@ -26,11 +25,11 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 }
 
 
-
 span.item_navbar_second {
   padding-left: 1rem;
 }
-.nav-item-centered{
+
+.nav-item-centered {
   flex-grow: 1;
   flex-direction: column;
   justify-content: center;
@@ -43,11 +42,21 @@ span.item_navbar_second {
   color: $brand-primary;
   padding: 0.5rem 1rem;
   @include transition_all();
-
+  
   &:hover {
-    @include transition_all();
+	@include transition_all();
   }
 }
+
+.bg_side {
+  /* background: #ffffffb8; */
+  padding: 1rem 0.5rem 0.5rem;
+  /* -webkit-border-radius: 5px; */
+  /* border-radius: 5px; */
+  margin-top: 5%;
+  border-top: 3px solid #ebeaf5;
+}
+
 
 .navbar-dropdown {
   padding-top: 0px;
@@ -63,13 +72,11 @@ span.item_navbar_second {
 }
 
 
-
 a.navbar-item, a.navbar-link {
   color: $brand-primary;
   font-size: 1.1rem;
   @include transition_all();
 }
-
 
 
 .search_header {
@@ -87,7 +94,8 @@ a.navbar-item, a.navbar-link {
   background: transparent;
   border: 0px;
   cursor: pointer;
+  
   &:hover {
-    color: $brand-primary;
+	color: $brand-primary;
   }
 }

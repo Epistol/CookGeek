@@ -2,15 +2,19 @@
 
     @include("recipes.show.author")
 </p>
-<h4 class="title">Informations</h4>
-<div style="display:flex;" class="">
-    @include("recipes.show.diff")
-</div>
 
-<div class="">
-    @include("recipes.show.price")
-</div>
 
+<div class="bg_side">
+
+    <h4 class="title">Informations</h4>
+    <div style="display:flex;" class="">
+        @include("recipes.show.diff")
+    </div>
+
+    <div class="">
+        @include("recipes.show.price")
+    </div>
+</div>
 
 @include("recipes.show.times")
 
