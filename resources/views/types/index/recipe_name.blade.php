@@ -47,25 +47,6 @@
                         <div class="middle">
                             {{-- Ingredients--}}
 
-							<?php
-							$ingredients = DB::table('recipes_ingredients')
-								->where('id_recipe', '=', $recette->id)->limit(8)
-								->get();
-
-	                        ?>
-                            <p><b>@lang("recipe.ingredients") : </b>
-                                @foreach($ingredients as $index=>$in)
-									<?php
-									$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
-									?>
-                                    @if($loop->last)
-                                        {{str_limit($nom_in, 15, '...')}}
-                                    @else
-                                            {{str_limit($nom_in, 15, '...')}},
-                                        @endif
-                                @endforeach
-                            </p>
-
 
                         </div>
                         <div class="bottom">

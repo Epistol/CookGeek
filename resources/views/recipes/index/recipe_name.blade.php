@@ -15,9 +15,9 @@
 
 			?>
 
-            <div class="column is-6 is-result">
-                <div class="columns">
-                    <div class="column is-4 to-hover is-paddingless is-marginless">
+            <div class="column is-6 is-result ">
+                <div class="columns ">
+                    <div class="column is-4 to-hover is-marginless is-paddingless">
                         @if(isset($type))
                             <div class="hovered">
                                 <a class="tag" style="margin:0.5rem"
@@ -27,15 +27,17 @@
                         <a href="/recette/{{$recette->slug}}">
                             <figure class="image is-1by1">
                                 @if($recette->id_user != NULL  && isset($first))
-                                    <img src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}">
+                                    <img class="fit-cover" src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}" style="-webkit-border-radius: 15px 0 0 15px;
+border-radius: 15px 0 0 15px;">
                                 @else
-                                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
+                                    <img class="fit-cover" src="http://via.placeholder.com/300x200?text={{$recette->title}}" style="-webkit-border-radius: 15px 0 0 15px;
+border-radius: 15px 0 0 15px;">
                                 @endif
                             </figure>
                         </a>
 
                     </div>
-                    <div class="column is-7">
+                    <div class="column is-7 is-paddingless">
                         <div class="top is-flex">
                             <a href="{{url('/recette/'.$recette->slug)}}"><h2 class="title">
 
@@ -45,31 +47,31 @@
 
 
                         </div>
+
                         <div class="middle">
                             {{-- Ingredients--}}
 
 							<?php
 							$ingredients = DB::table('recipes_ingredients')
-								->where('id_recipe', '=', $recette->id)
+								->where('id_recipe', '=', $recette->id)->limit(8)
 								->get();
 							?>
                             <p><b>@lang("recipe.ingredients") : </b>
                                 @foreach($ingredients as $index=>$in)
-									<?php
-									$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
-									?>
+			                        <?php
+			                        $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
+			                        ?>
                                     @if($loop->last)
-                                        {{$nom_in}}
+                                        {{str_limit($nom_in, 15, '...')}}
                                     @else
-                                        {{$nom_in}},
+                                        {{str_limit($nom_in, 15, '...')}},
                                     @endif
                                 @endforeach
                             </p>
 
 
                         </div>
-                        <div class="bottom">
-                            <div class="is-flex">
+                        <div class="bottom is-flex">
                                 <span>
                                     <?php
 	                                $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
@@ -78,11 +80,10 @@
                                 </span>
 
                                 <span style="padding-left:1rem"> @include("recipes.show.staronly")</span>
-                            </div>
                         </div>
 
                     </div>
-                    <div class="column is-1 ">
+                    <div class="column is-1 is-marginless is-paddingless">
                         <div class="top">
 							<?php
 							$typeuniv = DB::table('categunivers')

@@ -17322,14 +17322,17 @@ table.times th {
   overflow: auto;
   max-height: 25%;
   overflow: hidden;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .middle {
   margin-top: 0.5rem;
+  min-height: 6rem;
   max-height: 60%;
-  max-height: 4rem;
-  min-height: 60%;
   overflow: hidden;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .bottom {
@@ -18224,7 +18227,6 @@ form.addrecipe .field {
   background: #fdfdfd;
   border-radius: 15px;
   border: 1rem #ebeaf5;
-  padding: 1.2rem;
   -webkit-box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
           box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
 }
