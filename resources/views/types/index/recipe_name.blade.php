@@ -4,7 +4,7 @@
 
 
     <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">
-        <?php $i = 0;?>
+		<?php $i = 0;?>
         @foreach ($recettechunk as $recette)
 
 
@@ -79,8 +79,8 @@
                     </div>
                 </div>
             </div>
-				<?php $i++?>
-            @endforeach
+			<?php $i++?>
+        @endforeach
     </div>
 
 @endforeach

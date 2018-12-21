@@ -13,7 +13,11 @@
                 <a class="navbar-brand logo" href="{{ url('/') }}">
 
                     {{ ucfirst(config('app.name', 'Laravel')) }}
+                    <span class="beta_logo">
+                    BETA
+                </span>
                 </a>
+
 
                 <button class="button navbar-burger" data-target="navMenu">
                     <span></span>

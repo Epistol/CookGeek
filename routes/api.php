@@ -33,3 +33,5 @@ Route::post("/recipe/alerte/", 'Api\RecipeController@alerte')->name("api.recipe.
 
 Route::get("/autocomplete/search/univers", 'Api\SearchController@search_univers')->name("api.search.univers");
 
+Route::post("/like", 'Api\LikeController@create')->name("api.like.create");
+Route::post("/note", 'Api\NoteController@checknote')->name("api.like.checknote");

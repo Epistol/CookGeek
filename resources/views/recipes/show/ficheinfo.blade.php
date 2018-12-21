@@ -5,7 +5,7 @@
         @include("recipes.show.ingredient")
         <div style="display:flex;justify-content:flex-end;align-items:center; margin-top: 10%">
 
-
+            @auth
             @if($recette->id_user === Auth::user()->id )
                 <div style="margin-right: 5%">
                     <a href="{{route("recipe.edit", $recette->slug)}}">
@@ -16,14 +16,14 @@
                     </a>
                 </div>
             @endif
+                <signalrecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></signalrecipe>
+
+            @endauth
 
             @guest
                 <signalrecipe recipeid="{{$recette->id}}" user_id='null'></signalrecipe>
             @endguest
-            @auth
-                <signalrecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></signalrecipe>
 
-            @endauth
         </div>
 
     </section>

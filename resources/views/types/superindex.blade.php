@@ -15,7 +15,7 @@
                                 <div class="column is-one-third is-flex-center">
                                     {{--On affiche la liste des types de recettes--}}
                                     <a class="tag is-primary is-medium"
-                                       href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
+                                       href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}s</a>
                                 </div>
                             @endforeach
                         </div>

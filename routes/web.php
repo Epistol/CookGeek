@@ -43,7 +43,6 @@ require base_path('routes/web/design.php');
 
 /// API
 Route::post("/like", 'Api\LikeController@create')->name("api.like.create");
-Route::post("/note", 'Api\NoteController@create')->name("api.like.create");
 Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
 
 

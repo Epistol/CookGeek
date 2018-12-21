@@ -17184,10 +17184,6 @@ span.ingr_title {
   margin-right: 2rem;
 }
 
-.is-centered {
-  text-align: center;
-}
-
 .is-flex-center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17338,6 +17334,9 @@ table.times th {
 .bottom {
   max-height: 25%;
   overflow: hidden;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
 }
 
 .hovered {
@@ -17345,10 +17344,22 @@ table.times th {
   height: 0px;
 }
 
-.to-hover:hover > .hovered {
+.to-hover:hover .hovered {
   visibility: visible;
   position: absolute;
   z-index: 5;
+}
+
+.aligned_bottom_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 section.entete {
@@ -18226,9 +18237,24 @@ form.addrecipe .field {
 .is-result {
   background: #fdfdfd;
   border-radius: 15px;
+  margin-right: 3%;
   border: 1rem #ebeaf5;
   -webkit-box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
           box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
+}
+
+.categ_recette {
+  position: absolute;
+  z-index: 99;
+}
+
+span.beta_logo {
+  font-size: 0.7rem;
+  color: #fcbee1;
+  font-family: "AvenirMedium", Arial, Helvetica, sans-serif;
+  /* position: absolute; */
+  /* bottom: 0%; */
+  /* left: 0%; */
 }
 
 .content figure {

@@ -1,4 +1,4 @@
-<div class="is-flex-center" >
+<div class="" >
     <?php
         $author = DB::table('users')->where('id', '=', $recette->id_user)->first();
         $nb_recipes = DB::table('recipes')->where('id_user', '=', $recette->id_user )->count();

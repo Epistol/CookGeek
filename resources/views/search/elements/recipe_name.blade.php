@@ -35,15 +35,17 @@
                         @endif
                         <figure class="image is-1by1" >
                         @if($recette->id_user != NULL && isset($recette) && isset($first))
-                                <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first}}">
+                                <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first}}" style="-webkit-border-radius: 15px 0 0 15px;
+border-radius: 15px 0 0 15px;">
                                 @else
-                                <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
+                                <img src="http://via.placeholder.com/300x200?text={{$recette->title}}" style="-webkit-border-radius: 15px 0 0 15px;
+border-radius: 15px 0 0 15px;">
                                 @endif
                             </figure>
 
 
                     </div>
-                    <div class="column is-7">
+                    <div class="column is-7 is-paddingless is-marginless">
                         <div class="top is-flex">
                             <h2 class="title">
                                 {{$recette->title}}
@@ -80,7 +82,7 @@
                                 <?php
                                 $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
                                 ?>
-                                @include("recipes.show.author")<br />
+                                @include("recipes.index.author")<br />
                                 @include("recipes.show.staronly")
                             </div>
                         </div>

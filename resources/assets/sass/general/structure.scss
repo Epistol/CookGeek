@@ -77,19 +77,27 @@ table.times th {
 .bottom {
   max-height: 25%;
   overflow: hidden;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
 }
+
+
 
 .hovered {
   visibility: hidden;
   height: 0px;
 }
 
-.to-hover:hover > .hovered {
+.to-hover:hover .hovered {
   visibility: visible;
   position: absolute;
   z-index: 5;
 }
 
+.aligned_bottom_right {
+  display:flex;justify-content:flex-end;align-items:flex-end;
+}
 
 section.entete {
   background: hsla(245, 35%, 85%, 1);
