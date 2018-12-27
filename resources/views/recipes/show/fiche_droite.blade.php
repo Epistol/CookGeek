@@ -20,8 +20,12 @@
 
 @if($typeuniv)
     @if($typeuniv->name== 'gaming')
-        <iframe src="https://www.instant-gaming.com/affgames/igr313965/250x250" scrolling="no" frameborder="0"
-                style="border: 1px solid #ccc; border-radius: 10px; overflow:hidden; width:250px; height:250px; width:100%;"
-                allowTransparency="true"></iframe>
+        <div class="bg_side pub">
+            <h4 class="title">Pub</h4>
+            <iframe src="https://www.instant-gaming.com/affgames/igr313965/250x250" scrolling="no" frameborder="0"
+                    style="border: 1px solid #ccc; border-radius: 10px; overflow:hidden; width:250px; height:250px; width:100%;"
+                    allowTransparency="true"></iframe>
+        </div>
+
     @endif
 @endif

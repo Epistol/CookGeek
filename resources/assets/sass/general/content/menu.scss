@@ -55,6 +55,12 @@ span.item_navbar_second {
   /* border-radius: 5px; */
   margin-top: 5%;
   border-top: 3px solid #ebeaf5;
+  &.pub {
+      background: #ebeaf5;
+      -webkit-border-radius: 20px 40px 20px 40px;
+      border-radius: 20px 40px 20px 40px;
+      text-align: center;
+  }
 }
 
 
