@@ -8,6 +8,6 @@ if ($recette->guest_type == '') {
 
 <div class="is-flex-center">
     <b>
-        {{$recette->nb_guests}}
+        {{$recette->nb_guests || 1}}
     </b>
 </div>

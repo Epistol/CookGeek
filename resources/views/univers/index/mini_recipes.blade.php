@@ -3,6 +3,7 @@
         <div class="column is-one-third">
             {{--Récupérer l'image de la catégorie--}}
             <img alt="title" src="https://picsum.photos/250/?random"/>
+
         </div>
         <div class="column">
             <a href="{{route('univers.show', $univers_datum->id)}}" class="titre_partie">{{$univers_datum->name}}</a>

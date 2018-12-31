@@ -24,6 +24,8 @@ Route::get('/contact', 'PageController@show_contact');
 
 // RECIPES
 require base_path('routes/web/recipe.php');
+require base_path('routes/web/type.php');
+require base_path('routes/web/media.php');
 
 
 

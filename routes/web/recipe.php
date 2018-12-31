@@ -7,6 +7,8 @@
  */
 
 
+
+
 // RECETTE
 Route::group(['prefix' => 'recette'], function () {
     Route::get('/', 'Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
@@ -19,18 +21,9 @@ Route::group(['prefix' => 'recette'], function () {
 	Route::post('update/{id}', 'Recipe\RecipesController@update')->name("recipe.edition")->middleware('auth');
 //    Route::post('store_test', 'Recipe\RecipesController@store_test')->name("recipe.store_test");
 
-    Route::group(['prefix' => 'type'], function () {
-        Route::get('/', 'TypeController@index')->name("type.index");
-        Route::get('{post}', 'TypeController@show')->name("type.show");
-    });
 
-// RECETTE/MEDIA
-    Route::group(['prefix' => 'media'], function () {
-        Route::get('/', 'Recipe\RecipesController@indexmedia')->name("media.index");
-        Route::get('ajout', 'Recipe\RecipesController@add')->name("media.add")->middleware('auth');
-        Route::post('ajout', 'Recipe\RecipesController@store')->name("media.store");
-        Route::get('{post}', 'Recipe\RecipesController@indexmediatype')->name("media.show");
-    });
+
+
 
     Route::get('{post}', 'Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
 

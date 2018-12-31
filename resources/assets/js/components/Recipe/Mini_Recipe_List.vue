@@ -1,6 +1,5 @@
 <template v-cloak>
     <div class="recipe_list_object is-flex">
-        <!--<p>Hey</p>-->
         <template v-if="picture">
             <figure class="image is-64x64 radiused">
                 <!--TODO : recuperer l'image crop square (et la generer aussi du coup) -->
@@ -9,17 +8,15 @@
             </figure>
         </template>
         <template v-else>
-            <!--<img :src="'https://picsum.photos/64/?random'" alt=""/>-->
         </template>
         <a :href="'/recette/'+recipe.slug" class="titre_content">{{recipe.title}}</a>
         <!--Ingredients-->
         <ul id="example-1">
-            <li v-for="ingredient in ingredients">
+            <li v-for="(ingredient,index) in ingredients" v-if="index <= 5">
                 {{ ingredient.qtt }} {{ ingredient.name }}
             </li>
         </ul>
 
-        <!--Timing   -->
 
     </div>
 </template>

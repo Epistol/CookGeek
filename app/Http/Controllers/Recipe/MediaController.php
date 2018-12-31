@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Recipe;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
@@ -13,7 +15,15 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+	    $universcateg = DB::table('categunivers')->get();
+
+	    if($universcateg != null) {
+
+		    // On charge les données dans la vue
+		    return view('media.index', array('universcateg' => $universcateg, ))->with(['controller' => $this]);
+	    } else {
+		    abort(404);
+	    }
     }
 
     /**
@@ -45,7 +55,17 @@ class MediaController extends Controller
      */
     public function show($id)
     {
-        //
+
+	    $universcateg = DB::table('categunivers')->where("name", "=", $id)->first();
+	    if($universcateg != null) {
+		    $recipes =  DB::table('recipes')->where("type_univers", "=", $universcateg->id)->latest()->paginate(12);
+
+		    // On charge les données dans la vue
+		    return view('media.index', array('universcateg' => $universcateg, 'recipes' => $recipes))->with(['controller' => $this]);
+
+	    } else {
+		    abort(404);
+	    }
     }
 
     /**

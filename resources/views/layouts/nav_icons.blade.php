@@ -7,11 +7,11 @@
                 <div class="navbar-menu" id="navMenu">
                     <div class="navbar-start">
 
-                        <?php
-                        $typeuniv = DB::table('categunivers')->get();
-                        ?>
+						<?php
+						$typeuniv = DB::table('categunivers')->get();
+						?>
                         @foreach($typeuniv as $type)
-                            <a class="navbar-item " href="{{route("type.show", lcfirst($type->name))}}">
+                            <a class="navbar-item " href="{{route("media.show", lcfirst($type->name))}}">
                                 <figure class="image is-32x32">
                                     <img src="/img/pictos/icones_menu/{{ $type->name }}.svg"/>
                                 </figure>

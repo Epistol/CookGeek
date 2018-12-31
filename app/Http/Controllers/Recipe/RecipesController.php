@@ -60,9 +60,10 @@ class RecipesController extends Controller
 	 * @param $type
 	 * @return $this|\Illuminate\Http\RedirectResponse
 	 */
+
+
 	public function indexmediatype($type)
 	{
-
 		$universcateg = DB::table('categunivers')->where("name", "=", $type)->get();
 
 		if($universcateg != null) {

@@ -27,7 +27,8 @@
 
 
 
-                        @include("types.index.recipe_name")
+                        @include("recipes.index.recipe_name")
+
                     @endif
 
                 </div>

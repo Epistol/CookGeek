@@ -39,13 +39,28 @@
                         </div>
                     </div>
 
-                    <a class="navbar-item" href="{{ route('type.index') }}">
-                        Types
-                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="{{ route('type.index') }}">
+                            Types
+                        </a>
+                        <div class="navbar-dropdown">
+
+							<?php
+							$load_types = DB::table('type_recipes')->get();
+							?>
+                            @foreach($load_types as $type)
+                                <a class="navbar-item" href="{{ route('type.show', lcfirst($type->name)) }}">
+                                    {{$type->name}}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+
+
                     <a class="navbar-item" href="{{route("univers.index")}}">
                         Univers
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="{{route('media.index')}}">
                         Médias
                     </a>
                     {{-- <a class="navbar-item">

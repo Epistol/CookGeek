@@ -139,14 +139,19 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2rem;
 }
 .univers_element {
-  display: block;
-  margin: 1%;
   background: white;
   margin-top: 0%!important;
 }
 
+.univers_element > ul, .univers_element > ul > li {
+  list-style-type: none;
+/*  margin: 0;
+  padding: 0;*/
+}
+
 .categ_univers_recette {
   background: #ebeaf5;
+  margin-top: 2rem; margin-bottom: 2rem;
 }
 
 

@@ -1,15 +1,15 @@
 <div class="card cdg">
     <div class="card-image"><a href="{{route('recipe.show', $recette->slug)}}">
             <figure class="image is-4by3">
-                <?php
+				<?php
 
-                $img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
-                ?>
+				$img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
+				?>
                 @if($img == null or empty($img))
-                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}"
+                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}" class="fit-cover"
                          alt="{{$recette->title}} / CDG">
                 @else
-                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$img->image_name}}"
+                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$img->image_name}}" class="fit-cover"
                          alt="{{$recette->title}} / CDG">
                 @endif
 

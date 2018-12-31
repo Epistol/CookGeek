@@ -1,15 +1,15 @@
 <div class="card cdg">
     <div class="card-image"><a href="{{route('recipe.show', $recettes[$i]->slug)}}">
             <figure class="image is-4by3">
-                <?php
+				<?php
 
-                $img = DB::table('recipe_imgs')->where('user_id', '=', $recettes[$i]->id_user)->where('recipe_id', '=', $recettes[$i]->id)->first();
-                ?>
+				$img = DB::table('recipe_imgs')->where('user_id', '=', $recettes[$i]->id_user)->where('recipe_id', '=', $recettes[$i]->id)->first();
+				?>
                 @if($img == null or empty($img))
-                    <img src="http://via.placeholder.com/300x200?text={{$recettes[$i]->title}}"
+                    <img src="http://via.placeholder.com/300x200?text={{$recettes[$i]->title}}" class="fit-cover"
                          alt="{{$recettes[$i]->title}} / CDG">
                 @else
-                    <img src="{{url("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)}}"
+                    <img src="/recipes/{{$recettes[$i]->id}}/{{$recettes[$i]->id_user}}/{{$img->image_name}}" class="fit-cover"
                          alt="{{$recettes[$i]->title}} / CDG">
                 @endif
 
@@ -17,6 +17,7 @@
         </a>
     </div>
     @include("recipes.medaillon")
+
     <div class="card-content indexrecipe">
         <div class="media">
             <div class="media-content is-centered">
