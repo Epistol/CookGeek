@@ -10,11 +10,25 @@
                     @include('user.show.menu')
 
                 </div>
-                <div class="column is-three-quarters blockcontent">
-               ACCUEIL
+                <div class="column is-three-quarters ">
+                    <div class="blockcontent">
+                        <h2 class="title">
+                            Recettes créées
+                        </h2>
+                    </div>
+                    <div class="blockcontent">
+                        <h2 class="title">
+                            Commentaires
+                        </h2>
+                    </div>
+
                 </div>
+
             </div>
 
         </div>
     </div>
+
+
+
 @endsection

@@ -41,7 +41,8 @@ class UserController extends Controller
 	 */
 	public function show($id)
 	{
-		$user = DB::table('users')->select('id', 'role_id', 'name', 'avatar', 'img', 'created_at')->where('name', '=', $id)->first();
+		Carbon::setLocale('fr');
+		$user = DB::table('users')->select('id', 'role_id', 'name', 'avatar', 'img', 'created_at', 'updated_at')->where('name', '=', $id)->first();
 		return view('user.show')->with('user', $user);
 	}
 

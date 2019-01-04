@@ -228,6 +228,14 @@ figure.avatar_menu {
   position: absolute;
   top: 0px;
 }
+.menu_user {
+  padding-top: 33%;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+}
+.avatar_menu {
+  display:flex;justify-content:center;align-items:center;
+}
 
 nav.breadcrumb {
   padding: 1rem;

@@ -1,27 +1,24 @@
-<aside class="menu blockcontent">
-    <figure class="image is-128x128 avatar_menu">
-        @if($user->avatar !== "users/default.png")
-            <img  class="is-rounded avatar_left_menu"  src="/user/{{$user->id}}/picture/{{$user->avatar}}" />
-        @else
-            <img  class="is-rounded avatar_left_menu"  src="https://api.adorable.io/avatars/{{$user->id}}" />
-        @endif
-    </figure>
+<aside class="blockcontent menu_user">
+    <div class="avatar_menu">
+        <figure class="image is-128x128 avatar_menu">
+            @if($user->avatar !== "users/default.png")
+                <img  class="is-rounded avatar_left_menu"  src="/user/{{$user->id}}/picture/{{$user->avatar}}" />
+            @else
+                <img  class="is-rounded avatar_left_menu"  src="https://api.adorable.io/avatars/{{$user->id}}" />
+            @endif
+        </figure>
+    </div>
 
     <div class="menu">
-        <h1>{{$user->name}}</h1>
+        <h1 class="title" style="text-align:center">{{$user->name}}</h1>
         <div class="sous_cat">
             <p class="menu-label">
-                Mon compte
+               Inscrit le : {{Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
             </p>
-            <ul class="menu-list">
-                <li>
-                    <a href="{{route('account.param')}}" class="
-                        @if(Route::currentRouteNamed('account.param') || Route::currentRouteNamed('account.data') || Route::currentRouteNamed('account.info'))
-                    {{'is-active'}}
-                    @endif">Paramètres</a>
-                    {{--<a href="{{route('account.data')}}">Mes données</a>--}}
-                </li>
-            </ul>
+            <p class="menu-label">
+                Dernière connexion : {{Carbon\Carbon::parse($user->updated_at)->format('d/m/Y') }}
+            </p>
+
         </div>
 
     </div>
