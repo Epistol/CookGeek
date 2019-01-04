@@ -45,7 +45,7 @@ Vue.component('sharemodal', require('./components/ShareModal.vue'));
 Vue.component('socialshare', require('./components/Recipe/Share.vue'));
 Vue.component('ingredient_form', require('./components/Ingredients.vue'));
 
-Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
+// Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
 Vue.component('homerecipes', require("./components/Recipe/Home_Recipes"));
 
 Vue.component('signalrecipe', require("./components/Recipe/Signal"));

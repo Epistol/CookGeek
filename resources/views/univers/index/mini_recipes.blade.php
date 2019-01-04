@@ -1,17 +1,24 @@
 <div class="column radiused">
-    <div class="columns ">
-        <div class="column is-one-third">
-            {{--Récupérer l'image de la catégorie--}}
-            <img alt="title" src="https://picsum.photos/250/?random"/>
+    <div class="columns is-multiline">
 
-        </div>
-        <div class="column">
+        <div class="column is-3">
+
             <a href="{{route('univers.show', $univers_datum->id)}}" class="titre_partie">{{$univers_datum->name}}</a>
-            {{--<p>Hello : il y'a sans doute 1 ou 2 recette dans l'univers :</p>--}}
-            {{--Récupérer les 2-3 dernieres recettes--}}
             @foreach($recettes as $recette)
-				<?php //dd($recette->id);?>
-                <mini_recipe_list_element :recipe="{{json_encode($recette)}}"></mini_recipe_list_element>
+                <div class="is-flex">
+
+                <figure class="image is-64x64 radiused">
+	                <?php $pic = DB::table('recipe_imgs')
+		                ->where('recipe_id', '=', $recette->id)
+		                ->first();
+	                ?>
+                    <img src="/recipes/{{$pic->recipe_id}}/{{$pic->user_id}}/{{$pic->image_name}}"
+                         style="background-picture : 'https://picsum.photos/64/?random'" alt=""/>
+
+                </figure>
+                    <a href="/recette/{{$recette->slug}}" class="titre_content">{{$recette->title}}</a>
+                </div>
+
             @endforeach
 
         </div>

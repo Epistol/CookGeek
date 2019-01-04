@@ -16,7 +16,10 @@
             </figure>
         </a>
     </div>
-    @include("recipes.medaillon")
+ {{--   <categ_icon text_icon="{{$categ->name}}"></categ_icon>
+
+
+    @include("recipes.medaillon")--}}
 
     <div class="card-content indexrecipe">
         <div class="media">

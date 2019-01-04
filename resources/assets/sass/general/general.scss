@@ -218,6 +218,17 @@ figure.image img {
   margin-bottom: 2rem;
 }
 
+.avatar_left_menu {
+  border:3px solid white;
+  -webkit-box-shadow: 0 4px 10px 0 $brand-primary;
+  box-shadow: 0 4px 10px 0 $brand-primary;
+}
+
+figure.avatar_menu {
+  position: absolute;
+  top: 0px;
+}
+
 nav.breadcrumb {
   padding: 1rem;
 }

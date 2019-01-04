@@ -1,38 +1,43 @@
-
 @keyframes flicker {
   0% {
-    opacity: 0;
-  } 100% {
-      opacity: 1;
-    }
+	opacity: 0;
+  }
+  100% {
+	opacity: 1;
+  }
 }
 
 
 @-webkit-keyframes cssAnimation {
   from {
-    -webkit-transform: rotate(0deg) scale(1) skew(0deg) ;
+	-webkit-transform: rotate(0deg) scale(1) skew(0deg);
   }
   to {
-    -webkit-transform: rotate(0deg) scale(2) skew(0deg) ;
+	-webkit-transform: rotate(0deg) scale(2) skew(0deg);
   }
 }
+
 .slide-active, .slide-leave-active {
-  transition:all 0.5s ease;
+  transition: all 0.5s ease;
   transition-timing-function: ease;
   max-height: 100vh;
   opacity: 1;
 }
-.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */
+{
   opacity: 0;
   max-height: 0;
   overflow: hidden;
 }
-.slide-leave-to, .slide-leave-active{
+
+.slide-leave-to, .slide-leave-active {
   animation-name: slideInUp;
 }
-.slide-enter{
-  animation-name: slideInDown;
 
+.slide-enter {
+  animation-name: slideInDown;
+  
 }
 
 
@@ -43,18 +48,49 @@
 
 @keyframes pulse {
   from {
-    transform: scale3d(1, 1, 1);
-  color:inherit;
+	transform: scale3d(1, 1, 1);
+	color: inherit;
   }
-
+  
   50% {
-    transform: scale3d(1.05, 1.05, 1.05);
-    color:#F398B6;
+	transform: scale3d(1.05, 1.05, 1.05);
+	color: #F398B6;
   }
-
+  
   to {
-    transform: scale3d(1, 1, 1);
-    color:inherit;
+	transform: scale3d(1, 1, 1);
+	color: inherit;
   }
+}
+
+
+@keyframes eye_watching {
+  from {
+	background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  
+  25% {
+	background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%)
+  }
+  
+  50% {
+  background: radial-gradient(#FFFeee 3%, #FFF000 8%, #FF0000 16%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  
+  75% {
+	background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%)
+  }
+  
+  to {
+	background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+}
+
+.eye_watching {
+  animation-duration: 5s;
+  animation-name: eye_watching;
+  animation-iteration-count: infinite;
+  transition: 1s;
+  
 }
 

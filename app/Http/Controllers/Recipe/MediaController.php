@@ -15,12 +15,11 @@ class MediaController extends Controller
      */
     public function index()
     {
-	    $universcateg = DB::table('categunivers')->get();
+	    $medias = DB::table('categunivers')->get();
 
-	    if($universcateg != null) {
-
+	    if($medias !== null) {
 		    // On charge les données dans la vue
-		    return view('media.index', array('universcateg' => $universcateg, ))->with(['controller' => $this]);
+		    return view('media.index', array('medias' => $medias ))->with(['controller' => $this]);
 	    } else {
 		    abort(404);
 	    }
@@ -55,14 +54,11 @@ class MediaController extends Controller
      */
     public function show($id)
     {
-
-	    $universcateg = DB::table('categunivers')->where("name", "=", $id)->first();
-	    if($universcateg != null) {
-		    $recipes =  DB::table('recipes')->where("type_univers", "=", $universcateg->id)->latest()->paginate(12);
-
+	    $medias = DB::table('categunivers')->where("name", "=", $id)->first();
+	    if($medias != null) {
+		    $recipes =  DB::table('recipes')->where("type_univers", "=", $medias->id)->latest()->paginate(12);
 		    // On charge les données dans la vue
-		    return view('media.index', array('universcateg' => $universcateg, 'recipes' => $recipes))->with(['controller' => $this]);
-
+		    return view('media.show', array('medias' => $medias, 'recipes' => $recipes))->with(['controller' => $this]);
 	    } else {
 		    abort(404);
 	    }

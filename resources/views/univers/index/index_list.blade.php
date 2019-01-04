@@ -9,7 +9,7 @@
         <div class="categ_univers_recette ">
             <section class="hero">
                 <div class="is-flex hero-body">
-                    <a href="{{route('type.show', $categ->name)}}"><h2 class="title"
+                    <a href="{{route('media.show', $categ->name)}}"><h2 class="title"
                                                                        style="padding-right: 0.5rem">{{ucfirst($categ->name)}}</h2>
                     </a>
                     <categ_icon text_icon="{{$categ->name}}"></categ_icon>

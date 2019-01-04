@@ -72,6 +72,7 @@ class UniversController extends Controller
 
 		// 1) Charger les types (anime, manga, etc)
 		$univers  = Univers::where("id", $id)->firstOrFail();
+
 		$categunivers = (new Categunivers())->alltypes();
 
 		if($univers != null) {

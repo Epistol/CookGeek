@@ -47,7 +47,6 @@
 
     </div>
 
-    <div class="eye">
-
+    <div class="eye eye_watching">
     </div>
 @endsection

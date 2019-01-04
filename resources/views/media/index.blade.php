@@ -7,31 +7,28 @@
 
                 @include("media.index.bread")
 
-                <div class="content">
 
+                    <div class="columns">
+                        <div class="column is-3">
 
-                    @if($recipes)
+                        </div>
+                        <div class="column">
+                            <section class="hero">
+                                <div class="hero-body">
+                                    <div class="container">
+                                        <h1 class="title">
+                                            Tous les médias
+                                        </h1>
+                                        <h2 class="subtitle">
 
-                        <section class="hero">
-                            <div class="hero-body">
-                                <div class="container">
-                                    <h1 class="title">
-                                        Toutes les recettes {{ucfirst($universcateg->name)}}
-                                    </h1>
-                                    <h2 class="subtitle">
-
-                                    </h2>
+                                        </h2>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                            @include("media.index.list")
+                        </div>
+                    </div>
 
-
-
-                        @include("recipes.index.recipe_name")
-
-                    @endif
-
-                </div>
 
             </section>
         </div>

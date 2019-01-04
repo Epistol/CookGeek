@@ -17,3 +17,10 @@ Route::prefix('home')->group(function () {
 
 });
 
+
+Route::prefix('user')->group(function () {
+	Route::get('/', 'User\UserController@index')->name("user.index");
+	Route::get('{post}', 'User\UserController@show')->name("user.show");
+
+});
+
