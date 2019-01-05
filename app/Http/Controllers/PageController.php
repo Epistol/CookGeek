@@ -8,6 +8,8 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactEmail;
 
 class PageController extends Controller
 {
@@ -65,6 +67,7 @@ class PageController extends Controller
 
 		}
 	}
+
 	public function sum_time_home($val)
 	{
 		$format = '%1$02d';
@@ -74,7 +77,7 @@ class PageController extends Controller
 			$somme_m = $val - ((int)$somme_h * 60);
 			// si le nb de minute est supérieur a 0, on les affiches
 			if($somme_m > 0) {
-				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) ;
+				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m);
 			} else {
 				return sprintf($format, $somme_h) . " h ";
 			}
@@ -115,8 +118,6 @@ class PageController extends Controller
 	public function create()
 	{
 		return Auth::check() ? view('admin.page.create') : back();
-
-
 	}
 
 	private function slugtitre($titre, $idrecipe)
@@ -133,7 +134,6 @@ class PageController extends Controller
 	 */
 	public function store(Request $request)
 	{
-
 		$idRecette = DB::table('pages')->insertGetId(
 			['name' => $request->name,
 				'content' => $request->contenu,
@@ -143,7 +143,6 @@ class PageController extends Controller
 
 			]
 		);
-
 		// Partie SLUG
 		$slug = $this->slugtitre($request->name, $idRecette);
 
@@ -169,9 +168,16 @@ class PageController extends Controller
 
 	public function show_contact()
 	{
-		$page = Page::where('name', 'Contact')->first();
-		return view('admin.page.show', ['page' => $page]);
+		return view('admin.page.contact');
 	}
+
+	public function store_contact(Request $request)
+	{
+		dd($request);
+		Mail::send(new ContactEmail($request));
+		return redirect('/');
+	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
