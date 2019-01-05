@@ -17535,7 +17535,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .block {
   /*  background: rgba(255, 0, 0, 0.3);
-  border: 2px solid green;*/
+	border: 2px solid green;*/
 }
 
 .advanced {
@@ -17550,7 +17550,7 @@ h1, h2, h3, h4, h5, h6 {
 .univers_element > ul, .univers_element > ul > li {
   list-style-type: none;
   /*  margin: 0;
-  padding: 0;*/
+	padding: 0;*/
 }
 
 .categ_univers_recette {
@@ -17647,6 +17647,38 @@ figure.avatar_menu {
 
 nav.breadcrumb {
   padding: 1rem;
+}
+
+.right_side_recipe {
+  min-height: 100%;
+}
+
+.right_side_recipe #ingredients {
+  border-bottom: 1px solid #ebeaf5;
+}
+
+.right_side_recipe #author {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.right_side_recipe #author .author {
+  /* position: absolute;
+	   bottom: 0px;*/
+  border: 0px solid;
+}
+
+#recipe_line {
+  border-bottom: 1px solid #ebeaf5;
+}
+
+h2#recipe_user {
+  padding-left: 0.7rem;
 }
 
 .main_eror {
@@ -17905,6 +17937,285 @@ a.print:hover {
 .notification.is-success {
   background-color: #23d160;
   color: #fff;
+}
+
+.show-dan {
+  -webkit-animation: showToastyGuy 1.2s;
+  animation: showToastyGuy 1.2s;
+}
+
+@-webkit-keyframes showToastyGuy {
+  0% {
+    right: -12%;
+  }
+  40% {
+    right: 0px;
+  }
+  60% {
+    right: 0px;
+  }
+  100% {
+    right: -12%;
+  }
+}
+
+@keyframes showToastyGuy {
+  0% {
+    right: -12%;
+  }
+  40% {
+    right: 0px;
+  }
+  60% {
+    right: 0px;
+  }
+  100% {
+    right: -12%;
+  }
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+/*
+.modal-container {
+  width: 25%;
+  margin: 0px auto;
+  padding: 2rem 3rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+}
+*/
+.modal-header h3 {
+  margin-top: 0;
+  color: #47424a;
+  font-weight: bold;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal {
+  z-index: 999;
+}
+
+.modal-default-button {
+  float: right;
+  background: transparent;
+  color: #898989;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+  /* for input */
+  -webkit-user-select: none;
+  /* for button */
+}
+
+.modal-default-button:hover {
+  color: #524d55;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+.boxmodal {
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  color: #4a4a4a;
+  display: block;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-radius: 0 0 5px 5px;
+  background: white;
+}
+
+.modal-footer .bg {
+  background: #F1F3F5;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.modal.is-active {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg) scale(2) skew(0deg);
+  }
+}
+
+.slide-active, .slide-leave-active {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.slide-enter, .slide-leave-to {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.slide-leave-to, .slide-leave-active {
+  -webkit-animation-name: slideInUp;
+          animation-name: slideInUp;
+}
+
+.slide-enter {
+  -webkit-animation-name: slideInDown;
+          animation-name: slideInDown;
+}
+
+/* Generated with Bounce.js. Edit at https://goo.gl/y3FSYm */
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05);
+    color: #F398B6;
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05);
+    color: #F398B6;
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    color: inherit;
+  }
+}
+
+@-webkit-keyframes eye_watching {
+  from {
+    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  25% {
+    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  50% {
+    background: radial-gradient(#FFFeee 3%, #FFF000 8%, #FF0000 16%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  75% {
+    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  to {
+    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+}
+
+@keyframes eye_watching {
+  from {
+    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  25% {
+    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  50% {
+    background: radial-gradient(#FFFeee 3%, #FFF000 8%, #FF0000 16%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  75% {
+    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+  to {
+    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
+  }
+}
+
+.eye_watching {
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-name: eye_watching;
+          animation-name: eye_watching;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .onboard_login {
@@ -18594,6 +18905,25 @@ input.input_modal.blck, textarea.input_modal.blck {
   color: #7f5fbf;
 }
 
+.medail {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  min-width: 3rem;
+  min-height: 3rem;
+}
+
+.medaillon {
+  position: absolute;
+  margin: auto;
+  top: 56%;
+  left: 40%;
+}
+
 .type-selector input {
   margin: 0;
   padding: 0;
@@ -18676,285 +19006,6 @@ input.input_modal.blck, textarea.input_modal.blck {
   -webkit-filter: none;
   -moz-filter: none;
   filter: none;
-}
-
-.show-dan {
-  -webkit-animation: showToastyGuy 1.2s;
-  animation: showToastyGuy 1.2s;
-}
-
-@-webkit-keyframes showToastyGuy {
-  0% {
-    right: -12%;
-  }
-  40% {
-    right: 0px;
-  }
-  60% {
-    right: 0px;
-  }
-  100% {
-    right: -12%;
-  }
-}
-
-@keyframes showToastyGuy {
-  0% {
-    right: -12%;
-  }
-  40% {
-    right: 0px;
-  }
-  60% {
-    right: 0px;
-  }
-  100% {
-    right: -12%;
-  }
-}
-
-.modal-mask {
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
-}
-
-/*
-.modal-container {
-  width: 25%;
-  margin: 0px auto;
-  padding: 2rem 3rem;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-}
-*/
-.modal-header h3 {
-  margin-top: 0;
-  color: #47424a;
-  font-weight: bold;
-}
-
-.modal-body {
-  margin: 20px 0;
-}
-
-.modal {
-  z-index: 999;
-}
-
-.modal-default-button {
-  float: right;
-  background: transparent;
-  color: #898989;
-  font-size: 1.2rem;
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: button;
-  /* for input */
-  -webkit-user-select: none;
-  /* for button */
-}
-
-.modal-default-button:hover {
-  color: #524d55;
-}
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
-.boxmodal {
-  background-color: white;
-  border-radius: 5px 5px 0 0;
-  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  color: #4a4a4a;
-  display: block;
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1rem;
-  border-radius: 0 0 5px 5px;
-  background: white;
-}
-
-.modal-footer .bg {
-  background: #F1F3F5;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.modal.is-active {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-@-webkit-keyframes flicker {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes cssAnimation {
-  from {
-    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
-  }
-  to {
-    -webkit-transform: rotate(0deg) scale(2) skew(0deg);
-  }
-}
-
-.slide-active, .slide-leave-active {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -webkit-transition-timing-function: ease;
-          transition-timing-function: ease;
-  max-height: 100vh;
-  opacity: 1;
-}
-
-.slide-enter, .slide-leave-to {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-}
-
-.slide-leave-to, .slide-leave-active {
-  -webkit-animation-name: slideInUp;
-          animation-name: slideInUp;
-}
-
-.slide-enter {
-  -webkit-animation-name: slideInDown;
-          animation-name: slideInDown;
-}
-
-/* Generated with Bounce.js. Edit at https://goo.gl/y3FSYm */
-@-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-    color: inherit;
-  }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-            transform: scale3d(1.05, 1.05, 1.05);
-    color: #F398B6;
-  }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-    color: inherit;
-  }
-}
-@keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-    color: inherit;
-  }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-            transform: scale3d(1.05, 1.05, 1.05);
-    color: #F398B6;
-  }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-    color: inherit;
-  }
-}
-
-@-webkit-keyframes eye_watching {
-  from {
-    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  25% {
-    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  50% {
-    background: radial-gradient(#FFFeee 3%, #FFF000 8%, #FF0000 16%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  75% {
-    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  to {
-    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-}
-
-@keyframes eye_watching {
-  from {
-    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  25% {
-    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  50% {
-    background: radial-gradient(#FFFeee 3%, #FFF000 8%, #FF0000 16%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  75% {
-    background: radial-gradient(#FFFeee 0%, #FFF000 9%, #FF0000 12%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-  to {
-    background: radial-gradient(#FFFeee 0%, #FFF000 5%, #FF0000 8%, #870000 22%, #290000 27%, #290707 37%, #3D0A0A 42%, #270C0C 47%, #1E0C0C 100%);
-  }
-}
-
-.eye_watching {
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
-  -webkit-animation-name: eye_watching;
-          animation-name: eye_watching;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-transition: 1s;
-  transition: 1s;
 }
 
 p.menu-label {

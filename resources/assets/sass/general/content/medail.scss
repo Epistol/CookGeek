@@ -2,10 +2,12 @@
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  min-width: 3rem;
+  min-height: 3rem;
 }
 
 

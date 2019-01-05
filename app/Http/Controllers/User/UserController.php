@@ -43,7 +43,8 @@ class UserController extends Controller
 	{
 		Carbon::setLocale('fr');
 		$user = DB::table('users')->select('id', 'role_id', 'name', 'avatar', 'img', 'created_at', 'updated_at')->where('name', '=', $id)->first();
-		return view('user.show')->with('user', $user);
+		$recipes = DB::table('recipes')->where('id_user', '=', $user->id)->paginate(5);
+		return view('user.show')->with('user', $user)->with('recettes', $recipes);
 	}
 
 

@@ -2,7 +2,6 @@
 
 @foreach($recipes->chunk(2)  as  $recettechunk)
 
-
     <div class=" columns is-flex" style="margin-top: 2rem; margin-bottom: 2rem;">
 
         @foreach ($recettechunk as $recette)
@@ -12,7 +11,6 @@
 			$first = $img;
 			$starsget = (new \App\Search)->explode_star($recette->id);
 			$type = DB::table('type_recipes')->where('id', $recette->type)->first();
-
 			?>
             {{--Séparation en deux du nombre de colonne--}}
             <div class="column is-6">
@@ -35,7 +33,6 @@
                                        href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                                 </div>
                             </div>
-
                         @endif
                         <a href="/recette/{{$recette->slug}}">
                             <figure class="image is-1by1">
@@ -51,28 +48,28 @@ border-radius: 15px 0 0 15px;">
                                 @endif
                             </figure>
                         </a>
-
                     </div>
                     {{--Les infos--}}
                     <div class="column is-paddingless">
-                        <div class="columns is-marginless is-paddingless is-multiline is-mobile">
+                        <div class="columns is-marginless is-paddingless is-multiline is-mobile right_side_recipe">
                             {{--Titre--}}
-                            <div class="column is-full">
+                            <div class="column is-full" id="titre">
                                 <a href="{{url('/recette/'.$recette->slug)}}"><h4 class="title">
                                         @php echo str_limit($recette->title, 20, ' (...)'); @endphp
                                     </h4></a>
-                                <?php
-                                		$stars = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
-                                		if($stars === null ){$stars = 0;}
-                                		?>
+								<?php
+								$stars = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
+								if($stars === null) {
+									$stars = 0;
+								}
+								?>
                                 <div class="rating">
-                                    <star-rating :rating="{{$stars}}" :increment="0.5" :star-size="20" :recipeid="{{$recette->id}}"></star-rating>
-
+                                    <star-rating :rating="{{$stars}}" :increment="0.5" :star-size="20"
+                                                 :recipeid="{{$recette->id}}"></star-rating>
                                 </div>
-
                             </div>
                             {{--Ingrédients--}}
-                            <div class="column is-full">
+                            <div class="column is-full" id="ingredients">
 								<?php
 								$ingredients = DB::table('recipes_ingredients')
 									->where('id_recipe', '=', $recette->id)->limit(8)
@@ -92,7 +89,7 @@ border-radius: 15px 0 0 15px;">
                                 </p>
                             </div>
                             {{--Author--}}
-                            <div class="column is-three-quarters">
+                            <div class="column is-three-quarters" id="author">
 								<?php
 								$nom = DB::table('users')->where('id', $recette->id_user)->value('name');
 								?>
@@ -103,18 +100,12 @@ border-radius: 15px 0 0 15px;">
                                              :userid="'{{ Auth::id() }}'"></like-recipe>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
 
         @endforeach
-
-
     </div>
-
 
 @endforeach
 <span>

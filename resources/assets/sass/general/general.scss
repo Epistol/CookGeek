@@ -49,16 +49,17 @@ body, button, input, select, textarea {
 }
 
 .likedanimation {
-
+  
   -webkit-animation: pulse;
   animation: pulse;
   animation-duration: .55s;
-
+  
 }
 
 a.tag.like:hover {
-  text-decoration : none;
+  text-decoration: none;
 }
+
 // LIKE BUTTON
 .liked > i {
   color: #fa3283;
@@ -73,7 +74,7 @@ a.tag.like:hover {
 .image.is-256x256 {
   height: 256px;
   width: 256px;
-
+  
 }
 
 // NAVBAR
@@ -132,26 +133,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .block {
-/*  background: rgba(255, 0, 0, 0.3);
-  border: 2px solid green;*/
+  /*  background: rgba(255, 0, 0, 0.3);
+	border: 2px solid green;*/
 }
+
 .advanced {
   padding: 2rem;
 }
+
 .univers_element {
   background: white;
-  margin-top: 0%!important;
+  margin-top: 0% !important;
 }
 
 .univers_element > ul, .univers_element > ul > li {
   list-style-type: none;
-/*  margin: 0;
-  padding: 0;*/
+  /*  margin: 0;
+	padding: 0;*/
 }
 
 .categ_univers_recette {
   background: #ebeaf5;
-  margin-top: 2rem; margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 
@@ -161,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-item.user_profile img {
-max-height: initial!important;
+  max-height: initial !important;
 }
 
 
@@ -181,7 +185,7 @@ max-height: initial!important;
   min-height: 64px;
   min-width: 64px;
   top: 25%;
-  left:25%;
+  left: 25%;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -191,18 +195,20 @@ max-height: initial!important;
 
 figure.image:hover {
   cursor: pointer;
-  & > .change-picture {
-    opacity: 1;
-    visibility: visible;
   
+  & > .change-picture {
+	opacity: 1;
+	visibility: visible;
+	
   }
+  
   & img {
-    opacity:0.8;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+	opacity: 0.8;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
   }
 }
 
@@ -219,7 +225,7 @@ figure.image img {
 }
 
 .avatar_left_menu {
-  border:3px solid white;
+  border: 3px solid white;
   -webkit-box-shadow: 0 4px 10px 0 $brand-primary;
   box-shadow: 0 4px 10px 0 $brand-primary;
 }
@@ -228,16 +234,48 @@ figure.avatar_menu {
   position: absolute;
   top: 0px;
 }
+
 .menu_user {
   padding-top: 33%;
   -webkit-border-radius: 30px;
   border-radius: 30px;
 }
+
 .avatar_menu {
-  display:flex;justify-content:center;align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 nav.breadcrumb {
   padding: 1rem;
 }
 
+
+.right_side_recipe {
+  min-height: 100%;
+  
+  & #ingredients {
+	border-bottom: 1px solid #ebeaf5;
+  }
+  
+  & #author {
+	position: relative;
+	display: flex;
+	align-items: center;
+	
+	& .author {
+	  /* position: absolute;
+	   bottom: 0px;*/
+	  border: 0px solid;
+	}
+  }
+}
+
+#recipe_line {
+  border-bottom: 1px solid #ebeaf5;
+}
+
+h2#recipe_user {
+  padding-left: 0.7rem;
+}
