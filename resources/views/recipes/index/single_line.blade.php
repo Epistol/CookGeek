@@ -20,14 +20,14 @@
     </td>
     <td id="medaillon">  @include("recipes.medaillon")
     </td>
-    <td>
+    <td id="title_recipe">
         <div class="is-centered">
             <p class="mini_title" id="recipe_user"><a
                         href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a></p>
         </div>
     </td>
-    <td>9</td>
-    <td>7</td>
-    <td>22</td>
+    <td>@include('recipes.elements.difficulty')</td>
+    <td>@include('recipes.elements.price')</td>
+    <td>@include('recipes.elements.total_time')</td>
 
 </tr>

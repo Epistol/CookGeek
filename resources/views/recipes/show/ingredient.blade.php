@@ -3,15 +3,15 @@
 
     @forelse($ingredients as $index=>$ingr)
         <div class="ingr">
-            <div class="columns">
-                <div class="column is-1">
+            <div class="columns is-mobile" id="ingredients">
+                <div class="column is-1" id="checkbutton">
                     <div class="field">
                         <input class="is-checkradio" id="ingredientCheckbox[{{$index}}]" type="checkbox"
                                name="ingredientCheckbox[{{$index}}]">
                         <label for="ingredientCheckbox[{{$index}}]"></label>
                     </div>
                 </div>
-                <div class="column is-offset-1">
+                <div class="column is-offset-1" id="ingr_title">
 					<?php
 					$nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
 					?>

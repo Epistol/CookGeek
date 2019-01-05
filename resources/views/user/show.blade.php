@@ -35,11 +35,11 @@
                             </tbody>
                         </table>
                     </div>
-                        <div class="blockcontent" id="comments">
+                       {{-- <div class="blockcontent" id="comments">
                             <h2 class="title">
                                 Commentaires
                             </h2>
-                        </div>
+                        </div>--}}
 
                     </div>
 

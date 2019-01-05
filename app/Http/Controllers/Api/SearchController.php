@@ -16,11 +16,7 @@ class SearchController extends Controller
 		$rq = $recherche;
 		$pieces = explode(" ", $rq);
 		if($rq != null) {
-
-
 			foreach($pieces as $p) {
-				$orders = Recipes::search($p)->get();
-//                dd($orders);
 
 				// Searching in recipes
 				// TODO : Réduire le nombre de champs retournés par element ?
@@ -82,13 +78,9 @@ class SearchController extends Controller
 
 	public function search_univers(Request $recherche)
 	{
-
-
 		$searchquery = $recherche->searchquery;
 		$data = Univers::where('name', 'like', '%' . $searchquery . '%')->get();
-
 		return response()->json($data);
-
 	}
 
 

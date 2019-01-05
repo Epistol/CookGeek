@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-use  App\TypeRecipe;
-use PHPUnit\Util\Type;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 

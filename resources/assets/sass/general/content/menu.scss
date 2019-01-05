@@ -76,6 +76,11 @@ span.item_navbar_second {
   border-right: 0.5rem solid $brand-primary;
   border-bottom: 0.5rem solid $brand-primary;
   @include transition_all();
+  
+  @include sm_1 {
+    //display: none;
+  }
+  
 }
 
 

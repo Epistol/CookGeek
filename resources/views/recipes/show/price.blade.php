@@ -5,7 +5,6 @@
     <div class="dollarsum">
 
         <?php $count = 0;
-
         if ($recette->cost == null) {
             $recette->cost = 0;
         }?>
@@ -20,10 +19,6 @@
                 <span style="opacity:0.5">
                     <i class="fas fa-dollar-sign"></i>
                 </span>
-
-
         @endfor
-
-
     </div>
 </div>

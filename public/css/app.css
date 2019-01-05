@@ -18694,17 +18694,17 @@ span.beta_logo {
   transition: all 0.3s ease-in-out;
 }
 
-.full-circle.easy:hover {
+.full-circle.noob:hover {
   color: #2ab27b;
   border-color: #2ab27b;
 }
 
-.full-circle.mid:hover {
+.full-circle.moyen:hover {
   color: #ffc145;
   border-color: #ffc145;
 }
 
-.full-circle.hard:hover {
+.full-circle.difficile:hover {
   color: #ff6b6c;
   border-color: #ff6b6c;
 }

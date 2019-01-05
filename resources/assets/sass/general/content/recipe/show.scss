@@ -104,17 +104,16 @@ span.beta_logo {
 }
 
 .full-circle {
-
   @include transition_all();
 
-  &.easy {
+  &.noob {
     &:hover {
       color: $brand-success;
       border-color: $brand-success;
     }
   }
 
-  &.mid {
+  &.moyen {
     &:hover {
       color: $brand-warning;
       border-color: $brand-warning;
@@ -122,9 +121,8 @@ span.beta_logo {
 
   }
 
-  &.hard {
+  &.difficile {
     &:hover {
-
       color: $brand-danger;
       border-color: $brand-danger;
     }
