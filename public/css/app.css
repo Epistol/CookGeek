@@ -18352,6 +18352,12 @@ span.item_navbar_second {
   transition: all 0.3s ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .navbar-dropdown#types {
+    display: none;
+  }
+}
+
 a.navbar-item, a.navbar-link {
   color: #7f5fbf;
   font-size: 1.1rem;

@@ -41,11 +41,9 @@ class MailResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
 
-
-        $link = url( "/password/reset/?token=" . $this->token );
+        $link = url( "/password/reset/token=" . $this->token );
 
         return (new MailMessage)
-//                    ->view('reset.emailer')
                 ->subject("Changement de mot de passe - CDG")
                     ->line('Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.')
                     ->action('Changer mon mot de passe', $link)

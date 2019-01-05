@@ -12,11 +12,9 @@
 
                 </div>
                 <div class="column is-two-fifths is-paddingless">
-                    <H1 class="title">Mot de passe oublié ? </H1>
+                    <H1 class="title">Changement de mot de passe </H1>
 
                     <div class="blockcontent">
-
-
 
                     <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
@@ -38,7 +36,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                    Envoyer le lien de reset
                                 </button>
                             </div>
                         </div>

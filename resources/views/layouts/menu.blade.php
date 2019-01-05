@@ -43,7 +43,7 @@
                         <a class="navbar-link" href="{{ route('type.index') }}">
                             Types
                         </a>
-                        <div class="navbar-dropdown">
+                        <div class="navbar-dropdown" id="types">
 
 							<?php
 							$load_types = DB::table('type_recipes')->get();

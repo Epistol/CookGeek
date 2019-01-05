@@ -216,6 +216,9 @@ img {
     display: inline-block;
     text-decoration: none;
     -webkit-text-size-adjust: none;
+    background: #7f5fbf;
+    font-size:1.1rem;
+    padding:1rem;
 }
 
 .button-blue {

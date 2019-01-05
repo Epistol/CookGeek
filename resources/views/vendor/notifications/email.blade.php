@@ -1,5 +1,8 @@
 @component('mail::message')
-{{-- Greeting --}}
+
+    <img src="{{asset('img/logoo_rond.png')}}" />
+
+    {{-- Greeting --}}
 @if (! empty($greeting))
 # {{ $greeting }}
 @else
