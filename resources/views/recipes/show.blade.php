@@ -10,7 +10,7 @@
             <div class="section">
                 <div class="columns shadowbox">
                     {{--Photo + ingredients--}}
-                    <div class="column is-one-fifth is-marginless is-paddingless left_side">
+                    <div class="column is-one-fifth is-marginless is-paddingless left_side" id="side_recipe">
                         @include("recipes.show.images")
                         <div class="">
                             {{--Fiche gauche--}}

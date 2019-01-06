@@ -30,6 +30,5 @@
     <div slot="footer">
         <a class="button is-primary" href="/login">Connexion</a>
     </div>
-
 </modal>
 

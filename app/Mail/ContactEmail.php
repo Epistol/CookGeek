@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use http\Env\Request;
 use Illuminate\Bus\Queueable;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,7 +21,7 @@ class ContactEmail extends Mailable
 	 */
     public function __construct(Request $request)
     {
-        $this->email = $request;
+	    $this->email = $request;
     }
 
     /**
@@ -31,10 +31,10 @@ class ContactEmail extends Mailable
      */
     public function build()
     {
-
-
         return $this
 	        ->subject('Nouveau mail contact')
+	        ->from($this->email->mail)
+	        ->to('contact@cuisinedegeek.com')
 	        ->view('email.contactmail');
     }
 }

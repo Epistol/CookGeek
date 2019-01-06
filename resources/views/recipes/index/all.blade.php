@@ -1,6 +1,4 @@
 <!--{{--Pour chaque univers, on va charger  1 SEULE recette--}}-->
-
-
 <section class="split_categ">
 
     <section class="hero">
@@ -27,6 +25,10 @@
                             <div class="column is-3">
                                 @endif
                                 <div class="card card-cdg">
+
+                                    <div id="medaillon_index">
+                                        @include('recipes.show.media')
+                                    </div>
 
                                     <div class="card-image">
                                         <a href="/recette/{{$recette->slug}}">
@@ -57,22 +59,18 @@
                                         <div class="column is-4 is-flex-center"><i class="fas fa-clock"
                                                                                    style="margin-right:0.5rem"></i><span>{{$somme}}</span>
                                         </div>
-                                        <div class="column is-2 is-flex-center"><i class="fas fa-utensils"
-                                                                                   style="margin-right:0.5rem"></i>
-                                            <span>{{$recette->nb_guests ?: 0}}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
+                                        <div class="column is-2 is-flex-center">
+                                            <span>{{$recette->nb_guests ?: 1}}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
+                                            <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
                                         </div>
-                                        <div class="column is-6 is-flex-center"
-                                             style="display:flex;justify-content:center;align-items:center;">
+                                        <div id="bottom_right_content"  class="column is-6 is-flex is-paddingless" >
                                             {{--Nom de l'univers--}}
                                             @php
                                                 $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
-                                                echo "<p style='margin-right:0.3rem' >".str_limit($univers_data->name, 25, ' ...') . "</p>";
                                             @endphp
 
-											<?php
-											$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
-											?>
-                                            @include('recipes.show.type_univers')
+                                            <a href="{{route('univers.show', $univers_data->id)}}" style='margin-right:0.5rem' >{{str_limit($univers_data->name, 25, ' ...')}}</a>
+
 
                                         </div>
                                     </div>

@@ -2,3 +2,19 @@
   background-color: #23d160;
   color: #fff;
 }
+
+#bottom_right_content {
+  display:flex;justify-content:center;align-items:center;
+  position: relative;
+}
+
+#medaillon_index {
+  position: absolute;
+  right: 4px;
+  opacity: 0.4;
+  top: 4px;
+  z-index: 9999;
+  &:hover {
+    opacity: 1;
+  }
+}

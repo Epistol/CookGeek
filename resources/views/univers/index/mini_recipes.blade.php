@@ -2,8 +2,6 @@
     <div class="columns is-multiline">
 
         <div class="column is-3">
-
-            <a href="{{route('univers.show', $univers_datum->id)}}" class="titre_partie">{{$univers_datum->name}}</a>
             @foreach($recettes as $recette)
                 <div class="is-flex">
 

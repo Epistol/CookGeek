@@ -9,13 +9,13 @@
         {{--Most viewed universes--}}
         {{--Last recipes--}}
         @include("recipes.index.all")
+        {{--@include("index.networks")--}}
         @include("univers.preview.preview")
 
         {{--Most viewed universes with recipes--}}
             {{--@include("recipes.index.partype")--}}
         {{--Meals--}}
             {{--@include("recipes.index.favorise")--}}
-
 
     </div>
 @endsection

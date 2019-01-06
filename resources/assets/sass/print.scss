@@ -1,0 +1,26 @@
+// Fonts
+//@import url("https://fonts.googleapis.com/css?family=Karla:300,400,600");
+// Variables
+@import "variables";
+
+$primary: $brand-primary;
+$danger: $brand-danger;
+$success: $brand-success;
+$warning: $brand-warning;
+
+@import "print/reset";
+
+
+// ----------------------------------------------------------------------
+// Margin auto
+// ----------------------------------------------------------------------
+
+@mixin margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#side_recipe {
+  width:100%;
+  
+}

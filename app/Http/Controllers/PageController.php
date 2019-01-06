@@ -173,9 +173,15 @@ class PageController extends Controller
 
 	public function store_contact(Request $request)
 	{
-		dd($request);
-		Mail::send(new ContactEmail($request));
-		return redirect('/');
+		$captcha = $request->request->get('g-recaptcha-response');
+		if($captcha !== null) {
+			Mail::send(new ContactEmail($request));
+			return redirect('/contact')->with('status', 'Message envoyé !');
+		}
+		else {
+			return redirect()->back()->with('alert', 'Validez le recaptcha');
+		}
+
 	}
 
 

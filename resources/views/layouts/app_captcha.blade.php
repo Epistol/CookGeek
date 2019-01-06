@@ -34,8 +34,9 @@
     @include("layouts.app_element.apple")
 
     <meta name="mobile-web-app-capable" content="yes">
-
 @include("layouts.style")
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <div id="app">@include("layouts.menu")
@@ -52,12 +53,17 @@
         @endif
 
         @if (session('status'))
-
             <notif title="is-success" v-if="seen" @close="seen = false">
                 <span slot="text">   {{ session('status') }}</span>
             </notif>
-
         @endif
+
+            @if (session('alert'))
+                <notif title="is-alert" v-if="seen" @close="seen = false">
+                    <span slot="text">   {{ session('alert') }}</span>
+                </notif>
+            @endif
+
     </div>
 
     @yield('content')
@@ -118,6 +124,7 @@
 
     });
 </script>
+
 
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
 <script src="{{ asset('js/konami.js') }}" defer async></script>

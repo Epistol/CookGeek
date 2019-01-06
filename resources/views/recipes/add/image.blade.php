@@ -11,8 +11,10 @@
                                             </span>
                                         </span>
 
+                <figure class="image is-square">
+                    <img id="blah" class="fit-cover" src="#" alt=""/>
+                </figure>
 
-                <img id="blah" class="is-clearfix" src="#" alt=""/>
             </div>
 
             {{-- Nom du fichier--}}

@@ -17939,6 +17939,31 @@ a.print:hover {
   color: #fff;
 }
 
+#bottom_right_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+#medaillon_index {
+  position: absolute;
+  right: 4px;
+  opacity: 0.4;
+  top: 4px;
+  z-index: 9999;
+}
+
+#medaillon_index:hover {
+  opacity: 1;
+}
+
 .show-dan {
   -webkit-animation: showToastyGuy 1.2s;
   animation: showToastyGuy 1.2s;
@@ -18284,12 +18309,16 @@ footer {
 
 .second_menu {
   background: #ebeaf5;
-  -webkit-box-shadow: -1px -2px 8px 0 #7f5fbf;
-  box-shadow: -1px -2px 8px 0 #7f5fbf;
+  -webkit-box-shadow: 0px 4px 10px rgba(203, 194, 246, 0.5);
+  box-shadow: 0px 4px 10px rgba(203, 194, 246, 0.5);
 }
 
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
   color: #fa5c86;
+}
+
+.is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
+  color: #7f5fbf;
 }
 
 span.item_navbar_second {
@@ -18338,16 +18367,29 @@ span.item_navbar_second {
   text-align: center;
 }
 
+.is-hoverable:hover .navbar-dropdown .navbar-item {
+  color: white;
+}
+
+.is-hoverable:hover .navbar-dropdown {
+  -webkit-box-shadow: 0 5px 10px 0px #bdbade;
+  box-shadow: 0 5px 10px 0px #bdbade;
+}
+
+.is-hoverable:hover .navbar-link {
+  background: #7f5fbf !important;
+  color: white;
+}
+
 .navbar-dropdown {
   padding-top: 0px;
-  background-color: white;
+  background-color: #7f5fbf !important;
+  color: white;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-top: 0px solid #7f5fbf;
   -webkit-box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
   box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
-  border-right: 0.5rem solid #7f5fbf;
-  border-bottom: 0.5rem solid #7f5fbf;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -18764,10 +18806,6 @@ span.beta_logo {
 .instruction {
   font-size: 1rem;
   color: #707070;
-}
-
-.fa-facebook-official, .fa-twitter, .fa-tumblr, .fa-pinterest-p {
-  font-size: 1.5rem !important;
 }
 
 .is_big {

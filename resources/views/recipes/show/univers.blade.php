@@ -10,4 +10,4 @@
 $univers = DB::table('univers')->where('id', $recette->univers)->first();
 ?>
 <p class="is-brand show-recipe-title"> @lang("recipe.univers")</p>
-{{$univers->name}}
+<a href="{{route('univers.show', $univers->id)}}" style="    color: #b87bc8;" >{{$univers->name}}</a>

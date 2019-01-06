@@ -8,7 +8,7 @@
                   </span>
     </a>
 
-    @include("recipes.show.type_univers")
+    @include("recipes.show.media")
 
 
     <modal v-if="showModalLike" @close="showModalLike = false" v-cloak>

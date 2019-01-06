@@ -1,6 +1,7 @@
 <!-- Styles -->
 {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('css/print.css') }}" rel="stylesheet" media="print">
 <link href="{{asset('css/nouislider.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/default.css')}}" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Michroma"

@@ -1,1 +1,1 @@
-{{ $email->content }}
+{{ $email->message }}
