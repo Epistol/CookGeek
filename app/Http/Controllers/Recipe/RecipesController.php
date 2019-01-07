@@ -123,8 +123,6 @@ class RecipesController extends Controller
 	{
 		$validatedData = $request->validate([
 			'title' => 'bail|required|max:255|regex:([A-Za-z0-9 ])',
-			"qtt_ingredient.*" => 'required',
-			"ingredient.*" => "required|regex:([A-Za-z0-9 ])",
 			"step.*" => "string|required|regex:([A-Za-z0-9 ])",
 			"difficulty" => "integer|required",
 			"categ_plat" => "integer|required",
@@ -226,6 +224,26 @@ class RecipesController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
+
+		$validatedData = $request->validate([
+			'title' => 'bail|required|max:255|regex:([A-Za-z0-9 ])',
+			"step.*" => "string|required|regex:([A-Za-z0-9 ])",
+			"difficulty" => "integer|required",
+			"categ_plat" => "integer|required",
+			"prep_heure" => "nullable|integer",
+			"prep_minute" => "nullable|integer",
+			"cook_heure" => "nullable|integer",
+			"cook_minute" => "nullable|integer",
+			"rest_heure" => "nullable|integer",
+			"rest_minute" => "nullable|integer",
+			"unite_part" => "nullable|integer",
+			"value_part" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"comment" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"video" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"type" => "integer|required",
+		]);
+
+
 		$input = $request->all();
 		$model = new Recipes();
 
@@ -250,18 +268,18 @@ class RecipesController extends Controller
 		$cook = $model->return_time($cook_heure, $cook_minute);
 		$rest = $model->return_time($rest_heure, $rest_minute);
 
-		$univers = $this->first_found_universe($request->univers);
+
+		$univers = $this->first_found_universe(strip_tags(clean($request->univers)));
 
 		//Filtering the comment
-		$comm = app('profanityFilter')->filter($request->comment);
+		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
+
 		//Vegetarian switch
-		$vege = $request->vegan == "on" ? true : false;
-		//Inserting the recipe
+		$vege = clean($request->vegan) == "on" ? true : false;
 
 		// Parties image
 		$this->validate($request, [
 			'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-
 		]);
 
 		if(!empty($request->resume)) {
@@ -273,18 +291,19 @@ class RecipesController extends Controller
 			}
 		}
 
+		//Inserting the recipe
+		$idRecette = $this->edit_recipe($id, strip_tags(clean($request->title)), $request->vegan, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), $request->unite_part, strip_tags(clean($request->value_part)), intval($univers), intval($request->type), intval($iduser), clean($request->video), clean($comm));
 
-		$idRecette = $this->edit_recipe($id, $request->title, $request->vegan, $request->difficulty, $request->categ_plat, $request->cost, $prep, $cook, $rest, $request->unite_part, $request->value_part, $univers, $request->type, $iduser, $vege, $request->video, $comm);
 
 		// Partie ingrédients
 		if($request->ingredient !== null) {
 			foreach($request->ingredient as $key => $ingredient) {
-				$this->editIngredient($key, $ingredient, $id, $request->qtt_ingredient[$key]);
+				$this->editIngredient($key, strip_tags(clean($ingredient)), $id, strip_tags(clean($request->qtt_ingredient[$key])));
 			}
 		}
 		if($request->ingredient_removed !== null) {
 			foreach($request->ingredient_removed as $key => $ingredient) {
-				$this->removeIngredients($key, $request->ingredient_removed, $id, $request->qtt_removed_ingredient[$key]);
+				$this->removeIngredients($key, strip_tags(clean($request->ingredient_removed)), $id, strip_tags(clean($request->qtt_removed_ingredient[$key])));
 			}
 		}
 
@@ -294,7 +313,7 @@ class RecipesController extends Controller
 		// Gestion des étapes
 		foreach($request->step as $key => $step) {
 			if($step) {
-				$steps_old = DB::table('recipes_steps')->where('instruction', '=', $step)->update(['instruction' => $step]);
+				$steps_old = DB::table('recipes_steps')->where('instruction', '=', strip_tags(clean($step)))->update(['instruction' => $step]);
 			}
 		}
 
@@ -569,7 +588,7 @@ class RecipesController extends Controller
 	 * @param $comm
 	 * @return mixed
 	 */
-	public function edit_recipe($recette_id, $title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $vege, $video_link, $comm)
+	public function edit_recipe($recette_id, $title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $video_link, $comm)
 	{
 		// Get recette
 		$recette = DB::table('recipes')

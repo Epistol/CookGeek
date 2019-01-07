@@ -49,9 +49,20 @@ class RecipeController extends Controller
 			->where('recipe_id', '=', $recipe_id)
 			->get();
 
+		$all = [];
+
+		// cleaning :
+
+		foreach($steps as $index => $step) {
+			$all[$index]['id'] = $step->id;
+			$all[$index]['recipe_id'] = $step->recipe_id;
+			$all[$index]['step_number'] = $step->step_number;
+			$all[$index]['instruction'] = strip_tags(clean($step->instruction));
+}
+
 		// si un id existe, on le supprime et renvoie false
 		if($steps) {
-			return response()->json($steps);
+			return response()->json($all);
 		} else {
 			return response()->json(false);
 		}
@@ -67,7 +78,7 @@ class RecipeController extends Controller
 		$signalement->recipe_id = $recipe_id;
 		$signalement->user_id = $userid;
 		$signalement->option = $type_alerte;
-		$signalement->user_content = $user_content;
+		$signalement->user_content = clean($user_content);
 		$signalement->status = 0;
 		$signalement->save();
 

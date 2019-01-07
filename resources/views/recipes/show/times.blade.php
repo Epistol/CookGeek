@@ -6,7 +6,6 @@
  * Time: 01:58
  */
 
-
 function sumerise_t($val)
 {
 	$format = '%1$02d';

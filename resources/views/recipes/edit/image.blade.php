@@ -6,8 +6,11 @@
                 <?php
                 			$img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
                 			?>
+                @if($img)
                 <pictureupload type="recipe" recipeid="{{$recette->id}}"user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture={{$img->image_name}}></pictureupload>
-
+@else
+                        <pictureupload type="recipe" recipeid="{{$recette->id}}"user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture=""></pictureupload>
+                @endif
 
             </div>
 

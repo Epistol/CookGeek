@@ -22,7 +22,7 @@
                         @if(isset($type))
                             <div class="hovered">
                                 <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
-                                   href="/{{strtolower($type->name)}}">{{$type->name}}</a>
+                                   href="/{{strtolower($type->name)}}">{!!  $type->name!!}</a>
                             </div>
                         @endif
                         <a href="/recette/{{$recette->slug}}">
@@ -30,7 +30,7 @@
                                 @if($recette->id_user != NULL  && isset($first))
                                     <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
                                 @else
-                                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}">
+                                    <img src="http://via.placeholder.com/300x200?text={!! strip_tags(clean($recette->title)) !!}">
                                 @endif
                             </figure>
                         </a>
@@ -38,7 +38,7 @@
                     <div class="column is-7">
                         <div class="top is-flex">
                             <a href="/recette/{{$recette->slug}}"><h2 class="title">
-                                    {{$recette->title}}
+                                    {!! strip_tags($recette->title) !!}
                                 </h2></a>
 
 
@@ -57,9 +57,9 @@
 									$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
 									?>
                                     @if($loop->last)
-                                        {{$nom_in}}
+                                        {!! $nom_in !!}
                                     @else
-                                        {{$nom_in}},
+                                            {!! $nom_in !!},
                                     @endif
                                 @endforeach
                             </p>

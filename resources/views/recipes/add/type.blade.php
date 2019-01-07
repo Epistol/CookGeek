@@ -3,11 +3,11 @@
 
         <div class="field-label" style="text-align: left;padding-bottom: 2rem;">
 
-            <label class="title is-4">Média </label>
+            <label class="title is-4">Média</label>
         </div>
 
 
-        <div class="columns">
+        <div class="columns is-multiline">
 
 
             @foreach ($types as $key=>$type)
@@ -32,11 +32,6 @@
 
                 </div>
 
-                @if($key == 4)
-        </div>
-        <div class="columns ">
-
-            @endif
             @endforeach
         </div>
     </div>

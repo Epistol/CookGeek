@@ -1,6 +1,6 @@
 {{--Pour chaque type de recette, on va charger  4  recettes --}}
 <?php
-$recettes = DB::table('recipes')->where('type', '=', $type->id)->paginate(4);
+$recettes = DB::table('recipes')->where('type', '=', $type->id)->paginate(12);
 $i = 0;
 ?>
 <a class="tag is-primary is-medium" href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>

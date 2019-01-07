@@ -17,6 +17,7 @@
 </div>
 
 @include("recipes.show.times")
+@include("recipes.show.vegan")
 
 @if($typeuniv)
     @if($typeuniv->name== 'gaming')

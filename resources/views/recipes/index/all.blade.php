@@ -25,7 +25,6 @@
                             <div class="column is-3">
                                 @endif
                                 <div class="card card-cdg">
-
                                     <div id="medaillon_index">
                                         @include('recipes.show.media')
                                     </div>
@@ -38,26 +37,26 @@
 												?>
                                                 @if($img == null or empty($img))
                                                     <img class="fit-cover"
-                                                         src="http://via.placeholder.com/300x200?text={!! $recette->title !!}"
-                                                         alt="{!! $recette->title !!} / CDG">
+                                                         src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
+                                                         alt="{!! strip_tags($recette->title) !!} / CDG">
                                                 @else
                                                     <img class="fit-cover"
-                                                         src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$img->image_name)}}"
-                                                         alt="{!! $recette->title !!} / CDG">
+                                                         src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".strip_tags($img->image_name))}}"
+                                                         alt="{!! strip_tags($recette->title) !!} / CDG">
                                                 @endif
                                             </figure>
                                         </a>
                                     </div>
                                     <div class="recipe-header">
                                         <p class="card-header-title">
-                                            <a href="/recette/{!! $recette->slug !!}" class="texte_accueil">
-                                                {!! str_limit($recette->title, 70, ' (...)')  !!}
+                                            <a href="/recette/{!! strip_tags($recette->slug) !!}" class="texte_accueil">
+                                                {!! (str_limit(strip_tags(clean($recette->title)), 70, ' (...)'))  !!}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="columns is-paddingless is-marginless mini-infos">
                                         <div class="column is-4 is-flex-center"><i class="fas fa-clock"
-                                                                                   style="margin-right:0.5rem"></i><span>{!! $somme !!}</span>
+                                                                                   style="margin-right:0.5rem"></i><span>{!! strip_tags($somme) !!}</span>
                                         </div>
                                         <div class="column is-2 is-flex-center">
                                             <span>{!! $recette-> nb_guests ?: 1 !!}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
@@ -68,9 +67,10 @@
                                             @php
                                                 $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
                                             @endphp
-                                            <a href="{!! route('univers.show', $univers_data->id) !!}"
-                                               style='margin-right:0.5rem'>{!! str_limit($univers_data->name, 25, ' ...') !!}</a>
-
+                                            @if($univers_data)
+                                                <a href="{!! route('univers.show', $univers_data->id) !!}"
+                                                   style='margin-right:0.5rem'>{!! strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) !!}</a>
+                                            @endif
                                         </div>
                                     </div>
 
