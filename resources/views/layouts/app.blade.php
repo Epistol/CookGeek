@@ -37,12 +37,8 @@
 
     <!-- Styles -->
     @include("layouts.style")
-    {{--    <link rel="stylesheet" type="text/css"
-              href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">--}}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
-          integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-@include("layouts.cookie")
+
+    @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -85,12 +81,12 @@
 
 <!-- SCRIPTS  -->
 <script><?php
-    if (Auth::check() == FALSE || Auth::check() == '') {
-        echo "var userIsLoggedIn = 0;";
-    } else {
-        echo "var userIsLoggedIn = 1;";
-    }
-    ?>
+	if(Auth::check() == FALSE || Auth::check() == '') {
+		echo "var userIsLoggedIn = 0;";
+	} else {
+		echo "var userIsLoggedIn = 1;";
+	}
+	?>
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -103,42 +99,41 @@
 
 <script type="application/javascript">
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if(d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 
-    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
-    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 
-    $(document).ready(function () {
-        $("body").toasty();
+	$(document).ready(function() {
+		$("body").toasty();
 
-        var easter_egg = new Konami(function () {
-            $("body").toasty('pop');
-        });
+		var easter_egg = new Konami(function() {
+			$("body").toasty('pop');
+		});
 
-        var slider = document.getElementById('slider');
+		var slider = document.getElementById('slider');
 
-        noUiSlider.create(slider, {
-            start: [20, 80],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
+		noUiSlider.create(slider, {
+			start: [20, 80],
+			connect: true,
+			range: {
+				'min': 0,
+				'max': 100
+			}
+		});
 
-    });
+	});
 </script>
 
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
 <script src="{{ asset('js/konami.js') }}" defer async></script>
-
 
 @include("layouts.js.analytics")
 

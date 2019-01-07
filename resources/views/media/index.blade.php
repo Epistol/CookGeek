@@ -9,9 +9,6 @@
 
 
                     <div class="columns">
-                        <div class="column is-3">
-
-                        </div>
                         <div class="column">
                             <section class="hero">
                                 <div class="hero-body">

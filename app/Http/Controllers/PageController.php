@@ -26,7 +26,7 @@ class PageController extends Controller
 
 		// Pour chaque categ, on va charger la dernière recette postée
 		foreach($universcateg as $u) {
-			$recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->orderBy('updated_at', 'desc')->first();
+			$recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->where('id_user', '=',1)->orderBy('updated_at', 'desc')->first();
 			$recettesrand[$u->id] = $recettes;
 		}
 		$recettes = collect($recettesrand);

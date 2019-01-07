@@ -1,16 +1,16 @@
-{{--Pour chaque univers, on va charger  1 SEULE recette--}}
-
-
 <section class=" bordered-cdg">
     <div class="columns is-multiline">
 
-            {{--   -> tout les univers--}}
         @foreach($medias as $index=>$media)
-            <div class="column is-3">
+            <a class="" style="margin-left: 1rem"
+               href="{{route('media.show', $media->name)}}">
 
-                {{--<categ_icon text_icon="{{$media->name}}"></categ_icon>--}}
-                {{ ucfirst($media->name) }}
-            </div>
+                <figure class="image is-128x128">
+                    <img src="{{asset('/img/full_bg_media/')}}/{{lcfirst($media->name)}}.png" class="fit-cover" style="-webkit-border-radius: 20px;
+border-radius: 20px;">
+                </figure>
+            </a>
+
         @endforeach
     </div>
 

@@ -89,7 +89,6 @@ class RecipesController extends Controller
 		return view('recipes.add', array('types' => $types_univ, 'difficulty' => $difficulty, 'types_plat' => $types_plat));
 	}
 
-
 	/**
 	 * @param $slug
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -132,14 +131,14 @@ class RecipesController extends Controller
 		}
 
 		// Minutes
-		$prep_minute = $recipe->verify_time($request->prep_minute);
-		$cook_minute = $recipe->verify_time($request->cook_minute);
-		$rest_minute = $recipe->verify_time($request->rest_minute);
+		$prep_minute = $recipe->verify_time(intval($request->prep_minute));
+		$cook_minute = $recipe->verify_time(intval($request->cook_minute));
+		$rest_minute = $recipe->verify_time(intval($request->rest_minute));
 
 		// Heures
-		$prep_heure = $recipe->verify_time($request->prep_heure);
-		$cook_heure = $recipe->verify_time($request->cook_heure);
-		$rest_heure = $recipe->verify_time($request->rest_heure);
+		$prep_heure = $recipe->verify_time(intval($request->prep_heure));
+		$cook_heure = $recipe->verify_time(intval($request->cook_heure));
+		$rest_heure = $recipe->verify_time(intval($request->rest_heure));
 
 
 		$prep = $recipe->return_time($prep_heure, $prep_minute);
@@ -147,16 +146,20 @@ class RecipesController extends Controller
 		$rest = $recipe->return_time($rest_heure, $rest_minute);
 
 
-		$univers = $this->first_found_universe($request->univers);
-
+		$univers = $this->first_found_universe(htmlentities(clean($request->univers)));
 
 		//Filtering the comment
-		$comm = app('profanityFilter')->filter($request->comment);
-		//Vegetarian switch
-		$vege = $request->vegan == "on" ? true : false;
-		//Inserting the recipe
-		$idRecette = $this->insert_recipe($request->title, $request->vegan, $request->difficulty, $request->categ_plat, $request->cost, $prep, $cook, $rest, $request->unite_part, $request->value_part, $univers, $request->type, $iduser, $vege, $request->video, $comm);
+		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
 
+		//Vegetarian switch
+		$vege = clean($request->vegan) == "on" ? true : false;
+
+		//Inserting the recipe TODO
+		$idRecette = $this->insert_recipe(clean($request->title), $vege, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), clean($request->unite_part), clean($request->value_part), intval($univers), intval($request->type), intval($iduser),  clean($request->video), clean($comm));
+
+		if($idRecette == false){
+			return redirect()->back();
+		}
 
 		// Partie SLUG
 		$slug = $this->slugtitre($request, $idRecette);
@@ -168,7 +171,7 @@ class RecipesController extends Controller
 
 		// Partie ingrédients
 		foreach($request->ingredient as $key => $ingredient) {
-			$this->rangerIngredient($key, $ingredient, $idRecette, $request->qtt_ingredient[$key]);
+			$this->rangerIngredient($key, clean($ingredient), $idRecette, clean($request->qtt_ingredient[$key]));
 		}
 
 		// Gestion des étapes
@@ -177,11 +180,9 @@ class RecipesController extends Controller
 				DB::table('recipes_steps')->insertGetId(
 					['recipe_id' => $idRecette,
 						'step_number' => $key,
-						'instruction' => app('profanityFilter')->filter($request->step[$key]),
-
+						'instruction' => clean(app('profanityFilter')->filter($request->step[$key])),
 					]);
 			}
-
 		}
 
 		// Parties image
@@ -453,7 +454,7 @@ class RecipesController extends Controller
 	 */
 	private function slugtitre($requt, $idrecipe)
 	{
-		$titreslug = str_slug($requt->title, '-');
+		$titreslug = str_slug(clean($requt->title), '-');
 		return $titreslug . "-" . $idrecipe;
 	}
 
@@ -467,7 +468,7 @@ class RecipesController extends Controller
 	{
 		DB::table('recipe_imgs')->updateOrInsert(
 			['recipe_id' => $recipe,
-				'image_name' => $rq,
+				'image_name' => clean($rq),
 				'user_id' => $userid,
 				'created_at' => now(),
 				'updated_at' => now(),
@@ -493,8 +494,15 @@ class RecipesController extends Controller
 	 * @param $comm
 	 * @return mixed
 	 */
-	public function insert_recipe($title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $vege, $video_link, $comm)
+	public function insert_recipe($title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $video_link, $comm)
 	{
+
+		// Si titre vide :
+
+		if($title == null || $title == '' ){
+			return false;
+		}
+
 		// Insert recette
 		$idRecette = DB::table('recipes')->insertGetId(
 			['title' => app('profanityFilter')->filter($title),
@@ -511,7 +519,6 @@ class RecipesController extends Controller
 				'type_univers' => app('profanityFilter')->filter($type),
 				'id_user' => $iduser,
 				'slug' => '',
-				'vegetarien' => $vege,
 				'video' => app('profanityFilter')->filter($video_link),
 				'commentary_author' => $comm,
 				'created_at' => now(),

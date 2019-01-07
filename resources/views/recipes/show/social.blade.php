@@ -2,7 +2,7 @@
     <div class="field has-addons" style="margin-left: 1rem">
         <p class="control">
             <a class="button facebook"
-              href="https://www.facebook.com/sharer.php?u={{url()->current()}}&t={{$recette->title}}">
+               href="https://www.facebook.com/sharer.php?u={{url()->current()}}&t={!! $recette->title !!}">
                           <span class="icon is-small">
                    <i class="fab fa-facebook-f fa-fw  fa-lg"></i>
 
@@ -11,24 +11,28 @@
 
 
         </p>
-		<?php $univers = DB::table('univers')->where('id', $recette->univers)->first(); ?>
+		<?php $univers = DB::table('univers')->where('id', $recette->univers)->first();
+		?>
+
         <p class="control">
-            <a class="button twitter" href="https://twitter.com/intent/tweet?text={{$recette->title}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{$univers->name}}">
-                          <span class="icon is-small">
+            @if($univers !== null)
+                <a class="button twitter"
+                   href="https://twitter.com/intent/tweet?text={!! $recette->title !!}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{!! $univers->name !!}">
+                    @else
+                        <a class="button twitter"
+                           href="https://twitter.com/intent/tweet?text={{$recette->title}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek">
+                            @endif
+                            <span class="icon is-small">
                           <i class="fab fa-twitter" aria-hidden="true"></i>
                           </span>
-            </a>
+                        </a>
         </p>
         <p class="control">
-	        <?php
-            if(isset($firstimg)){
-	            $image = asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name);
-            }
-            else {
-            	$image = null;
-            }
-	        ?>
-            <a class="button pinterest " href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{$image}}&description={{$recette->title}}">
+			<?php
+			$image = isset($firstimg) ? asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name) : null;
+			?>
+            <a class="button pinterest "
+               href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={!! $image !!}&description={!! $recette->title !!}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
 
@@ -36,7 +40,7 @@
             </a>
         </p>
         <p class="control">
-            <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}" >
+            <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}">
                           <span class="icon is-small">
                           <i class="fab fa-tumblr fa-fw" aria-hidden="true"></i>
 

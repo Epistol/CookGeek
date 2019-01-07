@@ -1,19 +1,10 @@
 <section class="bordered-cdg">
-    <div class="columns is-multiline">
-        @foreach($univers->chunk(2) as $univchunk)
-            <div class="column is-2">
-                @foreach($univchunk as $univer)
+            <div class="tags">
+                @foreach($univers as $univer)
 
-                    <div class="card card-cdg">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                <a href="/recette/{{$univer->name}}" class="texte_accueil">{{$univer->name}}</a>
-                            </p>
-                        </header>
-
-                    </div>
+                    <span class="tag">
+                                <a href="{{route('univers.show', $univer->id)}}" class="">{!! $univer->name !!}</a>
+                    </span>
                 @endforeach
             </div>
-        @endforeach
-    </div>
 </section>

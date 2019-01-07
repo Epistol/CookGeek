@@ -60,7 +60,7 @@
 							?>
                             @foreach($load_types as $type)
                                 <a class="navbar-item" href="{{ route('type.show', lcfirst($type->name)) }}">
-                                    {{$type->name}}
+                                    {!! $type->name !!}
                                 </a>
                             @endforeach
                         </div>
@@ -83,7 +83,7 @@
 
                     <div class="field search_header navbar-item">
                         <form action="{{route('search')}}" method="POST" role="search">
-                            {{ csrf_field() }}
+                            @csrf
 
                             <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
                             <button type="submit" class="searchheadbutton" style="position: absolute;">
@@ -116,13 +116,13 @@
                                     @else
                                         <figure class="image is-48x48">
                                             <img class="is-rounded"
-                                                 src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                                                 src="https://api.adorable.io/avatars/64/{!! Auth::user()->name !!}">
                                         </figure>
                                     @endif
 
                                 </div>
                                 <a class="navbar-link">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {!! Auth::user()->name !!} <span class="caret"></span>
                                 </a>
 
                             </a>

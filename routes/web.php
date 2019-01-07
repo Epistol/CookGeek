@@ -20,15 +20,10 @@ require base_path('routes/web/account.php');
 require base_path('routes/web/universe.php');
 require base_path('routes/web/contact.php');
 
-
-
 // RECIPES
 require base_path('routes/web/recipe.php');
 require base_path('routes/web/type.php');
 require base_path('routes/web/media.php');
-
-
-
 // RECHERCHE
 Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);

@@ -31,46 +31,45 @@
                                     </div>
 
                                     <div class="card-image">
-                                        <a href="/recette/{{$recette->slug}}">
+                                        <a href="/recette/{!! $recette->slug !!}">
                                             <figure class="image is-16by9 ">
 												<?php
 												$img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
 												?>
                                                 @if($img == null or empty($img))
                                                     <img class="fit-cover"
-                                                         src="http://via.placeholder.com/300x200?text={{$recette->title}}"
-                                                         alt="{{$recette->title}} / CDG">
+                                                         src="http://via.placeholder.com/300x200?text={!! $recette->title !!}"
+                                                         alt="{!! $recette->title !!} / CDG">
                                                 @else
                                                     <img class="fit-cover"
                                                          src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$img->image_name)}}"
-                                                         alt="{{$recette->title}} / CDG">
+                                                         alt="{!! $recette->title !!} / CDG">
                                                 @endif
                                             </figure>
                                         </a>
                                     </div>
                                     <div class="recipe-header">
                                         <p class="card-header-title">
-                                            <a href="/recette/{{$recette->slug}}" class="texte_accueil">
-                                                @php echo str_limit($recette->title, 70, ' (...)'); @endphp
+                                            <a href="/recette/{!! $recette->slug !!}" class="texte_accueil">
+                                                {!! str_limit($recette->title, 70, ' (...)')  !!}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="columns is-paddingless is-marginless mini-infos">
                                         <div class="column is-4 is-flex-center"><i class="fas fa-clock"
-                                                                                   style="margin-right:0.5rem"></i><span>{{$somme}}</span>
+                                                                                   style="margin-right:0.5rem"></i><span>{!! $somme !!}</span>
                                         </div>
                                         <div class="column is-2 is-flex-center">
-                                            <span>{{$recette->nb_guests ?: 1}}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
+                                            <span>{!! $recette-> nb_guests ?: 1 !!}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
                                             <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
                                         </div>
-                                        <div id="bottom_right_content"  class="column is-6 is-flex is-paddingless" >
+                                        <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
                                             {{--Nom de l'univers--}}
                                             @php
                                                 $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
                                             @endphp
-
-                                            <a href="{{route('univers.show', $univers_data->id)}}" style='margin-right:0.5rem' >{{str_limit($univers_data->name, 25, ' ...')}}</a>
-
+                                            <a href="{!! route('univers.show', $univers_data->id) !!}"
+                                               style='margin-right:0.5rem'>{!! str_limit($univers_data->name, 25, ' ...') !!}</a>
 
                                         </div>
                                     </div>
@@ -80,12 +79,9 @@
                             </div>
                             @if($nombre % 4 === 3)
                     </div>
+            @endif
 
-                    @endif
-                    @endforeach
-
-
-                </div>
+        @endforeach
 
 
     </section>
