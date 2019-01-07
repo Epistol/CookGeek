@@ -462,4 +462,5 @@ return [
 "will",
 "xrate",
 "xx",
+	"script",
 ];
