@@ -3,7 +3,7 @@
     @if(Auth::user()->avatar !== "users/default.png")
     <img  class="is-rounded avatar_left_menu"  src="/user/{{Auth::user()->id}}/picture/{{Auth::user()->avatar}}" />
         @else
-        <img  class="is-rounded avatar_left_menu"  src="https://api.adorable.io/avatars/{{Auth::user()->id}}" />
+        <img  class="is-rounded avatar_left_menu"  src="https://api.adorable.io/avatars/{!! Auth::user()->name !!}" />
     @endif
     </figure>
 

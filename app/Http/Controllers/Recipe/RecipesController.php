@@ -121,8 +121,27 @@ class RecipesController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		/*        $input = $request->all();
-				dd($input);*/
+		$validatedData = $request->validate([
+			'title' => 'bail|required|max:255|regex:([A-Za-z0-9 ])',
+			"qtt_ingredient.*" => 'required',
+			"ingredient.*" => "required|regex:([A-Za-z0-9 ])",
+			"step.*" => "string|required|regex:([A-Za-z0-9 ])",
+			"difficulty" => "integer|required",
+			"categ_plat" => "integer|required",
+			"prep_heure" => "nullable|integer",
+			"prep_minute" => "nullable|integer",
+			"cook_heure" => "nullable|integer",
+			"cook_minute" => "nullable|integer",
+			"rest_heure" => "nullable|integer",
+			"rest_minute" => "nullable|integer",
+			"unite_part" => "nullable|integer",
+			"value_part" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"comment" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"video" => "nullable|string|regex:([A-Za-z0-9 ])",
+			"type" => "integer|required",
+		]);
+
+
 		$recipe = new Recipes();
 
 		// User ID :
@@ -146,7 +165,7 @@ class RecipesController extends Controller
 		$rest = $recipe->return_time($rest_heure, $rest_minute);
 
 
-		$univers = $this->first_found_universe(htmlentities(clean($request->univers)));
+		$univers = $this->first_found_universe(strip_tags(clean($request->univers)));
 
 		//Filtering the comment
 		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
@@ -155,11 +174,8 @@ class RecipesController extends Controller
 		$vege = clean($request->vegan) == "on" ? true : false;
 
 		//Inserting the recipe TODO
-		$idRecette = $this->insert_recipe(clean($request->title), $vege, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), clean($request->unite_part), clean($request->value_part), intval($univers), intval($request->type), intval($iduser),  clean($request->video), clean($comm));
+		$idRecette = $this->insert_recipe(strip_tags(clean($request->title)), $vege, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), $request->unite_part, strip_tags(clean($request->value_part)), intval($univers), intval($request->type), intval($iduser), clean($request->video), clean($comm));
 
-		if($idRecette == false){
-			return redirect()->back();
-		}
 
 		// Partie SLUG
 		$slug = $this->slugtitre($request, $idRecette);
@@ -168,10 +184,9 @@ class RecipesController extends Controller
 			->where('id', $idRecette)
 			->update(['slug' => app('profanityFilter')->filter($slug)]);
 
-
 		// Partie ingrédients
 		foreach($request->ingredient as $key => $ingredient) {
-			$this->rangerIngredient($key, clean($ingredient), $idRecette, clean($request->qtt_ingredient[$key]));
+			$this->rangerIngredient($key, strip_tags(clean($ingredient)), $idRecette, strip_tags(clean($request->qtt_ingredient[$key])));
 		}
 
 		// Gestion des étapes
@@ -246,6 +261,7 @@ class RecipesController extends Controller
 		// Parties image
 		$this->validate($request, [
 			'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+
 		]);
 
 		if(!empty($request->resume)) {
@@ -448,14 +464,14 @@ class RecipesController extends Controller
 	}
 
 	/**
-	 * @param $requt
-	 * @param $idrecipe
+	 * @param $requete
+	 * @param $recipe_id
 	 * @return string
 	 */
-	private function slugtitre($requt, $idrecipe)
+	private function slugtitre($requete, $recipe_id)
 	{
-		$titreslug = str_slug(clean($requt->title), '-');
-		return $titreslug . "-" . $idrecipe;
+		$titreslug = str_slug(strip_tags(clean($requete->title)), '-');
+		return $titreslug . "-" . $recipe_id;
 	}
 
 
@@ -468,7 +484,7 @@ class RecipesController extends Controller
 	{
 		DB::table('recipe_imgs')->updateOrInsert(
 			['recipe_id' => $recipe,
-				'image_name' => clean($rq),
+				'image_name' => strip_tags(clean($rq)),
 				'user_id' => $userid,
 				'created_at' => now(),
 				'updated_at' => now(),
@@ -499,8 +515,8 @@ class RecipesController extends Controller
 
 		// Si titre vide :
 
-		if($title == null || $title == '' ){
-			return false;
+		if($title == null || $title == '') {
+			return redirect()->back();
 		}
 
 		// Insert recette
@@ -526,6 +542,11 @@ class RecipesController extends Controller
 
 			]
 		);
+
+		if($idRecette == false) {
+			return redirect()->back();
+		}
+
 		return $idRecette;
 	}
 
@@ -563,13 +584,12 @@ class RecipesController extends Controller
 					'cook_time' => $cook,
 					'rest_time' => $rest,
 					'nb_guests' => $unit,
-					'guest_type' => app('profanityFilter')->filter($value),
+					'guest_type' => clean(app('profanityFilter')->filter($value)),
 					'univers' => app('profanityFilter')->filter($universe),
 					'type_univers' => app('profanityFilter')->filter($type),
 					'id_user' => $iduser,
-					'vegetarien' => $vege,
-					'video' => app('profanityFilter')->filter($video_link),
-					'commentary_author' => $comm,
+					'video' => clean(app('profanityFilter')->filter($video_link)),
+					'commentary_author' => clean($comm),
 					'created_at' => now(),
 					'updated_at' => now(),
 
@@ -585,8 +605,13 @@ class RecipesController extends Controller
 	 */
 	public function first_found_universe($text)
 	{
-		$univ = $this->univers_service->FirstOrCreate($text);
-		return $univ;
+		if($text !== ""){
+			$univ = $this->univers_service->FirstOrCreate($text);
+			return $univ;
+		}
+		else {
+			return 0;
+		}
 	}
 
 	private function rangerIngredient($index, $ingredient, $idRecette, $qtt)

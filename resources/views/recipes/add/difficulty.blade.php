@@ -6,7 +6,12 @@
                 <option disabled value="" selected="selected">Difficulté</option>
                 @foreach ($difficulty as $key=>$diff)
                     @php(++$key)
-                    <option value="{{$key}}">{{$diff->name}}</option>
+                @if(old('difficulty') == $key)
+                    <option value="{{$key}}" selected="choix">{{$diff->name}}</option>
+                    @else
+                        <option value="{{$key}}">{{$diff->name}}</option>
+
+                    @endif
                 @endforeach
             </select>
         </div>

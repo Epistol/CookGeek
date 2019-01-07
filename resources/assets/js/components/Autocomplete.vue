@@ -11,6 +11,7 @@
                 @focus="isOpen = true"
                 @blur="isOpen = false"
                 :name="searchtype"
+                :placeholder="data_old"
         />
         <ul class="autocomplete-results" v-show="isOpen && this.search_more === false">
             <li @click="setResult(result.name)" :key="i" :class="{ 'is-active': i === arrowCounter }"
@@ -28,7 +29,7 @@
 <script>
     export default {
         name: 'autocomplete',
-        props: ['searchtype'],
+        props: ['searchtype', 'data_old'],
         data: function () {
             return {
                 searchquery: '',
@@ -87,7 +88,7 @@
         },
 
         mounted() {
-            // document.addEventListener('click', this.handleClickOutside);
+            this.searchquery = this.data_old;
         },
         destroyed() {
             // document.removeEventListener('click', this.handleClickOutside);

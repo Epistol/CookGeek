@@ -7,7 +7,12 @@
 
                 @foreach ($types_plat as $key=>$diff)
                     @php(++$key)
-                    <option name="categ_plat" value="{{$key}}">{{$diff->name}}</option>
+                    @if(old('categ_plat') == $key)
+                        <option name="categ_plat" selected="choix" value="{{$key}}">{{$diff->name}}</option>
+
+                    @else
+                        <option name="categ_plat" value="{{$key}}">{{$diff->name}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>

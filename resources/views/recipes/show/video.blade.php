@@ -13,7 +13,7 @@
 	$yt = str_replace("watch?v=", "embed/", $recette->video)
 	?>
     <div class="youtube_player">
-        <iframe src="{{$yt}}" frameborder="0" gesture="media" allow="encrypted-media" class="video"
+        <iframe src="{!! $yt !!}" frameborder="0" gesture="media" allow="encrypted-media" class="video"
                 allowfullscreen></iframe>
     </div>
 
@@ -32,13 +32,13 @@
     </div>
 
 
-
 @else
+    <div class="columns">
+        <div class="column is-lateral">
+            <p > {!! str_limit($recette->video, 150, "...") !!} </p>
 
-    <video width="320" height="240" controls>
-        <source src="{{$recette->video}}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+        </div>
+    </div>
 @endif
 
 

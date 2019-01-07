@@ -8,11 +8,15 @@
             <fieldset class="rating">
 
                 @for($i = 3; $i >= 1;$i--)
-
-                    <input type="radio" id="{{$i}}" value="{{$i}}" name="cost"/>
+                    @if(old('cost') == $i)
+                        <input type="radio" selected="cost" id="{{$i}}" value="{{$i}}" name="cost"/>
+                    @else
+                        <input type="radio" id="{{$i}}" value="{{$i}}" name="cost"/>
+                    @endif
                     <label class="cost button" for="{{$i}}">
                         <i class="fas fa-dollar-sign" aria-hidden="true"></i>
                     </label>
+
 
                 @endfor
             </fieldset>

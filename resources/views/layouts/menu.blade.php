@@ -34,16 +34,20 @@
                         </a>
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="{{ route('recipe.add') }}">
-                                <img src="{{asset('/img/icons/add_round.svg')}}" style="padding-right: 0.5rem"/> Ajouter une nouvelle
+                                <img src="{{asset('/img/icons/add_round.svg')}}" style="padding-right: 0.5rem"/> Ajouter
+                                une nouvelle
                             </a>
                             <a class="navbar-item" href="{{ route('recipe.index') }}">
-                                <img src="{{asset('/img/icons/a_to_z.svg')}}" style="padding-right: 0.5rem"/>   Toutes les recettes
+                                <img src="{{asset('/img/icons/a_to_z.svg')}}" style="padding-right: 0.5rem"/> Toutes les
+                                recettes
                             </a>
                             <a class="navbar-item" href="{{ route('recipe.index') }}">
-                                <img src="{{asset('/img/icons/news.svg')}}" style="padding-right: 0.5rem"/>  Dernières recettes
+                                <img src="{{asset('/img/icons/news.svg')}}" style="padding-right: 0.5rem"/> Dernières
+                                recettes
                             </a>
                             <a class="navbar-item" href="#">
-                                <img src="{{asset('/img/icons/ingredients.svg')}}" style="padding-right: 0.5rem"/>  Ingrédients
+                                <img src="{{asset('/img/icons/ingredients.svg')}}" style="padding-right: 0.5rem"/>
+                                Ingrédients
                             </a>
 
                         </div>
@@ -122,9 +126,8 @@
 
                                 </div>
                                 <a class="navbar-link">
-                                    {!! Auth::user()->name !!} <span class="caret"></span>
+                                    {!! str_limit(Auth::user()->name, 25, "...") !!} <span class="caret"></span>
                                 </a>
-
                             </a>
                             <div class="navbar-dropdown">
                                 <a class="navbar-item" href="{{ route('home') }}">Mon espace</a>
@@ -136,7 +139,7 @@
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
-                                    {{ csrf_field() }}
+                                   @csrf
                                 </form>
                             </div>
                         </div>

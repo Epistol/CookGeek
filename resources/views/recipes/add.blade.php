@@ -19,10 +19,10 @@
         <section class="section">
             <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">
-                {{ csrf_field() }}
+                @csrf
 
                 <div class="columns" style="  margin-bottom: 2rem;">
-                    <div class="column  right_recipe_add  ">
+                    <div class="column  right_recipe_add ">
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-12">

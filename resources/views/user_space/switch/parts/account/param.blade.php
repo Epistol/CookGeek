@@ -1,6 +1,6 @@
 <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
       action="{{ route('param.store') }}">
-    {{ csrf_field() }}
+    @csrf
 
     <div class="columns ">
         {{--Photo profil--}}
