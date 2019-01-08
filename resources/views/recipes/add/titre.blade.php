@@ -4,8 +4,8 @@
     </div>
     <div class="column is-8" id="titre_input">
 
-        <input class="input_modal blck" type="text" placeholder="{!! old('title')!!}" v-model="titre" name="title"
-               id="title" value="{!! old('title')!!}"
+        <input class="input_modal blck" type="text" placeholder="{!! clean(strip_tags(old('title')))!!}" v-model="titre" name="title"
+               id="title" value="{!! clean(strip_tags(old('title')))!!}"
                required>
 
 

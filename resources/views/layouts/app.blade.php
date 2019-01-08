@@ -37,23 +37,15 @@
 
     <!-- Styles -->
     @include("layouts.style")
-
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: "ca-pub-3386226072112083",
-			enable_page_level_ads: true
-		});
-    </script>
 
 </head>
 <body>
 <div id="app">@include("layouts.menu")
 
     <div class="container">
+
         @if ($errors->any())
             <div class="notification alert alert-danger">
                 <ul>
@@ -65,18 +57,21 @@
         @endif
 
         @if (session('status'))
-
             <notif title="is-success" v-if="seen" @close="seen = false">
                 <span slot="text">   {{ session('status') }}</span>
             </notif>
-
         @endif
+
+            @if (session('alert'))
+                <notif title="is-alert" v-if="seen" @close="seen = false">
+                    <span slot="text">   {{ session('alert') }}</span>
+                </notif>
+            @endif
     </div>
 
     @yield('content')
 </div>
 @include("layouts.footer")
-
 
 
 <!-- SCRIPTS  -->

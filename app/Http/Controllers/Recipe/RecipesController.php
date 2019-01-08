@@ -13,6 +13,7 @@ use App\Http\Controllers\UniversController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Spatie\SchemaOrg\Recipe;
 use Spatie\SchemaOrg\Schema;
 use Carbon\Carbon;
@@ -38,20 +39,29 @@ class RecipesController extends Controller
 	public function index()
 	{
 		$universcateg = DB::table('categunivers')->get();
-		$recettesrand = array();
+
 
 		// Pour chaque categ, on va charger la dernière recette postée
+		/*
+		$recettesrand = array();
 		foreach($universcateg as $u) {
-			$recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->orderBy('updated_at', 'desc')->first();
-			$recettesrand[$u->id] = $recettes;
-		}
-		$recettes = collect($recettesrand);
+				$recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->orderBy('updated_at', 'desc')->first();
+				$recettesrand[$u->id] = $recettes;
+			}
+			$recettes = collect($recettesrand);*/
 
-		$recipes = DB::table('recipes')->latest()->paginate(12);
-
+		$recipes = DB::table('recipes')
+			->whereNotIn('id', function($query) {
+				$query->select('recipe_id')
+					->from('signalements')
+					->where('status', '=', 1)
+					->orWhere('created_at', '>=', Carbon::today()->toDateTimeString());
+			})
+			->where('validated', '=', 1)
+			->latest()->paginate(12);
 
 		// On charge les données dans la vue
-		return view('recipes.index', array('recettes' => $recettes, 'universcateg' => $universcateg, 'recipes' => $recipes))->with(['controller' => $this]);
+		return view('recipes.index', array('universcateg' => $universcateg, 'recipes' => $recipes))->with(['controller' => $this]);
 	}
 
 
@@ -67,7 +77,9 @@ class RecipesController extends Controller
 		$universcateg = DB::table('categunivers')->where("name", "=", $type)->get();
 
 		if($universcateg != null) {
-			$recipes = DB::table('recipes')->where("type_univers", "=", $universcateg[0]->id)->latest()->paginate(12);
+			$recipes = DB::table('recipes')->where("type_univers", "=", $universcateg[0]->id)
+				->where('validated', '=', 1)
+				->latest()->paginate(12);
 
 			// On charge les données dans la vue
 			return view('types.index', array('universcateg' => $universcateg[0], 'recipes' => $recipes))->with(['controller' => $this]);
@@ -375,6 +387,22 @@ class RecipesController extends Controller
 		if(!$recette) {
 			return redirect()->back();
 		}
+		if(!Auth::guest()) {
+			if($recette->id_user === Auth::user()->id) {
+				if($recette->validation == 0) {
+					$alert = "non_valid";
+				}
+			} else {
+				$alert = '';
+				if($recette->validation == 0)
+					return redirect('/');
+			}
+		} else {
+			if($recette->validation == 0) {
+				return redirect('/');
+			}
+		}
+
 
 		$ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)
 			->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
@@ -414,32 +442,48 @@ class RecipesController extends Controller
 //            $resttimeiso = "PT".$this->sumerise($recette->rest_time);
 
 		$totaliso = "PT" . $this->sumerise($recette->prep_time + $recette->cook_time + $recette->rest_time);
+		if($alert === "non_valid") {
+			// On charge les données dans la vue
+			return view('recipes.show', array(
+				'recette' => $recette,
+				'ingredients' => $ingredients,
+				'steps' => $steps,
+				'images' => $images,
+				'firstimg' => $firstimg,
+				'typeuniv' => $typeuniv,
+				'stars' => $stars,
+				"countrating" => $countrating,
+				'stars1' => $stars1,
+				'nom' => $nom,
+				'preptimeiso' => $preptimeiso,
+				'cooktimeiso' => $cooktimeiso,
+				'totaliso' => $totaliso,
+			))->with('controller', $this)->with('status', "Votre recette n'est pas encore publiée, mais c'est pour bientôt !");
+		} else {
+			// On charge les données dans la vue
+			return view('recipes.show', array(
+				'recette' => $recette,
+				'ingredients' => $ingredients,
+				'steps' => $steps,
+				'images' => $images,
+				'firstimg' => $firstimg,
+				'typeuniv' => $typeuniv,
+				'stars' => $stars,
+				"countrating" => $countrating,
+				'stars1' => $stars1,
+				'nom' => $nom,
+				'preptimeiso' => $preptimeiso,
+				'cooktimeiso' => $cooktimeiso,
+				'totaliso' => $totaliso,
+			))->with('controller', $this);
+		}
 
-
-		// On charge les données dans la vue
-		return view('recipes.show', array(
-			'recette' => $recette,
-			'ingredients' => $ingredients,
-			'steps' => $steps,
-			'images' => $images,
-			'firstimg' => $firstimg,
-			'typeuniv' => $typeuniv,
-			'stars' => $stars,
-			"countrating" => $countrating,
-			'stars1' => $stars1,
-			'nom' => $nom,
-			'preptimeiso' => $preptimeiso,
-			'cooktimeiso' => $cooktimeiso,
-			'totaliso' => $totaliso,
-
-
-		))->with(['controller' => $this]);
 	}
 
 
 	public function random()
 	{
-		$rand = DB::table('recipes')
+		$rand = DB::table('recipes')->where('validated', '=', 1)
 			->inRandomOrder()
 			->first();
 		$sl = $rand->slug;
@@ -556,6 +600,7 @@ class RecipesController extends Controller
 				'slug' => '',
 				'video' => app('profanityFilter')->filter($video_link),
 				'commentary_author' => $comm,
+				'validated' => 0,
 				'created_at' => now(),
 				'updated_at' => now(),
 
@@ -610,10 +655,13 @@ class RecipesController extends Controller
 					'video' => clean(app('profanityFilter')->filter($video_link)),
 					'commentary_author' => clean($comm),
 					'created_at' => now(),
+					'validated' => 0,
 					'updated_at' => now(),
-
 				]
 			);
+
+		Log::info("Recette id : " . $recette->id . "maj, a revalider");
+
 		return $recette;
 	}
 
@@ -624,11 +672,10 @@ class RecipesController extends Controller
 	 */
 	public function first_found_universe($text)
 	{
-		if($text !== ""){
+		if($text !== "") {
 			$univ = $this->univers_service->FirstOrCreate($text);
 			return $univ;
-		}
-		else {
+		} else {
 			return 0;
 		}
 	}

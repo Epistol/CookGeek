@@ -41,6 +41,8 @@ CDG is a website of recipes from books, games, movies, anime, etc ...
 - **[askedio/laravel5-profanity-filter](https://github.com/Askedio/laravel-profanity-filter)**
 - **[torann/geoip](//)**
 - **[nouislider](//)**
+- **[Firewall](https://github.com/antonioribeiro/firewall)**
+
 ### Hosting
 - **[OVH - Plesk ](//)**
 
@@ -58,7 +60,6 @@ If you discover a security vulnerability within CDG, please send an e-mail to us
 
 ## License
 CDG is not-open-sourced
-
 
 # Changelog
 All notable changes to this project will be documented in this file.

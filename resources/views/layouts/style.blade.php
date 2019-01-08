@@ -12,10 +12,9 @@
 <script src='https://www.google.com/recaptcha/api.js?render=6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"  >
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-3386226072112083",
+	    google_ad_client: "ca-pub-3386226072112083",
         enable_page_level_ads: true
     });
 </script>

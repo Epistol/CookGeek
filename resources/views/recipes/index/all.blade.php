@@ -69,7 +69,7 @@
                                             @endphp
                                             @if($univers_data)
                                                 <a href="{!! route('univers.show', $univers_data->id) !!}"
-                                                   style='margin-right:0.5rem'>{!! strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) !!}</a>
+                                                   style='margin-right:0.5rem'>{{ strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) }}</a>
                                             @endif
                                         </div>
                                     </div>

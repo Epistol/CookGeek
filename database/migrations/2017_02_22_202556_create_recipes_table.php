@@ -43,6 +43,7 @@
 				$table->boolean("vegetarien")->nullable();
 				$table->integer('nb_views')->default(0);
 				$table->string("video")->nullable();
+				$table->boolean('validated')->default(0);
 				$table->timestamps();
 				
 				

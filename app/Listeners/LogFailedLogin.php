@@ -31,7 +31,16 @@ class LogFailedLogin
     {
         $ip = geoip()->getClientIP();
 
-        if($event->user != null){
+	    DB::table('users_info_loggin')
+		    ->insertGetId([
+			    'user_id' => $event->user->id,
+			    'ip_address' => $ip,
+			    'login' => 0,
+			    'created_at' => now(),
+			    'updated_at' => now(),
+		    ]);
+
+	    if($event->user != null){
             Log::notice('IP '. $ip. " tried to connect to account ".$event->user->id. " but failed");
         }
         else {

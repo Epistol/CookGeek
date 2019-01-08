@@ -3,6 +3,13 @@
 @section('titrepage', $recette->title)
 @section('content')
 
+
+    @if ($status)
+        <notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
+        </notif>
+    @endif
+
+
     <div class="recipeaddbg">
         <div class="container">
             {{--// BREADCRUMB--}}

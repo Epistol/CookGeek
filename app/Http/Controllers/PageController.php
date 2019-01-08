@@ -24,22 +24,26 @@ class PageController extends Controller
 		$universcateg = DB::table('categunivers')->get();
 		$recettesrand = array();
 
-		// Pour chaque categ, on va charger la dernière recette postée
+		/*// Pour chaque categ, on va charger la dernière recette postée
 		foreach($universcateg as $u) {
-			$recettes = DB::table('recipes')->where('type_univers', '=', $u->id)->where('id_user', '=',1)->orderBy('updated_at', 'desc')->first();
+			$recettes = DB::table('recipes')->where('validated', '=', 1)->where('type_univers', '=', $u->id)->where('id_user', '=', 1)->orderBy('updated_at', 'desc')->first();
 			$recettesrand[$u->id] = $recettes;
 		}
-		$recettes = collect($recettesrand);
+		$recettes = collect($recettesrand);*/
+
+
 		// Petit texte sur l'accueil
 		$heartbeat = DB::table("heartbeat")->latest()->first();
 		// Recettes
-		$recipes = DB::table('recipes')->latest()->paginate(12);
-		$univers_list = DB::table('univers')->inRandomOrder()
+		$recipes = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
+		$univers_list = DB::table('univers')->where('name', 'NOT LIKE', "%script%")->inRandomOrder()
 			->paginate('12');
 
 		// On charge les données dans la vue
-		return view('welcome', array('recettes' => $recettes, 'univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
+		return view('welcome', array( 'univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
 	}
+
+
 
 	public function sum_time($val)
 	{
@@ -177,8 +181,7 @@ class PageController extends Controller
 		if($captcha !== null) {
 			Mail::send(new ContactEmail($request));
 			return redirect('/contact')->with('status', 'Message envoyé !');
-		}
-		else {
+		} else {
 			return redirect()->back()->with('alert', 'Validez le recaptcha');
 		}
 
@@ -213,7 +216,7 @@ class PageController extends Controller
 
 		$page->save();
 
-		return redirect(route('page.index'))->with('status', 'Profile updated!');
+		return redirect(route('page.index'))->with('status', 'Page updated!');
 	}
 
 	/**
