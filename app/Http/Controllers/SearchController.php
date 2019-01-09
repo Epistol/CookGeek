@@ -37,7 +37,7 @@ class SearchController extends Controller
 
 
         $search_type = array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers');
-        $valeurs = ["value" => $rq];
+        $valeurs = ["value" => strip_tags(clean($rq))];
 
         foreach ($search_type as $key => $item) {
             if (array_key_exists($item, $result)) {

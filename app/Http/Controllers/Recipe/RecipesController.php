@@ -38,7 +38,8 @@ class RecipesController extends Controller
 
 	public function index()
 	{
-		$universcateg = DB::table('categunivers')->get();
+		$universcateg = DB::table('categunivers')
+			->get();
 
 
 		// Pour chaque categ, on va charger la dernière recette postée
@@ -369,6 +370,20 @@ class RecipesController extends Controller
 //        return redirect()->route('recipe.show', ['post' => $slug]);
 	}
 
+
+	public function  load_picture($recette)
+	{
+		$firstimg = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->orderBy('updated_at', 'desc')->first();
+		if($firstimg !== null) {
+			$url = url("/recipes/" . $recette->id . "/" . intval($recette->id_user) . "/" . strip_tags(clean($firstimg->image_name)));
+			$retour = collect($url);
+		} else {
+			$images = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
+			$retour = collect($images);
+		}
+		return $retour;
+	}
+
 	/** TODO _ UPDATING
 	 * @param Request $request
 	 * @return \Illuminate\Http\RedirectResponse
@@ -385,21 +400,25 @@ class RecipesController extends Controller
 		$recette = Recipes::where('slug', $slug)->first();
 
 		if(!$recette) {
-			return redirect()->back();
+			$alert = "";
+			return abort(404);
 		}
-		if(!Auth::guest()) {
+		if(Auth::guest()) {
+			$alert = "";
+			if($recette->validated === 0) {
+				return abort(404);
+			}
+		} else {
 			if($recette->id_user === Auth::user()->id) {
-				if($recette->validation == 0) {
+				if($recette->validated === 0) {
 					$alert = "non_valid";
+				} else {
+					$alert = '';
 				}
 			} else {
 				$alert = '';
-				if($recette->validation == 0)
-					return redirect('/');
-			}
-		} else {
-			if($recette->validation == 0) {
-				return redirect('/');
+				if($recette->validated === 0)
+					return abort(404);
 			}
 		}
 
@@ -411,9 +430,7 @@ class RecipesController extends Controller
 		$steps = DB::table('recipes_steps')->where('recipe_id', '=', $recette->id)->get();
 		$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 
-		$images = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
-
-		$firstimg = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->orderBy('updated_at', 'desc')->first();
+		$firstimg = $this->load_picture($recette);
 
 		// STARS
 		$stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
@@ -448,7 +465,6 @@ class RecipesController extends Controller
 				'recette' => $recette,
 				'ingredients' => $ingredients,
 				'steps' => $steps,
-				'images' => $images,
 				'firstimg' => $firstimg,
 				'typeuniv' => $typeuniv,
 				'stars' => $stars,
@@ -465,7 +481,6 @@ class RecipesController extends Controller
 				'recette' => $recette,
 				'ingredients' => $ingredients,
 				'steps' => $steps,
-				'images' => $images,
 				'firstimg' => $firstimg,
 				'typeuniv' => $typeuniv,
 				'stars' => $stars,

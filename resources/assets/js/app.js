@@ -3,6 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import {included} from "vee-validate/dist/rules.esm";
 
 require('./bootstrap');
 require('./dropzone');
@@ -61,6 +62,7 @@ Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon
 Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
 Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
 
+Vue.component('ban_list', require('./components/Admin/Ban_List'));
 
 const app = new Vue({
 	el: '#app',

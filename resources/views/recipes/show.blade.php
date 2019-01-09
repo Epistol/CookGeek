@@ -1,12 +1,17 @@
 @extends('layouts.app')
 
-@section('titrepage', $recette->title)
+@section('titrepage', ucfirst(strip_tags(clean($recette->title))))
+@if($firstimg->first() !== "")
+    @section('image_og', strip_tags(clean($firstimg->first())))
+@endif
 @section('content')
 
 
-    @if ($status)
-        <notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
-        </notif>
+    @if(!empty($status))
+        @if ($status)
+            <notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
+            </notif>
+        @endif
     @endif
 
 

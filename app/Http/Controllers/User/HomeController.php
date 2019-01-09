@@ -129,8 +129,7 @@ class HomeController extends Controller
 		$user_id = Auth::user()->id;
 
 		$recettes = DB::table('recipes')
-			->where('id_user', '=', $user_id)
-			->paginate(12);
+			->where('id_user', '=', $user_id)->paginate(12);
 
 		return view('user_space.recipes.index', array('recipes' => $recettes))->with(['controller' => $this]);
 	}

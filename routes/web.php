@@ -10,45 +10,46 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => 'fw-block-blacklisted'], function() {
 
 // Parce que
-Route::get('/teapot',function () {abort(418);})->name('teapot');
+	Route::get('/teapot', function() {
+		abort(418);
+	})->name('teapot');
 
-require base_path('routes/web/social.php');
-require base_path('routes/web/account.php');
-require base_path('routes/web/universe.php');
-require base_path('routes/web/contact.php');
+	require base_path('routes/web/social.php');
+	require base_path('routes/web/account.php');
+	require base_path('routes/web/universe.php');
+	require base_path('routes/web/contact.php');
 
 // RECIPES
-require base_path('routes/web/recipe.php');
-require base_path('routes/web/type.php');
-require base_path('routes/web/media.php');
+	require base_path('routes/web/recipe.php');
+	require base_path('routes/web/type.php');
+	require base_path('routes/web/media.php');
 // RECHERCHE
-Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
-Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+	Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+	Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 
 // RSS
-Route::feeds();
+	Route::feeds();
 
 
 //ADMIN
-require base_path('routes/web/design.php');
+	require base_path('routes/web/design.php');
 
 //require base_path('routes/web/admin.php');
 
 
 /// API
-Route::post("/like", 'Api\LikeController@create')->name("api.like.create");
-Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
+	Route::post("/like", 'Api\LikeController@create')->name("api.like.create");
+	Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
 
 
-Route::get('/','PageController@accueil')->name('index');
+	Route::get('/', 'PageController@accueil')->name('index');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-    Route::resource('page', 'PageController');
+	require base_path('routes/web/admin.php');
+
+
+	Route::get("/cookies", 'PageController@cookie')->name("cookie");
 });
-
-Route::get("/cookies", 'PageController@cookie')->name("cookie");

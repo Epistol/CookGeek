@@ -27,18 +27,39 @@
                           </span>
                         </a>
         </p>
-        <p class="control">
-			<?php
-			$image = isset($firstimg) ? asset('/recipes/' . $recette->id . '/' . $recette->id_user . '/' . $firstimg->image_name) : null;
-			?>
-            <a class="button pinterest "
-               href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={!! $image !!}&description={!! $recette->title !!}">
+        @if(count($firstimg) === 1 )
+            <p class="control">
+                <a class="button pinterest "
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={!! $firstimg->first() !!}&description={!! strip_tags(clean($recette->title)) !!}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
-
                           </span>
-            </a>
-        </p>
+                </a>
+            </p>
+
+        @elseif($firstimg < 1)
+            <p class="control">
+                <a class="button pinterest "
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={!! strip_tags(clean($recette->title)) !!}">
+                          <span class="icon is-medium 	 ">
+                      <i class="fab fa-pinterest-p fa-fw"></i>
+                          </span>
+                </a>
+            </p>
+
+        @else
+
+            <p class="control">
+                <a class="button pinterest "
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={!! $firstimg->first() !!}&description={!! strip_tags(clean($recette->title)) !!}">
+                          <span class="icon is-medium 	 ">
+                      <i class="fab fa-pinterest-p fa-fw"></i>
+                          </span>
+                </a>
+            </p>
+
+        @endif
+
         <p class="control">
             <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}">
                           <span class="icon is-small">

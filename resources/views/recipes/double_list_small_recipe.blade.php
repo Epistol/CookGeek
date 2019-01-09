@@ -1,111 +1,99 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-@foreach($recipes->chunk(2)  as  $recettechunk)
+
+<div class="columns is-multiline" style="margin-top: 2rem; margin-bottom: 2rem;">
+    @foreach ($recipes as $i => $recette)
+
+		<?php
+		$starsget = (new \App\Search)->explode_star($recette->id);
+		$type = DB::table('type_recipes')->where('id', $recette->type)->first();
+		?>
+
+        <div class="column is-5  is-result">
+            <div class="columns">
+                <div class="column is-4 to-hover is-paddingless is-marginless">
+                    @if(isset($type))
+                        <div class="hovered">
+                            <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
+                               href="/{{strtolower($type->name)}}">{!!  $type->name!!}</a>
+                        </div>
+                    @endif
+                    <a href="/recette/{{$recette->slug}}">
+                        <figure class="image is-1by1 is_recipe_horizontal">
+                            @if($recette->id_user != NULL )
+<?php
+
+?>
+                                <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{!! strip_tags(clean($image)) !!}">
+                            @else
+                                {{--<img src="http://via.placeholder.com/300x200?text={!! strip_tags(clean($first->image_name)) !!}">--}}
+                            @endif
+                        </figure>
+                    </a>
+                </div>
+                <div class="column is-7">
+                    <div class="top is-flex">
+                        <a href="/recette/{{$recette->slug}}"><h2 class="title">
+                                {!! strip_tags(clean($recette->title)) !!}
+                            </h2></a>
 
 
-    <div class="columns" style="margin-top: 2rem; margin-bottom: 2rem;">
-		<?php $i = 0;?>
-        @foreach ($recettechunk as $recette)
-
-
-			<?php
-			$img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
-			$first = $img;
-			$starsget = (new \App\Search)->explode_star($recette->id);
-			$type = DB::table('type_recipes')->where('id', $recette->type)->first();
-
-			?>
-
-            <div class="column is-5 @if($i !== 0) is-offset-1 @endif is-result">
-                <div class="columns">
-                    <div class="column is-4 to-hover is-paddingless is-marginless">
-                        @if(isset($type))
-                            <div class="hovered">
-                                <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
-                                   href="/{{strtolower($type->name)}}">{!!  $type->name!!}</a>
-                            </div>
-                        @endif
-                        <a href="/recette/{{$recette->slug}}">
-                            <figure class="image is-1by1 is_recipe_horizontal">
-                                @if($recette->id_user != NULL  && isset($first))
-                                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first->image_name}}">
-                                @else
-                                    <img src="http://via.placeholder.com/300x200?text={!! strip_tags(clean($recette->title)) !!}">
-                                @endif
-                            </figure>
-                        </a>
                     </div>
-                    <div class="column is-7">
-                        <div class="top is-flex">
-                            <a href="/recette/{{$recette->slug}}"><h2 class="title">
-                                    {!! strip_tags($recette->title) !!}
-                                </h2></a>
+                    <div class="middle">
+                        {{-- Ingredients--}}
 
-
-                        </div>
-                        <div class="middle">
-                            {{-- Ingredients--}}
-
-							<?php
-							$ingredients = DB::table('recipes_ingredients')
-								->where('id_recipe', '=', $recette->id)
-								->get();
-							?>
-                            <p><b>@lang("recipe.ingredients") : </b>
-                                @foreach($ingredients as $index=>$in)
-									<?php
-									$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
-									?>
-                                    @if($loop->last)
-                                        {!! $nom_in !!}
-                                    @else
-                                            {!! $nom_in !!},
-                                    @endif
-                                @endforeach
-                            </p>
-
-
-                        </div>
-                        <div class="bottom">
-                            <div class="is-flex">
+						<?php
+						$ingredients = DB::table('recipes_ingredients')
+							->where('id_recipe', '=', $recette->id)->limit(5)
+							->get();
+						?>
+                        <p><b>@lang("recipe.ingredients") : </b>
+                            @foreach($ingredients as $index=>$in)
 								<?php
-								$nom = DB::table('users')->where('id', $recette->id_user)->value('name');
+								$nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
 								?>
-                                @include("recipes.show.author")<br/>
-                                @include("recipes.show.staronly")
-                            </div>
-                        </div>
+                                {!! str_limit(strip_tags(clean($nom_in)), 20, "...") !!},
+                            @endforeach
+                        </p>
+
 
                     </div>
-                    <div class="column is-1 is-marginless is-paddingless">
-                        <div class="top">
+                    <div class="bottom">
+                        <div class="is-flex">
 							<?php
-							$typeuniv = DB::table('categunivers')
-								->where('id', '=', $recette->type_univers)
-								->first();
+							$nom = DB::table('users')->where('id', $recette->id_user)->value('name');
 							?>
-                            @include("recipes.show.type_univers_no_tool")
+                            @include("recipes.show.author")<br/>
+                            @include("recipes.show.staronly")
                         </div>
-                        <div class="middle">
+                    </div>
 
-                        </div>
-                        <div class="bottom">
-                            <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
-                        </div>
+                </div>
+                <div class="column is-1 is-marginless is-paddingless">
+                    <div class="top">
+						<?php
+						$typeuniv = DB::table('categunivers')
+							->where('id', '=', $recette->type_univers)
+							->first();
+						?>
+                        @include("recipes.show.type_univers_no_tool")
+                    </div>
+                    <div class="middle">
 
                     </div>
+                    <div class="bottom">
+                        <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
+                    </div>
+
                 </div>
             </div>
+        </div>
 
-			<?php $i++?>
-
-        @endforeach
-
-
-    </div>
+    @endforeach
 
 
-@endforeach
+</div>
+
 <span>
                  {{ $recipes->links() }}
         </span>

@@ -8,15 +8,37 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@hasSection('titrepage')@yield('titrepage')
+        - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif</title>
+    <meta name="description"
+          content="@hasSection('description')@yield('description') - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif">
+
+    <!-- ROBOTS -->
+@include("layouts.app_element.robot")
+<!-- Links to information about the author(s) of the document -->
+    <link rel="author" href="{{asset('humans.txt')}}">
+    <link rel="index" href="{{url('/')}}">
+    <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention"/>
+
+    <!-- Feeds -->
+    {{--<link rel="alternate"  href="/rss" type="application/rss+xml" title="RSS">--}}
+    <link rel="alternate" type="application/atom+xml" title="New recipes" href="{{url('/rss')}}">
+
+    @include("layouts.app_element.icons")
+
+<!-- Meta OG -->
+    @include("layouts.app_element.meta_og")
+    @include("layouts.app_element.twitter")
+    @include("layouts.app_element.gplus")
+    @include("layouts.app_element.fb")
+    @include("layouts.app_element.apple")
+
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/css/nouislider.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="{{ asset('css/lightbox.css') }}" defer async rel="stylesheet">
-    <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
+    @include("layouts.style")
+    @include("layouts.cookie")
+    {{--@include("layouts.cookiebot")--}}
     <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
 
     </script>

@@ -36,7 +36,10 @@ class PageController extends Controller
 		$heartbeat = DB::table("heartbeat")->latest()->first();
 		// Recettes
 		$recipes = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
-		$univers_list = DB::table('univers')->where('name', 'NOT LIKE', "%script%")->inRandomOrder()
+		$univers_list = DB::table('univers')->where('name', 'NOT LIKE', "%script%")
+			->join('recipes', 'univers.id', '=', 'recipes.univers')
+			->where('recipes.validated', '=', 1)
+			->inRandomOrder()
 			->paginate('12');
 
 		// On charge les données dans la vue

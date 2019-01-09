@@ -30,7 +30,8 @@
         "tcg/voyager": "^1.1",
         "torann/geoip": "^1.0",
         "voyager-redirects": "^1.0",
-        "yab/laravel-scout-mysql-driver": "^2.0"
+        "yab/laravel-scout-mysql-driver": "^2.0",
+      "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "dev-master",

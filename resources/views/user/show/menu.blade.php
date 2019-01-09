@@ -10,7 +10,7 @@
     </div>
 
     <div class="menu">
-        <h1 class="title" style="text-align:center">{{$user->name}}</h1>
+        <h1 class="title" style="text-align:center">{{strip_tags(clean($user->name))}}</h1>
         <div class="sous_cat">
             <p class="menu-label">
                Inscrit le : {{Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}

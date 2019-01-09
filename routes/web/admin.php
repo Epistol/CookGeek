@@ -6,11 +6,14 @@
  * Time: 23:27
  */
 
-Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {
+
     Route::group(['prefix' => 'admin'], function () {
-        // OVERVIEW
-        Route::get('/', 'Admin\AdminController@index')->name("admin.index");
-        // USERS
+
+	    Voyager::routes();
+	    Route::get('ban', 'Admin\AdminController@ban')->name("admin.ban.index");
+	    Route::post('/ban/submit', 'Admin\AdminController@bansubmit');
+
+	    // USERS
         Route::get('user', 'Admin\GestionUtil@index')->name("admin.user.index");
         Route::get('user/edit/{id}', 'Admin\GestionUtil@edit')->name("admin.user.edit");
         // RECIPES
@@ -18,5 +21,6 @@ Route::middleware(['role:admin, doNotCacheResponse'])->group(function () {
         Route::get('recipes/edit/{id}', 'Admin\RecipesAdmin@edit')->name("admin.recipe.edit");
         // PAGES
         Route::resource('page', 'PageController');
+
+
     });
-});

@@ -33,7 +33,7 @@ class UniversController extends Controller
 	public function get_all_universes_in_categ($categ)
 	{
 		// trouver les univers ayant des recettes de la catégorie (anime, manga, etc)
-		$recettes = DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)->distinct()->orderByDesc("nb_views")->get();
+		$recettes = DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)->where('validated', '=', 1)->distinct()->orderByDesc("nb_views")->get();
 		return $recettes;
 	}
 

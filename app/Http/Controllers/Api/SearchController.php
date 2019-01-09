@@ -20,11 +20,11 @@ class SearchController extends Controller
 
 				// Searching in recipes
 				// TODO : Réduire le nombre de champs retournés par element ?
-				$recipe = DB::table('recipes')->where('title', 'like', '%' . $p . '%')->paginate(10);
-				$ingredient = DB::table('ingredients')->where('name', 'like', '%' . $p . '%')->paginate(10);
-				$categunivers = DB::table("categunivers")->where('name', 'like', '%' . $p . '%')->paginate(10);
-				$type_recipes = DB::table("type_recipes")->where('name', 'like', '%' . $p . '%')->paginate(10);
-				$univers = DB::table("univers")->where('name', 'like', '%' . $p . '%')->paginate(10);
+				$recipe = DB::table('recipes')->where('title', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
+				$ingredient = DB::table('ingredients')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
+				$categunivers = DB::table("categunivers")->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
+				$type_recipes = DB::table("type_recipes")->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
+				$univers = DB::table("univers")->where('name', 'like', '%' . strip_tags(clean($p)). '%')->paginate(10);
 			}
 		} else {
 			// Searching in recipes
@@ -79,7 +79,7 @@ class SearchController extends Controller
 	public function search_univers(Request $recherche)
 	{
 		$searchquery = $recherche->searchquery;
-		$data = Univers::where('name', 'like', '%' . $searchquery . '%')->get();
+		$data = Univers::where('name', 'like', '%' . strip_tags(clean($searchquery))  . '%')->get();
 		return response()->json($data);
 	}
 

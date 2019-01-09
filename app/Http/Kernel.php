@@ -45,6 +45,12 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+	    'firewall' => [
+		    \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
+		    \PragmaRX\Firewall\Middleware\BlockAttacks::class,
+	    ],
+
     ];
 
     /**
@@ -66,5 +72,8 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+	    'fw-only-whitelisted' => \PragmaRX\Firewall\Middleware\FirewallWhitelist::class,
+	    'fw-block-blacklisted' => \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
+	    'fw-block-attacks' => \PragmaRX\Firewall\Middleware\BlockAttacks::class,
     ];
 }
