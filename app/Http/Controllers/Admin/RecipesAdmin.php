@@ -32,7 +32,9 @@ class RecipesAdmin extends Controller
 
 
     public function edit($id){
-    	dd($id);
-	    $recipes = DB::table('recipes')->latest()->paginate(10);
+	    $recipe = DB::table('recipes')->where('id', '=' , $id)->first();
+	    return view("admin.recipes.edit", array(
+		    'recipe' => $recipe
+	    ))->with(['controller' => $this]);
     }
 }
