@@ -34,7 +34,10 @@ class AdminController extends Controller
 	public function ban()
 	{
 		$user_ip = Firewall::getAllIps();
-		$bans = DB::table('bans')->groupBy('user_id')->orderByDesc('updated_at')->get();
+
+		$bans = DB::table('bans')->groupBy('user_id')
+			->get();
+
 		$blacklist = Firewall::getAllIps()->filter(function($item) {
 			return $item->whitelisted == false;
 		});

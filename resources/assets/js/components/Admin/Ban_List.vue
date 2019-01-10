@@ -3,7 +3,6 @@
 
         <div class="is-lateral" style="padding:1rem">
             <form @submit.prevent="submit">
-
                 <div class="columns">
                     <div class="column">
                         <div class="field">
@@ -30,6 +29,13 @@
                 <div class="columns">
                     <div class="column">
                         <div class="field">
+                            <label for="ip">Raison</label>
+                            <textarea class="textarea" name="reason" id="reason" v-model="champs.reason"></textarea>
+                            <div v-if="erreurs && erreurs.reason" class="text-danger">{{ erreurs.reason[0] }}</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
                             <label for="days">Durée</label>
                             <div class="select">
                                 <select v-model="champs.days" name="days" id="days">
@@ -49,14 +55,11 @@
                             <div v-if="erreurs && erreurs.days" class="text-danger">{{ erreurs.days[0] }}</div>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="field">
-                            <label for="ip">Raison</label>
-                            <textarea class="textarea" name="reason" id="reason" v-model="champs.reason"></textarea>
-                            <div v-if="erreurs && erreurs.reason" class="text-danger">{{ erreurs.reason[0] }}</div>
-                        </div>
-                    </div>
+
                 </div>
+                <p><i>Choisissez un délai pour ban / déban</i></p>
+                <br />
+
                 <template v-if="this.champs.days">
                     <button type="submit" class="button is-primary">Bannir</button>
                 </template>
@@ -64,21 +67,50 @@
                     <b>Utilisateur / IP banni!</b>
                 </div>
 
-                <div v-if="choix_multiple" class="alert alert-success mt-3">
+                <section v-if="choix_multiple" class="section">
                     <b>Oups, plusieurs entrées correspondent à cet IP, quel utilisateur voulez-vous ban ?</b>
+<template v-if="retour">
+                    <table class="table is-bordered">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>User ID</th>
+                            <th>Login</th>
+                            <th>Logout</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="value in this.retour">
+                            <td>{{ value.id }}</td>
+                            <td>{{ value.user_id }}</td>
+                            <td>{{ value.login }}</td>
+                            <td>{{ value.logout }}</td>
+                            <td>{{ value.created_at }}</td>
+                            <td>
+                                <label class="checkbox">
+                                    <input type="checkbox" :id="value.user_id" :value="value.user_id" v-model="ipChoixBan" name="userIdIp">
 
+                                </label>
+
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+</template>
                     Ou juste bloquer l'IP ?
                     <form @submit.prevent="submitip()">
                         <button type="submit">Bloquer IP</button>
                     </form>
-                </div>
+                </section>
 
             </form>
 
         </div>
 
         <h1><i class="fas fa-ban" style="color:red"></i> Utilisateurs bannis </h1>
-
 
         <table class="table is-bordered">
             <thead>
@@ -93,10 +125,10 @@
             </tr>
             </thead>
             <tbody>
-
             <tr v-for="value in this.bans">
                 <td>{{ value.id }}</td>
                 <td>{{ value.user_id }}</td>
+
                 <td>{{ value.days }}</td>
                 <td>{{ value.definitive }}</td>
                 <td>{{ value.created_at }}</td>
@@ -113,7 +145,6 @@
                 </template>
 
             </tr>
-
             </tbody>
         </table>
 
@@ -150,9 +181,11 @@
 			return {
 				champs: {},
 				erreurs: {},
+				user_names: {},
 				success: false,
 				choix_multiple: false,
 				retour: {},
+				ipChoixBan: [],
 				loaded: true,
 				action: '',
 			}
@@ -184,7 +217,25 @@
 			submitip() {
 				console.log("ip");
 			},
-		}
+
+			async get_name(user_id) {
+				var that = this;
+
+				return axios.post('/api/user/getName', {
+					user_id: user_id
+				}).then(response => {
+					// console.log(response);
+					that.user_names.push(response.data);
+
+				}).catch(error => {
+
+				});
+
+			}
+		},
+
+		mounted() {
+		},
 	}
 </script>
 

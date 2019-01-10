@@ -8,6 +8,8 @@ use Laravel\Scout\Searchable;
 class Page extends Model
 {
 	use Searchable;
-	protected $fillable = ['name', 'contenu'];
+
+	protected $table = 'pages';
+	protected $fillable = ['name', 'contenu', 'slug'];
 }
 

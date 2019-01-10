@@ -11,7 +11,7 @@ class RecipeController extends Controller
 {
 	public function get_picture(Request $request)
 	{
-		$recipe_id = $request->recipeid;
+		$recipe_id = strip_tags(clean($request->recipeid));
 
 		$pic = DB::table('recipe_imgs')
 			->where('recipe_id', '=', $recipe_id)
@@ -69,10 +69,10 @@ class RecipeController extends Controller
 	}
 	public function alerte(Request $request)
 	{
-		$recipe_id = $request->recipeid;
-		$type_alerte = $request->type_alerte;
-		$userid = $request->userid;
-		$user_content = $request->user_content;
+		$recipe_id = intval(strip_tags(clean($request->recipeid)));
+		$type_alerte = strip_tags(clean($request->type_alerte));
+		$userid = intval(strip_tags(clean($request->userid)));
+		$user_content = strip_tags(clean($request->user_content));
 
 		$signalement = new Signalements;
 		$signalement->recipe_id = $recipe_id;

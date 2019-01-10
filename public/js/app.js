@@ -91611,7 +91611,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -91622,6 +91622,43 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -91774,9 +91811,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			champs: {},
 			erreurs: {},
+			user_names: {},
 			success: false,
 			choix_multiple: false,
 			retour: {},
+			ipChoixBan: [],
 			loaded: true,
 			action: ''
 		};
@@ -91807,8 +91846,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		submitip: function submitip() {
 			console.log("ip");
-		}
-	}
+		},
+		get_name: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(user_id) {
+				var that;
+				return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								that = this;
+								return _context.abrupt('return', axios.post('/api/user/getName', {
+									user_id: user_id
+								}).then(function (response) {
+									// console.log(response);
+									that.user_names.push(response.data);
+								}).catch(function (error) {}));
+
+							case 2:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function get_name(_x) {
+				return _ref.apply(this, arguments);
+			}
+
+			return get_name;
+		}()
+	},
+
+	mounted: function mounted() {}
 });
 
 /***/ }),
@@ -91939,6 +92009,40 @@ var render = function() {
           _c("div", { staticClass: "columns" }, [
             _c("div", { staticClass: "column" }, [
               _c("div", { staticClass: "field" }, [
+                _c("label", { attrs: { for: "ip" } }, [_vm._v("Raison")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.champs.reason,
+                      expression: "champs.reason"
+                    }
+                  ],
+                  staticClass: "textarea",
+                  attrs: { name: "reason", id: "reason" },
+                  domProps: { value: _vm.champs.reason },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.champs, "reason", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.erreurs && _vm.erreurs.reason
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.erreurs.reason[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
                 _c("label", { attrs: { for: "days" } }, [_vm._v("Durée")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "select" }, [
@@ -92030,42 +92134,12 @@ var render = function() {
                     ])
                   : _vm._e()
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "field" }, [
-                _c("label", { attrs: { for: "ip" } }, [_vm._v("Raison")]),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.champs.reason,
-                      expression: "champs.reason"
-                    }
-                  ],
-                  staticClass: "textarea",
-                  attrs: { name: "reason", id: "reason" },
-                  domProps: { value: _vm.champs.reason },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.champs, "reason", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.erreurs && _vm.erreurs.reason
-                  ? _c("div", { staticClass: "text-danger" }, [
-                      _vm._v(_vm._s(_vm.erreurs.reason[0]))
-                    ])
-                  : _vm._e()
-              ])
             ])
           ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("br"),
           _vm._v(" "),
           this.champs.days
             ? [
@@ -92087,42 +92161,125 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.choix_multiple
-            ? _c("div", { staticClass: "alert alert-success mt-3" }, [
-                _c("b", [
+            ? _c(
+                "section",
+                { staticClass: "section" },
+                [
+                  _c("b", [
+                    _vm._v(
+                      "Oups, plusieurs entrées correspondent à cet IP, quel utilisateur voulez-vous ban ?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.retour
+                    ? [
+                        _c("table", { staticClass: "table is-bordered" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(this.retour, function(value) {
+                              return _c("tr", [
+                                _c("td", [_vm._v(_vm._s(value.id))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(value.user_id))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(value.login))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(value.logout))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(value.created_at))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c("label", { staticClass: "checkbox" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.ipChoixBan,
+                                          expression: "ipChoixBan"
+                                        }
+                                      ],
+                                      attrs: {
+                                        type: "checkbox",
+                                        id: value.user_id,
+                                        name: "userIdIp"
+                                      },
+                                      domProps: {
+                                        value: value.user_id,
+                                        checked: Array.isArray(_vm.ipChoixBan)
+                                          ? _vm._i(
+                                              _vm.ipChoixBan,
+                                              value.user_id
+                                            ) > -1
+                                          : _vm.ipChoixBan
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.ipChoixBan,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = value.user_id,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.ipChoixBan = $$a.concat([
+                                                  $$v
+                                                ]))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.ipChoixBan = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.ipChoixBan = $$c
+                                          }
+                                        }
+                                      }
+                                    })
+                                  ])
+                                ])
+                              ])
+                            })
+                          )
+                        ])
+                      ]
+                    : _vm._e(),
                   _vm._v(
-                    "Oups, plusieurs entrées correspondent à cet IP, quel utilisateur voulez-vous ban ?"
-                  )
-                ]),
-                _vm._v(
-                  "\n\n                Ou juste bloquer l'IP ?\n                "
-                ),
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        _vm.submitip()
+                    "\n                    Ou juste bloquer l'IP ?\n                    "
+                  ),
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          _vm.submitip()
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("button", { attrs: { type: "submit" } }, [
-                      _vm._v("Bloquer IP")
-                    ])
-                  ]
-                )
-              ])
+                    },
+                    [
+                      _c("button", { attrs: { type: "submit" } }, [
+                        _vm._v("Bloquer IP")
+                      ])
+                    ]
+                  )
+                ],
+                2
+              )
             : _vm._e()
         ],
         2
       )
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _vm._m(2),
     _vm._v(" "),
     _c("table", { staticClass: "table is-bordered" }, [
-      _vm._m(1),
+      _vm._m(3),
       _vm._v(" "),
       _c(
         "tbody",
@@ -92142,7 +92299,7 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(value.admin_id))]),
               _vm._v(" "),
-              value.days !== 0 ? [_vm._m(2, true)] : [_vm._m(3, true)]
+              value.days !== 0 ? [_vm._m(4, true)] : [_vm._m(5, true)]
             ],
             2
           )
@@ -92150,10 +92307,10 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(4),
+    _vm._m(6),
     _vm._v(" "),
     _c("table", { staticClass: "table is-bordered" }, [
-      _vm._m(5),
+      _vm._m(7),
       _vm._v(" "),
       _c(
         "tbody",
@@ -92173,6 +92330,32 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("i", [_vm._v("Choisissez un délai pour ban / déban")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th"),
+        _vm._v(" "),
+        _c("th", [_vm._v("User ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Login")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Logout")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Actions")])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

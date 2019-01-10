@@ -19,104 +19,6 @@ class PageController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 
-	public function accueil()
-	{
-		$universcateg = DB::table('categunivers')->get();
-		$recettesrand = array();
-
-		/*// Pour chaque categ, on va charger la dernière recette postée
-		foreach($universcateg as $u) {
-			$recettes = DB::table('recipes')->where('validated', '=', 1)->where('type_univers', '=', $u->id)->where('id_user', '=', 1)->orderBy('updated_at', 'desc')->first();
-			$recettesrand[$u->id] = $recettes;
-		}
-		$recettes = collect($recettesrand);*/
-
-
-		// Petit texte sur l'accueil
-		$heartbeat = DB::table("heartbeat")->latest()->first();
-		// Recettes
-		$recipes = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
-		$univers_list = DB::table('univers')->where('name', 'NOT LIKE', "%script%")
-			->join('recipes', 'univers.id', '=', 'recipes.univers')
-			->where('recipes.validated', '=', 1)
-			->inRandomOrder()
-			->paginate('12');
-
-		// On charge les données dans la vue
-		return view('welcome', array( 'univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
-	}
-
-
-
-	public function sum_time($val)
-	{
-		$format = '%1$02d';
-		// si il y'a + d'1heure
-		if($val > 60) {
-			$somme_h = $val / 60;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on les affiches
-			if($somme_m > 0) {
-				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) . " min";
-			} else {
-				return sprintf($format, $somme_h) . " h ";
-			}
-
-		} else {
-			$somme_h = 0;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on affiche qqch
-			if($somme_m > 0) {
-				return sprintf($format, $somme_m) . " min";
-			} else {
-				return '';
-			}
-
-		}
-	}
-
-	public function sum_time_home($val)
-	{
-		$format = '%1$02d';
-		// si il y'a + d'1heure
-		if($val > 60) {
-			$somme_h = $val / 60;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on les affiches
-			if($somme_m > 0) {
-				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m);
-			} else {
-				return sprintf($format, $somme_h) . " h ";
-			}
-
-		} else {
-			$somme_h = 0;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on affiche qqch
-			if($somme_m > 0) {
-				return sprintf($format, $somme_m) . " min";
-			} else {
-				return '';
-			}
-
-		}
-	}
-
-	public function index()
-	{
-
-		$pages = Page::all();
-		Carbon::setLocale('fr');
-		$location = geoip()->getLocation($ip = null);
-		return view('admin.page.index', ['pages' => $pages, 'lieu' => $location->iso_code]);
-
-	}
-
-	public function cookie()
-	{
-		return view("admin.page.cookie");
-	}
-
 	/**
 	 * Création d'une nouvelle page
 	 *
@@ -127,9 +29,25 @@ class PageController extends Controller
 		return Auth::check() ? view('admin.page.create') : back();
 	}
 
+
+	public function index()
+	{
+		$pages = Page::all();
+		Carbon::setLocale('fr');
+		$location = geoip()->getLocation($ip = null);
+		return view('admin.page.index', ['pages' => $pages, 'lieu' => $location->iso_code]);
+
+	}
+
+/*	public function cookie()
+	{
+		return view("admin.page.cookie");
+	}*/
+
+
 	private function slugtitre($titre, $idrecipe)
 	{
-		$titreslug = str_slug($titre, '-');
+		$titreslug = str_slug(strip_tags(clean($titre)), '-');
 		return $titreslug . "-" . $idrecipe;
 	}
 
@@ -151,14 +69,13 @@ class PageController extends Controller
 			]
 		);
 		// Partie SLUG
-		$slug = $this->slugtitre($request->name, $idRecette);
+		$slug = $this->slugtitre(strip_tags(clean($request->name)), $idRecette);
 
 		DB::table('pages')
 			->where('id', $idRecette)
 			->update(['slug' => $slug]);
 
-
-		return redirect()->route('page.show', $idRecette);
+		return redirect()->route('page.index');
 	}
 
 	/**
@@ -172,6 +89,11 @@ class PageController extends Controller
 		return view('admin.page.show', ['page' => $page]);
 	}
 
+	public function show_cgu()
+	{
+		$page = Page::where('slug', 'cgu-2')->first();
+		return view('admin.page.show', ['page' => $page]);
+	}
 
 	public function show_contact()
 	{
@@ -187,7 +109,6 @@ class PageController extends Controller
 		} else {
 			return redirect()->back()->with('alert', 'Validez le recaptcha');
 		}
-
 	}
 
 
@@ -212,8 +133,7 @@ class PageController extends Controller
 	public function update(Request $request, Page $page)
 	{
 
-
-		$page->name = $request->name;
+		$page->name = strip_tags(clean($request->name));
 		$page->content = $request->contenu;
 		$page->slug = $this->slugtitre($request->name, $page->id);
 
@@ -222,7 +142,7 @@ class PageController extends Controller
 		return redirect(route('page.index'))->with('status', 'Page updated!');
 	}
 
-	/**
+	/**s
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  \App\Page $page
@@ -230,12 +150,11 @@ class PageController extends Controller
 	 */
 	public function destroy(Page $page)
 	{
-		$page2 = Page::findOrFail($page);
-		$page2->delete();
-		return redirect('admin/page')->with('status', 'Page supprimée !');
+		\App\Page::destroy($page->id);
+		return redirect('/admin/page')->with('status', 'Page supprimée !');
 	}
 
-	public function store_gf(Request $request)
+	/*public function store_gf(Request $request)
 	{
 
 		if($request->contenu == "") {
@@ -249,9 +168,6 @@ class PageController extends Controller
 
 			]
 		);
-
 		return redirect()->route('index')->with('status', "Bien enregistré, merci ! <3 ");
-
-
-	}
+	}*/
 }

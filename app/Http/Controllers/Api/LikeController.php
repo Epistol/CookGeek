@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\UserRecipeLike;
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ class LikeController extends Controller
 
 		$id = DB::table('user_recipe_likes')
 			->where(
-				['user_id' => $u_id, 'recipe_id' => $data->recette]
+				['user_id' => $u_id, 'recipe_id' => strip_tags(clean($data->recette))]
 			)->first();
 
 
@@ -45,13 +46,13 @@ class LikeController extends Controller
 		if($id == "" || $id == NULL) {
 			$id2 = DB::table('user_recipe_likes')
 				->insertGetId(
-					['user_id' => $u_id, 'recipe_id' => $data->recette]
+					['user_id' => $u_id, 'recipe_id' => strip_tags(clean($data->recette))]
 				);
 			// we return the new-like state
 			return response("liked", 200);
 		} // if it was already liked
 		else {
-			DB::table('user_recipe_likes')->where('user_id', '=', $u_id)->where('recipe_id', '=', $data->recette)->delete();
+			DB::table('user_recipe_likes')->where('user_id', '=', $u_id)->where('recipe_id', '=', strip_tags(clean($data->recette)))->delete();
 			return response("unliked", 200);
 		}
 
@@ -66,57 +67,12 @@ class LikeController extends Controller
 
 		$id2 = DB::table('user_recipe_likes')
 			->insertGetId(
-				['user_id' => $u_id, 'recipe_id' => $recipe_id]
+				['user_id' => strip_tags(clean($u_id)), 'recipe_id' =>  strip_tags(clean($recipe_id))]
 			);
 		if($id2){
 			return response($id2);
 		}
 		// we return the new-like state
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
 	}
 
 	/**
@@ -161,32 +117,27 @@ class LikeController extends Controller
 
 	public function toggle_like(Request $request)
 	{
-		$u_id = $request->userid;
+		$u_id = intval(clean($request->userid)) ;
 
 		$l_id = DB::table('user_recipe_likes')
 			->where([
 				['user_id', '=', $u_id],
-				['recipe_id', '=', $request->recipeid],
+				['recipe_id', '=', strip_tags(clean($request->recipeid))],
 			])
 			->first();
 
 
 		// si un id existe, on le supprime et renvoie false
 		if($l_id) {
-
 			if($this->destroy($l_id->id)) {
 				return response()->json(false);
 			}
 		}
 		// si n'existe pas, on le créé et renvoie true
 		else {
-//			return response()->json("hehoy");
 			$retour = $this->create_only($u_id, $request->recipeid);
 			return response()->json($retour);
 		}
-
-
-//		return response()->json(false);
 
 
 	}

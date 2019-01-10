@@ -20,7 +20,7 @@ class SearchController extends Controller
 
 				// Searching in recipes
 				// TODO : Réduire le nombre de champs retournés par element ?
-				$recipe = DB::table('recipes')->where('title', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
+				$recipe = DB::table('recipes')->where('title', 'like', '%' . strip_tags(clean($p)) . '%')->where('validated', '=', 1)->paginate(10);
 				$ingredient = DB::table('ingredients')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
 				$categunivers = DB::table("categunivers")->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
 				$type_recipes = DB::table("type_recipes")->where('name', 'like', '%' . strip_tags(clean($p)) . '%')->paginate(10);
@@ -29,7 +29,7 @@ class SearchController extends Controller
 		} else {
 			// Searching in recipes
 			// TODO : Réduire le nombre de champs retournés par element ?
-			$recipe = DB::table('recipes')->paginate(10);
+			$recipe = DB::table('recipes')->where('validated', '=', 1)->paginate(10);
 			$ingredient = DB::table('ingredients')->paginate(10);
 			$categunivers = DB::table("categunivers")->paginate(10);
 			$type_recipes = DB::table("type_recipes")->paginate(10);
@@ -69,7 +69,7 @@ class SearchController extends Controller
 
 		foreach($elements as $key => $el) {
 			if($el->isNotEmpty()) {
-				$response[$titres[$key]] = $el;
+				$response[$titres[$key]] = strip_tags(clean($el));
 			}
 		}
 		return $response;
@@ -86,6 +86,7 @@ class SearchController extends Controller
 
 	public function index(Request $request)
 	{
+		return abort(404);
 		dd($request);
 	}
 

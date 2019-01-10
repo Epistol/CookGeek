@@ -29,4 +29,10 @@ class RecipesAdmin extends Controller
             'recipes' => $recipes
         ))->with(['controller' => $this]);
     }
+
+
+    public function edit($id){
+    	dd($id);
+	    $recipes = DB::table('recipes')->latest()->paginate(10);
+    }
 }

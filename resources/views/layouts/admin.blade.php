@@ -48,18 +48,13 @@
 
     @include("layouts.menu")
 
-    <section class="section no-padding-side">
-        <div class="columns">
+        <div class="columns is-paddingless is-marginless">
             <div class="column is-2 left_admin">
-
                 @include("admin.elements.admin_menu")
-
-
             </div>
             <div class="column right_admin">
                 @yield('content')</div>
         </div>
-    </section>
 </div>
 @include("layouts.footer")
 

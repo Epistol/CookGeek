@@ -17493,6 +17493,8 @@ a.tag.like:hover {
 
 h1, h2, h3, h4, h5, h6 {
   color: #7f5fbf;
+  padding-top: 0.7rem;
+  padding-bottom: 0.2rem;
 }
 
 .section-nomargin-side {
@@ -19093,6 +19095,10 @@ aside.menu {
   height: 24px;
   margin-right: 8px;
   width: 24px;
+}
+
+.right_admin {
+  background: #fdfdfd;
 }
 
 .autocomplete {

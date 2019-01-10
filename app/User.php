@@ -37,6 +37,11 @@ class User extends \TCG\Voyager\Models\User
 		return ucfirst($value);
 	}
 
+	static function nameReturn($user_id){
+		$user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))->select('name')->get();
+		return $user;
+	}
+
 
 	/**
 	 * @param $id
