@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'fw-block-blacklisted'], function() {
+
+Route::middleware(['fw-block-blacklisted'])->group(function() {
 
 // Parce que
 	Route::get('/teapot', function() {
@@ -18,7 +19,10 @@ Route::group(['middleware' => 'fw-block-blacklisted'], function() {
 	})->name('teapot');
 
 	require base_path('routes/web/social.php');
-	require base_path('routes/web/account.php');
+	Route::middleware(['forbid-banned-user'])->group(function() {
+		require base_path('routes/web/account.php');
+	});
+
 	require base_path('routes/web/universe.php');
 
 // RECIPES

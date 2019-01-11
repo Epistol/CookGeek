@@ -7,15 +7,19 @@
         <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une recette</a>
 
         <section class="section">
-
-            @foreach($recipe as $key => $r)
-                <div class="field">
-                    <label class="label">{{$key}}</label>
-                    <div class="control">
-                        <input class="input" value="{{strip_tags(clean($r)) }}">
+            <form method="POST" >
+                @csrf
+                @foreach($recipe as $key => $r)
+                    <div class="field">
+                        <label class="label">{{$key}}</label>
+                        <div class="control">
+                            <input class="input" value="{{strip_tags(clean($r)) }}">
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+
+                <button type="submit">Sauvegarder</button>
+            </form>
         </section>
 
 

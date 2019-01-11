@@ -6,7 +6,7 @@
     <div class="container">
 
         <form method="POST" action="{{route("page.update", $page->id)}}">
-            {{ csrf_field() }}
+           @csrf
             <input type="hidden" name="_method" value="PATCH">
             <div class="field">
                 <label class="label">Nom de la page</label>

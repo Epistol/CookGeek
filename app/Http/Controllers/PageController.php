@@ -39,10 +39,10 @@ class PageController extends Controller
 
 	}
 
-/*	public function cookie()
-	{
-		return view("admin.page.cookie");
-	}*/
+	/*	public function cookie()
+		{
+			return view("admin.page.cookie");
+		}*/
 
 
 	private function slugtitre($titre, $idrecipe)
@@ -170,4 +170,81 @@ class PageController extends Controller
 		);
 		return redirect()->route('index')->with('status', "Bien enregistré, merci ! <3 ");
 	}*/
+
+	public function accueil()
+	{
+		$universcateg = DB::table('categunivers')->get();
+		$recettesrand = array();
+
+
+// Petit texte sur l'accueil
+		$heartbeat = DB::table("heartbeat")->latest()->first();
+// Recettes
+		$recipes = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
+		$univers_list = DB::table('univers')->where('name', 'NOT LIKE', "%script%")
+			->join('recipes', 'univers.id', '=', 'recipes.univers')
+			->where('recipes.validated', '=', 1)
+			->inRandomOrder()
+			->paginate('12');
+
+// On charge les données dans la vue
+		return view('welcome', array('univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
+	}
+
+
+	public function sum_time($val)
+	{
+		$format = '%1$02d';
+		// si il y'a + d'1heure
+		if($val > 60) {
+			$somme_h = $val / 60;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on les affiches
+			if($somme_m > 0) {
+				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) . " min";
+			} else {
+				return sprintf($format, $somme_h) . " h ";
+			}
+
+		} else {
+			$somme_h = 0;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on affiche qqch
+			if($somme_m > 0) {
+				return sprintf($format, $somme_m) . " min";
+			} else {
+				return '';
+			}
+
+		}
+	}
+
+	public function sum_time_home($val)
+	{
+		$format = '%1$02d';
+		// si il y'a + d'1heure
+		if($val > 60) {
+			$somme_h = $val / 60;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on les affiches
+			if($somme_m > 0) {
+				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m);
+			} else {
+				return sprintf($format, $somme_h) . " h ";
+			}
+
+		} else {
+			$somme_h = 0;
+			$somme_m = $val - ((int)$somme_h * 60);
+			// si le nb de minute est supérieur a 0, on affiche qqch
+			if($somme_m > 0) {
+				return sprintf($format, $somme_m) . " min";
+			} else {
+				return '';
+			}
+
+		}
+	}
+
+
 }

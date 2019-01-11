@@ -17433,6 +17433,14 @@ body, button, input, select, textarea {
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
 }
 
+.blockcontent.is-paddingless {
+  padding: 0rem;
+}
+
+.blockcontent.is-marginless {
+  margin: 0rem;
+}
+
 .searchresult {
   background: white;
   padding-top: 2rem;

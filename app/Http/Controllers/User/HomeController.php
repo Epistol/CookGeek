@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\UniverseProvider;
@@ -33,9 +34,13 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
+		/*$user = User::find(Auth::user()->id);
+		if($user->isBanned()){
+			Auth::logout();
+		}*/
+
 		// If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
 		return redirect()->route("account.param");
-//			return view('user_space.home');
 	}
 
 	/**

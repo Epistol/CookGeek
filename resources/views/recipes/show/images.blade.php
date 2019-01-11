@@ -5,7 +5,7 @@
         <a href="{{$firstimg->first()}}"
            data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{clean($recette->title)}}">
             <figure class="image is-square">
-                <img src="<?=  $firstimg->first()?>" class="fit-cover">
+                <img src="{{ $firstimg->first() }}" class="fit-cover">
             </figure>
         </a>
     @endif

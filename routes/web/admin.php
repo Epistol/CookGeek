@@ -7,20 +7,28 @@
  */
 
 
-    Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function() {
 
-	    Voyager::routes();
-	    Route::get('ban', 'Admin\AdminController@ban')->name("admin.ban.index");
-	    Route::post('/ban/submit', 'Admin\AdminController@bansubmit');
+	Route::get('/', 'Admin\AdminController@index');
 
-	    // USERS
-        Route::get('user', 'Admin\GestionUtil@index')->name("admin.user.index");
-        Route::get('user/edit/{id}', 'Admin\GestionUtil@edit')->name("admin.user.edit");
-        // RECIPES
-        Route::get('recipes', 'Admin\RecipesAdmin@index')->name("admin.recipe.index");
-        Route::get('recipes/edit/{id}', 'Admin\RecipesAdmin@edit')->name("admin.recipe.edit");
-        // PAGES
-        Route::resource('page', 'PageController');
+	// BAN
+	Route::get('ban', 'Admin\AdminController@ban')->name("admin.ban.index");
+	Route::get('/{id}/ban_user', 'Admin\GestionUtil@ban_user')->name("admin.ban.create");
+	Route::post('/ban/submit', 'Admin\GestionUtil@ban_user_store')->name("admin.ban.store");
+	// UNBAN
+	Route::get('/{id}/unban', 'Admin\GestionUtil@unban_user')->name("admin.unban.create");
+	Route::post('/unban/submit', 'Admin\GestionUtil@unban_user_store')->name("admin.unban.store");
+	// USERS
+	Route::resource('user', 'Admin\GestionUtil', ['as' => 'admin']);
+	// RECIPES
+	Route::resource('recipe', 'Admin\RecipesAdmin', ['as' => 'admin']);
+	// PAGES
+	Route::resource('page', 'PageController');
+});
 
+Route::group(['prefix' => 'voyager'], function() {
 
-    });
+	Voyager::routes();
+
+});
+

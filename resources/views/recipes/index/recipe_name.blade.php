@@ -15,7 +15,7 @@
             {{--Séparation en deux du nombre de colonne--}}
             <div class="column is-6">
                 {{--Une recette--}}
-                <div class="columns is-result is-flex">
+                <div class="columns is-paddingless is-marginless is-result is-flex">
                     <div class="categ_recette">
 						<?php
 						$typeuniv = DB::table('categunivers')

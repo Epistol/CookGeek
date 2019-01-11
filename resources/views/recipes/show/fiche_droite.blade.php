@@ -27,6 +27,5 @@
                     style="border: 1px solid #ccc; border-radius: 10px; overflow:hidden; width:250px; height:250px; width:100%;"
                     allowTransparency="true"></iframe>
         </div>
-
     @endif
 @endif

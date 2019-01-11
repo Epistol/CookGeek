@@ -1,19 +1,20 @@
 <template>
-    <span :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected"
-          style="overflow:visible; padding: 0.1rem">
+
+    <span  :width="getSize + 'px'" @mousemove="mouseMoving" @click="selected"
+          style="overflow:visible; padding: 0.1rem" >
 
       <span v-if="getFill === '100%'">
             <img src="/img/rating/muf_full.png" :id="grad" :offset="getFill"
                  :stop-color="(rtl) ? inactiveColor : activeColor" :points="starPointsToString" :fill="getGradId"
-                 :stroke="borderColor" :stroke-width="borderWidth"/>
+                 :stroke="borderColor" :stroke-width="borderWidth" :style="'width:'+getSize+'px'" />
     </span>
         <span v-else-if="getFill === '50%'">
          <img src="/img/rating/muf_half.png" :id="grad" :offset="getFill"
-              :stop-color="(rtl) ? inactiveColor : activeColor" :points="starPointsToString" :fill="getGradId"
+              :stop-color="(rtl) ? inactiveColor : activeColor" :points="starPointsToString" :fill="getGradId" :style="'width:'+getSize+'px'"
               :stroke="borderColor" :stroke-width="borderWidth"/>
     </span>
         <span v-else-if="getFill === '0%'">
-         <img src="/img/rating/muf_full.png" class="greyed"/>
+         <img src="/img/rating/muf_full.png" :style="'width:'+getSize+'px'" class="greyed"/>
     </span>
 
 

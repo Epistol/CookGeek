@@ -7,11 +7,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
 
-class User extends \TCG\Voyager\Models\User
+class User extends \TCG\Voyager\Models\User implements BannableContract
 {
 	use Notifiable;
+	use Bannable;
+
 	/**
 	 * The attributes that are mass assignable.
 	 *
@@ -43,29 +47,6 @@ class User extends \TCG\Voyager\Models\User
 	}
 
 
-	/**
-	 * @param $id
-	 * @param $admin
-	 * @param $days
-	 * @param  $definitive
-	 * @param $reason
-	 * @return mixed
-	 */
-	static function ban($id, $admin, $days, $definitive, $reason)
-	{
-		$ban = DB::table('bans')->insertGetId(
-			['user_id' => $id, 'admin_id' => $admin, "days" => $days, "reason" => $reason, "definitive" => $definitive, "created_at" => now(), "updated_at" => now()]
-		);
-		return $ban;
-	}
-
-	static function unban($id, $admin, $reason)
-	{
-		$ban = DB::table('bans')->insertGetId(
-			['user_id' => $id, 'admin_id' => $admin, "days" => 0, "reason" => $reason, "created_at" => now(), "updated_at" => now()]
-		);
-		return $ban;
-	}
 
 
 	/**

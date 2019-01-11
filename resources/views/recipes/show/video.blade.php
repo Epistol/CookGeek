@@ -20,7 +20,6 @@
 
 
 @elseif(strpos($recette->video, 'www.dailymotion.com') !== false)
-
 	<?php
 	$daily = /*http://www.dailymotion.com/video/x6bfitr*/
 		$recette->video;
@@ -28,14 +27,13 @@
 	?>
     <div class="dailymotion_player">
         <iframe src="{{$daily}}?autoPlay=1" allowfullscreen="" height="270" frameborder="0" width="480"></iframe>
-
     </div>
 
 
 @else
     <div class="columns">
         <div class="column is-lateral">
-            <p > {!! str_limit($recette->video, 150, "...") !!} </p>
+            <p > {{str_limit($recette->video, 150, "...") }} </p>
 
         </div>
     </div>

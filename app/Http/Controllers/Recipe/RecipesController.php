@@ -22,13 +22,6 @@ use Carbon\Carbon;
 class RecipesController extends Controller
 {
 
-	private $univers_service;
-
-	public function __construct(UniversController $univers_service)
-	{
-		$this->univers_service = $univers_service;
-	}
-
 
 	/**
 	 * Show the profile for the given user.
@@ -177,6 +170,7 @@ class RecipesController extends Controller
 
 
 		$univers = $this->first_found_universe(strip_tags(clean($request->univers)));
+		dd($univers);
 
 		//Filtering the comment
 		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
@@ -224,7 +218,6 @@ class RecipesController extends Controller
 				$file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
 			}
 		}
-
 
 		return redirect()->route('recipe.show', ['post' => $slug]);
 	}
@@ -334,41 +327,6 @@ class RecipesController extends Controller
 		return redirect()->route('recipe.show', ['post' => $recipe->slug]);
 	}
 
-	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function test()
-	{
-		return view('recipes.test');
-	}
-
-	/**
-	 * @param Request $request
-	 * @return void
-	 * @throws \Illuminate\Validation\ValidationException
-	 */
-	public function store_test(Request $request)
-	{
-		$input = $request->all();
-		dd($input['resume']->getError());
-
-
-		// Parties image
-		$this->validate($request, [
-			'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-		]);
-
-		$file = $request->resume;
-
-		if($input['resume']->getError() == 0) {
-			$photoName = time() . '.' . $file->getClientOriginalExtension();
-			$this->ajouter_image($photoName);
-			$file->move(public_path('test/'), $photoName);
-		}
-
-
-//        return redirect()->route('recipe.show', ['post' => $slug]);
-	}
 
 
 	public function  load_picture($recette)
@@ -382,6 +340,11 @@ class RecipesController extends Controller
 			$retour = collect($images);
 		}
 		return $retour;
+	}
+
+	static function load_img($recette){
+		$controller = new RecipesController();
+		return $controller->load_picture($recette);
 	}
 
 	/** TODO _ UPDATING
@@ -688,7 +651,8 @@ class RecipesController extends Controller
 	public function first_found_universe($text)
 	{
 		if($text !== "") {
-			$univ = $this->univers_service->FirstOrCreate($text);
+
+			$univ = \App\Univers::FirstOrCreate($text);
 			return $univ;
 		} else {
 			return 0;

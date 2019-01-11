@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
@@ -58,7 +59,6 @@ class LoginController extends Controller
 	protected function validateLogin(Request $request)
 	{
 
-//        dd($request);
 		$this->validate(
 			$request,
 			[
@@ -71,6 +71,10 @@ class LoginController extends Controller
 			]
 		);
 	}
+
+
+
+
 
 	/**
 	 * @param Request $request

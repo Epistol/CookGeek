@@ -18,7 +18,6 @@
                 </span>
                 </a>
 
-
                 <button class="button navbar-burger" data-target="navMenu">
                     <span></span>
                     <span></span>
@@ -64,7 +63,7 @@
 							?>
                             @foreach($load_types as $type)
                                 <a class="navbar-item" href="{{ route('type.show', lcfirst($type->name)) }}">
-                                    {!! $type->name !!}
+                                    {!! strip_tags(clean($type->name)) !!}
                                 </a>
                             @endforeach
                         </div>
@@ -88,7 +87,6 @@
                     <div class="field search_header navbar-item">
                         <form action="{{route('search')}}" method="POST" role="search">
                             @csrf
-
                             <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
                             <button type="submit" class="searchheadbutton" style="position: absolute;">
                                 <i class="fas fa-search" aria-hidden="true"></i>
@@ -114,13 +112,13 @@
                                     @if(Auth::user()->avatar !== 'users/default.png')
                                         <figure class="image is-48x48">
                                             <img class="is-rounded "
-                                                 src="/user/{{Auth::user()->id}}/{{Auth::user()->avatar}}"
+                                                 src="/user/{{Auth::user()->id}}/{{strip_tags(clean(Auth::user()->avatar))}}"
                                                  style="height: 100%;width: 100%;">
                                         </figure>
                                     @else
                                         <figure class="image is-48x48">
                                             <img class="is-rounded"
-                                                 src="https://api.adorable.io/avatars/64/{!! Auth::user()->name !!}">
+                                                 src="https://api.adorable.io/avatars/64/{!! strip_tags(clean(Auth::user()->name)) !!}">
                                         </figure>
                                     @endif
 

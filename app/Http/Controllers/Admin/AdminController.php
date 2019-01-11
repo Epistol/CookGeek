@@ -28,15 +28,14 @@ class AdminController extends Controller
 	 */
 	public function index()
 	{
-		return view("voyager.dashboard");
+		return view("admin.index");
 	}
 
 	public function ban()
 	{
 		$user_ip = Firewall::getAllIps();
 
-		$bans = DB::table('bans')->groupBy('user_id')
-			->get();
+		$bans = User::onlyBanned()->get();
 
 		$blacklist = Firewall::getAllIps()->filter(function($item) {
 			return $item->whitelisted == false;
@@ -48,42 +47,7 @@ class AdminController extends Controller
 		return view('admin.ban.index', compact('blacklist', 'whitelist', 'user_ip', 'bans'));
 	}
 
-	public function bansubmit(Request $request)
-	{
-		$titles = ['name', 'email', 'ip'];
-		$user = "";
-		foreach($titles as $title) {
-			if($request->$title) {
-				if($title === "name") {
-					$user = DB::table('users')->where('name', '=', $request->$title)->get();
-				} elseif($title === "email") {
-					$user = DB::table('users')->where('email', '=', $request->$title)->get();
-				} elseif($title === "ip") {
-					$ip_user = DB::table('users_info_loggin')->where('ip_address', '=', $request->$title)->groupBy('user_id')->get();
-					$count = collect($ip_user)->count();
-					if($count > 1) {
-						return $ip_user;
-					} else {
-						$user = DB::table('users')->where('id', '=', $ip_user[0]->user_id)->get();
-					}
-				}
-			}
-		}
 
-		if($user) {
-			$user_collec = collect($user)->first();
-			if($request->days !== "definitive") {
-				$ban = User::ban($user_collec->id, Auth::user()->id, intval($request->days),  false, strip_tags(clean($request->reason)));
-			} else {
-				$ban = User::ban($user_collec->id, Auth::user()->id, intval($request->days), true,  strip_tags(clean($request->reason)));
-
-			}
-
-			return json_encode($ban);
-		}
-		return json_encode(false);
-
-	}
 
 	/**
 	 * Show the form for creating a new resource.

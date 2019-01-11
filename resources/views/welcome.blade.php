@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container blockcontent">
+    <div class="container blockcontent is-paddingless">
         <div class="is-flex-center">
             <h1 class="title-website">Cuisine De Geek</h1>
             {{--Petite description--}}

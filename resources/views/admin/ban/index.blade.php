@@ -2,16 +2,15 @@
 @section('titrepage', 'Admin')
 @section('content')
     <section class="section blockcontent">
-<div class="container">
-    <ban_list :bans="{{$bans}}" :blacklist="{{$blacklist}}"></ban_list>
-</div>
+        <div class="container">
+            <ban_list :bans="{{$bans}}" :blacklist="{{$blacklist}}"></ban_list>
+        </div>
     </section>
     <section class="section blockcontent">
 
         <div class="container">
-            <h1><i class="fas fa-band-aid"></i> Utilisateurs whitelist </h1>
+            <h1><i class="fas fa-band-aid"></i> IP whitelist </h1>
 
-            <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une recette</a>
 
             <table class="table is-bordered">
                 <thead>
@@ -42,7 +41,6 @@
         <div class="container">
             <h1><i class="fas fa-users"></i> Toutes IP</h1>
 
-            <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une recette</a>
 
             <table class="table is-bordered">
                 <thead>

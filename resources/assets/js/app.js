@@ -15,15 +15,17 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
-import draggable from 'vuedraggable'
-import StarRating from './star-rating'
-import InstantSearch from 'vue-instantsearch'
+import draggable from 'vuedraggable';
+import StarRating from './star-rating';
+import InstantSearch from 'vue-instantsearch';
+import Datepicker from 'vuejs-datepicker';
 import VueFriendlyIframe from 'vue-friendly-iframe';
 import 'vue2-dropzone/dist/vue2Dropzone.css'
 
 
 Vue.use(VeeValidate);
 Vue.use(InstantSearch);
+Vue.use(Datepicker);
 Vue.use(require('vue-chunk'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,8 +41,8 @@ Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 
 // RECETTE
 Vue.component('star-rating', StarRating);
+Vue.component('datepicker', Datepicker);
 Vue.component('like-recipe', require('./components/LikeRecipe.vue'));
-
 
 Vue.component('sharemodal', require('./components/ShareModal.vue'));
 Vue.component('socialshare', require('./components/Recipe/Share.vue'));
@@ -48,7 +50,6 @@ Vue.component('ingredient_form', require('./components/Ingredients.vue'));
 
 // Vue.component('mini_recipe_list_element', require("./components/Recipe/Mini_Recipe_List"));
 Vue.component('homerecipes', require("./components/Recipe/Home_Recipes"));
-
 Vue.component('signalrecipe', require("./components/Recipe/Signal"));
 
 
@@ -63,6 +64,8 @@ Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
 Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
 
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
+
+
 
 const app = new Vue({
 	el: '#app',

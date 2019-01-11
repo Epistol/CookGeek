@@ -10,6 +10,7 @@
             <table class="table is-striped  is-bordered is-hoverable">
                 <thead>
                 <tr>
+                    <th><input type="checkbox"/></th>
                     <th>Id</th>
                     <th>Titre</th>
                     <th>Difficulty</th>
@@ -19,12 +20,14 @@
                     <th>Média</th>
                     <th>Création</th>
                     <th>Vues</th>
-                    <th>Action</th>
+                    <th>Validée</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($recipes as $key => $r)
                     <tr>
+                        <td><input type="checkbox"/></td>
                         <td>{{strip_tags(clean($r->id)) }}</td>
                         <td>{{strip_tags(clean( $r->title ))}}</td>
                         <td>{{ strip_tags(clean($r->difficulty)) }}</td>
@@ -48,14 +51,22 @@
                             @endif
                         </td>
 
-
                         <td>{{ Carbon\Carbon::parse($r->created_at)->format('d/m/Y') }} </td>
                         <td>
                             {{strip_tags(clean($r->nb_views))}}
                         </td>
-                        <td>
-                            <a href="{{route("admin.recipe.edit", strip_tags(clean($r->id))}}" class="button is-info">EDIT</a>
-                        </td>
+                        @if($r->validated === 1)
+                            <td style="background:green">
+                                Oui
+                        @else
+                            <td style="background:red">
+                                Non
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{route("admin.recipe.edit", strip_tags(clean($r->id)))}}"
+                                   class="button is-info"><i class="fas fa-edit"></i></a>
+                            </td>
 
 
                     </tr>

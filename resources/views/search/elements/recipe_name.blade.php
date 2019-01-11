@@ -83,7 +83,12 @@ border-radius: 15px 0 0 15px;">
                                 $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
                                 ?>
                                 @include("recipes.index.author")<br />
-                                @include("recipes.show.staronly")
+	                                <?php
+	                                // STARS
+	                                $stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
+	                                ?>
+                                    <star-rating :rating="{{intval($stars1) || 1}}" :increment="0.5" :star-size="20"
+                                                 :recipeid="{{$recette->id}}"></star-rating>
                             </div>
                         </div>
 
