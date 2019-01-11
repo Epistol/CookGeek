@@ -12,6 +12,11 @@ class Univers extends Model
 	public $timestamps = false;
 	protected $table = 'univers';
 
+	protected $fillable = [
+		 'name', 'first_creator'
+	];
+
+
 	public function get_first($text)
 	{
 		$univ = DB::table('univers')->select('id')->where('name', 'like', '%' . $text . '%')->get();

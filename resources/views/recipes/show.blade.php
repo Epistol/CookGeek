@@ -2,7 +2,7 @@
 
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
 @if($firstimg->first() !== "")
-    @section('image_og', strip_tags(clean($firstimg->first())))
+@section('image_og', strip_tags(clean($firstimg->first())))
 @endif
 @section('content')
 

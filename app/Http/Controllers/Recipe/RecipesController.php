@@ -170,7 +170,6 @@ class RecipesController extends Controller
 
 
 		$univers = $this->first_found_universe(strip_tags(clean($request->univers)));
-		dd($univers);
 
 		//Filtering the comment
 		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
@@ -651,9 +650,10 @@ class RecipesController extends Controller
 	public function first_found_universe($text)
 	{
 		if($text !== "") {
+			$univnew = new Univers();
+			$univ = $univnew::FirstOrCreate(['name' => strip_tags(clean($text)), 'first_creator' => Auth::user()->id]);
+			return $univ->id;
 
-			$univ = \App\Univers::FirstOrCreate($text);
-			return $univ;
 		} else {
 			return 0;
 		}

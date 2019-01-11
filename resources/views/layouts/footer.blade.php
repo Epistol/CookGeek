@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                Tous droits réservés CuisineDeGeek.com - 2017 / {{ now()->year }}
+                Tous droits réservés © CuisineDeGeek - 2019 @if(now()->year != 2019) / {{ now()->year }} @endif
                 <br/>
                 <a href="{{url('/contact')}}">Contact </a>
                 | <a href="javascript:tarteaucitron.userInterface.openPanel();">Gestion des cookies</a>

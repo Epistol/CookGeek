@@ -62,11 +62,11 @@
             </notif>
         @endif
 
-            @if (session('alert'))
-                <notif title="is-alert" v-if="seen" @close="seen = false">
-                    <span slot="text">   {{ session('alert') }}</span>
-                </notif>
-            @endif
+        @if (session('alert'))
+            <notif title="is-alert" v-if="seen" @close="seen = false">
+                <span slot="text">   {{ session('alert') }}</span>
+            </notif>
+        @endif
     </div>
 
     @yield('content')
@@ -93,15 +93,6 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
 <script type="application/javascript">
-
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if(d.getElementById(id)) return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
 
 	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
 	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
@@ -131,6 +122,7 @@
 <script src="{{ asset('js/konami.js') }}" defer async></script>
 
 @include("layouts.js.analytics")
+@include("layouts.js.tartecitron")
 
 
 </body>

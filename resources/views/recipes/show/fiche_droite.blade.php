@@ -29,3 +29,6 @@
         </div>
     @endif
 @endif
+
+@include("recipes.show.twitter")
+

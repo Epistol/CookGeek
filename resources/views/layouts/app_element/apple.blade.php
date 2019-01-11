@@ -5,7 +5,7 @@
 {{--<meta name="format-detection" content="telephone=no">--}}
 
 <!-- Add to Home Screen -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Cuisine De Geek">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="purple" />
+<meta name="apple-mobile-web-app-title" content="Cuisine De Geek" />
 

@@ -10,7 +10,11 @@
                         <figure class="image is-32x32">
                             <img src="/img/pictos/icones_menu/{{ $type->name }}.svg"/>
                         </figure>
+                        @if($type->name !== "anime")
                         <span class="item_navbar_second">{{ ucfirst ($type->name ) }}</span>
+                            @else
+                            <span class="item_navbar_second">Manga / Anime</span>
+                        @endif
 
                     </a>
                 @endforeach
