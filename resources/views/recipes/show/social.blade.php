@@ -15,7 +15,7 @@
         <p class="control">
             @if($univers !== null)
                 <a class="button twitter"
-                   href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recette->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{ strip_tags(clean($univers->name)}}">
+                   href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recette->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{ strip_tags(clean($univers->name))}}">
                     @else
                         <a class="button twitter"
                            href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recette->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{strip_tags(clean($recette->title))}} ">

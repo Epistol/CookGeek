@@ -56,4 +56,11 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 
 
 	Route::get("/cookies", 'PageController@cookie')->name("cookie");
+
+	Route::get('/sitemap', function () {
+		return response(file_get_contents(public_path('sitemap.xml')), 200, [
+			'Content-Type' => 'application/xml'
+		]);
+	});
+
 });
