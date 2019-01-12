@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titrepage', "Univers")
+@section('titrepage',   strip_tags(clean($univers->name)) )
 @section('content')
 
     <div class="container">
@@ -10,7 +10,7 @@
 
             <section class="section">
                 <h1 class="title">
-                    {{ $univers->name }}
+                    {{ strip_tags(clean($univers->name)) }}
                 </h1>
 
             </section>

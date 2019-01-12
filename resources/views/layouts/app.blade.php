@@ -8,10 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@hasSection('titrepage')@yield('titrepage')
-        - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif</title>
-    <meta name="description"
-          content="@hasSection('description')@yield('description') - {{ config('app.name', 'Laravel') }}@else{{ config('app.name', 'Laravel') }}@endif">
+    <title>@hasSection('titrepage')@yield('titrepage') - Cuisine De Geek @else Cuisine De Geek @endif</title>
 
     <!-- ROBOTS -->
 @include("layouts.app_element.robot")
@@ -22,7 +19,7 @@
 
     <!-- Feeds -->
     {{--<link rel="alternate"  href="/rss" type="application/rss+xml" title="RSS">--}}
-    <link rel="alternate" type="application/atom+xml" title="New recipes" href="{{url('/rss')}}">
+    <link rel="alternate" type="application/atom+xml" title="New recipes - CDG" href="{{url('/rss')}}">
 
     @include("layouts.app_element.icons")
 

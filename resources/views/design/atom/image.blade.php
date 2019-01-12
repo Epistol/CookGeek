@@ -35,7 +35,7 @@
             ['type' => "Logo",
             'class' => '',
             'code' => '
-            <img src="http://127.0.0.1/Private/cdg_reload/public/img/logoo_rond.png" alt="CDG : Cuisine De geek" style="
+            <img src="http://127.0.0.1/Private/cdg_reload/public/img/logoo_rond.png" alt="CDG : Cuisine De Geek" style="
     max-height: fit-content;max-height: 100%;">']],
 
     ];

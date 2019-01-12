@@ -21,10 +21,6 @@ Route::group(['prefix' => 'recette'], function () {
 	Route::post('update/{id}', 'Recipe\RecipesController@update')->name("recipe.edition")->middleware('auth');
 //    Route::post('store_test', 'Recipe\RecipesController@store_test')->name("recipe.store_test");
 
-
-
-
-
     Route::get('{post}', 'Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
 
 

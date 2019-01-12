@@ -36,17 +36,17 @@ class GenerateSitemap extends Command
 				if ($url->segment(1) === null) {
 					$url->setPriority(1);
 				}
-				if ($url->segment(1) === '/contact') {
-					$url->setChangeFrequency('yearly');
+				if ($url->segment(1) === 'cgu') {
+					$url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
 				}
-				if ($url->segment(1) === '/login') {
-					$url->setChangeFrequency('yearly');
+				if ($url->segment(1) === 'contact') {
+					$url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
 				}
-				if ($url->segment(1) === '/register') {
-					$url->setChangeFrequency('yearly');
+				if ($url->segment(1) === 'login') {
+					$url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
 				}
-				if ($url->segment(1) === '/cgu') {
-					$url->setChangeFrequency('yearly');
+				if ($url->segment(1) === 'register') {
+					$url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
 				}
 				return $url;
 			})
