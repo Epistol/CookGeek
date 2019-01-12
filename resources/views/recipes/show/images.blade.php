@@ -1,15 +1,13 @@
 <!-- Image part -->
 <div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
     @if($firstimg !== null )
-
         <a href="{{$firstimg->first()}}"
            data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{clean($recette->title)}}">
             <figure class="image is-square">
-                <img src="{{ $firstimg->first() }}" class="fit-cover">
+                <img src="{{ $firstimg->first() }}" class="fit-cover" alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
             </figure>
         </a>
     @endif
-
 
     @if(count($firstimg) > 1))
     {{--

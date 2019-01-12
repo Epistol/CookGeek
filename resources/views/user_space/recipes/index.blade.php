@@ -13,7 +13,7 @@
 
                     <h1>Mes recettes </h1>
 
-                    @include("recipes.double_list_small_recipe")
+                    @include("user_space.recipes.double_list_small_recipe")
                 </div>
             </div>
         </div>

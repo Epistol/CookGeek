@@ -18,7 +18,10 @@
 	(tarteaucitron.job = tarteaucitron.job || []).push('youtube');
 	(tarteaucitron.job = tarteaucitron.job || []).push('dailymotion');
 	(tarteaucitron.job = tarteaucitron.job || []).push('adsense');
-	tarteaucitron.user.facebookpixelId = '366451307267328';
-	tarteaucitron.user.facebookpixelMore = function () { /* add here your optionnal facebook pixel function */ };
+    @if (app()->environment() === 'production')
+		tarteaucitron.user.facebookpixelId = '366451307267328';
+	tarteaucitron.user.facebookpixelMore = function() { /* add here your optionnal facebook pixel function */
+	};
 	(tarteaucitron.job = tarteaucitron.job || []).push('facebookpixel');
+    @endif
 </script>

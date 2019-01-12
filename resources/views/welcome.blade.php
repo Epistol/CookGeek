@@ -13,9 +13,34 @@
         @include("univers.preview.preview")
 
         {{--Most viewed universes with recipes--}}
-            {{--@include("recipes.index.partype")--}}
+        {{--@include("recipes.index.partype")--}}
         {{--Meals--}}
-            {{--@include("recipes.index.favorise")--}}
+        {{--@include("recipes.index.favorise")--}}
 
     </div>
+
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "itemListElement":[
+
+      @foreach($recipes as $nombre => $recette)
+            {
+              "@type":"ListItem",
+              "position":{{$nombre + 1}},
+      "url":"{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
+      @if($loop->last)
+                }
+            @else
+                },
+             @endif
+        @endforeach
+
+        ]
+      }
+
+    </script>
+
+
 @endsection

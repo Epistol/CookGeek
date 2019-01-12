@@ -1,6 +1,6 @@
 <template v-cloak>
    <div>
-       <a class="tag like" :class="{ 'liked': retour !== false }" @click="toggleLike(recipeid)"  ><i class="material-icons">favorite</i></a>
+       <a class="tag like" :class="{ 'liked': retour !== false }" @click="toggleLike(recipeid)" ><i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span></a>
    </div>
 </template>
 
@@ -19,6 +19,7 @@
 			async toggleLike() {
 				if(this.userid){
 					axios.post('/api/like/toggle_like/', {recipeid :  this.recipeid, userid: this.userid } ).then(response => {
+						console.log(response);
 						this.retour = response.data;
 					});
 				}

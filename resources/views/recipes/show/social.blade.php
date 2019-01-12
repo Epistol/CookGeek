@@ -3,8 +3,10 @@
         <p class="control">
             <a class="button facebook"
                href="https://www.facebook.com/sharer.php?u={{url()->current()}}&t={{strip_tags(clean($recette->title))}}">
+
                           <span class="icon is-small">
                    <i class="fab fa-facebook-f fa-fw  fa-lg"></i>
+                              <span hidden>Partager sur Facebook</span>
                           </span>
             </a>
 
@@ -22,6 +24,7 @@
                             @endif
                             <span class="icon is-small">
                                 <i class="fab fa-twitter" aria-hidden="true"></i>
+                                 <span hidden>Partager sur Twitter</span>
                           </span>
                         </a>
         </p>
@@ -31,6 +34,7 @@
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean($firstimg->first()))}}&description={{strip_tags(clean($recette->title)) }}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
+                               <span hidden>Partager sur Pinterest</span>
                           </span>
                 </a>
             </p>
@@ -40,6 +44,7 @@
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recette->title))}}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
+                              <span hidden>Partager sur Pinterest</span>
                           </span>
                 </a>
             </p>
@@ -50,7 +55,7 @@
             <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}">
                           <span class="icon is-small">
                           <i class="fab fa-tumblr fa-fw" aria-hidden="true"></i>
-
+                               <span hidden>Partager sur Tumblr</span>
                           </span>
             </a>
         </p>

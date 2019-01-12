@@ -58,11 +58,9 @@ table.times th {
 // REsult recipe
 
 .top {
-  overflow: auto;
+  overflow: auto hidden;
   max-height: 25%;
-  overflow: hidden;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
+
 }
 
 .middle {

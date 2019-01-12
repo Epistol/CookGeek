@@ -2,7 +2,7 @@
 
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
 @if($firstimg->first() !== "")
-@section('image_og', strip_tags(clean($firstimg->first())))
+    @section('image_og', strip_tags(clean($firstimg->first())))
 @endif
 @section('content')
 
@@ -74,13 +74,11 @@
                                                      data-width="100%" data-numposts="5" data-colorscheme="light"></div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <aside class="column is-3 list-h-show ">
                                         @include('recipes.show.fiche_droite')
                                     </aside>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -158,10 +156,6 @@
         @endforeach
         ]
 }
-
-
-
-
     </script>
 
 @endsection

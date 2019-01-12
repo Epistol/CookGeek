@@ -82,13 +82,20 @@
 
                     <a class="navbar-item" href="{{route("recipe.random")}}">
                         🎲
+                        <span hidden>Recette aléatoire</span>
                     </a>
 
                     <div class="field search_header navbar-item">
-                        <form action="{{route('search')}}" method="POST" role="search">
+                        <form action="{{route('search.post')}}" method="POST" role="search">
                             @csrf
-                            <input class="input" type="text" placeholder="" name="q" style="padding: 0 50px 0 25px;">
-                            <button type="submit" class="searchheadbutton" style="position: absolute;">
+                            <label for="q" style="display:none">
+                                Recherche
+                            </label>
+                            <input class="input" type="text" placeholder="" id="q" name="q" style="padding: 0 50px 0 25px;">
+                            <label for="searchbutton" style="display:none">
+                                Rechercher
+                            </label>
+                            <button type="submit" id="searchbutton" class="searchheadbutton" style="position: absolute;">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </button>
                         </form>
@@ -137,7 +144,7 @@
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
-                                   @csrf
+                                    @csrf
                                 </form>
                             </div>
                         </div>

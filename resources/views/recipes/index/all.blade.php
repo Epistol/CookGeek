@@ -49,14 +49,15 @@
                                     </div>
                                     <div class="recipe-header">
                                         <p class="card-header-title">
-                                            <a href="/recette/{!! strip_tags($recette->slug) !!}" class="texte_accueil">
-                                                {!! (str_limit(strip_tags(clean($recette->title)), 70, ' (...)'))  !!}
+                                            <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
+                                               class="texte_accueil">
+                                                {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="columns is-paddingless is-marginless mini-infos">
                                         <div class="column is-4 is-flex-center"><i class="fas fa-clock"
-                                                                                   style="margin-right:0.5rem"></i><span>{!! strip_tags($somme) !!}</span>
+                                                                                   style="margin-right:0.5rem"></i><span>{{ strip_tags($somme) }}</span>
                                         </div>
                                         <div class="column is-2 is-flex-center">
                                             <span>{!! $recette-> nb_guests ?: 1 !!}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}

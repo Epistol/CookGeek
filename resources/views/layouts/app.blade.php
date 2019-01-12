@@ -68,6 +68,20 @@
 
     @yield('content')
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "{{url()->current()}}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{route('search.post')}}?{q}",
+    "query-input": "required name=q"
+  }
+}
+</script>
+
 @include("layouts.footer")
 
 
@@ -79,7 +93,15 @@
 		echo "var userIsLoggedIn = 1;";
 	}
 	?>
+
+		// @see https://docs.headwayapp.co/widget for more configuration options.
+		var HW_config = {
+			selector: "#updates", // CSS selector where to inject the badge
+			account:  "J05Ovy"
+		}
 </script>
+<script async src="https://cdn.headwayapp.co/widget.js"></script>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>

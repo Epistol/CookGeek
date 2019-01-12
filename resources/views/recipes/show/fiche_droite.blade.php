@@ -1,8 +1,6 @@
 <p>
-
     @include("recipes.show.author")
 </p>
-
 
 <div class="bg_side">
 

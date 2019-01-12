@@ -32,7 +32,7 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 	require base_path('routes/web/pages.php');
 // RECHERCHE
 	Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
-	Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+	Route::post('search', ['as' => 'search.post', 'uses' => 'SearchController@index']);
 
 // RSS
 	Route::feeds();

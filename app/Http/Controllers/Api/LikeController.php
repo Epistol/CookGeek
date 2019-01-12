@@ -60,16 +60,16 @@ class LikeController extends Controller
 	}
 
 
-	public function create_only($u_id,$recipe_id)
+	public function create_only($u_id, $recipe_id)
 	{
 
 		// Check if user hasn't faved it yet :
 
 		$id2 = DB::table('user_recipe_likes')
 			->insertGetId(
-				['user_id' => strip_tags(clean($u_id)), 'recipe_id' =>  strip_tags(clean($recipe_id))]
+				['user_id' => strip_tags(clean($u_id)), 'recipe_id' => strip_tags(clean($recipe_id))]
 			);
-		if($id2){
+		if($id2) {
 			return response($id2);
 		}
 		// we return the new-like state
@@ -83,10 +83,9 @@ class LikeController extends Controller
 	 */
 	public function destroy($id)
 	{
-		if(DB::table('user_recipe_likes')->where('id', '=', $id)->delete()){
+		if(DB::table('user_recipe_likes')->where('id', '=', $id)->delete()) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 
@@ -99,15 +98,16 @@ class LikeController extends Controller
 	 */
 	public function check_liked(Request $request)
 	{
-		$u_id = $request->userid;
+		$u_id = intval(strip_tags(clean($request->userid)));
+
 		$l_id = DB::table('user_recipe_likes')
 			->where([
 				['user_id', '=', $u_id],
-				['recipe_id', '=', $request->recipeid],
+				['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
 			])
 			->first();
 		if($l_id) {
-			return response()->json(true);
+			return response()->json($l_id);
 		} else {
 			return response()->json(false);
 
@@ -117,28 +117,24 @@ class LikeController extends Controller
 
 	public function toggle_like(Request $request)
 	{
-		$u_id = intval(clean($request->userid)) ;
-
+		$u_id = intval(strip_tags(clean($request->userid)));
 		$l_id = DB::table('user_recipe_likes')
 			->where([
 				['user_id', '=', $u_id],
-				['recipe_id', '=', strip_tags(clean($request->recipeid))],
+				['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
 			])
 			->first();
-
 
 		// si un id existe, on le supprime et renvoie false
 		if($l_id) {
 			if($this->destroy($l_id->id)) {
 				return response()->json(false);
 			}
-		}
-		// si n'existe pas, on le créé et renvoie true
+		} // si n'existe pas, on le créé et renvoie true
 		else {
 			$retour = $this->create_only($u_id, $request->recipeid);
 			return response()->json($retour);
 		}
-
 
 	}
 

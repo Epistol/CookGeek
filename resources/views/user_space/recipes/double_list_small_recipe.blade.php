@@ -91,4 +91,3 @@
 <span>
                  {{ $recipes->links() }}
         </span>
-

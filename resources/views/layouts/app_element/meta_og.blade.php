@@ -10,3 +10,6 @@
 <meta property="og:type"   content="website" />
 <meta property="og:url" content="{{url()->current()}}" />
 <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="classification" content="geek recette de cuisine gratuit" />
+<meta name="HandheldFriendly" content="true">
