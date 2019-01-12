@@ -45,7 +45,7 @@
 				this.data_results = [];
 				let that = this;
 				if(this.searchquery.length > 2) {
-					axios.get('/api/autocomplete/search/' + that.searchtype + '/', {params: {searchquery: this.searchquery}}).then(response => {
+					axios.get('/api/autocomplete/search/univers', {params: {searchquery: this.searchquery}}).then(response => {
 						// console.log(response);
 						this.data_results = response.data;
 					});

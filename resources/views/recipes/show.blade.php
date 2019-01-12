@@ -55,7 +55,6 @@
                                 </div>
                             </div>
 
-
                             {{--// Auteur--}}
                         </div>
                         <div class="page_no_padding">
@@ -95,21 +94,20 @@
         </section>
     </div>
 
-	<?php
-	use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
+    <?php
+    use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
+
+    if(isset($firstimg)) {
+	    $img = $firstimg->first();
+    } else {
+	    $img = null;
+    }
+
+    $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
+    ?>
 
 
-	if(isset($firstimg)) {
-		$img = $firstimg->first();
-	} else {
-		$img = null;
-	}
-
-	$type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
-	?>
-
-
-    <script type="application/ld+json">
+    <script type="application/ld+json" >
     {
       "@context": "http://schema.org/",
       "@type": "Recipe",
@@ -129,10 +127,10 @@
         "recipeCategory" : "{{strip_tags(clean($type->name))}}",
         "recipeIngredient": [
         @foreach ($ingredients as $key => $ingredient)
-			<?php
-			$qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
-			$nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
-			?>
+		    <?php
+		    $qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
+		    $nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
+		    ?>
             @if($loop->last)
 
                 "{{$qtt}} {{$nom_in}}"
@@ -157,7 +155,6 @@
         ]
 }
     </script>
-
 @endsection
 
 

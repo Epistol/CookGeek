@@ -39,7 +39,9 @@
 
 </head>
 <body>
-<div id="app">@include("layouts.menu")
+<div id="app">
+
+    @include("layouts.menu")
 
     <div class="container">
 
@@ -67,6 +69,7 @@
     </div>
 
     @yield('content')
+
 </div>
 
 <script type="application/ld+json">
@@ -86,7 +89,7 @@
 
 
 <!-- SCRIPTS  -->
-<script><?php
+<script type="application/javascript"><?php
 	if(Auth::check() == FALSE || Auth::check() == '') {
 		echo "var userIsLoggedIn = 0;";
 	} else {

@@ -19,17 +19,13 @@
 			async toggleLike() {
 				if(this.userid){
 					axios.post('/api/like/toggle_like/', {recipeid :  this.recipeid, userid: this.userid } ).then(response => {
-						console.log(response);
 						this.retour = response.data;
 					});
 				}
 				else {
 					console.log("pas connecté");
-					// this.notoggle();
 					this.retour = false;
-
 				}
-
 			},
 			async is_already_liked(){
 				if(this.userid){

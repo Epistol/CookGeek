@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="drop">
         <vue-dropzone id="drop1" :options="dropOptions"></vue-dropzone>
     </div>
 </template>
