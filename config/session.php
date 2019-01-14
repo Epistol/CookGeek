@@ -3,9 +3,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-if (Auth::viaRemember()) {
 
-}
 
 
 return [
