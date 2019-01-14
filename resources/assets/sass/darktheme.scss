@@ -1,0 +1,77 @@
+body.nightmode {
+  background: #272838;
+  
+  & nav.navbar {
+	background: #272838;
+  }
+  
+  & .second_menu {
+	background: #273043;
+	box-shadow : none;
+  }
+  
+  & span.item_navbar_second, a.navbar-item, a.navbar-link {
+	color: #E0E2DB;
+  }
+  
+  & a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+	background: $brand-primary;
+	
+  }
+  &::placeholder,::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #E0E2DB;
+	opacity:0.5;
+  }
+  
+  & .blockcontent, .searchresult {
+	background: #595F72;
+  }
+  
+  & h1, h2, h3, h4, h5, h6, .title, .label {
+	color: #E0E2DB;
+  }
+  
+  & .input, .textarea, input.input_modal, textarea.input_modal {
+	background: #6c748c;
+	color: #E0E2DB;
+	border: 0px;
+  }
+  
+  & .card-cdg, .round_bg, .column.right_recipe_add, .page, .autocomplete-results, .is-result, .card, .univers_element  {
+	background: #273043;
+	color: #E0E2DB;
+  }
+  
+  & .card.cdg {
+	border : 0.5rem solid #122932!important;
+  }
+  
+  & .categ_univers_recette {
+	background: #70768c;
+  }
+  
+  & .recipe-header {
+	
+	&:after {
+	  content: '';
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  z-index: -1;
+	  box-shadow: 0 0 3px rgba(#000, .1);
+	  background-color:rgba(108, 84, 143, 0.7);
+	}
+  }
+  
+  & .texte_accueil {
+	color:white;
+  }
+  
+  
+}
+
+html.nightmode {
+	background: #272838!important;
+}

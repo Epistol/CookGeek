@@ -8,6 +8,7 @@
 
 
 Route::get('/cgu', 'PageController@show_cgu')->name("page.cgu")->middleware('cacheResponse:2');
+Route::get('/confid', 'PageController@show_confidentiality')->name("page.conf")->middleware('cacheResponse:2');
 
 Route::group(['prefix' => 'contact'], function() {
 	Route::get('/', 'PageController@show_contact')->name("contact.index");

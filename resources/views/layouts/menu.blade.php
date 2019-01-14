@@ -85,7 +85,7 @@
                         <span hidden>Recette aléatoire</span>
                     </a>
 
-                    <div class="field search_header navbar-item">
+                    <div class=" search_header navbar-item">
                         <form action="{{route('search.post')}}" method="POST" role="search">
                             @csrf
                             <label for="q" style="display:none">
@@ -101,6 +101,7 @@
                         </form>
                     </div>
                 </div>
+
 
                 <div class="navbar-end">
                     @guest
@@ -149,7 +150,7 @@
                             </div>
                         </div>
                     @endguest
-
+                        <switch-light></switch-light>
 
                 </div>
 
@@ -157,6 +158,5 @@
         </div>
     </nav>
     @include('layouts.nav_icons')
-
 </div>
 

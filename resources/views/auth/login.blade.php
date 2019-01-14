@@ -63,6 +63,12 @@
                                         Mot de passe oublié ?
                                     </a>
 
+                                    <label class="checkbox" for="remember">
+                                        <input class="checkbox form-check-input" type="checkbox" checked="login" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        @lang('common.rememberme')
+                                    </label>
+
+
                                     <div class="field is-grouped is-grouped-right">
                                         <p class="control">
                                             <button  class="button is-primary " data-sitekey="{{env("RECAPTCHA_SITE_KEY")}}" data-callback="SubmitFn">

@@ -61,6 +61,6 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 		return response(file_get_contents(public_path('sitemap.xml')), 200, [
 			'Content-Type' => 'application/xml'
 		]);
-	});
+	})->name("sitemap");
 
 });

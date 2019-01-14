@@ -1,7 +1,5 @@
-@extends('layouts.app_captcha')
-
+@extends('layouts.app')
 @section('titrepage', "Ajouter une recette")
-
 @section('content')
 
     <div class="container addrecipe">
@@ -16,6 +14,7 @@
             </div>
         </div>
 
+        {{-- Bug commence ici--}}
         <section class="section">
             <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">

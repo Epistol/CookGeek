@@ -40,9 +40,16 @@
                                                          src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
                                                          alt="{!! strip_tags($recette->title) !!} / CDG">
                                                 @else
-                                                    <img class="fit-cover"
-                                                         src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".strip_tags($img->image_name))}}"
-                                                         alt="{!! strip_tags($recette->title) !!} / CDG">
+                                                        <clazy-load src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".strip_tags($img->image_name))}}">
+                                                            <!-- The image slot renders after the image loads. -->
+                                                            <img class="fit-cover"
+                                                                 src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".strip_tags($img->image_name))}}"
+                                                                 alt="{!! strip_tags($recette->title) !!} / CDG">
+                                                            <!-- The placeholder slot displays while the image is loading. -->
+                                                            <div slot="placeholder">
+                                                                <!-- You can put any component you want in here. -->
+                                                            </div>
+                                                        </clazy-load>
                                                 @endif
                                             </figure>
                                         </a>

@@ -95,6 +95,13 @@ class PageController extends Controller
 		return view('admin.page.show', ['page' => $page]);
 	}
 
+	public function show_confidentiality()
+	{
+		$page = Page::where('id', '3')->first();
+		return view('admin.page.show', ['page' => $page]);
+	}
+
+
 	public function show_contact()
 	{
 		return view('admin.page.contact');

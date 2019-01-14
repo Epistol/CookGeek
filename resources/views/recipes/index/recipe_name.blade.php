@@ -37,10 +37,20 @@
                         <a href="/recette/{{$recette->slug}}">
                             <figure class="image is-1by1">
                                 @if($recette->id_user != NULL  && isset($first))
-                                    <img class="fit-cover"
-                                         src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}"
-                                         style="-webkit-border-radius: 15px 0 0 15px;
+                                    <clazy-load
+                                            src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}">
+                                        <!-- The image slot renders after the image loads. -->
+                                        <img class="fit-cover"
+                                             src="{{url("/recipes/".$recette->id."/".$recette->id_user."/".$first->image_name)}}"
+                                             alt="{!! strip_tags($recette->title) !!} / CDG"
+                                             style="-webkit-border-radius: 15px 0 0 15px;
 border-radius: 15px 0 0 15px;">
+                                        <!-- The placeholder slot displays while the image is loading. -->
+                                        <div slot="placeholder">
+                                            <!-- You can put any component you want in here. -->
+                                        </div>
+                                    </clazy-load>
+
                                 @else
                                     <img class="fit-cover"
                                          src="http://via.placeholder.com/300x200?text={{$recette->title}}" style="-webkit-border-radius: 15px 0 0 15px;

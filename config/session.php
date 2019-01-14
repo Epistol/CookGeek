@@ -1,5 +1,13 @@
 <?php
 
+
+use Illuminate\Support\Facades\Auth;
+
+if (Auth::viaRemember()) {
+
+}
+
+
 return [
 
     /*
@@ -29,7 +37,7 @@ return [
     |
     */
 
-    'lifetime' => 120,
+    'lifetime' => 10080,
 
     'expire_on_close' => false,
 

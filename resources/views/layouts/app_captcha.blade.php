@@ -38,8 +38,10 @@
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
-<body>
-<div id="app">@include("layouts.menu")
+<body class="">
+<div id="bodyWebsite">
+    <div id="app">
+@include("layouts.menu")
 
     <div class="container">
         @if ($errors->any())
@@ -66,9 +68,12 @@
 
     </div>
 
-    @yield('content')
+        @yield('content')
+
+    </div>
+    @include("layouts.footer")
 </div>
-@include("layouts.footer")
+
 
 
 
@@ -89,46 +94,23 @@
 <div id="fb-root"></div>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
+<script src="{{ asset('js/konami.js') }}" defer async></script>
 
 <script type="application/javascript">
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=107304179368120';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 
-    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
-    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+	$(document).ready(function() {
+		$("body").toasty();
 
-    $(document).ready(function () {
-        $("body").toasty();
-
-        var easter_egg = new Konami(function () {
-            $("body").toasty('pop');
-        });
-
-        var slider = document.getElementById('slider');
-
-        noUiSlider.create(slider, {
-            start: [20, 80],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
-
-    });
+		var easter_egg = new Konami(function() {
+			$("body").toasty('pop');
+		});
+	});
 </script>
 
-
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
-<script src="{{ asset('js/konami.js') }}" defer async></script>
-
 
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")

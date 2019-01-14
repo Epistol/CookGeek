@@ -184,6 +184,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\UniverseProvider::class,
 	    PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
+	    HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
     ],
 
     /*
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
 	    'Firewall' => PragmaRX\Firewall\Vendor\Laravel\Facade::class,
+	    'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];

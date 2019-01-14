@@ -1,7 +1,6 @@
 <template>
     <div class="sharing-block">
         <div class="field has-addons" style="margin-left: 1rem">
-
             <p class="control">
                 <a class="button" @click="startframe('twitter')">
                           <span class=" is-small">
@@ -13,7 +12,6 @@
             <template v-if="componentshow">
                 <component :is="currentComponent" :url="url" :network="reseau" :titre="titre"></component>
             </template>
-
         </div>
     </div>
 
