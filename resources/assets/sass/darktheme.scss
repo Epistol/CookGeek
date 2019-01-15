@@ -23,7 +23,7 @@ body.nightmode {
 	opacity:0.5;
   }
   
-  & .blockcontent, .searchresult {
+  & .blockcontent, .searchresult, .list-h-show {
 	background: #595F72;
   }
   
@@ -37,13 +37,29 @@ body.nightmode {
 	border: 0px;
   }
   
-  & .card-cdg, .round_bg, .column.right_recipe_add, .page, .autocomplete-results, .is-result, .card, .univers_element  {
+  & .card-cdg, .round_bg, .column.right_recipe_add, .page, .autocomplete-results, .is-result, .card, .univers_element, .page_no_padding, .left_side, .list-h-show, .timeline-Widget, .bg_side.pub, .author  {
 	background: #273043;
 	color: #E0E2DB;
   }
   
+  & .list-h-show {
+	border-bottom : 1px solid #272838;
+  }
+  
+  & .fiche-info, .left-side, .left_side {
+	border-right : 1px solid #272838!important
+  }
+  
   & .card.cdg {
 	border : 0.5rem solid #122932!important;
+  }
+  
+  &  .is-checkradio[type="radio"] + label::before, .is-checkradio[type="checkbox"] + label::before, .step_number, .bg_side, .author, .fb-commentaire {
+	border : 2px solid #122932!important;
+  }
+  
+  & .is-lateral {
+	border:0px;
   }
   
   & .categ_univers_recette {
