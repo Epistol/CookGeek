@@ -40,7 +40,7 @@
 
                                </div>
                                <div class="bottom">
-                                   <like-recipe :recipeid="'{{$univers->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
+                                   <LikeRecipe :recipeid="'{{$univers->id}}'" :userid="'{{ Auth::id() }}'"></LikeRecipe>
                                </div>
 
                            </div>

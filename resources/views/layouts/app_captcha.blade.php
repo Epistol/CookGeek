@@ -55,15 +55,15 @@
         @endif
 
         @if (session('status'))
-            <notif title="is-success" v-if="seen" @close="seen = false">
+            <Notif title="is-success" v-if="seen" @close="seen = false">
                 <span slot="text">   {{ session('status') }}</span>
-            </notif>
+            </Notif>
         @endif
 
             @if (session('alert'))
-                <notif title="is-alert" v-if="seen" @close="seen = false">
+                <Notif title="is-alert" v-if="seen" @close="seen = false">
                     <span slot="text">   {{ session('alert') }}</span>
-                </notif>
+                </Notif>
             @endif
 
     </div>

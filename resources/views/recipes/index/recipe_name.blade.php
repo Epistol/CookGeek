@@ -53,8 +53,7 @@ border-radius: 15px 0 0 15px;">
 
                                 @else
                                     <img class="fit-cover"
-                                         src="http://via.placeholder.com/300x200?text={{$recette->title}}" style="-webkit-border-radius: 15px 0 0 15px;
-border-radius: 15px 0 0 15px;">
+                                         src="http://via.placeholder.com/300x200?text={{strip_tags(clean($recette->title))}}" alt="{{strip_tags(clean($recette->title))}}" style="-webkit-border-radius: 15px 0 0 15px; border-radius: 15px 0 0 15px;">
                                 @endif
                             </figure>
                         </a>
@@ -106,8 +105,8 @@ border-radius: 15px 0 0 15px;">
                                 @include("recipes.index.author")<br/>
                             </div>
                             <div class="column  is-flex-center">
-                                <like-recipe :recipeid="'{{$recette->id}}'"
-                                             :userid="'{{ Auth::id() }}'"></like-recipe>
+                                <LikeRecipe :recipeid="'{{$recette->id}}'"
+                                             :userid="'{{ Auth::id() }}'"></LikeRecipe>
                             </div>
                         </div>
                     </div>

@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/print.css": "/css/print.css",
+    "/js/recipeEdit.js": "/js/recipeEdit.js",
     "/js/load_content.js": "/js/load_content.js"
 }

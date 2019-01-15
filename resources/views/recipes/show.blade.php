@@ -9,8 +9,8 @@
 
     @if(!empty($status))
         @if ($status)
-            <notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
-            </notif>
+            <Notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
+            </Notif>
         @endif
     @endif
 

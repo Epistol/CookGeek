@@ -12,7 +12,7 @@
             <div class="column">
                 <div class="columns">
                     <div class="column is-10">
-                        <textarea class="input_modal blck" type="text" v-validate="'required'"
+                        <textarea class="input_modal blck" type="text"
                                   placeholder="Que fais-t-on aujourd'hui ? " v-model="step.etape" rows="2" name="step[]"
                                   id="step[]"></textarea>
                     </div>
@@ -38,10 +38,6 @@
 
 
     </div>
-    <span v-cloak>
-         <span v-show="errors.has('step[]')" class="help is-danger">@lang('errors.step')</span>
-    </span>
-
 
 </section>
 

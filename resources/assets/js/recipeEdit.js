@@ -24,50 +24,42 @@ import 'vue2-dropzone/dist/vue2Dropzone.css';
 
 // Composants CDG
 
-import modal from "./components/LoginMod.vue";
-import Notif from "./components/NotifAlert.vue";
-import LikeRecipe from "./components/LikeRecipe.vue";
-import validationform from "./components/ValidateFormButton.vue";
-import Autocomplete from "./components/Autocomplete.vue";
+
 import Ingredients from "./components/Ingredients.vue";
 
+import IngredientsEdit from './components/Recipe/IngredientsEdit.vue';
 import SignalRecipe from "./components/Recipe/Signal.vue";
-import HomeRecipes from "./components/Recipe/Home_Recipes.vue";
 import StepsEdit from "./components/Recipe/StepsEdit.vue";
-
-import TypeUniversIcon from "./components/Elements/Icons/TypeUniversIcon.vue";
-import PictureUpload from "./components/Picture/PictureUpload.vue";
-import UnivPictureUpload from "./components/Picture/UnivPictureUpload.vue";
 
 // Utilisation des composants
 
-Vue.use(VueClazyLoad, InstantSearch, Datepicker,  SignalRecipe, modal, Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload,  Autocomplete, TypeUniversIcon, StarRating, Ingredients,HomeRecipes,   require('vue-chunk'));
+Vue.use(InstantSearch, Datepicker, VueClazyLoad, SignalRecipe, StepsEdit, StarRating, Ingredients, IngredientsEdit, require('vue-chunk'));
+
+// Vue.component('recherche', require('./components/Recherche.vue'));
+Vue.component('validationform', require('./components/ValidateFormButton.vue'));
+Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 
 // AUTRE
+Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon"));
+Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
+Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
+
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
 const app = new Vue({
 	el: '#bodyWebsite',
 	components: {
-		draggable, VueClazyLoad,
+		draggable,
 		'like-recipe-async': () => ('./components/LikeRecipe.vue'),
 		'signalrecipe': SignalRecipe,
-		'modal' : modal,
-		'Notif' : Notif,
 		VeeValidate,
-		'likerecipe' : LikeRecipe,
-		'validationform' : validationform,
-		'ingredient_form' : Ingredients,
-		'star-rating' : StarRating,
-		'datepicker' : Datepicker,
-		'homerecipes' : HomeRecipes,
-		'stepsedit' : StepsEdit,
-		'searchautocomplete' : Autocomplete,
-		'categ_icon' : TypeUniversIcon,
-		'pictureupload' : PictureUpload,
-		'univpictureupload' : UnivPictureUpload,
-},
+		'ingredient_form': Ingredients,
+		'star-rating': StarRating,
+		'datepicker': Datepicker,
+		'ingredient_edit_form': IngredientsEdit,
+		'stepsedit': StepsEdit,
+	},
 
 	data: {
 		titre: '',

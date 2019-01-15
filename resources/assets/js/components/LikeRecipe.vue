@@ -14,7 +14,6 @@
 
 			};
 		},
-
 		methods: {
 			async toggleLike() {
 				if(this.userid){

@@ -17,6 +17,7 @@ mix.options({
 
 
 mix.js('resources/assets/js/app.js', 'public/js').js('resources/assets/js/load_content.js', 'public/js')
+	.js('resources/assets/js/recipeEdit.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css').sass('resources/assets/sass/print.scss', 'public/css');
 
 mix.copyDirectory('resources/assets/js/toasty', 'public/js/toasty');

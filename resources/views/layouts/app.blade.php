@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@hasSection('titrepage')@yield('titrepage') - Cuisine De Geek @else Cuisine De Geek @endif</title>
+
 {{--
     ________/\\\\\\\\\__/\\\\\\\\\\\\________/\\\\\\\\\\\\_
     _____/\\\////////__\/\\\////////\\\____/\\\//////////__
@@ -20,7 +21,8 @@
     ____\////\\\\\\\\\_\/\\\\\\\\\\\\/___\//\\\\\\\\\\\\/__
     _______\/////////__\////////////______\////////////____
     --}}
-    <!-- ROBOTS -->
+
+<!-- ROBOTS -->
 @include("layouts.app_element.robot")
 <!-- Links to information about the author(s) of the document -->
     <link rel="author" href="{{asset('humans.txt')}}">
@@ -43,51 +45,46 @@
 
     <meta name="mobile-web-app-capable" content="yes">
 
-
     <!-- Styles -->
     @include("layouts.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
+
 </head>
 <body class="">
 <div id="bodyWebsite">
-<div id="app">
+    <div id="app">
+        @include("layouts.menu")
 
+        <div class="container">
+            @if ($errors->any())
+                <div class="notification alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
+            @if (session('status'))
+                <notif title="is-success" v-if="seen" @close="seen = false">
+                    <span slot="text">   {{ session('status') }}</span>
+                </notif>
+            @endif
 
-    @include("layouts.menu")
+            @if (session('alert'))
+                <notif title="is-alert" v-if="seen" @close="seen = false">
+                    <span slot="text">   {{ session('alert') }}</span>
+                </notif>
+            @endif
+        </div>
 
-    <div class="container">
+        @yield('content')
 
-        @if ($errors->any())
-            <div class="notification alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('status'))
-            <notif title="is-success" v-if="seen" @close="seen = false">
-                <span slot="text">   {{ session('status') }}</span>
-            </notif>
-        @endif
-
-        @if (session('alert'))
-            <notif title="is-alert" v-if="seen" @close="seen = false">
-                <span slot="text">   {{ session('alert') }}</span>
-            </notif>
-        @endif
     </div>
-
-    @yield('content')
-
+    @include("layouts.footer")
 </div>
-@include("layouts.footer")
-</div>
-
 
 
 <script type="application/ld+json">
@@ -104,14 +101,7 @@
 
 </script>
 <!-- SCRIPTS  -->
-<script type="application/javascript"><?php
-	if(Auth::check() == FALSE || Auth::check() == '') {
-		echo "var userIsLoggedIn = 0;";
-	} else {
-		echo "var userIsLoggedIn = 1;";
-	}
-	?>
-
+<script type="application/javascript">
 	// @see https://docs.headwayapp.co/widget for more configuration options.
 	var HW_config = {
 		selector: "#updates", // CSS selector where to inject the badge
@@ -121,12 +111,15 @@
 	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
 	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 
-
 </script>
 
 
-
 <script src="{{ asset('js/app.js') }}"></script>
+
+@if(Route::currentRouteNamed('recipe.edit'))
+    <script src="{{ asset('js/recipeEdit.js') }}"></script>
+@endif
+
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>
 
 <script async src="https://cdn.headwayapp.co/widget.js"></script>
@@ -136,9 +129,10 @@
 <div id="fb-root"></div>
 <script defer src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
 
+{{--Night mode--}}
 <script type="application/javascript" src="{{ asset('js/load_content.js')}}"></script>
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
-<script src="{{ asset('js/konami.js') }}" ></script>
+<script src="{{ asset('js/konami.js') }}"></script>
 
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")

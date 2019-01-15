@@ -1,5 +1,5 @@
 <!-- Image part -->
-<div class=" has-text-centered" style="border-right: 1px solid #e5e1fb;border-bottom: 1px solid #e5e1fb;">
+<div class=" has-text-centered" >
     @if($firstimg !== null )
         <a href="{{$firstimg->first()}}"
            data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{clean($recette->title)}}">

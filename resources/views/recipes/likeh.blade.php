@@ -1,6 +1,6 @@
 <div class="is-pulled-right is-flex">
 
-    <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
+    <LikeRecipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></LikeRecipe>
 
     <a class="button tooltip is-tooltip-left print" data-tooltip="Imprimer" href="javascript:window.print()">
                   <span class="icon is-small">

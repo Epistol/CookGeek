@@ -16,12 +16,12 @@
                     </a>
                 </div>
             @endif
-                <signalrecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></signalrecipe>
+                <SignalRecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></SignalRecipe>
 
             @endauth
 
             @guest
-                <signalrecipe recipeid="{{$recette->id}}" user_id='null'></signalrecipe>
+                <SignalRecipe recipeid="{{$recette->id}}" user_id='null'></SignalRecipe>
             @endguest
 
         </div>

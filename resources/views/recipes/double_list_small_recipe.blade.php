@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="ccolumn is-flex-center">
-                        <like-recipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></like-recipe>
+                        <LikeRecipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></LikeRecipe>
 
                     </div>
                 </div>
