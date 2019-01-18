@@ -9,7 +9,7 @@
                     @include('user_space.parts.menu')
                 </div>
 
-                <div class="column is-three-quarters blockcontent">
+                <div class="column is-three-quarters blockcontent" id="parameters">
                             @include("user_space.switch.parts.account.param")
                 </div>
             </div>

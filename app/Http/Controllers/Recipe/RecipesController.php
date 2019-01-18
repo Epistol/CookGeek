@@ -463,9 +463,17 @@ class RecipesController extends Controller
 		$rand = DB::table('recipes')->where('validated', '=', 1)
 			->inRandomOrder()
 			->first();
-		$sl = $rand->slug;
+		if($rand){
+            $sl = $rand->slug;
+            return redirect()->route('recipe.show', ['post' => $sl]);
 
-		return redirect()->route('recipe.show', ['post' => $sl]);
+        }
+		else {
+		    $sl = null;
+            return redirect('/');
+
+        }
+
 
 	}
 

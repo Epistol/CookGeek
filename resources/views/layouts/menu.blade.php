@@ -58,9 +58,9 @@
                         </a>
                         <div class="navbar-dropdown" id="types">
 
-							<?php
-							$load_types = DB::table('type_recipes')->get();
-							?>
+                            <?php
+                            $load_types = DB::table('type_recipes')->get();
+                            ?>
                             @foreach($load_types as $type)
                                 <a class="navbar-item" href="{{ route('type.show', lcfirst($type->name)) }}">
                                     {!! strip_tags(clean($type->name)) !!}
@@ -81,7 +81,7 @@
                      </a>--}}
 
                     <a class="navbar-item" href="{{route("recipe.random")}}">
-                        🎲
+                        <i class="fas fa-dice-d20"></i>
                         <span hidden>Recette aléatoire</span>
                     </a>
 
@@ -91,11 +91,13 @@
                             <label for="q" style="display:none">
                                 Recherche
                             </label>
-                            <input class="input" type="text" placeholder="" id="q" name="q" style="padding: 0 50px 0 25px;">
+                            <input class="input" type="text" placeholder="" id="q" name="q"
+                                   style="padding: 0 50px 0 25px;">
                             <label for="searchbutton" style="display:none">
                                 Rechercher
                             </label>
-                            <button type="submit" id="searchbutton" class="searchheadbutton" style="position: absolute;">
+                            <button type="submit" id="searchbutton" class="searchheadbutton"
+                                    style="position: absolute;">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </button>
                         </form>
@@ -150,7 +152,7 @@
                             </div>
                         </div>
                     @endguest
-                        <switch-light></switch-light>
+                    <switch-light></switch-light>
 
                 </div>
 
