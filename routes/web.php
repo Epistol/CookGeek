@@ -64,3 +64,4 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 	})->name("sitemap");
 
 });
+

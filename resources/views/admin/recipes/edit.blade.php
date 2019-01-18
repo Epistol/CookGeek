@@ -4,12 +4,10 @@
     <div class="container">
         <h1>Recettes</h1>
 
-        <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une recette</a>
-
         <section class="section">
-            <form method="POST" >
+            <form method="UPDATE" action="{{route("admin.recipe.update", $recipe->id)}}">
                 @csrf
-                @foreach($recipe as $key => $r)
+                @foreach($recipe->getAttributes() as $key => $r)
                     <div class="field">
                         <label class="label">{{$key}}</label>
                         <div class="control">
@@ -18,7 +16,7 @@
                     </div>
                 @endforeach
 
-                <button type="submit">Sauvegarder</button>
+                <button type="submit" class="button is-primary">Sauvegarder</button>
             </form>
         </section>
 

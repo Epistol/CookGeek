@@ -62,8 +62,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-
         $user =  User::create([
             'name' => strip_tags(clean($data['pseudo'])),
             'email' => strip_tags(clean($data['email'])),

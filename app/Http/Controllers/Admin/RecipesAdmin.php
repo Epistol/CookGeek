@@ -30,13 +30,10 @@ class RecipesAdmin extends Controller
         ))->with(['controller' => $this]);
     }
 
-
     public function edit($id){
-    	dd($id);
-    	$recipe = \App\Recipes::where('id', '=', $id)->firstorFail($id)->get();
-    	dd($recipe);
+    	$recipe = \App\Recipes::where('id', '=', $id)->get();
 	    return view("admin.recipes.edit", array(
-		    'recipe' => $recipe
+		    'recipe' => $recipe[0]
 	    ))->with(['controller' => $this]);
     }
 
@@ -46,4 +43,12 @@ class RecipesAdmin extends Controller
 			'recipe' => $recipe
 		))->with(['controller' => $this]);
 	}
+
+	public function update($content){
+        dd($content);
+        $recipe = DB::table('recipes')->where('id', '=' , $id)->first();
+        return view("admin.recipes.edit", array(
+            'recipe' => $recipe
+        ))->with(['controller' => $this]);
+    }
 }
