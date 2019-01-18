@@ -24,27 +24,25 @@ class LogFailedLogin
     /**
      * Handle the event.
      *
-     * @param  Failed  $event
+     * @param  Failed $event
      * @return void
      */
     public function handle(Failed $event)
     {
         $ip = geoip()->getClientIP();
 
-	    DB::table('users_info_loggin')
-		    ->insertGetId([
-			    'user_id' => $event->user->id,
-			    'ip_address' => $ip,
-			    'login' => 0,
-			    'created_at' => now(),
-			    'updated_at' => now(),
-		    ]);
+        DB::table('users_info_loggin')
+            ->insertGetId([
+                'ip_address' => $ip,
+                'login' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-	    if($event->user != null){
-            Log::notice('IP '. $ip. " tried to connect to account ".$event->user->id. " but failed");
-        }
-        else {
-            Log::notice('IP '. $ip. " tried to connect to an inexistant account (bad mail/username");
+        if ($event->user != null) {
+            Log::notice('IP ' . $ip . " tried to connect to account " . $event->user->id . " but failed");
+        } else {
+            Log::notice('IP ' . $ip . " tried to connect to an inexistant account (bad mail/username");
         }
 
     }
