@@ -1,6 +1,7 @@
 <template>
     <transition name="modal">
         <div class="modal is-active">
+            <!--@close="machin = false-->
             <div class="modal-background" @click="$emit('close')">
             </div>
             <div class="modal-content" @click.stop>
@@ -33,7 +34,10 @@
     export default {
         mounted() {
             //console.log('Component mounted.')
-
-        }
+        },
+        data() {
+            return {
+            }
+        },
     }
 </script>

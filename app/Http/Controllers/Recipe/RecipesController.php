@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Recipe;
 /*use App\Recipe;*/
 
 use App\Http\Controllers\Controller;
+use App\Jobs\PictureThumbnail;
 use App\Providers\UniverseProvider;
 use App\RecipeImg;
 use App\Recipes;
@@ -748,5 +749,7 @@ class RecipesController extends Controller
 			DB::table('recipes_ingredients')->where('id_ingredient', '=', $id_ingredient->id)->where('qtt', '=', $qtt)->delete();
 		}
 	}
+
+
 
 }
