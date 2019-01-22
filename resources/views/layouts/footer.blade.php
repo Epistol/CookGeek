@@ -9,8 +9,9 @@
                                 id="updates" style="position:absolute;"></span>
                     </li>
                     <li>
-                        <a href="{{route('sitemap')}}">Sitemap</a>
+                        @lang('common.cdg.description')
                     </li>
+
                 </ul>
 
             </div>
@@ -28,7 +29,9 @@
                     <li>
                         <a href="{{route('page.conf')}}">Politique de confidentialité</a>
                     </li>
-
+                    <li>
+                        <a href="{{route('sitemap')}}">Sitemap</a>
+                    </li>
                 </ul>
             </div>
 

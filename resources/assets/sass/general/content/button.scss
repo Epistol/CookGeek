@@ -1,15 +1,16 @@
 .button_picture, a.button_picture {
   background: #ebeaf5;
-  display: flex;
-  -webkit-border-radius: 25px;
-  border-radius: 25px;
-  justify-content: center;
-  margin: 1rem;
-  align-items: center;
-  padding: 0.2rem;
   color: $brand-primary;
+  margin-top:2vh;
   &:hover {
     background: $brand-primary;
     color:#e5e1fb;
   }
 }
+
+.hover_pointer {
+  &:hover {
+    cursor:pointer;
+  }
+}
+

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactEmail;
+use Vinkla\Hashids\Facades\Hashids;
 
 class PageController extends Controller
 {
@@ -182,6 +183,7 @@ class PageController extends Controller
 	{
 		$universcateg = DB::table('categunivers')->get();
 		$recettesrand = array();
+
 
 
 // Petit texte sur l'accueil

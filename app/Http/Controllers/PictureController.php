@@ -3,37 +3,113 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\PictureThumbnail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
 
 class PictureController extends Controller
 {
+
+
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function addPictureToRecipe(Request $request){
+    public function addPictureToRecipe(Request $request)
+    {
 
         $pictureBase = $request->picture;
         $recipeId = $request->recipe;
+        $recipeHash = $request->recipehash;
         $userId = $request->user;
 
         $namePicture = $this->randomName($pictureBase);
+        $uploaded = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
 
+        DB::table('recipe_imgs')->updateOrInsert(
+            ['recipe_id' => $recipeId,
+                'image_name' => strip_tags(clean($namePicture)),
+                'user_id' => $userId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        return response()->json(true);
+    }
+
+    /**
+     * @param $pictureBase
+     * @param $recipeId
+     * @param $userId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addFirstPictureRecipe($pictureBase, $recipeId, $userId)
+    {
+
+        $namePicture = $this->randomName($pictureBase);
         $uploaded = $this->storeCreationPicture($recipeId, $pictureBase, $userId, $namePicture);
-        return $uploaded;
+
+        DB::table('recipe_imgs')->updateOrInsert(
+            ['recipe_id' => $recipeId,
+                'image_name' => strip_tags(clean($namePicture)),
+                'user_id' => $userId,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'validated' => 1
+            ]);
+
+        return response()->json($uploaded);
 
     }
 
+    public function loadFirstRecipePicture($recette)
+    {
+        $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->orderBy('created_at', 'asc')->where('validated', '=', 1)->get();
+
+        $url = '';
+        $urlWebp = '';
+        $urlThumb = '';
+        $urlIndex = '';
+
+        if ($pictures !== null) {
+            $return = collect();
+            foreach ($pictures as $picture) {
+                $pictureDate = Carbon::parse($picture->created_at);
+                $changev7 = Carbon::create(2019, 01, 20, 20, 10, 00);
+                if ($pictureDate->lessThan($changev7)) {
+                    $url = url("/recipes/" . $recette->id . "/" . intval($recette->id_user) . "/" . strip_tags(clean($picture->image_name)));
+                } else {
+                    $url = url("/recipes/" . $recette->hashid . "/" . intval($recette->id_user) . "/" . strip_tags(clean($picture->image_name)) . '.jpeg');
+                    $urlWebp = url("/recipes/" . $recette->hashid . "/" . intval($recette->id_user) . "/square_" . strip_tags(clean($picture->image_name)) . ".webp");
+                    $urlThumb = url("/recipes/" . $recette->hashid . "/" . intval($recette->id_user) . "/thumb_" . strip_tags(clean($picture->image_name)) . ".jpeg");
+                    $urlIndex = url("/recipes/" . $recette->hashid . "/" . intval($recette->id_user) . "/index_" . strip_tags(clean($picture->image_name)) . ".png");
+                }
+                $data = [['name' => 'normal', 'url' => $url, 'user' => intval($recette->id_user)], ['name' => 'webp', 'url' => $urlWebp, 'user' => intval($recette->id_user)], ['name' => 'thumb', 'url' => $urlThumb, 'user' => intval($recette->id_user)], ['name' => 'index', 'url' => $urlIndex, 'user' => intval($recette->id_user)]];
+                $return->push($data);
+            }
+
+        } else {
+            $url = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
+        }
+
+        return $return;
+    }
+
+    static function load_img($recette)
+    {
+        $controller = new RecipesController();
+        return $controller->load_picture($recette);
+    }
 
 
     /**
      * @param $image
      * @return string
      */
-    private function randomName($image){
-        // TODO : prendre en compte le nom / contenu de l'image
-        $imageName = str_random(10).'.'.'png';
+    private function randomName()
+    {
+        $imageName = str_random(10);
         return $imageName;
     }
 
@@ -43,8 +119,11 @@ class PictureController extends Controller
      * @param $userId
      * @param $imageName
      */
-    private function storeCreationPicture($recipe, $imageContent, $userId, $imageName){
-        PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId,  'thumbnail', 150);
-//        PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId,  'thumbnail', 250);
+    private function storeCreationPicture($recipe, $imageContent, $userId, $imageName)
+    {
+        $thumb = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'thumbnail');
+        $index = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'indexRecipe');
+        $square = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'thumbSquare', 250);
+        $original = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'original');
     }
 }

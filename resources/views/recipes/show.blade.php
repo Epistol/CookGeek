@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
-@if($firstimg->first() !== "")
-    @section('image_og', strip_tags(clean($firstimg->first())))
+@if($firstimg->firstWhere('name', 'normal') !== "")
+    @section('image_og', strip_tags(clean($firstimg->firstWhere(['name', 'normal'], ['user', $recette->id_user])['url'])))
 @endif
 @section('content')
 
@@ -98,7 +98,7 @@
     use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
 
     if(isset($firstimg)) {
-	    $img = $firstimg->first();
+	    $img = $firstimg->where('user', $recette->id_user)->firstWhere('name', 'normal')['url'];
     } else {
 	    $img = null;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
 
 class PictureThumbnail implements ShouldQueue
 {
@@ -70,28 +72,76 @@ class PictureThumbnail implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
      */
     public function handle()
     {
-
-        $image2 = str_replace('data:image/png;base64,', '', $this->imageContent);
+        $image2 = preg_replace('#^data:image/[^;]+;base64,#', '', $this->imageContent);
         $image2 = str_replace(' ', '+', $image2);
         $image_decoded = base64_decode($image2);
 
         $image = Image::make($image_decoded);
-        if ($this->height) {
-            $image = $image->fit($this->width, $this->height);
-        } else {
-            $image = $image->resize($this->width, null);
-        }
+        $image = $this->resizing($image);
+        $name = $this->naming($this->imageName);
+
+        $recipepath =  public_path('/recipes/' . $this->recipe);
+        File::exists($recipepath) or File::makeDirectory($recipepath);
 
         $path = public_path('/recipes/' . $this->recipe . '/' . $this->user . '/');
-
         File::exists($path) or File::makeDirectory($path);
+         $image->save($path . '/' . $name);
 
-        $image->save($path . '/' .  $this->imageName);
+    }
 
+    public function failed(Exception $exception)
+    {
+        // Send user notification of failure, etc...
+        return $exception;
+    }
+
+
+    private function resizing($image)
+    {
+        switch ($this->typePicture) {
+            case 'thumbnail':
+                $image = $image->fit(150, 150)->encode('jpeg');
+                break;
+            case 'indexRecipe':
+                $image = $image->fit(300, 150)->encode('png');
+                break;
+            case 'thumbSquare':
+                $image = $image->fit(250, 250)->encode('webp');
+                break;
+            default :
+                if ($this->height) {
+                    $image = $image->fit($this->width, $this->height)->encode('jpeg', 90);
+                } elseif($this->width) {
+                    $image = $image->resize($this->width, null)->encode('jpeg', 90);
+                }
+                else  {
+                    $image = $image->fit(1096, null)->encode('jpeg', 90);
+                }
+                break;
+        }
+        return $image;
+    }
+
+    private function naming($imageName)
+    {
+        switch ($this->typePicture) {
+            case 'thumbnail':
+                $imageName = 'thumb_' . $imageName . ".jpeg";
+                break;
+            case 'indexRecipe':
+                $imageName = 'index_' . $imageName . ".png";
+                break;
+            case 'thumbSquare':
+                $imageName = 'square_' . $imageName  . ".webp";
+                break;
+            default :
+                $imageName = $imageName  . ".jpeg";
+                break;
+        }
+        return $imageName;
     }
 
 }

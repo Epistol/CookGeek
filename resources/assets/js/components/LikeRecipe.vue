@@ -1,6 +1,7 @@
 <template v-cloak>
    <div>
        <a class="tag like" :class="{ 'liked': retour !== false }" @click="toggleLike(recipeid)" ><i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span></a>
+       <!--TODO : Ajouter un compteur -->
    </div>
 </template>
 

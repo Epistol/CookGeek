@@ -237,6 +237,7 @@ return [
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
 	    'Firewall' => PragmaRX\Firewall\Vendor\Laravel\Facade::class,
 	    'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
     ],
 
 ];

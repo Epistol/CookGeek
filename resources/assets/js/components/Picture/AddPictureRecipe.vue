@@ -1,35 +1,39 @@
 <template>
-    <div>
-        <a class="button_picture" @click="showModal()">
+    <transition name="fade">
+        <div>
+            <a class="button_picture button is-rounded " @click="showModal()">
+                <span class="icon is-small">
+                      <span class=" fa-stack ">
+                      <i class="fas fa-camera fa-stack-1x " style="color: #7f5fbf;"></i>
+                    </span>
+                 </span>
+                <span> Ajouter ma photo</span>
+            </a>
 
-                <span class=" fa-stack " style="margin-right: 0.4rem;position: absolute;left: 2%;">
-      <i class="fas fa-circle fa-stack-2x" style="color: #7f5fbf;"></i>
-      <i class="fas fa-camera fa-stack-1x " style="color: #ebeaf5;"></i>
-                      <i class="fas fa-plus " style="position:absolute;color:white"></i>
-    </span>
-
-            Ajouter votre photo
-        </a>
-
-        <template v-if="clicked">
-            <modal v-if="clicked" @close="clicked = false" v-cloak>
-                <h3 slot="header">Ajouter votre photo</h3>
-                <div slot="body">
-                    <picture-input @change="onChange"
-                                   :custom-strings="{
+            <template v-if="clicked">
+                <modal v-if="clicked" @close="clicked = false" v-cloak>
+                    <h3 slot="header">Ajouter votre photo</h3>
+                    <div slot="body">
+                        <template v-if="!sent">
+                            <picture-input @change="onChange"
+                                           :custom-strings="{
         upload: '<h1>Bummer!</h1>',
         drag: '<i class=\'fas fa-camera-retro\'></i> Ajouter votre photo'
       }"
-                    ></picture-input>
-                </div>
-                <div slot="footer">
-                    <button class="button is-primary" @click="uploadImage()">Envoyer</button>
-                </div>
+                            ></picture-input>
+                        </template>
+                        <template v-else>
+                            <h1 class="title">Photo envoyée ! Nous la validerons d'ici peu ! </h1>
+                        </template>
+                    </div>
+                    <div slot="footer" v-if="!sent">
+                        <button class="button is-primary" @click="uploadImage()">Envoyer</button>
+                    </div>
 
-            </modal>
-
-        </template>
-    </div>
+                </modal>
+            </template>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -38,11 +42,12 @@
 
     export default {
         name: "AddPictureRecipe",
-        props: ["recipeid", "user"],
+        props: ["recipeid", "recipehash", "user"],
         data() {
             return {
                 clicked: false,
                 image: '',
+                sent: false,
             }
         },
         components: {
@@ -67,11 +72,12 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     recipe: this.recipeid,
+                    recipehash: this.recipehash,
                     user: this.user,
                     picture: this.image,
                 }).then(response => {
+                    this.sent = true;
                     console.log(response);
-
                 }).catch(error => {
 
                 });

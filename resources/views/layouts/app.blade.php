@@ -99,17 +99,18 @@
   }
 }
 
+
 </script>
 <!-- SCRIPTS  -->
 <script type="application/javascript">
-	// @see https://docs.headwayapp.co/widget for more configuration options.
-	var HW_config = {
-		selector: "#updates", // CSS selector where to inject the badge
-		account: "J05Ovy"
-	};
+    // @see https://docs.headwayapp.co/widget for more configuration options.
+    var HW_config = {
+        selector: "#updates", // CSS selector where to inject the badge
+        account: "J05Ovy"
+    };
 
-	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
-	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 
 </script>
 

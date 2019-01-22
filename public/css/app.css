@@ -18468,24 +18468,17 @@ a.navbar-item, a.navbar-link {
 
 .button_picture, a.button_picture {
   background: #ebeaf5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-radius: 25px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 1rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.2rem;
   color: #7f5fbf;
+  margin-top: 2vh;
 }
 
 .button_picture:hover, a.button_picture:hover {
   background: #7f5fbf;
   color: #e5e1fb;
+}
+
+.hover_pointer:hover {
+  cursor: pointer;
 }
 
 .ajout_recette_img {

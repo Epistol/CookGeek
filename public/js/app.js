@@ -89206,6 +89206,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Picture_UnivPictureUpload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__components_Picture_UnivPictureUpload_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_Picture_Placeholder_vue__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_Picture_Placeholder_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__components_Picture_Placeholder_vue__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -89249,9 +89251,10 @@ window.Vue = __webpack_require__(98);
 
 
 
+
 // Utilisation des composants
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vue_clazy_load___default.a, __WEBPACK_IMPORTED_MODULE_4_vue_instantsearch__["a" /* default */], __WEBPACK_IMPORTED_MODULE_5_vuejs_datepicker__["a" /* default */], __WEBPACK_IMPORTED_MODULE_15__components_Recipe_Signal_vue___default.a, __WEBPACK_IMPORTED_MODULE_9__components_ModalView_vue___default.a, __WEBPACK_IMPORTED_MODULE_10__components_NotifAlert_vue___default.a, __WEBPACK_IMPORTED_MODULE_17__components_Recipe_StepsEdit_vue___default.a, __WEBPACK_IMPORTED_MODULE_11__components_LikeRecipe_vue___default.a, __WEBPACK_IMPORTED_MODULE_12__components_ValidateFormButton_vue___default.a, __WEBPACK_IMPORTED_MODULE_19__components_Picture_PictureUpload_vue___default.a, __WEBPACK_IMPORTED_MODULE_20__components_Picture_UnivPictureUpload_vue___default.a, __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue___default.a, __WEBPACK_IMPORTED_MODULE_13__components_Autocomplete_vue___default.a, __WEBPACK_IMPORTED_MODULE_18__components_Elements_Icons_TypeUniversIcon_vue___default.a, __WEBPACK_IMPORTED_MODULE_3__star_rating__["default"], __WEBPACK_IMPORTED_MODULE_14__components_Ingredients_vue___default.a, __WEBPACK_IMPORTED_MODULE_16__components_Recipe_Home_Recipes_vue___default.a, __WEBPACK_IMPORTED_MODULE_8_vue_picture_input___default.a, __webpack_require__(421));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vue_clazy_load___default.a, __WEBPACK_IMPORTED_MODULE_4_vue_instantsearch__["a" /* default */], __WEBPACK_IMPORTED_MODULE_5_vuejs_datepicker__["a" /* default */], __WEBPACK_IMPORTED_MODULE_15__components_Recipe_Signal_vue___default.a, __WEBPACK_IMPORTED_MODULE_9__components_ModalView_vue___default.a, __WEBPACK_IMPORTED_MODULE_10__components_NotifAlert_vue___default.a, __WEBPACK_IMPORTED_MODULE_17__components_Recipe_StepsEdit_vue___default.a, __WEBPACK_IMPORTED_MODULE_11__components_LikeRecipe_vue___default.a, __WEBPACK_IMPORTED_MODULE_12__components_ValidateFormButton_vue___default.a, __WEBPACK_IMPORTED_MODULE_19__components_Picture_PictureUpload_vue___default.a, __WEBPACK_IMPORTED_MODULE_20__components_Picture_UnivPictureUpload_vue___default.a, __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue___default.a, __WEBPACK_IMPORTED_MODULE_22__components_Picture_Placeholder_vue___default.a, __WEBPACK_IMPORTED_MODULE_13__components_Autocomplete_vue___default.a, __WEBPACK_IMPORTED_MODULE_18__components_Elements_Icons_TypeUniversIcon_vue___default.a, __WEBPACK_IMPORTED_MODULE_3__star_rating__["default"], __WEBPACK_IMPORTED_MODULE_14__components_Ingredients_vue___default.a, __WEBPACK_IMPORTED_MODULE_16__components_Recipe_Home_Recipes_vue___default.a, __WEBPACK_IMPORTED_MODULE_8_vue_picture_input___default.a, __webpack_require__(421));
 
 // AUTRE
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ban_list', __webpack_require__(422));
@@ -89280,7 +89283,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         'pictureupload': __WEBPACK_IMPORTED_MODULE_19__components_Picture_PictureUpload_vue___default.a,
         'univpictureupload': __WEBPACK_IMPORTED_MODULE_20__components_Picture_UnivPictureUpload_vue___default.a,
         'picture-input': __WEBPACK_IMPORTED_MODULE_8_vue_picture_input___default.a,
-        'add-recipe': __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue___default.a
+        'add-recipe': __WEBPACK_IMPORTED_MODULE_21__components_Picture_AddPictureRecipe_vue___default.a,
+        'picture-placeholder': __WEBPACK_IMPORTED_MODULE_22__components_Picture_Placeholder_vue___default.a
     },
 
     data: {
@@ -90265,7 +90269,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -90336,11 +90339,7 @@ var render = function() {
             _c(
               "footer",
               { staticClass: "modal-card-foot" },
-              [
-                _vm._t("footer"),
-                _vm._v(" "),
-                _c("button", { staticClass: "button" }, [_vm._v("Annuler")])
-              ],
+              [_vm._t("footer")],
               2
             )
           ])
@@ -90455,31 +90454,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "fade" } }, [
-    _c("section", { staticClass: "section" }, [
-      _c(
-        "div",
-        {
-          staticClass: "notification",
-          class: _vm.title,
-          on: {
-            click: function($event) {
-              _vm.$emit("close")
-            }
-          }
-        },
-        [
-          _c("button", {
-            staticClass: "delete",
+    _c(
+      "section",
+      { staticClass: "section", staticStyle: { padding: "1.5rem" } },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "notification",
+            class: _vm.title,
             on: {
               click: function($event) {
                 _vm.$emit("close")
               }
             }
-          }),
-          _vm._v("\n            " + _vm._s(this.content) + "\n        ")
-        ]
-      )
-    ])
+          },
+          [
+            _c("button", {
+              staticClass: "delete",
+              on: {
+                click: function($event) {
+                  _vm.$emit("close")
+                }
+              }
+            }),
+            _vm._v("\n            " + _vm._s(this.content) + "\n        ")
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -90551,6 +90554,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
 //
 //
 //
@@ -91117,7 +91121,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -91166,17 +91170,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "AddPictureRecipe",
-    props: ["recipeid", "user"],
+    props: ["recipeid", "recipehash", "user"],
     data: function data() {
         return {
             clicked: false,
-            image: ''
+            image: '',
+            sent: false
         };
     },
 
@@ -91197,14 +91206,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         uploadImage: function uploadImage() {
+            var _this = this;
+
             return axios.post('/recette/addmypicture', {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 recipe: this.recipeid,
+                recipehash: this.recipehash,
                 user: this.user,
                 picture: this.image
             }).then(function (response) {
+                _this.sent = true;
                 console.log(response);
             }).catch(function (error) {});
         }
@@ -91219,20 +91232,366 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "fade" } }, [
+    _c(
+      "div",
+      [
+        _c(
+          "a",
+          {
+            staticClass: "button_picture button is-rounded ",
+            on: {
+              click: function($event) {
+                _vm.showModal()
+              }
+            }
+          },
+          [
+            _c("span", { staticClass: "icon is-small" }, [
+              _c("span", { staticClass: " fa-stack " }, [
+                _c("i", {
+                  staticClass: "fas fa-camera fa-stack-1x ",
+                  staticStyle: { color: "#7f5fbf" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("span", [_vm._v(" Ajouter ma photo")])
+          ]
+        ),
+        _vm._v(" "),
+        _vm.clicked
+          ? [
+              _vm.clicked
+                ? _c(
+                    "modal",
+                    {
+                      on: {
+                        close: function($event) {
+                          _vm.clicked = false
+                        }
+                      }
+                    },
+                    [
+                      _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+                        _vm._v("Ajouter votre photo")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { attrs: { slot: "body" }, slot: "body" },
+                        [
+                          !_vm.sent
+                            ? [
+                                _c("picture-input", {
+                                  attrs: {
+                                    "custom-strings": {
+                                      upload: "<h1>Bummer!</h1>",
+                                      drag:
+                                        "<i class='fas fa-camera-retro'></i> Ajouter votre photo"
+                                    }
+                                  },
+                                  on: { change: _vm.onChange }
+                                })
+                              ]
+                            : [
+                                _c("h1", { staticClass: "title" }, [
+                                  _vm._v(
+                                    "Photo envoyée ! Nous la validerons d'ici peu ! "
+                                  )
+                                ])
+                              ]
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      !_vm.sent
+                        ? _c(
+                            "div",
+                            { attrs: { slot: "footer" }, slot: "footer" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "button is-primary",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.uploadImage()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Envoyer")]
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                : _vm._e()
+            ]
+          : _vm._e()
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-000b415a", module.exports)
+  }
+}
+
+/***/ }),
+/* 458 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 459 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(470)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(472)
+/* template */
+var __vue_template__ = __webpack_require__(473)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4d0e8b5b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Picture/Placeholder.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4d0e8b5b", Component.options)
+  } else {
+    hotAPI.reload("data-v-4d0e8b5b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 470 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(471);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("6dc37f1c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4d0e8b5b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Placeholder.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4d0e8b5b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Placeholder.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 471 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 472 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_picture_input__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_picture_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_picture_input__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalView_vue__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalView_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalView_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "Placeholder",
+    props: ["text", "recipeid", "recipehash", "user"],
+    data: function data() {
+        return {
+            colors: ['background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);', 'background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);', 'background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);', 'background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);', 'background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);', 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);', 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);', 'background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);', 'background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);'],
+            colorGenerated: '',
+            clicked: false,
+            image: '',
+            sent: false
+        };
+    },
+
+    components: {
+        PictureInput: __WEBPACK_IMPORTED_MODULE_0_vue_picture_input___default.a, modal: __WEBPACK_IMPORTED_MODULE_1__ModalView_vue___default.a
+    },
+    methods: {
+        generateColors: function generateColors() {
+            var idFirst = Math.floor(Math.random() * this.colors.length);
+            this.colorGenerated = this.colors[idFirst];
+        },
+
+        created: function created() {
+            this.generateColors();
+        },
+        showModal: function showModal() {
+            this.clicked = true;
+        },
+        onChange: function onChange(image) {
+            console.log('New picture selected!');
+            if (image) {
+                console.log('Picture loaded.');
+                this.image = image;
+            } else {
+                console.log('FileReader API not supported: use the <form>, Luke!');
+            }
+        },
+        uploadImage: function uploadImage() {
+            var _this = this;
+
+            return axios.post('/recette/addmypicture', {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                recipe: this.recipeid,
+                recipehash: this.recipehash,
+                user: this.user,
+                picture: this.image
+            }).then(function (response) {
+                _this.sent = true;
+                console.log(response);
+            }).catch(function (error) {});
+        }
+    },
+    created: function created() {
+        this.generateColors();
+    }
+});
+
+/***/ }),
+/* 473 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _c(
     "div",
     [
       _c(
-        "a",
+        "div",
         {
-          staticClass: "button_picture",
+          staticClass: "is-flex-center fit-cover hover_pointer",
+          style: this.colorGenerated + "height: 20vh;",
+          attrs: { alt: this.text },
           on: {
             click: function($event) {
               _vm.showModal()
             }
           }
         },
-        [_vm._m(0), _vm._v("\n\n        Ajouter votre photo\n    ")]
+        [_vm._m(0)]
       ),
       _vm._v(" "),
       _vm.clicked
@@ -91256,34 +91615,50 @@ var render = function() {
                       "div",
                       { attrs: { slot: "body" }, slot: "body" },
                       [
-                        _c("picture-input", {
-                          attrs: {
-                            "custom-strings": {
-                              upload: "<h1>Bummer!</h1>",
-                              drag:
-                                "<i class='fas fa-camera-retro'></i> Ajouter votre photo"
-                            }
-                          },
-                          on: { change: _vm.onChange }
-                        })
+                        !_vm.sent
+                          ? [
+                              _c("picture-input", {
+                                attrs: {
+                                  "custom-strings": {
+                                    upload: "<h1>Bummer!</h1>",
+                                    drag:
+                                      "<i class='fas fa-camera-retro'></i> Ajouter votre photo"
+                                  }
+                                },
+                                on: { change: _vm.onChange }
+                              })
+                            ]
+                          : [
+                              _c("h1", { staticClass: "title" }, [
+                                _vm._v(
+                                  "Photo envoyée ! Nous la validerons d'ici peu ! "
+                                )
+                              ])
+                            ]
                       ],
-                      1
+                      2
                     ),
                     _vm._v(" "),
-                    _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "button is-primary",
-                          on: {
-                            click: function($event) {
-                              _vm.uploadImage()
-                            }
-                          }
-                        },
-                        [_vm._v("Envoyer")]
-                      )
-                    ])
+                    !_vm.sent
+                      ? _c(
+                          "div",
+                          { attrs: { slot: "footer" }, slot: "footer" },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "button is-primary",
+                                on: {
+                                  click: function($event) {
+                                    _vm.uploadImage()
+                                  }
+                                }
+                              },
+                              [_vm._v("Envoyer")]
+                            )
+                          ]
+                        )
+                      : _vm._e()
                   ]
                 )
               : _vm._e()
@@ -91298,33 +91673,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      {
-        staticClass: " fa-stack ",
-        staticStyle: {
-          "margin-right": "0.4rem",
-          position: "absolute",
-          left: "2%"
-        }
-      },
-      [
-        _c("i", {
-          staticClass: "fas fa-circle fa-stack-2x",
-          staticStyle: { color: "#7f5fbf" }
-        }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fas fa-camera fa-stack-1x ",
-          staticStyle: { color: "#ebeaf5" }
-        }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fas fa-plus ",
-          staticStyle: { position: "absolute", color: "white" }
-        })
-      ]
-    )
+    return _c("span", [
+      _vm._v(" Ajouter ma propre photo\n        "),
+      _c("i", {
+        staticClass: "fas fa-camera ",
+        staticStyle: { color: "#7f5fbf" }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -91332,21 +91687,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-000b415a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4d0e8b5b", module.exports)
   }
 }
-
-/***/ }),
-/* 458 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 459 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Recipe;
 /*use App\Recipe;*/
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PictureController;
 use App\Jobs\PictureThumbnail;
 use App\Providers\UniverseProvider;
 use App\RecipeImg;
@@ -18,10 +19,18 @@ use Illuminate\Support\Facades\Log;
 use Spatie\SchemaOrg\Recipe;
 use Spatie\SchemaOrg\Schema;
 use Carbon\Carbon;
+use Vinkla\Hashids\Facades\Hashids;
 
 
 class RecipesController extends Controller
 {
+
+    private $pictureService;
+
+    public function __construct()
+    {
+        $this->pictureService = new PictureController();
+    }
 
 
 	/**
@@ -145,8 +154,6 @@ class RecipesController extends Controller
 			"video" => "nullable|string|regex:([A-Za-z0-9 ])",
 			"type" => "integer|required",
 		]);
-
-
 		$recipe = new Recipes();
 
 		// User ID :
@@ -171,23 +178,16 @@ class RecipesController extends Controller
 
 
 		$univers = $this->first_found_universe(strip_tags(clean($request->univers)));
-
 		//Filtering the comment
 		$comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
-
 		//Vegetarian switch
 		$vege = clean($request->vegan) == "on" ? true : false;
 
-		//Inserting the recipe TODO
+		//Inserting the recipe
 		$idRecette = $this->insert_recipe(strip_tags(clean($request->title)), $vege, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), $request->unite_part, strip_tags(clean($request->value_part)), intval($univers), intval($request->type), intval($iduser), clean($request->video), clean($comm));
 
-
-		// Partie SLUG
-		$slug = $this->slugtitre($request, $idRecette);
-
-		DB::table('recipes')
-			->where('id', $idRecette)
-			->update(['slug' => app('profanityFilter')->filter($slug)]);
+		// SLUG & UID
+		$slug = $this->slugUpdate($idRecette, $request);
 
 		// Partie ingrédients
 		foreach($request->ingredient as $key => $ingredient) {
@@ -213,13 +213,11 @@ class RecipesController extends Controller
 		if(!empty($request->resume)) {
 			$file = $request->resume;
 			if($file->getError() == 0) {
-				$photoName = time() . '.' . $file->getClientOriginalExtension();
-				$this->ajouter_image($photoName, $iduser, $idRecette);
-				$file->move(public_path('recipes/' . $idRecette . '/' . $iduser . '/'), $photoName);
+                $this->pictureService->addFirstPictureRecipe($file, $idRecette, $iduser);
 			}
 		}
 
-		return redirect()->route('recipe.show', ['post' => $slug]);
+		return redirect()->route('recipe.show', $slug);
 	}
 
 	/**
@@ -393,7 +391,7 @@ class RecipesController extends Controller
 		$steps = DB::table('recipes_steps')->where('recipe_id', '=', $recette->id)->get();
 		$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 
-		$firstimg = $this->load_picture($recette);
+		$firstimg = $this->pictureService->loadFirstRecipePicture($recette);
 
 		// STARS
 		$stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
@@ -517,11 +515,15 @@ class RecipesController extends Controller
 	 * @param $recipe_id
 	 * @return string
 	 */
-	private function slugtitre($requete, $recipe_id)
+	private function slugtitre($requete, $uid)
 	{
-		$titreslug = str_slug(strip_tags(clean($requete->title)), '-');
-		return $titreslug . "-" . $recipe_id;
+		$titreslug = str_slug(strip_tags(clean($requete->title)) . "-" . $uid, '-');
+		return $titreslug;
 	}
+
+	private function generate_uid($recipe_id){
+        return Hashids::encode($recipe_id); // Used for encoding
+    }
 
 
 	/**
@@ -667,6 +669,18 @@ class RecipesController extends Controller
 			return 0;
 		}
 	}
+
+	private function slugUpdate($idRecipe, $request){
+        // Partie SLUG
+        $uid = $this->generate_uid($idRecipe);
+        $slug = $this->slugtitre($request, $uid);
+
+        DB::table('recipes')
+            ->where('id', $idRecipe)
+            ->update(['slug' => app('profanityFilter')->filter($slug), 'hashid' => $uid]);
+
+        return $slug;
+    }
 
 	private function rangerIngredient($index, $ingredient, $idRecette, $qtt)
 	{

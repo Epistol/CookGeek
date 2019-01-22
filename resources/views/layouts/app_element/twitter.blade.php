@@ -11,7 +11,7 @@
 
 <meta name="twitter:image" content="
 @if(isset($firstimg))
-    @if($firstimg->first() !== "")
-        {{strip_tags(clean($firstimg->first()))}}
+    @if($firstimg->firstWhere('name', 'normal')['url'] !== "")
+        {{strip_tags(clean($firstimg->firstWhere('name', 'normal')['url']))}}
 @endif
 @endif" />

@@ -18,9 +18,8 @@
 
                     <footer class="modal-card-foot">
                         <slot name="footer">
-
                         </slot>
-                        <button class="button">Annuler</button>
+                        <!--<button class="button" @click="$emit('close')">Annuler</button>-->
                     </footer>
 
                 </div>
