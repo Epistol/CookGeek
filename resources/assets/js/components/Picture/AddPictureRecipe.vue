@@ -11,26 +11,30 @@
             </a>
 
             <template v-if="clicked">
-                <modal v-if="clicked" @close="clicked = false" v-cloak>
-                    <h3 slot="header">Ajouter votre photo</h3>
-                    <div slot="body">
-                        <template v-if="!sent">
-                            <picture-input @change="onChange"
-                                           :custom-strings="{
+                <template v-if="user !== '' ">
+                    <modal v-if="clicked" @close="clicked = false" v-cloak>
+                        <h3 slot="header">Ajouter votre photo</h3>
+                        <div slot="body">
+                            <template v-if="!sent">
+                                <picture-input @change="onChange"
+                                               :custom-strings="{
         upload: '<h1>Bummer!</h1>',
         drag: '<i class=\'fas fa-camera-retro\'></i> Ajouter votre photo'
       }"
-                            ></picture-input>
-                        </template>
-                        <template v-else>
-                            <h1 class="title">Photo envoyée ! Nous la validerons d'ici peu ! </h1>
-                        </template>
-                    </div>
-                    <div slot="footer" v-if="!sent">
-                        <button class="button is-primary" @click="uploadImage()">Envoyer</button>
-                    </div>
-
-                </modal>
+                                ></picture-input>
+                            </template>
+                            <template v-else>
+                                <h1 class="title">Photo envoyée ! Nous la validerons d'ici peu ! </h1>
+                            </template>
+                        </div>
+                        <div slot="footer" v-if="!sent">
+                            <button class="button is-primary" @click="uploadImage()">Envoyer</button>
+                        </div>
+                    </modal>
+                </template>
+                <template v-else>
+                    <login-modal showModal="true"></login-modal>
+                </template>
             </template>
         </div>
     </transition>
@@ -39,6 +43,7 @@
 <script>
     import PictureInput from 'vue-picture-input';
     import modal from "../ModalView.vue";
+    import LoginModal from "../LoginModal.vue";
 
     export default {
         name: "AddPictureRecipe",
@@ -51,7 +56,7 @@
             }
         },
         components: {
-            PictureInput, modal
+            PictureInput, modal, LoginModal
         },
         methods: {
             showModal() {

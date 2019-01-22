@@ -5,7 +5,7 @@
         <h1>Recettes</h1>
 
         <section class="section">
-            <form method="UPDATE" action="{{route("admin.recipe.update", $recipe->id)}}">
+            <form method="PATCH" action="{{route("admin.recipe.update", $recipe->slug)}}">
                 @csrf
                 @foreach($recipe->getAttributes() as $key => $r)
                     <div class="field">

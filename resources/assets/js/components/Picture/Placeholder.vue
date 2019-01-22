@@ -2,10 +2,10 @@
     <div>
         <div
                 class="is-flex-center fit-cover hover_pointer" :alt="this.text"
-                :style="this.colorGenerated + 'height: 20vh;'"  @click="showModal()" >
+                :style="this.colorGenerated + 'height: 20vh;'" @click="showModal()">
+            <span class="uploadIcon"><i class="fas fa-cloud-upload-alt fa-7x"></i></span>
 
-            <span> Ajouter ma propre photo
-            <i class="fas fa-camera " style="color: #7f5fbf;"></i>
+            <span style="  z-index:0;"> Ajouter ma propre photo
             </span>
 
         </div>
@@ -94,7 +94,7 @@
             }
 
         },
-        created: function() {
+        created: function () {
             this.generateColors();
         }
     }

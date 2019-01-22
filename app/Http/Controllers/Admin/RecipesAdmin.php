@@ -37,6 +37,10 @@ class RecipesAdmin extends Controller
 	    ))->with(['controller' => $this]);
     }
 
+    public function show($id){
+        return redirect()->route('recipe.show', $id);
+    }
+
 	public function store($id){
 		$recipe = DB::table('recipes')->where('id', '=' , $id)->first();
 		return view("admin.recipes.edit", array(
@@ -45,8 +49,8 @@ class RecipesAdmin extends Controller
 	}
 
 	public function update($content){
-        dd($content);
-        $recipe = DB::table('recipes')->where('id', '=' , $id)->first();
+        die();
+        $recipe = DB::table('recipes')->where('slug', '=' , $content)->first();
         return view("admin.recipes.edit", array(
             'recipe' => $recipe
         ))->with(['controller' => $this]);

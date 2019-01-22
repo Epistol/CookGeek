@@ -18481,6 +18481,13 @@ a.navbar-item, a.navbar-link {
   cursor: pointer;
 }
 
+.uploadIcon {
+  color: white;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 0;
+}
+
 .ajout_recette_img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;

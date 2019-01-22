@@ -7,7 +7,6 @@
                 <div class="left_register">
                     <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat_hover">
                 </div>
-
             </div>
             <div class="column is-two-fifths is-paddingless">
                 <H1 class="title">Connexion</H1>
@@ -86,6 +85,4 @@
 
         </div>
     </div>
-
-
 </modal>

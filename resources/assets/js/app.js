@@ -27,6 +27,7 @@ import PictureInput from 'vue-picture-input'
 // Composants CDG
 
 import modal from "./components/ModalView.vue";
+import LoginModal from "./components/LoginModal.vue";
 import Notif from "./components/NotifAlert.vue";
 import LikeRecipe from "./components/LikeRecipe.vue";
 import validationform from "./components/ValidateFormButton.vue";
@@ -45,7 +46,7 @@ import Placeholder from "./components/Picture/Placeholder.vue";
 
 // Utilisation des composants
 
-Vue.use(VueClazyLoad, InstantSearch, Datepicker, SignalRecipe, modal, Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Placeholder, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
+Vue.use(VueClazyLoad, InstantSearch, Datepicker, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Placeholder, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -74,6 +75,7 @@ const app = new Vue({
         'picture-input': PictureInput,
         'add-recipe': AddPictureRecipe,
         'picture-placeholder' : Placeholder,
+        'login-modal'  : LoginModal,
     },
 
     data: {

@@ -17,7 +17,6 @@
         </a>
 
 
-
         @if($firstimg->count() > 1)
             @foreach($firstimg as $image)
                 <a href="{{collect($image)->firstWhere('name', 'normal')['url']}}"
@@ -28,24 +27,38 @@
                                  background-image: url('{{collect($image)->firstWhere('name', 'thumb')['url']}}')">
                     </div>
                 </a>
-
             @endforeach
 
             @if(collect($firstimg->first())->firstWhere('user', '!=', Auth::user()->id))
                 <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
                             user="{{Auth::user()->id}}"></add-recipe>
             @endif
+        @else
+            @auth
+                @if(collect($firstimg->first())->firstWhere('user', '!=', Auth::user()->id))
+                    <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
+                                user="{{Auth::user()->id}}"></add-recipe>
+                @endif
+            @else
+                <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
+                            user=""></add-recipe>
+            @endif
         @endif
 
-
     @else
-            {{--NO PICTURE --}}
-    <picture-placeholder recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                         user="{{Auth::user()->id}}" ></picture-placeholder>
+        {{--NO PICTURE --}}
+        <picture-placeholder recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
+                             user="{{Auth::user()->id}}"></picture-placeholder>
 
-{{--            --}}{{--ADD YOUR OWN --}}{{--
-            <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                        user="{{Auth::user()->id}}" text="Image de la recette : {{strip_tags(clean($recette->title))}}"></add-recipe>--}}
+        {{--            --}}{{--ADD YOUR OWN --}}{{--
+                    <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
+                                user="{{Auth::user()->id}}" text="Image de la recette : {{strip_tags(clean($recette->title))}}"></add-recipe>--}}
     @endif
 
 </div>
+<script>
+    import LoginModal from "../../../assets/js/components/LoginModal";
+    export default {
+        components: {LoginModal}
+    }
+</script>
