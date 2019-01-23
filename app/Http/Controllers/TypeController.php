@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
+
+    private $pictureService;
+
+    public function __construct()
+    {
+        $this->pictureService = new PictureController();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +62,7 @@ class TypeController extends Controller
     public function show($id)
     {
         $type = DB::table('type_recipes')->where("name", "=",$id)->get();
-        return view("types.show", ["types" => $type]);
+        return view("types.show", ["types" => $type, 'pictureService' => $this->pictureService ]);
     }
 
     /**

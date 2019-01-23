@@ -64,7 +64,6 @@ class LikeController extends Controller
 	{
 
 		// Check if user hasn't faved it yet :
-
 		$id2 = DB::table('user_recipe_likes')
 			->insertGetId(
 				['user_id' => strip_tags(clean($u_id)), 'recipe_id' => strip_tags(clean($recipe_id))]
@@ -112,10 +111,13 @@ class LikeController extends Controller
 			return response()->json(false);
 
 		}
-
 	}
 
-	public function toggle_like(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function toggle_like(Request $request)
 	{
 		$u_id = intval(strip_tags(clean($request->userid)));
 		$l_id = DB::table('user_recipe_likes')
@@ -137,5 +139,23 @@ class LikeController extends Controller
 		}
 
 	}
+
+    /**
+     * @param Request $request
+     * @return bool|string
+     */
+    public function nbLike(Request $request)
+    {
+        $recipe_id = intval(strip_tags(clean($request->recipeid)));
+        $l_id = DB::table('user_recipe_likes')
+            ->where([
+                ['recipe_id', '=', $recipe_id],
+            ])
+            ->count();
+        return response()->json(intval($l_id));
+
+    }
+
+
 
 }

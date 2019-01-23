@@ -13,26 +13,13 @@
                     <section class="section blockcontent">
                         <div class="columns is-multiline">
 
-                            @foreach($recipes as $i=>$recipe)
+                            @foreach($recipes as $i=>$recette)
                                 <div class="column is-2">
 
                                     <div class="card cdg">
-                                        <div class="card-image"><a href="{{route('recipe.show', $recipe->slug)}}">
-                                                <figure class="image is-4by3">
-													<?php
-													$img = DB::table('recipe_imgs')->where('user_id', '=', $recipe->id_user)->where('recipe_id', '=', $recipe->id)->first();
-													?>
-                                                    @if($img == null or empty($img))
-                                                        <img src="http://via.placeholder.com/300x200?text={{$recipe->title}}"
-                                                             class="fit-cover"
-                                                             alt="{{$recipe->title}} / CDG">
-                                                    @else
-                                                        <img src="/recipes/{{$recipe->id}}/{{$recipe->id_user}}/{{$img->image_name}}"
-                                                             class="fit-cover"
-                                                             alt="{{$recipe->title}} / CDG">
-                                                    @endif
-
-                                                </figure>
+                                        <div class="card-image"><a href="{{route('recipe.show', $recette->slug)}}">
+                                                    <?php   $img = $pictureService->loadFirstRecipePicture($recette); ?>
+                                                    @include('recipes.elements.picture')
                                             </a>
                                         </div>
                                         {{--   <categ_icon text_icon="{{$categ->name}}"></categ_icon>
@@ -44,7 +31,7 @@
                                             <div class="media">
                                                 <div class="media-content is-centered">
                                                     <p class="title is-4"><a
-                                                                href="{{route('recipe.show', $recipe->slug)}}"> {{$recipe->title}}</a>
+                                                                href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a>
                                                     </p>
 
                                                 </div>

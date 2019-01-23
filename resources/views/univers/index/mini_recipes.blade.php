@@ -4,18 +4,38 @@
         <div class="column is-3">
             @foreach($recettes as $recette)
                 <div class="is-flex">
-
+                    <?php   $img = $pictureService->loadFirstRecipePicture($recette); ?>
                     <figure class="image is-64x64 radiused">
-						<?php $pic = DB::table('recipe_imgs')
-							->where('recipe_id', '=', $recette->id)
-							->first();
-						?>
-                        @if($pic)
-                            <img src="/recipes/{{$pic->recipe_id}}/{{$pic->user_id}}/{{$pic->image_name}}"
-                                 style="background-picture : 'https://picsum.photos/64/?random'" alt=""/>
-                        @endif
+
+                        @if($img == null or empty($img) or $img->isEmpty())
+                            <img class="fit-cover"
+                                 src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
+                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                        @else
+                            @if(collect($img[0])->firstWhere('name', 'index')['url'] == "")
+                                <clazy-load src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}">
+                                    <!-- The image slot renders after the image loads. -->
+                                    <img class="fit-cover"
+                                         src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}"
+                                         alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                    @else
+                                        <clazy-load src="{{collect($img[0])->firstWhere('name', 'index')['url']}}">
+                                            <!-- The image slot renders after the image loads. -->
+                                            <img class="fit-cover"
+                                                 src="{{collect($img[0])->firstWhere('name', 'index')['url']}}"
+                                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                        @endif
+
+                                        <!-- The placeholder slot displays while the image is loading. -->
+                                            <div slot="placeholder">
+                                                <!-- You can put any component you want in here. -->
+                                            </div>
+                                        </clazy-load>
+                            @endif
                     </figure>
-                    <a href="/recette/{{$recette->slug}}" class="titre_content">{!!$recette->title  !!}</a>
+
+                    <a href="/recette/{{$recette->slug}}"
+                       class="titre_content">{{strip_tags(clean($recette->title))  }}</a>
                 </div>
 
             @endforeach

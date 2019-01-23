@@ -2,13 +2,25 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Http\Controllers\PictureController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
-	/**
+
+
+    private $pictureService;
+
+    public function __construct()
+    {
+        $this->pictureService = new PictureController();
+    }
+
+
+    /**
+     *
 	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -58,7 +70,7 @@ class MediaController extends Controller
 		if($medias != null) {
 			$recipes = DB::table('recipes')->where("type_univers", "=", $medias->id)->where('validated', '=', 1)->latest()->paginate(12);
 			// On charge les données dans la vue
-			return view('media.show', array('medias' => $medias, 'recipes' => $recipes))->with(['controller' => $this]);
+			return view('media.show', array('medias' => $medias, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
 		} else {
 			abort(404);
 		}

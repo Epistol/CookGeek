@@ -52,10 +52,11 @@ class LoginController extends Controller
 		return $fieldName;
 	}
 
-	/**
-	 * Validate the user login.
-	 * @param Request $request
-	 */
+    /**
+     * Validate the user login.
+     * @param Request $request
+     * @throws ValidationException
+     */
 	protected function validateLogin(Request $request)
 	{
 
@@ -66,8 +67,8 @@ class LoginController extends Controller
 				'password' => 'required|string',
 			],
 			[
-				'identity.required' => 'Username or email is required',
-				'password.required' => 'Password is required',
+				'identity.required' => 'Pseudo ou email est requis',
+				'password.required' => 'Mot de passe requis',
 			]
 		);
 	}

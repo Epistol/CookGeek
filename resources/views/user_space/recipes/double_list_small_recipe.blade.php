@@ -19,17 +19,7 @@
                                    href="/{{strtolower($type->name)}}">{!!  $type->name!!}</a>
                             </div>
                         @endif
-                        <a href="/recette/{{$recette->slug}}">
-                            <figure class="image is-1by1 is_recipe_horizontal">
-                                @if($recette->id_user != NULL )
-									<?php        $firstimg = \App\Http\Controllers\Recipe\RecipesController::load_img($recette);
-									?>
-                                    <img src="{{ strip_tags(clean($firstimg->first())) }}">
-                                @else
-                                    {{--<img src="http://via.placeholder.com/300x200?text={!! strip_tags(clean($first->image_name)) !!}">--}}
-                                @endif
-                            </figure>
-                        </a>
+                        @include('recipes.elements.picture')
                     </div>
                     <div class="column is-8 ">
                         <div class="top is-flex">

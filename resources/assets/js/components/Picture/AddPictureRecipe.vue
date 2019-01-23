@@ -1,15 +1,27 @@
 <template>
-    <transition name="fade">
+    <transition name="vodal-zoom">
         <div>
-            <a class="button_picture button is-rounded " @click="showModal()">
+            <template v-if="this.type === 'button'">
+                <a class="button_picture button is-outlined is-rounded " @click="showModal()">
                 <span class="icon is-small">
                       <span class=" fa-stack ">
                       <i class="fas fa-camera fa-stack-1x " style="color: #7f5fbf;"></i>
                     </span>
                  </span>
-                <span> Ajouter ma photo</span>
-            </a>
+                    <span>Ajouter ma photo</span>
+                </a>
+            </template>
+            <template v-else>
+                <div
+                        class="is-flex-center fit-cover hover_pointer" :alt="this.text"
+                        :style="this.colorGenerated + 'height: 20vh;'" @click="showModal()">
+                    <span class="uploadIcon"><i class="fas fa-cloud-upload-alt fa-7x"></i></span>
 
+                    <span style="z-index:0;">Ajouter ma propre photo
+            </span>
+
+                </div>
+            </template>
             <template v-if="clicked">
                 <template v-if="user !== '' ">
                     <modal v-if="clicked" @close="clicked = false" v-cloak>
@@ -33,7 +45,7 @@
                     </modal>
                 </template>
                 <template v-else>
-                    <login-modal showModal="true"></login-modal>
+                        <login-modal :showModal="true" @close="closing()" ></login-modal>
                 </template>
             </template>
         </div>
@@ -47,9 +59,11 @@
 
     export default {
         name: "AddPictureRecipe",
-        props: ["recipeid", "recipehash", "user"],
+        props: ["recipeid", "recipehash", "user", "type"],
         data() {
             return {
+                colors: ['background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);', 'background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);', 'background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);', 'background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);', 'background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);', 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);', 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);', 'background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);', 'background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);'],
+                colorGenerated: '',
                 clicked: false,
                 image: '',
                 sent: false,
@@ -59,6 +73,13 @@
             PictureInput, modal, LoginModal
         },
         methods: {
+            generateColors() {
+                const idFirst = Math.floor(Math.random() * this.colors.length);
+                this.colorGenerated = this.colors[idFirst];
+            },
+            closing(){
+                this.clicked = false;
+            },
             showModal() {
                 this.clicked = true;
             },
@@ -87,7 +108,20 @@
 
                 });
             }
-        }
+        },
+        created: function () {
+            this.generateColors();
+        },
+        computed: {
+            clicked: function () {
+                if (this.clicked === true) {
+                    if (this.user === '') {
+                        this.showModal = true;
+                    }
+                }
+            },
+
+        },
     }
 </script>
 

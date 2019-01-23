@@ -18,9 +18,6 @@
                                     <h1 class="title">
                                         Les dernières recettes
                                     </h1>
-                                    <h2 class="subtitle">
-
-                                    </h2>
                                 </div>
                             </div>
                         </section>

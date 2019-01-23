@@ -1,7 +1,6 @@
 <!-- Image part -->
 <div class=" has-text-centered">
-
-    @if($firstimg->count() == 1  )
+    @if($firstimg->count() > 0  )
 
         <a href="{{collect($firstimg->first())->firstWhere('name', 'normal')['url']}}"
            data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{clean($recette->title)}}">
@@ -18,46 +17,28 @@
 
 
         @if($firstimg->count() > 1)
+            <ul style="float: left;">
             @foreach($firstimg as $image)
-                <a href="{{collect($image)->firstWhere('name', 'normal')['url']}}"
-                   data-lightbox="{{strip_tags(clean($recette->slug))}}"
-                   data-title="{{strip_tags(clean($recette->title))}}">
-                    <div class=" fit-cover"
-                         style="width: 56px; background-size: cover; height: 38px; border-radius: 3px;
-                                 background-image: url('{{collect($image)->firstWhere('name', 'thumb')['url']}}')">
-                    </div>
-                </a>
+                <li style="float: left;">
+                    @include('recipes.elements.tinyPicture')</li>
             @endforeach
+                </ul>
 
-            @if(collect($firstimg->first())->firstWhere('user', '!=', Auth::user()->id))
-                <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                            user="{{Auth::user()->id}}"></add-recipe>
-            @endif
+                @include('recipes.show.addPicture')
         @else
-            @auth
-                @if(collect($firstimg->first())->firstWhere('user', '!=', Auth::user()->id))
-                    <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                                user="{{Auth::user()->id}}"></add-recipe>
-                @endif
-            @else
-                <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                            user=""></add-recipe>
-            @endif
+            @include('recipes.show.addPicture')
         @endif
 
     @else
-        {{--NO PICTURE --}}
-        <picture-placeholder recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                             user="{{Auth::user()->id}}"></picture-placeholder>
 
-        {{--            --}}{{--ADD YOUR OWN --}}{{--
-                    <add-recipe recipeid="{{$recette->id}}" recipehash="{{$recette->hashid}}"
-                                user="{{Auth::user()->id}}" text="Image de la recette : {{strip_tags(clean($recette->title))}}"></add-recipe>--}}
+        {{--NO PICTURE --}}
+        @include('recipes.show.addPicture')
     @endif
 
 </div>
 <script>
     import LoginModal from "../../../assets/js/components/LoginModal";
+
     export default {
         components: {LoginModal}
     }

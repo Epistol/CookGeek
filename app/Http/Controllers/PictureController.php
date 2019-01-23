@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\PictureThumbnail;
+use App\RecipeImg;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,9 +72,10 @@ class PictureController extends Controller
         $urlWebp = '';
         $urlThumb = '';
         $urlIndex = '';
+        $return = collect();
+
 
         if ($pictures !== null) {
-            $return = collect();
             foreach ($pictures as $picture) {
                 $pictureDate = Carbon::parse($picture->created_at);
                 $changev7 = Carbon::create(2019, 01, 20, 20, 10, 00);
@@ -88,9 +90,8 @@ class PictureController extends Controller
                 $data = [['name' => 'normal', 'url' => $url, 'user' => intval($recette->id_user)], ['name' => 'webp', 'url' => $urlWebp, 'user' => intval($recette->id_user)], ['name' => 'thumb', 'url' => $urlThumb, 'user' => intval($recette->id_user)], ['name' => 'index', 'url' => $urlIndex, 'user' => intval($recette->id_user)]];
                 $return->push($data);
             }
-
         } else {
-            $url = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
+            $return->push(['name' => 'normal', 'url' => $url, 'user' => intval($recette->id_user)]);
         }
 
         return $return;

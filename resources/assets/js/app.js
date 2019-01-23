@@ -42,11 +42,10 @@ import TypeUniversIcon from "./components/Elements/Icons/TypeUniversIcon.vue";
 import PictureUpload from "./components/Picture/PictureUpload.vue";
 import UnivPictureUpload from "./components/Picture/UnivPictureUpload.vue";
 import AddPictureRecipe from "./components/Picture/AddPictureRecipe.vue";
-import Placeholder from "./components/Picture/Placeholder.vue";
 
 // Utilisation des composants
 
-Vue.use(VueClazyLoad, InstantSearch, Datepicker, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Placeholder, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
+Vue.use(VueClazyLoad, InstantSearch, Datepicker, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -74,7 +73,6 @@ const app = new Vue({
         'univpictureupload': UnivPictureUpload,
         'picture-input': PictureInput,
         'add-recipe': AddPictureRecipe,
-        'picture-placeholder' : Placeholder,
         'login-modal'  : LoginModal,
     },
 

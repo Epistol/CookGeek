@@ -65,7 +65,7 @@ class RecipesController extends Controller
 			->latest()->paginate(12);
 
 		// On charge les données dans la vue
-		return view('recipes.index', array('universcateg' => $universcateg, 'recipes' => $recipes))->with(['controller' => $this]);
+		return view('recipes.index', array('universcateg' => $universcateg, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
 	}
 
 

@@ -14,6 +14,14 @@ use Vinkla\Hashids\Facades\Hashids;
 
 class PageController extends Controller
 {
+
+    private $pictureService;
+
+    public function __construct()
+    {
+        $this->pictureService = new PictureController();
+    }
+
 	/**
 	 * Liste des pages
 	 *
@@ -183,8 +191,7 @@ class PageController extends Controller
 	{
 		$universcateg = DB::table('categunivers')->get();
 		$recettesrand = array();
-
-
+        $pic = $this->pictureService;
 
 // Petit texte sur l'accueil
 		$heartbeat = DB::table("heartbeat")->latest()->first();
@@ -197,7 +204,7 @@ class PageController extends Controller
 			->paginate('12');
 
 // On charge les données dans la vue
-		return view('welcome', array('univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat))->with(['controller' => $this]);
+		return view('welcome', array('univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat, 'picturectrl' => $pic))->with(['controller' => $this]);
 	}
 
 

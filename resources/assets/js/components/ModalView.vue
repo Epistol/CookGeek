@@ -1,6 +1,6 @@
 <template>
-    <transition name="modal">
-        <div class="modal is-active">
+    <transition name="vodal-zoom">
+        <div class="modal is-active" @keyup.esc="$emit('close')">
             <!--@close="machin = false-->
             <div class="modal-background" @click="$emit('close')">
             </div>

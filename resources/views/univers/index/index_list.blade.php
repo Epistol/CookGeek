@@ -10,7 +10,7 @@
             <section class="hero">
                 <div class="is-flex hero-body">
                     <a href="{{route('media.show', $categ->name)}}"><h2 class="title"
-                                                                       style="padding-right: 0.5rem">{{ucfirst($categ->name)}}</h2>
+                                                                        style="padding-right: 0.5rem">{{ucfirst($categ->name)}}</h2>
                     </a>
                     <categ_icon text_icon="{{$categ->name}}"></categ_icon>
                 </div>
@@ -31,10 +31,8 @@
                         @if($univers_data !== null)
                             @php
                                 $recipe_count = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->count();
-                                $recettes = DB::table('recipes')->select('id')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->latest()->orderBy('nb_views', 'desc')->limit(6)->paginate(12);
-                                $id_random = $recettes->random();
-                                $image_au_pif = DB::table('recipe_imgs')->where('recipe_id', '=', $id_random->id)->inRandomOrder()->first();
-
+                                $recette = collect(DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->latest()->orderBy('nb_views', 'desc')->get())->random();
+                                $img = $pictureService->loadFirstRecipePicture($recette);
                             @endphp
 
                             {{--Nom de l'univers--}}
@@ -52,22 +50,40 @@
                                     </header>
                                     <div class="card-content is-flex-center">
                                         <div class="content">
-                                            @if($image_au_pif !== null)
-                                                <figure class="image is-128x128">
-                                                    <img alt="title" class="fit-cover  image is-128x128 "
-                                                         src='/recipes/{{$image_au_pif->recipe_id}}/{{$image_au_pif->user_id}}/{{$image_au_pif->image_name}}'/>
+                                            @if($img !== null)
+                                                <figure class="image is-128x128 ">
+                                                    @if($img == null or empty($img) or $img->isEmpty())
+                                                        <img class="fit-cover"
+                                                             src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
+                                                             alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                    @else
+                                                        @if(collect($img[0])->firstWhere('name', 'index')['url'] == "")
+                                                            <clazy-load
+                                                                    src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}">
+                                                                <!-- The image slot renders after the image loads. -->
+                                                                <img class="fit-cover"
+                                                                     src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}"
+                                                                     alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                @else
+                                                                    <clazy-load
+                                                                            src="{{collect($img[0])->firstWhere('name', 'index')['url']}}">
+                                                                        <!-- The image slot renders after the image loads. -->
+                                                                        <img class="fit-cover"
+                                                                             src="{{collect($img[0])->firstWhere('name', 'index')['url']}}"
+                                                                             alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                    @endif
+
+                                                                    <!-- The placeholder slot displays while the image is loading. -->
+                                                                        <div slot="placeholder">
+                                                                            <!-- You can put any component you want in here. -->
+                                                                        </div>
+                                                                    </clazy-load>
+                                                        @endif
                                                 </figure>
                                             @endif
                                         </div>
                                     </div>
-                                    {{--  <footer class="card-footer">
-                                          <a href="#" class="card-footer-item">Save</a>
-                                          <a href="#" class="card-footer-item">Edit</a>
-                                          <a href="#" class="card-footer-item">Delete</a>
-                                      </footer>--}}
                                 </div>
-
-
                             </li>
                         @endif
                     @endforeach
@@ -77,8 +93,5 @@
         </div>
     @else
         {{--TODO : faire une fiche plus tard--}}
-        {{--<span class="tag">{{ucfirst($categ->name)}}</span>--}}
-        {{--@include("univers.index.fallback_recipes")--}}
-
     @endif
 @endforeach
