@@ -1,3 +1,8 @@
+a {
+  color: $lavender;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 
 // Typography
@@ -120,6 +125,9 @@ h2.title{
   
 }
 
+
+
+
 h1.title-website {
   font-family: "Conviction", Arial, serif;
   color: $brand-primary;
@@ -128,7 +136,7 @@ h1.title-website {
 }
 
 h2.mini_title {
-  color: $title_small;
+  color: $gris_granite;
   font-size:1.4rem;
 }
 

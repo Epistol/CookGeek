@@ -1,4 +1,4 @@
-<a href="/recette/{{$recette->slug}}" data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{strip_tags(clean($recette->title))}}"  >
+<a href="{{collect($image)->firstWhere('name', 'normal')['url']}}" data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{strip_tags(clean($recette->title))}}"  >
 
     <figure class="image  ">
         <?php
@@ -6,7 +6,7 @@
         ?>
         @if($img == null or empty($img) or collect($img)->isEmpty())
             <img class="fit-cover image is-64x64"
-                 src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
+                 src="http://via.placeholder.com/300x200?text={{ strip_tags(clean($recette->title)) }}"
                  alt="{{ strip_tags(clean($recette->title)) }} / CDG">
         @else
                 @if(collect($img)->firstWhere('name', 'webp')['url'] == "")

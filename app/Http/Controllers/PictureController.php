@@ -7,6 +7,7 @@ use App\RecipeImg;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
 
@@ -26,7 +27,7 @@ class PictureController extends Controller
         $recipeHash = $request->recipehash;
         $userId = $request->user;
 
-        $namePicture = $this->randomName($pictureBase);
+        $namePicture = $this->randomName();
         $uploaded = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
 
         DB::table('recipe_imgs')->updateOrInsert(
@@ -36,6 +37,8 @@ class PictureController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+
+
         return response()->json(true);
     }
 
@@ -45,21 +48,23 @@ class PictureController extends Controller
      * @param $userId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addFirstPictureRecipe($pictureBase, $recipeId, $userId)
+    public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
+        $filePath = Storage::get($picturePath);
+        $image = base64_encode($filePath);
 
-        $namePicture = $this->randomName($pictureBase);
-        $uploaded = $this->storeCreationPicture($recipeId, $pictureBase, $userId, $namePicture);
+        $uploaded = $this->storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
 
         DB::table('recipe_imgs')->updateOrInsert(
             ['recipe_id' => $recipeId,
-                'image_name' => strip_tags(clean($namePicture)),
+                'image_name' => strip_tags(clean($pictureName)),
                 'user_id' => $userId,
                 'created_at' => now(),
                 'updated_at' => now(),
                 'validated' => 1
             ]);
 
+        Storage::delete($picturePath);
         return response()->json($uploaded);
 
     }
@@ -115,16 +120,16 @@ class PictureController extends Controller
     }
 
     /**
-     * @param $recipe
+     * @param $recipeHashID
      * @param $imageContent
      * @param $userId
      * @param $imageName
      */
-    private function storeCreationPicture($recipe, $imageContent, $userId, $imageName)
+    private function storeCreationPicture($recipeHashID, $imageContent, $userId, $imageName)
     {
-        $thumb = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'thumbnail');
-        $index = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'indexRecipe');
-        $square = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'thumbSquare', 250);
-        $original = PictureThumbnail::dispatch($recipe, $imageContent, $imageName, $userId, 'original');
+        $thumb = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'thumbnail');
+        $index = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'indexRecipe');
+        $square = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'thumbSquare', 250);
+        $original = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'original');
     }
 }

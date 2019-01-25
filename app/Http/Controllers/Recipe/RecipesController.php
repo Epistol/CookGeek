@@ -6,18 +6,14 @@ namespace App\Http\Controllers\Recipe;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
-use App\Jobs\PictureThumbnail;
-use App\Providers\UniverseProvider;
 use App\RecipeImg;
 use App\Recipes;
 use App\Univers;
-use App\Http\Controllers\UniversController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Spatie\SchemaOrg\Recipe;
-use Spatie\SchemaOrg\Schema;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -184,10 +180,26 @@ class RecipesController extends Controller
 		$vege = clean($request->vegan) == "on" ? true : false;
 
 		//Inserting the recipe
-		$idRecette = $this->insert_recipe(strip_tags(clean($request->title)), $vege, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), $request->unite_part, strip_tags(clean($request->value_part)), intval($univers), intval($request->type), intval($iduser), clean($request->video), clean($comm));
+		$idRecette = $this->insert_recipe(
+		    strip_tags(clean($request->title)),
+            $vege,
+            intval($request->difficulty),
+            intval($request->categ_plat),
+            intval($request->cost),
+            intval($prep),
+            intval($cook),
+            intval($rest),
+            $request->unite_part,
+            strip_tags(clean($request->value_part)),
+            intval($univers),
+            intval($request->type),
+            intval($iduser),
+            clean($request->video),
+            clean($comm));
 
 		// SLUG & UID
-		$slug = $this->slugUpdate($idRecette, $request);
+        $uid =  $this->generate_uid($idRecette);
+		$slug = $this->slugUpdate($idRecette, $uid, $request);
 
 		// Partie ingrédients
 		foreach($request->ingredient as $key => $ingredient) {
@@ -213,8 +225,14 @@ class RecipesController extends Controller
 		if(!empty($request->resume)) {
 			$file = $request->resume;
 			if($file->getError() == 0) {
-                $this->pictureService->addFirstPictureRecipe($file, $idRecette, $iduser);
-			}
+//			    TODO : CORRECT THIS
+
+                $path = $file->store('public/uploads');
+                $hashedName = $request->resume->hashName();
+                $ext = pathinfo($hashedName, PATHINFO_EXTENSION);
+                $filename = basename($hashedName,".".$ext);
+                $this->pictureService->addFirstPictureRecipe($path,$filename, $idRecette,$uid,  $iduser);
+            }
 		}
 
 		return redirect()->route('recipe.show', $slug);
@@ -670,15 +688,12 @@ class RecipesController extends Controller
 		}
 	}
 
-	private function slugUpdate($idRecipe, $request){
+	private function slugUpdate($idRecipe, $uid, $request){
         // Partie SLUG
-        $uid = $this->generate_uid($idRecipe);
         $slug = $this->slugtitre($request, $uid);
-
         DB::table('recipes')
             ->where('id', $idRecipe)
             ->update(['slug' => app('profanityFilter')->filter($slug), 'hashid' => $uid]);
-
         return $slug;
     }
 

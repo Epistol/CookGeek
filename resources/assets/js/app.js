@@ -12,6 +12,9 @@ require('./star-rating');
 window.Vue = require('vue');
 import Vue from 'vue';
 
+import VueMoment from 'vue-moment';
+Vue.use(VueMoment);
+
 // Imports des composants
 
 import VeeValidate from 'vee-validate';
@@ -43,9 +46,11 @@ import PictureUpload from "./components/Picture/PictureUpload.vue";
 import UnivPictureUpload from "./components/Picture/UnivPictureUpload.vue";
 import AddPictureRecipe from "./components/Picture/AddPictureRecipe.vue";
 
+import Time from "./components/Time.vue";
+
 // Utilisation des composants
 
-Vue.use(VueClazyLoad, InstantSearch, Datepicker, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
+Vue.use(VueClazyLoad, InstantSearch, Datepicker, Time, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -74,6 +79,7 @@ const app = new Vue({
         'picture-input': PictureInput,
         'add-recipe': AddPictureRecipe,
         'login-modal'  : LoginModal,
+        'fulltime' : Time
     },
 
     data: {

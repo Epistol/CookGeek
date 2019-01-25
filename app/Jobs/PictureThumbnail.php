@@ -75,6 +75,7 @@ class PictureThumbnail implements ShouldQueue
      */
     public function handle()
     {
+        // Remove any trace of file extension in base64
         $image2 = preg_replace('#^data:image/[^;]+;base64,#', '', $this->imageContent);
         $image2 = str_replace(' ', '+', $image2);
         $image_decoded = base64_decode($image2);
@@ -83,12 +84,12 @@ class PictureThumbnail implements ShouldQueue
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
 
-        $recipepath =  public_path('/recipes/' . $this->recipe);
+        $recipepath = public_path('/recipes/' . $this->recipe);
         File::exists($recipepath) or File::makeDirectory($recipepath);
 
         $path = public_path('/recipes/' . $this->recipe . '/' . $this->user . '/');
         File::exists($path) or File::makeDirectory($path);
-         $image->save($path . '/' . $name);
+        $image->save($path . '/' . $name);
 
     }
 
@@ -114,10 +115,9 @@ class PictureThumbnail implements ShouldQueue
             default :
                 if ($this->height) {
                     $image = $image->fit($this->width, $this->height)->encode('jpeg', 90);
-                } elseif($this->width) {
+                } elseif ($this->width) {
                     $image = $image->resize($this->width, null)->encode('jpeg', 90);
-                }
-                else  {
+                } else {
                     $image = $image->fit(1096, null)->encode('jpeg', 90);
                 }
                 break;
@@ -135,10 +135,10 @@ class PictureThumbnail implements ShouldQueue
                 $imageName = 'index_' . $imageName . ".png";
                 break;
             case 'thumbSquare':
-                $imageName = 'square_' . $imageName  . ".webp";
+                $imageName = 'square_' . $imageName . ".webp";
                 break;
             default :
-                $imageName = $imageName  . ".jpeg";
+                $imageName = $imageName . ".jpeg";
                 break;
         }
         return $imageName;

@@ -1,4 +1,3 @@
-
 .ajout_recette_img {
   justify-content: center;
   align-items: center;
@@ -10,7 +9,6 @@
   -webkit-appearance: none;
   -moz-appearance: textfield;
 }
-
 
 table.bgborder {
   background: transparent;
@@ -81,7 +79,7 @@ span.timing, span.parts {
   @include transition_all();
 
   &:hover .fa {
-    color: $comp-green;
+    color: $green;
     @include transition_all();
   }
 
