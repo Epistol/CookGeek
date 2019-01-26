@@ -133,11 +133,10 @@ class PictureController extends Controller
                     $urlIndex = url($firstPart . "index_" . strip_tags(clean($picture->image_name)) . ".png");
                 }
 
-                $listLinks->push(['name' => 'normal', 'url' => $url],
-                    ['name' => 'webp', 'url' => $urlWebp],
-                    ['name' => 'thumb', 'url' => $urlThumb],
-                    ['name' => 'index', 'url' => $urlIndex]);
-
+                $listLinks->push(['name' => 'normal', 'url' => $url]);
+                $listLinks->push(['name' => 'webp', 'url' => $urlWebp]);
+                $listLinks->push(['name' => 'thumb', 'url' => $urlThumb]);
+                $listLinks->push(['name' => 'index', 'url' => $urlIndex]);
                 $picture->urls = $listLinks;
             }
         }

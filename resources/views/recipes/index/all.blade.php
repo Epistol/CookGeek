@@ -17,6 +17,17 @@
             <?php
             $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
             $somme = $controller->sum_time_home($somme_t);
+            $validPictures = $picturectrl->loadRecipePicturesValid($recette);
+            if ($validPictures->isNotEmpty()) {
+                $img = $validPictures->first();
+                if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
+                    $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
+                } else {
+                    $urlClazy = collect($img->urls)->firstWhere('name', 'normal')['url'];
+                }
+            } else {
+                $urlClazy = collect();
+            }
             ?>
             @if($nombre % 4 === 0)
                 <div class="columns">
@@ -30,40 +41,7 @@
                                     </div>
 
                                     <div class="card-image">
-                                        <a href="/recette/{{strip_tags(clean($recette->slug))}} ">
-                                            <figure class="image is-16by9 ">
-                                                <?php
-                                                $img = $picturectrl->loadRecipePictures($recette);
-                                                ?>
-                                                @if($img == null or empty($img) or $img->isEmpty())
-                                                    <img class="fit-cover"
-                                                         src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
-                                                         alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                @else
-                                                    @if(collect($img[0])->firstWhere('name', 'index')['url'] == "")
-                                                        <clazy-load
-                                                                src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}">
-                                                            <!-- The image slot renders after the image loads. -->
-                                                            <img class="fit-cover"
-                                                                 src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}"
-                                                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                            @else
-                                                                <clazy-load
-                                                                        src="{{collect($img[0])->firstWhere('name', 'index')['url']}}">
-                                                                    <!-- The image slot renders after the image loads. -->
-                                                                    <img class="fit-cover"
-                                                                         src="{{collect($img[0])->firstWhere('name', 'index')['url']}}"
-                                                                         alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                                @endif
-
-                                                                <!-- The placeholder slot displays while the image is loading. -->
-                                                                    <div slot="placeholder">
-                                                                        <!-- You can put any component you want in here. -->
-                                                                    </div>
-                                                                </clazy-load>
-                                                    @endif
-                                            </figure>
-                                        </a>
+                                        @include('recipes.index.cardimage')
                                     </div>
                                     <div class="recipe-header">
                                         <p class="card-header-title">
@@ -99,7 +77,6 @@
                             @if($nombre % 4 === 3)
                     </div>
             @endif
-
         @endforeach
 
 

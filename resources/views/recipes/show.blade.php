@@ -1,8 +1,16 @@
 @extends('layouts.app')
 
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
-@if($validPictures->firstWhere('name', 'normal') !== "")
-    @section('image_og', strip_tags(clean($validPictures->firstWhere(['name', 'normal'], ['user', $recette->id_user])['url'])))
+<?php
+if ($validPictures->isNotEmpty()) {
+    $imageSocial = $validPictures->first();
+    $pic = collect($imageSocial->urls)->firstWhere('name', '=', 'normal');
+} else {
+    $pic = collect();
+}
+?>
+@if(collect($pic)->isNotEmpty())
+    @section('image_og',$pic['url'])
 @endif
 @section('content')
 
@@ -99,23 +107,22 @@
     <?php
     use Carbon\Carbon;use Spatie\SchemaOrg\Schema;
 
-    if(isset($firstimg)) {
-	    $img = $firstimg->where('user', $recette->id_user)->firstWhere('name', 'normal')['url'];
-    } else {
-	    $img = null;
-    }
-
     $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
     ?>
 
 
-    <script type="application/ld+json" >
+    <script type="application/ld+json">
     {
       "@context": "http://schema.org/",
       "@type": "Recipe",
       "name": "{{strip_tags(clean($recette->title))}}",
+
       "image": [
-            "{{$img}}"
+        @if(collect($pic)->isNotEmpty())
+            "{{$pic['url']}}"
+            @else
+            "{{$pic}}"
+            @endif
         ],
         "author": {
           "@type": "Person",
@@ -129,10 +136,10 @@
         "recipeCategory" : "{{strip_tags(clean($type->name))}}",
         "recipeIngredient": [
         @foreach ($ingredients as $key => $ingredient)
-		    <?php
-		    $qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
-		    $nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
-		    ?>
+            <?php
+            $qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
+            $nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
+            ?>
             @if($loop->last)
 
                 "{{$qtt}} {{$nom_in}}"
@@ -156,6 +163,7 @@
         @endforeach
         ]
 }
+
     </script>
 @endsection
 

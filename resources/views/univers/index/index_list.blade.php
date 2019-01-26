@@ -32,7 +32,7 @@
                             @php
                                 $recipe_count = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->count();
                                 $recette = collect(DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->latest()->orderBy('nb_views', 'desc')->get())->random();
-                                $img = $pictureService->loadRecipePictures($recette);
+                                $img = $pictureService->loadRecipePicturesValid($recette);
                             @endphp
 
                             {{--Nom de l'univers--}}

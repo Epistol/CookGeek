@@ -8,6 +8,7 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.2-fpm-node-browsers
+      - image: circleci/mysql:5.7
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -18,11 +19,20 @@ jobs:
       # 
       # - image: redis:2.8.19
 
+    environment:
+      - APP_ENV: testing
+      - APP_KEY: base64:TESTING_APP_KEY
+      - APP_DEBUG: true
+      - APP_LOG_LEVEL: debug
+      - DB_CONNECTION: circle_test
+      - NODE_ENV: testing
+      - MYSQL_ALLOW_EMPTY_PASSWORD: true
+
     steps:
       - checkout
 
       - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip pcntl exif bcmath
+      - run: sudo docker-php-ext-install zip pdo_mysql pcntl exif bcmath
 
       # Download and cache dependencies
 
@@ -55,8 +65,8 @@ jobs:
             - ~/.yarn
 
       # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: php artisan migrate
+      - run: php artisan db:seed
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit

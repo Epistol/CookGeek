@@ -1,45 +1,54 @@
 <!-- Image part -->
-<div class=" has-text-centered">
-    @if($validPictures->count() > 0  )
-        @foreach($validPictures as $validPicture)
-
-            {{--// TODO : EN COURS--}}
-            <?php dd(collect($validPicture->urls)->firstWhere('name', 'normal'))?>
-
-            <a href="{{$validPictures->firstWhere('name', 'normal')['url']}}"
-               data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{clean($recette->title)}}">
+<div class="has-text-centered" style="clear: both;">
+    {{--If there is any valid picture to show--}}
+    {{--At least one--}}
+    @if($validPictures->count() > 0)
+        {{--if it's the first, we'll show it bigger--}}
+        <?php $validPicture = $validPictures->first();?>
+        <div>
+            <a href="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"
+               data-lightbox="{{strip_tags(clean($recette->slug))}}"
+               data-title="{{clean($recette->title)}}">
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
-                                srcset="{{collect($validPictures->first())->where('user' , $recette->id_user)->firstWhere('name', 'webp')['url']}}"
-                                class="fit-cover" alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
-                        <img src="{{collect($validPictures->first())->where('user' , $recette->id_user)->firstWhere('name', 'normal')['url']}}"
-                             class="fit-cover" alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
+                                srcset="{{collect($validPicture)->firstWhere('name', 'webp')['url']}}"
+                                class="fit-cover"
+                                alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
+                        <img src="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"
+                             class="fit-cover"
+                             alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
                     </picture>
                 </figure>
             </a>
+        </div>
 
+        {{--IF THERE IS MORE THAN ONE PICTURE--}}
+        @if($validPictures->count() > 1)
+            <div style="display: flex;flex-wrap: wrap;">
+                @foreach($validPictures as $index => $validPicture)
+                    {{--We don't need to load the first picture that already appear--}}
+                    @if($index > 0)
+                        <div>
+                            <?php $img = $validPicture; ?>
+                            @include('recipes.elements.tinyPicture')
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endif
 
-            @if($validPictures->count() > 1)
-                <ul style="float: left;">
-                    @foreach($validPictures as $image)
-                        <li style="float: left;">
-                            @include('recipes.elements.tinyPicture')</li>
-                    @endforeach
-                </ul>
+        {{--IF THERE IS 1 NON VALID PICTURE--}}
 
-                @include('recipes.show.addPicture')
-            @else
-                @include('recipes.show.addPicture')
-            @endif
-        @endforeach
+        @include('recipes.show.imageWait')
+        {{--IF THERE IS 0 VALID PICTURES--}}
     @else
-
-        {{--NO PICTURE --}}
         @include('recipes.show.addPicture')
+        @include('recipes.show.imageWait')
     @endif
-
 </div>
+
+
 <script>
     import LoginModal from "../../../assets/js/components/LoginModal";
 

@@ -40,7 +40,6 @@ class RecipesController extends Controller
 		$universcateg = DB::table('categunivers')
 			->get();
 
-
 		// Pour chaque categ, on va charger la dernière recette postée
 		/*
 		$recettesrand = array();
@@ -408,6 +407,7 @@ class RecipesController extends Controller
 		$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 
 		$validPictures = $this->pictureService->loadRecipePicturesValid($recette);
+
         if(!Auth::guest()) {
             $userPicturesNonValid = $this->pictureService->loaduserPicturesNonValid($recette, Auth::id());
         }
@@ -437,6 +437,9 @@ class RecipesController extends Controller
 
 		// TIMES ISO
 
+
+
+
 		$preptimeiso = "PT" . $this->sumerise($recette->prep_time);
 		$cooktimeiso = "PT" . $this->sumerise($recette->cook_time);
 //            $resttimeiso = "PT".$this->sumerise($recette->rest_time);
@@ -449,6 +452,7 @@ class RecipesController extends Controller
 				'ingredients' => $ingredients,
 				'steps' => $steps,
 				'validPictures' => $validPictures,
+				'nonValidPictures' => $userPicturesNonValid,
 				'typeuniv' => $typeuniv,
 				'stars' => $stars,
 				"countrating" => $countrating,
@@ -465,6 +469,7 @@ class RecipesController extends Controller
 				'ingredients' => $ingredients,
 				'steps' => $steps,
                 'validPictures' => $validPictures,
+                'nonValidPictures' => $userPicturesNonValid,
                 'typeuniv' => $typeuniv,
 				'stars' => $stars,
 				"countrating" => $countrating,
@@ -481,21 +486,15 @@ class RecipesController extends Controller
 
 	public function random()
 	{
-		$rand = DB::table('recipes')->where('validated', '=', 1)
-			->inRandomOrder()
-			->first();
+        $rand = Recipes::where('validated', 1)->inRandomOrder()->first();
 		if($rand){
             $sl = $rand->slug;
-            return redirect()->route('recipe.show', ['post' => $sl]);
-
+            return redirect()->route('recipe.show', ['recipe' => $sl]);
         }
 		else {
 		    $sl = null;
             return redirect('/');
-
         }
-
-
 	}
 
 	/**

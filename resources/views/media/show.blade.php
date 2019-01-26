@@ -18,7 +18,7 @@
 
                                     <div class="card cdg">
                                         <div class="card-image"><a href="{{route('recipe.show', $recette->slug)}}">
-                                                    <?php   $img = $pictureService->loadRecipePictures($recette); ?>
+                                                    <?php   $img = $pictureService->loadRecipePicturesValid($recette); ?>
                                                     @include('recipes.elements.picture')
                                             </a>
                                         </div>

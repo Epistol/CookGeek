@@ -17960,6 +17960,11 @@ a.print:hover {
   border-radius: 0 0 15px 15px;
 }
 
+img.tovalidate {
+  opacity: 0.5;
+  border: 2px dashed #723690;
+}
+
 .notification.is-success {
   background-color: #23d160;
   color: #fff;
@@ -19131,6 +19136,10 @@ body.nightmode {
   background: #272838;
 }
 
+body.nightmode .is-brand {
+  color: #9b82cd;
+}
+
 body.nightmode nav.navbar {
   background: #272838;
 }
@@ -19192,8 +19201,26 @@ body.nightmode .card.cdg {
   border: 0.5rem solid #122932 !important;
 }
 
-body.nightmode .is-checkradio[type="radio"] + label::before, body.nightmode .is-checkradio[type="checkbox"] + label::before, body.nightmode .step_number, body.nightmode .bg_side, body.nightmode .author, body.nightmode .fb-commentaire {
-  border: 2px solid #122932 !important;
+body.nightmode .is-checkradio[type="radio"] + label::before, body.nightmode .is-checkradio[type="checkbox"] + label::before, body.nightmode .step_number, body.nightmode .author {
+  border: 2px solid #39819e !important;
+}
+
+body.nightmode .bg_side, body.nightmode .fb-commentaire {
+  border-top: 2px solid #39819e !important;
+}
+
+body.nightmode .button {
+  background-color: #17181c;
+  border-top-color: #3a3a3a;
+  border-right-color: #3a3a3a;
+  border-bottom-color: #3a3a3a;
+  border-left-color: #3a3a3a;
+  color: #d4d1cc;
+}
+
+body.nightmode .tag:not(body) {
+  background-color: #1a1b1f;
+  color: #ccc9c3;
 }
 
 body.nightmode .is-lateral {

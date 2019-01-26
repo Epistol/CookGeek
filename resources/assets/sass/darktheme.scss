@@ -1,5 +1,9 @@
 body.nightmode {
   background: #272838;
+
+  & .is-brand {
+    color: rgb(155, 130, 205);
+  }
   
   & nav.navbar {
 	background: #272838;
@@ -54,10 +58,29 @@ body.nightmode {
 	border : 0.5rem solid #122932!important;
   }
   
-  &  .is-checkradio[type="radio"] + label::before, .is-checkradio[type="checkbox"] + label::before, .step_number, .bg_side, .author, .fb-commentaire {
-	border : 2px solid #122932!important;
+  &  .is-checkradio[type="radio"] + label::before, .is-checkradio[type="checkbox"] + label::before, .step_number, .author {
+	border : 2px solid rgb(57, 129, 158)!important;
   }
-  
+
+  .bg_side, .fb-commentaire{
+    border-top : 2px solid rgb(57, 129, 158)!important;
+  }
+
+
+  & .button {
+    background-color: rgb(23, 24, 28);
+    border-top-color: rgb(58, 58, 58);
+    border-right-color: rgb(58, 58, 58);
+    border-bottom-color: rgb(58, 58, 58);
+    border-left-color: rgb(58, 58, 58);
+    color: rgb(212, 209, 204);
+  }
+
+  & .tag:not(body) {
+    background-color: rgb(26, 27, 31);
+    color: rgb(204, 201, 195);
+  }
+
   & .is-lateral {
 	border:0px;
   }

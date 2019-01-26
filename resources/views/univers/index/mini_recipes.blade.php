@@ -4,7 +4,7 @@
         <div class="column is-3">
             @foreach($recettes as $recette)
                 <div class="is-flex">
-                    <?php   $img = $pictureService->loadRecipePictures($recette); ?>
+                    <?php   $img = $pictureService->loadRecipePicturesValid($recette); ?>
                     <figure class="image is-64x64 radiused">
 
                         @if($img == null or empty($img) or $img->isEmpty())
