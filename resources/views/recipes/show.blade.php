@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
-@if($firstimg->firstWhere('name', 'normal') !== "")
-    @section('image_og', strip_tags(clean($firstimg->firstWhere(['name', 'normal'], ['user', $recette->id_user])['url'])))
+@if($validPictures->firstWhere('name', 'normal') !== "")
+    @section('image_og', strip_tags(clean($validPictures->firstWhere(['name', 'normal'], ['user', $recette->id_user])['url'])))
 @endif
 @section('content')
 

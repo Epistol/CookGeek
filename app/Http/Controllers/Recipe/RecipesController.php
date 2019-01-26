@@ -225,8 +225,6 @@ class RecipesController extends Controller
 		if(!empty($request->resume)) {
 			$file = $request->resume;
 			if($file->getError() == 0) {
-//			    TODO : CORRECT THIS
-
                 $path = $file->store('public/uploads');
                 $hashedName = $request->resume->hashName();
                 $ext = pathinfo($hashedName, PATHINFO_EXTENSION);
@@ -409,7 +407,13 @@ class RecipesController extends Controller
 		$steps = DB::table('recipes_steps')->where('recipe_id', '=', $recette->id)->get();
 		$typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 
-		$firstimg = $this->pictureService->loadFirstRecipePicture($recette);
+		$validPictures = $this->pictureService->loadRecipePicturesValid($recette);
+        if(!Auth::guest()) {
+            $userPicturesNonValid = $this->pictureService->loaduserPicturesNonValid($recette, Auth::id());
+        }
+        else {
+            $userPicturesNonValid = '';
+        }
 
 		// STARS
 		$stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
@@ -444,7 +448,7 @@ class RecipesController extends Controller
 				'recette' => $recette,
 				'ingredients' => $ingredients,
 				'steps' => $steps,
-				'firstimg' => $firstimg,
+				'validPictures' => $validPictures,
 				'typeuniv' => $typeuniv,
 				'stars' => $stars,
 				"countrating" => $countrating,
@@ -460,8 +464,8 @@ class RecipesController extends Controller
 				'recette' => $recette,
 				'ingredients' => $ingredients,
 				'steps' => $steps,
-				'firstimg' => $firstimg,
-				'typeuniv' => $typeuniv,
+                'validPictures' => $validPictures,
+                'typeuniv' => $typeuniv,
 				'stars' => $stars,
 				"countrating" => $countrating,
 				'stars1' => $stars1,

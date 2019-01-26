@@ -33,7 +33,7 @@
                                         <a href="/recette/{{strip_tags(clean($recette->slug))}} ">
                                             <figure class="image is-16by9 ">
                                                 <?php
-                                                $img = $picturectrl->loadFirstRecipePicture($recette);
+                                                $img = $picturectrl->loadRecipePictures($recette);
                                                 ?>
                                                 @if($img == null or empty($img) or $img->isEmpty())
                                                     <img class="fit-cover"

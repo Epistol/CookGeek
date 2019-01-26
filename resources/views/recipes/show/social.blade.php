@@ -28,10 +28,10 @@
                           </span>
                         </a>
         </p>
-        @if(count($firstimg) === 1 )
+        @if(count($validPictures) === 1 )
             <p class="control">
                 <a class="button pinterest "
-                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($firstimg->first())->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recette->title)) }}">
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first())->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recette->title)) }}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
                                <span hidden>Partager sur Pinterest</span>

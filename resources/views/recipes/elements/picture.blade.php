@@ -2,7 +2,7 @@
 
     <figure class="image is-1by1 ">
         <?php
-        $img = $pictureService->loadFirstRecipePicture($recette);
+        $img = $pictureService->loadRecipePictures($recette);
         ?>
         @if($img == null or empty($img) or $img->isEmpty())
             <img class="fit-cover"
