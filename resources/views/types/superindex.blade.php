@@ -7,7 +7,6 @@
                 <div class="round_bg">
                     @include("types.index.bread")
                 </div>
-
                 <div class="content">
                     <section class="section ficheinfo">
                         <div class="columns is-multiline is-mobile">
@@ -15,7 +14,7 @@
                                 <div class="column is-one-third is-flex-center">
                                     {{--On affiche la liste des types de recettes--}}
                                     <a class="tag is-primary is-medium"
-                                       href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}s</a>
+                                       href="{{route('type.show', lcfirst($type->name))}}">{{$type->name}}s</a>
                                 </div>
                             @endforeach
                         </div>
@@ -27,7 +26,6 @@
                         <section class="section blockcontent">
                             <div>
                                 @include("recipes.index.partyperecette")
-
                             </div>
                         </section>
                     @endforeach

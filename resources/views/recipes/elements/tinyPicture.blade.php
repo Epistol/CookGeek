@@ -10,6 +10,7 @@
                 @if(collect($img->urls)->firstWhere('name', 'webp')['url'] == "")
                 <clazy-load src="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}">
                     <!-- The image slot renders after the image loads. -->
+
                     <img class="fit-cover image is-64x64"
                          src="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}"
                          alt="{{ strip_tags(clean($recette->title)) }} / CDG">
@@ -18,9 +19,15 @@
                         <clazy-load
                                 src="{{collect($img->urls)->firstWhere('name', 'webp')['url']}}">
                             <!-- The image slot renders after the image loads. -->
-                            <img class="fit-cover image is-64x64"
-                                 src="{{collect($img->urls)->firstWhere('name', 'webp')['url']}}"
-                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                            <picture>
+                                <source type="image/webp"
+                                        srcset="{{collect($img->urls)->firstWhere('name', 'webp')['url']}}"
+                                        class="fit-cover"
+                                        alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
+                                <img src="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}"
+                                     class="fit-cover image is-64x64"
+                                     alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
+                            </picture>
                         @endif
 
                         <!-- The placeholder slot displays while the image is loading. -->

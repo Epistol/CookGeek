@@ -51,35 +51,35 @@
                                     <div class="card-content is-flex-center">
                                         <div class="content">
                                             @if($img !== null)
-                                                <figure class="image is-128x128 ">
-                                                    @if($img == null or empty($img) or $img->isEmpty())
+
+                                                @if(collect($img->first())->isEmpty())
+                                                    <figure class="image is-128x128 ">
                                                         <img class="fit-cover"
                                                              src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
                                                              alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                    @else
-                                                        @if(collect($img[0])->firstWhere('name', 'index')['url'] == "")
-                                                            <clazy-load
-                                                                    src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}">
-                                                                <!-- The image slot renders after the image loads. -->
-                                                                <img class="fit-cover"
-                                                                     src="{{collect($img[0])->firstWhere('name', 'normal')['url']}}"
-                                                                     alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                                @else
-                                                                    <clazy-load
-                                                                            src="{{collect($img[0])->firstWhere('name', 'index')['url']}}">
-                                                                        <!-- The image slot renders after the image loads. -->
-                                                                        <img class="fit-cover"
-                                                                             src="{{collect($img[0])->firstWhere('name', 'index')['url']}}"
-                                                                             alt="{{ strip_tags(clean($recette->title)) }} / CDG">
-                                                                    @endif
-
-                                                                    <!-- The placeholder slot displays while the image is loading. -->
-                                                                        <div slot="placeholder">
-                                                                            <!-- You can put any component you want in here. -->
-                                                                        </div>
-                                                                    </clazy-load>
-                                                        @endif
-                                                </figure>
+                                                        @else
+                                                            @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")
+                                                                <clazy-load
+                                                                        src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}">
+                                                                    <!-- The image slot renders after the image loads. -->
+                                                                    <img class="fit-cover"
+                                                                         src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}"
+                                                                         alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                    @else
+                                                                        <clazy-load
+                                                                                src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}">
+                                                                            <!-- The image slot renders after the image loads. -->
+                                                                            <img class="fit-cover"
+                                                                                 src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}"
+                                                                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                        @endif
+                                                                        <!-- The placeholder slot displays while the image is loading. -->
+                                                                            <div slot="placeholder">
+                                                                                <!-- You can put any component you want in here. -->
+                                                                            </div>
+                                                                        </clazy-load>
+                                                    </figure>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>

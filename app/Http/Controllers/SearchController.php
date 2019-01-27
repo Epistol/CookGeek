@@ -12,13 +12,23 @@ use App\Search;
 class SearchController extends Controller
 {
 	private $apisearch;
+    private $pictureService;
 
-	public function __construct(Api\SearchController $apisearch)
+    /**
+     * SearchController constructor.
+     * @param Api\SearchController $apisearch
+     */
+    public function __construct(Api\SearchController $apisearch)
 	{
 		$this->apisearch = $apisearch;
-	}
+        $this->pictureService = new PictureController();
+    }
 
-	public function check_liked($id)
+    /**
+     * @param $id
+     * @return bool|string
+     */
+    public function check_liked($id)
 	{
 		$u_id = Auth::id();
 		$l_id = DB::table('user_recipe_likes')
@@ -29,41 +39,15 @@ class SearchController extends Controller
 
 	}
 
-	public function index(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
 	{
 		$rq = $request->q;
-
-		$result = $this->apisearch->search($rq);
-
-		$search_type = array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers');
-		$valeurs = ["value" => strip_tags(clean($rq))];
-
-		foreach($search_type as $key => $item) {
-			if(array_key_exists($item, $result)) {
-				$retour[$key] = $result[$item];
-				if(array_key_exists('recipe', $result)) {
-					if($result['recipe'] !== "" && !empty($result['recipe'])) {
-						if($result['recipe']->isNotEmpty()){
-							foreach($result['recipe'] as $key => $recip) {
-								$images_first[$recip->id] = DB::table('recipe_imgs')
-									->where('recipe_id', '=', $recip->id)
-									->where('user_id', '=', $recip->id_user)
-									->first();
-							}
-							$valeurs["images"] = $images_first;
-						}
-					}
-
-				}
-			} else {
-				$retour[$key] = null;
-			}
-		}
-
-		foreach($search_type as $key => $s) {
-			$valeurs[$s] = $retour[$key];
-		}
-		return view('search.result', $valeurs)->with(['controller' => $this]);
+		$result = collect($this->apisearch->search($rq));
+		return view('search.result', array('result' => $result, 'pictureService' => $this->pictureService))->with(['controller' => $this]);
 
 	}
 }

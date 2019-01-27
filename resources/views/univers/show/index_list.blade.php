@@ -6,7 +6,6 @@
             <categ_icon text_icon="{{$categ->name}}"></categ_icon>
             <h2 style="margin-top: 0px;padding-left:1rem;">{{ucfirst($categ->name)}}</h2>
         </div>
-
         {{--// On va charger le nb de recettes lié pour chaque univers--}}
         {{--// On charge l'info univers--}}
         @php
@@ -16,10 +15,8 @@
 
         @if($recipe_count > 0)
             <div class="columns is-marginless">
-
                 <div class="univers_element column">
                     {{--Nom de l'univers--}}
-
                     <div class="columns is-marginless is-paddingless    ">
                         @include("univers.index.mini_recipes")
                     </div>

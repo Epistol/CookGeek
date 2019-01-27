@@ -4,7 +4,7 @@
     {{--At least one--}}
     @if($validPictures->count() > 0)
         {{--if it's the first, we'll show it bigger--}}
-        <?php $validPicture = $validPictures->first();?>
+        <?php $validPicture = $validPictures->first(); ?>
         <div>
             <a href="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"
                data-lightbox="{{strip_tags(clean($recette->slug))}}"
@@ -12,7 +12,7 @@
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
-                                srcset="{{collect($validPicture)->firstWhere('name', 'webp')['url']}}"
+                                srcset="{{collect($validPicture->urls)->firstWhere('name', 'webp')['url']}}"
                                 class="fit-cover"
                                 alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
                         <img src="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"

@@ -31,11 +31,11 @@
 
             <div class="columns" id="results">
                 <div class="column is-7 searchresult">
-                    @if($recipe)
+                    @if($result['recipe']->count() > 0)
                         @include("search.elements.recipe_name")
                     @else
                         <div style="position: relative;">
-                            <h1 class="title">{{ucfirst(strip_tags(clean($value)))}}</h1>
+                            <h1 class="title">{{ucfirst(strip_tags(clean($result['value'])))}}</h1>
                             <span style="position: absolute;bottom: -1.5rem;left: 0px;"><i>0 recette trouvé :/ </i></span>
                         </div>
 
@@ -45,19 +45,21 @@
                     <div class="">
                         {{--Medaillons--}}
                         <h2 class="title">Médias :</h2>
-                        @if($categunivers)
+                        @if($result['categunivers']->count() > 0)
                             @includeIf("search.elements.categ")
                         @endif
                     </div>
                     <div class="">
                         {{--HP, Narnia, etc--}}
                         <h2 class="title">Univers :</h2>
-                        @if($univers)
+                        @if($result['univers']->count() > 0)
                             @includeIf("search.elements.univers")
                         @endif
                     </div>
                     <div class="">
+                        @if($result['ingredient']->count() > 0)
                         @includeIf("search.elements.recipe_ingr")
+                            @endif
                     </div>
                 </div>
 

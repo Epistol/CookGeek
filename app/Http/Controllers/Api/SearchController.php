@@ -42,7 +42,7 @@ class SearchController extends Controller
 	 */
 	public function search($recherche)
 	{
-		$rq = $recherche;
+		$rq = clean($recherche);
 		$pieces = explode(" ", $rq);
 		$recipe = [];
 		if($rq !== null) {
@@ -78,27 +78,7 @@ class SearchController extends Controller
 			$univers = DB::table("univers")->paginate(10);
 		}
 
-
-		$response = array();
-		$elements = array($recipe, $ingredient, $media, $type_recipes, $univers);
-		$titres = array('recipe', 'ingredient', 'categunivers', 'type_recipes', 'univers');
-
-
-		foreach($elements as $key => $el) {
-			if($el !== "") {
-				if($titres[$key] == "ingredient") {
-					if($ingredient) {
-						if($recipe_ingredients[0] !== null) {
-							if($recipe_ingredients[0]->isNotEmpty()) {
-								$response['recipe'] = $recipe_ingredients[0];
-							}
-						}
-					}
-				} else {
-					$response[$titres[$key]] = $el;
-				}
-			}
-		}
+		$response = collect(['recipe' => $recipe, 'ingredient' => $ingredient, 'categunivers' => $media, 'type_recipes' => $type_recipes, 'univers' => $univers, 'value' => strip_tags(clean($rq))]);
 		return $response;
 	}
 

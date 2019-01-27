@@ -1,5 +1,8 @@
-<a href="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}" data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{strip_tags(clean($recette->title))}}"  >
-
+@if(collect($img)->isNotEmpty())
+<a href="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}" data-lightbox="{{strip_tags(clean($recette->slug))}}" data-title="{{strip_tags(clean($recette->title))}}">
+    @else
+        <a href="" data-lightbox="" data-title="{{strip_tags(clean($recette->title))}}">
+@endif
     <figure class="image is-64x64">
 
         @if(collect($img)->isEmpty())

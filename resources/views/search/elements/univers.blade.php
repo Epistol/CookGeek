@@ -1,3 +1,3 @@
-@foreach($univers as $univ)
-    <a class="button is-rounded"> {{$univ->name}}</a>
+@foreach($result['univers'] as $univ)
+    <a class="button is-rounded" href="{{route('univers.show', $univ->id)}}"> {{$univ->name}}</a>
 @endforeach

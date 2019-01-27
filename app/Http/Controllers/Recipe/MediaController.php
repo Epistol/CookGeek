@@ -66,11 +66,11 @@ class MediaController extends Controller
 	 */
 	public function show($id)
 	{
-		$medias = DB::table('categunivers')->where("name", "=", $id)->first();
-		if($medias != null) {
-			$recipes = DB::table('recipes')->where("type_univers", "=", $medias->id)->where('validated', '=', 1)->latest()->paginate(12);
+		$media = DB::table('categunivers')->where("name", "=", $id)->first();
+		if($media != null) {
+			$recipes = DB::table('recipes')->where("type_univers", "=", $media->id)->where('validated', '=', 1)->latest()->paginate(12);
 			// On charge les données dans la vue
-			return view('media.show', array('medias' => $medias, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
+			return view('media.show', array('media' => $media, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
 		} else {
 			abort(404);
 		}

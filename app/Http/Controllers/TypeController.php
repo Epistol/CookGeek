@@ -24,7 +24,7 @@ class TypeController extends Controller
     public function index()
     {
         $all_types = DB::table('type_recipes')->get();
-        return view("types.superindex", ["types" => $all_types]);
+        return view("types.superindex", ["types" => $all_types, 'pictureService' => $this->pictureService]);
     }
 
     public function alltypes() {
@@ -61,8 +61,8 @@ class TypeController extends Controller
      */
     public function show($id)
     {
-        $type = DB::table('type_recipes')->where("name", "=",$id)->get();
-        return view("types.show", ["types" => $type, 'pictureService' => $this->pictureService ]);
+        $type = DB::table('type_recipes')->where("name", "=",$id)->first();
+        return view("types.show", ["type" => $type, 'pictureService' => $this->pictureService ]);
     }
 
     /**
