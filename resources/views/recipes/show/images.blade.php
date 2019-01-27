@@ -38,8 +38,8 @@
             </div>
         @endif
 
-        {{--IF THERE IS 1 NON VALID PICTURE--}}
 
+        {{--IF THERE IS 1 NON VALID PICTURE--}}
         @include('recipes.show.imageWait')
         {{--IF THERE IS 0 VALID PICTURES--}}
     @else
