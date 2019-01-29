@@ -6,8 +6,8 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-5 is-paddingless">
-                    <div class="left_register">
-                        <img src="/img/chat_mascotte.png" alt="" class="chat_hover">
+                    <div class="left-register">
+                        <img src="/img/chat_mascotte.png" alt="" class="chat-hover">
                     </div>
 
                 </div>

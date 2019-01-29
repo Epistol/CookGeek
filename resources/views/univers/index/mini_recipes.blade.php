@@ -35,7 +35,7 @@
                     </figure>
 
                     <a href="/recette/{{$recette->slug}}"
-                       class="titre_content">{{strip_tags(clean($recette->title))  }}</a>
+                       class="content-title">{{strip_tags(clean($recette->title))  }}</a>
                 </div>
 
             @endforeach

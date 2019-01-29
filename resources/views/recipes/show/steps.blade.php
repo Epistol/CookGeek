@@ -1,6 +1,6 @@
 <div class="columns">
     <div class="column is-8-desktop is-7-mobile is-7-tablet is-offset-1-desktop">
-        <h2 class="title mini_title">
+        <h2 class="title title-mini">
             @lang('recipe.steps')
         </h2>
     </div>

@@ -6,7 +6,7 @@
     @endphp
 
     @if(count($univers_list_id))
-        <div class="categ_univers_recette ">
+        <div class="categ-univers-recette ">
             <section class="hero">
                 <div class="is-flex hero-body">
                     <a href="{{route('media.show', $categ->name)}}"><h2 class="title"
@@ -15,7 +15,7 @@
                     <categ_icon text_icon="{{$categ->name}}"></categ_icon>
                 </div>
             </section>
-            <div class="univers_element ">
+            <div class="univers-element ">
                 <!-- Liste des univers contenus -->
                 <ul class=" columns is-multiline is-flex-center">
 

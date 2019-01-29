@@ -16,7 +16,7 @@
             <div class="column is-6">
                 {{--Une recette--}}
                 <div class="columns is-paddingless is-marginless is-result is-flex">
-                    <div class="categ_recette">
+                    <div class="recipe-category">
                         <?php
                         $typeuniv = DB::table('categunivers')
                             ->where('id', '=', $recette->type_univers)
@@ -27,7 +27,7 @@
                     {{--L'image--}}
                     <div class="column is-5 to-hover is-marginless is-paddingless">
                         @if(isset($type))
-                            <div class="aligned_bottom_right">
+                            <div class="bottom-right-aligned">
                                 <div class="hovered">
                                     <a class="tag" style="margin:0.5rem"
                                        href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
@@ -38,7 +38,7 @@
                     </div>
                     {{--Les infos--}}
                     <div class="column is-paddingless">
-                        <div class="columns is-marginless is-paddingless is-multiline is-mobile right_side_recipe">
+                        <div class="columns is-marginless is-paddingless is-multiline is-mobile right-side-recipe">
                             {{--Titre--}}
                             <div class="column is-full" id="titre">
                                 <a href="{{url('/recette/'.$recette->slug)}}"><h4 class="title">

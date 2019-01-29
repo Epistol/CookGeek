@@ -1,8 +1,7 @@
-<meta name="og:image" content="@if(isset($firstimg))
-@if($firstimg->where('user', $recette->id_user)->firstWhere('name', 'normal') !== ""){{strip_tags(clean($firstimg->firstWhere('name', 'normal')['url']))}}@endif
-@endif"/>
-<meta property="og:image:width" content="500"/>
-<meta property="og:image:height" content="500"/>
+<meta name="og:image" content="@if(isset($validPictures))
+@if(collect($validPictures->first()->urls)->firstWhere('name', "index")['url'] !== ""){{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', "index")['url']))}}@elseif(collect($validPictures->first()->urls)->firstWhere('name', "normal")['url'] !== "")
+{{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', "normal")['url']))}}@endif
+@else@php echo asset("img/cdglogo.png")@endphp@endif"/>
 @if( Route::currentRouteName() === 'recipe.show')
     <meta property="og:title"
           content="@hasSection('titrepage')Recette de : @yield('titrepage') sur CDG -  @lang('common.site_description')@else @lang('common.site_description')@endif"/>

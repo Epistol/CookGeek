@@ -21,12 +21,12 @@
                     </div>
 
                     <div class="column is-3 is-flex-center " v-cloak v-if="index === liste.length -1">
-                        <a @click="addRow()" class="button is-primary  is-small deleteicon">
+                        <a @click="addRow()" class="button is-primary  is-small icon-delete">
                             <i class="fa fa-plus" aria-hidden="true"></i></a>
                     </div>
 
                     <div class="column is-3  is-flex-center " v-cloak v-if="index === liste.length -2 ">
-                        <a @click="removeRow(index)" class="button is-small deleteicon">
+                        <a @click="removeRow(index)" class="button is-small icon-delete">
                             <i class="fa fa-minus" aria-hidden="true"></i></a>
                     </div>
                 </div>

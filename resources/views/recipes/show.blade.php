@@ -29,7 +29,7 @@ if ($validPictures->isNotEmpty()) {
             <div class="section">
                 <div class="columns shadowbox">
                     {{--Photo + ingredients--}}
-                    <div class="column is-one-fifth is-marginless is-paddingless left_side" id="side_recipe">
+                    <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                         @include("recipes.show.images")
                         <div class="">
                             {{--Fiche gauche--}}
@@ -65,7 +65,7 @@ if ($validPictures->isNotEmpty()) {
 
                             {{--// Auteur--}}
                         </div>
-                        <div class="page_no_padding">
+                        <div class="page--no-pading">
                             <div class="content">
                                 <div class="columns is-marginless">
                                     <div class="column is-9" style="padding: 2.5rem;">

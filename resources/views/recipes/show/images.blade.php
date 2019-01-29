@@ -29,10 +29,8 @@
                 @foreach($validPictures as $index => $validPicture)
                     {{--We don't need to load the first picture that already appear--}}
                     @if($index > 0)
-                        <div>
                             <?php $img = $validPicture; ?>
                             @include('recipes.elements.tinyPicture')
-                        </div>
                     @endif
                 @endforeach
             </div>

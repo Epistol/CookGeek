@@ -20,6 +20,7 @@ return [
     'rating' => "Note",
     "univers" => "Univers",
     "of" => "de",
-    "video" => "La vidéo"
+    "video" => "La vidéo",
+    "picture-of" => "Image de la recette",
 
 ];

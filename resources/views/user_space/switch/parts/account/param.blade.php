@@ -1,4 +1,4 @@
-<form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST" id="params"
+<form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST" id="params"
       action="{{ route('param.store') }}">
     @csrf
 

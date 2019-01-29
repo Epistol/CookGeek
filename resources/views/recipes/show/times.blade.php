@@ -44,7 +44,7 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
 @if($somme_t == 0)
 
 @else
-    <div class="bg_side">
+    <div class="side-bg">
 
         <h4 class="title">Timing</h4>
 

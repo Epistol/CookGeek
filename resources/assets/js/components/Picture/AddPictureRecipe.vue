@@ -2,7 +2,7 @@
     <transition name="vodal-zoom">
         <div>
             <template v-if="this.type === 'button'">
-                <a class="button_picture button is-outlined is-rounded " @click="showModal()">
+                <a class="button-picture button is-outlined is-rounded " @click="showModal()">
                 <span class="icon is-small">
                       <span class=" fa-stack ">
                       <i class="fas fa-camera fa-stack-1x " style="color: #7f5fbf;"></i>
@@ -13,7 +13,7 @@
             </template>
             <template v-else>
                 <div
-                        class="is-flex-center fit-cover hover_pointer" :alt="this.text"
+                        class="is-flex-center fit-cover pointer-hover" :alt="this.text"
                         :style="this.colorGenerated + 'height: 20vh;'" @click="showModal()">
                     <span class="uploadIcon"><i class="fas fa-cloud-upload-alt fa-7x"></i></span>
 

@@ -19,6 +19,7 @@
                                href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                         </div>
                     @endif
+                    @if(isset($validPictures->first()->urls))
                     @if(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url'] === "")
                         <figure class="image is-1by1">
                             @if($recette->id_user != NULL && isset($recette) && isset($first))
@@ -42,6 +43,7 @@ border-radius: 15px 0 0 15px;">
                                  alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
                         </picture>
                     </figure>
+                        @endif
                         @endif
 
                 </div>

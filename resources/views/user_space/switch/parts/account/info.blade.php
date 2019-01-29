@@ -1,7 +1,7 @@
 
 
 
-<form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
+<form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
       action="{{ route('recipe.store') }}">
     {{ csrf_field() }}
 

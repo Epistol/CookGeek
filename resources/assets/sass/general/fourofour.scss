@@ -1,6 +1,6 @@
 // 404 page
 
-.main_eror {
+.main-error-404 {
   background: black no-repeat center center;
   //background-image: url("/img/404_bg.jpg") ;
   -webkit-background-size: cover;
@@ -41,7 +41,7 @@
   }
 }
 
-.big_404 {
+.big-404 {
   background: linear-gradient(to right, rgba(180, 3, 6, 0.71) 0%, rgba(238, 26, 25, 0.71) 50%, rgba(180, 3, 6, 0.71) 100%);
   display: block;
   @include lg {
@@ -57,7 +57,7 @@
 
 }
 
-.big_bg_404 {
+.big-bg-404 {
   background: black;
   display: block;
   @include lg {
@@ -72,7 +72,7 @@
 
 }
 
-.full_404 {
+.full-404 {
   font-size: 5rem;
   color: white;
   font-family: 'Michroma', sans-serif;

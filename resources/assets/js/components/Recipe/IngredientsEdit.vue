@@ -21,14 +21,14 @@
 
                     <template v-if="index === ingredients.length -1 ">
                         <div class="column is-1 is-flex-center " v-cloak >
-                        <a @click="addRow()" class="button is-primary  is-small deleteicon">
+                        <a @click="addRow()" class="button is-primary  is-small icon-delete">
                             <i class="fa fa-plus" aria-hidden="true"></i></a>
                         </div>
                     </template>
 
                 <div class="column is-1 is-flex-center " v-cloak >
 
-                    <a @click="removeRow(index)" class="button is-small deleteicon">
+                    <a @click="removeRow(index)" class="button is-small icon-delete">
                         <i class="fa fa-minus" aria-hidden="true"></i></a>
                 </div>
             </div>

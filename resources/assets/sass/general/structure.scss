@@ -4,7 +4,7 @@
   padding: 2.5rem;
 }
 
-.page_no_padding {
+.page--no-pading {
   background: $antiwhite;
 }
 
@@ -20,16 +20,7 @@ table.times th {
   display: flex;
 }
 
-.left_recipe_add {
-  background: $antiwhite;
-  margin-top: 1rem;
-  z-index: 1;
-  margin-bottom: 1rem;
-  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-}
-
-.column.right_recipe_add {
+.column.recipe-right-add {
   padding-top: 3.5rem;
   z-index: 1;
   padding-left: 2rem;
@@ -80,8 +71,6 @@ table.times th {
   padding-bottom: 2%;
 }
 
-
-
 .hovered {
   visibility: hidden;
   height: 0px;
@@ -93,7 +82,7 @@ table.times th {
   z-index: 5;
 }
 
-.aligned_bottom_right {
+.bottom-right-aligned {
   display:flex;justify-content:flex-end;align-items:flex-end;
 }
 

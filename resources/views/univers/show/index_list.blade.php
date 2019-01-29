@@ -1,7 +1,7 @@
 {{--Pour chaque catégorie d'univers (livre, jeux) , on va devoir savoir si il existe des univers populaire --}}
 @foreach($categories as $categ)
     {{--Récupération de tout les univers--}}
-    <div class="categ_univers_recette " style="margin-top: 2rem; margin-bottom: 2rem;">
+    <div class="categ-univers-recette " style="margin-top: 2rem; margin-bottom: 2rem;">
         <div class="is-flex" style="padding:1rem;">
             <categ_icon text_icon="{{$categ->name}}"></categ_icon>
             <h2 style="margin-top: 0px;padding-left:1rem;">{{ucfirst($categ->name)}}</h2>
@@ -15,7 +15,7 @@
 
         @if($recipe_count > 0)
             <div class="columns is-marginless">
-                <div class="univers_element column">
+                <div class="univers-element column">
                     {{--Nom de l'univers--}}
                     <div class="columns is-marginless is-paddingless    ">
                         @include("univers.index.mini_recipes")

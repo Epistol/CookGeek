@@ -5,7 +5,7 @@
         </figure>
     </div>
 
-    <div class="card-content indexrecipe">
+    <div class="card-content recipe-index">
         <div class="is-centered ">
             <a href="{{route('media.show', $c->name)}}">
                 @if($c->name== 'tv')

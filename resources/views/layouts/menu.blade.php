@@ -13,7 +13,7 @@
                 <a class="navbar-brand logo" href="{{ url('/') }}">
 
                     {{ ucfirst(config('app.name', 'Laravel')) }}
-                    <span class="beta_logo">
+                    <span class="logo-beta">
                     BETA
                 </span>
                 </a>
@@ -85,7 +85,7 @@
                         <span hidden>Recette aléatoire</span>
                     </a>
 
-                    <div class=" search_header navbar-item">
+                    <div class=" search-header navbar-item">
                         <form action="{{route('search.post')}}" method="POST" role="search">
                             @csrf
                             <label for="q" style="display:none">
@@ -96,7 +96,7 @@
                             <label for="searchbutton" style="display:none">
                                 Rechercher
                             </label>
-                            <button type="submit" id="searchbutton" class="searchheadbutton"
+                            <button type="submit" id="searchbutton" class="header-search-button"
                                     style="position: absolute;">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </button>

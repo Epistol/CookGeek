@@ -1,6 +1,6 @@
 @if($recette->vegetarien)
     @if($recette->vegetarien == 1)
-        <div class="bg_side">
+        <div class="side-bg">
 
             <div class="field vegan is-horizontal">
                 <div class="" style="width: 100%;">

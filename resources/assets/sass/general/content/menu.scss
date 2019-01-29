@@ -13,7 +13,7 @@
   //position: fixed;
 }
 
-.second_menu {
+.second-menu {
   background: $body-bg;
   //border-bottom: 0.1rem $brand-primary solid;
   -webkit-box-shadow: 0px 4px 10px rgba(203, 194, 246, 0.5);
@@ -27,7 +27,7 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
   color: $brand-primary;
 }
 
-span.item_navbar_second {
+span.navbar-secondaire-item {
   padding-left: 1rem;
 }
 
@@ -50,7 +50,7 @@ span.item_navbar_second {
   }
 }
 
-.bg_side {
+.side-bg {
   /* background: #ffffffb8; */
   padding: 1rem 0.5rem 0.5rem;
   /* -webkit-border-radius: 5px; */
@@ -107,7 +107,7 @@ a.navbar-item, a.navbar-link {
 }
 
 
-.search_header {
+.search-header {
   text-align: right;
   display: table-cell;
   display: flex;
@@ -115,7 +115,7 @@ a.navbar-item, a.navbar-link {
   align-items: center;
 }
 
-.searchheadbutton {
+.header-search-button {
   position: absolute;
   right: 2rem;
   top: 35%;

@@ -1,4 +1,4 @@
-<div class="second_menu" role="navigation" aria-label="main navigation">
+<div class="second-menu" role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
     <div class="container">
         <div class="navbar-menu" id="navMenu">
@@ -12,9 +12,9 @@
                                  alt="{{ strip_tags(clean($type->name)) }}"/>
                         </figure>
                         @if($type->name !== "anime")
-                            <span class="item_navbar_second">{{ ucfirst ($type->name ) }}</span>
+                            <span class="navbar-secondaire-item">{{ ucfirst ($type->name ) }}</span>
                         @else
-                            <span class="item_navbar_second">Manga / Anime</span>
+                            <span class="navbar-secondaire-item">Manga / Anime</span>
                         @endif
                     </a>
                 @endforeach

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="container addrecipe">
-        <div class="round_bg">
+    <div class="container recipe-add">
+        <div class="background-round">
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
@@ -16,7 +16,7 @@
         </div>
 
         <section class="section">
-            <form class="form-horizontal addrecipe" enctype="multipart/form-data" method="POST"
+            <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">
                 {{ csrf_field() }}
 
@@ -24,7 +24,7 @@
   margin-bottom: 2rem;">
 
 
-                    <div class="column  right_recipe_add  ">
+                    <div class="column  recipe-right-add  ">
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-10 is-offset-1">

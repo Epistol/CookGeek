@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="container addrecipe">
-            <div class="round_bg">
+        <div class="container recipe-add">
+            <div class="background-round">
                 <div class="columns">
                     <div class="column">
                         <div class="has-text-centered">

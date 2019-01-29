@@ -4,7 +4,7 @@
         </a>
     </div>
     @include("recipes.medaillon")
-    <div class="card-content indexrecipe">
+    <div class="card-content recipe-index">
         <div class="media">
             <div class="media-content is-centered">
                 <p class="title is-4"><a href="{{route('recipe.show', $recette->slug)}}"> {{ strip_tags(clean($recette->title)) }}</a></p>

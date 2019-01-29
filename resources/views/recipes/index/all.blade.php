@@ -1,5 +1,5 @@
 <!--{{--Pour chaque univers, on va charger  1 SEULE recette--}}-->
-<section class="split_categ">
+<section class="category-split">
 
     <section class="hero">
         <div class="" style="padding:1rem">
@@ -46,7 +46,7 @@
                                     <div class="recipe-header">
                                         <p class="card-header-title">
                                             <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
-                                               class="texte_accueil">
+                                               class="home-text">
                                                 {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
                                             </a>
                                         </p>

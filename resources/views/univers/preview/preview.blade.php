@@ -1,4 +1,4 @@
-<section class="section split_categ is-paddingless ">
+<section class="section category-split is-paddingless ">
 
     <div class="content">
         {{--@include("recipes.index.searchbar")--}}

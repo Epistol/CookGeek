@@ -29,11 +29,11 @@
 
 
     </div>
-    <div class="big_bg_404">
+    <div class="big-bg-404">
 
     </div>
-    <div class="big_404">
-    <span class="full_404">
+    <div class="big-404">
+    <span class="full-404">
         404
     </span>
         <div style="display:flex;justify-content:center;align-items:flex-end;">

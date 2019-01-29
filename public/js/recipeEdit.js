@@ -86846,7 +86846,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-primary  is-small deleteicon",
+                          staticClass:
+                            "button is-primary  is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.addRow()
@@ -86868,7 +86869,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-small deleteicon",
+                          staticClass: "button is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.removeRow(index)
@@ -87724,7 +87725,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-primary  is-small deleteicon",
+                          staticClass:
+                            "button is-primary  is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.addStep()
@@ -87744,7 +87746,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-small deleteicon",
+                          staticClass: "button is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.removeStep(index)
@@ -89588,7 +89590,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-primary  is-small deleteicon",
+                          staticClass:
+                            "button is-primary  is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.addRow()
@@ -89610,7 +89613,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "button is-small deleteicon",
+                    staticClass: "button is-small icon-delete",
                     on: {
                       click: function($event) {
                         _vm.removeRow(index)

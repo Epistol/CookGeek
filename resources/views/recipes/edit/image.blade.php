@@ -2,7 +2,7 @@
     <div class="file is-centered is-boxed has-name">
 
         <label class="file-label">
-            <div class="image ajout_recette_img" id="limage">
+            <div class="image recipe-add-img" id="limage">
                 <?php
                 			$img = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->first();
                 			?>

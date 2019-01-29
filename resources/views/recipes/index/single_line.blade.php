@@ -22,7 +22,7 @@
     </td>
     <td id="title_recipe">
         <div class="is-centered">
-            <p class="mini_title" id="recipe_user"><a
+            <p class="title-mini" id="recipe-user"><a
                         href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a></p>
         </div>
     </td>

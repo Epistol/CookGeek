@@ -11,7 +11,7 @@
                         <label for="ingredientCheckbox[{{$index}}]"></label>
                     </div>
                 </div>
-                <div class="column is-offset-1" id="ingr_title">
+                <div class="column is-offset-1" id="ingredient-title">
 					<?php
 					$nom_in = DB::table('ingredients')->where('id', $ingr->id_ingredient)->value('name');
 					?>

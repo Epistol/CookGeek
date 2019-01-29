@@ -1,8 +1,8 @@
 <template v-cloak>
     <div>
         <template v-cloak v-if="!picture">
-            <div class="recipe_index_object">
-                <a :href="'/recette/'+recipe.slug" class="texte_accueil">{{recipe.title}}</a>
+            <div class="recipe-index-object">
+                <a :href="'/recette/'+recipe.slug" class="home-text">{{recipe.title}}</a>
                 <!--Ingredients-->
                 <ul >
                     <li v-for="ingredient in ingredients">
@@ -22,7 +22,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content">
-                            <a :href="'/recette/'+recipe.slug" class="texte_accueil">{{recipe.title}}</a>
+                            <a :href="'/recette/'+recipe.slug" class="home-text">{{recipe.title}}</a>
                         </div>
                     </div>
 

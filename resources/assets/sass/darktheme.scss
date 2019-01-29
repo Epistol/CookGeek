@@ -1,5 +1,7 @@
 body.nightmode {
-  background: #272838;
+
+  $body-bg: #272838;
+  background: $body-bg;
 
   & .is-brand {
     color: rgb(155, 130, 205);
@@ -9,12 +11,12 @@ body.nightmode {
 	background: #272838;
   }
   
-  & .second_menu {
+  & .second-menu {
 	background: #273043;
 	box-shadow : none;
   }
   
-  & span.item_navbar_second, a.navbar-item, a.navbar-link {
+  & span.navbar-secondaire-item, a.navbar-item, a.navbar-link {
 	color: #E0E2DB;
   }
   
@@ -41,7 +43,7 @@ body.nightmode {
 	border: 0px;
   }
   
-  & .card-cdg, .round_bg, .column.right_recipe_add, .page, .autocomplete-results, .is-result, .card, .univers_element, .page_no_padding, .left_side, .list-h-show, .timeline-Widget, .bg_side.pub, .author  {
+  & .card-cdg, .background-round, .column.recipe-right-add, .page, .autocomplete-results, .is-result, .card, .univers-element, .page--no-pading, .side-left, .list-h-show, .timeline-Widget, .side-bg.pub, .author  {
 	background: #273043;
 	color: #E0E2DB;
   }
@@ -50,7 +52,7 @@ body.nightmode {
 	border-bottom : 1px solid #272838;
   }
   
-  & .fiche-info, .left-side, .left_side {
+  & .fiche-info, .left-side, .side-left {
 	border-right : 1px solid #272838!important
   }
   
@@ -62,7 +64,7 @@ body.nightmode {
 	border : 2px solid rgb(57, 129, 158)!important;
   }
 
-  .bg_side, .fb-commentaire{
+  .side-bg, .fb-commentaire{
     border-top : 2px solid rgb(57, 129, 158)!important;
   }
 
@@ -74,6 +76,10 @@ body.nightmode {
     border-bottom-color: rgb(58, 58, 58);
     border-left-color: rgb(58, 58, 58);
     color: rgb(212, 209, 204);
+    & .is-primary {
+      background : $pink;
+      color:white;
+    }
   }
 
   & .tag:not(body) {
@@ -84,8 +90,14 @@ body.nightmode {
   & .is-lateral {
 	border:0px;
   }
-  
-  & .categ_univers_recette {
+
+  & .recipe-other-picture {
+    border: 1px solid $body-bg;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  & .categ-univers-recette {
 	background: #70768c;
   }
   
@@ -104,13 +116,11 @@ body.nightmode {
 	}
   }
   
-  & .texte_accueil {
+  & .home-text {
 	color:white;
   }
-  
-  
 }
 
 html.nightmode {
-	background: #272838!important;
+  background: #272838;
 }

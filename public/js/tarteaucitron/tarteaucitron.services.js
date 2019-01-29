@@ -1715,7 +1715,7 @@ tarteaucitron.services.youtube = {
     "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['youtube_player'], function (x) {
+        tarteaucitron.fallback(['youtube-player'], function (x) {
             var video_id = x.getAttribute("videoID"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
@@ -1744,7 +1744,7 @@ tarteaucitron.services.youtube = {
     "fallback": function () {
         "use strict";
         var id = 'youtube';
-        tarteaucitron.fallback(['youtube_player'], function (elem) {
+        tarteaucitron.fallback(['youtube-player'], function (elem) {
             elem.style.width = elem.getAttribute('width') + 'px';
             elem.style.height = elem.getAttribute('height') + 'px';
             return tarteaucitron.engage(id);

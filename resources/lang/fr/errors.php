@@ -8,8 +8,6 @@
 
 
 return [
-
-
     'qtt'             => "L'ingrédient doit avoir une quantité",
     'ingr'             => "Ajoutez le nom de votre ingrédient",
 ];

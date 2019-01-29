@@ -86942,7 +86942,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-primary  is-small deleteicon",
+                          staticClass:
+                            "button is-primary  is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.addRow()
@@ -86964,7 +86965,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-small deleteicon",
+                          staticClass: "button is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.removeRow(index)
@@ -87820,7 +87821,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-primary  is-small deleteicon",
+                          staticClass:
+                            "button is-primary  is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.addStep()
@@ -87840,7 +87842,7 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-small deleteicon",
+                          staticClass: "button is-small icon-delete",
                           on: {
                             click: function($event) {
                               _vm.removeStep(index)
@@ -96251,11 +96253,11 @@ var render = function() {
     [
       !_vm.picture
         ? [
-            _c("div", { staticClass: "recipe_index_object" }, [
+            _c("div", { staticClass: "recipe-index-object" }, [
               _c(
                 "a",
                 {
-                  staticClass: "texte_accueil",
+                  staticClass: "home-text",
                   attrs: { href: "/recette/" + _vm.recipe.slug }
                 },
                 [_vm._v(_vm._s(_vm.recipe.title))]
@@ -96304,7 +96306,7 @@ var render = function() {
                     _c(
                       "a",
                       {
-                        staticClass: "texte_accueil",
+                        staticClass: "home-text",
                         attrs: { href: "/recette/" + _vm.recipe.slug }
                       },
                       [_vm._v(_vm._s(_vm.recipe.title))]
@@ -96603,7 +96605,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "button_picture button is-outlined is-rounded ",
+                  staticClass: "button-picture button is-outlined is-rounded ",
                   on: {
                     click: function($event) {
                       _vm.showModal()
@@ -96628,7 +96630,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "is-flex-center fit-cover hover_pointer",
+                  staticClass: "is-flex-center fit-cover pointer-hover",
                   style: this.colorGenerated + "height: 20vh;",
                   attrs: { alt: this.text },
                   on: {

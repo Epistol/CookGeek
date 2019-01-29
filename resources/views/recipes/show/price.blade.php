@@ -2,7 +2,7 @@
 
     @lang('recipe.budget') :
 
-    <div class="dollarsum">
+    <div class="dollar-sum">
 
         <?php $count = 0;
         if ($recette->cost == null) {

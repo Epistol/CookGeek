@@ -1,10 +1,10 @@
-<aside class="blockcontent menu_user">
-    <div class="avatar_menu">
-        <figure class="image is-128x128 avatar_menu">
+<aside class="blockcontent menu-user">
+    <div class="menu-avatar">
+        <figure class="image is-128x128 menu-avatar">
             @if($user->avatar !== "users/default.png")
-                <img  class="is-rounded avatar_left_menu"  src="/user/{{$user->id}}/picture/{{$user->avatar}}" />
+                <img  class="is-rounded menu-left-avatar"  src="/user/{{$user->id}}/picture/{{$user->avatar}}" />
             @else
-                <img  class="is-rounded avatar_left_menu"  src="https://api.adorable.io/avatars/{{$user->id}}" />
+                <img  class="is-rounded menu-left-avatar"  src="https://api.adorable.io/avatars/{{$user->id}}" />
             @endif
         </figure>
     </div>

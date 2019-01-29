@@ -4,7 +4,7 @@
     <div class="recipeaddbg">
         <div class="container">
             <section class="">
-                <div class="round_bg">
+                <div class="background-round">
                     @include("types.index.bread")
                 </div>
 

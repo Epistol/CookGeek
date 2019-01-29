@@ -19,11 +19,11 @@
 
 
                     <div class="column is-3 is-flex-center" v-cloak v-if="index === (steps.length-1)">
-                        <a @click="addStep()" class="button is-primary  is-small deleteicon"><i class="fa fa-plus"
+                        <a @click="addStep()" class="button is-primary  is-small icon-delete"><i class="fa fa-plus"
                                                                                                 aria-hidden="true"></i></a>
                     </div>
                     <div class="column is-3  is-flex-center" v-cloak v-else-if="index === (steps.length-2)">
-                        <a @click="removeStep(index)" class="button is-small deleteicon"><i class="fa fa-minus"
+                        <a @click="removeStep(index)" class="button is-small icon-delete"><i class="fa fa-minus"
                                                                                             aria-hidden="true"></i></a>
                     </div>
 

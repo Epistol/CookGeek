@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="app" style="background: black;"> @include("layouts.menu")
-    <div class="main_eror">
+    <div class="main-error-404">
         @yield('content')
     </div>
 

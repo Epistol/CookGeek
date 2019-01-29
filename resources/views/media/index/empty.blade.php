@@ -5,7 +5,7 @@
         </figure>
     </div>
 s
-    <div class="card-content indexrecipe">
+    <div class="card-content recipe-index">
         <div class="is-centered ">
             @if($c->name== 'tv')
                 <div class="medail {{strtolower($c->name)}}" ></div>

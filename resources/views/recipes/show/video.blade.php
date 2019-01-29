@@ -1,6 +1,6 @@
 <div class="columns">
     <div class="column is-offset-1">
-        <h2 class="title mini_title">
+        <h2 class="title title-mini">
             @lang('recipe.video')
         </h2>
     </div>
@@ -12,7 +12,7 @@
 	<?php
 	$yt = str_replace("watch?v=", "embed/", $recette->video)
 	?>
-    <div class="youtube_player">
+    <div class="youtube-player">
         <iframe src="{!! $yt !!}" frameborder="0" gesture="media" allow="encrypted-media" class="video"
                 allowfullscreen></iframe>
     </div>

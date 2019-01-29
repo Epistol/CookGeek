@@ -4,7 +4,7 @@
     <div class="recipeaddbg">
         <div class="container">
             <section class="">
-                <div class="round_bg">
+                <div class="background-round">
                     @include("media.show.bread")
                 </div>
 
@@ -22,7 +22,7 @@
                                         </div>
                                         {{--   <categ_icon text_icon="{{$categ->name}}"></categ_icon>
                                            @include("recipes.medaillon")--}}
-                                        <div class="card-content indexrecipe">
+                                        <div class="card-content recipe-index">
                                             <div class="media">
                                                 <div class="media-content is-centered">
                                                     <p class="title is-4"><a

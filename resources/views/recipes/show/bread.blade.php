@@ -1,4 +1,4 @@
-<div class="round_bg">
+<div class="background-round">
 
 	<?php $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
 	?>

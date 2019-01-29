@@ -4,8 +4,8 @@
 
         <div class="columns">
             <div class="column is-5 is-paddingless">
-                <div class="left_register">
-                    <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat_hover">
+                <div class="left-register">
+                    <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                 </div>
             </div>
             <div class="column is-two-fifths is-paddingless">
