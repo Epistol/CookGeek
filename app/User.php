@@ -34,6 +34,36 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 		'password', 'remember_token',
 	];
 
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Get the e-mail address where password reminders are sent.
+     *
+     * @return string
+     */
+    public function getReminderEmail()
+    {
+        return $this->email;
+    }
+
 	public function getFirstNameAttribute($value)
 	{
 		return ucfirst($value);
@@ -43,8 +73,6 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 		$user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))->select('name')->get();
 		return $user;
 	}
-
-
 
 
 	/**

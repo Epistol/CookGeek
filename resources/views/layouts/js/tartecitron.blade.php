@@ -15,8 +15,6 @@
 	tarteaucitron.user.gtagMore = function() { /* add here your optionnal gtag() */
 	};
 	(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
-	(tarteaucitron.job = tarteaucitron.job || []).push('youtube');
-	(tarteaucitron.job = tarteaucitron.job || []).push('dailymotion');
 	(tarteaucitron.job = tarteaucitron.job || []).push('adsense');
     @if (app()->environment() === 'production')
 		tarteaucitron.user.facebookpixelId = '366451307267328';

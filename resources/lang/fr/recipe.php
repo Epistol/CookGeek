@@ -16,6 +16,7 @@ return [
     'making-t' => 'préparation',
     'cooking-t' => 'cuisson',
     'resting-t' => 'repos',
+    'ingredient' => 'Ingrédient',
     'ingredients' => 'Ingrédients',
     'rating' => "Note",
     "univers" => "Univers",

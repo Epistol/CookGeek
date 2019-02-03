@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Recipes;
+use App\Recipe;
 use App\Univers;
 use App\User;
 use Illuminate\Http\Request;

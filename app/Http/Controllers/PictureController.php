@@ -75,7 +75,6 @@ class PictureController extends Controller
     public function loadRecipePicturesValid($recette)
     {
         $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')->where('validated', '=', 1)->paginate(5);
-
         $return = $this->corePicture($pictures, $recette);
         return $return;
     }

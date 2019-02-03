@@ -6,7 +6,7 @@ use App\Type_recipe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Recipes;
+use App\Recipe;
 
 class RecipesAdmin extends Controller
 {
@@ -31,7 +31,7 @@ class RecipesAdmin extends Controller
     }
 
     public function edit($id){
-    	$recipe = \App\Recipes::where('id', '=', $id)->get();
+    	$recipe = \App\Recipe::where('id', '=', $id)->get();
 	    return view("admin.recipes.edit", array(
 		    'recipe' => $recipe[0]
 	    ))->with(['controller' => $this]);

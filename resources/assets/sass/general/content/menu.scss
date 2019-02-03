@@ -16,8 +16,14 @@
 .second-menu {
   background: $body-bg;
   //border-bottom: 0.1rem $brand-primary solid;
-  -webkit-box-shadow: 0px 4px 10px rgba(203, 194, 246, 0.5);
-  box-shadow: 0px 4px 10px rgba(203, 194, 246, 0.5);
+  -webkit-box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+  box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+}
+
+#checkbutton {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
@@ -29,6 +35,11 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 
 span.navbar-secondaire-item {
   padding-left: 1rem;
+
+  @include sm_1 {
+    display: none;
+  }
+
 }
 
 .nav-item-centered {
@@ -70,6 +81,8 @@ span.navbar-secondaire-item {
 .is-hoverable:hover .navbar-dropdown .navbar-item {
   color: white;
 }
+
+
 .is-hoverable:hover .navbar-dropdown  {
   -webkit-box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
   box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
@@ -95,16 +108,85 @@ span.navbar-secondaire-item {
 	  display: none;
 	}
   }
-  
-  
 }
+
+
+.desktop-only {
+  @include mobile {
+    display:none;
+  }
+  @include tablet {
+    display:none;
+  }
+}
+
+
+.mobile-only {
+  @include mobile {
+    display:inherit;
+  }
+
+  @include tablet {
+    display:inherit;
+  }
+
+  @include laptop {
+    display:none;
+  }
+
+}
+
+.is-fixed-bottom {
+  position: fixed;
+  background: white;
+  z-index: 9999;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 0 1px 1px #e2dfe2;
+}
+
+.navbar-menu.mobile-only {
+    @include mobile {
+      display:inherit;
+  }
+  @include tablet {
+    display:inherit;
+  }
+
+  @include small-laptop{
+    display:inherit;
+
+  }
+}
+
 
 
 a.navbar-item, a.navbar-link {
+
+  @include sm_1 {
+    color:white;
+  }
+  @include small-laptop {
+    color:grey;
+  }
+  &.bg-white {
+    color: $brand-primary;
+    @include small-laptop {
+      color:white;
+    }
+  }
+
   color: $brand-primary;
   font-size: 1.1rem;
   @include transition_all();
+
 }
+
+
 
 
 .search-header {
@@ -127,3 +209,5 @@ a.navbar-item, a.navbar-link {
 	color: $brand-primary;
   }
 }
+
+

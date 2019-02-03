@@ -27,10 +27,7 @@
             ['image' =>
             ['type' => "Recipe image",
             'class' => 'image',
-            'code' => '
-            <figure class="image">
-                <img src="https://api.adorable.io/avatars/64/Recipes">
-            </figure>']],
+            'code' => 'Recipe']],
               ['image' =>
             ['type' => "Logo",
             'class' => '',

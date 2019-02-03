@@ -8,14 +8,14 @@
 
 // RECETTE
 Route::group(['prefix' => 'recette'], function () {
-    Route::get('/', 'Recipe\RecipesController@index')->name("recipe.index")->middleware('cacheResponse:2');
-    Route::get('ajout', 'Recipe\RecipesController@add')->name("recipe.add")->middleware('auth');
-	Route::post('store', 'Recipe\RecipesController@store')->name("recipe.store")->middleware('auth');
+    Route::get('/', 'Recipe\RecipeController@index')->name("recipe.index")->middleware('cacheResponse:2');
+    Route::get('ajout', 'Recipe\RecipeController@add')->name("recipe.add")->middleware('auth');
+	Route::post('store', 'Recipe\RecipeController@store')->name("recipe.store")->middleware('auth');
 
-    Route::get('edit/{post}', 'Recipe\RecipesController@edit')->name("recipe.edit")->middleware('auth');
-	Route::post('update/{id}', 'Recipe\RecipesController@update')->name("recipe.edition")->middleware('auth');
+    Route::get('edit/{post}', 'Recipe\RecipeController@edit')->name("recipe.edit")->middleware('auth');
+	Route::post('update/{id}', 'Recipe\RecipeController@update')->name("recipe.edition")->middleware('auth');
 
-    Route::get('{post}', 'Recipe\RecipesController@show')->name("recipe.show")->middleware('cacheResponse:10');
+    Route::get('{post}', 'Recipe\RecipeController@show')->name("recipe.show")->middleware('cacheResponse:10');
 
     Route::post('addmypicture', 'PictureController@addPictureToRecipe')->name("recipe.picture.store")->middleware('auth');
 

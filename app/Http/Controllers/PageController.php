@@ -100,8 +100,8 @@ class PageController extends Controller
 
 	public function show_cgu()
 	{
-		$page = Page::where('slug', 'cgu-2')->first();
-		return view('admin.page.show', ['page' => $page]);
+		$page = Page::where('slug', 'like', '%cgu%')->first();
+        return view('admin.page.show', ['page' => $page]);
 	}
 
 	public function show_confidentiality()
@@ -190,7 +190,6 @@ class PageController extends Controller
 	public function accueil()
 	{
 		$universcateg = DB::table('categunivers')->get();
-		$recettesrand = array();
         $pic = $this->pictureService;
 
 // Petit texte sur l'accueil

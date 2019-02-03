@@ -31,10 +31,8 @@ if ($validPictures->isNotEmpty()) {
                     {{--Photo + ingredients--}}
                     <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                         @include("recipes.show.images")
-                        <div class="">
-                            {{--Fiche gauche--}}
+                            {{--Fiche gauche - INGREDIENTS --}}
                             @include("recipes.show.ficheinfo")
-                        </div>
                     </div>
                     {{--    Infos + steps--}}
                     <div class="column is-marginless is-paddingless ">
@@ -46,18 +44,17 @@ if ($validPictures->isNotEmpty()) {
                                 </div>
                             </div>
                             <div class="column">
-                                {{--// Timing--}}
+                                <div class="has-text-centered">
+                                    @include("recipes.show.univers")
+                                </div>
+                            </div>
+
+                            <div class="column">
                                 <div class="has-text-centered">
                                     @include("recipes.show.parts")
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="has-text-centered">
-                                    @include("recipes.show.univers")
-                                </div>
-                            </div>
-                            <div class="column">
-                                {{--// Parts--}}
                                 <div class="has-text-centered">
                                     @include("recipes.show.stars")
                                 </div>
@@ -69,6 +66,7 @@ if ($validPictures->isNotEmpty()) {
                             <div class="content">
                                 <div class="columns is-marginless">
                                     <div class="column is-9" style="padding: 2.5rem;">
+                                        @include("recipes.show.comment")
                                         @include("recipes.show.steps")
                                         @if($recette->video)
                                             @include("recipes.show.video")

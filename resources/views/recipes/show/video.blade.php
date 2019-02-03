@@ -1,5 +1,5 @@
 <div class="columns">
-    <div class="column is-offset-1">
+    <div class="column ">
         <h2 class="title title-mini">
             @lang('recipe.video')
         </h2>
@@ -10,11 +10,12 @@
 
 @if(strpos($recette->video, 'https://www.youtube.com') !== false OR strpos($recette->video, 'https://youtu.be') !== false)
 	<?php
-	$yt = str_replace("watch?v=", "embed/", $recette->video)
+	$yt = str_replace("watch?v=", "embed/", $recette->video);
 	?>
     <div class="youtube-player">
-        <iframe src="{!! $yt !!}" frameborder="0" gesture="media" allow="encrypted-media" class="video"
-                allowfullscreen></iframe>
+
+    <iframe width="560" height="315" src="{{$yt}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
     </div>
 
 
@@ -34,7 +35,6 @@
     <div class="columns">
         <div class="column is-lateral">
             <p > {{str_limit($recette->video, 150, "...") }} </p>
-
         </div>
     </div>
 @endif

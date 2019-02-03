@@ -1,5 +1,5 @@
 <!-- Image part -->
-<div class="has-text-centered" style="clear: both;">
+<div class="has-text-centered" style="clear: both;" id="recipe-pictures">
     {{--If there is any valid picture to show--}}
     {{--At least one--}}
     @if($validPictures->count() > 0)

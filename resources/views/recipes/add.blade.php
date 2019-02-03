@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
-                        <h1 class="title">Ajoutez votre recette
+                        <h1 class="title">Créez votre recette
                             <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
                     </div>
                 </div>

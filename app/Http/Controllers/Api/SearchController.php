@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Recipes;
+use App\Recipe;
 use App\Univers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -71,7 +71,7 @@ class SearchController extends Controller
 		} else {
 			// Searching in recipes
 			// TODO : Réduire le nombre de champs retournés par element ?
-			$recipe = DB::table('recipes')->where('validated', '=', 1)->paginate(10);
+			$recipe = Recipe::getPaginate(true,10);
 			$ingredient = DB::table('ingredients')->paginate(10);
 			$media = DB::table("categunivers")->paginate(10);
 			$type_recipes = DB::table("type_recipes")->paginate(10);

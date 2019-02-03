@@ -11,3 +11,13 @@
 @import "file";
 @import "medail";
 @import "icons";
+
+.mini-cat{
+  display: inline-block;
+  flex-shrink: 0;
+  height: 7rem;
+  position: relative;
+  width: 9rem;
+  background: url(/img/chat_mascotte.png);
+  background-size: cover;
+}

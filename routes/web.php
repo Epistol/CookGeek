@@ -30,6 +30,8 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 	require base_path('routes/web/type.php');
 	require base_path('routes/web/media.php');
 	require base_path('routes/web/pages.php');
+	require base_path('routes/web/blog.php');
+	require base_path('routes/web/ingredient.php');
 // RECHERCHE
 	Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 	Route::post('search', ['as' => 'search.post', 'uses' => 'SearchController@index']);
@@ -46,7 +48,7 @@ Route::middleware(['fw-block-blacklisted'])->group(function() {
 
 /// API
 	Route::post("/like", 'Api\LikeController@create')->name("api.like.create");
-	Route::get("/random", 'Recipe\RecipesController@random')->name("recipe.random");
+	Route::get("/random", 'Recipe\RecipeController@random')->name("recipe.random");
 
 
 	Route::get('/', 'PageController@accueil')->name('index');

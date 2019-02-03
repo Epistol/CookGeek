@@ -9,6 +9,7 @@
         @include("recipes.show.diff")
     </div>
 
+
     <div class="">
         @include("recipes.show.price")
     </div>
@@ -28,5 +29,4 @@
     @endif
 @endif
 
-@include("recipes.show.twitter")
 

@@ -4,9 +4,7 @@
 }
 
 .background-round {
-  margin-top: 2rem;
   background: white;
-  
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -185,5 +183,32 @@ span.logo-beta {
 .recipe-other-picture {
   border: 1px solid $body-bg;
   margin-top: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+#picture-zone-validation-wait {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background:$body-bg;
+}
+
+#checkbutton div > input{
+  &:checked{
+    & #checkbutton + label {
+      transform: scale(2);
+    }
+  }
+}
+
+.sidebar-menu.affix{
+  background: white;
+  left: 0px;
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: rgba(69, 72, 81, 0.2) 0px 1px 18px 2px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }

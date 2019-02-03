@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\UniverseProvider;
 use App\RecipeImg;
-use App\Recipes;
+use App\Recipe;
 use App\Univers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

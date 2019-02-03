@@ -44,7 +44,9 @@
     @include("layouts.app_element.apple")
 
     <meta name="mobile-web-app-capable" content="yes">
-
+    <script src={{asset('/js/tinymce/js/tinymce.min.js')}}></script>
+    <script>tinymce.init({ selector:'#tinymce' });</script>
+    {{--<script src=https://cloud.tinymce.com/stable/tinymce.min.js></script>--}}
     <!-- Styles -->
     @include("layouts.style")
     @include("layouts.cookie")
@@ -52,10 +54,11 @@
 
 </head>
 <body class="">
+@include("layouts.menuMobile")
+
 <div id="bodyWebsite">
     <div id="app">
         @include("layouts.menu")
-
         <div class="container">
             @if ($errors->any())
                 <div class="notification alert alert-danger">
@@ -115,10 +118,11 @@
 </script>
 
 
-<script src="{{ asset('js/app.js') }}"></script>
 
 @if(Route::currentRouteNamed('recipe.edit'))
     <script src="{{ asset('js/recipeEdit.js') }}"></script>
+    @else
+    <script src="{{ asset('js/app.js') }}"></script>
 @endif
 
 <script src="{{ asset('js/lightbox.js') }}" defer async></script>

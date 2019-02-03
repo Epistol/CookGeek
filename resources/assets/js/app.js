@@ -13,6 +13,7 @@ window.Vue = require('vue');
 import Vue from 'vue';
 
 import VueMoment from 'vue-moment';
+
 Vue.use(VueMoment);
 
 // Imports des composants
@@ -25,7 +26,8 @@ import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.css';
 import PictureInput from 'vue-picture-input'
-
+import Affix from 'vue-affix';
+import Editor from '@tinymce/tinymce-vue';
 
 // Composants CDG
 
@@ -39,18 +41,19 @@ import Ingredients from "./components/Ingredients.vue";
 
 import SignalRecipe from "./components/Recipe/Signal.vue";
 import HomeRecipes from "./components/Recipe/Home_Recipes.vue";
-import StepsEdit from "./components/Recipe/StepsEdit.vue";
+
 
 import TypeUniversIcon from "./components/Elements/Icons/TypeUniversIcon.vue";
 import PictureUpload from "./components/Picture/PictureUpload.vue";
 import UnivPictureUpload from "./components/Picture/UnivPictureUpload.vue";
 import AddPictureRecipe from "./components/Picture/AddPictureRecipe.vue";
 
+
 import Time from "./components/Time.vue";
 
 // Utilisation des composants
-
-Vue.use(VueClazyLoad, InstantSearch, Datepicker, Time, SignalRecipe, modal,LoginModal,  Notif, StepsEdit, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Autocomplete, TypeUniversIcon, StarRating, Ingredients, HomeRecipes, PictureInput, require('vue-chunk'));
+Vue.use(Affix);
+Vue.use(VueClazyLoad,  InstantSearch, Datepicker, Time, SignalRecipe, modal, LoginModal, Notif, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, Autocomplete, TypeUniversIcon, StarRating, Ingredients, PictureInput);
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -60,6 +63,7 @@ const app = new Vue({
     el: '#bodyWebsite',
     components: {
         draggable, VueClazyLoad,
+        'editor': Editor,
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
         'modal': modal,
@@ -71,15 +75,14 @@ const app = new Vue({
         'star-rating': StarRating,
         'datepicker': Datepicker,
         'homerecipes': HomeRecipes,
-        'stepsedit': StepsEdit,
         'searchautocomplete': Autocomplete,
         'categ_icon': TypeUniversIcon,
         'pictureupload': PictureUpload,
         'univpictureupload': UnivPictureUpload,
         'picture-input': PictureInput,
         'add-recipe': AddPictureRecipe,
-        'login-modal'  : LoginModal,
-        'fulltime' : Time
+        'login-modal': LoginModal,
+        'fulltime': Time,
     },
 
     data: {

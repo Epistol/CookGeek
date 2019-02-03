@@ -1,22 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container blockcontent is-paddingless">
-        <div class="is-flex-center">
-            <h1 class="title-website">Cuisine De Geek</h1>
-            {{--Petite description--}}
-        </div>
-        {{--Most viewed universes--}}
-        {{--Last recipes--}}
-        @include("recipes.index.all")
-        {{--@include("index.networks")--}}
-        @include("univers.preview.preview")
-        {{--Most viewed universes with recipes--}}
-        {{--@include("recipes.index.partype")--}}
-        {{--Meals--}}
-        {{--@include("recipes.index.favorise")--}}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-9">
+                <div class="blockcontent is-paddingless">
+                    <div class="is-flex-center">
+                        <h1 class="title-website">Cuisine De Geek</h1>
+                    </div>
+                    @include("recipes.index.all")
+                    @include("univers.preview.preview")
+                </div>
+            </div>
 
+            <div class="column">
+                {{--Sidebar--}}
+                    @include("index.sidebar")
+
+            </div>
+
+        </div>
     </div>
+
+
 
     <script type="application/ld+json">
 {
@@ -38,6 +44,8 @@
 
         ]
       }
+
+
 
     </script>
 

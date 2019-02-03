@@ -33,7 +33,7 @@ import StepsEdit from "./components/Recipe/StepsEdit.vue";
 
 // Utilisation des composants
 
-Vue.use(InstantSearch, Datepicker, VueClazyLoad, SignalRecipe, StepsEdit, StarRating, Ingredients, IngredientsEdit, require('vue-chunk'));
+Vue.use(InstantSearch, Datepicker, VueClazyLoad, SignalRecipe, StepsEdit, StarRating, Ingredients, IngredientsEdit);
 
 // Vue.component('recherche', require('./components/Recherche.vue'));
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
@@ -57,7 +57,7 @@ const app = new Vue({
 		'ingredient_form': Ingredients,
 		'star-rating': StarRating,
 		'datepicker': Datepicker,
-		'ingredient_edit_form': IngredientsEdit,
+		'ingredient-edit-form': IngredientsEdit,
 		'stepsedit': StepsEdit,
 	},
 

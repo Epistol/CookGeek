@@ -15,7 +15,6 @@
                         <input class="input_modal blck" type="text" v-model="item.name"
                                placeholder="ingrédient" name="ingredient[]" id="ingredient[]">
                     </template>
-
                 </div>
 
 
@@ -46,9 +45,7 @@
 
 <script>
 	export default {
-
 		props: ["recipe_id"],
-
 
 		data: function() {
 			return {
@@ -78,23 +75,19 @@
 				this.ingredients.splice(index, 1);
 			},
 
-			async getIngredients() {
+			 getIngredients() {
 				axios.post('/api/recipe/get_ingredients/', {recipeid: this.recipe_id}).then(response => {
 					if(response.data.length > 0){
-						console.log(response.data);
 						this.ingredients = response.data;
 					}
 					else {
 						this.addRow();
-
 					}
 				});
 			},
 		},
 		mounted() {
 			this.getIngredients();
-
 		},
-
 	}
 </script>
