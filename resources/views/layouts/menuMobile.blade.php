@@ -14,5 +14,10 @@
             <i class="far fa-treasure-chest"></i>
         </a>
 
+        <a class="navbar-item bg-white" href="{{route('page.shop')}}">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+
+
     </div>
 </div>

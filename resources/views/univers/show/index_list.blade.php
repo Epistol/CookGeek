@@ -1,8 +1,8 @@
 {{--Pour chaque catégorie d'univers (livre, jeux) , on va devoir savoir si il existe des univers populaire --}}
 @foreach($categories as $categ)
     {{--Récupération de tout les univers--}}
-    <div class="categ-univers-recette " style="margin-top: 2rem; margin-bottom: 2rem;">
-        <div class="is-flex" style="padding:1rem;">
+    <div class="categ-univers-recette ">
+        <div class="is-flex univers-media-titre" style="padding:1rem;">
             <categ_icon text_icon="{{$categ->name}}"></categ_icon>
             <h2 style="margin-top: 0px;padding-left:1rem;">{{ucfirst($categ->name)}}</h2>
         </div>

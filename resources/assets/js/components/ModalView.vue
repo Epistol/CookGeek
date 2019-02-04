@@ -9,7 +9,7 @@
 
                     <header class="modal-card-head">
                         <p class="modal-card-title"><slot name="header"></slot></p>
-                        <button class="delete" aria-label="close" @click="$emit('close')"></button>
+                        <button class="delete"  type="button" aria-label="close" @click="$emit('close')"></button>
                     </header>
                     <section class="modal-card-body">
                         <slot name="body"></slot>
@@ -24,7 +24,7 @@
 
                 </div>
             </div>
-            <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
+            <button class="modal-close is-large" aria-label="close"  type="button"  @click="$emit('close')"></button>
         </div>
     </transition>
 </template>

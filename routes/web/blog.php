@@ -12,3 +12,4 @@ Route::group(['prefix' => 'blog'], function () {
         Route::get('/create', 'PostController@admin_create')->name("blog.add");
     });
 });
+

@@ -9,6 +9,8 @@
 $univers = DB::table('univers')->where('id', $recette->univers)->first();
 ?>
 @if($univers !== null)
+    @if(strip_tags(clean($univers->name)))
 <p class="is-brand show-recipe-title"> @lang("recipe.univers")</p>
-<a href="{{route('univers.show', $univers->id)}}" style="    color: #b87bc8;" >{{$univers->name}}</a>
+<a href="{{route('univers.show', $univers->name)}}" style="    color: #b87bc8;" >{{$univers->name}}</a>
+@endif
 @endif

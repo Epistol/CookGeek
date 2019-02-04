@@ -1,3 +1,5 @@
 @foreach($result['univers'] as $univ)
-    <a class="button is-rounded" href="{{route('univers.show', $univ->id)}}"> {{$univ->name}}</a>
+    @if(strip_tags(clean($univ->name)))
+    <a class="button is-rounded" href="{{route('univers.show', strip_tags(clean($univ->name)))}}"> {{strip_tags(clean($univ->name))}}</a>
+    @endif
 @endforeach

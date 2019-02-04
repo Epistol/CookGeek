@@ -2,6 +2,12 @@
 @section('titrepage',   strip_tags(clean($univers->name)) )
 @section('content')
 
+    @if($univers->picture)
+        <div role="navigation" class="second-menu">
+            <img src="{{$univers->picture}}" />
+        </div>
+        @endif
+
     <div class="container">
         <section class="section blockcontent is-paddingless ">
 
@@ -12,8 +18,13 @@
                 <h1 class="title">
                     {{ strip_tags(clean($univers->name)) }}
                 </h1>
-
             </section>
+
+            @if($univers->description)
+                <div role="navigation" class="second-menu">
+                    {{strip_tags(clean($univers->description))}}
+                </div>
+            @endif
 
 
             <div class="content">

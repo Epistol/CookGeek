@@ -39,12 +39,12 @@
     @include("layouts.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
-    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
-
-    </script>
 </head>
-<body>
-<div id="app">
+<body class="">
+@include("layouts.menuMobile")
+
+<div id="bodyWebsite">
+    <div id="app">
 
     @include("layouts.menu")
 
@@ -55,6 +55,7 @@
             <div class="column right_admin">
                 @yield('content')</div>
         </div>
+</div>
 </div>
 @include("layouts.footer")
 

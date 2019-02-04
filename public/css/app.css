@@ -17559,9 +17559,12 @@ h6 {
 }
 
 .categ-univers-recette {
-  background: #ebeaf5;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.univers-media-titre {
+  border-bottom: 1px solid  #ebeaf5;
 }
 
 .radiused {
@@ -18296,6 +18299,11 @@ img.tovalidate {
 .vodal-zoom-leave-active {
   -webkit-animation: vodal-zoom-leave both;
   animation: vodal-zoom-leave both;
+}
+
+.vodal-zoom {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
 }
 
 footer {

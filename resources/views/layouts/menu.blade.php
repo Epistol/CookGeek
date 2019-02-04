@@ -101,10 +101,15 @@
                             </button>
                         </form>
                     </div>
+
                 </div>
 
 
                 <div class="navbar-end">
+                    <a class="navbar-item bg-white" href="{{route('page.shop')}}">
+                       Goodies
+                    </a>
+
                     @guest
                         <div class="navbar-item"><a class="button" href="{{ route('register') }}">Inscription</a></div>
                         <div class="navbar-item"><a class="button is-primary" href="{{ route('login') }}">Connexion</a>

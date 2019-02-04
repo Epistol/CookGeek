@@ -12,62 +12,64 @@
     <section class="bordered-cdg">
         <div class="columns is-multiline">
 
-        @foreach($recipes as $nombre => $recette)
-            <?php
-            $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
-            $somme = $controller->sum_time_home($somme_t);
-            $validPictures = $picturectrl->loadRecipePicturesValid($recette);
-            if ($validPictures->isNotEmpty()) {
-                $img = $validPictures->first();
-                if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
-                    $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
+            @foreach($recipes as $nombre => $recette)
+                <?php
+                $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+                $somme = $controller->sum_time_home($somme_t);
+                $validPictures = $picturectrl->loadRecipePicturesValid($recette);
+                if ($validPictures->isNotEmpty()) {
+                    $img = $validPictures->first();
+                    if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
+                        $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
+                    } else {
+                        $urlClazy = collect($img->urls)->firstWhere('name', 'normal')['url'];
+                    }
                 } else {
-                    $urlClazy = collect($img->urls)->firstWhere('name', 'normal')['url'];
+                    $urlClazy = collect();
                 }
-            } else {
-                $urlClazy = collect();
-            }
-            ?>
-                    <div class="column is-4">
-                                <div class="card card-cdg">
-                                    <div id="medaillon_index">
-                                        @include('recipes.show.media')
-                                    </div>
+                ?>
+                <div class="column is-4">
+                    <div class="card card-cdg">
+                        <div id="medaillon_index">
+                            @include('recipes.show.media')
+                        </div>
 
-                                    <div class="card-image">
-                                        @include('recipes.index.cardimage')
-                                    </div>
-                                </div>
+                        <div class="card-image">
+                            @include('recipes.index.cardimage')
+                        </div>
+                    </div>
 
-                        <div class="recipe-index-description " id="checkbutton">
-                            <p class="card-header-title">
-                                <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
-                                   class="home-text">
-                                    {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
-                                </a>
-                            </p>
-                            <div class="columns is-paddingless is-marginless mini-infos">
-                                <div class="column is-4 is-flex-center"><i class="fas fa-clock"
-                                                                           style="margin-right:0.5rem"></i><span>{{ strip_tags($somme) }}</span>
-                                </div>
-                                <div class="column is-2 is-flex-center">
-                                    <span>{{ $recette-> nb_guests ?: 1 }}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
-                                    <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
-                                </div>
-                                <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
-                                    {{--Nom de l'univers--}}
-                                    @php
-                                        $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
-                                    @endphp
-                                    @if($univers_data)
-                                        <a href="{{ route('univers.show', $univers_data->id) }}"
+                    <div class="recipe-index-description " id="checkbutton">
+                        <p class="card-header-title">
+                            <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
+                               class="home-text">
+                                {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
+                            </a>
+                        </p>
+                        <div class="columns is-paddingless is-marginless mini-infos">
+                            <div class="column is-4 is-flex-center"><i class="fas fa-clock"
+                                                                       style="margin-right:0.5rem"></i><span>{{ strip_tags($somme) }}</span>
+                            </div>
+                            <div class="column is-2 is-flex-center">
+                                <span>{{ $recette-> nb_guests ?: 1 }}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
+                                <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
+                            </div>
+                            <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
+                                {{--Nom de l'univers--}}
+                                @php
+                                    $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
+                                @endphp
+                                @if($univers_data)
+                                    @if(strip_tags(clean($univers_data->name)))
+                                        <a href="{{ route('univers.show', $univers_data->name) }}"
                                            style='margin-right:0.5rem'>{{ strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) }}</a>
                                     @endif
-                                </div>
+                                @endif
                             </div>
                         </div>
-                            </div>
-        @endforeach
+                    </div>
                 </div>
+            @endforeach
+        </div>
     </section>
 </section>

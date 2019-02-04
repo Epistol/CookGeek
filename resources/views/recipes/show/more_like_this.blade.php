@@ -41,19 +41,7 @@
                                 </a>
                             </p>
                         </div>
-                        {{--<div class="columns is-paddingless is-marginless mini-infos">
 
-                            <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
-                                --}}{{--Nom de l'univers--}}{{--
-                                @php
-                                    $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
-                                @endphp
-                                @if($univers_data)
-                                    <a href="{!! route('univers.show', $univers_data->id) !!}"
-                                       style='margin-right:0.5rem'>{{ strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) }}</a>
-                                @endif
-                            </div>
-                        </div>--}}
                     </div>
                 </div>
             @endforeach

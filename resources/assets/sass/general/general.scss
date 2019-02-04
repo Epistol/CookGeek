@@ -161,11 +161,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .categ-univers-recette {
-  background: #ebeaf5;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
+.univers-media-titre {
+  border-bottom : 1px solid  #ebeaf5;
+}
 
 .radiused {
   -webkit-border-radius: 10px;

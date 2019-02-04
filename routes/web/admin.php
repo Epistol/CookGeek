@@ -19,6 +19,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/unban/submit', 'Admin\GestionUtil@unban_user_store')->name("admin.unban.store");
         // USERS
         Route::resource('user', 'Admin\GestionUtil', ['as' => 'admin']);
+        // USERS
+        Route::resource('universe', 'Admin\UniverseController', ['as' => 'admin']);
+
         // RECIPES
         Route::resource('recipe', 'Admin\RecipesAdmin', ['as' => 'admin']);
         // PAGES

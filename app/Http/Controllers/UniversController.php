@@ -73,13 +73,13 @@ class UniversController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
 
         // on va charger les univers les plus vus de chaque types
 
         // 1) Charger les types (anime, manga, etc)
-        $univers = Univers::where("id", $id)->firstOrFail();
+        $univers = Univers::where("name", strip_tags(clean($name)))->firstOrFail();
 
         $categunivers = (new Categunivers())->alltypes();
 
@@ -129,17 +129,23 @@ class UniversController extends Controller
 
     public function store_api($text)
     {
-        $string = app('profanityFilter')->filter($text);
+        $string = app('profanityFilter')->filter(strip_tags(clean($text)));
 
         if (preg_match("/^(?:.*)[\*\*](?:.*)$/", $string)) {
             $string = '';
         }
 
-        // Adding to the DB
-        $id_univers = DB::table('univers')->insertGetId(
-            ['name' => $string]
-        );
-        return $univ = $id_univers;
+        if($string !== ""){
+            // Adding to the DB
+            $id_univers = DB::table('univers')->insertGetId(
+                ['name' => $string]
+            );
+            return $univ = $id_univers;
+        }
+        else {
+            return false;
+        }
+
     }
 
 
@@ -153,7 +159,9 @@ class UniversController extends Controller
 //        dd($univ);
         if ($univ->isEmpty()) {
             $univ = $this->store_api($text);
-
+            if($univ === false){
+                return false;
+            }
         } else {
             $univ = $univ->first();
             $univ = $univ->id;

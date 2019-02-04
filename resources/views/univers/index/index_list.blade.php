@@ -38,16 +38,13 @@
                             {{--Nom de l'univers--}}
                             <li class="column is-2" style="margin: 1%;">
                                 <div class="card">
+                                    @if(strip_tags(clean($univers_data->name)))
                                     <header class="card-header">
                                         <p class="card-header-title">
-                                            <a href="{{route('univers.show', $univers_data->id)}}">{{str_limit($univers_data->name, 20)}}</a>
+                                            <a href="{{route('univers.show', $univers_data->name)}}">{{str_limit(strip_tags(clean($univers_data->name)), 20)}}</a>
                                         </p>
-                                        {{--  <a href="#" class="card-header-icon" aria-label="more options">
-        <span class="icon">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-                                          </a>--}}
                                     </header>
+                                    @endif
                                     <div class="card-content is-flex-center">
                                         <div class="content">
                                             @if($img !== null)

@@ -20,11 +20,11 @@
 
     <ul class="menu-list">
         <li>
-
-            <a href="{{route("admin.recipe.index")}}" {{ Route::currentRouteNamed('voyager.users.*') ? ' class=is-active' : NULL  }} >Recipes</a>
             <a href="{{route("admin.ban.index")}}" {{ Route::currentRouteNamed('admin.ban.*') ? ' class=is-active' : NULL  }} >Ban</a>
-            <a href="{{route("admin.user.index")}}" {{ Route::currentRouteNamed('admin.user.*') ? ' class=is-active' : NULL  }} >Users</a>
             <a href="{{route("page.index")}}" {{ Route::currentRouteNamed('page.*') ? ' class=is-active' : NULL  }} >Pages</a>
+            <a href="{{route("admin.recipe.index")}}" {{ Route::currentRouteNamed('voyager.users.*') ? ' class=is-active' : NULL  }} >Recipes</a>
+            <a href="{{route("admin.universe.index")}}" {{ Route::currentRouteNamed('admin.universe.*') ? ' class=is-active' : NULL  }} >Univers</a>
+            <a href="{{route("admin.user.index")}}" {{ Route::currentRouteNamed('admin.user.*') ? ' class=is-active' : NULL  }} >Users</a>
 
         </li>
     </ul>

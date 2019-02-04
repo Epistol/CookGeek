@@ -17,3 +17,6 @@
 <meta property="og:locale" content="fr_FR"/>
 <meta name="classification" content="geek recette de cuisine gratuit"/>
 <meta name="HandheldFriendly" content="true">
+
+
+<meta name="p:domain_verify" content="05cbfbe372355fc341420d5bcf35e1cd"/>
