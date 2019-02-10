@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\UniverseController;
 use App\Jobs\PictureThumbnail;
+use App\Jobs\UniversThumbnail;
 use App\RecipeImg;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -37,8 +39,18 @@ class PictureController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+        return response()->json(true);
+    }
 
+    public function addPictureToUniverse(Request $request)
+    {
 
+        $pictureBase = $request->picture;
+        $universId = $request->univers;
+        $userId = $request->user;
+
+        $namePicture = $this->randomName();
+        $this->storeUniversPicture($universId, $pictureBase, $userId, $namePicture);
         return response()->json(true);
     }
 
@@ -47,6 +59,7 @@ class PictureController extends Controller
      * @param $recipeId
      * @param $userId
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
@@ -104,8 +117,6 @@ class PictureController extends Controller
         $urlThumb = '';
         $urlIndex = '';
         $return = collect();
-
-
         return $return;
     }
 
@@ -166,4 +177,14 @@ class PictureController extends Controller
         $square = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'thumbSquare', 250);
         $original = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'original');
     }
+
+    private function storeUniversPicture($universId, $imageContent, $userId, $imageName)
+    {
+
+        UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbnail');
+        UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'indexRecipe');
+        UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbSquare', 250);
+        UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'original');
+    }
+
 }

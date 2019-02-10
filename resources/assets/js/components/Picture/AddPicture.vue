@@ -26,7 +26,7 @@
                         <h1 class="title">Photo envoyée ! Nous la validerons d'ici peu ! </h1>
                     </template>
                 </div>
-                <div slot="footer" v-if="!sent && send === true">
+                <div slot="footer" v-if="!sent && this.send === 'true' ">
                     <button class="button is-primary" type="button" @click="uploadImage()">Envoyer</button>
                 </div>
             </template>

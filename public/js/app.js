@@ -97137,7 +97137,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              !_vm.sent && _vm.send === true
+              !_vm.sent && this.send === "true"
                 ? _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
                     _c(
                       "button",

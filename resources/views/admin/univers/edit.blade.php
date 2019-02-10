@@ -34,7 +34,8 @@
 
                     <div class="field" style="max-height: 5rem;">
                         <label class="label">Bannière</label>
-                        <add-any-picture type="no-button" send="false" url="universe" height="200"  width="200"  anyid="{{$univers->id}}" @updated=""
+
+                        <add-any-picture type="no-button" send="true" url="universe" height="200"  width="200"  anyid="{{$univers->id}}"
                                          user="{{Auth::user()->id}}"></add-any-picture>
                     </div>
                 </div>
