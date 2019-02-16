@@ -8,7 +8,7 @@ use App\Categunivers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use App\Http\Requests\StoreRecipe;
-use App\RecipeImg;
+use App\Pictures;
 use App\Recipe;
 use App\Univers;
 use Carbon\Carbon;
@@ -255,7 +255,7 @@ class RecipeController extends Controller
             $url = url("/recipes/" . $recette->id . "/" . intval($recette->id_user) . "/" . strip_tags(clean($firstimg->image_name)));
             $retour = collect($url);
         } else {
-            $images = RecipeImg::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
+            $images = Pictures::where(['recipe_id' => $recette->id, ['user_id', '!=', $recette->id_user]])->get();
             $retour = collect($images);
         }
         return $retour;
@@ -313,7 +313,7 @@ class RecipeController extends Controller
         $steps = DB::table('recipes_steps')->where('recipe_id', '=', $recette->id)->get();
         $typeuniv = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
 
-        $validPictures = RecipeImg::loadRecipePicturesValid($recette);
+        $validPictures = Pictures::loadRecipePicturesValid($recette);
 
         if (!Auth::guest()) {
             $userPicturesNonValid = $this->pictureService->loaduserPicturesNonValid($recette, Auth::id());

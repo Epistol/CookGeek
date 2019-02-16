@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Admin\UniverseController;
 use App\Jobs\PictureThumbnail;
 use App\Jobs\UniversThumbnail;
-use App\RecipeImg;
+use App\Pictures;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,13 +44,11 @@ class PictureController extends Controller
 
     public function addPictureToUniverse(Request $request)
     {
-
+        $universId = $request->anyid;
         $pictureBase = $request->picture;
-        $universId = $request->univers;
         $userId = $request->user;
-
         $namePicture = $this->randomName();
-        $this->storeUniversPicture($universId, $pictureBase, $userId, $namePicture);
+        $this->storeUniversPicture($universId, $pictureBase, $namePicture, $userId );
         return response()->json(true);
     }
 
@@ -178,12 +176,13 @@ class PictureController extends Controller
         $original = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'original');
     }
 
-    private function storeUniversPicture($universId, $imageContent, $userId, $imageName)
+    private function storeUniversPicture($universId, $imageContent, $imageName, $userId)
     {
 
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbnail');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'indexRecipe');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbSquare', 250);
+        UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'banner');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'original');
     }
 

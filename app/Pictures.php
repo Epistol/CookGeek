@@ -8,19 +8,27 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 
-class RecipeImg extends Model
+class Pictures extends Model
 {
     use Searchable;
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function getFirstNameAttribute($value)
     {
         return ucfirst($value);
     }
 
+    /**
+     * @param $validPictures
+     * @return string
+     */
     public static function checkTopRecipeImg($validPictures)
     {
         $return = '';
-        if($validPictures !== ""){
+        if ($validPictures !== "") {
             if (isset($validPictures) && $validPictures->count() > 0) {
                 $firstImg = collect($validPictures->first()->urls);
                 if ($firstImg->firstWhere('name', "index")['url'] !== "") {
@@ -29,8 +37,7 @@ class RecipeImg extends Model
                     $return = $firstImg->firstWhere('name', "normal")['url'];
                 }
             }
-        }
-         else {
+        } else {
             $return = asset("img/cdglogo.png");
         }
         return $return;
@@ -47,6 +54,21 @@ class RecipeImg extends Model
         return $return;
     }
 
+    public static function loadUniversPicturesValid($univers)
+    {
+        if ($univers->picture) {
+            $return = self::coreGeneralPicture(collect($univers->picture), 'univers', $univers);
+        } else {
+            return false;
+        }
+        return $return;
+    }
+
+    /**
+     * @param $pictures
+     * @param $recette
+     * @return mixed
+     */
     private static function corePicture($pictures, $recette)
     {
         $changev7 = Carbon::create(2019, 01, 20, 20, 10, 00);
@@ -70,17 +92,68 @@ class RecipeImg extends Model
                     $urlIndex = url($firstPart . "index_" . strip_tags(clean($picture->image_name)) . ".png");
                 }
 
-                $listLinks->push(['name' => 'normal', 'url' => $url]);
-                $listLinks->push(['name' => 'webp', 'url' => $urlWebp]);
-                $listLinks->push(['name' => 'thumb', 'url' => $urlThumb]);
-                $listLinks->push(['name' => 'index', 'url' => $urlIndex]);
-                $picture->urls = $listLinks;
+                $picture->urls = self::generateUrlCollection($listLinks, $url, $urlWebp, $urlThumb, $urlIndex);
+
             }
         }
         return $pictures;
     }
 
+    private static function coreGeneralPicture($pictures, $folder, $model)
+    {
+        // Paradigm change between old storing Picture and New with Queues
+        $changev7 = Carbon::create(2019, 01, 20, 20, 10, 00);
 
+        $originalImageUrl = '';
+        $urlWebp = '';
+        $urlThumb = '';
+        $urlIndex = '';
+        $listLinks = collect();
+
+        // if there is a picture
+        if ($pictures->isNotEmpty()) {
+            foreach ($pictures as $picture) {
+                // If it's a recipe
+                if ($model->getTable() === "recipes") {
+                    $pictureDate = Carbon::parse($picture->created_at);
+                    if ($pictureDate->lessThan($changev7)) {
+                        $originalImageUrl = url("/" . $folder . "/" . $model->id . "/" . intval($picture->user_id) . "/" . strip_tags(clean($picture->image_name)));
+                    } else {
+                        $firstPart = "/recipes/" . $model->hashid . "/" . intval($picture->user_id) . "/";
+                    }
+                }
+                // Not a recipe model
+                else {
+                    $firstPart = "/" . $model->getTable() . "/" . $model->id . '/';
+                    $originalImageUrl = url($firstPart . strip_tags(clean($picture->image_name)) . '.jpeg');
+
+                    $urlWebp = url($firstPart . "square_" . strip_tags(clean($picture->image_name)) . ".webp");
+                    $urlThumb = url($firstPart . "thumb_" . strip_tags(clean($picture->image_name)) . ".jpeg");
+                    $urlIndex = url($firstPart . "index_" . strip_tags(clean($picture->image_name)) . ".png");
+                }
+
+                $picture->urls = self::generateUrlCollection($listLinks, $originalImageUrl, $urlWebp, $urlThumb, $urlIndex);
+            }
+        }
+        return $pictures;
+    }
+
+    /**
+     * @param $listLinks
+     * @param $origin
+     * @param $webp
+     * @param $thumb
+     * @param $index
+     * @return mixed
+     */
+    private static function generateUrlCollection($listLinks, $origin, $webp, $thumb, $index)
+    {
+        $listLinks->push(['name' => 'normal', 'url' => $origin]);
+        $listLinks->push(['name' => 'webp', 'url' => $webp]);
+        $listLinks->push(['name' => 'thumb', 'url' => $thumb]);
+        $listLinks->push(['name' => 'index', 'url' => $index]);
+        return $listLinks;
+    }
 
 
 }

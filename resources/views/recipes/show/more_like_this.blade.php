@@ -10,7 +10,7 @@
             @foreach($related as $nombre => $recette)
 
                 <?php
-                $validPictures = App\RecipeImg::loadRecipePicturesValid($recette);
+                $validPictures = App\Pictures::loadRecipePicturesValid($recette);
 
                 if ($validPictures->isNotEmpty()) {
                     $img = $validPictures->first();

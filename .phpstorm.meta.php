@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-02-01 21:09:58.
+    * Generated on 2019-02-13 20:20:44.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -45,6 +45,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -263,6 +264,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -481,6 +483,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -699,6 +702,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -917,6 +921,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -1135,6 +1140,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,
@@ -1353,6 +1359,7 @@ namespace PHPSTORM_META {
         'Laravel\Horizon\Contracts\TagRepository' => \Laravel\Horizon\Repositories\RedisTagRepository::class,
         'Laravel\Horizon\Contracts\WorkloadRepository' => \Laravel\Horizon\Repositories\RedisWorkloadRepository::class,
         'Laravel\Horizon\Listeners\TrimFailedJobs' => \Laravel\Horizon\Listeners\TrimFailedJobs::class,
+        'Laravel\Horizon\Listeners\TrimMonitoredJobs' => \Laravel\Horizon\Listeners\TrimMonitoredJobs::class,
         'Laravel\Horizon\Listeners\TrimRecentJobs' => \Laravel\Horizon\Listeners\TrimRecentJobs::class,
         'Laravel\Horizon\Lock' => \Laravel\Horizon\Lock::class,
         'Laravel\Horizon\Stopwatch' => \Laravel\Horizon\Stopwatch::class,

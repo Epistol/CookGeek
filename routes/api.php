@@ -33,9 +33,7 @@ Route::post("/recipe/get_ingredients/", 'Api\RecipeController@get_ingredients')-
 Route::post("/recipe/get_steps/", 'Api\RecipeController@get_steps')->name("api.recipe.get_steps");
 Route::post("/recipe/alerte/", 'Api\RecipeController@alerte')->name("api.recipe.alerte");
 
-Route::post('/universe/addmypicture', 'PictureController@addPictureToUniverse')->name("api.universe.picture.store")->middleware('auth');
-
-
+Route::post('/universe/addmypicture', 'PictureController@addPictureToUniverse')->name("api.universe.picture.store");
 
 Route::get("/note", function() {
 	return redirect('/');

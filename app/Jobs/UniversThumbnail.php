@@ -46,6 +46,7 @@ class UniversThumbnail implements ShouldQueue
      * @var string
      */
     private $typePicture;
+    private $univers;
 
     /**
      * Create a new job instance.
@@ -58,15 +59,15 @@ class UniversThumbnail implements ShouldQueue
      * @param int|null $width
      * @param int|null $height
      */
-    public function __construct($recipe, string $imageContent, string $imageName, $user, string $typePicture, int $width = null, ?int $height = null)
+    public function __construct($univers, string $imageContent, string $imageName, $user, string $typePicture, int $width = null, ?int $height = null)
     {
         $this->width = $width;
         $this->height = $height;
-        $this->recipe = $recipe;
         $this->imageContent = $imageContent;
         $this->imageName = $imageName;
         $this->user = $user;
         $this->typePicture = $typePicture;
+        $this->univers = $univers;
     }
 
     /**
@@ -84,13 +85,19 @@ class UniversThumbnail implements ShouldQueue
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
 
-        $recipepath = public_path('/recipes/' . $this->recipe);
-        File::exists($recipepath) or File::makeDirectory($recipepath);
-
-        $path = public_path('/recipes/' . $this->recipe . '/' . $this->user . '/');
-        File::exists($path) or File::makeDirectory($path);
+        $path = self::createFolder('/univers/', $this->univers . "/");
         $image->save($path . '/' . $name);
+    }
 
+    public function createFolder($pathFolder, $id){
+        $createPath = public_path($pathFolder . $id);
+        if(File::exists($createPath)){
+            return $createPath;
+        }
+        else {
+            File::makeDirectory($createPath);
+            return $createPath;
+        }
     }
 
     public function failed(Exception $exception)
@@ -108,6 +115,9 @@ class UniversThumbnail implements ShouldQueue
                 break;
             case 'indexRecipe':
                 $image = $image->fit(300, 150)->encode('png');
+                break;
+            case 'banner':
+                $image = $image->fit(1344, 100)->encode('png');
                 break;
             case 'thumbSquare':
                 $image = $image->fit(250, 250)->encode('webp');

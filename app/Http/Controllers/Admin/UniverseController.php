@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Pictures;
 use App\Univers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -60,6 +61,8 @@ class UniverseController extends Controller
     public function edit($id)
     {
         $univers = Univers::where('id', $id)->first();
+        $prefill = Pictures::loadUniversPicturesValid($univers);
+        dd($prefill);
         return view('admin.univers.edit', ['univers'=> $univers]);
     }
 

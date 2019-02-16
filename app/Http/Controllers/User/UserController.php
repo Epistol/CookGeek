@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\UniverseProvider;
-use App\RecipeImg;
+use App\Pictures;
 use App\Recipe;
 use App\Univers;
 use Illuminate\Support\Facades\Auth;

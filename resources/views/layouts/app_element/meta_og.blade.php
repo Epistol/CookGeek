@@ -1,4 +1,4 @@
-<meta name="og:image" content="@if(isset($validPictures)){{ App\RecipeImg::checkTopRecipeImg($validPictures) }} @else {{App\RecipeImg::checkTopRecipeImg('')}}@endif"/>
+<meta name="og:image" content="@if(isset($validPictures)){{ App\Pictures::checkTopRecipeImg($validPictures) }} @else {{App\Pictures::checkTopRecipeImg('')}}@endif"/>
 
 @if( Route::currentRouteName() === 'recipe.show')
     <meta property="og:title"

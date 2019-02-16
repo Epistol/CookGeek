@@ -1,6 +1,6 @@
 <a href="/recette/{{$recette->slug}}">
     <?php
-    use App\RecipeImg;$img = RecipeImg::loadRecipePicturesValid($recette);
+    use App\Pictures;$img = Pictures::loadRecipePicturesValid($recette);
     ?>
     @if($img->isEmpty())
         <figure class="image is-1by1 ">

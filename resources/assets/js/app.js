@@ -48,13 +48,14 @@ import PictureUpload from "./components/Picture/PictureUpload.vue";
 import UnivPictureUpload from "./components/Picture/UnivPictureUpload.vue";
 import AddPictureRecipe from "./components/Picture/AddPictureRecipe.vue";
 import AddPicture from "./components/Picture/AddPicture.vue";
+import ImagePicture from "./components/Picture/Preview.vue";
 
 
 import Time from "./components/Time.vue";
 
 // Utilisation des composants
 Vue.use(Affix);
-Vue.use(VueClazyLoad,  InstantSearch, Datepicker, Time, SignalRecipe, modal, LoginModal, Notif, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, AddPicture, Autocomplete, TypeUniversIcon, StarRating, Ingredients, PictureInput);
+Vue.use(VueClazyLoad,  InstantSearch, Datepicker, Time, ImagePicture, SignalRecipe, modal, LoginModal, Notif, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, AddPicture, Autocomplete, TypeUniversIcon, StarRating, Ingredients, PictureInput);
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -85,6 +86,7 @@ const app = new Vue({
         'add-any-picture' :AddPicture,
         'login-modal': LoginModal,
         'fulltime': Time,
+        'preview-image': ImagePicture,
     },
 
     data: {

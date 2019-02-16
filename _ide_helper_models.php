@@ -321,7 +321,7 @@ namespace App{
 
 namespace App{
 /**
- * App\RecipeImg
+ * App\Pictures
  *
  * @property int $id
  * @property int $recipe_id
@@ -331,16 +331,16 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $validated
  * @property-read mixed $first_name
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereImageName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereRecipeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RecipeImg whereValidated($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereImageName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereRecipeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Pictures whereValidated($value)
  */
 	class RecipeImg extends \Eloquent {}
 }
