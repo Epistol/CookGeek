@@ -11,6 +11,17 @@ class Recipe extends Model implements Feedable
 {
     use Searchable;
 
+    public function image()
+    {
+        return $this->morphOne('App\Image', 'imageable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
+    }
+
+
     /**
      * @param $value
      * @return string
@@ -88,7 +99,7 @@ class Recipe extends Model implements Feedable
             ->author($this->id_user);
     }
 
-    /**
+    /** TODO : a dégager
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public static function getAllFeedItems()

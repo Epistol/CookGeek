@@ -34,6 +34,17 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 		'password', 'remember_token',
 	];
 
+    public function image()
+    {
+        return $this->morphOne('App\Image', 'imageable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
+    }
+
+
     /**
      * Get the unique identifier for the user.
      *
