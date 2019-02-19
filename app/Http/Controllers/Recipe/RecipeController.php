@@ -8,6 +8,7 @@ use App\Categunivers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use App\Http\Requests\StoreRecipe;
+use App\Ingredient;
 use App\Pictures;
 use App\Recipe;
 use App\Univers;
@@ -41,14 +42,11 @@ class RecipeController extends Controller
 
     {
         $medias = Categunivers::get();
-        $recipes = Recipe::getLastPaginate(true,false,12);
+        $recipes = Recipe::getLastPaginate(true, false, 12);
 
         // On charge les données dans la vue
         return view('recipes.index', array('universcateg' => $medias, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
     }
-
-
-
 
 
     /**
@@ -91,6 +89,7 @@ class RecipeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function store(StoreRecipe $request)
     {
@@ -103,8 +102,8 @@ class RecipeController extends Controller
         $collection_time = Recipe::getTimes($request->prep_minute, $request->cook_minute, $request->rest_minute, $request->prep_heure, $request->cook_heure, $request->rest_heure);
 
         $prep = $collection_time->get('prep');
-        $cook =  $collection_time->get('cook');
-        $rest =  $collection_time->get('rest');
+        $cook = $collection_time->get('cook');
+        $rest = $collection_time->get('rest');
 
         $univers = $this->first_found_universe(strip_tags(clean($request->univers)));
         //Filtering the comment
@@ -134,9 +133,15 @@ class RecipeController extends Controller
         $uid = $this->generate_uid($idRecette);
         $slug = $this->slugUpdate($idRecette, $uid, $request);
 
+        $recipe = Recipe::find($idRecette);
+
         // Partie ingrédients
         foreach ($request->ingredient as $key => $ingredient) {
-            $this->rangerIngredient($key, strip_tags(clean($ingredient)), $idRecette, strip_tags(clean($request->qtt_ingredient[$key])));
+            $ingredient = Ingredient::firstOrCreate(['name' => $ingredient]);
+            if (!$recipe->ingredients->contains($ingredient)) {
+                // Pour chaque ingrédient, on l'associe à la recette
+                $recipe->ingredients()->save($ingredient, ['quantity' => app('profanityFilter')->filter($request->qtt_ingredient[$key])]);
+            }
         }
 
         // Gestion des étapes
@@ -192,8 +197,8 @@ class RecipeController extends Controller
         $collection_time = Recipe::getTimes($request->prep_minute, $request->cook_minute, $request->rest_minute, $request->prep_heure, $request->cook_heure, $request->rest_heure);
 
         $prep = $collection_time->get('prep');
-        $cook =  $collection_time->get('cook');
-        $rest =  $collection_time->get('rest');
+        $cook = $collection_time->get('cook');
+        $rest = $collection_time->get('rest');
 
         $univers = $this->first_found_universe(strip_tags(clean($request->univers)));
 
@@ -612,39 +617,6 @@ class RecipeController extends Controller
         return $slug;
     }
 
-    private function rangerIngredient($index, $ingredient, $idRecette, $qtt)
-    {
-        if ($ingredient) {
-            $id_ingredient_ajout = DB::table('ingredients')->where('name', '=', $ingredient)->get();
-            // Si ingrédient inexistant, alors on ajoute à la db et on recupère l'id
-            if ($id_ingredient_ajout->isEmpty()) {
-                $in = app('profanityFilter')->filter($ingredient);
-                if (preg_match("/^(?:.*)[\*\*](?:.*)$/", $in)) {
-                    $in = '';
-                }
-                if ($in) {
-                    $ingredientID = DB::table('ingredients')->insertGetId(
-                        ['name' => $in]
-                    );
-                } else {
-                    $ingredientID = $id_ingredient_ajout;
-                }
-            } else {
-                $ingredientIDRetour = $id_ingredient_ajout->first();
-                $ingredientID = $ingredientIDRetour->id;
-            }
-
-            // Pour chaque ingrédient, on l'associe à la recette
-
-            DB::table('recipes_ingredients')->insertGetId(
-                ['id_recipe' => $idRecette,
-                    'id_ingredient' => $ingredientID,
-                    'qtt' => app('profanityFilter')->filter($qtt),
-                ]);
-
-        }
-
-    }
 
     private function editIngredient($index, $ingredient, $idRecette, $qtt)
     {

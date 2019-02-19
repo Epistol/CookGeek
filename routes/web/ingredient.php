@@ -8,7 +8,7 @@
 
 // RECETTE
 Route::group(['prefix' => 'ingredient'], function () {
-    Route::get('/', 'RecipesIngredientController@index')->name("ingredient.index");
+    Route::get('/', 'IngredientController@index')->name("ingredient.index");
 
     Route::get('{post}', 'RecipesIngredientController@show')->name("ingredient.show")->middleware('cacheResponse:10');
 });

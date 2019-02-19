@@ -13,6 +13,7 @@
         "askedio/laravel5-profanity-filter": "dev-master",
         "barryvdh/laravel-cors": "^0.11.0",
         "cybercog/laravel-ban": "^3.5",
+        "dimsav/laravel-translatable": "^9.3",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "~4.0",
         "guzzlehttp/psr7": "^1.5",

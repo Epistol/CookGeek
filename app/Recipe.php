@@ -21,6 +21,11 @@ class Recipe extends Model implements Feedable
         return $this->morphMany('App\Like', 'likeable');
     }
 
+    public function ingredients()
+    {
+        return $this->morphToMany('App\Ingredient', 'ingredientable');
+    }
+
 
     /**
      * @param $value

@@ -48,8 +48,6 @@ class RenameUserRecipesLikesToLikes extends Migration
         if (Schema::hasTable('user_recipe_likes')) {
             Schema::rename('user_recipe_likes', 'likes');
         }
-        else {
-            Schema::dropIfExists('likes');
-        }
+
     }
 }

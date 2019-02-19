@@ -42,7 +42,7 @@ class RecipesIngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $recipe = Recipe::find($request->recipe->id);
     }
 
     /**
@@ -53,6 +53,9 @@ class RecipesIngredientController extends Controller
      */
     public function show($name)
     {
+
+//        $listRecipes = Recipe::whereIn('validated', 1);
+
         $ingredient = \App\Ingredient::getbyName($name);
         $listeRecipeID = RecipeIngredient::where('id_ingredient', $ingredient->id)->whereIn('id_recipe', function ($query) {
             $query->where('validated', 1)->from('recipes')->select('id');
