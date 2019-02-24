@@ -31,7 +31,6 @@ class RecipeController extends Controller
         $this->pictureService = new PictureController();
     }
 
-
     /**
      * Show the profile for the given user.
      *
@@ -39,7 +38,6 @@ class RecipeController extends Controller
      */
 
     public function index()
-
     {
         $medias = Categunivers::get();
         $recipes = Recipe::getLastPaginate(true, false, 12);
@@ -144,7 +142,7 @@ class RecipeController extends Controller
             }
         }
 
-        // Gestion des étapes
+        // Gestion des étapes TODO
         foreach ($request->step as $key => $step) {
             if ($step) {
                 DB::table('recipes_steps')->insertGetId(

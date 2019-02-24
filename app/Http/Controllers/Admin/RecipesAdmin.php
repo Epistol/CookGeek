@@ -24,14 +24,14 @@ class RecipesAdmin extends Controller
      */
     public function index()
     {
-        $recipes = DB::table('recipes')->latest()->paginate(10);
+        $recipes = Recipe::latest()->paginate(10);
         return view("admin.recipes.index", array(
             'recipes' => $recipes
         ))->with(['controller' => $this]);
     }
 
     public function edit($id){
-    	$recipe = \App\Recipe::where('id', '=', $id)->get();
+    	$recipe = Recipe::where('id', '=', $id)->get();
 	    return view("admin.recipes.edit", array(
 		    'recipe' => $recipe[0]
 	    ))->with(['controller' => $this]);
@@ -42,7 +42,7 @@ class RecipesAdmin extends Controller
     }
 
 	public function store($id){
-		$recipe = DB::table('recipes')->where('id', '=' , $id)->first();
+		$recipe = Recipe::where('id', '=' , $id)->first();
 		return view("admin.recipes.edit", array(
 			'recipe' => $recipe
 		))->with(['controller' => $this]);
@@ -50,7 +50,7 @@ class RecipesAdmin extends Controller
 
 	public function update($content){
         die();
-        $recipe = DB::table('recipes')->where('slug', '=' , $content)->first();
+        $recipe = Recipe::where('slug', '=' , $content)->first();
         return view("admin.recipes.edit", array(
             'recipe' => $recipe
         ))->with(['controller' => $this]);

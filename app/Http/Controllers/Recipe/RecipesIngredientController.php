@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Recipe\RecipeController;
+use App\Ingredient;
 use App\Recipe;
 use App\RecipeIngredient;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ class RecipesIngredientController extends Controller
 
 //        $listRecipes = Recipe::whereIn('validated', 1);
 
-        $ingredient = \App\Ingredient::getbyName($name);
+        $ingredient = Ingredient::getbyName($name);
         $listeRecipeID = RecipeIngredient::where('id_ingredient', $ingredient->id)->whereIn('id_recipe', function ($query) {
             $query->where('validated', 1)->from('recipes')->select('id');
         })->select('id_recipe')->groupBy('id_recipe')->paginate(15);
