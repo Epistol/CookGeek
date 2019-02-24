@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Recipe\RecipeController;
 use App\Recipe;
 use App\RecipeIngredient;
 use Illuminate\Http\Request;
@@ -20,8 +19,7 @@ class RecipesIngredientController extends Controller
             $query->where('validated', 1)->from('recipes')->select('id');
         })->groupBy('id_ingredient')->get();
 
-        return view('ingredients.index', array('ingredients' => $all));
-
+        return view('ingredients.index', ['ingredients' => $all]);
     }
 
     /**
@@ -37,7 +35,8 @@ class RecipesIngredientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +47,8 @@ class RecipesIngredientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($name)
@@ -61,16 +61,14 @@ class RecipesIngredientController extends Controller
             $query->where('validated', 1)->from('recipes')->select('id');
         })->select('id_recipe')->groupBy('id_recipe')->paginate(15);
 
-
-        return view('ingredients.show', array('ingredient' => $ingredient, 'recipes' => $listeRecipeID));
-
+        return view('ingredients.show', ['ingredient' => $ingredient, 'recipes' => $listeRecipeID]);
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +79,9 @@ class RecipesIngredientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,7 +92,8 @@ class RecipesIngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -30,7 +30,8 @@ class SignalementsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class SignalementsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Signalements  $signalements
+     * @param \App\Signalements $signalements
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Signalements $signalements)
@@ -52,7 +54,8 @@ class SignalementsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Signalements  $signalements
+     * @param \App\Signalements $signalements
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Signalements $signalements)
@@ -63,8 +66,9 @@ class SignalementsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Signalements  $signalements
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Signalements        $signalements
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Signalements $signalements)
@@ -75,7 +79,8 @@ class SignalementsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Signalements  $signalements
+     * @param \App\Signalements $signalements
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Signalements $signalements)

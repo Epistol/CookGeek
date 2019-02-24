@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class RenameUserRecipesLikesToLikes extends Migration
 {
@@ -48,6 +48,5 @@ class RenameUserRecipesLikesToLikes extends Migration
         if (Schema::hasTable('user_recipe_likes')) {
             Schema::rename('user_recipe_likes', 'likes');
         }
-
     }
 }

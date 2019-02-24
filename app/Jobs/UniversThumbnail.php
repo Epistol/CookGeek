@@ -4,14 +4,12 @@ namespace App\Jobs;
 
 use Exception;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 
 class UniversThumbnail implements ShouldQueue
 {
@@ -55,7 +53,7 @@ class UniversThumbnail implements ShouldQueue
      * @param string $imageContent
      * @param string $imageName
      * @param $user
-     * @param string $typePicture
+     * @param string   $typePicture
      * @param int|null $width
      * @param int|null $height
      */
@@ -72,7 +70,6 @@ class UniversThumbnail implements ShouldQueue
 
     /**
      * Execute the job.
-     *
      */
     public function handle()
     {
@@ -85,17 +82,18 @@ class UniversThumbnail implements ShouldQueue
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
 
-        $path = self::createFolder('/univers/', $this->univers . "/");
-        $image->save($path . '/' . $name);
+        $path = self::createFolder('/univers/', $this->univers.'/');
+        $image->save($path.'/'.$name);
     }
 
-    public function createFolder($pathFolder, $id){
-        $createPath = public_path($pathFolder . $id);
-        if(File::exists($createPath)){
+    public function createFolder($pathFolder, $id)
+    {
+        $createPath = public_path($pathFolder.$id);
+        if (File::exists($createPath)) {
             return $createPath;
-        }
-        else {
+        } else {
             File::makeDirectory($createPath);
+
             return $createPath;
         }
     }
@@ -105,7 +103,6 @@ class UniversThumbnail implements ShouldQueue
         // Send user notification of failure, etc...
         return $exception;
     }
-
 
     private function resizing($image)
     {
@@ -122,7 +119,7 @@ class UniversThumbnail implements ShouldQueue
             case 'thumbSquare':
                 $image = $image->fit(250, 250)->encode('webp');
                 break;
-            default :
+            default:
                 if ($this->height) {
                     $image = $image->fit($this->width, $this->height)->encode('jpeg', 90);
                 } elseif ($this->width) {
@@ -132,6 +129,7 @@ class UniversThumbnail implements ShouldQueue
                 }
                 break;
         }
+
         return $image;
     }
 
@@ -139,19 +137,19 @@ class UniversThumbnail implements ShouldQueue
     {
         switch ($this->typePicture) {
             case 'thumbnail':
-                $imageName = 'thumb_' . $imageName . ".jpeg";
+                $imageName = 'thumb_'.$imageName.'.jpeg';
                 break;
             case 'indexRecipe':
-                $imageName = 'index_' . $imageName . ".png";
+                $imageName = 'index_'.$imageName.'.png';
                 break;
             case 'thumbSquare':
-                $imageName = 'square_' . $imageName . ".webp";
+                $imageName = 'square_'.$imageName.'.webp';
                 break;
-            default :
-                $imageName = $imageName . ".jpeg";
+            default:
+                $imageName = $imageName.'.jpeg';
                 break;
         }
+
         return $imageName;
     }
-
 }

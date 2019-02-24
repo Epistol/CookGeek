@@ -26,9 +26,9 @@ class Recipe extends Model implements Feedable
         return $this->morphToMany('App\Ingredient', 'ingredientable');
     }
 
-
     /**
      * @param $value
+     *
      * @return string
      */
     public function getFirstNameAttribute($value)
@@ -42,7 +42,8 @@ class Recipe extends Model implements Feedable
     public function getType()
     {
         $mytypeid = $this->type;
-        return (new Type_recipe)->getnamefromid($mytypeid);
+
+        return (new Type_recipe())->getnamefromid($mytypeid);
     }
 
     /**
@@ -51,17 +52,19 @@ class Recipe extends Model implements Feedable
     public function getTypeLower()
     {
         $mytypeid = $this->type;
-        $typename = (new Type_recipe)->getnamefromid($mytypeid);
+        $typename = (new Type_recipe())->getnamefromid($mytypeid);
+
         return strtolower($typename);
     }
 
     /**
      * @param $time
+     *
      * @return int
      */
     public static function verify_time($time)
     {
-        if (empty($time) || !isset($time) || $time == NULL) {
+        if (empty($time) || !isset($time) || $time == null) {
             return 0;
         } else {
             return intval($time);
@@ -71,36 +74,38 @@ class Recipe extends Model implements Feedable
     /**
      * @param $t_h
      * @param $time
+     *
      * @return float|int
      */
-    public static function return_time($t_h, $time){
-        if($t_h === null){
+    public static function return_time($t_h, $time)
+    {
+        if ($t_h === null) {
             $t_h = 0;
         }
-        if($time === null){
+        if ($time === null) {
             $time = 0;
-
         }
-        return intval(($t_h*60) + $time);
-    }
 
+        return intval(($t_h * 60) + $time);
+    }
 
     /**
      * @return $this|array|FeedItem
      */
     public function toFeedItem()
     {
-        if ($this->commentary_author == NULL) {
-            $contenu = $this->title . ", Pour " . $this->nb_guests . " " . $this->guest_type;
+        if ($this->commentary_author == null) {
+            $contenu = $this->title.', Pour '.$this->nb_guests.' '.$this->guest_type;
         } else {
             $contenu = $this->commentary_author;
         }
+
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
             ->summary($contenu)
             ->updated($this->updated_at)
-            ->link(url("/") . "/recette/" . $this->slug)
+            ->link(url('/').'/recette/'.$this->slug)
             ->author($this->id_user);
     }
 
@@ -109,12 +114,13 @@ class Recipe extends Model implements Feedable
      */
     public static function getAllFeedItems()
     {
-        return Recipe::all();
+        return self::all();
     }
 
     /**
      * @param $query
      * @param $value
+     *
      * @return mixed
      */
     public function scopeValidated($query, $value)
@@ -124,7 +130,7 @@ class Recipe extends Model implements Feedable
 
     public function scopeSignaled($query, $choice)
     {
-        if($choice === false){
+        if ($choice === false) {
             return $query->whereNotIn('id', function ($query) {
                 $query->select('recipe_id')
                     ->from('signalements')
@@ -132,6 +138,7 @@ class Recipe extends Model implements Feedable
                     ->orWhere('created_at', '>=', today()->toDateTimeString());
             });
         }
+
         return $query;
     }
 
@@ -139,18 +146,22 @@ class Recipe extends Model implements Feedable
      * @param $valid
      * @param $signal
      * @param int $nbPaginate
+     *
      * @return mixed
      */
-    public static function getPaginate($valid, $signal, $nbPaginate = 10){
-        $recipes = Recipe::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
+    public static function getPaginate($valid, $signal, $nbPaginate = 10)
+    {
+        $recipes = self::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
+
         return $recipes;
     }
 
-    public static function getLastPaginate($valid, $signal, $nbPaginate = 10){
-        $recipes = Recipe::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
+    public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
+    {
+        $recipes = self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
+
         return $recipes;
     }
-
 
     /**
      * @param null $prepMinute
@@ -159,13 +170,15 @@ class Recipe extends Model implements Feedable
      * @param $prepHeure
      * @param $cookHeure
      * @param $restHeure
+     *
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
-    public static function getTimes($prepMinute , $cookMinute, $restMinute, $prepHeure, $cookHeure, $restHeure){
+    public static function getTimes($prepMinute, $cookMinute, $restMinute, $prepHeure, $cookHeure, $restHeure)
+    {
         $datas = collect(['prepM' => $prepMinute, 'cookM' => $cookMinute, 'restM' => $restMinute, 'prepH' => $prepHeure, 'cookH' => $cookHeure, 'restH' => $restHeure]);
 
         $filtered = $datas->filter(function ($value, $key) {
-            if (empty($value) || !isset($value) || $value === NULL) {
+            if (empty($value) || !isset($value) || $value === null) {
                 return $key;
             } else {
                 return intval($value);
@@ -177,9 +190,7 @@ class Recipe extends Model implements Feedable
         $rest = self::return_time($filtered->get('restH'), $filtered->get('restM'));
 
         $times = collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
+
         return $times;
     }
-
-
 }
-

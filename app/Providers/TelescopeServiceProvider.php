@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use Laravel\Telescope\Telescope;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\EntryType;
+use Laravel\Telescope\IncomingEntry;
+use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
@@ -20,13 +20,11 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         // Telescope::night();
 
         Telescope::filter(function (IncomingEntry $entry) {
-
             if ($entry->type === EntryType::REQUEST
                 && isset($entry->content['uri'])
                 && str_contains($entry->content['uri'], '_debugbar')) {
                 return false;
             }
-
 
             if ($this->app->isLocal()) {
                 return true;

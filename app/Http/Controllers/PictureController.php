@@ -2,28 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Admin\UniverseController;
 use App\Jobs\PictureThumbnail;
 use App\Jobs\UniversThumbnail;
-use App\Pictures;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use Intervention\Image\ImageManager;
 
 class PictureController extends Controller
 {
-
-
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function addPictureToRecipe(Request $request)
     {
-
         $pictureBase = $request->picture;
         $recipeId = $request->recipe;
         $recipeHash = $request->recipehash;
@@ -33,12 +27,13 @@ class PictureController extends Controller
         $uploaded = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
 
         DB::table('recipe_imgs')->updateOrInsert(
-            ['recipe_id' => $recipeId,
+            ['recipe_id'     => $recipeId,
                 'image_name' => strip_tags(clean($namePicture)),
-                'user_id' => $userId,
+                'user_id'    => $userId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+
         return response()->json(true);
     }
 
@@ -48,7 +43,8 @@ class PictureController extends Controller
         $pictureBase = $request->picture;
         $userId = $request->user;
         $namePicture = $this->randomName();
-        $this->storeUniversPicture($universId, $pictureBase, $namePicture, $userId );
+        $this->storeUniversPicture($universId, $pictureBase, $namePicture, $userId);
+
         return response()->json(true);
     }
 
@@ -56,8 +52,10 @@ class PictureController extends Controller
      * @param $pictureBase
      * @param $recipeId
      * @param $userId
-     * @return \Illuminate\Http\JsonResponse
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
@@ -67,31 +65,35 @@ class PictureController extends Controller
         $uploaded = $this->storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
 
         DB::table('recipe_imgs')->updateOrInsert(
-            ['recipe_id' => $recipeId,
+            ['recipe_id'     => $recipeId,
                 'image_name' => strip_tags(clean($pictureName)),
-                'user_id' => $userId,
+                'user_id'    => $userId,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'validated' => 1
+                'validated'  => 1,
             ]);
 
         Storage::delete($picturePath);
+
         return response()->json($uploaded);
     }
 
     /**
      * @param $recette
+     *
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
     public function loadRecipePicturesValid($recette)
     {
         $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')->where('validated', '=', 1)->paginate(5);
         $return = $this->corePicture($pictures, $recette);
+
         return $return;
     }
 
     /**
      * @param $recette
+     *
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
     public function loaduserPicturesNonValid($recette, $user)
@@ -99,11 +101,13 @@ class PictureController extends Controller
         $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')->where('validated', '=', 0)->where('user_id', '=', intval($user))->paginate(5);
 
         $return = $this->corePicture($pictures, $recette);
+
         return $return;
     }
 
     /**
      * @param $recette
+     *
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
     public function loadMoreRecipePictures($recette)
@@ -115,6 +119,7 @@ class PictureController extends Controller
         $urlThumb = '';
         $urlIndex = '';
         $return = collect();
+
         return $return;
     }
 
@@ -132,13 +137,13 @@ class PictureController extends Controller
                 $listLinks = collect();
                 $pictureDate = Carbon::parse($picture->created_at);
                 if ($pictureDate->lessThan($changev7)) {
-                    $url = url("/recipes/" . $recette->id . "/" . intval($picture->user_id) . "/" . strip_tags(clean($picture->image_name)));
+                    $url = url('/recipes/'.$recette->id.'/'.intval($picture->user_id).'/'.strip_tags(clean($picture->image_name)));
                 } else {
-                    $firstPart = "/recipes/" . $recette->hashid . "/" . intval($picture->user_id) . "/";
-                    $url = url($firstPart . strip_tags(clean($picture->image_name)) . '.jpeg');
-                    $urlWebp = url($firstPart . "square_" . strip_tags(clean($picture->image_name)) . ".webp");
-                    $urlThumb = url($firstPart . "thumb_" . strip_tags(clean($picture->image_name)) . ".jpeg");
-                    $urlIndex = url($firstPart . "index_" . strip_tags(clean($picture->image_name)) . ".png");
+                    $firstPart = '/recipes/'.$recette->hashid.'/'.intval($picture->user_id).'/';
+                    $url = url($firstPart.strip_tags(clean($picture->image_name)).'.jpeg');
+                    $urlWebp = url($firstPart.'square_'.strip_tags(clean($picture->image_name)).'.webp');
+                    $urlThumb = url($firstPart.'thumb_'.strip_tags(clean($picture->image_name)).'.jpeg');
+                    $urlIndex = url($firstPart.'index_'.strip_tags(clean($picture->image_name)).'.png');
                 }
 
                 $listLinks->push(['name' => 'normal', 'url' => $url]);
@@ -148,17 +153,19 @@ class PictureController extends Controller
                 $picture->urls = $listLinks;
             }
         }
+
         return $pictures;
     }
 
-
     /**
      * @param $image
+     *
      * @return string
      */
     private function randomName()
     {
         $imageName = str_random(10);
+
         return $imageName;
     }
 
@@ -178,12 +185,10 @@ class PictureController extends Controller
 
     private function storeUniversPicture($universId, $imageContent, $imageName, $userId)
     {
-
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbnail');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'indexRecipe');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'thumbSquare', 250);
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'banner');
         UniversThumbnail::dispatch($universId, $imageContent, $imageName, $userId, 'original');
     }
-
 }

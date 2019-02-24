@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
-
-
     private $pictureService;
 
     public function __construct()
@@ -18,95 +16,98 @@ class MediaController extends Controller
         $this->pictureService = new PictureController();
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $medias = DB::table('categunivers')->get();
+
+        if ($medias !== null) {
+            // On charge les données dans la vue
+            return view('media.index', ['medias' => $medias])->with(['controller' => $this]);
+        } else {
+            abort(404);
+        }
+    }
 
     /**
+     * Show the form for creating a new resource.
      *
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		$medias = DB::table('categunivers')->get();
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-		if($medias !== null) {
-			// On charge les données dans la vue
-			return view('media.index', array('medias' => $medias))->with(['controller' => $this]);
-		} else {
-			abort(404);
-		}
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $media = DB::table('categunivers')->where('name', '=', $id)->first();
+        if ($media != null) {
+            $recipes = DB::table('recipes')->where('type_univers', '=', $media->id)->where('validated', '=', 1)->latest()->paginate(12);
+            // On charge les données dans la vue
+            return view('media.show', ['media' => $media, 'pictureService' => $this->pictureService, 'recipes' => $recipes])->with(['controller' => $this]);
+        } else {
+            abort(404);
+        }
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		//
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$media = DB::table('categunivers')->where("name", "=", $id)->first();
-		if($media != null) {
-			$recipes = DB::table('recipes')->where("type_univers", "=", $media->id)->where('validated', '=', 1)->latest()->paginate(12);
-			// On charge les données dans la vue
-			return view('media.show', array('media' => $media, 'pictureService' => $this->pictureService, 'recipes' => $recipes))->with(['controller' => $this]);
-		} else {
-			abort(404);
-		}
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

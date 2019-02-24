@@ -5,10 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
-
 class TypeRecipe extends Model
 {
-	use Searchable;
+    use Searchable;
 
     protected $table = 'type_recipes';
     public $timestamps = false;
@@ -18,12 +17,10 @@ class TypeRecipe extends Model
         return ucfirst($value);
     }
 
-
-    public function getnamefromid($id){
+    public function getnamefromid($id)
+    {
         $type = $this->where('id', $id)->first();
+
         return "{$type->name}";
     }
-
-
 }
-

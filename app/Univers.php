@@ -8,20 +8,18 @@ use Laravel\Scout\Searchable;
 
 class Univers extends Model
 {
-	use Searchable;
-	public $timestamps = false;
-	protected $table = 'univers';
+    use Searchable;
+    public $timestamps = false;
+    protected $table = 'univers';
 
-	protected $fillable = [
-		 'name', 'first_creator'
-	];
+    protected $fillable = [
+         'name', 'first_creator',
+    ];
 
+    public function get_first($text)
+    {
+        $univ = DB::table('univers')->select('id')->where('name', 'like', '%'.$text.'%')->get();
 
-	public function get_first($text)
-	{
-		$univ = DB::table('univers')->select('id')->where('name', 'like', '%' . $text . '%')->get();
-		return $univ;
-	}
-
-
+        return $univ;
+    }
 }

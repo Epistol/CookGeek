@@ -46,10 +46,10 @@ class Kernel extends HttpKernel
             'bindings',
         ],
 
-	    'firewall' => [
-		    \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
-		    \PragmaRX\Firewall\Middleware\BlockAttacks::class,
-	    ],
+        'firewall' => [
+            \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
+            \PragmaRX\Firewall\Middleware\BlockAttacks::class,
+        ],
 
     ];
 
@@ -61,21 +61,21 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'admin' => AdminCheck::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
-        'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
-	    'fw-only-whitelisted' => \PragmaRX\Firewall\Middleware\FirewallWhitelist::class,
-	    'fw-block-blacklisted' => \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
-	    'fw-block-attacks' => \PragmaRX\Firewall\Middleware\BlockAttacks::class,
-	    'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
+        'auth'                 => \Illuminate\Auth\Middleware\Authenticate::class,
+        'admin'                => AdminCheck::class,
+        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'role'                 => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission'           => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'doNotCacheResponse'   => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        'cacheResponse'        => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+        'fw-only-whitelisted'  => \PragmaRX\Firewall\Middleware\FirewallWhitelist::class,
+        'fw-block-blacklisted' => \PragmaRX\Firewall\Middleware\FirewallBlacklist::class,
+        'fw-block-attacks'     => \PragmaRX\Firewall\Middleware\BlockAttacks::class,
+        'forbid-banned-user'   => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
     ];
 }

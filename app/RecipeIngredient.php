@@ -12,6 +12,4 @@ class RecipeIngredient extends Model
     {
         return $this->belongsToMany('App\Recipe');
     }*/
-
-
 }

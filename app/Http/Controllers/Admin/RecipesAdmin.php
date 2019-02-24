@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Type_recipe;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Recipe;
+use App\Type_recipe;
+use Illuminate\Support\Facades\DB;
 
 class RecipesAdmin extends Controller
 {
@@ -16,7 +15,8 @@ class RecipesAdmin extends Controller
     public function getType()
     {
         $mytypeid = $this->type;
-        return (new Type_recipe)->getnamefromid($mytypeid);
+
+        return (new Type_recipe())->getnamefromid($mytypeid);
     }
 
     /**
@@ -25,34 +25,42 @@ class RecipesAdmin extends Controller
     public function index()
     {
         $recipes = DB::table('recipes')->latest()->paginate(10);
-        return view("admin.recipes.index", array(
-            'recipes' => $recipes
-        ))->with(['controller' => $this]);
+
+        return view('admin.recipes.index', [
+            'recipes' => $recipes,
+        ])->with(['controller' => $this]);
     }
 
-    public function edit($id){
-    	$recipe = \App\Recipe::where('id', '=', $id)->get();
-	    return view("admin.recipes.edit", array(
-		    'recipe' => $recipe[0]
-	    ))->with(['controller' => $this]);
+    public function edit($id)
+    {
+        $recipe = \App\Recipe::where('id', '=', $id)->get();
+
+        return view('admin.recipes.edit', [
+            'recipe' => $recipe[0],
+        ])->with(['controller' => $this]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         return redirect()->route('recipe.show', $id);
     }
 
-	public function store($id){
-		$recipe = DB::table('recipes')->where('id', '=' , $id)->first();
-		return view("admin.recipes.edit", array(
-			'recipe' => $recipe
-		))->with(['controller' => $this]);
-	}
+    public function store($id)
+    {
+        $recipe = DB::table('recipes')->where('id', '=', $id)->first();
 
-	public function update($content){
+        return view('admin.recipes.edit', [
+            'recipe' => $recipe,
+        ])->with(['controller' => $this]);
+    }
+
+    public function update($content)
+    {
         die();
-        $recipe = DB::table('recipes')->where('slug', '=' , $content)->first();
-        return view("admin.recipes.edit", array(
-            'recipe' => $recipe
-        ))->with(['controller' => $this]);
+        $recipe = DB::table('recipes')->where('slug', '=', $content)->first();
+
+        return view('admin.recipes.edit', [
+            'recipe' => $recipe,
+        ])->with(['controller' => $this]);
     }
 }

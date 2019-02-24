@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class Firewall extends Model
 {
-	static function getAllIps(){
-			$list = DB::table('firewall')->get();
-			return $list;
-	}
+    public static function getAllIps()
+    {
+        $list = DB::table('firewall')->get();
+
+        return $list;
+    }
 }

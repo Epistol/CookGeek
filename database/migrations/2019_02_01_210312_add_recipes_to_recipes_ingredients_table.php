@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddRecipesToRecipesIngredientsTable extends Migration
 {
@@ -15,7 +15,7 @@ class AddRecipesToRecipesIngredientsTable extends Migration
     {
         Schema::table('recipes_ingredients', function (Blueprint $table) {
             $table->unsignedInteger('id_recipe')->nullable()->change();
-            });
+        });
     }
 
     /**

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'accepté'             => ':attribute doit être accepté.',
+    'accepté'              => ':attribute doit être accepté.',
     'active_url'           => ':attribute n\'est pas une URL valide.',
     'after'                => ':attribute doit être une date supérieure à :date.',
     'after_or_equal'       => ':attribute doit être une date supérieure ou égale à :date.',
