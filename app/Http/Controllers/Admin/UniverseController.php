@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Pictures;
 use App\Univers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UniverseController extends Controller
 {
@@ -17,6 +17,7 @@ class UniverseController extends Controller
     public function index()
     {
         $univers = Univers::get();
+
         return view('admin.univers.index', ['univers'=> $univers]);
     }
 
@@ -33,7 +34,8 @@ class UniverseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +46,8 @@ class UniverseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -55,7 +58,8 @@ class UniverseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,14 +67,16 @@ class UniverseController extends Controller
         $univers = Univers::where('id', $id)->first();
         $prefill = Pictures::loadUniversPicturesValid($univers);
         dd($prefill);
+
         return view('admin.univers.edit', ['univers'=> $univers]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +87,8 @@ class UniverseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

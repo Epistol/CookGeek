@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Firewall;
-use App\Http\Controllers\FirewallController;
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Facades\Voyager;
 
 class AdminController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +25,7 @@ class AdminController extends Controller
     {
         /*    $admin = Voyager::canOrFail('browse_admin');
             dd($admin);*/
-        return view("admin.index");
+        return view('admin.index');
     }
 
     public function ban()
@@ -47,7 +44,6 @@ class AdminController extends Controller
         return view('admin.ban.index', compact('blacklist', 'whitelist', 'user_ip', 'bans'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -61,7 +57,8 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -72,7 +69,8 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -83,7 +81,8 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,8 +93,9 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,7 +106,8 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

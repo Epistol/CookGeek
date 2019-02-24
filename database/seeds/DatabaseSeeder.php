@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-	    $this->call([
-		    CategUnivTableSeeder::class,
-		    DifficultyTableSeeder::class,
-		    TypeRecipeTableSeeder::class,
-	    ]);
+        $this->call([
+            CategUnivTableSeeder::class,
+            DifficultyTableSeeder::class,
+            TypeRecipeTableSeeder::class,
+        ]);
     }
 }

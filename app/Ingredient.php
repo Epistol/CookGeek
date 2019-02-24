@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-
     // Un ingrédient ne peut appartenir qu'a une recette
     // Une recette peut avoir plusieurs ingrédients
 
@@ -22,12 +21,12 @@ class Ingredient extends Model
 
     public static function name($id)
     {
-        return Ingredient::where('id', $id)->first()->name;
+        return self::where('id', $id)->first()->name;
     }
 
     public static function getbyName($id)
     {
-        return Ingredient::where('name', $id)->first();
+        return self::where('name', $id)->first();
     }
 
     public function setNameAttribute($value)
@@ -35,5 +34,4 @@ class Ingredient extends Model
         $value = app('profanityFilter')->filter($value);
         $this->attributes['name'] = strip_tags(clean($value));
     }
-
 }

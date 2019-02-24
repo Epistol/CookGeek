@@ -15,6 +15,7 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
+
         return response()->json($ingredients);
     }
 
@@ -32,11 +33,12 @@ class IngredientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     *
      * @return void
      */
     public function store(Request $request)
     {
-        $ingredient = new Ingredient;
+        $ingredient = new Ingredient();
         $ingredient->name = strip_tags(clean($request->name));
         $ingredient->save();
     }
@@ -44,7 +46,8 @@ class IngredientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show($id)
@@ -55,7 +58,8 @@ class IngredientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -66,7 +70,8 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function update($id)
@@ -77,7 +82,8 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy($id)

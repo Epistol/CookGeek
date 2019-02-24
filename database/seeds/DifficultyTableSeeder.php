@@ -11,18 +11,16 @@ class DifficultyTableSeeder extends Seeder
      */
     public function run()
     {
-	    DB::table('difficulty')->insert([
-		    'name' => "Noob"
-	    ]);
+        DB::table('difficulty')->insert([
+            'name' => 'Noob',
+        ]);
 
-	    DB::table('difficulty')->insert([
-		    'name' => "Moyen"
-	    ]);
+        DB::table('difficulty')->insert([
+            'name' => 'Moyen',
+        ]);
 
-	    DB::table('difficulty')->insert([
-		    'name' => "Difficile"
-	    ]);
-
-
+        DB::table('difficulty')->insert([
+            'name' => 'Difficile',
+        ]);
     }
 }

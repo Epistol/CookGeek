@@ -4,14 +4,12 @@ namespace App\Jobs;
 
 use Exception;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 
 class PictureThumbnail implements ShouldQueue
 {
@@ -54,7 +52,7 @@ class PictureThumbnail implements ShouldQueue
      * @param string $imageContent
      * @param string $imageName
      * @param $user
-     * @param string $typePicture
+     * @param string   $typePicture
      * @param int|null $width
      * @param int|null $height
      */
@@ -71,7 +69,6 @@ class PictureThumbnail implements ShouldQueue
 
     /**
      * Execute the job.
-     *
      */
     public function handle()
     {
@@ -84,13 +81,12 @@ class PictureThumbnail implements ShouldQueue
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
 
-        $recipepath = public_path('/recipes/' . $this->recipe);
+        $recipepath = public_path('/recipes/'.$this->recipe);
         File::exists($recipepath) or File::makeDirectory($recipepath);
 
-        $path = public_path('/recipes/' . $this->recipe . '/' . $this->user . '/');
+        $path = public_path('/recipes/'.$this->recipe.'/'.$this->user.'/');
         File::exists($path) or File::makeDirectory($path);
-        $image->save($path . '/' . $name);
-
+        $image->save($path.'/'.$name);
     }
 
     public function failed(Exception $exception)
@@ -98,7 +94,6 @@ class PictureThumbnail implements ShouldQueue
         // Send user notification of failure, etc...
         return $exception;
     }
-
 
     private function resizing($image)
     {
@@ -112,7 +107,7 @@ class PictureThumbnail implements ShouldQueue
             case 'thumbSquare':
                 $image = $image->fit(250, 250)->encode('webp');
                 break;
-            default :
+            default:
                 if ($this->height) {
                     $image = $image->fit($this->width, $this->height)->encode('jpeg', 90);
                 } elseif ($this->width) {
@@ -122,6 +117,7 @@ class PictureThumbnail implements ShouldQueue
                 }
                 break;
         }
+
         return $image;
     }
 
@@ -129,19 +125,19 @@ class PictureThumbnail implements ShouldQueue
     {
         switch ($this->typePicture) {
             case 'thumbnail':
-                $imageName = 'thumb_' . $imageName . ".jpeg";
+                $imageName = 'thumb_'.$imageName.'.jpeg';
                 break;
             case 'indexRecipe':
-                $imageName = 'index_' . $imageName . ".png";
+                $imageName = 'index_'.$imageName.'.png';
                 break;
             case 'thumbSquare':
-                $imageName = 'square_' . $imageName . ".webp";
+                $imageName = 'square_'.$imageName.'.webp';
                 break;
-            default :
-                $imageName = $imageName . ".jpeg";
+            default:
+                $imageName = $imageName.'.jpeg';
                 break;
         }
+
         return $imageName;
     }
-
 }

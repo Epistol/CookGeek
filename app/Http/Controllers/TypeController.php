@@ -7,14 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
-
     private $pictureService;
 
     public function __construct()
     {
         $this->pictureService = new PictureController();
     }
-
 
     /**
      * Display a listing of the resource.
@@ -24,12 +22,15 @@ class TypeController extends Controller
     public function index()
     {
         $all_types = DB::table('type_recipes')->get();
-        return view("types.superindex", ["types" => $all_types, 'pictureService' => $this->pictureService]);
+
+        return view('types.superindex', ['types' => $all_types, 'pictureService' => $this->pictureService]);
     }
 
-    public function alltypes() {
-    	$all_types = DB::table("type_recipes")->get();
-    	return $all_types;
+    public function alltypes()
+    {
+        $all_types = DB::table('type_recipes')->get();
+
+        return $all_types;
     }
 
     /**
@@ -45,7 +46,8 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,19 +58,22 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $type = DB::table('type_recipes')->where("name", "=",$id)->first();
-        return view("types.show", ["type" => $type, 'pictureService' => $this->pictureService ]);
+        $type = DB::table('type_recipes')->where('name', '=', $id)->first();
+
+        return view('types.show', ['type' => $type, 'pictureService' => $this->pictureService]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,8 +84,9 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,7 +97,8 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -6,17 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class AddBannedAtColumnToUsersTable extends Migration
 {
-	public function up()
-	{
-		Schema::table('users', function (Blueprint $table) {
-			$table->timestamp('banned_at')->nullable();
-		});
-	}
+    public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('banned_at')->nullable();
+        });
+    }
 
-	public function down()
-	{
-		Schema::table('users', function (Blueprint $table) {
-			$table->dropColumn('banned_at');
-		});
-	}
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('banned_at');
+        });
+    }
 }

@@ -2,23 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Providers\UniverseProvider;
-use App\Pictures;
-use App\Recipe;
-use App\Univers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
-use Spatie\SchemaOrg\Schema;
-use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-
     private $pictureService;
 
     /**
@@ -30,7 +22,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->pictureService = new PictureController();
-
     }
 
     /**
@@ -46,7 +37,7 @@ class HomeController extends Controller
         }*/
 
         // If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
-        return redirect()->route("account.param");
+        return redirect()->route('account.param');
     }
 
     /**
@@ -57,11 +48,11 @@ class HomeController extends Controller
         return view('user_space.switch.param');
     }
 
-
     // Validation forms
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function param_store(Request $request)
@@ -70,8 +61,8 @@ class HomeController extends Controller
         if ($request->resume) {
             $fichier = $request->resume;
             if ($fichier->getError() == 0) {
-                $photoName = time() . '.' . $fichier->getClientOriginalExtension();
-                $fichier->move(public_path('user/' . Auth::id() . '/'), $photoName);
+                $photoName = time().'.'.$fichier->getClientOriginalExtension();
+                $fichier->move(public_path('user/'.Auth::id().'/'), $photoName);
                 $user->avatar = $photoName;
             }
         }
@@ -92,12 +83,13 @@ class HomeController extends Controller
 
         $user->save();
         $request->session()->flash('status', 'Profil mis à jour ! ');
-        return redirect()->back();
 
+        return redirect()->back();
     }
 
     /**
      * @param $param
+     *
      * @return bool
      */
     private function is_dirty($param)
@@ -107,6 +99,7 @@ class HomeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function favorites(Request $request)
@@ -119,12 +112,12 @@ class HomeController extends Controller
             ->select('recipes.*')
             ->paginate(12);
 
-        return view('user_space.favorites.index', array('recipes' => $recettes, 'pictureService' => $this->pictureService))->with(['controller' => $this]);
+        return view('user_space.favorites.index', ['recipes' => $recettes, 'pictureService' => $this->pictureService])->with(['controller' => $this]);
     }
-
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function recipes(Request $request)
@@ -134,12 +127,12 @@ class HomeController extends Controller
         $recettes = DB::table('recipes')
             ->where('id_user', '=', $user_id)->paginate(12);
 
-        return view('user_space.recipes.index', array('recipes' => $recettes, 'pictureService' => $this->pictureService))->with(['controller' => $this]);
+        return view('user_space.recipes.index', ['recipes' => $recettes, 'pictureService' => $this->pictureService])->with(['controller' => $this]);
     }
-
 
     /**
      * @param $id
+     *
      * @return bool|string
      */
     public function check_liked($id)
@@ -149,9 +142,7 @@ class HomeController extends Controller
             ->where(
                 ['user_id' => $u_id, 'recipe_id' => $id]
             )->first();
-        return $l_id ? "liked" : false;
 
+        return $l_id ? 'liked' : false;
     }
-
-
 }

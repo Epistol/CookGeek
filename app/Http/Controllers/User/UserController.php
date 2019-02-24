@@ -2,80 +2,68 @@
 
 namespace App\Http\Controllers\User;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\UniverseProvider;
-use App\Pictures;
-use App\Recipe;
-use App\Univers;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
-use Spatie\SchemaOrg\Schema;
-use Carbon\Carbon;
 
 class UserController extends Controller
 {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-	/**
-	 * Show the application dashboard.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		return redirect()->route("user.index");
-	}
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return redirect()->route('user.index');
+    }
 
-	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function show($id)
-	{
-		Carbon::setLocale('fr');
-		$user = DB::table('users')->select('id', 'role_id', 'name', 'avatar', 'img', 'created_at', 'updated_at')->where('name', '=', $id)->first();
-		$recipes = DB::table('recipes')->where('id_user', '=', $user->id)->paginate(5);
-		return view('user.show')->with('user', $user)->with('recettes', $recipes)->with(['controller' => $this]);
-	}
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        Carbon::setLocale('fr');
+        $user = DB::table('users')->select('id', 'role_id', 'name', 'avatar', 'img', 'created_at', 'updated_at')->where('name', '=', $id)->first();
+        $recipes = DB::table('recipes')->where('id_user', '=', $user->id)->paginate(5);
 
-	public function sumerise_t($val)
-	{
-		$format = '%1$02d';
-		// si il y'a + d'1heure
-		if ($val > 60) {
-			$somme_h = $val / 60;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on les affiches
-			if ($somme_m > 0) {
-				return sprintf($format, $somme_h) . " h " . sprintf($format, $somme_m) . " min";
-			} else {
-				return sprintf($format, $somme_h) . " h ";
-			}
+        return view('user.show')->with('user', $user)->with('recettes', $recipes)->with(['controller' => $this]);
+    }
 
-		} else {
-			$somme_h = 0;
-			$somme_m = $val - ((int)$somme_h * 60);
-			// si le nb de minute est supérieur a 0, on affiche qqch
-			if ($somme_m > 0) {
-				return sprintf($format, $somme_m) . " min";
-			} else {
-				return '';
-			}
-
-		}
-	}
-
-
-
-
+    public function sumerise_t($val)
+    {
+        $format = '%1$02d';
+        // si il y'a + d'1heure
+        if ($val > 60) {
+            $somme_h = $val / 60;
+            $somme_m = $val - ((int) $somme_h * 60);
+            // si le nb de minute est supérieur a 0, on les affiches
+            if ($somme_m > 0) {
+                return sprintf($format, $somme_h).' h '.sprintf($format, $somme_m).' min';
+            } else {
+                return sprintf($format, $somme_h).' h ';
+            }
+        } else {
+            $somme_h = 0;
+            $somme_m = $val - ((int) $somme_h * 60);
+            // si le nb de minute est supérieur a 0, on affiche qqch
+            if ($somme_m > 0) {
+                return sprintf($format, $somme_m).' min';
+            } else {
+                return '';
+            }
+        }
+    }
 }

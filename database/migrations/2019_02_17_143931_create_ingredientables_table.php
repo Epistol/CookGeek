@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIngredientablesTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateIngredientablesTable extends Migration
             $table->morphs('ingredientable');
             $table->string('quantity');
 
-            $table->unique(['ingredientable_id','locale']);
+            $table->unique(['ingredientable_id', 'locale']);
         });
     }
 

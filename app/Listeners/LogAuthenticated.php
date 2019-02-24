@@ -3,9 +3,6 @@
 namespace App\Listeners;
 
 use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class LogAuthenticated
@@ -23,18 +20,18 @@ class LogAuthenticated
     /**
      * Handle the event.
      *
-     * @param  Authenticated  $event
+     * @param Authenticated $event
+     *
      * @return void
      */
     public function handle(Authenticated $event)
     {
-	    $ip = geoip()->getClientIP();
+        $ip = geoip()->getClientIP();
 
-	    if($event->user != null){
-		    Log::notice('IP '. $ip. " tried to connect to account ".$event->user->id);
-	    }
-	    else {
-		    Log::notice('IP '. $ip. " tried to connect to an inexistant account (bad mail/username");
-	    }
+        if ($event->user != null) {
+            Log::notice('IP '.$ip.' tried to connect to account '.$event->user->id);
+        } else {
+            Log::notice('IP '.$ip.' tried to connect to an inexistant account (bad mail/username');
+        }
     }
 }

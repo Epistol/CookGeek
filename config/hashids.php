@@ -40,12 +40,12 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'le-Sel-de-Cuisine-dG',
+            'salt'   => 'le-Sel-de-Cuisine-dG',
             'length' => '7',
         ],
 
         'alternative' => [
-            'salt' => 'CuisineDeGeekSaltyed',
+            'salt'   => 'CuisineDeGeekSaltyed',
             'length' => '7',
         ],
 
