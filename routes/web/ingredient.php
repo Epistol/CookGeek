@@ -10,7 +10,7 @@
 Route::group(['prefix' => 'ingredient'], function () {
     Route::get('/', 'IngredientController@index')->name('ingredient.index');
 
-    Route::get('{post}', 'RecipesIngredientController@show')->name('ingredient.show')->middleware('cacheResponse:10');
+    Route::get('{post}', 'RecipeIngredientController@show')->name('ingredient.show')->middleware('cacheResponse:10');
 });
 
 //Route::post('gf18', 'PageController@store_gf')->name("form.store");

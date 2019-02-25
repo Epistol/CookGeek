@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.26 on 2019-02-24 11:26:10.
+ * Generated for Laravel 5.7.26 on 2019-02-24 22:11:19.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15969,6 +15969,48 @@ namespace Torann\GeoIP\Facades {
  
 }
 
+namespace Waavi\Sanitizer\Laravel { 
+
+    /**
+     * 
+     *
+     * @see \Illuminate\Validation\Factory
+     */ 
+    class Facade {
+        
+        /**
+         * Create a new Sanitizer instance
+         * 
+         * @param  array   $data       Data to be sanitized
+         *
+         * @param array $rules Filters to be applied to the given data
+         *  @return Sanitizer
+         * @static 
+         */ 
+        public static function make($data, $rules)
+        {
+            return \Waavi\Sanitizer\Laravel\Factory::make($data, $rules);
+        }
+        
+        /**
+         * Add a custom filters to all Sanitizers created with this Factory.
+         * 
+         * @param  string  $name       Name of the filter
+         *
+         * @param mixed $extension Either the full class name of a Filter class implementing the Filter contract, or a \Closure.
+         *  @throws InvalidArgumentException
+         *  @return void
+         * @static 
+         */ 
+        public static function extend($name, $customFilter)
+        {
+            return \Waavi\Sanitizer\Laravel\Factory::extend($name, $customFilter);
+        }
+         
+    }
+ 
+}
+
 namespace TCG\Voyager\Facades { 
 
     /**
@@ -18696,6 +18738,8 @@ namespace  {
     class ResponseCache extends \Spatie\ResponseCache\Facades\ResponseCache {}
 
     class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
+
+    class Sanitizer extends \Waavi\Sanitizer\Laravel\Facade {}
 
     class Voyager extends \TCG\Voyager\Facades\Voyager {}
  

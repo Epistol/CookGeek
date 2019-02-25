@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-02-24 11:26:11.
+    * Generated on 2019-02-24 22:11:19.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -212,6 +212,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -431,6 +432,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -650,6 +652,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -869,6 +872,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -1088,6 +1092,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -1307,6 +1312,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
@@ -1526,6 +1532,7 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'responsecache' => \Spatie\ResponseCache\ResponseCache::class,
         'router' => \Illuminate\Routing\Router::class,
+        'sanitizer' => \Waavi\Sanitizer\Laravel\Factory::class,
         'sentry' => \Raven_Client::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,

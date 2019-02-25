@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Traits\hasTimes;
+use App\Traits\hasUniqueID;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use Spatie\Feed\Feedable;
@@ -9,7 +11,7 @@ use Spatie\Feed\FeedItem;
 
 class Recipe extends Model implements Feedable
 {
-    use Searchable;
+    use Searchable, hasTimes, hasUniqueID;
 
     public function image()
     {
@@ -24,6 +26,11 @@ class Recipe extends Model implements Feedable
     public function ingredients()
     {
         return $this->morphToMany('App\Ingredient', 'ingredientable');
+    }
+
+    public function universes()
+    {
+        return $this->morphToMany('App\Univers', 'universable');
     }
 
     /**
@@ -55,38 +62,6 @@ class Recipe extends Model implements Feedable
         $typename = (new Type_recipe())->getnamefromid($mytypeid);
 
         return strtolower($typename);
-    }
-
-    /**
-     * @param $time
-     *
-     * @return int
-     */
-    public static function verify_time($time)
-    {
-        if (empty($time) || !isset($time) || $time == null) {
-            return 0;
-        } else {
-            return intval($time);
-        }
-    }
-
-    /**
-     * @param $t_h
-     * @param $time
-     *
-     * @return float|int
-     */
-    public static function return_time($t_h, $time)
-    {
-        if ($t_h === null) {
-            $t_h = 0;
-        }
-        if ($time === null) {
-            $time = 0;
-        }
-
-        return intval(($t_h * 60) + $time);
     }
 
     /**
@@ -163,34 +138,5 @@ class Recipe extends Model implements Feedable
         return $recipes;
     }
 
-    /**
-     * @param null $prepMinute
-     * @param $cookMinute
-     * @param $restMinute
-     * @param $prepHeure
-     * @param $cookHeure
-     * @param $restHeure
-     *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
-     */
-    public static function getTimes($prepMinute, $cookMinute, $restMinute, $prepHeure, $cookHeure, $restHeure)
-    {
-        $datas = collect(['prepM' => $prepMinute, 'cookM' => $cookMinute, 'restM' => $restMinute, 'prepH' => $prepHeure, 'cookH' => $cookHeure, 'restH' => $restHeure]);
 
-        $filtered = $datas->filter(function ($value, $key) {
-            if (empty($value) || !isset($value) || $value === null) {
-                return $key;
-            } else {
-                return intval($value);
-            }
-        });
-
-        $prep = self::return_time($filtered->get('prepH'), $filtered->get('prepM'));
-        $cook = self::return_time($filtered->get('cookH'), $filtered->get('cookM'));
-        $rest = self::return_time($filtered->get('restH'), $filtered->get('restM'));
-
-        $times = collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
-
-        return $times;
-    }
 }

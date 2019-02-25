@@ -187,6 +187,7 @@ return [
         PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
         HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
+        Waavi\Sanitizer\Laravel\SanitizerServiceProvider::class,
     ],
 
     /*
@@ -239,6 +240,7 @@ return [
         'Firewall'     => PragmaRX\Firewall\Vendor\Laravel\Facade::class,
         'HTMLMin'      => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
+        'Sanitizer' => Waavi\Sanitizer\Laravel\Facade::class,
     ],
 
 ];

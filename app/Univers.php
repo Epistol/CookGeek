@@ -16,9 +16,14 @@ class Univers extends Model
          'name', 'first_creator',
     ];
 
+    public function recipes()
+    {
+        return $this->morphedByMany('App\Recipe', 'universable');
+    }
+
     public function get_first($text)
     {
-        $univ = DB::table('univers')->select('id')->where('name', 'like', '%'.$text.'%')->get();
+        $univ = Univers::select('id')->where('name', 'like', '%'.$text.'%')->get();
 
         return $univ;
     }
