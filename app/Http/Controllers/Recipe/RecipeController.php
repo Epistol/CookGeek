@@ -4,32 +4,29 @@ namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
 
-use App\Categunivers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use App\Http\Requests\RecipeStoreSanitizedRequest;
+
 use App\Ingredient;
 use App\Pictures;
 use App\Recipe;
+use App\Categunivers;
+use App\Univers;
+
 use App\Traits\hasTimes;
 use App\Traits\hasUserInput;
-use App\Univers;
+use App\Traits\hasPicture;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class RecipeController extends Controller
 {
-    use hasUserInput, hasTimes;
-
-    private $pictureService;
-
-    // TODO : a dégager
-    public function __construct()
-    {
-        $this->pictureService = new PictureController();
-    }
+    use hasUserInput, hasTimes, hasPicture;
 
     /**
      * Show the profile for the given user.
@@ -86,87 +83,81 @@ class RecipeController extends Controller
      * @param RecipeStoreSanitizedRequest $request
      *
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(RecipeStoreSanitizedRequest $request)
     {
+        // Insert recette
+        $recipe = new Recipe;
+        $recipe->title = self::cleanInput($request->title);
+        $recipe->vegetarien = self::cleanInput($request->vegan) == 'on' ? true : false;
+        $recipe->difficulty = intval($request->difficulty);
+        $recipe->type = intval($request->categ_plat);
+        $recipe->cost = intval($request->cost);
+        $recipe->prep_time = self::getUnifiedTime($request->prep_minute, $request->prep_heure);
+        $recipe->cook_time = self::getUnifiedTime($request->cook_minute, $request->cook_heure);
+        $recipe->rest_time = self::getUnifiedTime($request->rest_minute, $request->rest_heure);
+        $recipe->nb_guests = self::cleanInput($request->unite_part);
+        $recipe->guest_type = self::cleanInput($request->value_part);
+        $recipe->type_univers = intval($request->type);
+        $recipe->id_user = Auth::user()->id;
+        $recipe->video = clean($request->video);
+        $recipe->commentary_author = self::cleanInput($request->comment);
+        $recipe->validated = 0;
 
-        $validated = $request->validated();
-        
-        $prep = self::getUnifiedTime($validated->prep_minute, $validated->prep_heure);
-        $cook = self::getUnifiedTime($validated->cook_minute, $validated->cook_heure);
-        $rest = self::getUnifiedTime($validated->rest_minute, $validated->rest_heure);
+        if (!$recipe->save()) {
+            return back();
+        }
 
-        //Filtering the comment
-        $comm = self::cleanInput($validated->comment);
-        dd($comm);
-        //Vegetarian switch
-        $vege = clean($validated->vegan) == 'on' ? true : false;
-
-        //Inserting the recipe
-        $idRecette = $this->insert_recipe(
-            strip_tags(clean($validated->title)),
-            $vege,
-            intval($validated->difficulty),
-            intval($validated->categ_plat),
-            intval($validated->cost),
-            intval($prep),
-            intval($cook),
-            intval($rest),
-            $validated->unite_part,
-            strip_tags(clean($validated->value_part)),
-            intval($validated->type),
-            intval(Auth::user()->id),
-            clean($validated->video),
-            $comm);
-
-        $univers = Univers::FirstOrCreate(['name' => strip_tags(clean($validated->univers)), 'first_creator' => Auth::user()->id]);
-
+        Univers::FirstOrCreate(['name' => self::cleanInput($request->univers), 'first_creator' => Auth::user()->id]);
 
         // SLUG & UID
-        $uid = self::generate_uid($idRecette);
-        $slug = $this->slugUpdate($idRecette, $uid, $validated);
-
-        $recipe = Recipe::find($idRecette);
+        $uid = $recipe->generate_uid($recipe->id);
+        $slug = $this->slugUpdate($recipe->id, $uid, $request);
 
         // Storing ingredients and attach to the recipe
-        foreach ($validated->ingredient as $key => $ingredient) {
+        foreach ($request->ingredient as $key => $ingredient) {
             $ingredient = Ingredient::firstOrCreate(['name' => $ingredient]);
-            $recipe->ingredients->attach($ingredient, ['quantity' => app('profanityFilter')->filter($validated->qtt_ingredient[$key])]);
+            $recipe->ingredients()->attach(
+                $ingredient,
+                ['quantity' => self::cleanInput($request->qtt_ingredient[$key])]
+            );
         }
 
         // Storing steps and attach to the recipe
-        foreach ($validated->step as $key => $step) {
+        // TODO PRIO N°1
+        foreach ($request->step as $key => $step) {
             $ingredient = Step::firstOrCreate(['name' => $ingredient]);
-            $recipe->ingredients->attach($ingredient, ['quantity' => app('profanityFilter')->filter($validated->qtt_ingredient[$key])]);
+            $recipe->ingredients()->attach(
+                $ingredient,
+                ['quantity' => self::cleanInput($request->qtt_ingredient[$key])]
+            );
         }
 
-        // Gestion des étapes TODO
-        foreach ($validated->step as $key => $step) {
+        // Gestion des étapes
+       /* foreach ($request->step as $key => $step) {
             if ($step) {
                 DB::table('recipes_steps')->insertGetId(
-                    ['recipe_id' => $idRecette,
+                    ['recipe_id' => $recipe->id,
                         'step_number' => $key,
-                        'instruction' => clean(app('profanityFilter')->filter($validated->step[$key])),
+                        'instruction' => clean(app('profanityFilter')->filter($request->step[$key])),
                     ]);
             }
-        }
+        }*/
 
         // Parties image
-        $this->validate($validated, [
+        $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
-        if (!empty($validated->resume)) {
-            $file = $validated->resume;
+        if (!empty($request->resume)) {
+            $file = $request->resume;
             if ($file->getError() == 0) {
                 $path = $file->store('public/uploads');
-                $hashedName = $validated->resume->hashName();
+                $hashedName = $request->resume->hashName();
                 $ext = pathinfo($hashedName, PATHINFO_EXTENSION);
                 $filename = basename($hashedName, '.' . $ext);
-                $this->pictureService->addFirstPictureRecipe($path, $filename, $idRecette, $uid, Auth::user()->id);
+                self::addFirstPictureRecipe($path, $filename, $recipe->id, $uid, Auth::user()->id);
             }
         }
 
@@ -184,7 +175,6 @@ class RecipeController extends Controller
     public function update(StoreRecipe $request, $id)
     {
         $input = $request->all();
-
         $recipe = Recipe::where('id', '=', $id)->firstOrFail();
 
         // User ID :
@@ -400,19 +390,15 @@ class RecipeController extends Controller
     {
         $rand = Recipe::where('validated', 1)->inRandomOrder()->first();
         if ($rand) {
-            $sl = $rand->slug;
-
-            return redirect()->route('recipe.show', ['recipe' => $sl]);
+            return redirect()->route('recipe.show', ['recipe' => $rand->slug]);
         } else {
-            $sl = null;
-
             return redirect('/');
         }
     }
 
     /**
      * @param $id
-     *
+     * TODO : a dégager
      * @return bool|string
      */
     public function check_liked($id)
@@ -428,7 +414,7 @@ class RecipeController extends Controller
 
     /**
      * @param $val
-     *
+     * TODO : a dégager
      * @return string
      */
     private function sumerise($val)
@@ -447,22 +433,7 @@ class RecipeController extends Controller
         }
     }
 
-    /**
-     * @param $requete
-     * @param $recipe_id
-     *
-     * @return string
-     */
-    private function slugtitre($requete, $uid)
-    {
-        $titreslug = str_slug(strip_tags(clean($requete->title)) . '-' . $uid, '-');
-
-        return $titreslug;
-    }
-
-
-
-    /**
+    /** TODO : a dégager
      * @param $rq
      * @param $userid
      * @param $recipe
@@ -479,84 +450,21 @@ class RecipeController extends Controller
     }
 
     /**
-     * @param $title
-     * @param $vegan
-     * @param $diff
-     * @param $categ_plate
-     * @param $cost
-     * @param $prep
-     * @param $cook
-     * @param $rest
-     * @param $unit
-     * @param $value
-     * @param $type
-     * @param $iduser
-     * @param $vege
-     * @param $video_link
-     * @param $comm
-     *
+     * @param $recette_id
+     * @param Request $request
      * @return mixed
      */
-    public function insert_recipe($title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value,  $type, $iduser, $video_link, $comm)
+    public function edit_recipe($recette_id, Request $request)
     {
-        // Si titre vide :
 
-        if ($title == null || $title == '') {
-            return redirect()->back();
-        }
+        $recipe = Recipe::find($recette_id);
+        $recipe->title = self::cleanInput($request->title);
+        $recipe->vegetarien = self::cleanInput($request->vegan) == 'on' ? true : false;
 
-        // Insert recette
-        $idRecette = Recipe::insertGetId(
-            ['title' => app('profanityFilter')->filter($title),
-                'vegetarien' => $vegan,
-                'difficulty' => $diff,
-                'type' => $categ_plate,
-                'cost' => $cost,
-                'prep_time' => $prep,
-                'cook_time' => $cook,
-                'rest_time' => $rest,
-                'nb_guests' => $unit,
-                'guest_type' => app('profanityFilter')->filter($value),
-                'type_univers' => app('profanityFilter')->filter($type),
-                'id_user' => $iduser,
-                'slug' => '',
-                'video' => app('profanityFilter')->filter(strip_tags(clean($video_link))),
-                'commentary_author' => strip_tags(clean($comm)),
-                'validated' => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
+        // TODO : continue
 
-        if ($idRecette == false) {
-            return redirect()->back();
-        }
+        $recipe->save();
 
-        return $idRecette;
-    }
-
-    /**
-     * @param $title
-     * @param $vegan
-     * @param $diff
-     * @param $categ_plate
-     * @param $cost
-     * @param $prep
-     * @param $cook
-     * @param $rest
-     * @param $unit
-     * @param $value
-     * @param $universe
-     * @param $type
-     * @param $iduser
-     * @param $vege
-     * @param $video_link
-     * @param $comm
-     *
-     * @return mixed
-     */
-    public function edit_recipe($recette_id, $title, $vegan, $diff, $categ_plate, $cost, $prep, $cook, $rest, $unit, $value, $universe, $type, $iduser, $video_link, $comm)
-    {
         // Get recette
         $recette = DB::table('recipes')
             ->where('id', '=', $recette_id)
@@ -588,14 +496,15 @@ class RecipeController extends Controller
     }
 
 
-
     private function slugUpdate($idRecipe, $uid, $request)
     {
         // Partie SLUG
-        $slug = $this->slugtitre($request, $uid);
-        DB::table('recipes')
-            ->where('id', $idRecipe)
-            ->update(['slug' => app('profanityFilter')->filter($slug), 'hashid' => $uid]);
+
+        $recipe = Recipe::find($idRecipe);
+        $slug = $recipe->slugTitle($request->title, $uid);
+        $recipe->slug = $slug;
+        $recipe->hashid = $uid;
+        $recipe->save();
 
         return $slug;
     }

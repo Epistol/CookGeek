@@ -23,5 +23,6 @@ return [
     'of'          => 'de',
     'video'       => 'La vidéo',
     'picture-of'  => 'Image de la recette',
+    'vegan' => 'Végétarienne',
 
 ];

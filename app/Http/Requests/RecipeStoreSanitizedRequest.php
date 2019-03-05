@@ -25,8 +25,8 @@ class RecipeStoreSanitizedRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'title'       => 'bail|required|escape|string|strip_tags|max:255|regex:([A-Za-z0-9 ])',
-            'step.*'      => 'required|string|strip_tags|escape|regex:([A-Za-z0-9 ])',
+            'title'       => 'bail|required|string|max:255|regex:([A-Za-z0-9 ])',
+            'step.*'      => 'required|string|regex:([A-Za-z0-9 ])',
             'difficulty'  => 'integer|required',
             'categ_plat'  => 'integer|required',
             'prep_heure'  => 'nullable|integer',

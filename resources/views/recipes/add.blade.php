@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
-                        <h1 class="title">Créez votre recette
+                        <h1 class="title">{{__('Create your recipe')}}
                             <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                   action="{{ route('recipe.store') }}">
                 @csrf
 
-                <div class="columns" style="  margin-bottom: 2rem;">
+                <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column  recipe-right-add ">
                         {{--Titre recette--}}
                         <div class="columns">
@@ -46,14 +46,11 @@
                             </div>
                             <div class="columns timing">
                                 <div class="column is-10 is-offset-1 ">
-                                    {{--// Timing--}}
                                     @include("recipes.add.timing.tps_preparation")
                                     @include("recipes.add.timing.tps_cuisson")
                                     @include("recipes.add.timing.tps_repos")
                                     @include("recipes.add.nb_parts")
-
                                     @include("recipes.add.vegan")
-                                    {{--// Nombre de portions--}}
                                 </div>
                             </div>
 

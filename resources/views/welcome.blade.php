@@ -15,7 +15,7 @@
 
             <div class="column">
                 {{--Sidebar--}}
-                    @include("index.sidebar")
+                    @include("layouts.index.sidebar")
 
             </div>
 

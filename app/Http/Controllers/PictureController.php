@@ -53,16 +53,15 @@ class PictureController extends Controller
      * @param $recipeId
      * @param $userId
      *
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
+    public  function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
         $filePath = Storage::get($picturePath);
         $image = base64_encode($filePath);
 
-        $uploaded = $this->storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
+        $uploaded = self::storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
 
         DB::table('recipe_imgs')->updateOrInsert(
             ['recipe_id'     => $recipeId,
@@ -87,7 +86,6 @@ class PictureController extends Controller
     {
         $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')->where('validated', '=', 1)->paginate(5);
         $return = $this->corePicture($pictures, $recette);
-
         return $return;
     }
 

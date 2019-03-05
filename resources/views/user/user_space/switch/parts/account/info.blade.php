@@ -8,7 +8,7 @@
     <div class="columns">
         {{--Infos complémentaires--}}
         <div class="column">
-            @include("user_space.switch.parts.account.informations.basic")
+            @include("user.user_space.switch.parts.account.informations.basic")
         </div>
     </div>
     <div class="is-flex-center">

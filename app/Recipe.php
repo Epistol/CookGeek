@@ -139,4 +139,14 @@ class Recipe extends Model implements Feedable
     }
 
 
+    /**
+     * @param $title
+     * @param $uid
+     * @return string
+     */
+    public function slugTitle($title, $uid)
+    {
+        return str_slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
+    }
+
 }
