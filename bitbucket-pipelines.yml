@@ -7,7 +7,6 @@ pipelines:
           - composer
           - node
         script:
-          - pecl install pcntl exif bcmath
           - docker-php-ext-install pcntl exif bcmath
           - composer install
           - ln -f -s .env.pipelines .env
