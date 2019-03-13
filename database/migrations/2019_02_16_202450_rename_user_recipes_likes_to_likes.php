@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class RenameUserRecipesLikesToLikes extends Migration
 {
+
+    private $oldTableName = 'user_recipe_likes';
+    private $newTableName = 'likes';
+
     /**
      * Run the migrations.
      *
@@ -13,15 +17,11 @@ class RenameUserRecipesLikesToLikes extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('user_recipe_likes')) {
-            if (!Schema::hasTable('likes')) {
-                Schema::rename('user_recipe_likes', 'likes');
+        if (Schema::hasTable($this->oldTableName)) {
+            if (!Schema::hasTable($this->newTableName)) {
+                Schema::rename($this->oldTableName, $this->newTableName);
 
-                Schema::table('likes', function (Blueprint $table) {
-                    $table->dropColumn('user_id');
-                    $table->dropColumn('recipe_id');
-
-                    $table->unsignedInteger('user_id')->nullable();
+                Schema::table($this->newTableName, function (Blueprint $table) {
                     $table->morphs('likeable');
                     $table->softDeletes();
                     $table->timestamps();
@@ -29,8 +29,8 @@ class RenameUserRecipesLikesToLikes extends Migration
                 });
             }
         } else {
-            if (!Schema::hasTable('likes')) {
-                Schema::create('likes', function (Blueprint $table) {
+            if (!Schema::hasTable($this->newTableName)) {
+                Schema::create($this->newTableName, function (Blueprint $table) {
                     $table->increments('id');
                     $table->unsignedInteger('user_id')->nullable();
 
@@ -52,7 +52,7 @@ class RenameUserRecipesLikesToLikes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_recipe_likes');
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists($this->oldTableName);
+        Schema::dropIfExists($this->newTableName);
     }
 }
