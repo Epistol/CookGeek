@@ -109,6 +109,11 @@ class RecipeController extends Controller
             return back();
         }
 
+        $univers = $recipe->universes()->create(['name' => self::cleanInput($request->univers), 'first_creator' => Auth::user()->id]);
+
+        dd($univers);
+
+
         Univers::FirstOrCreate(['name' => self::cleanInput($request->univers), 'first_creator' => Auth::user()->id]);
 
         // SLUG & UID

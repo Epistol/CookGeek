@@ -21,7 +21,7 @@
         "intervention/image": "^2.4",
         "itsgoingd/clockwork": "^2.0",
         "laravel/cashier": "~7.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/horizon": "^2.0",
         "laravel/passport": "5.0.*",
         "laravel/scout": "^4.0",
@@ -43,13 +43,15 @@
         "torann/geoip": "^1.0",
         "vinkla/hashids": "^5.1",
         "voyager-redirects": "^1.0",
-        "yab/laravel-scout-mysql-driver": "^2.0"
+        "yab/laravel-scout-mysql-driver": "^2.0",
+        "moontoast/math": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.5",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "laravel/dusk": "^5.0",
         "laravel/homestead": "^8.0",
         "laravel/telescope": "^1.0",
         "mockery/mockery": "0.9.*",

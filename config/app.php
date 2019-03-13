@@ -187,7 +187,6 @@ return [
         PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
         HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
-        Waavi\Sanitizer\Laravel\SanitizerServiceProvider::class,
     ],
 
     /*

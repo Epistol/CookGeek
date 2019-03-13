@@ -14,19 +14,11 @@ class CategUnivTableSeeder extends Seeder
     {
         // TODO : remplacer le nom de la table par "medias"
         DB::table('categunivers')->insert([
-            'name' => 'anime',
-        ]);
-        DB::table('categunivers')->insert([
-            'name' => 'comics',
-        ]);
-        DB::table('categunivers')->insert([
-            'name' => 'gaming',
-        ]);
-        DB::table('categunivers')->insert([
-            'name' => 'livres',
-        ]);
-        DB::table('categunivers')->insert([
-            'name' => 'tv',
+            ['name' => 'anime'],
+            ['name' => 'comics'],
+            ['name' => 'gaming'],
+            ['name' => 'livres'],
+            ['name' => 'tv'],
         ]);
     }
 }

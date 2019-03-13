@@ -16,15 +16,16 @@ trait hasTimes
      * @param $hours
      * @return int
      */
-    public function getUnifiedTime($minutes, $hours){
-        if($minutes == 0){
+    public function getUnifiedTime($minutes, $hours)
+    {
+        if ($minutes == 0) {
             $minutes = intval(0);
         }
-        if($hours == 0){
+        if ($hours == 0) {
             $minutes = intval(0);
         }
 
-        return intval(($hours * 60) + $minutes);
+        return intval(($hours * 60) + intval($minutes));
     }
 
     /**
