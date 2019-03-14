@@ -185,7 +185,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\UniverseProvider::class,
         PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
-        HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
     ],
 

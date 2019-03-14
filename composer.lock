@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "377632fcf6a11efe2f9da9cb767e3bb4",
+    "content-hash": "1d03860d2c5bcbdddc6fb2b9a52329fa",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1896,81 +1896,6 @@
             "time": "2018-03-12T16:30:09+00:00"
         },
         {
-            "name": "htmlmin/htmlmin",
-            "version": "v5.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/HTMLMin/Laravel-HTMLMin.git",
-                "reference": "eca3fb1f289c619941bebcb8d86587fd1f2de2fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/HTMLMin/Laravel-HTMLMin/zipball/eca3fb1f289c619941bebcb8d86587fd1f2de2fa",
-                "reference": "eca3fb1f289c619941bebcb8d86587fd1f2de2fa",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "illuminate/filesystem": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "illuminate/http": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "illuminate/routing": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "illuminate/view": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "mrclay/minify": "^2.2",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "graham-campbell/testbench": "^3.1|^4.0|^5.0",
-                "mockery/mockery": "^0.9.4|^1.0",
-                "phpunit/phpunit": "^4.8|^5.0|^6.0|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "HTMLMin\\HTMLMin\\HTMLMinServiceProvider"
-                    ],
-                    "aliases": {
-                        "HTMLMin": "HTMLMin\\HTMLMin\\Facades\\HTMLMin"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "HTMLMin\\HTMLMin\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                },
-                {
-                    "name": "Raza Mehdi",
-                    "email": "srmk@outlook.com"
-                }
-            ],
-            "description": "HTMLMin Is A Simple HTML Minifier For Laravel 5",
-            "keywords": [
-                "Laravel HTMLMin",
-                "Laravel-HTMLMin",
-                "framework",
-                "html",
-                "html minifier",
-                "htmlmin",
-                "laravel",
-                "minifier"
-            ],
-            "time": "2018-09-05T13:39:09+00:00"
-        },
-        {
             "name": "intervention/image",
             "version": "2.4.2",
             "source": {
@@ -2801,16 +2726,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v4.0.4",
+            "version": "v6.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "f1b5d65a7d4a70bafaba7ec996176e95341c44ec"
+                "reference": "591a0419fe47b0c379be652c532cb4f669e63769"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/f1b5d65a7d4a70bafaba7ec996176e95341c44ec",
-                "reference": "f1b5d65a7d4a70bafaba7ec996176e95341c44ec",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/591a0419fe47b0c379be652c532cb4f669e63769",
+                "reference": "591a0419fe47b0c379be652c532cb4f669e63769",
                 "shasum": ""
             },
             "require": {
@@ -2833,7 +2758,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "6.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -2862,7 +2787,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2018-05-24T13:35:34+00:00"
+            "time": "2018-12-11T20:35:14+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -3633,51 +3558,6 @@
                 "math"
             ],
             "time": "2017-02-16T16:54:46+00:00"
-        },
-        {
-            "name": "mrclay/minify",
-            "version": "2.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrclay/minify.git",
-                "reference": "1928e89208d28e91427b2f13b67acdbd8cd01ac9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrclay/minify/zipball/1928e89208d28e91427b2f13b67acdbd8cd01ac9",
-                "reference": "1928e89208d28e91427b2f13b67acdbd8cd01ac9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pcre": "*",
-                "php": ">=5.2.1"
-            },
-            "require-dev": {
-                "tubalmartin/cssmin": "~2.4.8"
-            },
-            "suggest": {
-                "tubalmartin/cssmin": "Support minify with CSSMin (YUI PHP port)"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "min/lib/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Clay",
-                    "email": "steve@mrclay.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
-            "homepage": "http://code.google.com/p/minify/",
-            "time": "2017-11-03T21:04:01+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -6013,57 +5893,6 @@
             "time": "2018-04-12T09:34:43+00:00"
         },
         {
-            "name": "squizlabs/php_codesniffer",
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/379deb987e26c7cd103a7b387aea178baec96e48",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*",
-                "ext-tokenizer": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Sherwood",
-                    "role": "lead"
-                }
-            ],
-            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "http://www.squizlabs.com/php-codesniffer",
-            "keywords": [
-                "phpcs",
-                "standards"
-            ],
-            "time": "2018-12-19T23:57:18+00:00"
-        },
-        {
             "name": "stripe/stripe-php",
             "version": "v5.9.2",
             "source": {
@@ -7813,22 +7642,21 @@
         },
         {
             "name": "yab/laravel-scout-mysql-driver",
-            "version": "v2.0.5",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/YABhq/laravel-scout-mysql-driver.git",
-                "reference": "b6a2ff42337fd97557b9633867f9bd88a86019d1"
+                "url": "https://github.com/worksweet/laravel-scout-mysql-driver.git",
+                "reference": "1989fafeb2a3fe518f9e8459c7d75f208fcac72a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YABhq/laravel-scout-mysql-driver/zipball/b6a2ff42337fd97557b9633867f9bd88a86019d1",
-                "reference": "b6a2ff42337fd97557b9633867f9bd88a86019d1",
+                "url": "https://api.github.com/repos/worksweet/laravel-scout-mysql-driver/zipball/1989fafeb2a3fe518f9e8459c7d75f208fcac72a",
+                "reference": "1989fafeb2a3fe518f9e8459c7d75f208fcac72a",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
-                "laravel/scout": "^2.0|^3.0|^4.0",
-                "php": ">=5.6.4"
+                "laravel/scout": "^6.0",
+                "php": ">=7.0"
             },
             "type": "library",
             "extra": {
@@ -7861,7 +7689,7 @@
                 }
             ],
             "description": "MySQL driver for Laravel Scout.",
-            "time": "2018-08-27T07:27:01+00:00"
+            "time": "2018-12-11T10:56:33+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -8505,21 +8333,21 @@
         },
         {
             "name": "laravel/telescope",
-            "version": "v1.1",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "925386780c756d6aa7c18ae185bb7a756c122460"
+                "reference": "c74326c6dbf6b722c2d35e43e324b79e51a0dbc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/925386780c756d6aa7c18ae185bb7a756c122460",
-                "reference": "925386780c756d6aa7c18ae185bb7a756c122460",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/c74326c6dbf6b722c2d35e43e324b79e51a0dbc0",
+                "reference": "c74326c6dbf6b722c2d35e43e324b79e51a0dbc0",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laravel/framework": "~5.7.7|~5.8.0",
+                "laravel/framework": "~5.7.7",
                 "moontoast/math": "^1.1",
                 "php": "^7.1.3",
                 "symfony/var-dumper": "^4.1"
@@ -8564,7 +8392,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2019-02-18T22:02:39+00:00"
+            "time": "2019-03-05T13:21:07+00:00"
         },
         {
             "name": "maximebf/debugbar",
