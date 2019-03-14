@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.28 on 2019-03-14 00:17:17.
+ * Generated for Laravel 5.7.28 on 2019-03-14 22:23:52.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15103,6 +15103,119 @@ namespace PragmaRX\Firewall\Vendor\Laravel {
  
 }
 
+namespace HTMLMin\HTMLMin\Facades { 
+
+    /**
+     * This is the htmlmin facade class.
+     *
+     * @author Graham Campbell <graham@alt-three.com>
+     */ 
+    class HTMLMin {
+        
+        /**
+         * Get the minified blade.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function blade($value)
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->blade($value);
+        }
+        
+        /**
+         * Get the minified css.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function css($value)
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->css($value);
+        }
+        
+        /**
+         * Get the minified js.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function js($value)
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->js($value);
+        }
+        
+        /**
+         * Get the minified html.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function html($value)
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->html($value);
+        }
+        
+        /**
+         * Return the blade minifier instance.
+         *
+         * @return \HTMLMin\HTMLMin\Minifiers\BladeMinifier 
+         * @static 
+         */ 
+        public static function getBladeMinifier()
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->getBladeMinifier();
+        }
+        
+        /**
+         * Return the css minifier instance.
+         *
+         * @return \HTMLMin\HTMLMin\Minifiers\CssMinifier 
+         * @static 
+         */ 
+        public static function getCssMinifier()
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->getCssMinifier();
+        }
+        
+        /**
+         * Return the js minifier instance.
+         *
+         * @return \HTMLMin\HTMLMin\Minifiers\JsMinifier 
+         * @static 
+         */ 
+        public static function getJsMinifier()
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->getJsMinifier();
+        }
+        
+        /**
+         * Return the html minifier instance.
+         *
+         * @return \HTMLMin\HTMLMin\Minifiers\HtmlMinifier 
+         * @static 
+         */ 
+        public static function getHtmlMinifier()
+        {
+                        /** @var \HTMLMin\HTMLMin\HTMLMin $instance */
+                        return $instance->getHtmlMinifier();
+        }
+         
+    }
+ 
+}
+
 namespace Vinkla\Hashids\Facades { 
 
     /**
@@ -15247,6 +15360,50 @@ namespace Vinkla\Hashids\Facades {
             //Method inherited from \GrahamCampbell\Manager\AbstractManager            
                         /** @var \Vinkla\Hashids\HashidsManager $instance */
                         return $instance->getConfig();
+        }
+         
+    }
+ 
+}
+
+namespace Waavi\Sanitizer\Laravel { 
+
+    /**
+     * 
+     *
+     * @see \Illuminate\Validation\Factory
+     */ 
+    class Facade {
+        
+        /**
+         * Create a new Sanitizer instance
+         * 
+         * @param  array   $data       Data to be sanitized
+         *
+         * @param array $rules Filters to be applied to the given data
+         *  @return Sanitizer
+         * @static 
+         */ 
+        public static function make($data, $rules)
+        {
+                        /** @var \Waavi\Sanitizer\Laravel\Factory $instance */
+                        return $instance->make($data, $rules);
+        }
+        
+        /**
+         * Add a custom filters to all Sanitizers created with this Factory.
+         * 
+         * @param  string  $name       Name of the filter
+         *
+         * @param mixed $extension Either the full class name of a Filter class implementing the Filter contract, or a \Closure.
+         *  @throws InvalidArgumentException
+         *  @return void
+         * @static 
+         */ 
+        public static function extend($name, $customFilter)
+        {
+                        /** @var \Waavi\Sanitizer\Laravel\Factory $instance */
+                        return $instance->extend($name, $customFilter);
         }
          
     }
@@ -16830,7 +16987,7 @@ namespace Sentry\SentryLaravel {
          * @return string 
          * @static 
          */ 
-        public static function cleanup_php_version($extra = '-1+ubuntu18.04.1+deb.sury.org+1')
+        public static function cleanup_php_version($extra = '')
         {
                         return \Raven_Client::cleanup_php_version($extra);
         }
@@ -19902,7 +20059,11 @@ namespace  {
 
     class Firewall extends \PragmaRX\Firewall\Vendor\Laravel\Facade {}
 
+    class HTMLMin extends \HTMLMin\HTMLMin\Facades\HTMLMin {}
+
     class Hashids extends \Vinkla\Hashids\Facades\Hashids {}
+
+    class Sanitizer extends \Waavi\Sanitizer\Laravel\Facade {}
 
     class Widget extends \Arrilot\Widgets\Facade {}
 

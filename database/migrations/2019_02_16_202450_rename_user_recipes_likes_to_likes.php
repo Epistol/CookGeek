@@ -21,27 +21,7 @@ class RenameUserRecipesLikesToLikes extends Migration
             if (!Schema::hasTable($this->newTableName)) {
                 Schema::rename($this->oldTableName, $this->newTableName);
 
-                Schema::table($this->newTableName, function (Blueprint $table) {
-                    $table->morphs('likeable');
-                    $table->softDeletes();
-                    $table->timestamps();
-                    $table->foreign('user_id')->references('id')->on('users');
-                });
             }
-        } else {
-            if (!Schema::hasTable($this->newTableName)) {
-                Schema::create($this->newTableName, function (Blueprint $table) {
-                    $table->increments('id');
-                    $table->unsignedInteger('user_id')->nullable();
-
-                    $table->morphs('likeable');
-                    $table->softDeletes();
-                    $table->timestamps();
-
-                    $table->foreign('user_id')->references('id')->on('users');
-                });
-            }
-
         }
     }
 
@@ -52,7 +32,10 @@ class RenameUserRecipesLikesToLikes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->oldTableName);
-        Schema::dropIfExists($this->newTableName);
+        if (Schema::hasTable($this->newTableName)) {
+            if (!Schema::hasTable($this->oldTableName)) {
+                Schema::rename($this->newTableName, $this->oldTableName);
+            }
+        }
     }
 }
