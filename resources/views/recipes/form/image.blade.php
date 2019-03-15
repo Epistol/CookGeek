@@ -12,6 +12,19 @@
                         <pictureupload type="recipe" recipeid="{{$recette->id}}"user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture=""></pictureupload>
                 @endif
 
+                    <input class="file-input" id="upload" type="file" name="resume" accept="image/x-png,image/jpeg">
+                    <span class="file-cta darker">
+
+                                            <span class="file-label">
+                                               <i class="fa fa-upload"></i> Ajouter une photo
+                                            </span>
+                                        </span>
+
+                    <figure class="image is-square">
+                        <img id="blah" class="fit-cover" src="#" alt=""/>
+                    </figure>
+
+
             </div>
 
             {{-- Nom du fichier--}}

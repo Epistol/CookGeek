@@ -34,6 +34,7 @@
     "predis/predis": "^1.1",
     "sentry/sentry-laravel": "^0.11.0",
     "spatie/laravel-feed": "^2.0",
+    "spatie/laravel-medialibrary": "^7.0.0",
     "spatie/laravel-permission": "^2.23",
     "spatie/laravel-responsecache": "^4.2",
     "spatie/laravel-sitemap": "^5.2",

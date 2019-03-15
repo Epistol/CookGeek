@@ -29,7 +29,7 @@
                         <div class="columns">
                             <div class="column is-10 is-offset-1">
                                 @include("recipes.add.titre")
-                                @include("recipes.add.univers")
+                                @include("recipes.form.univers")
                                 @include("recipes.add.ingredients")
                                 @include("recipes.add.step")
                                 {{--Liste des ingrédients --}}
@@ -57,7 +57,7 @@
                                     @include("recipes.add.timing.tps_repos")
                                     @include("recipes.add.nb_parts")
 
-                                    @include("recipes.add.vegan")
+                                    @include("recipes.form.vegan")
                                     {{--// Nombre de portions--}}
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                         <div class="column is-4"> @include("recipes.add.comment")
                             @include("recipes.add.video")
                         </div>
-                        <div class="column">  @include("recipes.add.type")
+                        <div class="column">  @include("recipes.form.type")
                         </div>
                     </div>
                 </section>

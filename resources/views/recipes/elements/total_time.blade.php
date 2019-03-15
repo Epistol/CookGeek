@@ -8,8 +8,8 @@ $somme = $controller->sumerise_t($somme_t);
 
 @else
 
-                <p>
-                    {{$somme}}
-                </p>
+    <p>
+        {{$somme}}
+    </p>
 
 @endif

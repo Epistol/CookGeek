@@ -25,32 +25,32 @@
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-12">
-                                @include("recipes.add.titre")
-                                @include("recipes.add.univers")
-                                @include("recipes.add.ingredients")
-                                @include("recipes.add.step")
+                                @include("recipes.form.titre")
+                                @include("recipes.form.univers")
+                                @include("recipes.form.ingredients")
+                                @include("recipes.form.step")
                                 {{--Liste des ingrédients --}}
                             </div>
                         </div>
                     </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
-                            @include('recipes.add.image')
+                            @include('recipes.form.image')
 
                             <div class="columns">
                                 <div class="column is-10 is-offset-1">
-                                    @include("recipes.add.difficulty")
-                                    @include("recipes.add.categorie")
-                                    @include("recipes.add.cost")
+                                    @include("recipes.form.difficulty")
+                                    @include("recipes.form.categorie")
+                                    @include("recipes.form.cost")
                                 </div>
                             </div>
                             <div class="columns timing">
                                 <div class="column is-10 is-offset-1 ">
-                                    @include("recipes.add.timing.tps_preparation")
-                                    @include("recipes.add.timing.tps_cuisson")
-                                    @include("recipes.add.timing.tps_repos")
-                                    @include("recipes.add.nb_parts")
-                                    @include("recipes.add.vegan")
+                                    @include("recipes.form.timing.tps_preparation")
+                                    @include("recipes.form.timing.tps_cuisson")
+                                    @include("recipes.form.timing.tps_repos")
+                                    @include("recipes.form.nb_parts")
+                                    @include("recipes.form.vegan")
                                 </div>
                             </div>
 
@@ -60,16 +60,16 @@
 
                 <section class="section page">
                     <div class="columns">
-                        <div class="column is-4"> @include("recipes.add.comment")
-                            @include("recipes.add.video")
+                        <div class="column is-4"> @include("recipes.form.comment")
+                            @include("recipes.form.video")
                         </div>
-                        <div class="column">  @include("recipes.add.type")
+                        <div class="column">  @include("recipes.form.type")
                         </div>
                     </div>
                 </section>
 
                 <section class="section page">
-                    @include("recipes.add.submit")
+                    @include("recipes.form.submit")
                 </section>
 
 

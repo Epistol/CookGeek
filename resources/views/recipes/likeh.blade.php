@@ -2,7 +2,8 @@
 
     <LikeRecipe :recipeid="'{{$recette->id}}'" :userid="'{{ Auth::id() }}'"></LikeRecipe>
 
-    <a class="button tooltip is-tooltip-left print" data-tooltip="@lang('common.print')" href="javascript:window.print()">
+    <a class="button tooltip is-tooltip-left print" data-tooltip="@lang('common.print')"
+       href="javascript:window.print()">
                   <span class="icon is-small">
                    <i class="material-icons">&#xE8AD;</i>
                        <span hidden>@lang('common.print')</span>
@@ -21,8 +22,6 @@
         </div>
 
     </modal>
-
-
 
 
 </div>

@@ -31,8 +31,8 @@ if ($validPictures->isNotEmpty()) {
                     {{--Photo + ingredients--}}
                     <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                         @include("recipes.show.images")
-                            {{--Fiche gauche - INGREDIENTS --}}
-                            @include("recipes.show.ficheinfo")
+                        {{--Fiche gauche - INGREDIENTS --}}
+                        @include("recipes.show.ficheinfo")
                     </div>
                     {{--    Infos + steps--}}
                     <div class="column is-marginless is-paddingless ">
@@ -161,6 +161,7 @@ if ($validPictures->isNotEmpty()) {
         @endforeach
         ]
 }
+
 
     </script>
 @endsection

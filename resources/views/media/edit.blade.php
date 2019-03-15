@@ -28,10 +28,10 @@
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-10 is-offset-1">
-                                @include("recipes.edit.titre")
+                                @include("recipes.form.titre")
                                 @include("recipes.edit.univers")
-                                @include("recipes.edit.ingredients")
-                                @include("recipes.edit.step")
+                                @include("recipes.form.ingredients")
+                                @include("recipes.form.step")
                                 {{--Liste des ingrédients --}}
                             </div>
                         </div>
@@ -40,22 +40,22 @@
                     </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
-                            @include('recipes.edit.image')
+                            @include('recipes.form.image')
 
                             <div class="columns">
                                 <div class="column is-10 is-offset-1">
-                                    @include("recipes.edit.difficulty")
-                                    @include("recipes.edit.categorie")
-                                    @include("recipes.edit.cost")
+                                    @include("recipes.form.difficulty")
+                                    @include("recipes.form.categorie")
+                                    @include("recipes.form.cost")
                                 </div>
                             </div>
                             <div class="columns timing">
                                 <div class="column is-10 is-offset-1 ">
                                     {{--// Timing--}}
-                                    @include("recipes.edit.timing.tps_preparation")
-                                    @include("recipes.edit.timing.tps_cuisson")
-                                    @include("recipes.edit.timing.tps_repos")
-                                    @include("recipes.edit.nb_parts")
+                                    @include("recipes.form.timing.tps_preparation")
+                                    @include("recipes.form.timing.tps_cuisson")
+                                    @include("recipes.form.timing.tps_repos")
+                                    @include("recipes.form.nb_parts")
 
                                     @include("recipes.edit.vegan")
                                     {{--// Nombre de portions--}}
@@ -68,8 +68,8 @@
 
                 <section class="section page">
                     <div class="columns">
-                        <div class="column is-4"> @include("recipes.edit.comment")
-                            @include("recipes.edit.video")
+                        <div class="column is-4"> @include("recipes.form.comment")
+                            @include("recipes.form.video")
                         </div>
                         <div class="column">  @include("recipes.edit.type")
                         </div>
@@ -77,7 +77,7 @@
                 </section>
 
                 <section class="section page">
-                    @include("recipes.edit.submit")
+                    @include("recipes.form.submit")
                 </section>
 
 

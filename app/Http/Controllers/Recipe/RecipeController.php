@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Recipe;
 /*use App\Recipe;*/
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PictureController;
 use App\Http\Requests\RecipeStoreSanitizedRequest;
 
 use App\Ingredient;
@@ -22,7 +21,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class RecipeController extends Controller
 {
