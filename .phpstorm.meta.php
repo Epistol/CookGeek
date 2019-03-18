@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-03-14 22:45:30.
+    * Generated on 2019-03-18 09:49:53.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -56,6 +56,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -284,6 +285,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -512,6 +514,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -740,6 +743,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -968,6 +972,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -1196,6 +1201,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
@@ -1424,6 +1430,7 @@ namespace PHPSTORM_META {
         'Laravel\Telescope\Contracts\PrunableRepository' => \Laravel\Telescope\Storage\DatabaseEntriesRepository::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\MediaLibrary\Filesystem\Filesystem' => \Spatie\MediaLibrary\Filesystem\Filesystem::class,
         'Spatie\MediaLibrary\MediaRepository' => \Spatie\MediaLibrary\MediaRepository::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,

@@ -29,7 +29,7 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'provider_name', 'provider_id', 'password', 'remember_token',
     ];
 
     public function image()

@@ -20,13 +20,12 @@
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
 
+                                    <a href="{{ route('login.provider', 'google') }}"
+                                       class="btn btn-secondary">{{ __('Google Sign in') }}</a>
+                                    <a href="{{ route('login.provider', 'facebook') }}" class="button">Facebook</a>
+                                    <a href="{{ route('login.provider', 'twitter') }}" class="button">Twitter</a>
 
-                                    {{--   <a href="fb.com" class="button">Facebook</a>
-                                       <a href="fb.com" class="button">Google</a>
-                                       <a href="fb.com" class="button">Twi</a>
-
-                                       <div class="is-divider" data-content="OU"></div>--}}
-
+                                    <div class="is-divider" data-content="OU"></div>
 
                                     <div class=" field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
                                         <label for="identity" class="label col-md-4 control-label">Pseudo ou Email
@@ -59,47 +58,35 @@
                                         </div>
                                     </div>
 
-                                    <a class=" help"  @click="showModal = true">
+                                    <a class=" help" @click="showModal = true">
                                         Mot de passe oublié ?
                                     </a>
 
                                     <label class="checkbox" for="remember">
-                                        <input class="checkbox form-check-input" type="checkbox" checked="login" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="checkbox form-check-input" type="checkbox" checked="login"
+                                               name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         @lang('common.rememberme')
                                     </label>
 
 
                                     <div class="field is-grouped is-grouped-right">
                                         <p class="control">
-                                            <button  class="button is-primary " data-sitekey="{{env("RECAPTCHA_SITE_KEY")}}" data-callback="SubmitFn">
+                                            <button class="button is-primary "
+                                                    data-sitekey="{{env("RECAPTCHA_SITE_KEY")}}"
+                                                    data-callback="SubmitFn">
                                                 Connexion
                                             </button>
                                         </p>
-                                        {{-- <p class="control">
-                                             <a class="button is-light">
-                                                 Cancel
-                                             </a>
-                                         </p>--}}
                                     </div>
-
-
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
-
     @include("auth.donnes_perso")
-
-
-@include("auth.passwords.reinit_mdp")
-
-
+    @include("auth.passwords.reinit_mdp")
 
 @endsection
