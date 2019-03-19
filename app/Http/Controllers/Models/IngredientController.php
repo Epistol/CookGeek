@@ -39,7 +39,7 @@ class IngredientController extends Controller
     public function store(Request $request)
     {
         $ingredient = new Ingredient();
-        $ingredient->name = strip_tags(clean($request->name));
+        $ingredient->name = cleanInput($request->name);
         $ingredient->save();
     }
 
