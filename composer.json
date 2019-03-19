@@ -52,6 +52,7 @@
     "barryvdh/laravel-debugbar": "dev-master",
     "barryvdh/laravel-ide-helper": "^2.5",
     "filp/whoops": "~2.0",
+    "friendsofphp/php-cs-fixer": "^2.14",
     "fzaninotto/faker": "~1.4",
     "laravel/homestead": "^8.0",
     "laravel/telescope": "^1.0",

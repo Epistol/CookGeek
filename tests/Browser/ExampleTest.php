@@ -3,9 +3,8 @@
 namespace Tests\Browser;
 
 use App\User;
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\DuskTestCase;
 
 class ExampleTest extends DuskTestCase
 {
@@ -22,8 +21,6 @@ class ExampleTest extends DuskTestCase
                 ->waitForText('Créez votre recette')
                 ->type('input#title', 'taylor@laravel.com')
                 ->assertSee('Créez votre recette');
-
-
         });
     }
 }

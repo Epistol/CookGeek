@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class RenameUserRecipesLikesToLikes extends Migration
 {
-
     private $oldTableName = 'user_recipe_likes';
     private $newTableName = 'likes';
 
@@ -20,7 +18,6 @@ class RenameUserRecipesLikesToLikes extends Migration
         if (Schema::hasTable($this->oldTableName)) {
             if (!Schema::hasTable($this->newTableName)) {
                 Schema::rename($this->oldTableName, $this->newTableName);
-
             }
         }
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Recipe\RecipeController;
 use App\Ingredient;
 use App\Recipe;
 use App\RecipeIngredient;

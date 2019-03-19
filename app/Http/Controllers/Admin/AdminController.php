@@ -6,7 +6,6 @@ use App\Firewall;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 
 class AdminController extends Controller

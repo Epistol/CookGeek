@@ -32,7 +32,8 @@ class PictureController extends Controller
                 'user_id'    => $userId,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]);
+            ]
+        );
 
         return response()->json(true);
     }
@@ -56,7 +57,7 @@ class PictureController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public  function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
+    public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
         $filePath = Storage::get($picturePath);
         $image = base64_encode($filePath);
@@ -70,7 +71,8 @@ class PictureController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
                 'validated'  => 1,
-            ]);
+            ]
+        );
 
         Storage::delete($picturePath);
 

@@ -6,7 +6,7 @@ use App\Firewall;
 
 class FirewallController extends Controller
 {
-    public function all_filters()
+    public function allFilters()
     {
         $user_ip = geoip()->getClientIP();
         $blacklist = Firewall::getAllIps();

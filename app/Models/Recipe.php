@@ -148,5 +148,4 @@ class Recipe extends Model implements Feedable
     {
         return str_slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
     }
-
 }

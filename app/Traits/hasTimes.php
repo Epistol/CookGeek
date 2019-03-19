@@ -8,7 +8,6 @@
 
 namespace App\Traits;
 
-
 trait hasTimes
 {
     /**
@@ -90,5 +89,4 @@ trait hasTimes
 
         return $times;
     }
-
 }

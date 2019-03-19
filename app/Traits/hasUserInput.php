@@ -8,10 +8,10 @@
 
 namespace App\Traits;
 
-
 trait hasUserInput
 {
-    public function cleanInput($text){
+    public function cleanInput($text)
+    {
         return strip_tags(clean(app('profanityFilter')->filter($text)));
     }
 }

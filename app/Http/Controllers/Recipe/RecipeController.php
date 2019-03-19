@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Recipe;
 
 /*use App\Recipe;*/
 
+use App\Categunivers;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecipeStoreSanitizedRequest;
 
+use App\Http\Requests\RecipeStoreSanitizedRequest;
 use App\Ingredient;
 use App\Pictures;
 use App\Recipe;
-use App\Categunivers;
-use App\Univers;
+use App\Traits\hasPicture;
 
 use App\Traits\hasTimes;
 use App\Traits\hasUserInput;
-use App\Traits\hasPicture;
+use App\Univers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -138,15 +138,15 @@ class RecipeController extends Controller
         }
 
         // Gestion des étapes
-       /* foreach ($request->step as $key => $step) {
-            if ($step) {
-                DB::table('recipes_steps')->insertGetId(
-                    ['recipe_id' => $recipe->id,
-                        'step_number' => $key,
-                        'instruction' => clean(app('profanityFilter')->filter($request->step[$key])),
-                    ]);
-            }
-        }*/
+        /* foreach ($request->step as $key => $step) {
+             if ($step) {
+                 DB::table('recipes_steps')->insertGetId(
+                     ['recipe_id' => $recipe->id,
+                         'step_number' => $key,
+                         'instruction' => clean(app('profanityFilter')->filter($request->step[$key])),
+                     ]);
+             }
+         }*/
 
         // Parties image
         $this->validate($request, [
@@ -449,7 +449,8 @@ class RecipeController extends Controller
                 'user_id' => $userid,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]);
+            ]
+        );
     }
 
     /**
@@ -459,7 +460,6 @@ class RecipeController extends Controller
      */
     public function edit_recipe($recette_id, Request $request)
     {
-
         $recipe = Recipe::find($recette_id);
         $recipe->title = self::cleanInput($request->title);
         $recipe->vegetarien = self::cleanInput($request->vegan) == 'on' ? true : false;
@@ -538,13 +538,15 @@ class RecipeController extends Controller
                 $recingr = DB::table('recipes_ingredients')->where('id', '=', $test[0]->id)->update(
                     ['id_ingredient' => $ingredientID,
                         'qtt' => app('profanityFilter')->filter($qtt),
-                    ]);
+                    ]
+                );
             } else {
                 $recingr = DB::table('recipes_ingredients')->where('id_recipe', '=', $idRecette)->insertGetId(
                     ['id_recipe' => $idRecette,
                         'id_ingredient' => $ingredientID,
                         'qtt' => app('profanityFilter')->filter($qtt),
-                    ]);
+                    ]
+                );
             }
         }
     }
