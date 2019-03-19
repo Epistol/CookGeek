@@ -1,11 +1,12 @@
 {
-  "name": "laravel/laravel",
-  "description": "The Laravel Framework.",
+  "name": "epistol/cdg",
+  "description": "Cuisine De Geek",
   "keywords": [
-    "framework",
-    "laravel"
+    "geek",
+    "cooking",
+    "websites"
   ],
-  "license": "MIT",
+  "license": "proprietary",
   "type": "project",
   "require": {
     "php": ">=7.2.0",
