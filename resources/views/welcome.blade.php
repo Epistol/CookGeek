@@ -3,26 +3,18 @@
 @section('content')
     <div class="container">
         <div class="columns">
-            <div class="column is-9">
+            <div class="column is-12">
                 <div class="blockcontent is-paddingless">
                     <div class="is-flex-center">
-                        <h1 class="title-website">Cuisine De Geek</h1>
+                        <h1 class="title-website"><?= env('APP_LONG_NAME');?></h1>
                     </div>
                     @include("recipes.index.all")
                     @include("univers.preview.preview")
                 </div>
             </div>
 
-            <div class="column">
-                {{--Sidebar--}}
-                    @include("layouts.index.sidebar")
-
-            </div>
-
         </div>
     </div>
-
-
 
     <script type="application/ld+json">
 {
@@ -45,9 +37,5 @@
         ]
       }
 
-
-
     </script>
-
-
 @endsection

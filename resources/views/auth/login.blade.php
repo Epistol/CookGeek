@@ -2,18 +2,15 @@
 @section('titrepage', "Connexion")
 @section('content')
     <section class="section">
-
         <div class="container">
             <div class="columns">
                 <div class="column is-5 is-paddingless">
                     <div class="left-register">
                         <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                     </div>
-
                 </div>
                 <div class="column is-two-fifths is-paddingless">
-                    <H1 class="title">Connexion</H1>
-
+                    <h1 class="title">Connexion</h1>
                     <div class="blockcontent">
                         <div class="columns">
                             <div class="column is-three-quarters is-offset-1">
@@ -27,7 +24,7 @@
 
                                     <div class="is-divider" data-content="OU"></div>
 
-                                    <div class=" field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
+                                    <div class="field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
                                         <label for="identity" class="label col-md-4 control-label">Pseudo ou Email
 
                                         </label>

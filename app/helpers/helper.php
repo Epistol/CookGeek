@@ -16,7 +16,11 @@ if (!function_exists('generateCrud')) {
     {
         $crud = ['index', 'view', 'create', 'read', 'update', 'delete'];
         $crudExtended = ['restore', 'forceDelete'];
-        $grouped = ['view-' . $model . '-from-group', 'update-' . $model . '-from-group', 'delete-' . $model . '-from-group'];
+        $grouped = [
+            'view-' . $model . '-from-group',
+            'update-' . $model . '-from-group',
+            'delete-' . $model . '-from-group'
+        ];
 
         $data = [];
 
