@@ -13,7 +13,6 @@
 
 Route::middleware(['fw-block-blacklisted'])->group(function () {
 
-// Parce que
     Route::get('/teapot', function () {
         abort(418);
     })->name('teapot');

@@ -32,7 +32,7 @@
                             Recettes
                         </a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item" href="{{ route('recipe.add') }}">
+                            <a class="navbar-item" href="{{ route('recipe.create') }}">
                                 <img src="{{asset('/img/icons/add_round.svg')}}" style="padding-right: 0.5rem"/>
                                 Ajouter une nouvelle
                             </a>

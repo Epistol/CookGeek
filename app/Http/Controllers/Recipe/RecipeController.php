@@ -12,7 +12,7 @@ use App\Ingredient;
 use App\Jobs\PictureThumbnail;
 use App\Pictures;
 use App\Recipe;
-use App\Recipes_steps;
+use App\RecipesSteps;
 use App\Traits\HasTimes;
 use App\Traits\HasUserInput;
 use App\TypeRecipe;
@@ -53,7 +53,7 @@ class RecipeController extends Controller
         $difficulty = Difficulty::all();
         $types_plat = TypeRecipe::all();
 
-        return view('recipes.add', [
+        return view('recipes.create', [
             'types' => $types_univ,
             'difficulty' => $difficulty,
             'types_plat' => $types_plat
@@ -88,11 +88,9 @@ class RecipeController extends Controller
         $recipe->validated = 0;
         $recipe->saveOrFail();
 
-        $universe = $recipe->universes()->create(
-            [
-                'name' => $request->univers,
-                'first_creator' => Auth::user()->id
-            ]
+        $universe = $recipe->universes()->firstOrCreate(
+            ['name' => $request->univers],
+            ['first_creator' => Auth::user()->id]
         );
 
         dd($universe);
@@ -111,32 +109,25 @@ class RecipeController extends Controller
         }
 
         // Storing steps and attach to the recipe
-        // TODO PRIO N°1
         foreach ($request->step as $key => $step) {
-            $ingredient = Recipes_steps::firstOrCreate(['name' => $ingredient]);
-            $recipe->ingredients()->attach(
-                $ingredient,
-                ['quantity' => self::cleanInput($request->qtt_ingredient[$key])]
+            $newStep = RecipesSteps::firstOrCreate(
+                [
+                    'name' => $step,
+                    'instruction' => $request->step[$key]
+                ]
+            );
+            $recipe->steps()->attach(
+                $newStep,
+                ['step_number' => $key]
             );
         }
-
-        // Gestion des étapes
-        /* foreach ($request->step as $key => $step) {
-             if ($step) {
-                 DB::table('recipes_steps')->insertGetId(
-                     ['recipe_id' => $recipe->id,
-                         'step_number' => $key,
-                         'instruction' => clean(app('profanityFilter')->filter($request->step[$key])),
-                     ]);
-             }
-         }*/
 
         if (!empty($request->resume)) {
             $file = $request->resume;
             if ($file->getError() == 0) {
                 $path = $file->store('public/uploads');
                 $media = $recipe->addMedia($path)
-                    ->toMediaCollection('recipes/'.$recipe->id);
+                    ->toMediaCollection('recipes/' . $recipe->id);
                 PictureThumbnail::dispatch($recipe, $media, 'thumbnail');
                 PictureThumbnail::dispatch($recipe, $media, 'indexRecipe');
                 PictureThumbnail::dispatch($recipe, $media, 'thumbSquare', 250);
@@ -200,7 +191,7 @@ class RecipeController extends Controller
 
         // STARS
         $stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
-        if ($stars1 == NULL) {
+        if ($stars1 == null) {
             $stars1 = 1;
         }
 
@@ -212,7 +203,7 @@ class RecipeController extends Controller
         $countrating = DB::table('recipe_likes')
             ->where('id_recipe', '=', $recette->id)
             ->count();
-        if ($countrating == NULL || $countrating == 0) {
+        if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }
         $id_auteur = $recette->id_user;
@@ -278,7 +269,7 @@ class RecipeController extends Controller
     {
         $recette = Recipe::where('slug', $slug)->first();
 
-        if ($recette != '' || $recette != NULL) {
+        if ($recette != '' || $recette != null) {
             if ($recette->id_user != Auth::id()) {
                 return back();
             } else {
@@ -351,12 +342,12 @@ class RecipeController extends Controller
         $idRecette = $this->edit_recipe($id, strip_tags(clean($request->title)), $request->vegan, intval($request->difficulty), intval($request->categ_plat), intval($request->cost), intval($prep), intval($cook), intval($rest), $request->unite_part, strip_tags(clean($request->value_part)), intval($univers), intval($request->type), intval($iduser), clean($request->video), clean($comm));
 
         // Partie ingrédients
-        if ($request->ingredient !== NULL) {
+        if ($request->ingredient !== null) {
             foreach ($request->ingredient as $key => $ingredient) {
                 $this->editIngredient($key, strip_tags(clean($ingredient)), $id, strip_tags(clean($request->qtt_ingredient[$key])));
             }
         }
-        if ($request->ingredient_removed !== NULL) {
+        if ($request->ingredient_removed !== null) {
             foreach ($request->ingredient_removed as $key => $ingredient) {
                 $this->removeIngredients($key, strip_tags(clean($request->ingredient_removed)), $id, strip_tags(clean($request->qtt_removed_ingredient[$key])));
             }
@@ -389,7 +380,7 @@ class RecipeController extends Controller
     public function load_picture($recette)
     {
         $firstimg = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->where('user_id', '=', $recette->id_user)->orderBy('updated_at', 'desc')->first();
-        if ($firstimg !== NULL) {
+        if ($firstimg !== null) {
             $url = url('/recipes/' . $recette->id . '/' . intval($recette->id_user) . '/' . strip_tags(clean($firstimg->image_name)));
             $retour = collect($url);
         } else {
@@ -456,7 +447,7 @@ class RecipeController extends Controller
         $id_ingredient = DB::table('ingredients')->where('name', '=', $ingredient)->first();
 
         $ingredient_recette = DB::table('recipes_ingredients')->where('id_ingredient', '=', $id_ingredient->id)->where('id_recipe', '=', $idRecette)->where('qtt', '=', $qtt)->first();
-        if ($ingredient_recette !== NULL) {
+        if ($ingredient_recette !== null) {
             DB::table('recipes_ingredients')->where('id_ingredient', '=', $id_ingredient->id)->where('qtt', '=', $qtt)->delete();
         }
     }

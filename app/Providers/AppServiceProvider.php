@@ -4,9 +4,14 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Waavi\Sanitizer\Laravel\SanitizesInput;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use SanitizesInput;
+
+
     /**
      * Bootstrap any application services.
      *
@@ -14,7 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Validator::extend('profanity', 'App\Rules\Profanity@validate');
+        Validator::replacer('profanity', 'App\Rules\Profanity@apply');
         setlocale(LC_TIME, config('app.locale'));
+
     }
 
     /**

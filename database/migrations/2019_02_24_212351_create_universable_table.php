@@ -13,7 +13,7 @@ class CreateUniversableTable extends Migration
      */
     public function up()
     {
-        Schema::create('universable', function (Blueprint $table) {
+        Schema::create('universables', function (Blueprint $table) {
             $table->integer('univers_id');
             $table->morphs('universable');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateUniversableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universable');
+        Schema::dropIfExists('universables');
     }
 }

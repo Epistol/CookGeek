@@ -45,16 +45,14 @@ class RecipesAdmin extends Controller
         return redirect()->route('recipe.show', $id);
     }
 
-	public function store($id){
-		$recipe = Recipe::where('id', '=' , $id)->first();
-		return view("admin.recipes.edit", array(
-			'recipe' => $recipe
-		))->with(['controller' => $this]);
-	}
-
-        return view('admin.recipes.edit', [
-            'recipe' => $recipe,
+    public function store($id)
+    {
+        $recipe = Recipe::where('id', '=', $id)->first();
+        return view("admin.recipes.edit", [
+            'recipe' => $recipe
         ])->with(['controller' => $this]);
+
+        return view('admin.recipes.edit', ['recipe' => $recipe,])->with(['controller' => $this]);
     }
 
     public function update($content)

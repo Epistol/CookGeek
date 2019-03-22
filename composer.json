@@ -11,7 +11,7 @@
   "require": {
     "php": ">=7.2.0",
     "ext-json": "*",
-    "askedio/laravel5-profanity-filter": "dev-master",
+    "askedio/laravel5-profanity-filter": "^1.10",
     "barryvdh/laravel-cors": "^0.11.0",
     "cybercog/laravel-ban": "^3.5",
     "dimsav/laravel-translatable": "^9.3",
@@ -46,7 +46,7 @@
     "torann/geoip": "^1.0",
     "vinkla/hashids": "^5.1",
     "voyager-redirects": "^1.0",
-    "waavi/sanitizer": "~1.0",
+    "waavi/sanitizer": "dev-master",
     "yab/laravel-scout-mysql-driver": "^2.0"
   },
   "require-dev": {

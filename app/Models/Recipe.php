@@ -32,6 +32,11 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this->morphToMany('App\Ingredient', 'ingredientable');
     }
 
+    public function steps()
+    {
+        return $this->morphToMany('App\RecipesSteps', 'stepable');
+    }
+
     public function universes()
     {
         return $this->morphToMany('App\Univers', 'universable');

@@ -17,7 +17,6 @@ class AddSocialiteFieldsToUsersTable extends Migration
             $table->string('provider_name')->nullable()->after('id');
             $table->string('provider_id')->nullable()->after('provider_name');
             $table->string('password')->nullable()->change();
-            $table->string('avatar')->nullable();
         });
     }
 

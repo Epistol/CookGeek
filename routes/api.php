@@ -38,4 +38,5 @@ Route::post('/universe/addmypicture', 'PictureController@addPictureToUniverse')-
 Route::get('/note', function () {
     return redirect('/');
 })->name('api.like.checknote');
+
 Route::post('/note', 'Api\NoteController@checknote')->name('api.like.checknote');

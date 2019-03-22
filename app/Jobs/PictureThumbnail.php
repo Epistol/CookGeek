@@ -75,7 +75,6 @@ class PictureThumbnail implements ShouldQueue
         $path = $image->getUrl();
         $media = $this->recipe->addMedia($path)
             ->toMediaCollection('recipes/'.$this->recipe->id);
-
     }
 
     public function failed(Exception $exception)

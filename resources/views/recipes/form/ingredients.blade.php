@@ -2,7 +2,7 @@
     <div id="ingr">
 
         {{--If add--}}
-        @if(Route::has('add'))
+        @if(Route::is('*.create'))
             <div class="column is-3" style="text-align: left;">
                 <h2 class="title is-4">Ingredients</h2>
             </div>

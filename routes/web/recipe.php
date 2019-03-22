@@ -6,17 +6,11 @@
  * Time: 23:25.
  */
 
+Route::resource('recipe', 'Recipe\RecipeController')->middleware('auth');
+
 // RECETTE
-Route::group(['prefix' => 'recette'], function () {
+Route::group(['prefix' => 'recipe'], function () {
     Route::get('/', 'Recipe\RecipeController@index')->name('recipe.index')->middleware('cacheResponse:2');
-    Route::get('ajout', 'Recipe\RecipeController@add')->name('recipe.add')->middleware('auth');
-    Route::post('store', 'Recipe\RecipeController@store')->name('recipe.store')->middleware('auth');
-
-    Route::get('edit/{post}', 'Recipe\RecipeController@edit')->name('recipe.edit')->middleware('auth');
-    Route::post('update/{id}', 'Recipe\RecipeController@update')->name('recipe.edition')->middleware('auth');
-
-    Route::get('{post}', 'Recipe\RecipeController@show')->name('recipe.show')->middleware('cacheResponse:10');
-
     Route::post('addmypicture', 'PictureController@addPictureToRecipe')->name('recipe.picture.store')->middleware('auth');
 });
 

@@ -16,7 +16,8 @@ class CreateIngredientablesTable extends Migration
         Schema::create('ingredientables', function (Blueprint $table) {
             $table->integer('ingredient_id');
             $table->string('locale');
-            // Not sure about that, i could simplify by creating another table with relation but heh, it's not for the amount of data ...
+            // Not sure about that, i could simplify by
+            // creating another table with relation but heh, it's not for the amount of data ...
             $table->morphs('ingredientable');
             $table->string('quantity');
 

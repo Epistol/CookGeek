@@ -53,10 +53,10 @@ class StoreRecipeRequest extends BaseFormRequest
     public function filters()
     {
         return [
-            'title'         => 'trim|strip_tags|escape|profanity',
-            'step'          => 'trim|strip_tags|escape|profanity',
-            'value_part'    => 'trim|strip_tags|escape|profanity',
-            'comment'       => 'trim|strip_tags|escape|profanity',
+            'title'         => 'trim|strip_tags|escape',
+            'step'          => 'trim|strip_tags|escape',
+            'value_part'    => 'trim|strip_tags|escape',
+            'comment'       => 'trim|strip_tags|escape',
         ];
     }
 }

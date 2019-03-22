@@ -7,13 +7,13 @@
                     @php(++$key)
                     @if(old('difficulty') == $key)
                         <option value="{{$key}}"
-                                {{ $key === $recette->difficulty ? "selected":"" }}
+                                {{ $key === old('difficulty') ? "selected":"" }}
                                 selected="choix">{{$diff->name}}</option>
                     @else
-                        <option {{ $key === $recette->difficulty ? "selected":"" }}
+                        <option
                                 value="{{$key}}">{{$diff->name}}</option>
-
-                        @endforeach
+                    @endif
+                @endforeach
             </select>
         </div>
     </div>
