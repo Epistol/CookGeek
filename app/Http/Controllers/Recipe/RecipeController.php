@@ -93,8 +93,6 @@ class RecipeController extends Controller
             ['first_creator' => Auth::user()->id]
         );
 
-        dd($universe);
-
         // SLUG & UID
         $uid = $recipe->generateUid($recipe->id);
         $slug = $recipe->slugUpdate($recipe->id, $uid);
@@ -112,7 +110,6 @@ class RecipeController extends Controller
         foreach ($request->step as $key => $step) {
             $newStep = RecipesSteps::firstOrCreate(
                 [
-                    'name' => $step,
                     'instruction' => $request->step[$key]
                 ]
             );

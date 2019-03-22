@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
+
+    protected $fillable = ['name'];
+
     // Un ingrédient ne peut appartenir qu'a une recette
     // Une recette peut avoir plusieurs ingrédients
 

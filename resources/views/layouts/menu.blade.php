@@ -107,7 +107,7 @@
 
                 <div class="navbar-end">
                     <a class="navbar-item bg-white" href="{{route('page.shop')}}">
-                       Goodies
+                        Goodies
                     </a>
 
                     @guest
@@ -138,7 +138,8 @@
 
                                 </div>
                                 <a class="navbar-link">
-                                    {!! str_limit(strip_tags(clean(Auth::user()->name, 25, "..."))) !!} <span class="caret"></span>
+                                    {!! str_limit(strip_tags(clean(Auth::user()->name, 25, "..."))) !!} <span
+                                            class="caret"></span>
                                 </a>
                             </a>
                             <div class="navbar-dropdown">
@@ -172,11 +173,18 @@
 
             <div class="column is-6">
                 {{--Logo--}}
-                <div class="navbar-brand"><a href="http://127.0.0.1:8000" class="navbar-item is-paddingless is-marginless" style="width: 4.2rem;"><img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek" style="max-height: 100%; padding: 0.2rem;"></a> <a href="http://127.0.0.1:8000" class="navbar-brand logo">
+                <div class="navbar-brand">
+                    <a href="{{url('/')}}" class="navbar-item is-paddingless is-marginless" style="width: 4.2rem;">
+                        <img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek"
+                             style="max-height: 100%; padding: 0.2rem;">
+                    </a>
+                    <a href="{{url('/')}}" class="navbar-brand logo">
                         CDG
                         <span class="logo-beta">
                     BETA
-                </span></a> </div>
+                </span>
+                    </a>
+                </div>
             </div>
             <div class="column is-6">
                 {{--User--}}
@@ -187,7 +195,8 @@
                     {{--<div class="navbar-item" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
                     {{--@include("auth.modal.login")--}}
                 @else
-                    <div class="navbar-item is-hoverable" style="display:flex;justify-content:center;align-items:flex-end;    padding-left: 1rem!important;">
+                    <div class="navbar-item is-hoverable"
+                         style="display:flex;justify-content:center;align-items:flex-end;    padding-left: 1rem!important;">
                         <a class="navbar-item user_profile">
                             <div class="user_picture">
                                 @if(Auth::user()->avatar !== 'users/default.png')
@@ -212,12 +221,12 @@
                 @endguest
             </div>
 
-            <div class="column" >
+            <div class="column">
                 {{--Search icon if not shown--}}
                 @if(Route::currentRouteNamed('home'))
-                    @else
+                @else
                 @endif
-                    {{--<switch-light></switch-light>--}}
+                {{--<switch-light></switch-light>--}}
             </div>
         </div>
     </div>

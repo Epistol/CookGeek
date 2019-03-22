@@ -16,6 +16,7 @@ class UpdateIngredientTable extends Migration
         if (Schema::hasTable('ingredients')) {
             Schema::table('ingredients', function (Blueprint $table) {
                 $table->morphs('ingredientable');
+                $table->timestamps();
                 $table->softDeletes();
             });
         }
