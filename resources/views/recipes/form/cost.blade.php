@@ -6,9 +6,15 @@
 
                 @for($i = 3; $i >= 1;$i--)
                     @if(old('cost') == $i)
-                        <input type="radio" selected="cost" id="{{$i}}"
-                               {{ $i === $recette->cost ? "checked":"" }}
-                               value="{{$i}}" name="cost"/>
+                        @if(Route::is('*.create'))
+                            <input type="radio" selected="cost" id="{{$i}}"
+                                   value="{{$i}}" name="cost"/>
+                        @else
+                            <input type="radio" selected="cost" id="{{$i}}"
+                                   {{ $i === $recette->cost ? "checked":"" }}
+                                   value="{{$i}}" name="cost"/>
+                        @endif
+
                     @else
                         <input type="radio" id="{{$i}}" value="{{$i}}" name="cost"/>
                     @endif

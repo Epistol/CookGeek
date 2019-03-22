@@ -172,7 +172,7 @@
 
             <div class="column is-6">
                 {{--Logo--}}
-                <div class="navbar-brand"><a href="http://127.0.0.1:8000" class="navbar-item is-paddingless is-marginless" style="width: 4.2rem;"><img src="http://127.0.0.1:8000/img/logoo_rond.png" alt="CDG : Cuisine De geek" style="max-height: 100%; padding: 0.2rem;"></a> <a href="http://127.0.0.1:8000" class="navbar-brand logo">
+                <div class="navbar-brand"><a href="http://127.0.0.1:8000" class="navbar-item is-paddingless is-marginless" style="width: 4.2rem;"><img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek" style="max-height: 100%; padding: 0.2rem;"></a> <a href="http://127.0.0.1:8000" class="navbar-brand logo">
                         CDG
                         <span class="logo-beta">
                     BETA

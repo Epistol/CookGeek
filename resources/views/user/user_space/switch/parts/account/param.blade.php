@@ -7,8 +7,24 @@
 
         {{--Infos classique--}}
         <div class="column">
-            @include("user.user_space.switch.parts.account.informations.basic")
-            @include("user.user.user_space.switch.parts.account.informations.switch")
+            <div class="field">
+                <label class="label">Pseudo</label>
+                <div class="control">
+                    <input class="input" type="text" name="pseudo" value="{{Auth::user()->name}}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="text" name="mail" value="{{Auth::user()->email}}">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Mot de passe</label>
+                <div class="control">
+                    <input class="input" type="password" name="mdp" placeholder="">
+                </div>
+            </div>
             <div class="is-flex-center">
                 <div class="field is-grouped">
                     <div class="control">
@@ -19,7 +35,7 @@
             </div>
         </div>
         <div class="column is-4">
-            @include("user_space.switch.parts.account.informations.avatar")
+            @include("user.user_space.switch.parts.account.informations.avatar")
         </div>
     </div>
 
