@@ -25,8 +25,8 @@ class StoreRecipeRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'title'       => 'bail|required|string|max:255|regex:([A-Za-z0-9 ])',
-            'step.*'      => 'required|string|regex:([A-Za-z0-9 ])',
+            'title'       => 'bail|required|string|max:255',
+            'step.*'      => 'required|string',
             'difficulty'  => 'integer|required',
             'categ_plat'  => 'integer|required',
             'prep_heure'  => 'nullable|integer',
@@ -36,20 +36,27 @@ class StoreRecipeRequest extends BaseFormRequest
             'rest_heure'  => 'nullable|integer',
             'rest_minute' => 'nullable|integer',
             'unite_part'  => 'nullable|integer',
-            'value_part'  => 'nullable|string|regex:([A-Za-z0-9 ])',
-            'comment'     => 'nullable|string|regex:([A-Za-z0-9 ])',
-            'video'       => 'nullable|string|regex:([A-Za-z0-9 ])',
+            'value_part'  => 'nullable|string',
+            'comment'     => 'nullable|string',
+            'video'       => 'nullable|url',
+            'univers'     => 'nullable|string',
             'type'        => 'integer|required',
+            'resume' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ];
     }
 
     /**
      *  Filters to be applied to the input.
      *
-     *  @return void
+     * @return array
      */
     public function filters()
     {
-        return [];
+        return [
+            'title'         => 'trim|strip_tags|escape|profanity',
+            'step'          => 'trim|strip_tags|escape|profanity',
+            'value_part'    => 'trim|strip_tags|escape|profanity',
+            'comment'       => 'trim|strip_tags|escape|profanity',
+        ];
     }
 }

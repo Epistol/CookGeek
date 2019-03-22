@@ -6,12 +6,16 @@ use App\Traits\hasTimes;
 use App\Traits\hasUniqueID;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
-class Recipe extends Model implements Feedable
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, hasTimes, hasUniqueID;
+    use Searchable, hasTimes, hasUniqueID, HasMediaTrait;
 
     public function image()
     {
@@ -84,7 +88,7 @@ class Recipe extends Model implements Feedable
             ->author($this->id_user);
     }
 
-    /** TODO : a dégager
+    /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public static function getAllFeedItems()
@@ -147,5 +151,18 @@ class Recipe extends Model implements Feedable
     public function slugTitle($title, $uid)
     {
         return str_slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
+    }
+
+    /**
+     * @param $newSlug
+     * @param $uid
+     * @throws \Throwable
+     */
+    public function slugUpdate($newSlug, $uid)
+    {
+        $slug = $this->slugTitle($newSlug, $uid);
+        $this->slug = $slug;
+        $this->hashid = $uid;
+        $this->saveOrFail();
     }
 }

@@ -17,11 +17,13 @@ class PictureThumbnail implements ShouldQueue
     /**
      * @var string
      */
-    private $imagePath;
+    private $recipe;
     /**
      * @var string
      */
-    private $suffix;
+    private $media;
+    private $typePicture;
+
     /**
      * @var int|null
      */
@@ -30,40 +32,28 @@ class PictureThumbnail implements ShouldQueue
      * @var int|null
      */
     private $height;
-    private $recipe;
-    /**
-     * @var string
-     */
-    private $imageContent;
-    /**
-     * @var string
-     */
-    private $imageName;
-    private $user;
-    /**
-     * @var string
-     */
-    private $typePicture;
+
 
     /**
      * Create a new job instance.
      *
-     * @param $recipe
-     * @param string $imageContent
-     * @param string $imageName
-     * @param $user
+     * @param          $recipe
+     * @param          $media
      * @param string   $typePicture
-     * @param int|null $width
+     * @param int      $width
      * @param int|null $height
      */
-    public function __construct($recipe, string $imageContent, string $imageName, $user, string $typePicture, int $width = null, ?int $height = null)
-    {
+    public function __construct(
+        $recipe,
+        $media,
+        $typePicture,
+        int $width = null,
+        ?int $height = null
+    ) {
+        $this->recipe = $recipe;
+        $this->media = $media;
         $this->width = $width;
         $this->height = $height;
-        $this->recipe = $recipe;
-        $this->imageContent = $imageContent;
-        $this->imageName = $imageName;
-        $this->user = $user;
         $this->typePicture = $typePicture;
     }
 
@@ -73,20 +63,19 @@ class PictureThumbnail implements ShouldQueue
     public function handle()
     {
         // Remove any trace of file extension in base64
-        $image2 = preg_replace('#^data:image/[^;]+;base64,#', '', $this->imageContent);
+        $image2 = preg_replace('#^data:image/[^;]+;base64,#', '', base64_encode($this->media));
         $image2 = str_replace(' ', '+', $image2);
         $image_decoded = base64_decode($image2);
 
         $image = Image::make($image_decoded);
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
+        // Save new picture to it's own folder
 
-        $recipepath = public_path('/recipes/'.$this->recipe);
-        File::exists($recipepath) or File::makeDirectory($recipepath);
+        $path = $image->getUrl();
+        $media = $this->recipe->addMedia($path)
+            ->toMediaCollection('recipes/'.$this->recipe->id);
 
-        $path = public_path('/recipes/'.$this->recipe.'/'.$this->user.'/');
-        File::exists($path) or File::makeDirectory($path);
-        $image->save($path.'/'.$name);
     }
 
     public function failed(Exception $exception)

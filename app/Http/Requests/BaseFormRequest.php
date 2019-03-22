@@ -18,6 +18,7 @@ abstract class BaseFormRequest extends FormRequest
             parent::validateResolved();
         }
     }
+
     /**
      * Get the validation rules that apply to the request.
      *

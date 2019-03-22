@@ -12,7 +12,7 @@ use Vinkla\Hashids\Facades\Hashids;
 
 trait HasUniqueID
 {
-    public function generate_uid($data)
+    public function generateUid($data)
     {
         return Hashids::encode($data); // Used for encoding
     }

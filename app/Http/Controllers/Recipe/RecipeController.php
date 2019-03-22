@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Recipe;
 
 use App\Categunivers;
 use App\Difficulty;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Ingredient;
+
+use App\Jobs\PictureThumbnail;
 use App\Pictures;
 use App\Recipe;
-use App\Traits\hasPicture;
-
-use App\Traits\hasTimes;
-use App\Traits\hasUserInput;
+use App\Recipes_steps;
+use App\Traits\HasTimes;
+use App\Traits\HasUserInput;
 use App\TypeRecipe;
 use App\Univers;
 
@@ -22,14 +23,14 @@ use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
-    use hasUserInput, hasTimes, hasPicture;
+    use HasUserInput, HasTimes;
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $medias = Categunivers::get();
+        $medias = Categunivers::all();
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
         // On charge les données dans la vue
@@ -48,9 +49,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $types_univ = Categunivers::get();
-        $difficulty = Difficulty::get();
-        $types_plat = TypeRecipe::get();
+        $types_univ = Categunivers::all();
+        $difficulty = Difficulty::all();
+        $types_plat = TypeRecipe::all();
 
         return view('recipes.add', [
             'types' => $types_univ,
@@ -64,45 +65,41 @@ class RecipeController extends Controller
      *
      * @param StoreRecipeRequest $request
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
      */
     public function store(StoreRecipeRequest $request)
     {
         // Insert recette
         $recipe = new Recipe;
-        $recipe->title = self::cleanInput($request->title);
-        $recipe->vegetarien = self::cleanInput($request->vegan) == 'on' ? true : false;
+        $recipe->title = $request->title;
+        $recipe->vegetarien = $request->vegan == 'on' ? true : false;
         $recipe->difficulty = intval($request->difficulty);
         $recipe->type = intval($request->categ_plat);
         $recipe->cost = intval($request->cost);
-        $recipe->prep_time = self::getUnifiedTime($request->prep_minute, $request->prep_heure);
-        $recipe->cook_time = self::getUnifiedTime($request->cook_minute, $request->cook_heure);
-        $recipe->rest_time = self::getUnifiedTime($request->rest_minute, $request->rest_heure);
-        $recipe->nb_guests = self::cleanInput($request->unite_part);
-        $recipe->guest_type = self::cleanInput($request->value_part);
+        $recipe->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
+        $recipe->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
+        $recipe->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
+        $recipe->nb_guests = $request->unite_part;
+        $recipe->guest_type = $request->value_part;
         $recipe->type_univers = intval($request->type);
         $recipe->id_user = Auth::user()->id;
-        $recipe->video = clean($request->video);
-        $recipe->commentary_author = self::cleanInput($request->comment);
+        $recipe->video = $request->video;
+        $recipe->commentary_author = $request->comment;
         $recipe->validated = 0;
+        $recipe->saveOrFail();
 
-        if (!$recipe->save()) {
-            return back();
-        }
-
-        $univers = $recipe->universes()->create(
-            ['name' => self::cleanInput($request->univers),
-                'first_creator' => Auth::user()->id]
+        $universe = $recipe->universes()->create(
+            [
+                'name' => $request->univers,
+                'first_creator' => Auth::user()->id
+            ]
         );
 
-        dd($univers);
-
-
-        Univers::FirstOrCreate(['name' => self::cleanInput($request->univers), 'first_creator' => Auth::user()->id]);
+        dd($universe);
 
         // SLUG & UID
-        $uid = $recipe->generate_uid($recipe->id);
-        $slug = $this->slugUpdate($recipe->id, $uid, $request);
+        $uid = $recipe->generateUid($recipe->id);
+        $slug = $recipe->slugUpdate($recipe->id, $uid);
 
         // Storing ingredients and attach to the recipe
         foreach ($request->ingredient as $key => $ingredient) {
@@ -116,7 +113,7 @@ class RecipeController extends Controller
         // Storing steps and attach to the recipe
         // TODO PRIO N°1
         foreach ($request->step as $key => $step) {
-            $ingredient = Step::firstOrCreate(['name' => $ingredient]);
+            $ingredient = Recipes_steps::firstOrCreate(['name' => $ingredient]);
             $recipe->ingredients()->attach(
                 $ingredient,
                 ['quantity' => self::cleanInput($request->qtt_ingredient[$key])]
@@ -134,19 +131,16 @@ class RecipeController extends Controller
              }
          }*/
 
-        // Parties image
-        $this->validate($request, [
-            'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-        ]);
-
         if (!empty($request->resume)) {
             $file = $request->resume;
             if ($file->getError() == 0) {
                 $path = $file->store('public/uploads');
-                $hashedName = $request->resume->hashName();
-                $ext = pathinfo($hashedName, PATHINFO_EXTENSION);
-                $filename = basename($hashedName, '.' . $ext);
-                self::addFirstPictureRecipe($path, $filename, $recipe->id, $uid, Auth::user()->id);
+                $media = $recipe->addMedia($path)
+                    ->toMediaCollection('recipes/'.$recipe->id);
+                PictureThumbnail::dispatch($recipe, $media, 'thumbnail');
+                PictureThumbnail::dispatch($recipe, $media, 'indexRecipe');
+                PictureThumbnail::dispatch($recipe, $media, 'thumbSquare', 250);
+                PictureThumbnail::dispatch($recipe, $media, 'original');
             }
         }
 
@@ -284,7 +278,7 @@ class RecipeController extends Controller
     {
         $recette = Recipe::where('slug', $slug)->first();
 
-        if ($recette != '' || $recette != null) {
+        if ($recette != '' || $recette != NULL) {
             if ($recette->id_user != Auth::id()) {
                 return back();
             } else {
@@ -306,7 +300,6 @@ class RecipeController extends Controller
             return back();
         }
     }
-
 
 
     /**
@@ -385,7 +378,7 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -408,7 +401,6 @@ class RecipeController extends Controller
     }
 
 
-
     public function random()
     {
         $rand = Recipe::where('validated', 1)->inRandomOrder()->first();
@@ -417,41 +409,6 @@ class RecipeController extends Controller
         } else {
             return redirect('/');
         }
-    }
-
-
-    /**
-     * @param $val
-     * TODO : a dégager
-     * @return string
-     */
-    private function sumerise($val)
-    {
-        // si il y'a + d'1heure
-        if ($val > 60) {
-            $somme_h = $val / 60;
-            $somme_m = $val - ((int)$somme_h * 60);
-
-            return $somme_h . 'H' . $somme_m . 'M';
-        } else {
-            $somme_h = 0;
-            $somme_m = $val - ((int)$somme_h * 60);
-
-            return $somme_m . 'M';
-        }
-    }
-
-    private function slugUpdate($idRecipe, $uid, $request)
-    {
-        // Partie SLUG
-
-        $recipe = Recipe::find($idRecipe);
-        $slug = $recipe->slugTitle($request->title, $uid);
-        $recipe->slug = $slug;
-        $recipe->hashid = $uid;
-        $recipe->save();
-
-        return $slug;
     }
 
     private function editIngredient($index, $ingredient, $idRecette, $qtt)
