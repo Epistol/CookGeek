@@ -8,7 +8,7 @@
 
 namespace App\Traits;
 
-trait hasTimes
+trait HasTimes
 {
     /**
      * @param $minutes

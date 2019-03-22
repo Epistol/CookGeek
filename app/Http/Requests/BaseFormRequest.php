@@ -7,6 +7,7 @@ use Waavi\Sanitizer\Laravel\SanitizesInput;
 abstract class BaseFormRequest extends FormRequest
 {
     use SanitizesInput;
+
     /**
      * For more sanitizer rule check https://github.com/Waavi/Sanitizer
      */

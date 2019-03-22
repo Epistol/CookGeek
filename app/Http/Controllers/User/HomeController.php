@@ -31,10 +31,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /*$user = User::find(Auth::user()->id);
-        if($user->isBanned()){
-            Auth::logout();
-        }*/
 
         // If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
         return redirect()->route('account.param');
@@ -45,7 +41,7 @@ class HomeController extends Controller
      */
     public function parameters()
     {
-        return view('user_space.switch.param');
+        return view('user.user_space.switch.param');
     }
 
     // Validation forms
@@ -55,14 +51,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function param_store(Request $request)
+    public function paramStore(Request $request)
     {
         $user = $request->user();
         if ($request->resume) {
             $fichier = $request->resume;
             if ($fichier->getError() == 0) {
-                $photoName = time().'.'.$fichier->getClientOriginalExtension();
-                $fichier->move(public_path('user/'.Auth::id().'/'), $photoName);
+                $photoName = time() . '.' . $fichier->getClientOriginalExtension();
+                $fichier->move(public_path('user/' . Auth::id() . '/'), $photoName);
                 $user->avatar = $photoName;
             }
         }
@@ -70,9 +66,14 @@ class HomeController extends Controller
         $refus = $request->no_traitement_donnees;
         $traitement = $refus == true ? false : true;
 
-        $user_data = ['name' => $request->pseudo, 'email' => $request->mail, 'password' => $request->mdp, 'traitement_donnees' => $traitement];
+        $user_data = [
+            'name' => $request->pseudo,
+            'email' => $request->mail,
+            'password' => $request->mdp,
+            'traitement_donnees' => $traitement];
+
         foreach ($user_data as $column => $value) {
-            if ($this->is_dirty($value)) {
+            if ($this->isDirty($value)) {
                 if ($column == 'password') {
                     $user->$column = bcrypt($value);
                 } else {
@@ -92,7 +93,7 @@ class HomeController extends Controller
      *
      * @return bool
      */
-    private function is_dirty($param)
+    private function isDirty($param)
     {
         return empty($param) || $param == '' ? false : true;
     }
@@ -112,7 +113,14 @@ class HomeController extends Controller
             ->select('recipes.*')
             ->paginate(12);
 
-        return view('user_space.favorites.index', ['recipes' => $recettes, 'pictureService' => $this->pictureService])->with(['controller' => $this]);
+        return view(
+            'user_space.favorites.index',
+            [
+                'recipes' => $recettes,
+                'pictureService' => $this->pictureService
+            ]
+        )
+            ->with(['controller' => $this]);
     }
 
     /**
@@ -127,7 +135,12 @@ class HomeController extends Controller
         $recettes = DB::table('recipes')
             ->where('id_user', '=', $user_id)->paginate(12);
 
-        return view('user_space.recipes.index', ['recipes' => $recettes, 'pictureService' => $this->pictureService])->with(['controller' => $this]);
+        return view(
+            'user_space.recipes.index',
+            ['recipes' => $recettes,
+                'pictureService' => $this->pictureService
+            ]
+        )->with(['controller' => $this]);
     }
 
     /**
@@ -135,7 +148,7 @@ class HomeController extends Controller
      *
      * @return bool|string
      */
-    public function check_liked($id)
+    public function checkLiked($id)
     {
         $u_id = Auth::id();
         $l_id = DB::table('user_recipe_likes')

@@ -51,7 +51,6 @@
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "dev-master",
-    "barryvdh/laravel-ide-helper": "^2.5",
     "filp/whoops": "~2.0",
     "friendsofphp/php-cs-fixer": "^2.14",
     "fzaninotto/faker": "~1.4",
@@ -95,9 +94,7 @@
       "@php artisan package:discover"
     ],
     "post-update-cmd": [
-      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-      "php artisan ide-helper:generate",
-      "php artisan ide-helper:meta"
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate"
     ],
     "phpcs": "phpcs --standard=PSR2"
   },

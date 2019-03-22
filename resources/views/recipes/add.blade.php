@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.app')
 @section('titrepage', "Ajouter une recette")
 @section('content')
 
@@ -71,8 +71,6 @@
                 <section class="section page">
                     @include("recipes.form.submit")
                 </section>
-
-
             </form>
         </section>
 

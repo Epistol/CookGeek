@@ -11,7 +11,7 @@ namespace App\Traits;
 use App\Http\Controllers\PictureController;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
-trait hasPicture
+trait HasPicture
 {
     public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {

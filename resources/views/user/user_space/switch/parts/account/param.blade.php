@@ -7,8 +7,8 @@
 
         {{--Infos classique--}}
         <div class="column">
-            @include("user_space.switch.parts.account.informations.basic")
-            @include("user_space.switch.parts.account.informations.switch")
+            @include("user.user_space.switch.parts.account.informations.basic")
+            @include("user.user.user_space.switch.parts.account.informations.switch")
             <div class="is-flex-center">
                 <div class="field is-grouped">
                     <div class="control">

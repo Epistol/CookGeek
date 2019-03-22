@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.app')
 @section('titrepage', "Ajouter une recette")
 @section('content')
 

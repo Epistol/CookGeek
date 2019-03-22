@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.app')
 @section('titrepage',   strip_tags(clean($univers->name)) )
 @section('content')
 

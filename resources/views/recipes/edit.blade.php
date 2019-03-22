@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.app')
 @section('titrepage', "Modification de : ".$recette->title)
 @section('content')
 

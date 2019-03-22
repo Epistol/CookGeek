@@ -1,4 +1,4 @@
-@extends('layouts.app404')
+@extends('layouts.app.app404')
 @section('titrepage', "Erreur 404 : page introuvable")
 @extends('errors::layout')
 @section('title', 'Page Expired')

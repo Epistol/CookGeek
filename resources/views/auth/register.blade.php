@@ -1,4 +1,4 @@
-@extends('layouts.app_captcha')
+@extends('layouts.app.app_captcha')
 @section('titrepage', "Inscription")
 @section('content')
     <section class="section">

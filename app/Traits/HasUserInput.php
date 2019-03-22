@@ -8,7 +8,7 @@
 
 namespace App\Traits;
 
-trait hasUserInput
+trait HasUserInput
 {
     public function cleanInput($text)
     {

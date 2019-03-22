@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 
-class RecipeStoreSanitizedRequest extends BaseFormRequest
+class StoreRecipeRequest extends BaseFormRequest
 {
     use SanitizesInput;
 

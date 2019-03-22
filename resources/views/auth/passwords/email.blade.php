@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.app')
 @section('titrepage', "Mot de passe oublié")
 @section('content')
     <section class="section">

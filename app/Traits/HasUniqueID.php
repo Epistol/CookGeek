@@ -10,7 +10,7 @@ namespace App\Traits;
 
 use Vinkla\Hashids\Facades\Hashids;
 
-trait hasUniqueID
+trait HasUniqueID
 {
     public function generate_uid($data)
     {

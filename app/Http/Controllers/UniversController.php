@@ -26,7 +26,7 @@ class UniversController extends Controller
         // on va charger les univers les plus vus de chaque types
 
         // 1) Charger les types (anime, manga, etc)
-        $categunivers = (new Categunivers())->alltypes();
+        $categunivers = (Categunivers::all());
 
         if ($categunivers != null) {
             // On charge les données dans la vue
@@ -81,7 +81,7 @@ class UniversController extends Controller
         // 1) Charger les types (anime, manga, etc)
         $univers = Univers::where('name', strip_tags(clean($name)))->firstOrFail();
 
-        $categunivers = (new Categunivers())->alltypes();
+        $categunivers = (Categunivers::all());
 
         if ($univers != null) {
             // On charge les données dans la vue

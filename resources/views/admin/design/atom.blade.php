@@ -1,4 +1,4 @@
-@extends('layouts.app_design')
+@extends('layouts.app.app_design')
 
 @section('content')
     {{--TODO : --}}
