@@ -112,6 +112,14 @@ class Recipe extends Model implements Feedable, HasMedia
         return $query->where('validated', $value);
     }
 
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return $this->validated === 0 ? false : true;
+    }
+
     public function scopeSignaled($query, $choice)
     {
         if ($choice === false) {

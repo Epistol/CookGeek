@@ -37,7 +37,7 @@
     "socialiteproviders/instagram": "^3.0",
     "spatie/laravel-feed": "^2.0",
     "spatie/laravel-medialibrary": "^7.0.0",
-    "spatie/laravel-permission": "^2.23",
+    "spatie/laravel-permission": "^2.36",
     "spatie/laravel-responsecache": "^4.2",
     "spatie/laravel-sitemap": "^5.2",
     "spatie/schema-org": "^1.4",

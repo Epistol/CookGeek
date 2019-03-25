@@ -15,7 +15,12 @@ class DatabaseSeeder extends Seeder
             CategUnivTableSeeder::class,
             DifficultyTableSeeder::class,
             TypeRecipeTableSeeder::class,
+
             UsersTableSeeder::class,
+            // Generate permissionss
+            PermissionsTableSeeder::class,
+            // Create and associate roles to permissions
+            PermissionRoleTableSeeder::class,
         ]);
     }
 }

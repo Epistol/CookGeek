@@ -13,12 +13,46 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::where('name', 'admin')->firstOrFail();
-
+        $superAdmin = Role::where('name', 'super-admin')->firstOrFail();
         $permissions = Permission::all();
-
-        $role->permissions()->sync(
+        $superAdmin->permissions()->sync(
             $permissions->pluck('id')->all()
         );
+
+        $user = Role::firstOrCreate(['name' => 'user']);
+
+        $user->syncPermissions([
+            'browse-users',
+            'read-users',
+            'edit-users',
+            'delete-users',
+
+            'browse-recipes',
+            'read-recipes',
+            'edit-recipes',
+            'add-recipes',
+            'delete-recipes',
+
+            'browse-images',
+            'read-images',
+            'edit-images',
+            'add-images',
+            'delete-images' ,
+
+            'browse-ingredients',
+            'read-ingredients',
+            'edit-ingredients',
+            'add-ingredients',
+            'delete-ingredients',
+
+            'browse-pages',
+            'read-pages',
+
+            'browse-posts',
+            'read-posts',
+
+        ]);
+
+
     }
 }

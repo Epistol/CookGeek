@@ -25,6 +25,12 @@ class RecipeController extends Controller
 {
     use HasUserInput, HasTimes;
 
+    public function __construct()
+    {
+        $this->authorizeResource(Recipe::class, 'recipe');
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -144,32 +150,7 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $recette = Recipe::where('slug', $slug)->first();
-
-        if (!$recette) {
-            $alert = '';
-
-            return abort(404);
-        }
-        if (Auth::guest()) {
-            $alert = '';
-            if ($recette->validated === 0) {
-                return abort(404);
-            }
-        } else {
-            if ($recette->id_user === Auth::user()->id) {
-                if ($recette->validated === 0) {
-                    $alert = 'non_valid';
-                } else {
-                    $alert = '';
-                }
-            } else {
-                $alert = '';
-                if ($recette->validated === 0) {
-                    return abort(404);
-                }
-            }
-        }
+        $recipe = Recipe::where('slug', $slug)->firstOrFail();
 
         $ingredients = DB::table('recipes_ingredients')->where('id_recipe', '=', $recette->id)
             ->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')

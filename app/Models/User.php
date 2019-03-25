@@ -7,11 +7,11 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends \TCG\Voyager\Models\User implements BannableContract
 {
-    use Notifiable;
-    use Bannable;
+    use Notifiable, Bannable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
