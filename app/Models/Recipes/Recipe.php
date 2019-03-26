@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Jobs\PictureThumbnail;
 use App\Traits\hasTimes;
 use App\Traits\hasUniqueID;
+use App\Traits\HasUserInput;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
@@ -15,7 +17,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, hasTimes, hasUniqueID, HasMediaTrait;
+    use Searchable, hasTimes, hasUniqueID, HasMediaTrait, HasUserInput;
 
     public function image()
     {
@@ -177,5 +179,76 @@ class Recipe extends Model implements Feedable, HasMedia
         $this->slug = $slug;
         $this->hashid = $uid;
         $this->saveOrFail();
+    }
+
+    /**
+     * @param $request
+     * @return Recipe
+     */
+    public function easyInsert($request)
+    {
+        $this->title = $request->title;
+        $this->vegetarien = $request->vegan == 'on' ? true : false;
+        $this->difficulty = intval($request->difficulty);
+        $this->type = intval($request->categ_plat);
+        $this->cost = intval($request->cost);
+        $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
+        $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
+        $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
+        $this->nb_guests = $request->unite_part;
+        $this->guest_type = $request->value_part;
+        $this->type_univers = intval($request->type);
+        $this->id_user = Auth::user()->id;
+        $this->video = $request->video;
+        $this->commentary_author = $request->comment;
+        $this->validated = 0;
+
+        return $this;
+    }
+
+    /**
+     * @param $request
+     */
+    public function insertSteps($request)
+    {
+        // Storing steps and attach to the recipe
+        foreach ($request->step as $key => $step) {
+            $newStep = RecipesSteps::firstOrCreate(
+                [
+                    'instruction' => $request->step[$key]
+                ]
+            );
+            $this->steps()->attach(
+                $newStep,
+                ['step_number' => $key]
+            );
+            $path = $step->photo->store('public/uploads');
+            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');
+        }
+    }
+
+    public function insertIngredients($request)
+    {
+        // Storing ingredients and attach to the recipe
+        foreach ($request->ingredient as $key => $ingredient) {
+            $ingredient = Ingredient::firstOrCreate(['name' => $ingredient]);
+            $this->ingredients()->attach(
+                $ingredient,
+                ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
+            );
+        }
+    }
+
+    public function insertPicture($picture)
+    {
+        if (!empty($picture)) {
+            if ($picture->getError() == 0) {
+                $path = $picture->store('public/uploads');
+                PictureThumbnail::dispatch($this, $path, 'thumbnail');
+                PictureThumbnail::dispatch($this, $path, 'indexRecipe');
+                PictureThumbnail::dispatch($this, $path, 'thumbSquare', 250);
+                PictureThumbnail::dispatch($this, $path, 'original');
+            }
+        }
     }
 }

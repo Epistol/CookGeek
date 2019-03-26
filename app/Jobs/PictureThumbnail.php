@@ -17,7 +17,7 @@ class PictureThumbnail implements ShouldQueue
     /**
      * @var string
      */
-    private $recipe;
+    private $model;
     /**
      * @var string
      */
@@ -37,20 +37,20 @@ class PictureThumbnail implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param          $recipe
+     * @param          $model
      * @param          $media
      * @param string   $typePicture
      * @param int      $width
      * @param int|null $height
      */
     public function __construct(
-        $recipe,
+        $model,
         $media,
         $typePicture,
         int $width = null,
         ?int $height = null
     ) {
-        $this->recipe = $recipe;
+        $this->model = $model;
         $this->media = $media;
         $this->width = $width;
         $this->height = $height;
@@ -71,10 +71,9 @@ class PictureThumbnail implements ShouldQueue
         $image = $this->resizing($image);
         $name = $this->naming($this->imageName);
         // Save new picture to it's own folder
-
         $path = $image->getUrl();
-        $media = $this->recipe->addMedia($path)
-            ->toMediaCollection('recipes/'.$this->recipe->id);
+        $media = $this->model->addMedia($path)
+            ->toMediaCollection(class_basename($this->model).'s/'.$this->model->id);
     }
 
     public function failed(Exception $exception)

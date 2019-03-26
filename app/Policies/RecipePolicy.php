@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Recipe;
 use App\Traits\SuperAdminPolicy;
 use App\User;
-use App\Recipe;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RecipePolicy

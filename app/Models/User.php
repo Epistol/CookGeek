@@ -21,7 +21,8 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
     protected $fillable = [
         'identity', 'name', 'email', 'password', 'pseudo',
     ];
-    protected $guard_name = 'web';
+    protected $guarded = [];
+    public $additional_attributes = ['locale'];
 
     /**
      * The attributes that should be hidden for arrays.

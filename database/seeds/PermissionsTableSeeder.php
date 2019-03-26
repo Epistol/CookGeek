@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Permission;
+use App\Permission;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -19,10 +19,7 @@ class PermissionsTableSeeder extends Seeder
         ];
 
         foreach ($keys as $key) {
-            Permission::firstOrCreate([
-                'key'        => $key,
-                'table_name' => null,
-            ]);
+            $permission = Permission::create(['name' => $key]);
         }
 
         Permission::generateFor('menus');
@@ -30,11 +27,11 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('users');
         Permission::generateFor('settings');
 
+        Permission::generateFor('universe');
         Permission::generateFor('recipe');
         Permission::generateFor('image');
         Permission::generateFor('ingredient');
         Permission::generateFor('page');
         Permission::generateFor('post');
-
     }
 }

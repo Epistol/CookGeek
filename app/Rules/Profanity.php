@@ -2,7 +2,6 @@
 
 namespace App\Rules;
 
-use Askedio\Laravel5ProfanityFilter\ProfanityFilter;
 use Illuminate\Contracts\Validation\Rule;
 
 class Profanity implements Rule

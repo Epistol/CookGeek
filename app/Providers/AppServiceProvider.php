@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 use Waavi\Sanitizer\Laravel\SanitizesInput;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('profanity', 'App\Rules\Profanity@validate');
         Validator::replacer('profanity', 'App\Rules\Profanity@apply');
         setlocale(LC_TIME, config('app.locale'));
-
     }
 
     /**

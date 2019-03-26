@@ -4,7 +4,6 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 
 class Pictures extends Model
@@ -45,18 +44,6 @@ class Pictures extends Model
         return $return;
     }
 
-    /**
-     * @param $recette
-     *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
-     */
-    public static function loadRecipePicturesValid($recette)
-    {
-        $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')->where('validated', '=', 1)->paginate(5);
-        $return = self::corePicture($pictures, $recette);
-
-        return $return;
-    }
 
     public static function loadUniversPicturesValid($univers)
     {
@@ -128,7 +115,7 @@ class Pictures extends Model
                         $firstPart = '/recipes/'.$model->hashid.'/'.intval($picture->user_id).'/';
                     }
                 }
-                // Not a recipe model
+                // Not a recipe Model
                 else {
                     $firstPart = '/'.$model->getTable().'/'.$model->id.'/';
                     $originalImageUrl = url($firstPart.strip_tags(clean($picture->image_name)).'.jpeg');

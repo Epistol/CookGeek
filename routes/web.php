@@ -12,7 +12,6 @@
 */
 
 Route::middleware(['fw-block-blacklisted'])->group(function () {
-
     Route::get('/teapot', function () {
         abort(418);
     })->name('teapot');

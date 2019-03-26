@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 use TCG\Voyager\Models\Permission;
-use TCG\Voyager\Models\Role;
 
 class PermissionRoleTableSeeder extends Seeder
 {
@@ -13,46 +13,60 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $superAdmin = Role::where('name', 'super-admin')->firstOrFail();
+        $superAdmin = Role::firstOrNew(['name' =>  'super-admin']);
+        if (!$superAdmin->exists) {
+            $superAdmin->fill([
+                'display_name' => 'super-admin',
+            ])->save();
+        }
+
         $permissions = Permission::all();
         $superAdmin->permissions()->sync(
             $permissions->pluck('id')->all()
         );
 
-        $user = Role::firstOrCreate(['name' => 'user']);
+        $user = Role::firstOrNew(['name' => 'user']);
+        if (!$user->exists) {
+            $user->fill([
+                'display_name' => __('voyager::seeders.roles.user'),
+            ])->save();
+        }
 
         $user->syncPermissions([
-            'browse-users',
-            'read-users',
-            'edit-users',
-            'delete-users',
+            'browse_users',
+            'read_users',
+            'edit_users',
+            'delete_users',
 
-            'browse-recipes',
-            'read-recipes',
-            'edit-recipes',
-            'add-recipes',
-            'delete-recipes',
+            'browse_recipes',
+            'read_recipes',
+            'edit_recipes',
+            'add_recipes',
+            'delete_recipes',
 
-            'browse-images',
-            'read-images',
-            'edit-images',
-            'add-images',
-            'delete-images' ,
+            'browse_universe',
+            'read_universe',
+            'edit_universe',
+            'add_universe',
 
-            'browse-ingredients',
-            'read-ingredients',
-            'edit-ingredients',
-            'add-ingredients',
-            'delete-ingredients',
+            'browse_images',
+            'read_images',
+            'edit_images',
+            'add_images',
+            'delete_images' ,
 
-            'browse-pages',
-            'read-pages',
+            'browse_ingredients',
+            'read_ingredients',
+            'edit_ingredients',
+            'add_ingredients',
+            'delete_ingredients',
 
-            'browse-posts',
-            'read-posts',
+            'browse_pages',
+            'read_pages',
+
+            'browse_posts',
+            'read_posts',
 
         ]);
-
-
     }
 }

@@ -8,7 +8,6 @@ class RecipesSteps extends Model
 {
     public $timestamps = false;
     protected $table = 'recipes_steps';
-
     protected $fillable = 'instruction';
 
     public function recipes()
