@@ -3,10 +3,11 @@
 namespace App;
 
 use App\Jobs\PictureThumbnail;
-use App\Traits\hasTimes;
-use App\Traits\hasUniqueID;
+use App\Traits\HasTimes;
+use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 use Spatie\Feed\Feedable;
@@ -17,7 +18,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, hasTimes, hasUniqueID, HasMediaTrait, HasUserInput;
+    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput;
 
     public function image()
     {

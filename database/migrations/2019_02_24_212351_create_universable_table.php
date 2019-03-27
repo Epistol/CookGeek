@@ -14,6 +14,7 @@ class CreateUniversableTable extends Migration
     public function up()
     {
         Schema::create('universables', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('univers_id');
             $table->morphs('universable');
             $table->integer('first_creator');

@@ -6,6 +6,7 @@ use App\Recipe;
 use App\Traits\SuperAdminPolicy;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class RecipePolicy
 {
@@ -32,7 +33,7 @@ class RecipePolicy
      */
     public function view(?User $user, Recipe $recipe)
     {
-        if (Auth::user()->id === $recipe->creator->id) {
+        if (Auth::user()->id === $recipe->id_user) {
             return true;
         }
         return !$recipe->isValid() ? false : ($user->can('read-' . $this->policyName));

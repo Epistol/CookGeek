@@ -13,7 +13,7 @@ trait SuperAdminPolicy
      */
     public function before(User $user)
     {
-        if ($user->can('super-admin')) {
+        if ($user->hasRole('super-admin')) {
             return true;
         }
     }

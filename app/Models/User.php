@@ -13,6 +13,8 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 {
     use Notifiable, Bannable, HasRoles;
 
+    protected $table = "users";
+
     /**
      * The attributes that are mass assignable.
      *

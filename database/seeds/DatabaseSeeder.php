@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UsersTableSeeder::class,
 
             CategUnivTableSeeder::class,
             DifficultyTableSeeder::class,
@@ -23,6 +22,9 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             // Create and associate roles to permissions
         ]);
-        $this->call([PermissionRoleTableSeeder::class]);
+        $this->call([PermissionRoleTableSeeder::class,
+            UsersTableSeeder::class,
+
+            ]);
     }
 }

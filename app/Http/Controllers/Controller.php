@@ -14,13 +14,7 @@ class Controller extends BaseController
     protected function resourceAbilityMap()
     {
         return [
-            'index' => 'browse',
-            'show' => 'read',
-            'create' => 'add',
-            'store' => 'add',
-            'edit' => 'edit',
-            'update' => 'edit',
-            'destroy' => 'delete',
+            'index' => 'index',
         ];
     }
 }

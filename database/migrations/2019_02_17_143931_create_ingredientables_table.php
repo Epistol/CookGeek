@@ -14,6 +14,7 @@ class CreateIngredientablesTable extends Migration
     public function up()
     {
         Schema::create('ingredientables', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('ingredient_id');
             $table->string('locale');
             // Not sure about that, i could simplify by

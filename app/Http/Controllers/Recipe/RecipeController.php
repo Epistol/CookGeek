@@ -74,10 +74,11 @@ class RecipeController extends Controller
         // Insert recette
         $recipe = new Recipe;
         $recipe = $recipe->easyInsert($request);
-        $universe = $recipe->universes()->firstOrCreate(
-            ['name' => $request->univers],
-            ['first_creator' => Auth::user()->id]
-        );
+        $universe = Univers::firstOrCreate(['name' => $request->univers]);
+        if($universe){
+            $recipe->universes()->attach($universe);
+        }
+
         $recipe->saveOrFail();
 
         // SLUG & UID

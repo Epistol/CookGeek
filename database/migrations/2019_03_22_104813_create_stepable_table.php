@@ -14,7 +14,8 @@ class CreateStepableTable extends Migration
     public function up()
     {
         Schema::create('stepables', function (Blueprint $table) {
-            $table->increments('step_id');
+            $table->increments('id');
+            $table->integer('step_id');
             $table->integer('step_number');
             $table->morphs('stepable');
         });
