@@ -44,10 +44,10 @@ class PermissionRoleTableSeeder extends Seeder
             'add_recipes',
             'delete_recipes',
 
-            'browse_universe',
-            'read_universe',
-            'edit_universe',
-            'add_universe',
+            'browse_universes',
+            'read_universes',
+            'edit_universes',
+            'add_universes',
 
             'browse_images',
             'read_images',

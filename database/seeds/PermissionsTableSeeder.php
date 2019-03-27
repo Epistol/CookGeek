@@ -19,7 +19,7 @@ class PermissionsTableSeeder extends Seeder
         ];
 
         foreach ($keys as $key) {
-            $permission = Permission::create(['name' => $key]);
+            Permission::create(['name' => $key, 'key'=> $key]);
         }
 
         Permission::generateFor('menus');
@@ -27,11 +27,11 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('users');
         Permission::generateFor('settings');
 
-        Permission::generateFor('universe');
-        Permission::generateFor('recipe');
-        Permission::generateFor('image');
-        Permission::generateFor('ingredient');
-        Permission::generateFor('page');
-        Permission::generateFor('post');
+        Permission::generateFor('universes');
+        Permission::generateFor('recipes');
+        Permission::generateFor('images');
+        Permission::generateFor('ingredients');
+        Permission::generateFor('pages');
+        Permission::generateFor('posts');
     }
 }

@@ -168,6 +168,13 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
+  'lorisleiva/laravel-deployer' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Lorisleiva\\LaravelDeployer\\LaravelDeployerServiceProvider',
+    ),
+  ),
   'mews/purifier' => 
   array (
     'providers' => 

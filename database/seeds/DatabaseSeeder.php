@@ -1,5 +1,6 @@
 <?php
 
+use App\Permission;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // Generate permissionss
             PermissionsTableSeeder::class,
             // Create and associate roles to permissions
-            PermissionRoleTableSeeder::class
         ]);
+        $this->call([PermissionRoleTableSeeder::class]);
     }
 }
