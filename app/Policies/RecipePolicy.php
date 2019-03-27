@@ -11,8 +11,17 @@ class RecipePolicy
 {
     use HandlesAuthorization, SuperAdminPolicy;
 
-    private $policyName = "recipe";
+    private $policyName = "recipes";
 
+    /**
+     * @param User|null $user
+     * @param Recipe    $recipe
+     * @return bool
+     */
+    public function index(?User $user, Recipe $recipe)
+    {
+        return ($user->can('browse-'.$this->policyName));
+    }
 
     /**
      * Determine whether the user can view the recipe.
@@ -37,7 +46,7 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        //
+        return ($user->can('add-'.$this->policyName));
     }
 
     /**
@@ -49,7 +58,11 @@ class RecipePolicy
      */
     public function update(User $user, Recipe $recipe)
     {
-        //
+        if (Auth::user()->id === $recipe->creator->id) {
+            return true;
+        }
+
+        return ($user->can('edit-'.$this->policyName));
     }
 
     /**
@@ -61,7 +74,7 @@ class RecipePolicy
      */
     public function delete(User $user, Recipe $recipe)
     {
-        //
+        return ($user->can('delete-'.$this->policyName));
     }
 
     /**
@@ -73,7 +86,7 @@ class RecipePolicy
      */
     public function restore(User $user, Recipe $recipe)
     {
-        //
+        return ($user->can('edit-'.$this->policyName));
     }
 
     /**
@@ -85,6 +98,6 @@ class RecipePolicy
      */
     public function forceDelete(User $user, Recipe $recipe)
     {
-        //
+        return ($user->can('delete-'.$this->policyName));
     }
 }

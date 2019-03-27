@@ -22,8 +22,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        /*    $admin = Voyager::canOrFail('browse_admin');
-            dd($admin);*/
         return view('admin.index');
     }
 

@@ -39,7 +39,7 @@ class RecipeController extends Controller
         return view(
             'recipes.index',
             [
-                'universcateg' => $medias,
+                'medias' => $medias,
                 'recipes' => $recipes
             ]
         )->with(['controller' => $this]);

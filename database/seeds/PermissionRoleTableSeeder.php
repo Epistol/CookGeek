@@ -32,6 +32,13 @@ class PermissionRoleTableSeeder extends Seeder
             ])->save();
         }
 
+        $ban = Role::firstOrNew(['name' =>  'banned']);
+        if (!$ban->exists) {
+            $ban->fill([
+                'display_name' => 'banned',
+            ])->save();
+        }
+
         $user->syncPermissions([
             'browse_users',
             'read_users',

@@ -1,10 +1,9 @@
 @extends('layouts.app.app')
-@section('titrepage', "Recettes")
+@section('titrepage', __('common.recipes'))
 @section('content')
 
     <div class="container">
         <section class="section blockcontent">
-
             @include("recipes.index.bread")
 
             <div class="content">
@@ -16,12 +15,11 @@
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
-                                    Les dernières recettes
+                                    @lang('recipe.last-recipes')
                                 </h1>
                             </div>
                         </div>
                     </section>
-
                     @include("recipes.index.recipe_name")
                 @endif
 
@@ -30,14 +28,6 @@
         </section>
     </div>
 
-
-    <modal v-if="showModalLike" @close="showModalLike = false" v-cloak>
-        <h3 slot="header">Connexion requise</h3>
-        <p slot="body">Vous ne pouvez pas ajouter de recette en favori sans être connecté ! </p>
-        <div slot="footer">
-            <a class="button is-primary" href="/login">Connexion</a>
-        </div>
-
-    </modal>
+    @include('modal_login')
 
 @endsection

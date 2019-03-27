@@ -1,16 +1,12 @@
-<a href="/recette/{{$recette->slug}}">
-    <?php
-    use App\Pictures;$img = Pictures::loadRecipePicturesValid($recette);
-    ?>
+<a href="{{route('recipe.show', $recette->slug)}}">
+<?php $firstImg = $recette->getMedia('images');?>
     @if($img->isEmpty())
         <figure class="image is-1by1 ">
             <img class="fit-cover"
                  src="http://via.placeholder.com/300x200?text={{ strip_tags(clean($recette->title))}}"
                  alt="{{ strip_tags(clean($recette->title)) }} / CDG">
         </figure>
-
     @else
-
         <figure class="image is-1by1 ">
             @if(collect($img->first()->urls)->firstWhere('name', 'normal')['url'] !== "")
                 <clazy-load src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}">
@@ -36,7 +32,5 @@
                             </div>
                         </clazy-load>
         </figure>
-
     @endif
-
 </a>

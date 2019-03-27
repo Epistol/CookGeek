@@ -6,7 +6,7 @@
  * Time: 23:25.
  */
 
-Route::resource('recipe', 'Recipe\RecipeController')->middleware('auth');
+Route::resource('recipe', 'Recipe\RecipeController');
 
 // RECETTE
 Route::group(['prefix' => 'recipe'], function () {

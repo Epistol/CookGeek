@@ -24,5 +24,6 @@ return [
     'video'       => 'La vidéo',
     'picture-of'  => 'Image de la recette',
     'vegan' => 'Végétarienne',
+    'last-recipes' => 'Les dernières recettes'
 
 ];

@@ -5,12 +5,18 @@ namespace App;
 class Permission extends \Spatie\Permission\Models\Permission
 {
 
+    /**
+     * @param $table_name
+     */
     public static function generateFor($table_name)
     {
-        $permission = Permission::create(['name' => 'browse_' . $table_name]);
-        $permission = Permission::create(['name' => 'read_' . $table_name]);
-        $permission = Permission::create(['name' => 'edit_' . $table_name]);
-        $permission = Permission::create(['name' => 'add_' . $table_name]);
-        $permission = Permission::create(['name' => 'delete_' . $table_name]);
+         $bread = ['browse', 'read', 'edit', 'add', 'delete'];
+        foreach ($bread as $element) {
+            $permission = Permission::create([
+                'name' => $element.'_' . $table_name,
+                'key' => $element.'_' . $table_name,
+                'table_name' =>  $table_name,
+            ]);
+        }
     }
 }
