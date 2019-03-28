@@ -71,8 +71,8 @@
 
 <script>
     import PictureInput from 'vue-picture-input';
-    import modal from "../ModalView.vue";
-    import LoginModal from "../LoginModal.vue";
+    import modal from "../modal/ModalView.vue";
+    import LoginModal from "../modal/LoginModal.vue";
 
     export default {
         props: ["url", "anyid", "height", "width", "send", "recipeid", "recipehash", "user", "type", "prefilled"],

@@ -5,11 +5,10 @@
     <div class="container recipe-add">
         <div class="background-round">
             <div class="columns">
-                <div class="column">
-                    <div class="has-text-centered">
-                        <h1 class="title">{{__('Create your recipe')}}
-                            <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
-                    </div>
+                <div class="column has-text-centered">
+                    <h1 class="title">{{__('Create your recipe')}}
+                        <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -19,6 +18,8 @@
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">
                 @csrf
+
+                <
 
                 <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column  recipe-right-add ">

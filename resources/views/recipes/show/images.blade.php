@@ -48,7 +48,7 @@
 
 
 <script>
-    import LoginModal from "../../../assets/js/components/LoginModal";
+    import LoginModal from "../../../assets/js/components/modal/LoginModal";
 
     export default {
         components: {LoginModal}

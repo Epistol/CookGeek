@@ -1,8 +1,5 @@
 <template>
     <div>
-
-
-
         <h1><i class="fas fa-ban" style="color:red"></i> Utilisateurs bannis </h1>
 
         <table class="table is-bordered">
@@ -115,7 +112,6 @@
 			submitip() {
 				console.log("ip");
 			},
-
 			async get_name(user_id) {
 				var that = this;
 
@@ -126,17 +122,8 @@
 					that.user_names.push(response.data);
 
 				}).catch(error => {
-
 				});
-
 			}
-		},
-
-		mounted() {
 		},
 	}
 </script>
-
-<style scoped>
-
-</style>

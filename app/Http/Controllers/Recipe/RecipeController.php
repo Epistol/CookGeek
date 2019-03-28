@@ -86,7 +86,9 @@ class RecipeController extends Controller
 
         $recipe->insertIngredients($request);
         $recipe->insertSteps($request);
-        $recipe->insertPicture($request->resume);
+        foreach ($request->picture as $picture) {
+            $recipe->insertPicture($picture, 'main');
+        }
 
         return redirect()->route('recipe.show', $slug);
     }

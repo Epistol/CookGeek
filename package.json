@@ -19,6 +19,7 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.2.0",
     "docz": "latest",
+    "dropcss": "^0.3.0",
     "jquery": "^3.3.1",
     "kss": "^3.0.0-beta.23",
     "laravel-mix": "^1.7.2",

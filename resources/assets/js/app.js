@@ -4,14 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 require('./dropzone');
 require('./sticky');
 require('./star-rating');
 
 window.Vue = require('vue');
-import Vue from 'vue';
 
+import Vue from 'vue';
 import VueMoment from 'vue-moment';
 
 Vue.use(VueMoment);
@@ -31,16 +32,17 @@ import Editor from '@tinymce/tinymce-vue';
 
 // Composants CDG
 
-import modal from "./components/ModalView.vue";
-import LoginModal from "./components/LoginModal.vue";
-import Notif from "./components/NotifAlert.vue";
-import LikeRecipe from "./components/LikeRecipe.vue";
+import modal from "./components/modal/ModalView.vue";
+import LoginModal from "./components/modal/LoginModal.vue";
+import Notif from "./components/modal/NotifAlert.vue";
+import LikeRecipe from "./components/recipe/like/LikeRecipe.vue";
 import validationform from "./components/ValidateFormButton.vue";
 import Autocomplete from "./components/Autocomplete.vue";
-import Ingredients from "./components/Ingredients.vue";
+import Ingredients from "./components/recipe/ingredients/Ingredients.vue";
+import NewRecipe from "./components/recipe/NewRecipe";
 
-import SignalRecipe from "./components/Recipe/Signal.vue";
-import HomeRecipes from "./components/Recipe/Home_Recipes.vue";
+import SignalRecipe from "./components/recipe/Signal.vue";
+import HomeRecipes from "./components/recipe/Home_Recipes.vue";
 
 
 import TypeUniversIcon from "./components/Elements/Icons/TypeUniversIcon.vue";
@@ -54,8 +56,7 @@ import ImagePicture from "./components/Picture/Preview.vue";
 import Time from "./components/Time.vue";
 
 // Utilisation des composants
-Vue.use(Affix);
-Vue.use(VueClazyLoad,  InstantSearch, Datepicker, Time, ImagePicture, SignalRecipe, modal, LoginModal, Notif, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, AddPicture, Autocomplete, TypeUniversIcon, StarRating, Ingredients, PictureInput);
+Vue.use(Affix, VueClazyLoad,  InstantSearch, Datepicker, Time, ImagePicture, SignalRecipe, modal, LoginModal, Notif, LikeRecipe, validationform, PictureUpload, UnivPictureUpload, AddPictureRecipe, AddPicture, Autocomplete, TypeUniversIcon, StarRating, Ingredients, PictureInput, NewRecipe);
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -71,6 +72,7 @@ const app = new Vue({
         'modal': modal,
         'Notif': Notif,
         VeeValidate,
+        'new-recipe-form': NewRecipe,
         'likerecipe': LikeRecipe,
         'validationform': validationform,
         'ingredient_form': Ingredients,
