@@ -223,8 +223,9 @@ class Recipe extends Model implements Feedable, HasMedia
                 $newStep,
                 ['step_number' => $key]
             );
-            $path = $step->photo->store('public/uploads');
-            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');
+            /*$path = $step->photo->store('public/uploads');
+            $picture = $this->addMedia($picture)->toMediaCollection('step');
+            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');*/
         }
     }
 
@@ -240,15 +241,15 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    public function insertPicture($picture)
+    public function insertPicture($picture, $type)
     {
         if (!empty($picture)) {
             if ($picture->getError() == 0) {
-                $path = $picture->store('public/uploads');
-                PictureThumbnail::dispatch($this, $path, 'thumbnail');
-                PictureThumbnail::dispatch($this, $path, 'indexRecipe');
-                PictureThumbnail::dispatch($this, $path, 'thumbSquare', 250);
-                PictureThumbnail::dispatch($this, $path, 'original');
+                $picture = $this->addMedia($picture)->toMediaCollection($type);
+                PictureThumbnail::dispatch($this, $picture->getUrl(), 'thumbnail');
+                PictureThumbnail::dispatch($this, $picture->getUrl(), 'indexRecipe');
+                PictureThumbnail::dispatch($this, $picture->getUrl(), 'thumbSquare', 250);
+                PictureThumbnail::dispatch($this, $picture->getUrl(), 'original');
             }
         }
     }

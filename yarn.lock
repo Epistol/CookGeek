@@ -3902,7 +3902,7 @@ css-select-base-adapter@~0.1.0:
   resolved "https://registry.yarnpkg.com/css-select-base-adapter/-/css-select-base-adapter-0.1.1.tgz#3b2ff4972cc362ab88561507a95408a1432135d7"
   integrity sha512-jQVeeRG70QI08vSTwf1jHxp74JoZsr2XSgETae8/xC8ovSnL2WF87GTLO86Sbwdt2lK4Umg4HnnwMO4YF3Ce7w==
 
-css-select@^2.0.0:
+css-select@^2.0.0, css-select@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/css-select/-/css-select-2.0.2.tgz#ab4386cec9e1f668855564b17c3733b43b2a5ede"
   integrity sha512-dSpYaDVoWaELjvZ3mS6IKZM/y2PMPa/XYoEfYNZePL4U/XgyxZNroHEHReDx/d+VgXh9VbCTtFqLkFbmeqeaRQ==
@@ -3929,7 +3929,7 @@ css-tree@1.0.0-alpha.28:
     mdn-data "~1.1.0"
     source-map "^0.5.3"
 
-css-tree@1.0.0-alpha.29:
+css-tree@1.0.0-alpha.29, css-tree@^1.0.0-alpha.29:
   version "1.0.0-alpha.29"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.29.tgz#3fa9d4ef3142cbd1c301e7664c1f352bd82f5a39"
   integrity sha512-sRNb1XydwkW9IOci6iB2xmy8IGCj6r/fr+JWitvJ2JxQRPzN3T4AGGVWCMlVmVwM1gtgALJRmGIlWv5ppnGGkg==
@@ -4701,6 +4701,15 @@ download@^6.2.2:
     make-dir "^1.0.0"
     p-event "^1.0.0"
     pify "^3.0.0"
+
+dropcss@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/dropcss/-/dropcss-0.3.0.tgz#7c03d9af0b5b97d3610aba4ddb12c984f1a5c4b7"
+  integrity sha512-A93eVQ1E6F+jtQe1kg9pAwKm9cCIGdtyWjkhXFJeN1OGztBkPcXgYkbLsP1F86viqm5ooel3WNzTqr77mtrvlA==
+  dependencies:
+    css-select "^2.0.2"
+    css-tree "^1.0.0-alpha.29"
+    node-html-parser "^1.1.13"
 
 dropzone@^5.5.0:
   version "5.5.1"
@@ -6454,6 +6463,11 @@ hastscript@^5.0.0:
     hast-util-parse-selector "^2.2.0"
     property-information "^5.0.1"
     space-separated-tokens "^1.0.0"
+
+he@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+  integrity sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
 
 he@1.2.x, he@^1.1.0:
   version "1.2.0"
@@ -8895,6 +8909,13 @@ node-gyp@^3.8.0:
     semver "~5.3.0"
     tar "^2.0.0"
     which "1"
+
+node-html-parser@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-1.1.13.tgz#517377c205d663fcb23063b13628b9fc9a93eef8"
+  integrity sha512-g8H73/DHTFH17N0dukN1XkCdJm9TF9cpsaElT/4PeIQR+hBR2T3rmheO1EeFBOqg4ot2s1530XPD1/dsVk8MNQ==
+  dependencies:
+    he "1.1.1"
 
 node-libs-browser@^2.0.0:
   version "2.2.0"
