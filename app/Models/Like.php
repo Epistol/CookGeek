@@ -8,6 +8,6 @@ class Like extends Model
 {
     public function likeable()
     {
-        return $this->morphTo();
+        return $this->morphToMany('App\Like', 'likeable');
     }
 }

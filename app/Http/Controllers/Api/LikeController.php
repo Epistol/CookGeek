@@ -32,9 +32,11 @@ class LikeController extends Controller
 
         // Check if user hasn't faved it yet :
 
-        $id = DB::table('user_recipe_likes')
-            ->where(
-                ['user_id' => $u_id, 'recipe_id' => strip_tags(clean($data->recette))]
+        $id = Like::where(
+            [
+                'user_id' => $u_id,
+                'recipe_id' => strip_tags(clean($data->recette))
+            ]
             )->first();
 
         // IF it's liked, then we add it
