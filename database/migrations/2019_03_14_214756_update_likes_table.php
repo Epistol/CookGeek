@@ -15,7 +15,7 @@ class UpdateLikesTable extends Migration
     {
         Schema::table('likes', function (Blueprint $table) {
             $table->unsignedInteger('user_id')->nullable()->change();
-            $table->morphs('likeable');
+            $table->dropColumn('recipe_id');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
