@@ -126,7 +126,70 @@ const app = new Vue({
         },
     },
 });
+const app = new Vue({
+    el: '#bodyWebsite',
+    components: {
+        draggable, VueClazyLoad,
+        'editor': Editor,
+        'like-recipe-async': () => ('./components/LikeRecipe.vue'),
+        'signalrecipe': SignalRecipe,
+        'modal': modal,
+        'Notif': Notif,
+        VeeValidate,
+        'new-recipe-form': NewRecipe,
+        'likerecipe': LikeRecipe,
+        'validationform': validationform,
+        'ingredient_form': Ingredients,
+        'star-rating': StarRating,
+        'datepicker': Datepicker,
+        'homerecipes': HomeRecipes,
+        'searchautocomplete': Autocomplete,
+        'categ_icon': TypeUniversIcon,
+        'pictureupload': PictureUpload,
+        'univpictureupload': UnivPictureUpload,
+        'picture-input': PictureInput,
+        'add-recipe': AddPictureRecipe,
+        'add-any-picture' :AddPicture,
+        'login-modal': LoginModal,
+        'fulltime': Time,
+        'preview-image': ImagePicture,
+    },
 
+    data: {
+        titre: '',
+        showModalLike: false,
+        showModal: false,
+        magic_flag: false,
+
+        steps: [
+            {etape: '',},
+            {etape: '',}
+        ],
+        rows: [
+            {name: '', qtt: '',},
+            {name: '', qtt: '',},
+        ],
+        seen: true,
+    },
+
+    methods: {
+        addRow: function ($index) {
+            console.log($index);
+            this.rows.push({});
+        },
+        removeRow: function (index) {
+            this.rows.splice(index, 1);
+        },
+
+        addStep: function () {
+            this.steps.push({});
+        },
+
+        removeStep: function (index) {
+            this.steps.splice(index, 1);
+        },
+    },
+});
 /**
  * Quand on ajoute une img dans le formulaire ajout img recette
  * @param this

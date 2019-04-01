@@ -141,6 +141,7 @@
 
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")
+@include("layouts.js.pwa")
 
 
 </body>

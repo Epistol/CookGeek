@@ -3,9 +3,12 @@
 namespace App;
 
 use App\Jobs\PictureThumbnail;
+
+use App\Traits\HasLikes;
 use App\Traits\HasTimes;
 use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
@@ -18,16 +21,11 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput;
+    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasPicture;
 
     public function image()
     {
         return $this->morphOne('App\Image', 'imageable');
-    }
-
-    public function likes()
-    {
-        return $this->morphMany('App\Like', 'likeable');
     }
 
     public function ingredients()
