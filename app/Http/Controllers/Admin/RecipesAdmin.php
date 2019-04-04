@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Recipe;
 use App\Type_recipe;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class RecipesAdmin extends Controller
 {
@@ -20,11 +22,11 @@ class RecipesAdmin extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
-        $recipes = DB::table('recipes')->latest()->paginate(10);
+        $recipes = Recipe::paginate(10);
 
         return view('admin.recipes.index', [
             'recipes' => $recipes,
@@ -33,7 +35,7 @@ class RecipesAdmin extends Controller
 
     public function edit($id)
     {
-        $recipe = \App\Recipe::where('id', '=', $id)->get();
+        $recipe = Recipe::where('id', $id)->get();
 
         return view('admin.recipes.edit', [
             'recipe' => $recipe[0],
@@ -51,14 +53,11 @@ class RecipesAdmin extends Controller
         return view("admin.recipes.edit", [
             'recipe' => $recipe
         ])->with(['controller' => $this]);
-
-        return view('admin.recipes.edit', ['recipe' => $recipe,])->with(['controller' => $this]);
     }
 
     public function update($content)
     {
-        die();
-        $recipe = DB::table('recipes')->where('slug', '=', $content)->first();
+        $recipe = Recipe::where('slug', $content)->first();
 
         return view('admin.recipes.edit', [
             'recipe' => $recipe,

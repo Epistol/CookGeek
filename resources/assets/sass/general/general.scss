@@ -136,13 +136,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 32px;
 }
 
-.recipeaddbg {
+.recipeAddBg {
   padding-top: 2rem;
-}
-
-.block {
-  /*  background: rgba(255, 0, 0, 0.3);
-	border: 2px solid green;*/
 }
 
 .advanced {
@@ -156,8 +151,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .univers-element > ul, .univers-element > ul > li {
   list-style-type: none;
-  /*  margin: 0;
-	padding: 0;*/
 }
 
 .categ-univers-recette {
@@ -166,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .univers-media-titre {
-  border-bottom : 1px solid  #ebeaf5;
+  border-bottom: 1px solid #ebeaf5;
 }
 
 .radiused {
@@ -241,7 +234,6 @@ figure.image img {
 }
 
 
-
 .menu-user {
   padding-top: 33%;
   -webkit-border-radius: 30px;
@@ -282,8 +274,6 @@ nav.breadcrumb {
     align-items: center;
 
     & .author {
-      /* position: absolute;
-       bottom: 0px;*/
       border: 0px solid;
     }
   }

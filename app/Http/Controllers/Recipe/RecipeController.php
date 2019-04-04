@@ -15,13 +15,27 @@ use App\TypeRecipe;
 use App\Univers;
 
 use App\User;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
+use Throwable;
 
+/**
+ * Class RecipeController
+ * @package App\Http\Controllers\Recipe
+ */
 class RecipeController extends Controller
 {
     use HasUserInput, HasTimes;
 
+    /**
+     * RecipeController constructor.
+     *
+     */
     public function __construct()
     {
         $this->authorizeResource(Recipe::class, 'recipe');
@@ -47,7 +61,7 @@ class RecipeController extends Controller
 
     /**
      * Show the form for creating a new resource
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -66,18 +80,17 @@ class RecipeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreRecipeRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Throwable
+     *
+     * @return RedirectResponse
+     * @throws Throwable
      */
     public function store(StoreRecipeRequest $request)
     {
-        // Insert recette
+        // Insert recipe
         $recipe = new Recipe;
         $recipe = $recipe->easyInsert($request);
         $universe = Univers::firstOrCreate(['name' => $request->univers]);
-        if($universe){
-            $recipe->universes()->attach($universe);
-        }
+        $recipe->universes()->attach($universe);
 
         $recipe->saveOrFail();
 
@@ -88,7 +101,11 @@ class RecipeController extends Controller
         $recipe->insertIngredients($request);
         $recipe->insertSteps($request);
         foreach ($request->picture as $picture) {
-            $recipe->insertPicture($picture, 'main');
+            if (!empty($picture)) {
+                $newPicture = $this->addMedia($picture)
+                    ->toMediaCollection('main');
+                $recipe->image()->attach($newPicture, ['status' => 'draft']);
+            }
         }
 
         return redirect()->route('recipe.show', $slug);
@@ -97,19 +114,23 @@ class RecipeController extends Controller
 
     /**
      * Display the specified resource.
+     *
      * @param $slug
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show($slug)
     {
-        $recette = Recipe::where($slug)->firstOrFail();
+        $recette = Recipe::where('slug', $slug)->firstOrFail();
+        $type = TypeRecipe::where('id', $recette->type)->first();
+        $pictures = $recette->image()->get();
 
         // STARS
         $stars1 = RecipeLike::where('id_recipe', $recette->id)->avg('note');
         if ($stars1 == null) {
             $stars1 = 1;
         }
+
         $stars = number_format($stars1, 1, '.', '');
         $stars = explode('.', $stars, 2);
 
@@ -121,20 +142,15 @@ class RecipeController extends Controller
         $nom = User::where('id', $recette->id_user)->value('name');
         $related = $this->morLikeThis($recette, 4);
 
-        return view('recipes.show', [
-            'recette' => $recette,
-            'related' => $related,
-            'stars' => $stars,
-            'countrating' => $countrating,
-            'stars1' => $stars1,
-            'nom' => $nom,
+        return view('recipes.show', [compact('recette', 'related', 'pictures', 'stars',
+            'countrating', 'stars1', 'nom', 'media', 'type')
         ])->with('controller', $this);
     }
 
     /**
      * @param $slug
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit($slug)
     {
@@ -145,12 +161,11 @@ class RecipeController extends Controller
         $types_plat = DB::table('type_recipes')->get();
 
         return view(
-            'recipes.edit',
-            ['univers' => $univers,
+            'recipes.edit', [
+                compact('univers', 'difficulty', 'recette'),
                 'types' => $types_univ,
-                'difficulty' => $difficulty,
                 'types_plat' => $types_plat,
-                'recette' => $recette]
+            ]
         );
     }
 
@@ -158,11 +173,17 @@ class RecipeController extends Controller
     /**
      * @param StoreRecipeRequest $request
      * @param Recipe             $recipe
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
+     *
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(StoreRecipeRequest $request, Recipe $recipe)
     {
+        // Parties image
+        $this->validate($request, [
+            'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        ]);
+
         $recipe->update([
             'univers' => Univers::updateOrCreate(['name' => $request->univers]),
         ]);
@@ -172,11 +193,6 @@ class RecipeController extends Controller
 
         //Vegetarian switch
         $vege = clean($request->vegan) == 'on' ? true : false;
-
-        // Parties image
-        $this->validate($request, [
-            'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-        ]);
 
         // If user is author
         // If main picture is replaced, remove and insert
@@ -196,14 +212,18 @@ class RecipeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Recipe $recipe
+     *
      * @return bool|null
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Recipe $recipe)
     {
         return $recipe->delete();
     }
 
+    /**
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function random()
     {
         $rand = Recipe::where('validated', 1)->inRandomOrder()->first();
@@ -215,6 +235,12 @@ class RecipeController extends Controller
     }
 
 
+    /**
+     * @param $recipe
+     * @param $nbRecipes
+     *
+     * @return mixed
+     */
     private function morLikeThis($recipe, $nbRecipes)
     {
         $nbWanted = intval($nbRecipes);

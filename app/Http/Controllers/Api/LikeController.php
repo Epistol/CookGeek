@@ -3,16 +3,23 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class LikeController
+ * @package App\Http\Controllers\Api
+ */
 class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -31,13 +38,10 @@ class LikeController extends Controller
         $u_id = Auth::id();
 
         // Check if user hasn't faved it yet :
-
-        $id = Like::where(
-            [
-                'user_id' => $u_id,
-                'recipe_id' => strip_tags(clean($data->recette))
-            ]
-            )->first();
+        $id = Like::where([
+            'user_id' => $u_id,
+            'recipe_id' => strip_tags(clean($data->recette))
+        ])->first();
 
         // IF it's liked, then we add it
         if ($id == '' || $id == null) {
@@ -47,14 +51,22 @@ class LikeController extends Controller
                 );
             // we return the new-like state
             return response('liked', 200);
-        } // if it was already liked
-        else {
-            DB::table('user_recipe_likes')->where('user_id', '=', $u_id)->where('recipe_id', '=', strip_tags(clean($data->recette)))->delete();
+        } else {
+            DB::table('user_recipe_likes')
+                ->where('user_id', $u_id)
+                ->where('recipe_id', strip_tags(clean($data->recette)))
+                ->delete();
 
             return response('unliked', 200);
         }
     }
 
+    /**
+     * @param $u_id
+     * @param $recipe_id
+     *
+     * @return ResponseFactory|Response
+     */
     public function create_only($u_id, $recipe_id)
     {
 
@@ -110,7 +122,7 @@ class LikeController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function toggle_like(Request $request)
     {

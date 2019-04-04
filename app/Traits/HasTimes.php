@@ -13,6 +13,7 @@ trait HasTimes
     /**
      * @param $minutes
      * @param $hours
+     *
      * @return int
      */
     public function getUnifiedTime($minutes, $hours)
@@ -33,7 +34,7 @@ trait HasTimes
      *
      * @return float|int
      */
-    public static function return_time($t_h, $time)
+    public static function returnTime($t_h, $time)
     {
         if ($t_h === null) {
             $t_h = 0;
@@ -50,7 +51,7 @@ trait HasTimes
      *
      * @return int
      */
-    public static function verify_time($time)
+    public static function verifyTime($time)
     {
         if (empty($time) || !isset($time) || $time == null) {
             return 0;
@@ -61,17 +62,24 @@ trait HasTimes
 
     /**
      * @param null $prepMinute
-     * @param $cookMinute
-     * @param $restMinute
-     * @param $prepHeure
-     * @param $cookHeure
-     * @param $restHeure
+     * @param      $cookMinute
+     * @param      $restMinute
+     * @param      $prepHeure
+     * @param      $cookHeure
+     * @param      $restHeure
      *
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
     public static function getTimes($prepMinute, $cookMinute, $restMinute, $prepHeure, $cookHeure, $restHeure)
     {
-        $datas = collect(['prepM' => $prepMinute, 'cookM' => $cookMinute, 'restM' => $restMinute, 'prepH' => $prepHeure, 'cookH' => $cookHeure, 'restH' => $restHeure]);
+        $datas = collect([
+            'prepM' => $prepMinute,
+            'cookM' => $cookMinute,
+            'restM' => $restMinute,
+            'prepH' => $prepHeure,
+            'cookH' => $cookHeure,
+            'restH' => $restHeure
+        ]);
 
         $filtered = $datas->filter(function ($value, $key) {
             if (empty($value) || !isset($value) || $value === null) {
@@ -81,9 +89,9 @@ trait HasTimes
             }
         });
 
-        $prep = self::return_time($filtered->get('prepH'), $filtered->get('prepM'));
-        $cook = self::return_time($filtered->get('cookH'), $filtered->get('cookM'));
-        $rest = self::return_time($filtered->get('restH'), $filtered->get('restM'));
+        $prep = self::returnTime($filtered->get('prepH'), $filtered->get('prepM'));
+        $cook = self::returnTime($filtered->get('cookH'), $filtered->get('cookM'));
+        $rest = self::returnTime($filtered->get('restH'), $filtered->get('restM'));
 
         $times = collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
 

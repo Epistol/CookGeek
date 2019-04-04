@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Jobs\PictureThumbnail;
 use App\Jobs\UniversThumbnail;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Tightenco\Collect\Support\Collection;
 
 class PictureController extends Controller
 {
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function addPictureToRecipe(Request $request)
     {
@@ -27,9 +29,9 @@ class PictureController extends Controller
         $uploaded = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
 
         DB::table('recipe_imgs')->updateOrInsert(
-            ['recipe_id'     => $recipeId,
+            ['recipe_id' => $recipeId,
                 'image_name' => strip_tags(clean($namePicture)),
-                'user_id'    => $userId,
+                'user_id' => $userId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
@@ -50,29 +52,29 @@ class PictureController extends Controller
     }
 
     /**
-     * @param $pictureBase
+     * @param $picturePath
+     * @param $pictureName
      * @param $recipeId
+     * @param $recipeHashID
      * @param $userId
      *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @return JsonResponse
      */
     public function addFirstPictureRecipe($picturePath, $pictureName, $recipeId, $recipeHashID, $userId)
     {
         $filePath = Storage::get($picturePath);
         $image = base64_encode($filePath);
 
-        $uploaded = self::storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
+        $uploaded = $this->storeCreationPicture($recipeHashID, $image, $userId, $pictureName);
 
-        DB::table('recipe_imgs')->updateOrInsert(
-            ['recipe_id'     => $recipeId,
-                'image_name' => strip_tags(clean($pictureName)),
-                'user_id'    => $userId,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'validated'  => 1,
-            ]
-        );
+        DB::table('recipe_imgs')->updateOrInsert([
+            'recipe_id' => $recipeId,
+            'image_name' => strip_tags(clean($pictureName)),
+            'user_id' => $userId,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'validated' => 1,
+        ]);
 
         Storage::delete($picturePath);
 
@@ -82,7 +84,7 @@ class PictureController extends Controller
     /**
      * @param $recette
      *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     * @return \Illuminate\Support\Collection|Collection
      */
     public function loadRecipePicturesValid($recette)
     {
@@ -94,7 +96,7 @@ class PictureController extends Controller
     /**
      * @param $recette
      *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     * @return \Illuminate\Support\Collection|Collection
      */
     public function loaduserPicturesNonValid($recette, $user)
     {
@@ -108,7 +110,7 @@ class PictureController extends Controller
     /**
      * @param $recette
      *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     * @return \Illuminate\Support\Collection|Collection
      */
     public function loadMoreRecipePictures($recette)
     {
@@ -137,13 +139,13 @@ class PictureController extends Controller
                 $listLinks = collect();
                 $pictureDate = Carbon::parse($picture->created_at);
                 if ($pictureDate->lessThan($changev7)) {
-                    $url = url('/recipes/'.$recette->id.'/'.intval($picture->user_id).'/'.strip_tags(clean($picture->image_name)));
+                    $url = url('/recipes/' . $recette->id . '/' . intval($picture->user_id) . '/' . strip_tags(clean($picture->image_name)));
                 } else {
-                    $firstPart = '/recipes/'.$recette->hashid.'/'.intval($picture->user_id).'/';
-                    $url = url($firstPart.strip_tags(clean($picture->image_name)).'.jpeg');
-                    $urlWebp = url($firstPart.'square_'.strip_tags(clean($picture->image_name)).'.webp');
-                    $urlThumb = url($firstPart.'thumb_'.strip_tags(clean($picture->image_name)).'.jpeg');
-                    $urlIndex = url($firstPart.'index_'.strip_tags(clean($picture->image_name)).'.png');
+                    $firstPart = '/recipes/' . $recette->hashid . '/' . intval($picture->user_id) . '/';
+                    $url = url($firstPart . strip_tags(clean($picture->image_name)) . '.jpeg');
+                    $urlWebp = url($firstPart . 'square_' . strip_tags(clean($picture->image_name)) . '.webp');
+                    $urlThumb = url($firstPart . 'thumb_' . strip_tags(clean($picture->image_name)) . '.jpeg');
+                    $urlIndex = url($firstPart . 'index_' . strip_tags(clean($picture->image_name)) . '.png');
                 }
 
                 $listLinks->push(['name' => 'normal', 'url' => $url]);

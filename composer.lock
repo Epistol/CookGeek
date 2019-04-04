@@ -8424,12 +8424,12 @@
             "version": "v2.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/YABhq/laravel-scout-mysql-driver.git",
+                "url": "https://github.com/yabhq/laravel-scout-mysql-driver.git",
                 "reference": "b6a2ff42337fd97557b9633867f9bd88a86019d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YABhq/laravel-scout-mysql-driver/zipball/b6a2ff42337fd97557b9633867f9bd88a86019d1",
+                "url": "https://api.github.com/repos/yabhq/laravel-scout-mysql-driver/zipball/b6a2ff42337fd97557b9633867f9bd88a86019d1",
                 "reference": "b6a2ff42337fd97557b9633867f9bd88a86019d1",
                 "shasum": ""
             },

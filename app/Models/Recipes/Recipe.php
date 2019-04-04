@@ -2,45 +2,84 @@
 
 namespace App;
 
-use App\Jobs\PictureThumbnail;
-
+use App\Traits\HasImages;
 use App\Traits\HasLikes;
 use App\Traits\HasTimes;
 use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Image\Manipulations;
 
+use Spatie\MediaLibrary\Models\Media;
+use Throwable;
+
+
+/**
+ * Class Recipe
+ * @package App
+ */
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasPicture;
+    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasImages;
 
-    public function image()
-    {
-        return $this->morphOne('App\Image', 'imageable');
-    }
-
+    /**
+     * @return MorphToMany
+     */
     public function ingredients()
     {
         return $this->morphToMany('App\Ingredient', 'ingredientable');
     }
 
+    /**
+     * @return MorphToMany
+     */
     public function steps()
     {
         return $this->morphToMany('App\RecipesSteps', 'stepable');
     }
 
+    /**
+     * @return MorphToMany
+     */
     public function universes()
     {
         return $this->morphToMany('App\Univers', 'universable');
+    }
+
+    /**
+     * @param Media|null $media
+     *
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(150)
+            ->height(150)
+            ->format(Manipulations::FORMAT_JPG);
+
+        $this->addMediaConversion('index')
+            ->width(300)
+            ->height(150)
+            ->format(Manipulations::FORMAT_PNG)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('thumbSquare')
+            ->width(250)
+            ->height(250)
+            ->format(Manipulations::FORMAT_WEBP);
     }
 
     /**
@@ -58,9 +97,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function getType()
     {
-        $mytypeid = $this->type;
-
-        return (new Type_recipe())->getnamefromid($mytypeid);
+        return (new TypeRecipe())->getnamefromid($this->type);
     }
 
     /**
@@ -68,8 +105,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function getTypeLower()
     {
-        $mytypeid = $this->type;
-        $typename = (new Type_recipe())->getnamefromid($mytypeid);
+        $typename = (new TypeRecipe())->getnamefromid($this->type);
 
         return strtolower($typename);
     }
@@ -80,7 +116,7 @@ class Recipe extends Model implements Feedable, HasMedia
     public function toFeedItem()
     {
         if ($this->commentary_author == null) {
-            $contenu = $this->title.', Pour '.$this->nb_guests.' '.$this->guest_type;
+            $contenu = $this->title . ', Pour ' . $this->nb_guests . ' ' . $this->guest_type;
         } else {
             $contenu = $this->commentary_author;
         }
@@ -90,12 +126,12 @@ class Recipe extends Model implements Feedable, HasMedia
             ->title($this->title)
             ->summary($contenu)
             ->updated($this->updated_at)
-            ->link(url('/').'/recette/'.$this->slug)
+            ->link(url('/') . '/recette/' . $this->slug)
             ->author($this->id_user);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return Collection|static[]
      */
     public static function getAllFeedItems()
     {
@@ -121,6 +157,12 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this->validated === 0 ? false : true;
     }
 
+    /**
+     * @param $query
+     * @param $choice
+     *
+     * @return mixed
+     */
     public function scopeSignaled($query, $choice)
     {
         if ($choice === false) {
@@ -136,8 +178,8 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param $valid
-     * @param $signal
+     * @param     $valid
+     * @param     $signal
      * @param int $nbPaginate
      *
      * @return mixed
@@ -149,6 +191,13 @@ class Recipe extends Model implements Feedable, HasMedia
         return $recipes;
     }
 
+    /**
+     * @param     $valid
+     * @param     $signal
+     * @param int $nbPaginate
+     *
+     * @return mixed
+     */
     public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
     {
         $recipes = self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
@@ -160,6 +209,7 @@ class Recipe extends Model implements Feedable, HasMedia
     /**
      * @param $title
      * @param $uid
+     *
      * @return string
      */
     public function slugTitle($title, $uid)
@@ -170,7 +220,8 @@ class Recipe extends Model implements Feedable, HasMedia
     /**
      * @param $newSlug
      * @param $uid
-     * @throws \Throwable
+     *
+     * @throws Throwable
      */
     public function slugUpdate($newSlug, $uid)
     {
@@ -182,6 +233,7 @@ class Recipe extends Model implements Feedable, HasMedia
 
     /**
      * @param $request
+     *
      * @return Recipe
      */
     public function easyInsert($request)
@@ -221,12 +273,24 @@ class Recipe extends Model implements Feedable, HasMedia
                 $newStep,
                 ['step_number' => $key]
             );
+
+            foreach ($request->step->picture as $picture) {
+                if (!empty($picture)) {
+                    $newPicture = $newStep->addMedia($picture)->toMediaCollection('main');
+                    $newStep->image()->attach($newPicture);
+
+                }
+            }
+
             /*$path = $step->photo->store('public/uploads');
             $picture = $this->addMedia($picture)->toMediaCollection('step');
             PictureThumbnail::dispatch($newStep, $path, 'thumbnail');*/
         }
     }
 
+    /**
+     * @param $request
+     */
     public function insertIngredients($request)
     {
         // Storing ingredients and attach to the recipe
@@ -239,16 +303,4 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    public function insertPicture($picture, $type)
-    {
-        if (!empty($picture)) {
-            if ($picture->getError() == 0) {
-                $picture = $this->addMedia($picture)->toMediaCollection($type);
-                PictureThumbnail::dispatch($this, $picture->getUrl(), 'thumbnail');
-                PictureThumbnail::dispatch($this, $picture->getUrl(), 'indexRecipe');
-                PictureThumbnail::dispatch($this, $picture->getUrl(), 'thumbSquare', 250);
-                PictureThumbnail::dispatch($this, $picture->getUrl(), 'original');
-            }
-        }
-    }
 }

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Ingredient;
+use App\Traits\HasImages;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class IngredientController extends Controller
 {
+    use HasImages;
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +26,6 @@ class IngredientController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      */
     public function create()
     {

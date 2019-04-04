@@ -1,34 +1,29 @@
 @extends('layouts.app.app')
-
 @section('titrepage', ucfirst(strip_tags(clean($recette->title))))
 
-<?php
-if ($validPictures->isNotEmpty()) {
-    $imageSocial = $validPictures->first();
-    $pic = collect($imageSocial->urls)->firstWhere('name', '=', 'normal');
-} else {
-    $pic = collect();
-}
-?>
-@if(collect($pic)->isNotEmpty())
-    @section('image_og',$pic['url'])
+@if ($urlToFirstListImage = $recette->getFirstMediaUrl('images', 'thumb'))
+    @php
+        $pic = $urlToFirstListImage;
+    @endphp
+@else
+    @php
+        $pic = collect();
+    @endphp
 @endif
+
+@if(collect($pic)->isNotEmpty())
+    @section('image_og', $pic)
+@endif
+
+
 @section('content')
 
+    @include('notifications')
 
-    @if(!empty($status))
-        @if ($status)
-            <Notif title="is-alert" v-if="seen" @close="seen = false" content="{{$status}}">
-            </Notif>
-        @endif
-    @endif
-
-    <div class="recipeaddbg">
+    <div class="recipeAddBg">
         <div class="container">
-            {{--// BREADCRUMB--}}
-            @include("recipes.show.bread")
-            <div class="section">
-                <div class="columns shadowbox">
+            @include("recipes.show.breadcrumb")
+                <div class="section columns shadowbox">
                     {{--Photo + ingredients--}}
                     <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                         @include("recipes.show.images")
@@ -88,7 +83,6 @@ if ($validPictures->isNotEmpty()) {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

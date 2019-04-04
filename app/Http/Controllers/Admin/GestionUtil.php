@@ -5,13 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse as RedirectResponseAlias;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
+/**
+ * Class GestionUtil
+ * @package App\Http\Controllers\Admin
+ */
 class GestionUtil extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -22,6 +30,11 @@ class GestionUtil extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     *
+     * @return Factory|View
+     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -31,7 +44,12 @@ class GestionUtil extends Controller
         ]);
     }
 
-    public function ban_user($id)
+    /**
+     * @param $id
+     *
+     * @return Factory|View
+     */
+    public function banUser($id)
     {
         $user = User::find($id);
 
@@ -40,7 +58,12 @@ class GestionUtil extends Controller
         ]);
     }
 
-    public function unban_user($id)
+    /**
+     * @param $id
+     *
+     * @return Factory|View
+     */
+    public function unbanUser($id)
     {
         $user = User::find($id);
 
@@ -49,7 +72,12 @@ class GestionUtil extends Controller
         ]);
     }
 
-    public function ban_user_store(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponseAlias|Redirector
+     */
+    public function banUserStore(Request $request)
     {
         $user = User::find($request->user_id);
 
@@ -64,13 +92,13 @@ class GestionUtil extends Controller
 
         if ($request->permaban == 'on') {
             $ban = $user->ban([
-                'comment'    => $raison,
+                'comment' => $raison,
                 'expired_at' => null,
             ]);
             $ban->isPermanent(); // true
         } else {
             $ban = $user->ban([
-                'comment'    => $raison,
+                'comment' => $raison,
                 'expired_at' => $formatted,
             ]);
         }
@@ -78,7 +106,12 @@ class GestionUtil extends Controller
         return redirect(route('admin.ban.index'));
     }
 
-    public function unban_user_store(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponseAlias|Redirector
+     */
+    public function unbanUserStore(Request $request)
     {
         $user = User::find($request->user_id);
         $ban = $user->unban();

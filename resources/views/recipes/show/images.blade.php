@@ -1,41 +1,36 @@
 <!-- Image part -->
 <div class="has-text-centered" style="clear: both;" id="recipe-pictures">
-    {{--If there is any valid picture to show--}}
-    {{--At least one--}}
-    @if($validPictures->count() > 0)
-        {{--if it's the first, we'll show it bigger--}}
-        <?php $validPicture = $validPictures->first(); ?>
+    @if($pictures->count() > 0)
         <div>
-            <a href="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"
+            <a href="{{ $pictures->getFirstMediaUrl() }}"
                data-lightbox="{{strip_tags(clean($recette->slug))}}"
                data-title="{{clean($recette->title)}}">
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
-                                srcset="{{collect($validPicture->urls)->firstWhere('name', 'webp')['url']}}"
+                                srcset="{{$pictures->first()->getUrl('thumbSquare')}}"
                                 class="fit-cover"
-                                alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
-                        <img src="{{collect($validPicture->urls)->firstWhere('name', 'normal')['url']}}"
+                                alt="{{ __('Image of the recipe :') . strip_tags(clean($recette->title))}}">
+                        <img src="{{$pictures->getFirstMediaUrl()}}"
                              class="fit-cover"
-                             alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
+                             alt="{{  __('Image of the recipe :') . strip_tags(clean($recette->title))}}">
                     </picture>
                 </figure>
             </a>
         </div>
 
         {{--IF THERE IS MORE THAN ONE PICTURE--}}
-        @if($validPictures->count() > 1)
+        @if($pictures->count() > 1)
             <div style="display: flex;flex-wrap: wrap;">
-                @foreach($validPictures as $index => $validPicture)
+                @foreach($validPictures->slice(0) as $index => $validPicture)
                     {{--We don't need to load the first picture that already appear--}}
                     @if($index > 0)
-                            <?php $img = $validPicture; ?>
-                            @include('recipes.elements.tinyPicture')
+                        @php $img = $validPicture; @endphp
+                        @include('recipes.elements.tinyPicture')
                     @endif
                 @endforeach
             </div>
         @endif
-
 
         {{--IF THERE IS 1 NON VALID PICTURE--}}
         @include('recipes.show.imageWait')

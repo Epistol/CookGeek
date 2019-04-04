@@ -69,12 +69,12 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
 }
 
 @font-face {
-  font-family: "Conviction";
+  font-family: 'Conviction';
   src: url("../fonts/Conviction.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Futura";
+  font-family: 'Futura';
   src: url("../fonts/futura/futur.ttf") format("truetype");
 }
 //404 page
@@ -137,7 +137,7 @@ h2.title-mini {
 }
 
 .content-title {
-  font-family: 'AvenirMedium';
+  font-family: 'AvenirMedium', serif;
   font-weight: 500;
   font-size: 1.2rem;
   color:$brand-primary;
