@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->string('url');
             $table->unsignedInteger('user_id')->nullable();
             $table->morphs('imageable');
+            $table->string('status');
 
             $table->softDeletes();
             $table->timestamps();
