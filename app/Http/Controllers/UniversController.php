@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categunivers;
 use App\Univers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class UniversController extends Controller
@@ -19,7 +20,7 @@ class UniversController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -30,7 +31,10 @@ class UniversController extends Controller
 
         if ($categunivers != null) {
             // On charge les données dans la vue
-            return view('univers.index', ['cateunivers' => $categunivers])->with(['controller' => $this, 'pictureService' => $this->pictureService]);
+            return view('univers.index', ['cateunivers' => $categunivers])->with([
+                'controller'     => $this,
+                'pictureService' => $this->pictureService
+            ]);
         } else {
             return back();
         }
@@ -39,7 +43,8 @@ class UniversController extends Controller
     public function get_all_universes_in_categ($categ)
     {
         // trouver les univers ayant des recettes de la catégorie (anime, manga, etc)
-        $recettes = DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)->where('validated', '=', 1)->distinct()->orderByDesc('nb_views')->get();
+        $recettes = DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)
+                      ->where('validated', '=', 1)->distinct()->orderByDesc('nb_views')->get();
 
         return $recettes;
     }
@@ -47,7 +52,7 @@ class UniversController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -57,9 +62,9 @@ class UniversController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -71,7 +76,7 @@ class UniversController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($name)
     {
@@ -85,7 +90,10 @@ class UniversController extends Controller
 
         if ($univers != null) {
             // On charge les données dans la vue
-            return view('univers.show', ['univers' => $univers, 'pictureService' => $this->pictureService, 'categories' => $categunivers])->with(['controller' => $this]);
+            return view('univers.show', [
+                'univers'    => $univers, 'pictureService' => $this->pictureService,
+                'categories' => $categunivers
+            ])->with(['controller' => $this]);
         } else {
             return back();
         }
@@ -96,7 +104,7 @@ class UniversController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -106,10 +114,10 @@ class UniversController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int     $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -121,11 +129,33 @@ class UniversController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param $text
+     *
+     * @return mixed
+     */
+    public function FirstOrCreate($text)
+    {
+        $univ = (new Univers())->get_first($text);
+//        dd($univ);
+        if ($univ->isEmpty()) {
+            $univ = $this->store_api($text);
+            if ($univ === false) {
+                return false;
+            }
+        } else {
+            $univ = $univ->first();
+            $univ = $univ->id;
+        }
+
+        return $univ;
     }
 
     public function store_api($text)
@@ -146,27 +176,5 @@ class UniversController extends Controller
         } else {
             return false;
         }
-    }
-
-    /**
-     * @param $text
-     *
-     * @return mixed
-     */
-    public function FirstOrCreate($text)
-    {
-        $univ = (new \App\Univers())->get_first($text);
-//        dd($univ);
-        if ($univ->isEmpty()) {
-            $univ = $this->store_api($text);
-            if ($univ === false) {
-                return false;
-            }
-        } else {
-            $univ = $univ->first();
-            $univ = $univ->id;
-        }
-
-        return $univ;
     }
 }

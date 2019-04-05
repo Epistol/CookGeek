@@ -82,7 +82,7 @@ class GestionUtil extends Controller
         $user = User::find($request->user_id);
 
         if ($request->datechoisie) {
-            $dt = Carbon::parse($request->datechoisie);
+            $dt        = Carbon::parse($request->datechoisie);
             $formatted = $dt->toDateTimeString();
         } else {
             $formatted = '+1 week';
@@ -92,13 +92,13 @@ class GestionUtil extends Controller
 
         if ($request->permaban == 'on') {
             $ban = $user->ban([
-                'comment' => $raison,
+                'comment'    => $raison,
                 'expired_at' => null,
             ]);
             $ban->isPermanent(); // true
         } else {
             $ban = $user->ban([
-                'comment' => $raison,
+                'comment'    => $raison,
                 'expired_at' => $formatted,
             ]);
         }
@@ -114,7 +114,7 @@ class GestionUtil extends Controller
     public function unbanUserStore(Request $request)
     {
         $user = User::find($request->user_id);
-        $ban = $user->unban();
+        $ban  = $user->unban();
 
         return redirect(route('admin.ban.index'));
     }

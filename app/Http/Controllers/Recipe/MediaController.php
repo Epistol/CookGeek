@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Recipe;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
@@ -19,7 +20,7 @@ class MediaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -36,7 +37,7 @@ class MediaController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -46,9 +47,9 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -60,15 +61,19 @@ class MediaController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
         $media = DB::table('categunivers')->where('name', '=', $id)->first();
         if ($media != null) {
-            $recipes = DB::table('recipes')->where('type_univers', '=', $media->id)->where('validated', '=', 1)->latest()->paginate(12);
+            $recipes = DB::table('recipes')->where('type_univers', '=', $media->id)->where('validated', '=', 1)
+                         ->latest()->paginate(12);
             // On charge les données dans la vue
-            return view('media.show', ['media' => $media, 'pictureService' => $this->pictureService, 'recipes' => $recipes])->with(['controller' => $this]);
+            return view('media.show', [
+                'media'   => $media, 'pictureService' => $this->pictureService,
+                'recipes' => $recipes
+            ])->with(['controller' => $this]);
         } else {
             abort(404);
         }
@@ -79,7 +84,7 @@ class MediaController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -89,10 +94,10 @@ class MediaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int     $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -104,7 +109,7 @@ class MediaController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

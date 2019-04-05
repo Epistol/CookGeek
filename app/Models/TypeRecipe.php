@@ -9,8 +9,8 @@ class TypeRecipe extends Model
 {
     use Searchable;
 
-    protected $table = 'type_recipes';
-    public $timestamps = false;
+    public    $timestamps = false;
+    protected $table      = 'type_recipes';
 
     public function getFirstNameAttribute($value)
     {

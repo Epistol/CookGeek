@@ -8,7 +8,9 @@ trait SuperAdminPolicy
 {
     /**
      * Authorize action before intended policy
-     * @param  User $user
+     *
+     * @param User $user
+     *
      * @return bool
      */
     public function before(User $user)

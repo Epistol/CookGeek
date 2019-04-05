@@ -5,9 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PictureController;
 use App\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -27,7 +31,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -37,7 +41,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function parameters()
     {
@@ -49,7 +53,7 @@ class HomeController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function paramStore(Request $request)
     {
@@ -63,14 +67,15 @@ class HomeController extends Controller
             }
         }
 
-        $refus = $request->no_traitement_donnees;
+        $refus      = $request->no_traitement_donnees;
         $traitement = $refus == true ? false : true;
 
         $user_data = [
-            'name' => $request->pseudo,
-            'email' => $request->mail,
-            'password' => $request->mdp,
-            'traitement_donnees' => $traitement];
+            'name'               => $request->pseudo,
+            'email'              => $request->mail,
+            'password'           => $request->mdp,
+            'traitement_donnees' => $traitement
+        ];
 
         foreach ($user_data as $column => $value) {
             if ($this->isDirty($value)) {
@@ -101,22 +106,22 @@ class HomeController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function favorites(Request $request)
     {
         $user_id = Auth::user()->id;
 
         $recettes = DB::table('recipes')
-            ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-            ->where('user_recipe_likes.user_id', '=', $user_id)
-            ->select('recipes.*')
-            ->paginate(12);
+                      ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
+                      ->where('user_recipe_likes.user_id', '=', $user_id)
+                      ->select('recipes.*')
+                      ->paginate(12);
 
         return view(
             'user_space.favorites.index',
             [
-                'recipes' => $recettes,
+                'recipes'        => $recettes,
                 'pictureService' => $this->pictureService
             ]
         )
@@ -126,18 +131,19 @@ class HomeController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function recipes(Request $request)
     {
         $user_id = Auth::user()->id;
 
         $recettes = DB::table('recipes')
-            ->where('id_user', '=', $user_id)->paginate(12);
+                      ->where('id_user', '=', $user_id)->paginate(12);
 
         return view(
             'user_space.recipes.index',
-            ['recipes' => $recettes,
+            [
+                'recipes'        => $recettes,
                 'pictureService' => $this->pictureService
             ]
         )->with(['controller' => $this]);
@@ -152,9 +158,9 @@ class HomeController extends Controller
     {
         $u_id = Auth::id();
         $l_id = DB::table('user_recipe_likes')
-            ->where(
-                ['user_id' => $u_id, 'recipe_id' => $id]
-            )->first();
+                  ->where(
+                      ['user_id' => $u_id, 'recipe_id' => $id]
+                  )->first();
 
         return $l_id ? 'liked' : false;
     }

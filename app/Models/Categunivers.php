@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categunivers extends Model
 {
-    public $timestamps = false;
-    protected $table = 'categunivers';
+    public    $timestamps = false;
+    protected $table      = 'categunivers';
 }

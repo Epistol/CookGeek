@@ -37,17 +37,17 @@ class MailResetPasswordNotification extends Notification
      *
      * @param mixed $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
-        $link = url(config('app.url').route('password.reset', $this->token, false));
+        $link = url(config('app.url') . route('password.reset', $this->token, false));
 
         return (new MailMessage())
-                ->subject('Changement de mot de passe - CDG')
-                    ->line('Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.')
-                    ->action('Changer mon mot de passe', $link)
-                    ->line('A très vite sur Cuisine De Geek !');
+            ->subject('Changement de mot de passe - CDG')
+            ->line('Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.')
+            ->action('Changer mon mot de passe', $link)
+            ->line('A très vite sur Cuisine De Geek !');
     }
 
     /**

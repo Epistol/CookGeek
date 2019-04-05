@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Exception;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Socialite;
 
@@ -48,7 +50,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        $identity = request()->get('identity');
+        $identity  = request()->get('identity');
         $fieldName = filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
         request()->merge([$fieldName => $identity]);
 
@@ -64,13 +66,14 @@ class LoginController extends Controller
      * Obtain the user information from provider.
      *
      * @param $driver
-     * @return \Illuminate\Http\Response
+     *
+     * @return Response
      */
     public function handleProviderCallback($driver)
     {
         try {
             $user = Socialite::driver($driver)->user();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->route('login');
         }
 
@@ -93,7 +96,6 @@ class LoginController extends Controller
 
         return redirect($this->redirectPath());
     }
-
 
 
     /**

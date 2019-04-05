@@ -39,46 +39,76 @@ class LikeController extends Controller
 
         // Check if user hasn't faved it yet :
         $id = Like::where([
-            'user_id' => $u_id,
+            'user_id'   => $u_id,
             'recipe_id' => strip_tags(clean($data->recette))
         ])->first();
 
         // IF it's liked, then we add it
         if ($id == '' || $id == null) {
             $id2 = DB::table('user_recipe_likes')
-                ->insertGetId(
-                    ['user_id' => $u_id, 'recipe_id' => strip_tags(clean($data->recette))]
-                );
+                     ->insertGetId(
+                         ['user_id' => $u_id, 'recipe_id' => strip_tags(clean($data->recette))]
+                     );
             // we return the new-like state
             return response('liked', 200);
         } else {
             DB::table('user_recipe_likes')
-                ->where('user_id', $u_id)
-                ->where('recipe_id', strip_tags(clean($data->recette)))
-                ->delete();
+              ->where('user_id', $u_id)
+              ->where('recipe_id', strip_tags(clean($data->recette)))
+              ->delete();
 
             return response('unliked', 200);
         }
     }
 
     /**
-     * @param $u_id
-     * @param $recipe_id
+     * @param Request $request
      *
-     * @return ResponseFactory|Response
+     * @return bool|string
      */
-    public function create_only($u_id, $recipe_id)
+    public function check_liked(Request $request)
     {
+        $u_id = intval(strip_tags(clean($request->userid)));
 
-        // Check if user hasn't faved it yet :
-        $id2 = DB::table('user_recipe_likes')
-            ->insertGetId(
-                ['user_id' => strip_tags(clean($u_id)), 'recipe_id' => strip_tags(clean($recipe_id))]
-            );
-        if ($id2) {
-            return response($id2);
+        $l_id = DB::table('user_recipe_likes')
+                  ->where([
+                      ['user_id', '=', $u_id],
+                      ['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
+                  ])
+                  ->first();
+        if ($l_id) {
+            return response()->json($l_id);
+        } else {
+            return response()->json(false);
         }
-        // we return the new-like state
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function toggle_like(Request $request)
+    {
+        $u_id = intval(strip_tags(clean($request->userid)));
+        $l_id = DB::table('user_recipe_likes')
+                  ->where([
+                      ['user_id', '=', $u_id],
+                      ['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
+                  ])
+                  ->first();
+
+        // si un id existe, on le supprime et renvoie false
+        if ($l_id) {
+            if ($this->destroy($l_id->id)) {
+                return response()->json(false);
+            }
+        } // si n'existe pas, on le créé et renvoie true
+        else {
+            $retour = $this->create_only($u_id, $request->recipeid);
+
+            return response()->json($retour);
+        }
     }
 
     /**
@@ -98,53 +128,23 @@ class LikeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param $u_id
+     * @param $recipe_id
      *
-     * @return bool|string
+     * @return ResponseFactory|Response
      */
-    public function check_liked(Request $request)
+    public function create_only($u_id, $recipe_id)
     {
-        $u_id = intval(strip_tags(clean($request->userid)));
 
-        $l_id = DB::table('user_recipe_likes')
-            ->where([
-                ['user_id', '=', $u_id],
-                ['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
-            ])
-            ->first();
-        if ($l_id) {
-            return response()->json($l_id);
-        } else {
-            return response()->json(false);
+        // Check if user hasn't faved it yet :
+        $id2 = DB::table('user_recipe_likes')
+                 ->insertGetId(
+                     ['user_id' => strip_tags(clean($u_id)), 'recipe_id' => strip_tags(clean($recipe_id))]
+                 );
+        if ($id2) {
+            return response($id2);
         }
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function toggle_like(Request $request)
-    {
-        $u_id = intval(strip_tags(clean($request->userid)));
-        $l_id = DB::table('user_recipe_likes')
-            ->where([
-                ['user_id', '=', $u_id],
-                ['recipe_id', '=', intval(strip_tags(clean($request->recipeid)))],
-            ])
-            ->first();
-
-        // si un id existe, on le supprime et renvoie false
-        if ($l_id) {
-            if ($this->destroy($l_id->id)) {
-                return response()->json(false);
-            }
-        } // si n'existe pas, on le créé et renvoie true
-        else {
-            $retour = $this->create_only($u_id, $request->recipeid);
-
-            return response()->json($retour);
-        }
+        // we return the new-like state
     }
 
     /**
@@ -155,11 +155,11 @@ class LikeController extends Controller
     public function nbLike(Request $request)
     {
         $recipe_id = intval(strip_tags(clean($request->recipeid)));
-        $l_id = DB::table('user_recipe_likes')
-            ->where([
-                ['recipe_id', '=', $recipe_id],
-            ])
-            ->count();
+        $l_id      = DB::table('user_recipe_likes')
+                       ->where([
+                           ['recipe_id', '=', $recipe_id],
+                       ])
+                       ->count();
 
         return response()->json(intval($l_id));
     }

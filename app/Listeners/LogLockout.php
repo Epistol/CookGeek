@@ -29,9 +29,9 @@ class LogLockout
         $ip = geoip()->getClientIP();
 
         if ($event->user != null) {
-            Log::notice('IP '.$ip.' tried too hard to connect to account '.$event->user->id.' and failed');
+            Log::notice('IP ' . $ip . ' tried too hard to connect to account ' . $event->user->id . ' and failed');
         } else {
-            Log::notice('IP '.$ip.' tried to connect to an inexistant account (bad mail/username');
+            Log::notice('IP ' . $ip . ' tried to connect to an inexistant account (bad mail/username');
         }
     }
 }

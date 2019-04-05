@@ -12,10 +12,11 @@ class TrustProxies extends Middleware
      *
      * @var array
      */
-    protected $proxies = [
-        '147.135.192.243',
-        '127.0.0.1',
-    ];
+    protected $proxies
+        = [
+            '147.135.192.243',
+            '127.0.0.1',
+        ];
 
     protected $headers = Request::HEADER_X_FORWARDED_ALL;
 }

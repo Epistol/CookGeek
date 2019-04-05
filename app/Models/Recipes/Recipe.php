@@ -35,19 +35,39 @@ class Recipe extends Model implements Feedable, HasMedia
     use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasImages;
 
     /**
-     * @return MorphToMany
+     * @return Collection|static[]
      */
-    public function ingredients()
+    public static function getAllFeedItems()
     {
-        return $this->morphToMany('App\Ingredient', 'ingredientable');
+        return self::all();
     }
 
     /**
-     * @return MorphToMany
+     * @param     $valid
+     * @param     $signal
+     * @param int $nbPaginate
+     *
+     * @return mixed
      */
-    public function steps()
+    public static function getPaginate($valid, $signal, $nbPaginate = 10)
     {
-        return $this->morphToMany('App\RecipesSteps', 'stepable');
+        $recipes = self::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
+
+        return $recipes;
+    }
+
+    /**
+     * @param     $valid
+     * @param     $signal
+     * @param int $nbPaginate
+     *
+     * @return mixed
+     */
+    public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
+    {
+        $recipes = self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
+
+        return $recipes;
     }
 
     /**
@@ -66,20 +86,20 @@ class Recipe extends Model implements Feedable, HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150)
-            ->format(Manipulations::FORMAT_JPG);
+             ->width(150)
+             ->height(150)
+             ->format(Manipulations::FORMAT_JPG);
 
         $this->addMediaConversion('index')
-            ->width(300)
-            ->height(150)
-            ->format(Manipulations::FORMAT_PNG)
-            ->withResponsiveImages();
+             ->width(300)
+             ->height(150)
+             ->format(Manipulations::FORMAT_PNG)
+             ->withResponsiveImages();
 
         $this->addMediaConversion('thumbSquare')
-            ->width(250)
-            ->height(250)
-            ->format(Manipulations::FORMAT_WEBP);
+             ->width(250)
+             ->height(250)
+             ->format(Manipulations::FORMAT_WEBP);
     }
 
     /**
@@ -122,20 +142,12 @@ class Recipe extends Model implements Feedable, HasMedia
         }
 
         return FeedItem::create()
-            ->id($this->id)
-            ->title($this->title)
-            ->summary($contenu)
-            ->updated($this->updated_at)
-            ->link(url('/') . '/recette/' . $this->slug)
-            ->author($this->id_user);
-    }
-
-    /**
-     * @return Collection|static[]
-     */
-    public static function getAllFeedItems()
-    {
-        return self::all();
+                       ->id($this->id)
+                       ->title($this->title)
+                       ->summary($contenu)
+                       ->updated($this->updated_at)
+                       ->link(url('/') . '/recette/' . $this->slug)
+                       ->author($this->id_user);
     }
 
     /**
@@ -168,9 +180,9 @@ class Recipe extends Model implements Feedable, HasMedia
         if ($choice === false) {
             return $query->whereNotIn('id', function ($query) {
                 $query->select('recipe_id')
-                    ->from('signalements')
-                    ->where('status', 1)
-                    ->orWhere('created_at', '>=', today()->toDateTimeString());
+                      ->from('signalements')
+                      ->where('status', 1)
+                      ->orWhere('created_at', '>=', today()->toDateTimeString());
             });
         }
 
@@ -178,33 +190,18 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param     $valid
-     * @param     $signal
-     * @param int $nbPaginate
+     * @param $newSlug
+     * @param $uid
      *
-     * @return mixed
+     * @throws Throwable
      */
-    public static function getPaginate($valid, $signal, $nbPaginate = 10)
+    public function slugUpdate($newSlug, $uid)
     {
-        $recipes = self::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
-
-        return $recipes;
+        $slug         = $this->slugTitle($newSlug, $uid);
+        $this->slug   = $slug;
+        $this->hashid = $uid;
+        $this->saveOrFail();
     }
-
-    /**
-     * @param     $valid
-     * @param     $signal
-     * @param int $nbPaginate
-     *
-     * @return mixed
-     */
-    public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
-    {
-        $recipes = self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
-
-        return $recipes;
-    }
-
 
     /**
      * @param $title
@@ -218,41 +215,27 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param $newSlug
-     * @param $uid
-     *
-     * @throws Throwable
-     */
-    public function slugUpdate($newSlug, $uid)
-    {
-        $slug = $this->slugTitle($newSlug, $uid);
-        $this->slug = $slug;
-        $this->hashid = $uid;
-        $this->saveOrFail();
-    }
-
-    /**
      * @param $request
      *
      * @return Recipe
      */
     public function easyInsert($request)
     {
-        $this->title = $request->title;
-        $this->vegetarien = $request->vegan == 'on' ? true : false;
-        $this->difficulty = intval($request->difficulty);
-        $this->type = intval($request->categ_plat);
-        $this->cost = intval($request->cost);
-        $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
-        $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
-        $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
-        $this->nb_guests = $request->unite_part;
-        $this->guest_type = $request->value_part;
-        $this->type_univers = intval($request->type);
-        $this->id_user = Auth::user()->id;
-        $this->video = $request->video;
+        $this->title             = $request->title;
+        $this->vegetarien        = $request->vegan == 'on' ? true : false;
+        $this->difficulty        = intval($request->difficulty);
+        $this->type              = intval($request->categ_plat);
+        $this->cost              = intval($request->cost);
+        $this->prep_time         = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
+        $this->cook_time         = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
+        $this->rest_time         = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
+        $this->nb_guests         = $request->unite_part;
+        $this->guest_type        = $request->value_part;
+        $this->type_univers      = intval($request->type);
+        $this->id_user           = Auth::user()->id;
+        $this->video             = $request->video;
         $this->commentary_author = $request->comment;
-        $this->validated = 0;
+        $this->validated         = 0;
 
         return $this;
     }
@@ -289,6 +272,14 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
+     * @return MorphToMany
+     */
+    public function steps()
+    {
+        return $this->morphToMany('App\RecipesSteps', 'stepable');
+    }
+
+    /**
      * @param $request
      */
     public function insertIngredients($request)
@@ -301,6 +292,14 @@ class Recipe extends Model implements Feedable, HasMedia
                 ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
             );
         }
+    }
+
+    /**
+     * @return MorphToMany
+     */
+    public function ingredients()
+    {
+        return $this->morphToMany('App\Ingredient', 'ingredientable');
     }
 
 }

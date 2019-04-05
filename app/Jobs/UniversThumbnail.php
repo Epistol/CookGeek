@@ -49,23 +49,24 @@ class UniversThumbnail implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $recipe
-     * @param string $imageContent
-     * @param string $imageName
-     * @param $user
+     * @param          $recipe
+     * @param string   $imageContent
+     * @param string   $imageName
+     * @param          $user
      * @param string   $typePicture
      * @param int|null $width
      * @param int|null $height
      */
-    public function __construct($univers, string $imageContent, string $imageName, $user, string $typePicture, int $width = null, ?int $height = null)
+    public function __construct($univers, string $imageContent, string $imageName, $user, string $typePicture,
+        int $width = null, ?int $height = null)
     {
-        $this->width = $width;
-        $this->height = $height;
+        $this->width        = $width;
+        $this->height       = $height;
         $this->imageContent = $imageContent;
-        $this->imageName = $imageName;
-        $this->user = $user;
-        $this->typePicture = $typePicture;
-        $this->univers = $univers;
+        $this->imageName    = $imageName;
+        $this->user         = $user;
+        $this->typePicture  = $typePicture;
+        $this->univers      = $univers;
     }
 
     /**
@@ -74,34 +75,16 @@ class UniversThumbnail implements ShouldQueue
     public function handle()
     {
         // Remove any trace of file extension in base64
-        $image2 = preg_replace('#^data:image/[^;]+;base64,#', '', $this->imageContent);
-        $image2 = str_replace(' ', '+', $image2);
+        $image2        = preg_replace('#^data:image/[^;]+;base64,#', '', $this->imageContent);
+        $image2        = str_replace(' ', '+', $image2);
         $image_decoded = base64_decode($image2);
 
         $image = Image::make($image_decoded);
         $image = $this->resizing($image);
-        $name = $this->naming($this->imageName);
+        $name  = $this->naming($this->imageName);
 
-        $path = self::createFolder('/univers/', $this->univers.'/');
-        $image->save($path.'/'.$name);
-    }
-
-    public function createFolder($pathFolder, $id)
-    {
-        $createPath = public_path($pathFolder.$id);
-        if (File::exists($createPath)) {
-            return $createPath;
-        } else {
-            File::makeDirectory($createPath);
-
-            return $createPath;
-        }
-    }
-
-    public function failed(Exception $exception)
-    {
-        // Send user notification of failure, etc...
-        return $exception;
+        $path = self::createFolder('/univers/', $this->univers . '/');
+        $image->save($path . '/' . $name);
     }
 
     private function resizing($image)
@@ -137,19 +120,37 @@ class UniversThumbnail implements ShouldQueue
     {
         switch ($this->typePicture) {
             case 'thumbnail':
-                $imageName = 'thumb_'.$imageName.'.jpeg';
+                $imageName = 'thumb_' . $imageName . '.jpeg';
                 break;
             case 'indexRecipe':
-                $imageName = 'index_'.$imageName.'.png';
+                $imageName = 'index_' . $imageName . '.png';
                 break;
             case 'thumbSquare':
-                $imageName = 'square_'.$imageName.'.webp';
+                $imageName = 'square_' . $imageName . '.webp';
                 break;
             default:
-                $imageName = $imageName.'.jpeg';
+                $imageName = $imageName . '.jpeg';
                 break;
         }
 
         return $imageName;
+    }
+
+    public function createFolder($pathFolder, $id)
+    {
+        $createPath = public_path($pathFolder . $id);
+        if (File::exists($createPath)) {
+            return $createPath;
+        } else {
+            File::makeDirectory($createPath);
+
+            return $createPath;
+        }
+    }
+
+    public function failed(Exception $exception)
+    {
+        // Send user notification of failure, etc...
+        return $exception;
     }
 }

@@ -9,6 +9,6 @@ class Page extends Model
 {
     use Searchable;
 
-    protected $table = 'pages';
+    protected $table    = 'pages';
     protected $fillable = ['name', 'contenu', 'slug'];
 }

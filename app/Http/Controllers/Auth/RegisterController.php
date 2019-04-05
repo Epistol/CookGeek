@@ -40,6 +40,34 @@ class RegisterController extends Controller
     }
 
     /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param array $data
+     *
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        $validator = $this->validator($data)->validate();
+
+        if (!$validator) {
+            return redirect()->back()
+                             ->withErrors($validator)
+                             ->withInput();
+        }
+
+        $user = User::create([
+            'name'     => $data['pseudo'],
+            'email'    => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        $user->assignRole('user');
+
+        return $user;
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param array $data
@@ -53,33 +81,5 @@ class RegisterController extends Controller
             'email'    => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        $validator = $this->validator($data)->validate();
-
-        if (!$validator) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $user = User::create([
-            'name'     => $data['pseudo'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-
-        $user->assignRole('user');
-
-        return $user;
     }
 }

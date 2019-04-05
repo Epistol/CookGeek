@@ -33,7 +33,7 @@ class UniverseProvider extends ServiceProvider
      */
     public function first_found_universe($text)
     {
-        $univ = DB::table('univers')->select('id')->where('name', 'like', '%'.$text.'%')->get();
+        $univ = DB::table('univers')->select('id')->where('name', 'like', '%' . $text . '%')->get();
 
         if ($univ->isEmpty()) {
             $string = app('profanityFilter')->filter($text);
@@ -46,7 +46,7 @@ class UniverseProvider extends ServiceProvider
             $id_univers = DB::table('univers')->insertGetId(
                 ['name' => $string]
             );
-            $univ = $id_univers;
+            $univ       = $id_univers;
         } else {
             $univ = $univ->first();
             $univ = $univ->id;

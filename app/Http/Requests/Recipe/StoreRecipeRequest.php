@@ -41,7 +41,7 @@ class StoreRecipeRequest extends BaseFormRequest
             'video'       => 'nullable|url',
             'univers'     => 'nullable|string',
             'type'        => 'integer|required',
-            'resume' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'resume'      => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ];
     }
 
@@ -53,10 +53,10 @@ class StoreRecipeRequest extends BaseFormRequest
     public function filters()
     {
         return [
-            'title'         => 'trim|strip_tags|escape',
-            'step'          => 'trim|strip_tags|escape',
-            'value_part'    => 'trim|strip_tags|escape',
-            'comment'       => 'trim|strip_tags|escape',
+            'title'      => 'trim|strip_tags|escape',
+            'step'       => 'trim|strip_tags|escape',
+            'value_part' => 'trim|strip_tags|escape',
+            'comment'    => 'trim|strip_tags|escape',
         ];
     }
 }

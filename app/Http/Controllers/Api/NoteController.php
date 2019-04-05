@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
@@ -41,7 +42,7 @@ class NoteController extends Controller
     private function find($recipe, $value, $userid)
     {
         $notefound = DB::table('recipe_likes')->where('id_recipe', '=', $recipe)->where('id_user', '=', $userid)
-            ->where('note', '=', $value)->get();
+                       ->where('note', '=', $value)->get();
 
         return $notefound;
     }
@@ -49,14 +50,24 @@ class NoteController extends Controller
     private function find_without_value($recipe, $userid)
     {
         $notefound = DB::table('recipe_likes')->where('id_recipe', '=', $recipe)->where('id_user', '=', $userid)
-            ->get();
+                       ->get();
 
         return $notefound;
     }
 
-    private function getavg(Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param int     $id
+     *
+     * @return int
+     */
+    public function update(Request $request, $id)
     {
-        return $stars = DB::table('recipe_likes')->where('id_recipe', '=', $request->recette)->avg('note');
+        $note = DB::table('recipe_likes')->where('id', '=', $id)->update(['note' => $request->note]);
+
+        return $note;
     }
 
     /**
@@ -71,19 +82,24 @@ class NoteController extends Controller
         $u_id = $data->userid;
 
         DB::table('recipe_likes')
-            ->insertGetId(
-                ['id_user' => $u_id, 'id_recipe' => $data->recette, 'note' => $data->note]
-            );
+          ->insertGetId(
+              ['id_user' => $u_id, 'id_recipe' => $data->recette, 'note' => $data->note]
+          );
 
         return response('note_new', 200);
+    }
+
+    private function getavg(Request $request)
+    {
+        return $stars = DB::table('recipe_likes')->where('id_recipe', '=', $request->recette)->avg('note');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -95,7 +111,7 @@ class NoteController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -107,7 +123,7 @@ class NoteController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -115,26 +131,11 @@ class NoteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return int
-     */
-    public function update(Request $request, $id)
-    {
-        $note = DB::table('recipe_likes')->where('id', '=', $id)->update(['note' => $request->note]);
-
-        return $note;
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

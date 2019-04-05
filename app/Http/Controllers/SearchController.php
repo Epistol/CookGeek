@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class SearchController extends Controller
 {
@@ -18,7 +20,7 @@ class SearchController extends Controller
      */
     public function __construct(Api\SearchController $apisearch)
     {
-        $this->apisearch = $apisearch;
+        $this->apisearch      = $apisearch;
         $this->pictureService = new PictureController();
     }
 
@@ -31,9 +33,9 @@ class SearchController extends Controller
     {
         $u_id = Auth::id();
         $l_id = DB::table('user_recipe_likes')
-            ->where(
-                ['user_id' => $u_id, 'recipe_id' => $id]
-            )->first();
+                  ->where(
+                      ['user_id' => $u_id, 'recipe_id' => $id]
+                  )->first();
 
         return $l_id ? 'liked' : false;
     }
@@ -41,13 +43,15 @@ class SearchController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(Request $request)
     {
-        $rq = $request->q;
+        $rq     = $request->q;
         $result = collect($this->apisearch->search($rq));
 
-        return view('search.result', ['result' => $result, 'pictureService' => $this->pictureService])->with(['controller' => $this]);
+        return view('search.result', [
+            'result' => $result, 'pictureService' => $this->pictureService
+        ])->with(['controller' => $this]);
     }
 }

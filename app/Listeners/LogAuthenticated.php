@@ -29,9 +29,9 @@ class LogAuthenticated
         $ip = geoip()->getClientIP();
 
         if ($event->user != null) {
-            Log::notice('IP '.$ip.' tried to connect to account '.$event->user->id);
+            Log::notice('IP ' . $ip . ' tried to connect to account ' . $event->user->id);
         } else {
-            Log::notice('IP '.$ip.' tried to connect to an inexistant account (bad mail/username');
+            Log::notice('IP ' . $ip . ' tried to connect to an inexistant account (bad mail/username');
         }
     }
 }

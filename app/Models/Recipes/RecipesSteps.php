@@ -11,9 +11,9 @@ class RecipesSteps extends Model
 {
     use HasImages, HasUserInput, HasMediaTrait;
 
-    public $timestamps = false;
-    protected $table = 'recipes_steps';
-    protected $fillable = 'instruction';
+    public    $timestamps = false;
+    protected $table      = 'recipes_steps';
+    protected $fillable   = 'instruction';
 
     public function recipes()
     {

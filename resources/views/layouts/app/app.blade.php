@@ -45,9 +45,9 @@
 
     <meta name="mobile-web-app-capable" content="yes">
     <script src={{asset('/js/tinymce/js/tinymce.min.js')}}></script>
-    <script>tinymce.init({ selector:'#tinymce' });</script>
+    <script>tinymce.init({selector: '#tinymce'});</script>
     {{--<script src=https://cloud.tinymce.com/stable/tinymce.min.js></script>--}}
-    <!-- Styles -->
+<!-- Styles -->
     @include("layouts.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
@@ -103,6 +103,7 @@
 }
 
 
+
 </script>
 <!-- SCRIPTS  -->
 <script type="application/javascript">
@@ -118,10 +119,9 @@
 </script>
 
 
-
 @if(Route::currentRouteNamed('recipe.edit'))
     <script src="{{ asset('js/recipeEdit.js') }}"></script>
-    @else
+@else
     <script src="{{ asset('js/app.js') }}"></script>
 @endif
 

@@ -8,44 +8,10 @@
 
 namespace App\Traits;
 
+use Tightenco\Collect\Support\Collection;
+
 trait HasTimes
 {
-    /**
-     * @param $minutes
-     * @param $hours
-     *
-     * @return int
-     */
-    public function getUnifiedTime($minutes, $hours)
-    {
-        if ($minutes == 0) {
-            $minutes = intval(0);
-        }
-        if ($hours == 0) {
-            $minutes = intval(0);
-        }
-
-        return intval(($hours * 60) + intval($minutes));
-    }
-
-    /**
-     * @param $t_h
-     * @param $time
-     *
-     * @return float|int
-     */
-    public static function returnTime($t_h, $time)
-    {
-        if ($t_h === null) {
-            $t_h = 0;
-        }
-        if ($time === null) {
-            $time = 0;
-        }
-
-        return intval(($t_h * 60) + $time);
-    }
-
     /**
      * @param $time
      *
@@ -68,7 +34,7 @@ trait HasTimes
      * @param      $cookHeure
      * @param      $restHeure
      *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     * @return \Illuminate\Support\Collection|Collection
      */
     public static function getTimes($prepMinute, $cookMinute, $restMinute, $prepHeure, $cookHeure, $restHeure)
     {
@@ -96,5 +62,41 @@ trait HasTimes
         $times = collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
 
         return $times;
+    }
+
+    /**
+     * @param $t_h
+     * @param $time
+     *
+     * @return float|int
+     */
+    public static function returnTime($t_h, $time)
+    {
+        if ($t_h === null) {
+            $t_h = 0;
+        }
+        if ($time === null) {
+            $time = 0;
+        }
+
+        return intval(($t_h * 60) + $time);
+    }
+
+    /**
+     * @param $minutes
+     * @param $hours
+     *
+     * @return int
+     */
+    public function getUnifiedTime($minutes, $hours)
+    {
+        if ($minutes == 0) {
+            $minutes = intval(0);
+        }
+        if ($hours == 0) {
+            $minutes = intval(0);
+        }
+
+        return intval(($hours * 60) + intval($minutes));
     }
 }

@@ -27,6 +27,6 @@ class LogAuthenticationAttempt
     public function handle(Attempting $event)
     {
         $ip = geoip()->getClientIP();
-        Log::notice('IP '.$ip.' tried to connect');
+        Log::notice('IP ' . $ip . ' tried to connect');
     }
 }

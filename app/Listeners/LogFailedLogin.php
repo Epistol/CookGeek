@@ -30,17 +30,17 @@ class LogFailedLogin
         $ip = geoip()->getClientIP();
 
         DB::table('users_info_loggin')
-            ->insertGetId([
-                'ip_address' => $ip,
-                'login'      => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+          ->insertGetId([
+              'ip_address' => $ip,
+              'login'      => 0,
+              'created_at' => now(),
+              'updated_at' => now(),
+          ]);
 
         if ($event->user != null) {
-            Log::notice('IP '.$ip.' tried to connect to account '.$event->user->id.' but failed');
+            Log::notice('IP ' . $ip . ' tried to connect to account ' . $event->user->id . ' but failed');
         } else {
-            Log::notice('IP '.$ip.' tried to connect to an inexistant account (bad mail/username');
+            Log::notice('IP ' . $ip . ' tried to connect to an inexistant account (bad mail/username');
         }
     }
 }

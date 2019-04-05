@@ -31,25 +31,25 @@ class GenerateSitemap extends Command
     {
         // modify this to your own needs
         SitemapGenerator::create(config('app.url'))
-            ->hasCrawled(function (Url $url) {
-                if ($url->segment(1) === null) {
-                    $url->setPriority(1);
-                }
-                if ($url->segment(1) === 'cgu') {
-                    $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
-                }
-                if ($url->segment(1) === 'contact') {
-                    $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
-                }
-                if ($url->segment(1) === 'login') {
-                    $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
-                }
-                if ($url->segment(1) === 'register') {
-                    $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
-                }
+                        ->hasCrawled(function (Url $url) {
+                            if ($url->segment(1) === null) {
+                                $url->setPriority(1);
+                            }
+                            if ($url->segment(1) === 'cgu') {
+                                $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
+                            }
+                            if ($url->segment(1) === 'contact') {
+                                $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
+                            }
+                            if ($url->segment(1) === 'login') {
+                                $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
+                            }
+                            if ($url->segment(1) === 'register') {
+                                $url->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY);
+                            }
 
-                return $url;
-            })
-            ->writeToFile(public_path('sitemap.xml'));
+                            return $url;
+                        })
+                        ->writeToFile(public_path('sitemap.xml'));
     }
 }

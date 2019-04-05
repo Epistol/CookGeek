@@ -6,6 +6,7 @@ use App\Mail\ContactEmail;
 use App\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -22,13 +23,13 @@ class PageController extends Controller
     /**
      * Liste des pages.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     /**
      * Création d'une nouvelle page.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -49,24 +50,18 @@ class PageController extends Controller
             return view("admin.page.cookie");
         }*/
 
-    private function slugtitre($titre, $idrecipe)
-    {
-        $titreslug = str_slug(strip_tags(clean($titre)), '-');
-
-        return $titreslug.'-'.$idrecipe;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
         $idRecette = DB::table('pages')->insertGetId(
-            ['name'          => $request->name,
+            [
+                'name'       => $request->name,
                 'content'    => $request->contenu,
                 'author_id'  => Auth::id(),
                 'created_at' => now(),
@@ -78,18 +73,25 @@ class PageController extends Controller
         $slug = $this->slugtitre(strip_tags(clean($request->name)), $idRecette);
 
         DB::table('pages')
-            ->where('id', $idRecette)
-            ->update(['slug' => $slug]);
+          ->where('id', $idRecette)
+          ->update(['slug' => $slug]);
 
         return redirect()->route('page.index');
+    }
+
+    private function slugtitre($titre, $idrecipe)
+    {
+        $titreslug = str_slug(strip_tags(clean($titre)), '-');
+
+        return $titreslug . '-' . $idrecipe;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Page $page
+     * @param Page $page
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Page $page)
     {
@@ -135,9 +137,9 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Page $page
+     * @param Page $page
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Page $page)
     {
@@ -147,16 +149,16 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Page                $page
+     * @param Request $request
+     * @param Page    $page
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Page $page)
     {
-        $page->name = strip_tags(clean($request->name));
+        $page->name    = strip_tags(clean($request->name));
         $page->content = $request->contenu;
-        $page->slug = $this->slugtitre($request->name, $page->id);
+        $page->slug    = $this->slugtitre($request->name, $page->id);
 
         $page->save();
 
@@ -166,12 +168,13 @@ class PageController extends Controller
     /**s
      * Remove the specified resource from storage.
      *
-     * @param  \App\Page $page
-     * @return \Illuminate\Http\Response
+     * @param Page $page
+     *
+     * @return Response
      */
     public function destroy(Page $page)
     {
-        \App\Page::destroy($page->id);
+        Page::destroy($page->id);
 
         return redirect('/admin/page')->with('status', 'Page supprimée !');
     }
@@ -196,20 +199,23 @@ class PageController extends Controller
     public function accueil()
     {
         $universcateg = DB::table('categunivers')->get();
-        $pic = $this->pictureService;
+        $pic          = $this->pictureService;
 
         // Petit texte sur l'accueil
         $heartbeat = DB::table('heartbeat')->latest()->first();
         // Recettes
-        $recipes = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
+        $recipes      = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
         $univers_list = DB::table('univers')->where('name', 'NOT LIKE', '%script%')
-            ->join('recipes', 'univers.id', '=', 'recipes.univers')
-            ->where('recipes.validated', '=', 1)
-            ->inRandomOrder()
-            ->paginate('12');
+                          ->join('recipes', 'univers.id', '=', 'recipes.univers')
+                          ->where('recipes.validated', '=', 1)
+                          ->inRandomOrder()
+                          ->paginate('12');
 
         // On charge les données dans la vue
-        return view('welcome', ['univers' => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes, 'heartbeat' => $heartbeat, 'picturectrl' => $pic])->with(['controller' => $this]);
+        return view('welcome', [
+            'univers'   => $univers_list, 'universcateg' => $universcateg, 'recipes' => $recipes,
+            'heartbeat' => $heartbeat, 'picturectrl' => $pic
+        ])->with(['controller' => $this]);
     }
 
     public function sum_time($val)
@@ -218,19 +224,19 @@ class PageController extends Controller
         // si il y'a + d'1heure
         if ($val > 60) {
             $somme_h = $val / 60;
-            $somme_m = $val - ((int) $somme_h * 60);
+            $somme_m = $val - ((int)$somme_h * 60);
             // si le nb de minute est supérieur a 0, on les affiches
             if ($somme_m > 0) {
-                return sprintf($format, $somme_h).' h '.sprintf($format, $somme_m).' min';
+                return sprintf($format, $somme_h) . ' h ' . sprintf($format, $somme_m) . ' min';
             } else {
-                return sprintf($format, $somme_h).' h ';
+                return sprintf($format, $somme_h) . ' h ';
             }
         } else {
             $somme_h = 0;
-            $somme_m = $val - ((int) $somme_h * 60);
+            $somme_m = $val - ((int)$somme_h * 60);
             // si le nb de minute est supérieur a 0, on affiche qqch
             if ($somme_m > 0) {
-                return sprintf($format, $somme_m).' min';
+                return sprintf($format, $somme_m) . ' min';
             } else {
                 return '';
             }
@@ -243,19 +249,19 @@ class PageController extends Controller
         // si il y'a + d'1heure
         if ($val > 60) {
             $somme_h = $val / 60;
-            $somme_m = $val - ((int) $somme_h * 60);
+            $somme_m = $val - ((int)$somme_h * 60);
             // si le nb de minute est supérieur a 0, on les affiches
             if ($somme_m > 0) {
-                return sprintf($format, $somme_h).' h '.sprintf($format, $somme_m);
+                return sprintf($format, $somme_h) . ' h ' . sprintf($format, $somme_m);
             } else {
-                return sprintf($format, $somme_h).' h ';
+                return sprintf($format, $somme_h) . ' h ';
             }
         } else {
             $somme_h = 0;
-            $somme_m = $val - ((int) $somme_h * 60);
+            $somme_m = $val - ((int)$somme_h * 60);
             // si le nb de minute est supérieur a 0, on affiche qqch
             if ($somme_m > 0) {
-                return sprintf($format, $somme_m).' min';
+                return sprintf($format, $somme_m) . ' min';
             } else {
                 return '';
             }

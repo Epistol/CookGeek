@@ -13,27 +13,34 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 {
     use Notifiable, Bannable, HasRoles;
 
-    protected $table = "users";
-
+    public    $additional_attributes = ['locale'];
+    protected $table                 = "users";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'identity', 'name', 'email', 'password', 'pseudo',
-    ];
+    protected $fillable
+                       = [
+            'identity', 'name', 'email', 'password', 'pseudo',
+        ];
     protected $guarded = [];
-    public $additional_attributes = ['locale'];
-
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'provider_name', 'provider_id', 'password', 'remember_token',
-    ];
+    protected $hidden
+        = [
+            'provider_name', 'provider_id', 'password', 'remember_token',
+        ];
+
+    public static function nameReturn($user_id)
+    {
+        $user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))->select('name')->get();
+
+        return $user;
+    }
 
     public function image()
     {
@@ -78,13 +85,6 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
     public function getFirstNameAttribute($value)
     {
         return ucfirst($value);
-    }
-
-    public static function nameReturn($user_id)
-    {
-        $user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))->select('name')->get();
-
-        return $user;
     }
 
     /**

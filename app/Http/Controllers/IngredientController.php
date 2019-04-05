@@ -41,7 +41,7 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        $ingredient = new Ingredient();
+        $ingredient       = new Ingredient();
         $ingredient->name = cleanInput($request->name);
         $ingredient->save();
     }
