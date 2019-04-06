@@ -1,5 +1,3 @@
-<meta name="og:image" content="@if(isset($validPictures)){{ App\Pictures::checkTopRecipeImg($validPictures) }} @else {{App\Pictures::checkTopRecipeImg('')}}@endif"/>
-
 @if( Route::currentRouteName() === 'recipe.show')
     <meta property="og:title"
           content="@hasSection('titrepage')Recette de : @yield('titrepage') sur CDG -  @lang('common.site_description')@else @lang('common.site_description')@endif"/>
@@ -18,5 +16,8 @@
 <meta name="classification" content="geek recette de cuisine gratuit"/>
 <meta name="HandheldFriendly" content="true">
 
-
 <meta name="p:domain_verify" content="05cbfbe372355fc341420d5bcf35e1cd"/>
+
+<meta name="og:image" content="
+
+        "/>

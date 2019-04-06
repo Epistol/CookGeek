@@ -11,8 +11,6 @@
 </template>
 
 <script>
-    import modal from "./ModalView.vue";
-    import LoginModal from "./LoginModal.vue";
 
     export default {
         props: ["recipeid", "userid"],

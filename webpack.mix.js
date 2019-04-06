@@ -15,24 +15,25 @@ mix.options({
     processCssUrls: false
 });
 
+mix.js('resources/assets/js/app.js', 'public/js')
+    .js('resources/assets/js/load_content.js', 'public/js')
+    .js('resources/assets/js/old_app.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/print.scss', 'public/css');
 
-mix.js('resources/assets/js/app.js', 'public/js').js('resources/assets/js/load_content.js', 'public/js')
-	.js('resources/assets/js/recipeEdit.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css').sass('resources/assets/sass/print.scss', 'public/css');
 
 mix.copyDirectory('resources/assets/js/toasty', 'public/js/toasty');
 mix.copyDirectory('resources/assets/js/tarteaucitron', 'public/js/tarteaucitron');
 
-    // .js('node_modules/lightbox2/src/js/lightbox.js', 'public/js').css('node_modules/lightbox2/src/css/lightbox.css', 'public/css');
-
-
+/*
+// PWA
 var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 mix.webpackConfig({
     plugins: [
         new SWPrecacheWebpackPlugin({
             cacheId: 'pwa',
             filename: 'service-worker.js',
-            staticFileGlobs: ['public/**/*.{css,eot,svg,ttf,woff,woff2,js,html}'],
+            staticFileGlobs: ['public/!**!/!*.{css,eot,svg,ttf,woff,woff2,js,html}'],
             minify: true,
             stripPrefix: 'public/',
             handleFetch: true,
@@ -56,4 +57,4 @@ mix.webpackConfig({
             // importScripts: ['./js/push_message.js']
         })
     ]
-});
+});*/

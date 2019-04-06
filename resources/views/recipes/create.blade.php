@@ -19,8 +19,6 @@
                   action="{{ route('recipe.store') }}">
                 @csrf
 
-                <
-
                 <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column  recipe-right-add ">
                         {{--Titre recette--}}

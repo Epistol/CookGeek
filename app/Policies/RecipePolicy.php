@@ -12,7 +12,7 @@ class RecipePolicy
 {
     use HandlesAuthorization, SuperAdminPolicy;
 
-    private $policyName = "recipes";
+    private $policyName = "recipe";
 
     /**
      * @param User|null $user

@@ -29,7 +29,7 @@ import Ingredients from "./components/recipe/ingredients/Ingredients.vue";
 
 import IngredientsEdit from './components/Recipe/IngredientsEdit.vue';
 import SignalRecipe from "./components/Recipe/Signal.vue";
-import StepsEdit from "./components/Recipe/StepsEdit.vue";
+import StepsEdit from "./components/recipe/steps/StepsEdit";
 
 // Utilisation des composants
 

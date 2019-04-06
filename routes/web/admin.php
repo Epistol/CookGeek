@@ -27,8 +27,8 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-Route::group(['prefix' => 'voyager'], function () {
+/*Route::group(['prefix' => 'voyager'], function () {
     Route::middleware(['admin'])->group(function () {
         Voyager::routes();
     });
-});
+});*/
