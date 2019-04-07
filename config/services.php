@@ -29,11 +29,7 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
-    'stripe' => [
-        'model'  => App\User::class,
-        'key'    => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-    ],
+
 
     'google' => [
         'client_id'     => env('GOOGLE_CLIENT_ID'),
@@ -61,5 +57,10 @@ return [
 
     // TODO : Tumblr, twitch
 
+    'stripe' => [
+        'model'  => App\User::class,
+        'key'    => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
 
 ];

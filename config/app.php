@@ -172,7 +172,7 @@ return [
 
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
-
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -239,6 +239,7 @@ return [
         'HTMLMin'      => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
         'Sanitizer' => Waavi\Sanitizer\Laravel\Facade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

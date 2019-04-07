@@ -46,12 +46,9 @@
     <meta name="mobile-web-app-capable" content="yes">
     <script src={{asset('/js/tinymce/js/tinymce.min.js')}}></script>
     <script>tinymce.init({selector: '#tinymce'});</script>
-    {{--<script src=https://cloud.tinymce.com/stable/tinymce.min.js></script>--}}
 <!-- Styles -->
     @include("layouts.style")
     @include("layouts.cookie")
-    {{--@include("layouts.cookiebot")--}}
-
 </head>
 <body class="">
 @include("layouts.menuMobile")
@@ -89,7 +86,7 @@
     @include("layouts.footer")
 </div>
 
-
+<!-- SCRIPTS  -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,10 +99,8 @@
   }
 }
 
-
-
 </script>
-<!-- SCRIPTS  -->
+
 <script type="application/javascript">
     // @see https://docs.headwayapp.co/widget for more configuration options.
     var HW_config = {
@@ -115,7 +110,6 @@
 
     var toast_png = "{{ asset('js/toasty/toasty.png')}}";
     var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
-
 </script>
 
 
@@ -141,8 +135,7 @@
 
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")
-@include("layouts.js.pwa")
-
+{{--@include("layouts.js.pwa")--}}
 
 </body>
 </html>

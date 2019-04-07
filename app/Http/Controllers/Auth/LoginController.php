@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -59,7 +59,7 @@ class LoginController extends Controller
 
     public function redirectToProvider($driver)
     {
-        return Socialite::driver($driver)->redirect();
+        return Socialite::driver($driver)->with(["prompt" => "select_account"])->redirect();
     }
 
     /**
@@ -85,11 +85,12 @@ class LoginController extends Controller
             $newUser                    = new User;
             $newUser->provider_name     = $driver;
             $newUser->provider_id       = $user->getId();
-            $newUser->name              = $user->getName();
+            $newUser->name              = $user->getNickname();
             $newUser->email             = $user->getEmail();
             $newUser->email_verified_at = now();
-            $newUser->avatar            = $user->getAvatar();
+            $newUser->img            = $user->getAvatar();
             $newUser->save();
+            $user->assignRole('user');
 
             auth()->login($newUser, true);
         }

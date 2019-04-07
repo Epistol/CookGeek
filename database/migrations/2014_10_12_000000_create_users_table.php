@@ -17,6 +17,7 @@
                 $table->increments('id');
                 $table->string('name')->unique();
                 $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
                 $table->string('img');
                 $table->string('password');
                 $table->integer('nb_visites')->default(0);

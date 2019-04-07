@@ -13,15 +13,15 @@ class User extends \TCG\Voyager\Models\User implements BannableContract
 {
     use Notifiable, Bannable, HasRoles;
 
-    public    $additional_attributes = ['locale'];
-    protected $table                 = "users";
+    public $additional_attributes = ['locale'];
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable
-                       = [
+        = [
             'identity', 'name', 'email', 'password', 'pseudo',
         ];
     protected $guarded = [];
