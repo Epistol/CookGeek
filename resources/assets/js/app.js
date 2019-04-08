@@ -13,9 +13,10 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VueMoment from 'vue-moment';
+import Locale from './vue-i18n-locales.generated';
 
 Vue.use(VueMoment);
-
+Vue.use(VueInternationalization);
 // Imports des composants
 
 import VeeValidate from 'vee-validate';
@@ -56,67 +57,75 @@ import Time from "./components/Time.vue";
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
+const lang = document.documentElement.lang.substr(0, 2);
+const i18n = new VueInternationalization({
+    locale: lang,
+    messages: Locale
+});
+
+
 const app = new Vue({
-                        el: '#bodyWebsite',
-                        components: {
-                            draggable, VueClazyLoad,
-                            'editor': Editor,
-                            'like-recipe-async': () => ('./components/LikeRecipe.vue'),
-                            'signalrecipe': SignalRecipe,
-                            'modal': modal,
-                            'Notif': Notif,
-                            VeeValidate,
-                            'new-recipe-form': NewRecipe,
-                            'likerecipe': LikeRecipe,
-                            'validationform': validationform,
-                            'ingredient_form': Ingredients,
-                            'star-rating': StarRating,
-                            'datepicker': Datepicker,
-                            'homerecipes': HomeRecipes,
-                            'searchautocomplete': Autocomplete,
-                            'categ_icon': TypeUniversIcon,
-                            'pictureupload': PictureUpload,
-                            'univpictureupload': UnivPictureUpload,
-                            'picture-input': PictureInput,
-                            'add-recipe': AddPictureRecipe,
-                            'add-any-picture': AddPicture,
-                            'login-modal': LoginModal,
-                            'fulltime': Time,
-                            'preview-image': ImagePicture,
-                        },
+    el: '#bodyWebsite',
+    i18n,
+    components: {
+        draggable, VueClazyLoad,
+        'editor': Editor,
+        'like-recipe-async': () => ('./components/LikeRecipe.vue'),
+        'signalrecipe': SignalRecipe,
+        'modal': modal,
+        'Notif': Notif,
+        VeeValidate,
+        'new-recipe-form': NewRecipe,
+        'likerecipe': LikeRecipe,
+        'validationform': validationform,
+        'ingredient_form': Ingredients,
+        'star-rating': StarRating,
+        'datepicker': Datepicker,
+        'homerecipes': HomeRecipes,
+        'searchautocomplete': Autocomplete,
+        'categ_icon': TypeUniversIcon,
+        'pictureupload': PictureUpload,
+        'univpictureupload': UnivPictureUpload,
+        'picture-input': PictureInput,
+        'add-recipe': AddPictureRecipe,
+        'add-any-picture': AddPicture,
+        'login-modal': LoginModal,
+        'fulltime': Time,
+        'preview-image': ImagePicture,
+    },
 
-                        data: {
-                            titre: '',
-                            showModalLike: false,
-                            showModal: false,
-                            magic_flag: false,
+    data: {
+        titre: '',
+        showModalLike: false,
+        showModal: false,
+        magic_flag: false,
 
-                            steps: [
-                                {etape: '',},
-                                {etape: '',}
-                            ],
-                            rows: [
-                                {name: '', qtt: '',},
-                                {name: '', qtt: '',},
-                            ],
-                            seen: true,
-                        },
+        steps: [
+            {etape: '',},
+            {etape: '',}
+        ],
+        rows: [
+            {name: '', qtt: '',},
+            {name: '', qtt: '',},
+        ],
+        seen: true,
+    },
 
-                        methods: {
-                            addRow: function ($index) {
-                                console.log($index);
-                                this.rows.push({});
-                            },
-                            removeRow: function (index) {
-                                this.rows.splice(index, 1);
-                            },
+    methods: {
+        addRow: function ($index) {
+            console.log($index);
+            this.rows.push({});
+        },
+        removeRow: function (index) {
+            this.rows.splice(index, 1);
+        },
 
-                            addStep: function () {
-                                this.steps.push({});
-                            },
+        addStep: function () {
+            this.steps.push({});
+        },
 
-                            removeStep: function (index) {
-                                this.steps.splice(index, 1);
-                            },
-                        },
-                    });
+        removeStep: function (index) {
+            this.steps.splice(index, 1);
+        },
+    },
+});

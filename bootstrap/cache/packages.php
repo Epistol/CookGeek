@@ -175,6 +175,13 @@
       0 => 'Lorisleiva\\LaravelDeployer\\LaravelDeployerServiceProvider',
     ),
   ),
+  'martinlindhe/laravel-vue-i18n-generator' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MartinLindhe\\VueInternationalizationGenerator\\GeneratorProvider',
+    ),
+  ),
   'mews/purifier' => 
   array (
     'providers' => 

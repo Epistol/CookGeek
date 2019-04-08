@@ -173,6 +173,8 @@ return [
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
+
         /*
          * Application Service Providers...
          */

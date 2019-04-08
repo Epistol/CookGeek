@@ -124,6 +124,8 @@ class RecipeController extends Controller
     {
         $recette          = Recipe::where('slug', $slug)->firstOrFail();
         $type             = TypeRecipe::where('id', $recette->type)->first();
+        $pictures = $recette->image();
+        dd($pictures);
         $picturesOfAuthor = $recette->image()->where('user_id', Auth::user()->id)->get();
         $picturesOfUsers  = $recette->image()->where('user_id', '!=', Auth::user()->id)->get();
 

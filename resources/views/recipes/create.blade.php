@@ -3,15 +3,7 @@
 @section('content')
 
     <div class="container recipe-add">
-        <div class="background-round">
-            <div class="columns">
-                <div class="column has-text-centered">
-                    <h1 class="title">{{__('Create your recipe')}}
-                        <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span>
-                    </h1>
-                </div>
-            </div>
-        </div>
+
 
         {{-- Bug commence ici--}}
         <section class="section">
