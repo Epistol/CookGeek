@@ -3,17 +3,17 @@
     @if($pictures->count() > 0)
         <div>
             <a href="{{ $pictures->getFirstMediaUrl() }}"
-               data-lightbox="{{strip_tags(clean($recette->slug))}}"
-               data-title="{{clean($recette->title)}}">
+               data-lightbox="{{ cleanInput($recette->slug) }}"
+               data-title="{{ cleanInput($recette->title) }}">
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
-                                srcset="{{$pictures->first()->getUrl('thumbSquare')}}"
+                                srcset="{{ $pictures->first()->getUrl('thumbSquare') }}"
                                 class="fit-cover"
-                                alt="{{ __('Image of the recipe :') . strip_tags(clean($recette->title))}}">
-                        <img src="{{$pictures->getFirstMediaUrl()}}"
+                                alt="{{ __('Image of the recipe :') . cleanInput($recette->title) }}">
+                        <img src="{{ $pictures->getFirstMediaUrl() }}"
                              class="fit-cover"
-                             alt="{{  __('Image of the recipe :') . strip_tags(clean($recette->title))}}">
+                             alt="{{  __('Image of the recipe :') . cleanInput($recette->title) }}">
                     </picture>
                 </figure>
             </a>
@@ -33,11 +33,11 @@
         @endif
 
         {{--IF THERE IS 1 NON VALID PICTURE--}}
-        @include('recipes.show.imageWait')
+        {{--  @include('recipes.show.imageWait')--}}
         {{--IF THERE IS 0 VALID PICTURES--}}
     @else
         @include('recipes.show.addPicture')
-        @include('recipes.show.imageWait')
+        {{--        @include('recipes.show.imageWait')--}}
     @endif
 </div>
 

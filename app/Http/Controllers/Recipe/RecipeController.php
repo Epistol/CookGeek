@@ -122,16 +122,16 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $recette  = Recipe::where('slug', $slug)->firstOrFail();
-        $type     = TypeRecipe::where('id', $recette->type)->first();
-        $pictures = $recette->image()->get();
+        $recette          = Recipe::where('slug', $slug)->firstOrFail();
+        $type             = TypeRecipe::where('id', $recette->type)->first();
+        $picturesOfAuthor = $recette->image()->where('user_id', Auth::user()->id)->get();
+        $picturesOfUsers  = $recette->image()->where('user_id', '!=', Auth::user()->id)->get();
 
         // STARS
         $stars1 = RecipeLike::where('id_recipe', $recette->id)->avg('note');
         if ($stars1 == null) {
             $stars1 = 1;
         }
-
         $stars = number_format($stars1, 1, '.', '');
         $stars = explode('.', $stars, 2);
 
@@ -144,8 +144,8 @@ class RecipeController extends Controller
         $related = $this->morLikeThis($recette, 4);
 
         return view('recipes.show', [
-            compact('recette', 'related', 'pictures', 'stars',
-                'countrating', 'stars1', 'nom', 'media', 'type')
+            compact('recette', 'related', 'picturesOfAuthor',
+                'picturesOfUsers', 'stars', 'countrating', 'stars1', 'nom', 'media', 'type')
         ])->with('controller', $this);
     }
 
@@ -161,8 +161,7 @@ class RecipeController extends Controller
         $related  = Recipe::where('type', $recipe->type)
                           ->where('id', '!=', $recipe->id)->where('validated', 1)->inRandomOrder()->limit($nbWanted)
                           ->get();
-
-        $total = $related->count();
+        $total    = $related->count();
 
         // I want to execute theses commands
         if ($total < $nbWanted) {
@@ -210,7 +209,8 @@ class RecipeController extends Controller
         $types_plat = DB::table('type_recipes')->get();
 
         return view(
-            'recipes.edit', [
+            'recipes.edit',
+            [
                 compact('univers', 'difficulty', 'recette'),
                 'types'      => $types_univ,
                 'types_plat' => $types_plat,
