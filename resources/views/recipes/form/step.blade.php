@@ -25,7 +25,6 @@
                         </div>
                         <div class="column is-3  is-flex-center" v-cloak v-else-if="index === (steps.length-2)">
                             <a @click="removeStep(index)" class="button is-small icon-delete"><i class="fa fa-minus"
-                                                                                                 aria-hidden="true"></i></a>
                         </div>
 
                         <div class="column" v-cloak v-else="index === (rows.length-1)">
@@ -34,9 +33,7 @@
                     </div>
                 </div>
 
-
             </div>
-
 
         </div>
     @endif

@@ -56,14 +56,9 @@
                 this.counter--;
                 this.steps.splice(index, 1);
             },
-            async getSteps() {
-                axios.post('/api/recipe/get_steps/', {recipeid: this.recipe_id}).then(response => {
-                    this.steps = response.data;
-                });
-            },
+
         },
         mounted() {
-            this.getSteps();
         },
     }
 </script>

@@ -30,8 +30,7 @@ return [
     "search"           => "Rechercher",
     "register"         => "Inscription",
     "logout"           => "Déconnexion",
-    "medias"           => "Medias"
-
-
-
+    "medias"           => "Medias",
+    "next"             => "Suivant",
+    "previous"         => "Précédant"
 ];

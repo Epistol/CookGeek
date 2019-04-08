@@ -3,38 +3,17 @@
 @section('content')
 
     <div class="container recipe-add">
-
-
         {{-- Bug commence ici--}}
         <section class="section">
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">
                 @csrf
 
+                <create-recipe></create-recipe>
+
                 <div class="columns" style="margin-bottom: 2rem;">
-                    <div class="column  recipe-right-add ">
-                        {{--Titre recette--}}
-                        <div class="columns">
-                            <div class="column is-12">
-                                @include("recipes.form.titre")
-                                @include("recipes.form.univers")
-                                @include("recipes.form.ingredients")
-                                @include("recipes.form.step")
-                                {{--Liste des ingrédients --}}
-                            </div>
-                        </div>
-                    </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
-                            @include('recipes.form.image')
-
-                            <div class="columns">
-                                <div class="column is-10 is-offset-1">
-                                    @include("recipes.form.difficulty")
-                                    @include("recipes.form.categorie")
-                                    @include("recipes.form.cost")
-                                </div>
-                            </div>
                             <div class="columns timing">
                                 <div class="column is-10 is-offset-1 ">
                                     @include("recipes.form.timing.tps_preparation")
@@ -44,7 +23,6 @@
                                     @include("recipes.form.vegan")
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -64,7 +42,6 @@
                 </section>
             </form>
         </section>
-
     </div>
 
 @endsection
