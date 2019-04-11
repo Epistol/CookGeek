@@ -1,4 +1,11 @@
 <?php return array (
+  'algolia/scout-extended' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Algolia\\ScoutExtended\\ScoutExtendedServiceProvider',
+    ),
+  ),
   'arrilot/laravel-widgets' => 
   array (
     'providers' => 
@@ -307,13 +314,6 @@
     'aliases' => 
     array (
       'Sanitizer' => 'Waavi\\Sanitizer\\Laravel\\Facade',
-    ),
-  ),
-  'yab/laravel-scout-mysql-driver' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
     ),
   ),
 );

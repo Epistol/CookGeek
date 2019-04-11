@@ -4,8 +4,8 @@
             <div class="select is-fullwidth">
                 <select required name="difficulty" id="difficulty">
                     <option disabled value="">Difficulté</option>
-                    <option v-for="(item, index) in this.difficulty" value="{{index}}">
-                        {{item}}
+                    <option v-for="(item, index) in this.difficulties" :value="item.id">
+                        {{item.name | capitalize}}
                     </option>
                 </select>
             </div>
@@ -31,5 +31,13 @@
         mounted() {
             this.getDifficultyList();
         },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return '';
+                value = value.toString();
+                return value.charAt(0).toUpperCase() + value.slice(1);
+            }
+        }
+
     }
 </script>

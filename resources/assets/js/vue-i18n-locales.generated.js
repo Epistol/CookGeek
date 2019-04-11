@@ -101,6 +101,7 @@ export default {
     "fr": {
         "Create your recipe": "Créez votre recette",
         "Image of the recipe :": "Image de la recette : ",
+        "Cost of making": "Coût de réalisation",
         "joke": {
             "fetch": "Fetchez la vache !\n     - Monty Python, sacré Graal.",
             "house": "Je vous ai appris à tricher, truander, resquiller et vous redevenez honnête dès que j’ai le dos tourné !\n\nDocteur House, House."
@@ -150,7 +151,10 @@ export default {
             "search": "Rechercher",
             "register": "Inscription",
             "logout": "Déconnexion",
-            "medias": "Medias"
+            "medias": "Medias",
+            "next": "Suivant",
+            "previous": "Précédant",
+            "0": ""
         },
         "validation": {
             "accepté": "{attribute} doit être accepté.",

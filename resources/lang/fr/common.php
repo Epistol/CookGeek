@@ -32,5 +32,6 @@ return [
     "logout"           => "Déconnexion",
     "medias"           => "Medias",
     "next"             => "Suivant",
-    "previous"         => "Précédant"
+    "previous"         => "Précédant",
+    ""
 ];

@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Categunivers;
+use App\Difficulty;
 use App\Http\Controllers\Controller;
 use App\Signalements;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class RecipeController
+ * @package App\Http\Controllers\Api
+ */
 class RecipeController extends Controller
 {
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
     public function get_picture(Request $request)
     {
         $recipe_id = strip_tags(clean($request->recipeid));
@@ -25,6 +38,11 @@ class RecipeController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
     public function get_ingredients(Request $request)
     {
         $recipe_id = $request->recipeid;
@@ -42,6 +60,11 @@ class RecipeController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
     public function get_steps(Request $request)
     {
         $recipe_id = $request->recipeid;
@@ -69,6 +92,11 @@ class RecipeController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
     public function alerte(Request $request)
     {
         $recipe_id    = intval(strip_tags(clean($request->recipeid)));
@@ -91,4 +119,25 @@ class RecipeController extends Controller
             return response()->json(false);
         }
     }
+
+
+    /**
+     * @return JsonResponse
+     */
+    public function getDifficulties()
+    {
+        $difficulties = Difficulty::all();
+        return response()->json($difficulties);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getCategories()
+    {
+        $categories = Categunivers::all();
+        return response()->json($categories);
+    }
+
+
 }

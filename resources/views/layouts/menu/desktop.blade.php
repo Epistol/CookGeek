@@ -83,18 +83,7 @@
                 <div class=" search-header navbar-item bg-white">
                     <form action="{{route('search.post')}}" method="POST" role="search">
                         @csrf
-                        <label for="q" style="display:none">
-                            @lang('common.search')
-                        </label>
-                        <input class="input" type="text" placeholder="" id="q" name="q"
-                               style="padding: 0 50px 0 25px;">
-                        <label for="searchbutton" style="display:none">
-                            @lang('common.search')
-                        </label>
-                        <button type="submit" id="searchbutton" class="header-search-button"
-                                style="position: absolute;">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                        </button>
+                        @include('_search')
                     </form>
                 </div>
 

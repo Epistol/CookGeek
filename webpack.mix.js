@@ -23,3 +23,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.copyDirectory('resources/assets/js/toasty', 'public/js/toasty');
 mix.copyDirectory('resources/assets/js/tarteaucitron', 'public/js/tarteaucitron');
+
+mix.disableNotifications();

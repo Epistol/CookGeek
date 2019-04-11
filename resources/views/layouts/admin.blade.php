@@ -46,7 +46,7 @@
 <div id="bodyWebsite">
     <div id="app">
 
-    @include("layouts.menu")
+        @include("layouts.menu")
 
         <div class="columns is-paddingless is-marginless">
             <div class="column is-2 left_admin">
@@ -55,7 +55,7 @@
             <div class="column right_admin">
                 @yield('content')</div>
         </div>
-</div>
+    </div>
 </div>
 @include("layouts.footer")
 
@@ -63,7 +63,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     <?php
-    if (Auth::check() == FALSE || Auth::check() == '') {
+    if (Auth::check() == false || Auth::check() == '') {
         echo "var userIsLoggedIn = 0;";
     } else {
         echo "var userIsLoggedIn = 1;";
@@ -85,8 +85,6 @@
 <script src="/js/nouislider.min.js"></script>
 <div id="fb-root"></div>
 
-
-
 <script type="application/javascript">
     $(document).ready(function () {
         CKEDITOR.replace('contenu');
@@ -106,8 +104,6 @@
                 'max': 100
             }
         });
-
-
     });
 </script>
 

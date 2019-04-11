@@ -8,7 +8,6 @@
                     <li><a href="/">Accueil</a></li>
                     <li class=""><a class="" style="margin-left: 0.5rem; margin-right:0.5rem"
                                     href="{{url()->current()}}">{{$page->name}}</a></li>
-
                 </ul>
             </nav>
         </div>

@@ -15,7 +15,6 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    private $pictureService;
 
     /**
      * Create a new controller instance.
@@ -25,7 +24,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->pictureService = new PictureController();
     }
 
     /**

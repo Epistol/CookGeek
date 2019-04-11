@@ -5,26 +5,34 @@ namespace App\Http\Controllers;
 use App\Mail\ContactEmail;
 use App\Page;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
+/**
+ * Class PageController
+ * @package App\Http\Controllers
+ */
 class PageController extends Controller
 {
+    /**
+     * @var PictureController
+     */
     private $pictureService;
 
+    /**
+     * PageController constructor.
+     *
+     */
     public function __construct()
     {
         $this->pictureService = new PictureController();
     }
-
-    /**
-     * Liste des pages.
-     *
-     * @return Response
-     */
 
     /**
      * Création d'une nouvelle page.
@@ -33,22 +41,20 @@ class PageController extends Controller
      */
     public function create()
     {
-        return Auth::check() ? view('admin.page.create') : back();
+        return Auth::check() ? view('page.create') : back();
     }
 
+    /**
+     * @return Factory|View
+     */
     public function index()
     {
         $pages = Page::all();
         Carbon::setLocale('fr');
         $location = geoip()->getLocation($ip = null);
 
-        return view('admin.page.index', ['pages' => $pages, 'lieu' => $location->iso_code]);
+        return view('page.index', ['pages' => $pages, 'lieu' => $location->iso_code]);
     }
-
-    /*	public function cookie()
-        {
-            return view("admin.page.cookie");
-        }*/
 
     /**
      * Store a newly created resource in storage.
@@ -66,19 +72,23 @@ class PageController extends Controller
                 'author_id'  => Auth::id(),
                 'created_at' => now(),
                 'updated_at' => now(),
-
             ]
         );
         // Partie SLUG
         $slug = $this->slugtitre(strip_tags(clean($request->name)), $idRecette);
 
-        DB::table('pages')
-          ->where('id', $idRecette)
+        Page::where('id', $idRecette)
           ->update(['slug' => $slug]);
 
         return redirect()->route('page.index');
     }
 
+    /**
+     * @param $titre
+     * @param $idrecipe
+     *
+     * @return string
+     */
     private function slugtitre($titre, $idrecipe)
     {
         $titreslug = str_slug(strip_tags(clean($titre)), '-');
@@ -95,33 +105,50 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        return view('admin.page.show', ['page' => $page]);
+        return view('page.show', ['page' => $page]);
     }
 
+    /**
+     * @return Factory|View
+     */
     public function show_cgu()
     {
         $page = Page::where('slug', 'like', '%cgu%')->first();
 
-        return view('admin.page.show', ['page' => $page]);
+        return view('page.show', ['page' => $page]);
     }
 
+    /**
+     * @return Factory|View
+     */
     public function show_shop()
     {
         return view('shop');
     }
 
+    /**
+     * @return Factory|View
+     */
     public function show_confidentiality()
     {
         $page = Page::where('id', '3')->first();
 
-        return view('admin.page.show', ['page' => $page]);
+        return view('page.show', ['page' => $page]);
     }
 
+    /**
+     * @return Factory|View
+     */
     public function show_contact()
     {
-        return view('admin.page.contact');
+        return view('page.contact');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
     public function store_contact(Request $request)
     {
         $captcha = $request->request->get('g-recaptcha-response');
@@ -196,6 +223,9 @@ class PageController extends Controller
         return redirect()->route('index')->with('status', "Bien enregistré, merci ! <3 ");
     }*/
 
+    /**
+     * @return Factory|View
+     */
     public function accueil()
     {
         $universcateg = DB::table('categunivers')->get();
@@ -218,6 +248,11 @@ class PageController extends Controller
         ])->with(['controller' => $this]);
     }
 
+    /**
+     * @param $val
+     *
+     * @return string
+     */
     public function sum_time($val)
     {
         $format = '%1$02d';
@@ -243,6 +278,11 @@ class PageController extends Controller
         }
     }
 
+    /**
+     * @param $val
+     *
+     * @return string
+     */
     public function sum_time_home($val)
     {
         $format = '%1$02d';

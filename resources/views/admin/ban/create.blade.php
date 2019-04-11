@@ -45,7 +45,6 @@
                     </div>
                 </div>
 
-
                 <button type="submit" class="button is-primary">Bannir</button>
             </form>
 

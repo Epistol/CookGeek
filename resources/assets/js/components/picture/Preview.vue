@@ -11,8 +11,9 @@
 
 <script>
     import PictureInput from 'vue-picture-input';
-    import modal from "../modal/ModalView.vue";
     import LoginModal from "../modal/LoginModal.vue";
+    import ModalView from "../modal/ModalView";
+
     export default {
         props: ["name", "id"],
         data() {
@@ -21,7 +22,7 @@
             }
         },
         components: {
-            PictureInput, modal, LoginModal
+            PictureInput, ModalView, LoginModal
         },
         methods: {
             onFileChange(image) {

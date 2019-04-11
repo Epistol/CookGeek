@@ -41,7 +41,7 @@
             </template>
             <template v-if="clicked">
                 <template v-if="user !== '' ">
-                    <modal v-if="clicked" @close="clicked = false" v-cloak>
+                    <ModalView v-if="clicked" @close="clicked = false" v-cloak>
                         <h3 slot="header">Ajouter votre photo</h3>
                         <div slot="body">
                             <template v-if="!sent">
@@ -59,7 +59,7 @@
                         <div slot="footer" v-if="!sent">
                             <button class="button is-primary" @click="uploadImage()" type="button">Envoyer</button>
                         </div>
-                    </modal>
+                    </ModalView>
                 </template>
                 <template v-else>
                         <login-modal :showModal="true" @close="closing()" ></login-modal>
@@ -71,8 +71,8 @@
 
 <script>
     import PictureInput from 'vue-picture-input';
-    import modal from "../modal/ModalView.vue";
     import LoginModal from "../modal/LoginModal.vue";
+    import ModalView from "../modal/ModalView";
 
     export default {
         props: ["url", "anyid", "height", "width", "send", "recipeid", "recipehash", "user", "type", "prefilled"],
@@ -86,7 +86,7 @@
             }
         },
         components: {
-            PictureInput, modal, LoginModal
+            PictureInput, ModalView, LoginModal
         },
         methods: {
             generateColors() {

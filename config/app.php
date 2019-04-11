@@ -171,9 +171,10 @@ return [
         TCG\Voyager\VoyagerServiceProvider::class,
 
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
-        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
+
+        Dimsav\Translatable\TranslatableServiceProvider::class,
 
         /*
          * Application Service Providers...

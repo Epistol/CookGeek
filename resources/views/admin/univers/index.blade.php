@@ -28,15 +28,13 @@
                        href="{{ route('admin.universe.edit',  $value->id ) }}">Editer</a>
                 </td>
                 <td>
-                    <form method="POST" action="/admin/univers/{{$value->id}}">
+                    <form method="POST" action="{{route('universe.destroy' , $value->id)}}">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
                         <div class="caution">
                             <button class="button is-danger" @click="showModal = true">Supprimer</button>
                         </div>
                     </form>
-
-
                 </td>
             </tr>
         @endforeach

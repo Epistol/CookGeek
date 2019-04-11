@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Create from "./components/recipe/Create";
+
 require('./bootstrap');
 require('./dropzone');
 require('./sticky');
@@ -16,23 +18,29 @@ import VueMoment from 'vue-moment';
 import Locale from './vue-i18n-locales.generated';
 
 Vue.use(VueMoment);
+
+import VueInternationalization from 'vue-i18n';
 Vue.use(VueInternationalization);
+
+import InstantSearch from 'vue-instantsearch';
+Vue.use(InstantSearch);
+
 // Imports des composants
 
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import StarRating from './star-rating';
-import InstantSearch from 'vue-instantsearch';
+//import InstantSearch from 'vue-instantsearch';
 import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.css';
 import PictureInput from 'vue-picture-input'
-import Affix from 'vue-affix';
+//import Affix from 'vue-affix';
 import Editor from '@tinymce/tinymce-vue';
+import ModalView from "./components/modal/ModalView";
 
 // Composants CDG
 
-import modal from "./components/modal/ModalView.vue";
 import LoginModal from "./components/modal/LoginModal.vue";
 import Notif from "./components/modal/NotifAlert.vue";
 import LikeRecipe from "./components/recipe/like/LikeRecipe.vue";
@@ -63,7 +71,6 @@ const i18n = new VueInternationalization({
     messages: Locale
 });
 
-
 const app = new Vue({
     el: '#bodyWebsite',
     i18n,
@@ -72,7 +79,7 @@ const app = new Vue({
         'editor': Editor,
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
-        'modal': modal,
+        'modal': ModalView,
         'Notif': Notif,
         VeeValidate,
         'new-recipe-form': NewRecipe,
@@ -92,6 +99,7 @@ const app = new Vue({
         'login-modal': LoginModal,
         'fulltime': Time,
         'preview-image': ImagePicture,
+        'create-recipe': Create
     },
 
     data: {

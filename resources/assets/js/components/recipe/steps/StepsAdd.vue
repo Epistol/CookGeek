@@ -4,7 +4,7 @@
             <div class="columns">
 
                 <div class="column is-2">
-                    <span> Etape {{index+1}}</span>
+                    <span>Etape {{index+1}}</span>
                 </div>
 
                 <div class="column">
@@ -48,9 +48,9 @@
             addStep() {
                 this.counter++;
                 this.steps.push({
-                    name: '',
-                    qtt: '',
-                });
+                                    name: '',
+                                    qtt: '',
+                                });
             },
             removeStep: function (index) {
                 this.counter--;

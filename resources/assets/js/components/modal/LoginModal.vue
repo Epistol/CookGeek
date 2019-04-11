@@ -1,7 +1,7 @@
 <template>
     <transition name="vodal-zoom">
     <div>
-        <modal v-if="showModal" @keyup.esc="$emit('close')" @close="$emit('close')" v-cloak>
+        <ModalView v-if="showModal" @keyup.esc="$emit('close')" @close="$emit('close')" v-cloak>
             <h3 slot="header">Connexion</h3>
             <div slot="body">
                 <template v-if="this.sent === false">
@@ -58,18 +58,21 @@
                     </span>
                 </template>
             </div>
-        </modal>
+        </ModalView>
     </div>
     </transition>
 </template>
 
 <script>
-    import Modal from './ModalView.vue';
+
+    import ModalView from "./ModalView";
 
     export default {
         name: "LoginModal",
         props: ['showModal', 'url'],
-        components: {Modal},
+        components: {
+            ModalView
+        },
 
         data() {
             return {

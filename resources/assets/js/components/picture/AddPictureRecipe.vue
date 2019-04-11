@@ -23,7 +23,7 @@
             </template>
             <template v-if="clicked">
                 <template v-if="user !== '' ">
-                    <modal v-if="clicked" @close="clicked = false" v-cloak>
+                    <ModalView v-if="clicked" @close="clicked = false" v-cloak>
                         <h3 slot="header">Ajouter votre photo</h3>
                         <div slot="body">
                             <template v-if="!sent">
@@ -41,10 +41,10 @@
                         <div slot="footer" v-if="!sent">
                             <button class="button is-primary" type="button" @click="uploadImage()">Envoyer</button>
                         </div>
-                    </modal>
+                    </ModalView>
                 </template>
                 <template v-else>
-                        <login-modal :showModal="true" @close="closing()" ></login-modal>
+                    <login-modal :showModal="true" @close="closing()"></login-modal>
                 </template>
             </template>
         </div>
@@ -55,13 +55,24 @@
     import PictureInput from 'vue-picture-input';
     import modal from "../modal/ModalView.vue";
     import LoginModal from "../modal/LoginModal.vue";
+    import ModalView from "../modal/ModalView";
 
     export default {
         name: "AddPictureRecipe",
         props: ["recipeid", "recipehash", "user", "type"],
         data() {
             return {
-                colors: ['background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);', 'background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);', 'background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);', 'background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);', 'background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);', 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);', 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);', 'background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);', 'background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);'],
+                colors: [
+                    'background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);',
+                    'background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);',
+                    'background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);',
+                    'background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);',
+                    'background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);',
+                    'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);',
+                    'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);',
+                    'background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);',
+                    'background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);'
+                ],
                 colorGenerated: '',
                 clicked: false,
                 image: '',
@@ -69,14 +80,14 @@
             }
         },
         components: {
-            PictureInput, modal, LoginModal
+            PictureInput, ModalView, LoginModal
         },
         methods: {
             generateColors() {
                 const idFirst = Math.floor(Math.random() * this.colors.length);
                 this.colorGenerated = this.colors[idFirst];
             },
-            closing(){
+            closing() {
                 this.clicked = false;
             },
             showModal() {

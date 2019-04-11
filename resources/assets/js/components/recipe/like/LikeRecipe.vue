@@ -12,6 +12,8 @@
 
 <script>
 
+    import LoginModal from "../../modal/LoginModal";
+
     export default {
         props: ["recipeid", "userid"],
         data: function () {
@@ -24,7 +26,7 @@
             };
         },
         components: {
-            modal, LoginModal
+            LoginModal
         },
         methods: {
             async toggleLike() {

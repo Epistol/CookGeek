@@ -4,7 +4,7 @@
     <div class="container">
 
         <form method="POST" action="{{route("admin.universe.update", $univers->id)}}">
-           @csrf
+            @csrf
             <input type="hidden" name="_method" value="PATCH">
 
             <div class="columns">
@@ -32,10 +32,11 @@
 
                     <div class="field" style="max-height: 5rem;">
                         <label class="label">Bannière</label>
-                        <add-any-picture type="no-button" send="true" url="api/universe" prefilled="" height="200"  width="200"  anyid="{{$univers->id}}"
-                                         user="{{Auth::user()->id}}"></add-any-picture>
+                       {{-- <add-any-picture type="no-button" send="true" url="api/universe" prefilled="" height="200"
+                                         width="200" anyid="{{$univers->id}}"
+                                         user="{{Auth::user()->id}}"></add-any-picture>--}}
                     </div>
-                        {{--<input type="file" name="banniere" id="banniere" />--}}
+                    {{--<input type="file" name="banniere" id="banniere" />--}}
                 </div>
             </div>
 
