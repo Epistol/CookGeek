@@ -13480,7 +13480,7 @@ vue-i18n@^8.10.0:
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.10.0.tgz#e95f215b5548bedf5610c14506acb3438717b6bd"
   integrity sha512-n2A9Q5dbwk3q4r6cOdT5jJaMb/mV4JtkNmgSiUNtoDp+N00bQHzpALM2XRyNzu7WZSHyi10/wBrNKl0unNKpVg==
 
-vue-instantsearch@^1.7.0:
+vue-instantsearch@1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/vue-instantsearch/-/vue-instantsearch-1.7.0.tgz#93db5df104311dd6c803668adec26b0a02f86f3a"
   integrity sha512-Eib9R+fRlg4/s7/yr3HXtgdT7a/KByCqcGsUk40fgSpXIFWaCLXPQTf/QwnRRWbH1lfnZ4aScVe0zc0CkhQpMQ==
