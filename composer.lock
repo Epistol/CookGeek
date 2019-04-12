@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46d2b5877aa03d2e78cc6f3780cda06c",
+    "content-hash": "b0a95e6838b075a69b1b62fad5ef41c7",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -5907,6 +5907,43 @@
                 "sentry"
             ],
             "time": "2018-11-01T12:52:14+00:00"
+        },
+        {
+            "name": "sightengine/client-php",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sightengine/client-php.git",
+                "reference": "5d1eb8acf7c651eedb91590da63cbe02805b9ed4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sightengine/client-php/zipball/5d1eb8acf7c651eedb91590da63cbe02805b9ed4",
+                "reference": "5d1eb8acf7c651eedb91590da63cbe02805b9ed4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sightengine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Sightengine Team",
+                    "homepage": "https://sightengine.com"
+                }
+            ],
+            "description": "Sightengine PHP client",
+            "homepage": "https://sightengine.com",
+            "time": "2018-05-28T12:07:30+00:00"
         },
         {
             "name": "socialiteproviders/instagram",

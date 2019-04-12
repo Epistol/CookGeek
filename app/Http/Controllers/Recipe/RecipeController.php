@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Sightengine\SightengineClient;
 use Throwable;
 
 /**
@@ -103,8 +104,19 @@ class RecipeController extends Controller
         $recipe->insertSteps($request);
         foreach ($request->picture as $picture) {
             if (!empty($picture)) {
+                $SightEngine = new SightengineClient(env('SIGHTENGINEUSER'), env('SIGHTENGINEKEY'));
+
+//                $imageCheck = $SightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes', 'text'])
+//                                          ->set_file($picture);
+
+                //analyze the locally stored image for nudity
+
                 $newPicture = $this->addMedia($picture)
                                    ->toMediaCollection('main');
+//                $imageCheck = $SightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes', 'text'])
+//                                          ->set_url($newPicture->url);
+//                dd($imageCheck->nudity);
+
                 $recipe->image()->attach($newPicture, ['status' => 'draft']);
             }
         }
@@ -122,8 +134,8 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $recette          = Recipe::where('slug', $slug)->firstOrFail();
-        $type             = TypeRecipe::where('id', $recette->type)->first();
+        $recette  = Recipe::where('slug', $slug)->firstOrFail();
+        $type     = TypeRecipe::where('id', $recette->type)->first();
         $pictures = $recette->image();
         dd($pictures);
         $picturesOfAuthor = $recette->image()->where('user_id', Auth::user()->id)->get();

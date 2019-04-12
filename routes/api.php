@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,24 +16,9 @@ Route::post('/search', [
 ]);
 
 require base_path('routes/api/like.php');
-
-
-Route::post('/user/getName', 'Api\UserController@nameReturn')->name('api.user.name');
-
-Route::post('/recipe/get_steps/', 'Api\RecipeController@get_steps')->name('api.recipe.get_steps');
-Route::post('/recipe/get_ingredients/', 'Api\RecipeController@get_ingredients')->name('api.recipe.get_ingredients');
-
-Route::post('/recipe/alerte/', 'Api\RecipeController@alerte')->name('api.recipe.alerte');
-
-
-Route::get('/note', function () {
-    return redirect('/');
-})->name('api.like.checknote');
-
-Route::post('/note', 'Api\NoteController@checknote')->name('api.like.checknote');
-
-Route::get('/difficulty', 'Api\RecipeController@getDifficulties')->name('api.difficulty');
-Route::get('/category', 'Api\RecipeController@getCategories')->name('api.category');
+require base_path('routes/api/user.php');
+require base_path('routes/api/recipe/recipe.php');
+require base_path('routes/api/recipe/step.php');
 
 
 //EN SURSIS :
