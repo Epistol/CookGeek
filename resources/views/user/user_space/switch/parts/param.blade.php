@@ -30,12 +30,11 @@
                     <div class="control">
                         <validationform><span slot="text">Sauvegarder</span></validationform>
                     </div>
-
                 </div>
             </div>
         </div>
         <div class="column is-4">
-            @include("user.user_space.switch.parts.account.informations.avatar")
+            @include("user.user_space.switch.parts.informations.avatar")
         </div>
     </div>
 

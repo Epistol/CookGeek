@@ -83,7 +83,7 @@
                 <div class=" search-header navbar-item bg-white">
                     <form action="{{route('search.post')}}" method="POST" role="search">
                         @csrf
-                        @include('_search')
+                        @include('layouts.menu._search')
                     </form>
                 </div>
 

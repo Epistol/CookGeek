@@ -168,8 +168,6 @@ return [
         /*
          * Package Service Providers...
          */
-        TCG\Voyager\VoyagerServiceProvider::class,
-
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,

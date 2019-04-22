@@ -8,7 +8,7 @@
                     @include('user.user_space.parts.menu')
                 </div>
                 <div class="column is-three-quarters blockcontent">
-               ACCUEIL
+                    ACCUEIL
                 </div>
             </div>
         </div>

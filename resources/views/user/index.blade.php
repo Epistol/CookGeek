@@ -3,8 +3,6 @@
 @section('content')
     <div class="section">
         <div class="container">
-
-
             <div class="columns">
                 <div class="column " id="left_column">
                     @include('user.user_space.parts.menu')
@@ -13,7 +11,6 @@
                ACCUEIL
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

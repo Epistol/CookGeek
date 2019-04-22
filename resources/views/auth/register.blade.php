@@ -87,7 +87,4 @@
     </section>
 
     @include("auth.donnes_perso")
-
-
-
 @endsection

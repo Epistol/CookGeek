@@ -60,6 +60,7 @@ import AddPicture from "./components/picture/AddPicture.vue";
 import ImagePicture from "./components/picture/Preview.vue";
 
 import Time from "./components/Time.vue";
+import BigSearch from "./components/BigSearch";
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -99,7 +100,8 @@ const app = new Vue({
         'login-modal': LoginModal,
         'fulltime': Time,
         'preview-image': ImagePicture,
-        'create-recipe': Create
+        'create-recipe': Create,
+        'big-search' : BigSearch
     },
 
     data: {

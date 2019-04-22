@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\User as AliasUser;
 use Exception;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -50,7 +51,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        $identity  = request()->get('identity');
+        $identity = request()->get('identity');
         $fieldName = filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
         request()->merge([$fieldName => $identity]);
 
@@ -82,16 +83,15 @@ class LoginController extends Controller
         if ($existingUser) {
             auth()->login($existingUser, true);
         } else {
-            $newUser                    = new User;
-            $newUser->provider_name     = $driver;
-            $newUser->provider_id       = $user->getId();
-            $newUser->name              = $user->getNickname();
-            $newUser->email             = $user->getEmail();
+            $newUser = new AliasUser;
+            $newUser->provider_name = $driver;
+            $newUser->provider_id = $user->getId();
+            $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
+            $newUser->email = $user->getEmail();
             $newUser->email_verified_at = now();
-            $newUser->img            = $user->getAvatar();
+            $newUser->img = $user->getAvatar();
             $newUser->save();
-            $user->assignRole('user');
-
+            $newUser->assignRole('user');
             auth()->login($newUser, true);
         }
 

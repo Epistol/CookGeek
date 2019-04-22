@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -33,5 +34,6 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('ingredients');
         Permission::generateFor('pages');
         Permission::generateFor('posts');
+
     }
 }

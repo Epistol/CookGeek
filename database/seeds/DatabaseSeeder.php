@@ -20,11 +20,8 @@ class DatabaseSeeder extends Seeder
 
             // Generate permissionss
             PermissionsTableSeeder::class,
-            // Create and associate roles to permissions
+            PermissionRoleTableSeeder::class,
+            //UsersTableSeeder::class,
         ]);
-        $this->call([PermissionRoleTableSeeder::class,
-            UsersTableSeeder::class,
-
-            ]);
     }
 }

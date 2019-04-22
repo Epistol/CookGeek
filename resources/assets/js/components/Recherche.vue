@@ -5,7 +5,6 @@
             <template slot-scope="{ result }">
                 <div>
                     <h1>@{{ result.title }}</h1>
-
                 </div>
             </template>
         </ais-results>

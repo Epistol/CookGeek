@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PictureController;
+use App\Recipe;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -46,6 +46,14 @@ class HomeController extends Controller
         return view('user.user_space.switch.param');
     }
 
+    /**
+     * @return Factory|View
+     */
+    public function data()
+    {
+        return view('user.user_space.data');
+    }
+
     // Validation forms
 
     /**
@@ -65,7 +73,7 @@ class HomeController extends Controller
             }
         }
 
-        $refus      = $request->no_traitement_donnees;
+        $refus = $request->no_traitement_donnees;
         $traitement = $refus == true ? false : true;
 
         $user_data = [
@@ -108,13 +116,12 @@ class HomeController extends Controller
      */
     public function favorites(Request $request)
     {
-        $user_id = Auth::user()->id;
-
         $recettes = DB::table('recipes')
                       ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-                      ->where('user_recipe_likes.user_id', '=', $user_id)
+                      ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
                       ->select('recipes.*')
-                      ->paginate(12);
+                      ->paginate(12)
+        ;
 
         return view(
             'user_space.favorites.index',
@@ -133,10 +140,7 @@ class HomeController extends Controller
      */
     public function recipes(Request $request)
     {
-        $user_id = Auth::user()->id;
-
-        $recettes = DB::table('recipes')
-                      ->where('id_user', '=', $user_id)->paginate(12);
+        $recettes = Recipe::where('id_user', Auth::user()->id)->paginate(12);
 
         return view(
             'user_space.recipes.index',
@@ -154,11 +158,11 @@ class HomeController extends Controller
      */
     public function checkLiked($id)
     {
-        $u_id = Auth::id();
         $l_id = DB::table('user_recipe_likes')
                   ->where(
-                      ['user_id' => $u_id, 'recipe_id' => $id]
-                  )->first();
+                      ['user_id' => Auth::id(), 'recipe_id' => $id]
+                  )->first()
+        ;
 
         return $l_id ? 'liked' : false;
     }
