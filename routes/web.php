@@ -38,7 +38,6 @@ Route::middleware(['fw-block-blacklisted'])->group(function () {
     Route::feeds();
 
     //ADMIN
-    require base_path('routes/web/design.php');
 
     //require base_path('routes/web/admin.php');
 

@@ -3,7 +3,7 @@
         <section class="section" style="padding: 1.5rem;">
             <div class="notification"  @click="$emit('close')"  :class="title">
                 <button class="delete" @click="$emit('close')"></button>
-                {{this.content}}
+                <slot name="text"></slot>
             </div>
         </section>
     </transition>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\User as AliasUser;
 use Exception;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -81,23 +80,27 @@ class LoginController extends Controller
         } catch (Exception $e) {
             return redirect()->route('login');
         }
-
         $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
 
         if ($existingUser) {
             auth()->login($existingUser, true);
         } else {
-            $newUser = new AliasUser;
-            $newUser->provider_name = $driver;
-            $newUser->provider_id = $user->getId();
-            $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
-            $newUser->email = $user->getEmail();
-            $newUser->pseudo = null;
-            $newUser->email_verified_at = now();
-            $newUser->img = $user->getAvatar();
-            $newUser->save();
-            $newUser->assignRole('user');
-            auth()->login($newUser, true);
+            $existingUserOther = User::where('email', $user->getEmail())->first();
+            if ($existingUserOther) {
+                return redirect(route('login'))->with('status', __('account.already-exit'));
+            } else {
+                $newUser = new User;
+                $newUser->provider_name = $driver;
+                $newUser->provider_id = $user->getId();
+                $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
+                $newUser->email = $user->getEmail();
+                $newUser->pseudo = null;
+                $newUser->email_verified_at = now();
+                $newUser->img = $user->getAvatar();
+                $newUser->save();
+                $newUser->assignRole('user');
+                auth()->login($newUser, true);
+            }
         }
 
         return redirect($this->redirectPath());

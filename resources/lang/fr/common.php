@@ -33,5 +33,6 @@ return [
     "medias"           => "Medias",
     "next"             => "Suivant",
     "previous"         => "Précédant",
-    ""
+    "name-or-mail" => 'Pseudo ou Email',
+    'password' => 'Mot de passe'
 ];

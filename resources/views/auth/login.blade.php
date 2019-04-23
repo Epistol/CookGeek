@@ -1,4 +1,4 @@
-@extends('layouts.app.app_captcha')
+@extends('layouts.app.app')
 @section('titrepage', "Connexion")
 @section('content')
     <section class="section">
@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="column is-two-fifths is-paddingless">
-                    <h1 class="title">Connexion</h1>
+                    <h1 class="title">@lang('common.login')</h1>
                     <div class="blockcontent">
                         <div class="columns">
                             <div class="column is-three-quarters is-offset-1">
@@ -25,7 +25,8 @@
                                     <div class="is-divider" data-content="OU"></div>
 
                                     <div class="field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
-                                        <label for="identity" class="label col-md-4 control-label">Pseudo ou Email
+                                        <label for="identity"
+                                               class="label col-md-4 control-label">@lang('common.name-or-mail')
 
                                         </label>
                                         <div class="control">
@@ -41,7 +42,8 @@
 
 
                                     <div class="field form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="password" class="col-md-4 control-label">Mot de passe</label>
+                                        <label for="password"
+                                               class="col-md-4 control-label">@lang('common.password')</label>
 
                                         <div class="col-md-6">
                                             <input id="password" type="password" class="input form-control"
@@ -56,7 +58,7 @@
                                     </div>
 
                                     <a class=" help" @click="showModal = true">
-                                        Mot de passe oublié ?
+                                        @lang('passwords.forgot')
                                     </a>
 
                                     <label class="checkbox" for="remember">
@@ -71,7 +73,7 @@
                                             <button class="button is-primary "
                                                     data-sitekey="{{env("RECAPTCHA_SITE_KEY")}}"
                                                     data-callback="SubmitFn">
-                                                Connexion
+                                                @lang('common.login')
                                             </button>
                                         </p>
                                     </div>
