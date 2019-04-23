@@ -60,7 +60,11 @@ class LoginController extends Controller
 
     public function redirectToProvider($driver)
     {
-        return Socialite::driver($driver)->with(["prompt" => "select_account"])->redirect();
+        if ($driver !== 'twitter') {
+            return Socialite::driver($driver)->with(["prompt" => "select_account"])->redirect();
+        } else {
+            return Socialite::driver($driver)->redirect();
+        }
     }
 
     /**
@@ -78,7 +82,7 @@ class LoginController extends Controller
             return redirect()->route('login');
         }
 
-        $existingUser = User::where('email', $user->getEmail())->first();
+        $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
 
         if ($existingUser) {
             auth()->login($existingUser, true);
@@ -88,6 +92,7 @@ class LoginController extends Controller
             $newUser->provider_id = $user->getId();
             $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
             $newUser->email = $user->getEmail();
+            $newUser->pseudo = null;
             $newUser->email_verified_at = now();
             $newUser->img = $user->getAvatar();
             $newUser->save();

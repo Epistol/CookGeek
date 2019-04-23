@@ -18,7 +18,7 @@
                                     {{ csrf_field() }}
 
                                     <a href="{{ route('login.provider', 'google') }}"
-                                       class="btn btn-secondary">{{ __('Google Sign in') }}</a>
+                                       class="button btn-secondary">{{ __('Google Sign in') }}</a>
                                     <a href="{{ route('login.provider', 'facebook') }}" class="button">Facebook</a>
                                     <a href="{{ route('login.provider', 'twitter') }}" class="button">Twitter</a>
 

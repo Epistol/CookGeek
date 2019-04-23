@@ -107,10 +107,10 @@
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-item user_profile">
                             <div class="user_picture">
-                                @if(Auth::user()->avatar !== 'users/default.png')
+                                @if(Auth::user()->img !== '')
                                     <figure class="image is-48x48">
                                         <img class="is-rounded "
-                                             src="/user/{{Auth::user()->id}}/{{strip_tags(clean(Auth::user()->avatar))}}"
+                                             src="{{cleanInput(Auth::user()->img)}}"
                                              style="height: 100%;width: 100%;">
                                     </figure>
                                 @else

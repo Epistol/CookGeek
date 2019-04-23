@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use Spatie\Permission\Models\Role;
-use TCG\Voyager\Models\Permission;
+use Spatie\Permission\Models\Permission;
+
 
 class PermissionRoleTableSeeder extends Seeder
 {
