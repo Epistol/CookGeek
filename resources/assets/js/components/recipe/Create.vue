@@ -5,10 +5,10 @@
                 <div class="column has-text-centered">
                     <h1 class="title">{{ $t('Create your recipe')}} </h1>
                     <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
-                           name="title" id="title">
+                           v-model="registration.title" name="title" id="title">
                 </div>
                 <DropPicturePreview></DropPicturePreview>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div v-if="step === 2" id="universe-name">
                 <div class="column is-3" style="text-align: left;">
@@ -17,8 +17,8 @@
                 <div class="column is-8" id="universe_input">
                     <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
 
-                    <button @click.prevent="prev()">{{ $t('previous')}}</button>
-                    <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                    <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
+                    <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
 
                 </div>
             </div>
@@ -31,20 +31,20 @@
                         <Ingredients></Ingredients>
                     </div>
                 </section>
-                <button @click.prevent="prev()">{{ $t('previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
+                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div v-if="step === 4" id="steps-list">
                 <StepsAdd></StepsAdd>
-                <button @click.prevent="prev()">{{ $t('previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
+                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div v-if="step === 5" id="sliders">
                 <SetDifficulty></SetDifficulty>
                 <SetCategory></SetCategory>
                 <SetCost></SetCost>
-                <button @click.prevent="prev()">{{ $t('previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
+                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div v-if="step === 6" id="timing">
                 <div class="columns" style="margin-bottom: 2rem;">
@@ -62,8 +62,8 @@
                         </div>
                     </div>
                 </div>
-                <button @click.prevent="prev()">{{ $t('previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('next')}}</button>
+                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
+                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div v-if="step === 7" id="comment">
                 <div class="columns" style="margin-bottom: 2rem;">
@@ -73,7 +73,7 @@
                         <SetMedia></SetMedia>
                     </div>
                 </div>
-                <button @click.prevent="prev()">{{ $t('previous')}}</button>
+                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
                 <button @click.prevent="submit()" class="button is-primary is-large publish" id="submit-all">Ajouter ma
                     recette
                 </button>
@@ -112,6 +112,7 @@
             return {
                 step: 1,
                 registration: {
+                    title: null,
                     name: null,
                     email: null,
                     street: null,
