@@ -169,8 +169,8 @@ return [
          * Package Service Providers...
          */
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         Dimsav\Translatable\TranslatableServiceProvider::class,
 

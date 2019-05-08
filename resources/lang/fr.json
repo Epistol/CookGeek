@@ -1,6 +1,8 @@
 {
   "Create your recipe": "Créez votre recette",
   "Image of the recipe :" : "Image de la recette : ",
-  "Cost of making": "Coût de réalisation"
+  "Cost of making": "Coût de réalisation",
+  "next" : "Suivant",
+  "previous": "Précédant"
 
 }

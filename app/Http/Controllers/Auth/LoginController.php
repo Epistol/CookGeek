@@ -61,6 +61,8 @@ class LoginController extends Controller
     {
         if ($driver !== 'twitter') {
             return Socialite::driver($driver)->with(["prompt" => "select_account"])->redirect();
+        } elseif ($driver == 'instagram') {
+            return Socialite::with('Instagram')->redirect();
         } else {
             return Socialite::driver($driver)->redirect();
         }

@@ -21,6 +21,7 @@
                                        class="button btn-secondary">{{ __('Google Sign in') }}</a>
                                     <a href="{{ route('login.provider', 'facebook') }}" class="button">Facebook</a>
                                     <a href="{{ route('login.provider', 'twitter') }}" class="button">Twitter</a>
+                                    <a href="{{ route('login.provider', 'instagram') }}" class="button">Instagram</a>
 
                                     <div class="is-divider" data-content="OU"></div>
 

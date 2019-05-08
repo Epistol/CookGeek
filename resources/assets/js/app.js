@@ -33,7 +33,7 @@ import StarRating from './star-rating';
 //import InstantSearch from 'vue-instantsearch';
 import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
-import 'vue2-dropzone/dist/vue2Dropzone.css';
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import PictureInput from 'vue-picture-input'
 //import Affix from 'vue-affix';
 import Editor from '@tinymce/tinymce-vue';

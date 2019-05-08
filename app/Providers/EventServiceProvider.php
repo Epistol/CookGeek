@@ -6,8 +6,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
-class EventServiceProvider extends ServiceProvider
-{
+class EventServiceProvider extends ServiceProvider {
     /**
      * The event listener mappings for the application.
      *
@@ -50,6 +49,9 @@ class EventServiceProvider extends ServiceProvider
                 'App\Listeners\LogPasswordReset',
             ],
 
+
+
+
             SocialiteWasCalled::class => [
                 // add your listeners (aka providers) here
                 'SocialiteProviders\\Instagram\\InstagramExtendSocialite@handle',
@@ -62,8 +64,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         parent::boot();
 
         //

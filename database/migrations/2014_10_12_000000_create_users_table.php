@@ -17,7 +17,7 @@
                 $table->increments('id');
                 $table->string('pseudo')->nullable()->unique();
                 $table->string('name')->nullable();
-                $table->string('email')->unique();
+                $table->string('email')->nullable()->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('img');
                 $table->string('password');
