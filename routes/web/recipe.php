@@ -6,6 +6,8 @@
  * Time: 23:25.
  */
 
+//Route::get('recipe/create', 'Recipe\RecipeController@create')->middleware('auth');
+
 Route::resource('recipe', 'Recipe\RecipeController');
 
 // RECETTE

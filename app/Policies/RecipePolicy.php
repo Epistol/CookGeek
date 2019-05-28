@@ -12,7 +12,7 @@ class RecipePolicy
 {
     use HandlesAuthorization, SuperAdminPolicy;
 
-    private $policyName = "recipe";
+    private $policyName = 'recipe';
 
     /**
      * @param User|null $user
@@ -50,6 +50,9 @@ class RecipePolicy
      */
     public function create(User $user)
     {
+        if (!isset($user)) {
+            return false;
+        }
         return ($user->can('add-' . $this->policyName));
     }
 

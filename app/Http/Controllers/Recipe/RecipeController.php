@@ -64,9 +64,12 @@ class RecipeController extends Controller
     /**
      * Show the form for creating a new resource
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
+        $this->authorize('create', Recipe::class);
+
         $types_univ = Categunivers::all();
         $difficulty = Difficulty::all();
         $types_plat = TypeRecipe::all();
@@ -158,8 +161,18 @@ class RecipeController extends Controller
         $related = $this->morLikeThis($recette, 4);
 
         return view('recipes.show', [
-            compact('recette', 'related', 'picturesOfAuthor',
-                'picturesOfUsers', 'stars', 'countrating', 'stars1', 'nom', 'media', 'type')
+            compact(
+                'recette',
+                'related',
+                'picturesOfAuthor',
+                'picturesOfUsers',
+                'stars',
+                'countrating',
+                'stars1',
+                'nom',
+                'media',
+                'type'
+            )
         ])->with('controller', $this);
     }
 
