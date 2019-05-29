@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,6 +66,10 @@ class Handler extends ExceptionHandler
         if ($this->shouldReport($exception) && !$this->isHttpException($exception) && !config('app.debug')) {
             $exception = new HttpException(500, 'Whoops!');
         }
+
+        /*if ($exception instanceof AuthorizationException) {
+            return redirect(route('index'));
+        }*/
 
         return parent::render($request, $exception);
     }

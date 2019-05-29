@@ -50,9 +50,6 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        if (!isset($user)) {
-            return false;
-        }
         return ($user->can('add-' . $this->policyName));
     }
 

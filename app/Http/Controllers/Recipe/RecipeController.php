@@ -68,17 +68,23 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Recipe::class);
+        if (!Auth::guard()->check()) {
+            return redirect(route('index'));
+        }
 
-        $types_univ = Categunivers::all();
-        $difficulty = Difficulty::all();
-        $types_plat = TypeRecipe::all();
+        if ($this->authorize('create', Recipe::class)) {
+            $types_univ = Categunivers::all();
+            $difficulty = Difficulty::all();
+            $types_plat = TypeRecipe::all();
 
-        return view('recipes.create', [
-            'types'      => $types_univ,
-            'difficulty' => $difficulty,
-            'types_plat' => $types_plat
-        ]);
+            return view('recipes.create', [
+                'types'      => $types_univ,
+                'difficulty' => $difficulty,
+                'types_plat' => $types_plat
+            ]);
+        } else {
+            return redirect(route('index'));
+        }
     }
 
     /**
