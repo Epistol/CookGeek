@@ -18,13 +18,12 @@ use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
 use Spatie\Image\Exceptions\InvalidManipulation;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\Image\Manipulations;
 
 use Spatie\MediaLibrary\Models\Media;
 use Throwable;
-
 
 /**
  * Class Recipe
@@ -86,20 +85,20 @@ class Recipe extends Model implements Feedable, HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-             ->width(150)
-             ->height(150)
-             ->format(Manipulations::FORMAT_JPG);
+            ->width(150)
+            ->height(150)
+            ->format(Manipulations::FORMAT_JPG);
 
         $this->addMediaConversion('index')
-             ->width(300)
-             ->height(150)
-             ->format(Manipulations::FORMAT_PNG)
-             ->withResponsiveImages();
+            ->width(300)
+            ->height(150)
+            ->format(Manipulations::FORMAT_PNG)
+            ->withResponsiveImages();
 
         $this->addMediaConversion('thumbSquare')
-             ->width(250)
-             ->height(250)
-             ->format(Manipulations::FORMAT_WEBP);
+            ->width(250)
+            ->height(250)
+            ->format(Manipulations::FORMAT_WEBP);
     }
 
     /**
@@ -142,12 +141,12 @@ class Recipe extends Model implements Feedable, HasMedia
         }
 
         return FeedItem::create()
-                       ->id($this->id)
-                       ->title($this->title)
-                       ->summary($contenu)
-                       ->updated($this->updated_at)
-                       ->link(url('/') . '/recette/' . $this->slug)
-                       ->author($this->id_user);
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($contenu)
+            ->updated($this->updated_at)
+            ->link(url('/') . '/recette/' . $this->slug)
+            ->author($this->id_user);
     }
 
     /**
@@ -180,9 +179,9 @@ class Recipe extends Model implements Feedable, HasMedia
         if ($choice === false) {
             return $query->whereNotIn('id', function ($query) {
                 $query->select('recipe_id')
-                      ->from('signalements')
-                      ->where('status', 1)
-                      ->orWhere('created_at', '>=', today()->toDateTimeString());
+                    ->from('signalements')
+                    ->where('status', 1)
+                    ->orWhere('created_at', '>=', today()->toDateTimeString());
             });
         }
 
@@ -197,8 +196,8 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function slugUpdate($newSlug, $uid)
     {
-        $slug         = $this->slugTitle($newSlug, $uid);
-        $this->slug   = $slug;
+        $slug = $this->slugTitle($newSlug, $uid);
+        $this->slug = $slug;
         $this->hashid = $uid;
         $this->saveOrFail();
     }
@@ -221,21 +220,21 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function easyInsert($request)
     {
-        $this->title             = $request->title;
-        $this->vegetarien        = $request->vegan == 'on' ? true : false;
-        $this->difficulty        = intval($request->difficulty);
-        $this->type              = intval($request->categ_plat);
-        $this->cost              = intval($request->cost);
-        $this->prep_time         = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
-        $this->cook_time         = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
-        $this->rest_time         = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
-        $this->nb_guests         = $request->unite_part;
-        $this->guest_type        = $request->value_part;
-        $this->type_univers      = intval($request->type);
-        $this->id_user           = Auth::user()->id;
-        $this->video             = $request->video;
+        $this->title = $request->title;
+        $this->vegetarien = $request->vegan == 'on' ? true : false;
+        $this->difficulty = intval($request->difficulty);
+        $this->type = intval($request->categ_plat);
+        $this->cost = intval($request->cost);
+        $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
+        $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
+        $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
+        $this->nb_guests = $request->unite_part;
+        $this->guest_type = $request->value_part;
+        $this->type_univers = intval($request->type);
+        $this->id_user = Auth::user()->id;
+        $this->video = $request->video;
         $this->commentary_author = $request->comment;
-        $this->validated         = 0;
+        $this->validated = 0;
 
         return $this;
     }
@@ -261,7 +260,6 @@ class Recipe extends Model implements Feedable, HasMedia
                 if (!empty($picture)) {
                     $newPicture = $newStep->addMedia($picture)->toMediaCollection('main');
                     $newStep->image()->attach($newPicture);
-
                 }
             }
 
@@ -302,4 +300,43 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this->morphToMany('App\Ingredient', 'ingredientable');
     }
 
+    public function moreLikeThis($nbRecipes)
+    {
+        $nbWanted = intval($nbRecipes);
+        $related  = Recipe::where('type', $this->type)
+            ->where('id', '!=', $this->id)->where('validated', 1)->inRandomOrder()->limit($nbWanted)
+            ->get();
+        $total    = $related->count();
+
+        // I want to execute theses commands
+        if ($total < $nbWanted) {
+            $relatedUniverse = Recipe::where('univers', $this->univers)->where('validated', 1)
+                ->where('id', '!=', $this->id)
+                ->inRandomOrder()->limit($nbWanted - $total)
+                ->get();
+            $related         = $related->merge($relatedUniverse);
+            $total           = $total + $relatedUniverse->count();
+        }
+
+        if ($total < $nbWanted) {
+            $relatedSameAuthor = Recipe::where('validated', 1)
+                ->where('id', '!=', $this->id)
+                ->where('id_user', $this->id_user)
+                ->inRandomOrder()->limit($nbWanted - $total)
+                ->get();
+            $related           = $related->merge($relatedSameAuthor);
+            $total             = $total + $relatedSameAuthor->count();
+        }
+
+        if ($total < $nbWanted) {
+            $relatedSameAuthor = Recipe::where('validated', 1)
+                ->where('id', '!=', $this->id)
+                ->inRandomOrder()->limit($nbWanted - $total)
+                ->get();
+            $related           = $related->merge($relatedSameAuthor);
+            $total             = $total + $relatedSameAuthor->count();
+        }
+
+        return $related;
+    }
 }

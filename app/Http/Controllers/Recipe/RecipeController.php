@@ -48,14 +48,14 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $medias  = Categunivers::all();
+        $medias = Categunivers::all();
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
         // On charge les données dans la vue
         return view(
             'recipes.index',
             [
-                'medias'  => $medias,
+                'medias' => $medias,
                 'recipes' => $recipes
             ]
         )->with(['controller' => $this]);
@@ -72,19 +72,15 @@ class RecipeController extends Controller
             return redirect(route('index'));
         }
 
-        if ($this->authorize('create', Recipe::class)) {
-            $types_univ = Categunivers::all();
-            $difficulty = Difficulty::all();
-            $types_plat = TypeRecipe::all();
+        $types_univ = Categunivers::all();
+        $difficulty = Difficulty::all();
+        $types_plat = TypeRecipe::all();
 
-            return view('recipes.create', [
-                'types'      => $types_univ,
-                'difficulty' => $difficulty,
-                'types_plat' => $types_plat
-            ]);
-        } else {
-            return redirect(route('index'));
-        }
+        return view('recipes.create', [
+            'types' => $types_univ,
+            'difficulty' => $difficulty,
+            'types_plat' => $types_plat
+        ]);
     }
 
     /**
@@ -98,15 +94,15 @@ class RecipeController extends Controller
     public function store(StoreRecipeRequest $request)
     {
         // Insert recipe
-        $recipe   = new Recipe;
-        $recipe   = $recipe->easyInsert($request);
+        $recipe = new Recipe;
+        $recipe = $recipe->easyInsert($request);
         $universe = Univers::firstOrCreate(['name' => $request->univers]);
         $recipe->universes()->attach($universe);
 
         $recipe->saveOrFail();
 
         // SLUG & UID
-        $uid  = $recipe->generateUid($recipe->id);
+        $uid = $recipe->generateUid($recipe->id);
         $slug = $recipe->slugUpdate($recipe->id, $uid);
 
         $recipe->insertIngredients($request);
@@ -121,7 +117,7 @@ class RecipeController extends Controller
                 //analyze the locally stored image for nudity
 
                 $newPicture = $this->addMedia($picture)
-                                   ->toMediaCollection('main');
+                    ->toMediaCollection('main');
 //                $imageCheck = $SightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes', 'text'])
 //                                          ->set_url($newPicture->url);
 //                dd($imageCheck->nudity);
@@ -143,12 +139,12 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $recette  = Recipe::where('slug', $slug)->firstOrFail();
-        $type     = TypeRecipe::where('id', $recette->type)->first();
+        $recette = Recipe::where('slug', $slug)->firstOrFail();
+        $type = TypeRecipe::where('id', $recette->type)->first();
         $pictures = $recette->image();
         dd($pictures);
         $picturesOfAuthor = $recette->image()->where('user_id', Auth::user()->id)->get();
-        $picturesOfUsers  = $recette->image()->where('user_id', '!=', Auth::user()->id)->get();
+        $picturesOfUsers = $recette->image()->where('user_id', '!=', Auth::user()->id)->get();
 
         // STARS
         $stars1 = RecipeLike::where('id_recipe', $recette->id)->avg('note');
@@ -163,8 +159,8 @@ class RecipeController extends Controller
         if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }
-        $nom     = User::where('id', $recette->id_user)->value('name');
-        $related = $this->morLikeThis($recette, 4);
+        $nom = User::where('id', $recette->id_user)->value('name');
+        $related = $recette->moreLikeThis(4);
 
         return view('recipes.show', [
             compact(
@@ -182,51 +178,6 @@ class RecipeController extends Controller
         ])->with('controller', $this);
     }
 
-    /**
-     * @param $recipe
-     * @param $nbRecipes
-     *
-     * @return mixed
-     */
-    private function morLikeThis($recipe, $nbRecipes)
-    {
-        $nbWanted = intval($nbRecipes);
-        $related  = Recipe::where('type', $recipe->type)
-                          ->where('id', '!=', $recipe->id)->where('validated', 1)->inRandomOrder()->limit($nbWanted)
-                          ->get();
-        $total    = $related->count();
-
-        // I want to execute theses commands
-        if ($total < $nbWanted) {
-            $relatedUniverse = Recipe::where('univers', $recipe->univers)->where('validated', 1)
-                                     ->where('id', '!=', $recipe->id)
-                                     ->inRandomOrder()->limit($nbWanted - $total)
-                                     ->get();
-            $related         = $related->merge($relatedUniverse);
-            $total           = $total + $relatedUniverse->count();
-        }
-
-        if ($total < $nbWanted) {
-            $relatedSameAuthor = Recipe::where('validated', 1)
-                                       ->where('id', '!=', $recipe->id)
-                                       ->where('id_user', $recipe->id_user)
-                                       ->inRandomOrder()->limit($nbWanted - $total)
-                                       ->get();
-            $related           = $related->merge($relatedSameAuthor);
-            $total             = $total + $relatedSameAuthor->count();
-        }
-
-        if ($total < $nbWanted) {
-            $relatedSameAuthor = Recipe::where('validated', 1)
-                                       ->where('id', '!=', $recipe->id)
-                                       ->inRandomOrder()->limit($nbWanted - $total)
-                                       ->get();
-            $related           = $related->merge($relatedSameAuthor);
-            $total             = $total + $relatedSameAuthor->count();
-        }
-
-        return $related;
-    }
 
     /**
      * @param $slug
@@ -235,8 +186,8 @@ class RecipeController extends Controller
      */
     public function edit($slug)
     {
-        $recette    = Recipe::where('slug', $slug)->firstOrFail();
-        $univers    = Univers::where('id', '=', $recette->univers)->select('name')->first();
+        $recette = Recipe::where('slug', $slug)->firstOrFail();
+        $univers = Univers::where('id', '=', $recette->univers)->select('name')->first();
         $types_univ = DB::table('categunivers')->get();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipes')->get();
@@ -245,7 +196,7 @@ class RecipeController extends Controller
             'recipes.edit',
             [
                 compact('univers', 'difficulty', 'recette'),
-                'types'      => $types_univ,
+                'types' => $types_univ,
                 'types_plat' => $types_plat,
             ]
         );
@@ -253,7 +204,7 @@ class RecipeController extends Controller
 
     /**
      * @param StoreRecipeRequest $request
-     * @param Recipe             $recipe
+     * @param Recipe $recipe
      *
      * @return RedirectResponse
      * @throws ValidationException
