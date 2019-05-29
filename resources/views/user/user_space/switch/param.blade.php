@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
                     @include('user.user_space.parts.menu')
                 </div>
                 <?= Auth::user()->getAllPermissions();?>
-                <?= Auth::user()->getRoleNames();?>
+<!--                --><?//= Auth::user()->getRoleNames();?>
                 <div class="column is-three-quarters blockcontent" id="parameters">
                     @include("user.user_space.switch.parts.param")
                 </div>

@@ -40,7 +40,7 @@ class RecipeController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Recipe::class, 'recipe');
+//        $this->authorizeResource(Recipe::class, 'recipes');
     }
 
     /**
@@ -64,14 +64,9 @@ class RecipeController extends Controller
     /**
      * Show the form for creating a new resource
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
-        if (!Auth::guard()->check()) {
-            return redirect('/login');
-        }
-
         $types_univ = Categunivers::all();
         $difficulty = Difficulty::all();
         $types_plat = TypeRecipe::all();

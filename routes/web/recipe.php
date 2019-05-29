@@ -10,6 +10,21 @@
 
 Route::resource('recipe', 'Recipe\RecipeController');
 
+Route::resource('recipe', 'Recipe\RecipeController', [
+    'only' => [
+        'index',
+        'show'
+    ]
+])->middleware(['web']);
+
+Route::resource('recipe', 'Recipe\RecipeController', [
+    'except' => [
+        'index',
+        'show'
+    ]
+])->middleware(['web', 'auth']);
+
+
 // RECETTE
 Route::group(['prefix' => 'recipe'], function () {
     Route::get('/', 'Recipe\RecipeController@index')->name('recipe.index')->middleware('cacheResponse:2');
