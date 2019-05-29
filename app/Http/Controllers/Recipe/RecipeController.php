@@ -69,7 +69,7 @@ class RecipeController extends Controller
     public function create()
     {
         if (!Auth::guard()->check()) {
-            return redirect(route('index'));
+            return redirect('/login');
         }
 
         $types_univ = Categunivers::all();
@@ -155,7 +155,7 @@ class RecipeController extends Controller
         $stars = explode('.', $stars, 2);
 
         // RATING
-        $countrating = RecipeLike::where('id_recipe', '=', $recette->id)->count();
+        $countrating = RecipeLike::where('id_recipe', $recette->id)->count();
         if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }

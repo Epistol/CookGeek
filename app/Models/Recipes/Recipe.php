@@ -339,4 +339,5 @@ class Recipe extends Model implements Feedable, HasMedia
 
         return $related;
     }
+
 }

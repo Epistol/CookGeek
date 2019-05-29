@@ -4,21 +4,15 @@
         <div class="field-body">
             <div class="field has-addons">
                 <div class="control">
-                    <input class="input" id="unite_part" name="unite_part" type="number" placeholder="ex : 4"
-                    ">
+                    <input class="input" id="unite_part" name="unite_part" type="number" placeholder="ex : 4">
                 </div>
                 <div class="control">
                     <input class="input" id="value_part" name="value_part" type="text"
-                           placeholder="personnes, parts, etc"
-                           value="
-                               ">
+                           placeholder="personnes, parts, etc" value="">
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </template>
 
 <script>
