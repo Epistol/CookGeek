@@ -64,6 +64,7 @@ class RecipeController extends Controller
     /**
      * Show the form for creating a new resource
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
