@@ -103,13 +103,6 @@
       'Horizon' => 'Laravel\\Horizon\\Horizon',
     ),
   ),
-  'laravel/nexmo-notification-channel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
-    ),
-  ),
   'laravel/passport' => 
   array (
     'providers' => 
@@ -122,13 +115,6 @@
     'providers' => 
     array (
       0 => 'Laravel\\Scout\\ScoutServiceProvider',
-    ),
-  ),
-  'laravel/slack-notification-channel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
     ),
   ),
   'laravel/socialite' => 
@@ -203,11 +189,11 @@
   array (
     'providers' => 
     array (
-      0 => 'Sentry\\SentryLaravel\\SentryLaravelServiceProvider',
+      0 => 'Sentry\\Laravel\\ServiceProvider',
     ),
     'aliases' => 
     array (
-      'Sentry' => 'Sentry\\SentryLaravel\\SentryFacade',
+      'Sentry' => 'Sentry\\Laravel\\Facade',
     ),
   ),
   'socialiteproviders/manager' => 

@@ -31,9 +31,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('super-admin') ? true : null;
         });
 
-        Gate::guessPolicyNamesUsing(function ($modelClass) {
+       /* Gate::guessPolicyNamesUsing(function ($modelClass) {
             return 'App\\Policies\\' . class_basename ( $modelClass).'Policy';
-        });
+        });*/
 
 
 
