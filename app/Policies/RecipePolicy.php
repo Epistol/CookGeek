@@ -12,25 +12,13 @@ class RecipePolicy
 {
     use HandlesAuthorization, SuperAdminPolicy;
 
-    private $policyName = "recipe";
-
-    /**
-     * @param User|null $user
-     * @param Recipe    $recipe
-     *
-     * @return bool
-     */
-    public function index(?User $user, Recipe $recipe)
-    {
-        return ($user->can('browse-' . $this->policyName));
-    }
+    private $policyName = 'recipes';
 
     /**
      * Determine whether the user can view the recipe.
      *
-     * @param User   $user
-     * @param Recipe $recipe
-     *
+     * @param User $user
+     * @param Recipe $recipe *
      * @return mixed
      */
     public function view(?User $user, Recipe $recipe)
@@ -38,7 +26,7 @@ class RecipePolicy
         if (Auth::user()->id === $recipe->id_user) {
             return true;
         }
-        return !$recipe->isValid() ? false : ($user->can('read-' . $this->policyName));
+        return !$recipe->isValid() ? false : ($user->hasPermissionTo('read_' . $this->policyName));
     }
 
     /**
@@ -50,13 +38,17 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        return ($user->can('add-' . $this->policyName));
+        if ($user->can('add_recipes')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * Determine whether the user can update the recipe.
      *
-     * @param User   $user
+     * @param User $user
      * @param Recipe $recipe
      *
      * @return mixed
@@ -67,45 +59,45 @@ class RecipePolicy
             return true;
         }
 
-        return ($user->can('edit-' . $this->policyName));
+        return ($user->hasPermissionTo('edit_' . $this->policyName));
     }
 
     /**
      * Determine whether the user can delete the recipe.
      *
-     * @param User   $user
+     * @param User $user
      * @param Recipe $recipe
      *
      * @return mixed
      */
     public function delete(User $user, Recipe $recipe)
     {
-        return ($user->can('delete-' . $this->policyName));
+        return ($user->hasPermissionTo('delete_' . $this->policyName));
     }
 
     /**
      * Determine whether the user can restore the recipe.
      *
-     * @param User   $user
+     * @param User $user
      * @param Recipe $recipe
      *
      * @return mixed
      */
     public function restore(User $user, Recipe $recipe)
     {
-        return ($user->can('edit-' . $this->policyName));
+        return ($user->hasPermissionTo('edit_' . $this->policyName));
     }
 
     /**
      * Determine whether the user can permanently delete the recipe.
      *
-     * @param User   $user
+     * @param User $user
      * @param Recipe $recipe
      *
      * @return mixed
      */
     public function forceDelete(User $user, Recipe $recipe)
     {
-        return ($user->can('delete-' . $this->policyName));
+        return ($user->hasPermissionTo('delete_' . $this->policyName));
     }
 }

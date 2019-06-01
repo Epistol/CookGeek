@@ -4,11 +4,13 @@
             <div class="lecout">
                 <p>{{ $t('Cost of making') }}</p>
                 <fieldset class="rating">
-                    <input type="radio" v-for="(item, index) in this.cost" :id="item"
-                           :value="item" name="cost"/>
-                    <label class="cost button" :for="item">
-                        <i class="fas fa-dollar-sign" aria-hidden="true"></i>
-                    </label>
+                    <template v-for="(item, index) in this.cost">
+                        <input type="radio" v-bind="item" :id="item"
+                               :value="item" name="cost"/>
+                        <label class="cost button" :for="item">
+                            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+                        </label>
+                    </template>
                 </fieldset>
             </div>
         </div>

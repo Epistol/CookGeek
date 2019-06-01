@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\RecipePolicy;
+use App\Recipe;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -12,10 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies
-        = [
-            'App\Model' => 'App\Policies\ModelPolicy',
-        ];
+    protected $policies = [
+//        Recipe::class => RecipePolicy::class,
+    ];
 
     /**
      * Register any authentication / authorization services.
@@ -29,7 +30,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::before(function ($user, $ability) {
             return $user->hasRole('super-admin') ? true : null;
         });
-
-        //
     }
 }

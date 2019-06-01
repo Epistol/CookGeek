@@ -14,7 +14,7 @@ use Illuminate\Support\Arr;
 if (!function_exists('generateCrud')) {
     function generateCrud($model, bool $extended, bool $group)
     {
-        $crud         = ['index', 'view', 'create', 'read', 'update', 'delete'];
+        $crud         = ['view', 'create', 'read', 'update', 'delete'];
         $crudExtended = ['restore', 'forceDelete'];
         $grouped      = [
             'view-' . $model . '-from-group',

@@ -6,7 +6,24 @@
  * Time: 23:25.
  */
 
+//Route::get('recipe/create', 'Recipe\RecipeController@create')->middleware('auth');
+
 Route::resource('recipe', 'Recipe\RecipeController');
+
+Route::resource('recipe', 'Recipe\RecipeController', [
+    'only' => [
+        'index',
+        'show'
+    ]
+])->middleware(['web']);
+
+Route::resource('recipe', 'Recipe\RecipeController', [
+    'except' => [
+        'index',
+        'show'
+    ]
+])->middleware(['web', 'auth']);
+
 
 // RECETTE
 Route::group(['prefix' => 'recipe'], function () {

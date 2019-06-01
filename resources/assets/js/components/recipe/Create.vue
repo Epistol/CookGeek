@@ -8,17 +8,18 @@
                     <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
                            v-model="registration.title" name="title" id="title">
                 </div>
+                <DropPicturePreview></DropPicturePreview>
+            </div>
+            <div id="universe-name">
+                <div class="column is-3" style="text-align: left;">
+                    <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
+                </div>
                 <div class="column is-8" id="universe_input">
                     <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
                     <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
                 </div>
             </div>
-            <div  id="universe-name">
-                <div class="column is-3" style="text-align: left;">
-                    <DropPicturePreview></DropPicturePreview>
-                </div>
-            </div>
-            <div  id="ingredients-list">
+            <div id="ingredients-list">
                 <section class="ingredients">
                     <div id="ingr">
                         <div class="column is-3" style="text-align: left;">
@@ -36,24 +37,18 @@
                 <SetCategory></SetCategory>
                 <SetCost></SetCost>
             </div>
-            <div  id="timing">
-                <div class="columns" style="margin-bottom: 2rem;">
-                    <div class="column  is-paddingless page is-4">
-                        <div class="padding-sides">
-                            <div class="columns timing">
-                                <div class="column is-10 is-offset-1 ">
-                                    <SetTimePreparation></SetTimePreparation>
-                                    <SetTimeCooking></SetTimeCooking>
-                                    <SetTimeRest></SetTimeRest>
-                                    <SetParts></SetParts>
-                                    <SetVegan></SetVegan>
-                                </div>
-                            </div>
+            <div id="timing" class="columns">
+                <div class="column is-paddingless pags" style="margin-bottom: 2rem;">
+                    <div class="padding-sides columns timing">
+                        <div class="column is-10 is-offset-1 ">
+                            <SetTimePreparation></SetTimePreparation>
+                            <SetTimeCooking></SetTimeCooking>
+                            <SetTimeRest></SetTimeRest>
+                            <SetParts></SetParts>
+                            <SetVegan></SetVegan>
                         </div>
                     </div>
                 </div>
-                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
             <div id="comment">
                 <div class="columns" style="margin-bottom: 2rem;">
@@ -63,13 +58,8 @@
                         <SetMedia></SetMedia>
                     </div>
                 </div>
-                <button @click.prevent="submit()" class="button is-primary is-large publish" id="submit-all">Ajouter ma
-                    recette
-                </button>
             </div>
-
         </div>
-
     </div>
 </template>
 
@@ -99,7 +89,6 @@
         },
         data() {
             return {
-                step: 1,
                 registration: {
                     title: null,
                     name: null,
@@ -110,14 +99,7 @@
                 }
             }
         },
-        methods: {
-            prev() {
-                this.step--;
-            },
-            next() {
-                this.step++;
-            },
-        },
+        methods: {},
     }
 </script>
 
