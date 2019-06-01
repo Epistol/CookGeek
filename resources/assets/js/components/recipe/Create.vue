@@ -1,28 +1,24 @@
 <template>
     <div id="create-recipe">
         <div class="background-round">
-            <div v-if="step === 1" id="recipe-name-img">
+            <div id="recipe-name-img">
                 <div class="column has-text-centered">
                     <h1 class="title">{{ $t('Create your recipe')}} </h1>
+                    <label for="title">{{ $t('recipe.univers')}}</label>
                     <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
                            v-model="registration.title" name="title" id="title">
                 </div>
-                <DropPicturePreview></DropPicturePreview>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
-            </div>
-            <div v-if="step === 2" id="universe-name">
-                <div class="column is-3" style="text-align: left;">
-                    <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
-                </div>
                 <div class="column is-8" id="universe_input">
+                    <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
                     <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
-
-                    <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
-                    <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
-
                 </div>
             </div>
-            <div v-if="step === 3" id="ingredients-list">
+            <div  id="universe-name">
+                <div class="column is-3" style="text-align: left;">
+                    <DropPicturePreview></DropPicturePreview>
+                </div>
+            </div>
+            <div  id="ingredients-list">
                 <section class="ingredients">
                     <div id="ingr">
                         <div class="column is-3" style="text-align: left;">
@@ -31,22 +27,16 @@
                         <Ingredients></Ingredients>
                     </div>
                 </section>
-                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
-            <div v-if="step === 4" id="steps-list">
+            <div id="steps-list">
                 <StepsAdd></StepsAdd>
-                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
-            <div v-if="step === 5" id="sliders">
+            <div id="sliders">
                 <SetDifficulty></SetDifficulty>
                 <SetCategory></SetCategory>
                 <SetCost></SetCost>
-                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
-                <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
-            <div v-if="step === 6" id="timing">
+            <div  id="timing">
                 <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
@@ -65,7 +55,7 @@
                 <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
                 <button @click.prevent="next()" class="button is-primary">{{ $t('common.next')}}</button>
             </div>
-            <div v-if="step === 7" id="comment">
+            <div id="comment">
                 <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column is-12 ">
                         <SetComment></SetComment>
@@ -73,7 +63,6 @@
                         <SetMedia></SetMedia>
                     </div>
                 </div>
-                <button class="button" @click.prevent="prev()">{{ $t('common.previous')}}</button>
                 <button @click.prevent="submit()" class="button is-primary is-large publish" id="submit-all">Ajouter ma
                     recette
                 </button>

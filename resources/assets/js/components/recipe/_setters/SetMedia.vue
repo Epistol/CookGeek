@@ -7,7 +7,6 @@
 
             <div class="columns is-multiline">
                 <div class="column has-text-centered">
-
                     <label class="radio" v-for="(item, index) in this.medias ">
                         <input type="radio" :id="index"
                                name="type" :value="item">

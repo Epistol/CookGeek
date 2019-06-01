@@ -10,5 +10,4 @@
  */
 
 Route::post('/user/getName', 'Api\UserController@nameReturn')->name('api.user.name');
-
 Route::post('/picture/update', 'UploadsController@updatePicture');
