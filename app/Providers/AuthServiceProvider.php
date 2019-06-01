@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-//        Recipe::class => RecipePolicy::class,
+        Recipe::class => RecipePolicy::class,
     ];
 
     /**
@@ -30,5 +30,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::before(function ($user, $ability) {
             return $user->hasRole('super-admin') ? true : null;
         });
+
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+            return 'App\\Policies\\' . class_basename ( $modelClass).'Policy';
+        });
+
+
+
     }
 }

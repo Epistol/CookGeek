@@ -38,7 +38,7 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        if ($user->can('add_recipes')) {
+        if (Auth::user()->hasPermissionTo('add_recipes')) {
             return true;
         } else {
             return false;
