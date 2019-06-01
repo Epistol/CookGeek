@@ -7,14 +7,6 @@ export default {
             "token": "This password reset token is invalid.",
             "user": "We can't find a user with that e-mail address."
         },
-        "auth": {
-            "failed": "These credentials do not match our records.",
-            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
-        },
-        "pagination": {
-            "previous": "&laquo; Previous",
-            "next": "Next &raquo;"
-        },
         "validation": {
             "accepted": "The {attribute} must be accepted.",
             "active_url": "The {attribute} is not a valid URL.",
@@ -96,39 +88,22 @@ export default {
                 }
             },
             "attributes": []
+        },
+        "pagination": {
+            "previous": "&laquo; Previous",
+            "next": "Next &raquo;"
+        },
+        "auth": {
+            "failed": "These credentials do not match our records.",
+            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         }
     },
     "fr": {
         "Create your recipe": "Créez votre recette",
         "Image of the recipe :": "Image de la recette : ",
         "Cost of making": "Coût de réalisation",
-        "joke": {
-            "fetch": "Fetchez la vache !\n     - Monty Python, sacré Graal.",
-            "house": "Je vous ai appris à tricher, truander, resquiller et vous redevenez honnête dès que j’ai le dos tourné !\n\nDocteur House, House."
-        },
-        "errors": {
-            "qtt": "L'ingrédient doit avoir une quantité",
-            "ingr": "Ajoutez le nom de votre ingrédient"
-        },
-        "passwords": {
-            "password": "Les mots de passe doivent comporter au moins six caractères et correspondre à la confirmation.",
-            "reset": "Votre mot de passe a été réinitialisé!",
-            "sent": "Nous avons envoyé votre lien de réinitialisation de mot de passe par e-mail!",
-            "token": "Ce jeton de réinitialisation de mot de passe n'est pas valide.",
-            "user": "Nous ne pouvons pas trouver un utilisateur avec cette adresse e-mail."
-        },
-        "auth": {
-            "failed": "Ces informations d'identification ne correspondent pas à nos enregistrements.",
-            "throttle": "Trop de tentatives de connexion. Veuillez réessayer dans {seconds} secondes.",
-            "mail_adress": "Adresse email",
-            "password": "Nouveau mot de passe",
-            "password_confirm": "Confirmez votre mot de passe",
-            "reset": "Modifiez votre mot de passe"
-        },
-        "pagination": {
-            "previous": "&laquo; Previous",
-            "next": "Next &raquo;"
-        },
+        "next": "Suivant",
+        "previous": "Précédant",
         "common": {
             "by": "Par",
             "registered": "Inscrit le",
@@ -154,7 +129,16 @@ export default {
             "medias": "Medias",
             "next": "Suivant",
             "previous": "Précédant",
-            "0": ""
+            "name-or-mail": "Pseudo ou Email",
+            "password": "Mot de passe"
+        },
+        "passwords": {
+            "password": "Les mots de passe doivent comporter au moins six caractères et correspondre à la confirmation.",
+            "reset": "Votre mot de passe a été réinitialisé!",
+            "sent": "Nous avons envoyé votre lien de réinitialisation de mot de passe par e-mail!",
+            "token": "Ce jeton de réinitialisation de mot de passe n'est pas valide.",
+            "user": "Nous ne pouvons pas trouver un utilisateur avec cette adresse e-mail.",
+            "forgot": "Mot de passe oublié ?"
         },
         "validation": {
             "accepté": "{attribute} doit être accepté.",
@@ -238,6 +222,16 @@ export default {
             },
             "attributes": []
         },
+        "pagination": {
+            "previous": "&laquo; Previous",
+            "next": "Next &raquo;"
+        },
+        "account": {
+            "my-account": "Mon compte",
+            "parameter": "Paramètres",
+            "my-data": "Mes données",
+            "already-exit": "Un utilisateur avec la même adresse e-mail existe déjà"
+        },
         "recipe": {
             "recipe": "Recette|Recettes",
             "diff": "Niveau",
@@ -252,6 +246,7 @@ export default {
             "ingredients": "Ingrédients",
             "rating": "Note",
             "univers": "Univers",
+            "category": "Categorie",
             "of": "de",
             "video": "La vidéo",
             "picture-of": "Image de la recette",
@@ -259,7 +254,27 @@ export default {
             "last-recipes": "Les dernières recettes",
             "add-new": "Ajouter une nouvelle",
             "all-recipes": " Toutes les recettes",
-            "types": "Type|Types"
+            "types": "Type|Types",
+            "add": {
+                "name": "Quel est le nom de la recette ?"
+            }
+        },
+        "errors": {
+            "qtt": "L'ingrédient doit avoir une quantité",
+            "ingr": "Ajoutez le nom de votre ingrédient",
+            "0": ""
+        },
+        "joke": {
+            "fetch": "Fetchez la vache !\n     - Monty Python, sacré Graal.",
+            "house": "Je vous ai appris à tricher, truander, resquiller et vous redevenez honnête dès que j’ai le dos tourné !\n\nDocteur House, House."
+        },
+        "auth": {
+            "failed": "Ces informations d'identification ne correspondent pas à nos enregistrements.",
+            "throttle": "Trop de tentatives de connexion. Veuillez réessayer dans {seconds} secondes.",
+            "mail_adress": "Adresse email",
+            "password": "Nouveau mot de passe",
+            "password_confirm": "Confirmez votre mot de passe",
+            "reset": "Modifiez votre mot de passe"
         }
     }
 }

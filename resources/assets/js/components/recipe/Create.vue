@@ -2,21 +2,49 @@
     <div id="create-recipe">
         <div class="background-round">
             <div id="recipe-name-img">
-                <div class="column has-text-centered">
-                    <h1 class="title">{{ $t('Create your recipe')}} </h1>
-                    <label for="title">{{ $t('recipe.univers')}}</label>
-                    <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
-                           v-model="registration.title" name="title" id="title">
+                <h1 class="title">{{ $t('Create your recipe')}} </h1>
+                <div class="columns">
+                    <div class="column is-3">
+                        <DropPicturePreview></DropPicturePreview>
+                    </div>
+                    <div class="column has-text-centered">
+                        <p>{{ $t('recipe.add.name')}} </p>
+                        <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
+                               v-model="registration.title" name="title" id="title">
+                        <div id="sliders">
+                            <div class="columns">
+                                <div class="column">
+                                    <SetDifficulty></SetDifficulty>
+                                </div>
+                                <div class="column">
+                                    <SetCost></SetCost>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <DropPicturePreview></DropPicturePreview>
+
             </div>
-            <div id="universe-name">
-                <div class="column is-3" style="text-align: left;">
-                    <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
+            <div class="columns">
+                <div class="column is=half">
+                    <div id="universe-name" class="columns">
+                        <div class="column is-3" style="text-align: left;">
+                            <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
+                        </div>
+                        <div class="column is-8" id="universe_input">
+                            <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
+                        </div>
+                    </div>
                 </div>
-                <div class="column is-8" id="universe_input">
-                    <label class="title is-4 is-">{{ $t('recipe.univers')}}</label>
-                    <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
+                <div class="column is=half">
+                    <div id="category-name" class="columns">
+                        <div class="column is-3" style="text-align: left;">
+                            <label class="title is-4 is-">{{ $t('recipe.category')}}</label>
+                        </div>
+                        <div class="column is-8" id="category_input">
+                            <SetCategory></SetCategory>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="ingredients-list">
@@ -32,11 +60,7 @@
             <div id="steps-list">
                 <StepsAdd></StepsAdd>
             </div>
-            <div id="sliders">
-                <SetDifficulty></SetDifficulty>
-                <SetCategory></SetCategory>
-                <SetCost></SetCost>
-            </div>
+
             <div id="timing" class="columns">
                 <div class="column is-paddingless pags" style="margin-bottom: 2rem;">
                     <div class="padding-sides columns timing">
@@ -102,7 +126,3 @@
         methods: {},
     }
 </script>
-
-<style scoped>
-
-</style>

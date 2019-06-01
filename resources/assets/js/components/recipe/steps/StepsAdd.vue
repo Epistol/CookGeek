@@ -2,11 +2,9 @@
     <div class="column" v-cloak>
         <template v-for="(item, index) in steps">
             <div class="columns">
-
                 <div class="column is-2">
                     <span>Etape {{index+1}}</span>
                 </div>
-
                 <div class="column">
                     <div class="columns">
                         <div class="column is-11">
@@ -14,7 +12,6 @@
                                   @keyup.tab="addStep()" v-model="item.instruction" rows="6" name="step[]"
                                   id="step[]"></textarea>
                         </div>
-
                         <div class="column is-3 is-flex-center" v-cloak v-if="index === (steps.length-1)">
                             <a @click="addStep()" class="button is-primary  is-small icon-delete">
                                 <i class="fa fa-plus" aria-hidden="true"></i></a>
@@ -23,21 +20,17 @@
                             <a @click="removeStep(index)" class="button is-small icon-delete">
                                 <i class="fa fa-minus" aria-hidden="true"></i></a>
                         </div>
-
                         <div class="column" v-cloak v-else="index === (item.length-1)">
                         </div>
                     </div>
                 </div>
             </div>
-
         </template>
-
     </div>
 </template>
 
 <script>
     export default {
-        props: ["recipe_id"],
         data: function () {
             return {
                 counter: 0,
@@ -56,7 +49,6 @@
                 this.counter--;
                 this.steps.splice(index, 1);
             },
-
         },
         mounted() {
         },

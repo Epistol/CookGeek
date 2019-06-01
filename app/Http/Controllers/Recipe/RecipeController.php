@@ -41,7 +41,6 @@ class RecipeController extends Controller
     public function __construct()
     {
         $this->authorizeResource(Recipe::class, 'recipes');
-
     }
 
     /**

@@ -37,6 +37,7 @@ CDG is a website of recipes from books, games, movies, anime, etc ...
 - **[vue-notification](//)**
 - **[vue-star-rating](//)**
 - **[vuedraggable](//)**
+- **[martinlindhe/laravel-vue-i18n-generator](//)**
 ### Utilities
 - **[askedio/laravel5-profanity-filter](https://github.com/Askedio/laravel-profanity-filter)**
 - **[torann/geoip](//)**
@@ -74,4 +75,7 @@ Pour chercher un élément (Scout) :
 
     php artisan scout:mysql-index App\Truc 
     ##(truc étant le model)
+    
+    php artisan vue-i18n:generate
+    
     
