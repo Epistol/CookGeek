@@ -5,7 +5,7 @@
                 <label class="label">Média</label>
             </div>
             <div class="columns is-multiline">
-                <div class="column has-text-centered">
+                <div class="column is-flex has-text-centered">
                     <template v-for="(item, index) in this.medias">
                         <input type="radio" :id="'choice-'+item.id"
                                name="type" :value="item.id" v-model="choice">
