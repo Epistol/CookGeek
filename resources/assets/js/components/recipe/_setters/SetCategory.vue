@@ -24,9 +24,9 @@
         },
         methods: {
             getCategoryList() {
-                axios.get('/api/category/').then(response => {
+                axios.get('/api/recipe/category/').then(response => {
                     this.categories = response.data;
-                    console.log(response.data);
+                    // console.log(response.data);
                 });
             }
         },

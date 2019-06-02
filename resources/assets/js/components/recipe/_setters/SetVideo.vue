@@ -1,6 +1,6 @@
 <template>
     <div class="field">
-        <h2 class="title is-4">Vidéo</h2>
+        <p class="title is-4">Vidéo</p>
         <div class="control">
             <input class="input" placeholder="Vous avez fait une vidéo ? Mettez l'url ;)"
                   name="video" id="video">

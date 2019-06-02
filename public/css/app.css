@@ -17650,7 +17650,7 @@ html, body {
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f7f6fe;
+  background-color: #eeedf5;
 }
 
 body,
@@ -17688,7 +17688,7 @@ textarea {
 }
 
 .results {
-  background: #f7f6fe;
+  background: #eeedf5;
 }
 
 .not-active {
@@ -18576,7 +18576,7 @@ footer.footer {
 }
 
 .second-menu {
-  background: #f7f6fe;
+  background: #eeedf5;
   -webkit-box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
   box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
 }
@@ -18856,7 +18856,7 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #f7f6fe;
+  background: #eeedf5;
   border: 0px solid #7f5fbf;
 }
 
@@ -19035,7 +19035,7 @@ form.recipe-add .field {
   background: #fdfdfd;
   border-radius: 15px;
   margin-bottom: 3%;
-  border: 1rem #f7f6fe;
+  border: 1rem #eeedf5;
   -webkit-box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
           box-shadow: 0 10px 40px 0 rgba(82, 77, 85, 0.1), 0 2px 9px 0 rgba(82, 77, 85, 0.11);
 }
@@ -19098,7 +19098,7 @@ span.logo-beta {
 }
 
 .fb-commentaire {
-  border: 2px solid #f7f6fe;
+  border: 2px solid #eeedf5;
   padding: 1rem;
 }
 
@@ -19190,7 +19190,7 @@ span.logo-beta {
 }
 
 .recipe-other-picture {
-  border: 1px solid #f7f6fe;
+  border: 1px solid #eeedf5;
   margin-top: 0.5rem;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -19199,7 +19199,7 @@ span.logo-beta {
 #picture-zone-validation-wait {
   padding: 0.5rem;
   margin-top: 1rem;
-  background: #f7f6fe;
+  background: #eeedf5;
 }
 
 #checkbutton div > input:checked #checkbutton + label {
@@ -19632,7 +19632,7 @@ aside.menu {
 }
 
 .entity {
-  border-bottom: 3px solid #f7f6fe;
+  border-bottom: 3px solid #eeedf5;
   padding: 1rem;
 }
 

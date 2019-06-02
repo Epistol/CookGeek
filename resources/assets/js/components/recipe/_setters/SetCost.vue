@@ -2,7 +2,7 @@
     <div class="field">
         <div class="control">
             <div class="lecout">
-                <p>{{ $t('Cost of making') }}</p>
+                <label class="label">{{ $t('Cost of making') }}</label>
                 <fieldset class="rating">
                     <template v-for="(item, index) in this.cost">
                         <input type="radio" v-bind="item" :id="item"

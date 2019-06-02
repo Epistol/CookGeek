@@ -19,4 +19,4 @@ Route::post('/note', 'Api\NoteController@checknote')->name('api.like.checknote')
 
 
 Route::get('/difficulty', 'Api\RecipeController@getDifficulties')->name('api.difficulty');
-Route::get('/category', 'Api\RecipeController@getCategories')->name('api.category');
+Route::get('/recipe/category', 'Api\RecipeController@getCategories')->name('api.category');
