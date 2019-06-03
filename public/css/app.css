@@ -18902,15 +18902,14 @@ section.ingredients {
 }
 
 .columns.timing:before {
-  font-family: FontAwesome;
-  content: "\F017";
+  /*  font-family: FontAwesome;
+  content: "";
   font-size: 10em;
   position: absolute;
   z-index: -1;
-  color: rgba(255, 255, 255, 0.2);
+  color: hsla(0, 0%, 100%, 0.2);
   left: 0.1rem;
-  -webkit-transform: rotate(140deg);
-          transform: rotate(140deg);
+  transform: rotate(140deg);*/
 }
 
 span.timing, span.parts {

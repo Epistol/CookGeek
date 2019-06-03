@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container recipe-add">
-        <section class="section">
+        <section class="">
             <div class="columns">
                 <div class="column is-10 is-offset-1">
                     <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
