@@ -132,7 +132,9 @@
 <script type="application/javascript" src="{{ asset('js/load_content.js')}}"></script>
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>
 <script src="{{ asset('js/konami.js') }}"></script>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.3&appId=107304179368120&autoLogAppEvents=1"></script>
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")
 {{--@include("layouts.js.pwa")--}}

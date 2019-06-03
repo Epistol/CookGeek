@@ -15,6 +15,12 @@
   }
 }
 
+.button .icon:first-child:last-child {
+   margin-left: 0px;
+   margin-right:0px;
+}
+
+
 .pointer-hover {
   &:hover {
     cursor:pointer;

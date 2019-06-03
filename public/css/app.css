@@ -18222,6 +18222,15 @@ img.tovalidate {
   opacity: 1;
 }
 
+.twitter {
+  background: #1da1f2;
+  color: #f5f8fa;
+}
+
+.twitter:hover {
+  color: white;
+}
+
 .show-dan {
   -webkit-animation: showToastyGuy 1.2s;
   animation: showToastyGuy 1.2s;
@@ -18836,6 +18845,11 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
   color: white;
   border-width: 0px;
+}
+
+.button .icon:first-child:last-child {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .pointer-hover:hover {

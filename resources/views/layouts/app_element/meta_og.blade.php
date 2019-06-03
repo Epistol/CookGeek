@@ -17,7 +17,6 @@
 <meta name="HandheldFriendly" content="true">
 
 <meta name="p:domain_verify" content="05cbfbe372355fc341420d5bcf35e1cd"/>
+<meta name="og:image" content=""/>
 
-<meta name="og:image" content="
-
-        "/>
+<meta name="google-signin-client_id" content="825660079681-k0qvih3gdn02d7h5qbves79m9vf2ctag.apps.googleusercontent.com">

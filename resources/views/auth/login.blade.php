@@ -1,6 +1,7 @@
 @extends('layouts.app.app')
 @section('titrepage', "Connexion")
 @section('content')
+
     <section class="section">
         <div class="container">
             <div class="columns">
@@ -16,12 +17,35 @@
                             <div class="column is-three-quarters is-offset-1">
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
-
-                                    <a href="{{ route('login.provider', 'google') }}"
-                                       class="button btn-secondary">{{ __('Google Sign in') }}</a>
-                                    <a href="{{ route('login.provider', 'facebook') }}" class="button">Facebook</a>
-                                    <a href="{{ route('login.provider', 'twitter') }}" class="button">Twitter</a>
-                                    <a href="{{ route('login.provider', 'instagram') }}" class="button">Instagram</a>
+                                    <div class="columns is-multiline">
+                                        <div class="column is-6">
+                                            <a href="{{ route('login.provider', 'google') }}"
+                                               class="">
+                                                <div class="g-signin2">
+                                                    {{ __('Google Sign in') }}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="fb-login-button" data-width="" data-size="large"
+                                                 data-button-type="continue_with" data-auto-logout-link="false"
+                                                 data-use-continue-as="true"></div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <a href="{{ route('login.provider', 'twitter') }}" class="button twitter">
+                                        <span class="icon">
+    <i class="fab fa-twitter"></i>
+    </span>
+                                                Twitter</a>
+                                        </div>
+                                        <div class="column is-6">
+                                            <a href="{{ route('login.provider', 'instagram') }}" class="button">
+                                        <span class="icon">
+    <i class="fab fa-instagram"></i>
+    </span>
+                                                Instagram</a>
+                                        </div>
+                                    </div>
 
                                     <div class="is-divider" data-content="OU"></div>
 
@@ -88,5 +112,4 @@
     </section>
     @include("auth.donnes_perso")
     @include("auth.passwords.reinit_mdp")
-
 @endsection
