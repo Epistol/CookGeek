@@ -1,83 +1,91 @@
 <template>
     <div id="create-recipe">
-        <div class="background-round">
-            <div id="recipe-name-img">
-                <h1 class="title">{{ $t('Create your recipe')}}
-                    <template v-if="registration.title"> : {{registration.title}}</template>
-                </h1>
+        <h1 class="title">{{ $t('Create your recipe')}}
+            <template v-if="registration.title"> : {{registration.title}}</template>
+        </h1>
+        <div class="">
+            <section class="section blockcontent" id="title-picture">
+                <div id="recipe-name-img">
+                    <div class="columns">
+                        <div class="column is-3">
+                            <picture-input
+                                    ref="pictureInput"
+                                    :width="500"
+                                    :removable="true"
+                                    removeButtonClass="is-error button"
+                                    :height="500"
+                                    accept="image/jpeg, image/png, image/gif"
+                                    buttonClass=" button primary"
+                                    @change="onChangePic"
+                                    :customStrings="this.pictureStrings">
+                            </picture-input>
+                        </div>
+                        <div class="column has-text-centered">
+                            <span class="timing">{{ $t('recipe.add.name')}} </span>
+                            <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
+                                   v-model="registration.title" name="title" id="title">
+                            <SetComment></SetComment>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section blockcontent">
                 <div class="columns">
-                    <div class="column is-3">
-                        <picture-input
-                                ref="pictureInput"
-                                :width="500"
-                                :removable="true"
-                                removeButtonClass="is-error button"
-                                :height="500"
-                                accept="image/jpeg, image/png, image/gif"
-                                buttonClass=" button primary"
-                                @change="onChangePic"
-                                :customStrings="this.pictureStrings">
-                        </picture-input>
-                    </div>
-                    <div class="column has-text-centered">
-                        <span class="timing">{{ $t('recipe.add.name')}} </span>
-                        <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
-                               v-model="registration.title" name="title" id="title">
-                        <SetComment></SetComment>
-                    </div>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column is-half">
-                    <div id="universe-name" class="columns">
-                        <div class="column is-3" style="text-align: left;">
-                            <label class="label">{{ $t('recipe.univers')}}</label>
+                    <div class="column is-half">
+                        <div id="universe-name" class="columns">
+                            <div class="column is-3" style="text-align: left;">
+                                <label class="label">{{ $t('recipe.univers')}}</label>
+                            </div>
+                            <div class="column is-8" id="universe_input">
+                                <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
+                            </div>
                         </div>
-                        <div class="column is-8" id="universe_input">
-                            <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
-                        </div>
+                        <SetMedia></SetMedia>
                     </div>
-                    <SetMedia></SetMedia>
-                </div>
-                <div class="column is-half">
-                    <div id="category-name" class="columns">
-                        <div class="column is-3" style="text-align: left;">
-                            <label class="label">{{ $t('recipe.category')}}</label>
+                    <div class="column is-half">
+                        <div id="category-name" class="columns">
+                            <div class="column is-3" style="text-align: left;">
+                                <label class="label">{{ $t('recipe.category')}}</label>
+                            </div>
+                            <div class="column is-8" id="category_input">
+                                <SetCategory></SetCategory>
+                            </div>
                         </div>
-                        <div class="column is-8" id="category_input">
-                            <SetCategory></SetCategory>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-3">
-                                    <label class="label">Difficulté</label>
-                                </div>
-                                <div class="column">
-                                    <SetDifficulty></SetDifficulty>
+                        <div class="column">
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-3">
+                                        <label class="label">Difficulté</label>
+                                    </div>
+                                    <div class="column">
+                                        <SetDifficulty></SetDifficulty>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="ingredients-list">
-                <section class="ingredients">
-                    <div id="ingr">
-                        <div class="column is-3" style="text-align: left;">
-                            <p class="title is-4">Ingredients</p>
+            </section>
+            <section class="section blockcontent">
+                <div id="ingredients-list">
+                    <section class="ingredients">
+                        <div id="ingr">
+                            <div class="column is-3" style="text-align: left;">
+                                <p class="title is-4">Ingredients</p>
+                            </div>
+                            <Ingredients></Ingredients>
                         </div>
-                        <Ingredients></Ingredients>
-                    </div>
-                </section>
-            </div>
-            <div id="steps-list">
-                <section class="">
-                    <p class="title is-4">Etapes</p>
-                    <StepsAdd></StepsAdd>
-                </section>
-            </div>
+                    </section>
+                </div>
+            </section>
+            <section class="section blockcontent">
+                <div id="steps-list">
+                    <section class="">
+                        <p class="title is-4">Etapes</p>
+                        <StepsAdd></StepsAdd>
+                    </section>
+                </div>
+            </section>
             <div id="timing" class="columns">
                 <div class="column is-paddingless pags" style="margin-bottom: 2rem;">
                     <div class="padding-sides columns timing">
