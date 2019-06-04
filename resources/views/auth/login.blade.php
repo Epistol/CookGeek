@@ -27,9 +27,11 @@
                                             </a>
                                         </div>
                                         <div class="column is-6">
-                                            <div class="fb-login-button" data-width="" data-size="large"
-                                                 data-button-type="continue_with" data-auto-logout-link="false"
-                                                 data-use-continue-as="true"></div>
+                                            <a href="{{ route('login.provider', 'facebook') }}" class="button facebook">
+                                        <span class="icon">
+<i class="fab fa-facebook-f"></i>
+    </span>
+                                                Facebook</a>
                                         </div>
                                         <div class="column is-6">
                                             <a href="{{ route('login.provider', 'twitter') }}" class="button twitter">

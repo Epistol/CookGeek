@@ -15,33 +15,6 @@
   @include transition_all();
 }
 
-.facebook:hover {
-  border-color: #3B5998;
-  i {
-    color: #3B5998;
-  }
-}
-
-.twitter:hover {
-  border-color: #1DA1F3;
-  i {
-    color: #1DA1F3;
-  }
-}
-
-.pinterest:hover {
-  border-color: #BD081B;
-  i {
-    color: #BD081B;
-  }
-}
-
-.tumblr:hover {
-  border-color: #35455C;
-  i {
-    color: #35455C;
-  }
-}
 
 a.like {
   background-color: #FCBEE1;
