@@ -30,11 +30,12 @@ Vue.use(InstantSearch);
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import StarRating from './star-rating';
+import PictureInput from 'vue-picture-input';
+
 //import InstantSearch from 'vue-instantsearch';
 import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
-import PictureInput from 'vue-picture-input'
 //import Affix from 'vue-affix';
 import Editor from '@tinymce/tinymce-vue';
 import ModalView from "./components/modal/ModalView";
@@ -61,6 +62,7 @@ import ImagePicture from "./components/picture/Preview.vue";
 
 import Time from "./components/Time.vue";
 import BigSearch from "./components/BigSearch";
+import SetPicture from "./components/recipe/_setters/SetPicture";
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -101,7 +103,8 @@ const app = new Vue({
         'fulltime': Time,
         'preview-image': ImagePicture,
         'create-recipe': Create,
-        'big-search' : BigSearch
+        'big-search' : BigSearch,
+        'set-picture': SetPicture,
     },
 
     data: {

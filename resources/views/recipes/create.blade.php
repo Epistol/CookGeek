@@ -7,7 +7,7 @@
                 <div class="column">
                     <div class="has-text-centered">
                         <h1 class="title">{{__('Create your recipe')}}
-                            <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
+                            <span v-cloak v-if="titre" class="ajout-recette-titre"></span></h1>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                                 @include("recipes.form.univers")
                                 @include("recipes.form.ingredients")
                                 @include("recipes.form.step")
-                                {{--Liste des ingrédients --}}
+{{--                                Liste des ingrédients--}}
                             </div>
                         </div>
                     </div>
@@ -40,12 +40,12 @@
                                     @include("recipes.form.cost")
                                 </div>
                             </div>
-                            <div class="columns timing">
+                          <div class="columns timing">
                                 <div class="column is-10 is-offset-1 ">
                                     @include("recipes.form.timing.tps_preparation")
                                     @include("recipes.form.timing.tps_cuisson")
                                     @include("recipes.form.timing.tps_repos")
-                                    @include("recipes.form.nb_parts")
+                                     @include("recipes.form.nb_parts")
                                     @include("recipes.form.vegan")
                                 </div>
                             </div>

@@ -14,43 +14,10 @@
                     <h1 class="title">@lang('common.login')</h1>
                     <div class="blockcontent">
                         <div class="columns">
-                            <div class="column is-three-quarters is-offset-1">
+                            <div class="column is-10 is-offset-1">
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
-                                    <div class="columns is-multiline">
-                                        <div class="column is-6">
-                                            <a href="{{ route('login.provider', 'google') }}"
-                                               class="">
-                                                <div class="g-signin2">
-                                                    {{ __('Google Sign in') }}
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="column is-6">
-                                            <a href="{{ route('login.provider', 'facebook') }}" class="button facebook">
-                                        <span class="icon">
-<i class="fab fa-facebook-f"></i>
-    </span>
-                                                Facebook</a>
-                                        </div>
-                                        <div class="column is-6">
-                                            <a href="{{ route('login.provider', 'twitter') }}" class="button twitter">
-                                        <span class="icon">
-    <i class="fab fa-twitter"></i>
-    </span>
-                                                Twitter</a>
-                                        </div>
-                                        <div class="column is-6">
-                                            <a href="{{ route('login.provider', 'instagram') }}" class="button">
-                                        <span class="icon">
-    <i class="fab fa-instagram"></i>
-    </span>
-                                                Instagram</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="is-divider" data-content="OU"></div>
-
+                                    @include('auth.socials)
                                     <div class="field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
                                         <label for="identity"
                                                class="label col-md-4 control-label">@lang('common.name-or-mail')
@@ -66,7 +33,6 @@
                                     </span>
                                         @endif
                                     </div>
-
 
                                     <div class="field form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                         <label for="password"

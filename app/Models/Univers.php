@@ -35,7 +35,7 @@ class Univers extends Model
      */
     public function recipes()
     {
-        return $this->morphedByMany('App\Recipe', 'universable');
+        return $this->morphedByMany(Recipe::class, 'universable');
     }
 
     /**

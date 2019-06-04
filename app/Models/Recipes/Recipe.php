@@ -69,12 +69,12 @@ class Recipe extends Model implements Feedable, HasMedia
         return $recipes;
     }
 
-    /**
+    /** Possède plusieurs univers
      * @return MorphToMany
      */
     public function universes()
     {
-        return $this->morphToMany('App\Univers', 'universable');
+        return $this->morphToMany(Univers::class, 'universable');
     }
 
     /**
