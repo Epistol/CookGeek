@@ -17,7 +17,10 @@
 
 @include("recipes.show.times")
 @include("recipes.show.vegan")
-
+<?php
+use App\Categunivers;$typeuniv = Categunivers::where('id', '=', $recipe->type_univers)
+    ->first();
+?>
 @if($typeuniv)
     @if($typeuniv->name== 'gaming')
         <div class="side-bg pub">

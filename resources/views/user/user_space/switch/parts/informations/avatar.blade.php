@@ -3,7 +3,7 @@
 
             <div class="recipe-add-img">
                 <label class="label">Mon avatar</label>
-                <pictureupload user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture={{Auth::user()->avatar}}></pictureupload>
+                <pictureupload user={{ Auth::user()->name }} user_id={{ Auth::user()->id }}  picture={{Auth::user()->img}}></pictureupload>
             </div>
 
             {{-- Nom du fichier--}}

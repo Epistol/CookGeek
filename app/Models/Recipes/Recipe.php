@@ -363,4 +363,23 @@ class Recipe extends Model implements Feedable, HasMedia
 
         return $related;
     }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function sumerise($val)
+    {
+        // si il y'a + d'1heure
+        if ($val > 60) {
+            $somme_h = $val / 60;
+            $somme_m = $val - ((int)$somme_h * 60);
+            return $somme_h . "H" . $somme_m . "M";
+        } else {
+            $somme_h = 0;
+            $somme_m = $val - ((int)$somme_h * 60);
+            return $somme_m . "M";
+        }
+    }
+
 }

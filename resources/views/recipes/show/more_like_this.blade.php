@@ -10,10 +10,9 @@
             @foreach($related as $nombre => $recipe)
 
                 <?php
-                $validPictures = App\Pictures::loadRecipePicturesValid($recipe);
 
-                if ($validPictures->isNotEmpty()) {
-                    $img = $validPictures->first();
+                if ($recipe->getMedia()->isNotEmpty()) {
+                    $img = $recipe->getMedia()->first();
                     if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
                         $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
                     } else {

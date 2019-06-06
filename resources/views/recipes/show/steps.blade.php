@@ -13,7 +13,7 @@
 
     <div class="columns">
         <div class="column">
-            @forelse($steps as $step)
+            @forelse($recipe->steps()->get() as $step)
 
                 <div class="columns">
                     <div class="column is-1 is-flex-top">

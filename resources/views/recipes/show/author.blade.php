@@ -6,8 +6,8 @@
 
     <div class="is-flex">
         {{--Avatar--}}
-        @if($author->avatar !== "users/default.png")
-            <figure class="image is-48x48"><img src="/user/{{$author->id}}/{{$author->avatar}}" class="is-rounded " alt="Avatar utilisateur : {{strip_tags(clean($author->name))}} "
+        @if($author->img!== "users/default.png")
+            <figure class="image is-48x48"><img src="/user/{{$author->id}}/{{$author->img}}" class="is-rounded " alt="Avatar utilisateur : {{strip_tags(clean($author->name))}} "
                                                 style="height: 100%; width: 100%;"></figure>
         @else
             <figure class="image is-48x48">

@@ -32,10 +32,10 @@
                      style="display:flex;justify-content:center;align-items:flex-end;    padding-left: 1rem!important;">
                     <a class="navbar-item user_profile">
                         <div class="user_picture">
-                            @if(Auth::user()->avatar !== 'users/default.png')
+                            @if(Auth::user()->img!== 'users/default.png')
                                 <figure class="image is-32x32">
                                     <img class="is-rounded "
-                                         src="/user/{{Auth::user()->id}}/{{strip_tags(clean(Auth::user()->avatar))}}"
+                                         src="/user/{{Auth::user()->id}}/{{strip_tags(clean(Auth::user()->img))}}"
                                          style="height: 100%;width: 100%;">
                                 </figure>
                             @else
