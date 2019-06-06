@@ -1,5 +1,5 @@
-@if($recette->vegetarien)
-    @if($recette->vegetarien == 1)
+@if($recipe->vegetarien)
+    @if($recipe->vegetarien == 1)
         <div class="side-bg">
 
             <div class="field vegan is-horizontal">

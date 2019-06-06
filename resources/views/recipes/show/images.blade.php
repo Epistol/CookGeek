@@ -3,17 +3,17 @@
     @if($pictures->count() > 0)
         <div>
             <a href="{{ $pictures->getFirstMediaUrl() }}"
-               data-lightbox="{{ cleanInput($recette->slug) }}"
-               data-title="{{ cleanInput($recette->title) }}">
+               data-lightbox="{{ cleanInput($recipe->slug) }}"
+               data-title="{{ cleanInput($recipe->title) }}">
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
                                 srcset="{{ $pictures->first()->getUrl('thumbSquare') }}"
                                 class="fit-cover"
-                                alt="{{ __('Image of the recipe :') . cleanInput($recette->title) }}">
+                                alt="{{ __('Image of the recipe :') . cleanInput($recipe->title) }}">
                         <img src="{{ $pictures->getFirstMediaUrl() }}"
                              class="fit-cover"
-                             alt="{{  __('Image of the recipe :') . cleanInput($recette->title) }}">
+                             alt="{{  __('Image of the recipe :') . cleanInput($recipe->title) }}">
                     </picture>
                 </figure>
             </a>

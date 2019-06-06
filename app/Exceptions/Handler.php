@@ -67,9 +67,13 @@ class Handler extends ExceptionHandler
             $exception = new HttpException(500, 'Whoops!');
         }
 
-        /*if ($exception instanceof AuthorizationException) {
-            return redirect(route('index'));
-        }*/
+        if ($exception instanceof AuthorizationException) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Unauthorized.'], 403);
+            }
+
+            return redirect('/login');
+        }
 
         return parent::render($request, $exception);
     }

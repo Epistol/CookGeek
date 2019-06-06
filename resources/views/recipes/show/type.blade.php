@@ -1,3 +1,3 @@
 <span class="tag">
-  <a href="{{$recette->getTypeLower()}}">{{$recette->getType()}}</a>
+  <a href="{{$recipe->getTypeLower()}}">{{$recipe->getType()}}</a>
 </span>

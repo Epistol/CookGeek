@@ -1,16 +1,16 @@
 <div class="card cdg">
-    <div class="card-image"><a href="{{route('recipe.show', $recettes[$i]->slug)}}">
+    <div class="card-image"><a href="{{route('recipe.show', $recipes[$i]->slug)}}">
             <figure class="image is-4by3">
 				<?php
 
-				$img = DB::table('recipe_imgs')->where('user_id', '=', $recettes[$i]->id_user)->where('recipe_id', '=', $recettes[$i]->id)->first();
+				$img = DB::table('recipe_imgs')->where('user_id', '=', $recipes[$i]->id_user)->where('recipe_id', '=', $recipes[$i]->id)->first();
 				?>
                 @if($img == null or empty($img))
-                    <img src="http://via.placeholder.com/300x200?text={{$recettes[$i]->title}}" class="fit-cover"
-                         alt="{{$recettes[$i]->title}} / CDG">
+                    <img src="http://via.placeholder.com/300x200?text={{$recipes[$i]->title}}" class="fit-cover"
+                         alt="{{$recipes[$i]->title}} / CDG">
                 @else
-                    <img src="/recipes/{{$recettes[$i]->id}}/{{$recettes[$i]->id_user}}/{{$img->image_name}}" class="fit-cover"
-                         alt="{{$recettes[$i]->title}} / CDG">
+                    <img src="/recipes/{{$recipes[$i]->id}}/{{$recipes[$i]->id_user}}/{{$img->image_name}}" class="fit-cover"
+                         alt="{{$recipes[$i]->title}} / CDG">
                 @endif
 
             </figure>
@@ -25,13 +25,13 @@
         <div class="media">
             <div class="media-content is-centered">
                 <p class="title is-4"><a
-                            href="{{route('recipe.show', $recettes[$i]->slug)}}"> {{$recettes[$i]->title}}</a></p>
+                            href="{{route('recipe.show', $recipes[$i]->slug)}}"> {{$recipes[$i]->title}}</a></p>
 
             </div>
         </div>
 
         <div class="content">
-            {{--    {{$recettes[$i]->commentary_author}}--}}
+            {{--    {{$recipes[$i]->commentary_author}}--}}
 
         </div>
     </div>

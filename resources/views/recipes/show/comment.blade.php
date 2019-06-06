@@ -1,5 +1,5 @@
 <div class="content">
-    <p>{{strip_tags(clean($recette->commentary_author))}}</p>
+    <p>{{strip_tags(clean($recipe->commentary_author))}}</p>
 </div>
 
 

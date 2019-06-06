@@ -1,10 +1,10 @@
-<a href="{{route('recipe.show', $recette->slug)}}">
-<?php $firstImg = $recette->getMedia('images');?>
+<a href="{{route('recipe.show', $recipe->slug)}}">
+<?php $img = $recipe->getMedia('images');?>
     @if($img->isEmpty())
         <figure class="image is-1by1 ">
             <img class="fit-cover"
-                 src="http://via.placeholder.com/300x200?text={{ strip_tags(clean($recette->title))}}"
-                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                 src="http://via.placeholder.com/300x200?text={{ strip_tags(clean($recipe->title))}}"
+                 alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
         </figure>
     @else
         <figure class="image is-1by1 ">
@@ -16,14 +16,14 @@
                     <!-- The image slot renders after the image loads. -->
                         <img class="fit-cover"
                              src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}"
-                             alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                             alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                     @else
                         <clazy-load
                                 src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}">
                             <!-- The image slot renders after the image loads. -->
                             <img class="fit-cover"
                                  src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}"
-                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                 alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                         @endif
 
                         <!-- The placeholder slot displays while the image is loading. -->

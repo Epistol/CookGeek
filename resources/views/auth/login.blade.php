@@ -17,11 +17,10 @@
                             <div class="column is-10 is-offset-1">
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
-                                    @include('auth.socials)
+                                    @include('auth.socials')
                                     <div class="field form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
                                         <label for="identity"
                                                class="label col-md-4 control-label">@lang('common.name-or-mail')
-
                                         </label>
                                         <div class="control">
                                             <input id="identity" type="text" class="input form-control" name="identity"

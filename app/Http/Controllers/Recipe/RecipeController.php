@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Sightengine\SightengineClient;
 use Throwable;
 
 /**
@@ -64,10 +63,12 @@ class RecipeController extends Controller
     /**
      * Show the form for creating a new resource
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
         $types_univ = Categunivers::all();
         $difficulty = Difficulty::all();
         $types_plat = TypeRecipe::all();
@@ -92,18 +93,14 @@ class RecipeController extends Controller
         // Insert recipe
         $recipe = new Recipe;
         $recipe = $recipe->easyInsert($request);
+        $recipe->saveOrFail();
         $universe = Univers::where(['name' => $request->univers])->get();
         if ($universe->isNotEmpty()) {
-            $recipe->universes()->attach($universe[0]->id);
+            $recipe->universes()->attach($universe[0]);
         } else {
-            $universe =  new Univers(['name' => $request->univers]);
+            $universe = new Univers(['name' => $request->univers]);
             $recipe->universes()->save($universe);
         }
-
-
-
-        $recipe->saveOrFail();
-        dd($recipe);
 
         // SLUG & UID
         $uid = $recipe->generateUid($recipe->id);
@@ -111,26 +108,9 @@ class RecipeController extends Controller
 
         $recipe->insertIngredients($request);
         $recipe->insertSteps($request);
-        foreach ($request->picture as $picture) {
-            if (!empty($picture)) {
-                $SightEngine = new SightengineClient(env('SIGHTENGINEUSER'), env('SIGHTENGINEKEY'));
+        $recipe->insertPicture($request);
 
-//                $imageCheck = $SightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes', 'text'])
-//                                          ->set_file($picture);
-
-                //analyze the locally stored image for nudity
-
-                $newPicture = $this->addMedia($picture)
-                    ->toMediaCollection('main');
-//                $imageCheck = $SightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes', 'text'])
-//                                          ->set_url($newPicture->url);
-//                dd($imageCheck->nudity);
-
-                $recipe->image()->attach($newPicture, ['status' => 'draft']);
-            }
-        }
-
-        return redirect()->route('recipe.show', $slug);
+        return redirect()->route('recipe.show', $recipe->slug);
     }
 
 

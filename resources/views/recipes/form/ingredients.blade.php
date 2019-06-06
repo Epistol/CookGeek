@@ -10,7 +10,7 @@
         @else
             {{--If edit--}}
             <h2 class="title is-4">Ingredients</h2>
-            <ingredient-edit-form recipe_id="{{intval($recette->id)}}"></ingredient-edit-form>
+            <ingredient-edit-form recipe_id="{{intval($recipe->id)}}"></ingredient-edit-form>
         @endif
 
     </div>

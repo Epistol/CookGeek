@@ -12,11 +12,11 @@
     <section class="bordered-cdg">
         <div class="columns is-multiline">
 
-            @foreach($recipes as $nombre => $recette)
+            @foreach($recipes as $nombre => $recipe)
                 <?php
-                $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+                $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
                 $somme = $controller->sum_time_home($somme_t);
-                $validPictures = $picturectrl->loadRecipePicturesValid($recette);
+                $validPictures = $picturectrl->loadRecipePicturesValid($recipe);
                 if ($validPictures->isNotEmpty()) {
                     $img = $validPictures->first();
                     if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
@@ -41,9 +41,9 @@
 
                     <div class="recipe-index-description " id="checkbutton">
                         <p class="card-header-title">
-                            <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
+                            <a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}"
                                class="home-text">
-                                {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
+                                {{ (str_limit(strip_tags(clean($recipe->title)), 40, ' (...)'))  }}
                             </a>
                         </p>
                         <div class="columns is-paddingless is-marginless mini-infos">
@@ -51,13 +51,13 @@
                                                                        style="margin-right:0.5rem"></i><span>{{ strip_tags($somme) }}</span>
                             </div>
                             <div class="column is-2 is-flex-center">
-                                <span>{{ $recette-> nb_guests ?: 1 }}</span>{{-- {{ $recette->guest_type ?: "personnes"}}--}}
+                                <span>{{ $recipe-> nb_guests ?: 1 }}</span>{{-- {{ $recipe->guest_type ?: "personnes"}}--}}
                                 <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
                             </div>
                             <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
                                 {{--Nom de l'univers--}}
                                 @php
-                                    $univers_data = DB::table('univers')->where('id', '=', $recette->univers)->first();
+                                    $univers_data = DB::table('univers')->where('id', '=', $recipe->univers)->first();
                                 @endphp
                                 @if($univers_data)
                                     @if(strip_tags(clean($univers_data->name)))

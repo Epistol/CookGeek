@@ -6,7 +6,7 @@
  * Time: 20:47
  */
 
-$univers = DB::table('univers')->where('id', $recette->univers)->first();
+$univers = DB::table('univers')->where('id', $recipe->univers)->first();
 ?>
 @if($univers !== null)
     @if(strip_tags(clean($univers->name)))

@@ -2,9 +2,9 @@
 
 @empty($c)
 
-    @if($recette->type_univers)
+    @if($recipe->type_univers)
         <?php
-        $media = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
+        $media = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
         ?>
         <a href="{{route('media.show', $media->name)}}">
             <div class="medail {{strtolower($media->name)}}"></div>

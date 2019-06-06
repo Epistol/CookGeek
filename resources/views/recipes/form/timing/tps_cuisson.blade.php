@@ -6,7 +6,7 @@
             <div class="control">
                 @if(Route::has('edit'))
                     <?php
-                    $total = $recette->cook_time;
+                    $total = $recipe->cook_time;
                     if ($total > 60) {
                         $heure = intval($total / 60);
                         $minute = $total - ($heure * 60);

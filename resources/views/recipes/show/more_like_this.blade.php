@@ -7,10 +7,10 @@
 
     <section class="bordered-cdg">
         <div class="columns is-multiline">
-            @foreach($related as $nombre => $recette)
+            @foreach($related as $nombre => $recipe)
 
                 <?php
-                $validPictures = App\Pictures::loadRecipePicturesValid($recette);
+                $validPictures = App\Pictures::loadRecipePicturesValid($recipe);
 
                 if ($validPictures->isNotEmpty()) {
                     $img = $validPictures->first();
@@ -35,9 +35,9 @@
                         </div>
                         <div class="recipe-header">
                             <p class="card-header-title">
-                                <a href="{{route('recipe.show', strip_tags(clean($recette->slug)))}}"
+                                <a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}"
                                    class="home-text">
-                                    {{ (str_limit(strip_tags(clean($recette->title)), 40, ' (...)'))  }}
+                                    {{ (str_limit(strip_tags(clean($recipe->title)), 40, ' (...)'))  }}
                                 </a>
                             </p>
                         </div>

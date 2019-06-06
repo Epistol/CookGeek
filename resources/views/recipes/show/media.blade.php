@@ -1,5 +1,5 @@
 <?php
-$media = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
+$media = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
 ?>
 
 @if($media)

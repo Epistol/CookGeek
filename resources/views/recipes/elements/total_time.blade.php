@@ -1,6 +1,6 @@
 <?php
 
-$somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+$somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
 $somme = $controller->sumerise_t($somme_t);
 
 ?>

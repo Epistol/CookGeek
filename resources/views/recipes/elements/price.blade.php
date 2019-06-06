@@ -1,10 +1,10 @@
 <div class="">
 
     <?php $count = 0;
-    if ($recette->cost == null) {
-        $recette->cost = 0;
+    if ($recipe->cost == null) {
+        $recipe->cost = 0;
     }?>
-    @for($i = 0; $i < $recette->cost; $i++)
+    @for($i = 0; $i < $recipe->cost; $i++)
 
         <i class="fas fa-dollar-sign"></i>
         <?php $count++;?>

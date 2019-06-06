@@ -2,7 +2,7 @@
 
     <h2 class="title is-4">Etapes</h2>
     @if(Route::has('add'))
-        <stepsedit recipe_id="{{intval($recette->id)}}"></stepsedit>
+        <stepsedit recipe_id="{{intval($recipe->id)}}"></stepsedit>
     @else
         <div v-for="(step, index) in steps">
             <div class="columns">

@@ -23,8 +23,10 @@ class RecipePolicy
      */
     public function view(?User $user, Recipe $recipe)
     {
-        if (Auth::user()->id === $recipe->id_user) {
-            return true;
+        if (Auth::check()) {
+            if (Auth::user()->id === $recipe->id_user) {
+                return true;
+            }
         }
         return !$recipe->isValid() ? false : ($user->hasPermissionTo('read_' . $this->policyName));
     }
@@ -38,7 +40,7 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        if (Auth::user()->hasPermissionTo('add_recipes')) {
+        if ($user->hasPermissionTo('add_recipes')) {
             return true;
         } else {
             return false;

@@ -11,7 +11,7 @@
                                    value="{{$i}}" name="cost"/>
                         @else
                             <input type="radio" selected="cost" id="{{$i}}"
-                                   {{ $i === $recette->cost ? "checked":"" }}
+                                   {{ $i === $recipe->cost ? "checked":"" }}
                                    value="{{$i}}" name="cost"/>
                         @endif
 

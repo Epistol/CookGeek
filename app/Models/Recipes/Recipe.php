@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Jobs\CheckPicture;
 use App\Traits\HasImages;
 use App\Traits\HasLikes;
 use App\Traits\HasTimes;
@@ -12,8 +13,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
+use Sightengine\SightengineClient;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
@@ -76,6 +80,15 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         return $this->morphToMany(Univers::class, 'universable');
     }
+
+    /**
+     * @return MorphToMany
+     */
+    public function steps()
+    {
+        return $this->morphToMany(RecipesSteps::class, 'stepable')->withPivot('step_number');
+    }
+
 
     /**
      * @param Media|null $media
@@ -192,14 +205,17 @@ class Recipe extends Model implements Feedable, HasMedia
      * @param $newSlug
      * @param $uid
      *
+     * @return string
      * @throws Throwable
      */
     public function slugUpdate($newSlug, $uid)
     {
         $slug = $this->slugTitle($newSlug, $uid);
+
         $this->slug = $slug;
         $this->hashid = $uid;
         $this->saveOrFail();
+        return $slug;
     }
 
     /**
@@ -210,7 +226,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function slugTitle($title, $uid)
     {
-        return str_slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
+        return Str::slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
     }
 
     /**
@@ -235,6 +251,7 @@ class Recipe extends Model implements Feedable, HasMedia
         $this->video = $request->video;
         $this->commentary_author = $request->comment;
         $this->validated = 0;
+        $this->lang = Lang::locale();
 
         return $this;
     }
@@ -248,20 +265,20 @@ class Recipe extends Model implements Feedable, HasMedia
         foreach ($request->step as $key => $step) {
             $newStep = RecipesSteps::firstOrCreate(
                 [
-                    'instruction' => $request->step[$key]
+                    'instruction' => $step
                 ]
             );
             $this->steps()->attach(
                 $newStep,
-                ['step_number' => $key]
+                ['step_number' => $key + 1]
             );
 
-            foreach ($request->step->picture as $picture) {
+            /*foreach ($request->step->picture as $picture) {
                 if (!empty($picture)) {
                     $newPicture = $newStep->addMedia($picture)->toMediaCollection('main');
                     $newStep->image()->attach($newPicture);
                 }
-            }
+            }*/
 
             /*$path = $step->photo->store('public/uploads');
             $picture = $this->addMedia($picture)->toMediaCollection('step');
@@ -270,12 +287,18 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @return MorphToMany
+     * @param $request
      */
-    public function steps()
+    public function insertPicture($request)
     {
-        return $this->morphToMany('App\RecipesSteps', 'stepable');
+        $picture = isset($request->resume) ? $request->resume : null;
+        if ($picture !== null) {
+            $media = $this->addMedia($picture)
+                ->toMediaCollection();
+            CheckPicture::dispatch($media, $this);
+        }
     }
+
 
     /**
      * @param $request
@@ -284,7 +307,7 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         // Storing ingredients and attach to the recipe
         foreach ($request->ingredient as $key => $ingredient) {
-            $ingredient = Ingredient::firstOrCreate(['name' => $ingredient]);
+            $ingredient = Ingredient::firstOrCreate(['name' => $ingredient, 'lang' => Lang::locale()]);
             $this->ingredients()->attach(
                 $ingredient,
                 ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
@@ -303,10 +326,10 @@ class Recipe extends Model implements Feedable, HasMedia
     public function moreLikeThis($nbRecipes)
     {
         $nbWanted = intval($nbRecipes);
-        $related  = Recipe::where('type', $this->type)
+        $related = Recipe::where('type', $this->type)
             ->where('id', '!=', $this->id)->where('validated', 1)->inRandomOrder()->limit($nbWanted)
             ->get();
-        $total    = $related->count();
+        $total = $related->count();
 
         // I want to execute theses commands
         if ($total < $nbWanted) {
@@ -314,8 +337,8 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->where('id', '!=', $this->id)
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
-            $related         = $related->merge($relatedUniverse);
-            $total           = $total + $relatedUniverse->count();
+            $related = $related->merge($relatedUniverse);
+            $total = $total + $relatedUniverse->count();
         }
 
         if ($total < $nbWanted) {
@@ -324,8 +347,8 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->where('id_user', $this->id_user)
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
-            $related           = $related->merge($relatedSameAuthor);
-            $total             = $total + $relatedSameAuthor->count();
+            $related = $related->merge($relatedSameAuthor);
+            $total = $total + $relatedSameAuthor->count();
         }
 
         if ($total < $nbWanted) {
@@ -333,11 +356,10 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->where('id', '!=', $this->id)
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
-            $related           = $related->merge($relatedSameAuthor);
-            $total             = $total + $relatedSameAuthor->count();
+            $related = $related->merge($relatedSameAuthor);
+            $total = $total + $relatedSameAuthor->count();
         }
 
         return $related;
     }
-
 }

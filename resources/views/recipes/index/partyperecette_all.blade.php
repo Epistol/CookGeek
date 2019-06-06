@@ -1,15 +1,15 @@
 {{--Pour chaque type de recette, on va charger  4  recettes --}}
 <?php
-$recettes = DB::table('recipes')->where('type', '=', $type->id)->where('validated', '=', 1)->paginate(12);
+$recipes = DB::table('recipes')->where('type', '=', $type->id)->where('validated', '=', 1)->paginate(12);
 $i = 0;
 ?>
 <a class="tag is-primary is-medium" href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
 
 <section class=" bordered-cdg">
     <div class="columns">
-        @foreach($recettes as $index=>$recette)
+        @foreach($recipes as $index=>$recipe)
 			<?php $i = $index + 1;
-			$c = DB::table('categunivers')->where('id', '=', $recette->type_univers)->first();
+			$c = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
 			?>
             <div class="column is-one-quarter">
                 @include("recipes.index.excerptsimple")
@@ -23,6 +23,6 @@ $i = 0;
 
         @endforeach
     </div>
-    {{$recettes->links()}}
+    {{$recipes->links()}}
 
 </section>

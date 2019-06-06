@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage', "Modification de : ".$recette->title)
+@section('titrepage', "Modification de : ".$recipe->title)
 @section('content')
 
     <div class="container recipe-add">
@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
-                        <h1 class="title">Modification de : {{$recette->title}}
+                        <h1 class="title">Modification de : {{$recipe->title}}
                             <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
 
         <section class="section">
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
-                  action="{{ route('recipe.edition', $recette->id) }}">
+                  action="{{ route('recipe.edition', $recipe->id) }}">
                 {{ csrf_field() }}
                 <div class="columns" style="
   margin-bottom: 2rem;">

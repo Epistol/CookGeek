@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
-@section('titrepage', ucfirst(strip_tags(clean($recette->title))))
+@section('titrepage', ucfirst(strip_tags(clean($recipe->title))))
 
-@if ($urlToFirstListImage = $recette->getFirstMediaUrl('images', 'thumb'))
+@if ($urlToFirstListImage = $recipe->getFirstMediaUrl('images', 'thumb'))
     @php
         $pic = $urlToFirstListImage;
     @endphp
@@ -63,7 +63,7 @@
                                 <div class="column is-9" style="padding: 2.5rem;">
                                     @include("recipes.show.comment")
                                     @include("recipes.show.steps")
-                                    @if($recette->video)
+                                    @if($recipe->video)
                                         @include("recipes.show.video")
                                     @endif
 

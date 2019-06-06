@@ -22,9 +22,9 @@
 
 
             {{--  -> si la recette n'est pas nulle--}}
-            @if($recettes[$i] != null)
+            @if($recipes[$i] != null)
                 {{-- -> si la categorie correspond à celle de la recette--}}
-                @if($recettes[$i]->type_univers == $c->id)
+                @if($recipes[$i]->type_univers == $c->id)
                     <div class="column">
                         @include("recipes.index.excerpt")
                     </div>

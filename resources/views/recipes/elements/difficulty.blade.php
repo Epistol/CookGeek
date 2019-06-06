@@ -1,5 +1,5 @@
 <?php
-$diff = DB::table('difficulty')->where('id', '=', $recette->difficulty)->first();
+$diff = DB::table('difficulty')->where('id', '=', $recipe->difficulty)->first();
 ?>
 <div class="full-circle {{lcfirst($diff->name)}}">
     {{ucfirst($diff->name)}}

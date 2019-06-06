@@ -8,9 +8,9 @@
 
 
 
-@if(strpos($recette->video, 'https://www.youtube.com') !== false OR strpos($recette->video, 'https://youtu.be') !== false)
+@if(strpos($recipe->video, 'https://www.youtube.com') !== false OR strpos($recipe->video, 'https://youtu.be') !== false)
 	<?php
-	$yt = str_replace("watch?v=", "embed/", $recette->video);
+	$yt = str_replace("watch?v=", "embed/", $recipe->video);
 	?>
     <div class="youtube-player">
 
@@ -20,10 +20,10 @@
 
 
 
-@elseif(strpos($recette->video, 'www.dailymotion.com') !== false)
+@elseif(strpos($recipe->video, 'www.dailymotion.com') !== false)
 	<?php
 	$daily = /*http://www.dailymotion.com/video/x6bfitr*/
-		$recette->video;
+		$recipe->video;
 	$daily = str_replace("video", "embed/video", $daily)
 	?>
     <div class="dailymotion_player">
@@ -34,7 +34,7 @@
 @else
     <div class="columns">
         <div class="column is-lateral">
-            <p > {{str_limit($recette->video, 150, "...") }} </p>
+            <p > {{str_limit($recipe->video, 150, "...") }} </p>
         </div>
     </div>
 @endif

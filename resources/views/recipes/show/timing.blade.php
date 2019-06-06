@@ -2,7 +2,7 @@
 
 <?php
 
-$somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+$somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
 $somme_h = $somme_t / 60;
 $somme_m = $somme_t - ((int)$somme_h * 60);
 ?>

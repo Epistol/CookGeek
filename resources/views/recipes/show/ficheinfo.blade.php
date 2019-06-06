@@ -9,9 +9,9 @@
     <section class="section is-paddingless">
         <div style="display:flex;justify-content:flex-end;align-items:center; margin-top: 10%">
             @auth
-                @if($recette->id_user === Auth::user()->id )
+                @if($recipe->id_user === Auth::user()->id )
                     <div style="margin-right: 5%">
-                        <a href="{{route("recipe.edit", $recette->slug)}}">
+                        <a href="{{route("recipe.edit", $recipe->slug)}}">
                             <div class="tags has-addons">
                                 <span class="tag icon"><i class="fas fa-edit"></i></span>
                                 <span class="tag ">@lang("common.edit")</span>
@@ -19,12 +19,12 @@
                         </a>
                     </div>
                 @endif
-                <SignalRecipe recipeid="{{$recette->id}}" user_id={{ Auth::user()->id }} ></SignalRecipe>
+                <SignalRecipe recipeid="{{$recipe->id}}" user_id={{ Auth::user()->id }} ></SignalRecipe>
 
             @endauth
 
             @guest
-                <SignalRecipe recipeid="{{$recette->id}}" user_id='null'></SignalRecipe>
+                <SignalRecipe recipeid="{{$recipe->id}}" user_id='null'></SignalRecipe>
             @endguest
         </div>
     </section>

@@ -2,17 +2,17 @@
 
 <tr>
     <td>
-        <a href="{{route('recipe.show', $recette->slug)}}">
+        <a href="{{route('recipe.show', $recipe->slug)}}">
             <figure class="image is-96x96	">
 				<?php
-				$img = DB::table('recipe_imgs')->where('user_id', '=', $recette->id_user)->where('recipe_id', '=', $recette->id)->first();
+				$img = DB::table('recipe_imgs')->where('user_id', '=', $recipe->id_user)->where('recipe_id', '=', $recipe->id)->first();
 				?>
                 @if($img == null or empty($img))
-                    <img src="http://via.placeholder.com/300x200?text={{$recette->title}}" class="fit-cover"
-                         alt="{{$recette->title}} / CDG">
+                    <img src="http://via.placeholder.com/300x200?text={{$recipe->title}}" class="fit-cover"
+                         alt="{{$recipe->title}} / CDG">
                 @else
-                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$img->image_name}}" class="fit-cover"
-                         alt="{{$recette->title}} / CDG">
+                    <img src="/recipes/{{$recipe->id}}/{{$recipe->id_user}}/{{$img->image_name}}" class="fit-cover"
+                         alt="{{$recipe->title}} / CDG">
                 @endif
 
             </figure>
@@ -23,7 +23,7 @@
     <td id="title_recipe">
         <div class="is-centered">
             <p class="title-mini" id="recipe-user"><a
-                        href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a></p>
+                        href="{{route('recipe.show', $recipe->slug)}}"> {{$recipe->title}}</a></p>
         </div>
     </td>
     <td>@include('recipes.elements.difficulty')</td>

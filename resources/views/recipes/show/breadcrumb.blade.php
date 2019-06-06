@@ -27,7 +27,7 @@
             </nav>
         </div>
         <div class="column has-text-centered" style="display:flex;justify-content:center;align-items:center;">
-            <h1 class="title is-paddingless">{{ strip_tags(clean($recette->title)) }}</h1>
+            <h1 class="title is-paddingless">{{ strip_tags(clean($recipe->title)) }}</h1>
         </div>
         <div class="column " style="display:flex;justify-content:flex-end;align-items:center;">
             @include('recipes.likeh')

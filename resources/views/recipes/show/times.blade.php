@@ -34,12 +34,12 @@ function sumerise_t($val)
 }
 
 
-$prep = sumerise_t($recette->prep_time);
-$cook = sumerise_t($recette->cook_time);
-$rest = sumerise_t($recette->rest_time);
+$prep = sumerise_t($recipe->prep_time);
+$cook = sumerise_t($recipe->cook_time);
+$rest = sumerise_t($recipe->rest_time);
 
 
-$somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
+$somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
 ?>
 @if($somme_t == 0)
 
@@ -49,7 +49,7 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
         <h4 class="title">Timing</h4>
 
 
-        @if($recette->prep_time !== 0)
+        @if($recipe->prep_time !== 0)
             <div class="columns">
                 <div class="column is-1">
                     <p><i aria-hidden="true" class="fas fa-utensils"></i>
@@ -61,7 +61,7 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
             </div>
         @endif
 
-        @if($recette->cook_time !== 0)
+        @if($recipe->cook_time !== 0)
             <div class="columns">
                 <div class="column is-1">
                     <p><i aria-hidden="true" class="fas fa-thermometer-three-quarters"></i>
@@ -71,7 +71,7 @@ $somme_t = $recette->prep_time + $recette->cook_time + $recette->rest_time;
                     <p> {{ucfirst(trans('recipe.cooking-t')) }} : {{$cook}}</p>
                 </div>
             </div>
-        @endif  @if($recette->rest_time !== 0)
+        @endif  @if($recipe->rest_time !== 0)
             <div class="columns">
                 <div class="column is-1">
                     <p><i aria-hidden="true" class="far fa-clock"></i>

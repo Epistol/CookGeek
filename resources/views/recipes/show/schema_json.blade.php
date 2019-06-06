@@ -7,7 +7,7 @@
  * @link : Bitbucket
  * Date: 2019-03-21
  */
-$type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
+$type = DB::table('type_recipes')->where("id", "=", $recipe->type)->first();
 
 ?>
 
@@ -15,7 +15,7 @@ $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
     {
       "@context": "http://schema.org/",
       "@type": "Recipe",
-      "name": "{{strip_tags(clean($recette->title))}}",
+      "name": "{{strip_tags(clean($recipe->title))}}",
 
       "image": [
         @if(collect($pic)->isNotEmpty())
@@ -28,8 +28,8 @@ $type = DB::table('type_recipes')->where("id", "=", $recette->type)->first();
           "@type": "Person",
           "name": "{{strip_tags(clean($nom))}}"
         },
-        "datePublished": "{{Carbon::parse($recette->created_at)->format('Y-m-d')}}",
-        "description": "{{$recette->title . " - CDG"}}",
+        "datePublished": "{{Carbon::parse($recipe->created_at)->format('Y-m-d')}}",
+        "description": "{{$recipe->title . " - CDG"}}",
         "prepTime" : "{{$preptimeiso}}",
         "cookTime" : "{{$cooktimeiso}}",
         "totalTime" : "{{$totaliso}}",
