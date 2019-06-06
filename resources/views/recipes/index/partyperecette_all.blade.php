@@ -3,14 +3,14 @@
 $recipes = DB::table('recipes')->where('type', '=', $type->id)->where('validated', '=', 1)->paginate(12);
 $i = 0;
 ?>
-<a class="tag is-primary is-medium" href="/recette/type/{{lcfirst($type->name)}}">{{$type->name}}</a>
+<a class="tag is-primary is-medium" href="{{route('type.show', lcfirst($type->name))}}">{{$type->name}}</a>
 
 <section class=" bordered-cdg">
     <div class="columns">
         @foreach($recipes as $index=>$recipe)
-			<?php $i = $index + 1;
-			$c = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
-			?>
+            <?php $i = $index + 1;
+            $c = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
+            ?>
             <div class="column is-one-quarter">
                 @include("recipes.index.excerptsimple")
             </div>

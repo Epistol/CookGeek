@@ -31,7 +31,7 @@
                     <div class="columns is-marginless is-paddingless is-multiline is-mobile right-side-recipe">
                         {{--Titre--}}
                         <div class="column is-full" id="titre">
-                            <a href="{{url('/recette/'.$recipe->slug)}}"><h4 class="title">
+                            <a href="{{route('recipe.show',$recipe->slug)}}"><h4 class="title">
                                     @php echo str_limit($recipe->title, 20, ' (...)'); @endphp
                                 </h4></a>
                             <?php

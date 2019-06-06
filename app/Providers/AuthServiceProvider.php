@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-//        Recipe::class => RecipePolicy::class,
+        Recipe::class => RecipePolicy::class,
     ];
 
     /**

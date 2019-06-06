@@ -17,18 +17,19 @@ class RecipePolicy
     /**
      * Determine whether the user can view the recipe.
      *
-     * @param User $user
-     * @param Recipe $recipe *
+     * @param  $user
+     * @param  $recipe
      * @return mixed
      */
-    public function view(?User $user, Recipe $recipe)
+    public function view(?User $user)
     {
-        if (Auth::check()) {
-            if (Auth::user()->id === $recipe->id_user) {
+        if ($user) {
+            if ($user->hasPermissionTo('read_recipes')) {
                 return true;
             }
+            return false;
         }
-        return !$recipe->isValid() ? false : ($user->hasPermissionTo('read_' . $this->policyName));
+        return true;
     }
 
     /**

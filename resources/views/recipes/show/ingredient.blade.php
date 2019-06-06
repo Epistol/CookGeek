@@ -2,7 +2,7 @@
     <h3 class="title is_big">@lang("recipe.ingredients")</h3>
     <div class="columns is-mobile is-multiline" id="ingredients">
 
-        @forelse($ingredients as $index=>$ingr)
+        @forelse($recipe->ingredients()->get() as $index=>$ingr)
             <div class="column is-2 field" id="checkbutton">
                 <input class="is-checkradio is-ingredient-member" id="ingredientCheckbox[{{$index}}]" type="checkbox"
                        name="ingredientCheckbox[{{$index}}]">

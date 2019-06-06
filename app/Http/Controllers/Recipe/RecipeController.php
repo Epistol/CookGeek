@@ -39,7 +39,6 @@ class RecipeController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Recipe::class, 'recipes');
     }
 
     /**
@@ -47,6 +46,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
+        $this->authorize('index', Recipe::class);
+
         $medias = Categunivers::all();
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
@@ -63,12 +64,15 @@ class RecipeController extends Controller
     /**
      * Show the form for creating a new resource
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
         if (!Auth::check()) {
             return redirect('/');
         }
+        $this->authorize('create', Recipe::class);
+
         $types_univ = Categunivers::all();
         $difficulty = Difficulty::all();
         $types_plat = TypeRecipe::all();
@@ -90,6 +94,8 @@ class RecipeController extends Controller
      */
     public function store(StoreRecipeRequest $request)
     {
+        $this->authorize('create', Recipe::class);
+
         // Insert recipe
         $recipe = new Recipe;
         $recipe = $recipe->easyInsert($request);
@@ -108,11 +114,10 @@ class RecipeController extends Controller
 
         $recipe->insertIngredients($request);
         $recipe->insertSteps($request);
-        $recipe->insertPicture($request);
+        $recipe->insertPicture($request, true);
 
         return redirect()->route('recipe.show', $recipe->slug);
     }
-
 
     /**
      * Display the specified resource.
@@ -120,18 +125,31 @@ class RecipeController extends Controller
      * @param $slug
      *
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($slug)
     {
-        $recette = Recipe::where('slug', $slug)->firstOrFail();
-        $type = TypeRecipe::where('id', $recette->type)->first();
-        $pictures = $recette->image();
-        dd($pictures);
-        $picturesOfAuthor = $recette->image()->where('user_id', Auth::user()->id)->get();
-        $picturesOfUsers = $recette->image()->where('user_id', '!=', Auth::user()->id)->get();
+        $this->authorize('view', Recipe::class);
+
+        $recipe = Recipe::where('slug', $slug)->firstOrFail();
+        $type = TypeRecipe::where('id', $recipe->type)->first();
+        $pictureSet = $recipe->getMedia();
+
+//        $picturesOfAuthor = $pictures->where('custom_properties->first_picture', 'true');
+        $picturesOfAuthor = $pictureSet->filter(function ($value) {
+            if ($value->custom_properties['first_picture'] === true) {
+                return $value;
+            }
+        });
+
+        $picturesOfUsers = $pictureSet->filter(function ($value) {
+            if ($value->custom_properties['first_picture'] === false) {
+                return $value;
+            }
+        });
 
         // STARS
-        $stars1 = RecipeLike::where('id_recipe', $recette->id)->avg('note');
+        $stars1 = RecipeLike::where('id_recipe', $recipe->id)->avg('note');
         if ($stars1 == null) {
             $stars1 = 1;
         }
@@ -139,16 +157,17 @@ class RecipeController extends Controller
         $stars = explode('.', $stars, 2);
 
         // RATING
-        $countrating = RecipeLike::where('id_recipe', $recette->id)->count();
+        $countrating = RecipeLike::where('id_recipe', $recipe->id)->count();
         if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }
-        $nom = User::where('id', $recette->id_user)->value('name');
-        $related = $recette->moreLikeThis(4);
+        $nom = User::where('id', $recipe->id_user)->value('name');
+        $related = $recipe->moreLikeThis(4);
 
-        return view('recipes.show', [
+        return view(
+            'recipes.show',
             compact(
-                'recette',
+                'recipe',
                 'related',
                 'picturesOfAuthor',
                 'picturesOfUsers',
@@ -156,10 +175,9 @@ class RecipeController extends Controller
                 'countrating',
                 'stars1',
                 'nom',
-                'media',
                 'type'
             )
-        ])->with('controller', $this);
+        )->with('controller', $this);
     }
 
 

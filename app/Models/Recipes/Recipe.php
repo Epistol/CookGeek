@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
-use Sightengine\SightengineClient;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
@@ -88,7 +87,13 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         return $this->morphToMany(RecipesSteps::class, 'stepable')->withPivot('step_number');
     }
-
+    /**
+     * @return MorphToMany
+     */
+    public function ingredients()
+    {
+        return $this->morphToMany('App\Ingredient', 'ingredientable');
+    }
 
     /**
      * @param Media|null $media
@@ -288,12 +293,14 @@ class Recipe extends Model implements Feedable, HasMedia
 
     /**
      * @param $request
+     * @param $first / Is it first picture ?
      */
-    public function insertPicture($request)
+    public function insertPicture($request, $first = false)
     {
         $picture = isset($request->resume) ? $request->resume : null;
         if ($picture !== null) {
             $media = $this->addMedia($picture)
+                ->withCustomProperties(['first_picture' => $first, 'checked' => false])
                 ->toMediaCollection();
             CheckPicture::dispatch($media, $this);
         }
@@ -315,13 +322,7 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    /**
-     * @return MorphToMany
-     */
-    public function ingredients()
-    {
-        return $this->morphToMany('App\Ingredient', 'ingredientable');
-    }
+
 
     public function moreLikeThis($nbRecipes)
     {

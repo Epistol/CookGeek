@@ -1,4 +1,4 @@
-<a href="/recette/{{strip_tags(clean($recipe->slug))}} ">
+<a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}">
     <figure class="image is-16by9 ">
         @if($validPictures->isEmpty())
             <img class="fit-cover img-radius"

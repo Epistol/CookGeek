@@ -22,7 +22,7 @@
                            </div>
                            <div class="column is-7">
                                <div class=" is-flex">
-                                   <a href="{{url('/recette/'.$univers->name)}}"><h2 class="title">
+                                   <a href="{{route('univers.show',$univers->name)}}"><h2 class="title">
                                            @php echo str_limit($univers->name, 20, ' (...)'); @endphp
                                        </h2></a>
                                </div>

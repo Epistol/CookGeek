@@ -28,7 +28,8 @@
                           </span>
                         </a>
         </p>
-        @if(count($validPictures) === 1 )
+        @if($picturesOfAuthor->first()->getCustomProperty('checked') !== null)
+        @if(count($picturesOfAuthor->first()->getCustomProperty('checked') === true) === 1 )
             <p class="control">
                 <a class="button pinterest "
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recipe->title)) }}">
@@ -48,7 +49,7 @@
                           </span>
                 </a>
             </p>
-
+        @endif
         @endif
 
         <p class="control">

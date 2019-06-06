@@ -34,7 +34,7 @@
                             @endif
                     </figure>
 
-                    <a href="/recette/{{$recette->slug}}"
+                    <a href="{{route('recipe.show', $recette->slug)}}"
                        class="content-title">{{strip_tags(clean($recette->title))  }}</a>
                 </div>
 

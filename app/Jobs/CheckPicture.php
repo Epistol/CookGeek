@@ -47,6 +47,10 @@ class CheckPicture implements ShouldQueue
             $mediaItems =  $this->recipe->getMedia();
             $media = $mediaItems->where('id', $this->media->id)->first();
             $media->delete();
+        } else {
+            $mediaItems =  $this->recipe->getMedia();
+            $media = $mediaItems->where('id', $this->media->id)->first();
+            $media->setCustomProperty('checked', true);
         }
     }
 }

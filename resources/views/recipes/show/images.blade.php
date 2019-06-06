@@ -1,17 +1,17 @@
 <!-- Image part -->
 <div class="has-text-centered" style="clear: both;" id="recipe-pictures">
-    @if($pictures->count() > 0)
+    @if($picturesOfAuthor->count() > 0)
         <div>
-            <a href="{{ $pictures->getFirstMediaUrl() }}"
+            <a href="{{ $picturesOfAuthor[0]->getUrl() }}"
                data-lightbox="{{ cleanInput($recipe->slug) }}"
                data-title="{{ cleanInput($recipe->title) }}">
                 <figure class="image is-square">
                     <picture>
                         <source type="image/webp"
-                                srcset="{{ $pictures->first()->getUrl('thumbSquare') }}"
+                                srcset="{{ $picturesOfAuthor->first()->getUrl('thumbSquare') }}"
                                 class="fit-cover"
                                 alt="{{ __('Image of the recipe :') . cleanInput($recipe->title) }}">
-                        <img src="{{ $pictures->getFirstMediaUrl() }}"
+                        <img src="{{ $picturesOfAuthor[0]->getUrl() }}"
                              class="fit-cover"
                              alt="{{  __('Image of the recipe :') . cleanInput($recipe->title) }}">
                     </picture>
@@ -20,7 +20,7 @@
         </div>
 
         {{--IF THERE IS MORE THAN ONE PICTURE--}}
-        @if($pictures->count() > 1)
+        @if($picturesOfAuthor->count() > 1)
             <div style="display: flex;flex-wrap: wrap;">
                 @foreach($validPictures->slice(0) as $index => $validPicture)
                     {{--We don't need to load the first picture that already appear--}}
