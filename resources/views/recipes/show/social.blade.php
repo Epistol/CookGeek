@@ -11,8 +11,8 @@
             </a>
 
         </p>
-		<?php $univers = DB::table('univers')->where('id', $recipe->univers)->first();
-		?>
+        <?php $univers = DB::table('univers')->where('id', $recipe->univers)->first();
+        ?>
 
         <p class="control">
             @if($univers !== null)
@@ -29,7 +29,7 @@
                         </a>
         </p>
         @if($picturesOfAuthor->first()->getCustomProperty('checked') !== null)
-        @if(count($picturesOfAuthor->first()->getCustomProperty('checked') === true) === 1 )
+            @if($picturesOfAuthor->first()->getCustomProperty('checked') === true) )
             <p class="control">
                 <a class="button pinterest "
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recipe->title)) }}">
@@ -39,17 +39,17 @@
                           </span>
                 </a>
             </p>
-        @else
-            <p class="control">
-                <a class="button pinterest "
-                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recipe->title))}}">
+            @else
+                <p class="control">
+                    <a class="button pinterest "
+                       href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recipe->title))}}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
                               <span hidden>Partager sur Pinterest</span>
                           </span>
-                </a>
-            </p>
-        @endif
+                    </a>
+                </p>
+            @endif
         @endif
 
         <p class="control">
