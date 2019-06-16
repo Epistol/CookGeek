@@ -6,7 +6,7 @@
                data-lightbox="{{ cleanInput($recipe->slug) }}"
                data-title="{{ cleanInput($recipe->title) }}">
                 <figure class="image is-square">
-                    <picture>
+                    <picture id="picture">
                         <source type="image/webp"
                                 srcset="{{ $picturesOfAuthor->first()->getUrl('thumbSquare') }}"
                                 class="fit-cover"

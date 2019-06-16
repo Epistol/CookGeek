@@ -25,7 +25,7 @@
         "itsgoingd/clockwork": "^2.0",
         "laravel/cashier": "~9.0",
         "laravel/framework": "5.8.*",
-        "laravel/horizon": "^2.0",
+        "laravel/horizon": "^3.2",
         "laravel/passport": "5.0.*",
         "laravel/scout": "^7.0",
         "laravel/socialite": "^4.1",

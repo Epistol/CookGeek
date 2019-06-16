@@ -19,6 +19,11 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'sightengine' => [
+        'user' => env('SIGHTENGINE_USER'),
+        'key' => env('SIGHTENGINE_KEY'),
+    ],
+
     'ses' => [
         'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),

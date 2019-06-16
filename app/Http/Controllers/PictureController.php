@@ -28,16 +28,6 @@ class PictureController extends Controller
         $namePicture = $this->randomName();
         $uploaded    = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
 
-        DB::table('recipe_imgs')->updateOrInsert(
-            [
-                'recipe_id'  => $recipeId,
-                'image_name' => strip_tags(clean($namePicture)),
-                'user_id'    => $userId,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-
         return response()->json(true);
     }
 

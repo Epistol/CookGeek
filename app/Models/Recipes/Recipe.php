@@ -96,6 +96,22 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
+     * @param $request
+     * @param $first / Is it first picture ?
+     */
+    public function insertPicture($request, $first = false)
+    {
+        $picture = isset($request->resume) ? $request->resume : null;
+        if ($picture !== null) {
+            $media = $this->addMedia($picture)
+                ->withCustomProperties(['first_picture' => $first, 'checked' => false])
+                ->withResponsiveImages()
+                ->toMediaCollection();
+            CheckPicture::dispatch($media, $this);
+        }
+    }
+
+    /**
      * @param Media|null $media
      *
      * @throws InvalidManipulation
@@ -105,18 +121,23 @@ class Recipe extends Model implements Feedable, HasMedia
         $this->addMediaConversion('thumb')
             ->width(150)
             ->height(150)
-            ->format(Manipulations::FORMAT_JPG);
+            ->format(Manipulations::FORMAT_JPG)
+            ->nonQueued()
+            ->performOnCollections('default');
 
         $this->addMediaConversion('index')
             ->width(300)
             ->height(150)
             ->format(Manipulations::FORMAT_PNG)
-            ->withResponsiveImages();
+            ->nonQueued()
+            ->performOnCollections('default');
 
         $this->addMediaConversion('thumbSquare')
             ->width(250)
             ->height(250)
-            ->format(Manipulations::FORMAT_WEBP);
+            ->format(Manipulations::FORMAT_WEBP)
+            ->nonQueued()
+            ->performOnCollections('default');
     }
 
     /**
@@ -291,20 +312,6 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    /**
-     * @param $request
-     * @param $first / Is it first picture ?
-     */
-    public function insertPicture($request, $first = false)
-    {
-        $picture = isset($request->resume) ? $request->resume : null;
-        if ($picture !== null) {
-            $media = $this->addMedia($picture)
-                ->withCustomProperties(['first_picture' => $first, 'checked' => false])
-                ->toMediaCollection();
-            CheckPicture::dispatch($media, $this);
-        }
-    }
 
 
     /**

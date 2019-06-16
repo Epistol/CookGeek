@@ -37,20 +37,23 @@ class CheckPicture implements ShouldQueue
     {
         //analyze the locally stored image for nudity
         // wad : weapon, alcool, drugs
-        $sightEngine = new SightengineClient(env('SIGHTENGINE_USER'), env('SIGHTENGINE_KEY'));
-        $path = $this->media->getPath();
-        $imageCheck = $sightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes'])
-            ->set_file($path);
+        if (config('services.sightengine.key') !== '') {
+            $sightEngine = new SightengineClient(config('services.sightengine.user'),
+                config('services.sightengine.key'));
+            $path = $this->media->getPath();
+            $imageCheck = $sightEngine->check(['nudity', 'wad', 'offensive', 'face-attributes'])
+                ->set_file($path);
 
-        if ($imageCheck->status !== 'success') {
-            // delete picture
-            $mediaItems =  $this->recipe->getMedia();
-            $media = $mediaItems->where('id', $this->media->id)->first();
-            $media->delete();
-        } else {
-            $mediaItems =  $this->recipe->getMedia();
-            $media = $mediaItems->where('id', $this->media->id)->first();
-            $media->setCustomProperty('checked', true);
+            if ($imageCheck->status !== 'success') {
+                // delete picture
+                $mediaItems = $this->recipe->getMedia();
+                $media = $mediaItems->where('id', $this->media->id)->first();
+                $media->delete();
+            } else {
+                $mediaItems = $this->recipe->getMedia();
+                $media = $mediaItems->where('id', $this->media->id)->first();
+                $media->setCustomProperty('checked', true);
+            }
         }
     }
 }

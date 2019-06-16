@@ -18,7 +18,7 @@
                         <form id="formulaire" class="form-horizontal" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            @include('auth.socials)
+                            @include('auth.socials')
 
                             <div class="field {{ $errors->has('pseudo') ? ' has-error' : '' }}">
                                 <label for="pseudo" class="label control-label">Pseudo</label>
