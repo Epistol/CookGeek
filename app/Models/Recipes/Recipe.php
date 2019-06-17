@@ -88,6 +88,7 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         return $this->morphToMany(RecipesSteps::class, 'stepable')->withPivot('step_number');
     }
+
     /**
      * @return MorphToMany
      */
@@ -137,29 +138,28 @@ class Recipe extends Model implements Feedable, HasMedia
 
     public function getBestPicture()
     {
-
         if ($this->getMedia()->count() > 0) {
             $medias = $this->getMedia();
             $likedMedias = collect([]);
 
             foreach ($medias as $media) {
+                // get the medias that got likes
                 if ($media->likes()) {
-                    $likedMedias->push($media);
+                    $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
                 }
             }
 
-            if($likedMedias->isNotEmpty()){
-
+            if ($likedMedias->isNotEmpty()) {
+                // get the media who got more likes
+                dd($likedMedias->max('count'));
+                // ?maybe a little shuffle to not always get same picture
+            } else {
+                // if no like, always return first picture
+                return $this->getFirstMedia();
             }
 
-            // get the medias that got likes
-                // get the media who got more likes
-                // ?maybe a little shuffle to not always get same picture
-
-
-            // if no like, always return first picture
-
-            // else return null
+        } else {
+            return response(null);
         }
     }
 
@@ -336,7 +336,6 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
 
-
     /**
      * @param $request
      */
@@ -351,7 +350,6 @@ class Recipe extends Model implements Feedable, HasMedia
             );
         }
     }
-
 
 
     public function moreLikeThis($nbRecipes)
