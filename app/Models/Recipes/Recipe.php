@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
+use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\Image\Exceptions\InvalidManipulation;
+
+use Spatie\Image\Manipulations;
+
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
-use Spatie\Feed\Feedable;
-
-use Spatie\Image\Exceptions\InvalidManipulation;
-use Spatie\Image\Manipulations;
 
 use Spatie\MediaLibrary\Models\Media;
 use Throwable;
@@ -133,6 +133,34 @@ class Recipe extends Model implements Feedable, HasMedia
             ->width(250)
             ->height(250)
             ->format(Manipulations::FORMAT_WEBP);
+    }
+
+    public function getBestPicture()
+    {
+
+        if ($this->getMedia()->count() > 0) {
+            $medias = $this->getMedia();
+            $likedMedias = collect([]);
+
+            foreach ($medias as $media) {
+                if ($media->likes()) {
+                    $likedMedias->push($media);
+                }
+            }
+
+            if($likedMedias->isNotEmpty()){
+
+            }
+
+            // get the medias that got likes
+                // get the media who got more likes
+                // ?maybe a little shuffle to not always get same picture
+
+
+            // if no like, always return first picture
+
+            // else return null
+        }
     }
 
     /**
@@ -383,5 +411,4 @@ class Recipe extends Model implements Feedable, HasMedia
             return $somme_m . "M";
         }
     }
-
 }

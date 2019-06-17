@@ -1,17 +1,19 @@
 @extends('layouts.admin')
-@section('titrepage', 'Admin')
+@section('titrepage', 'Editer recette / ADMIN')
 @section('content')
     <div class="container">
         <h1>Recettes</h1>
 
         <section class="section">
-            <form method="PATCH" action="{{route("admin.recipe.update", $recipe->slug)}}">
+            <form method="POST" action="{{route('admin.recipe.update', $recipe->id)}}">
                 @csrf
+                @method('PATCH')
+
                 @foreach($recipe->getAttributes() as $key => $r)
                     <div class="field">
                         <label class="label">{{$key}}</label>
                         <div class="control">
-                            <input class="input" value="{{strip_tags(clean($r)) }}">
+                            <input class="input" value="{{strip_tags(clean($r)) }}" name="{{$key}}">
                         </div>
                     </div>
                 @endforeach

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Recipe;
 use App\Type_recipe;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class RecipesAdmin extends Controller
@@ -49,16 +49,20 @@ class RecipesAdmin extends Controller
 
     public function store($id)
     {
-        $recipe = Recipe::where('id', '=', $id)->first();
+        $recipe = Recipe::where('id', $id)->first();
         return view("admin.recipes.edit", [
             'recipe' => $recipe
         ])->with(['controller' => $this]);
     }
 
-    public function update($content)
+    public function update(Request $request, Recipe $recipe)
     {
-        $recipe = Recipe::where('slug', $content)->first();
-
+        foreach ($request->request as $index => $requestElement) {
+            if ($index !== '_token'  && $index !== '_method') {
+                $recipe->$index = $requestElement;
+            }
+        }
+        $recipe->save();
         return view('admin.recipes.edit', [
             'recipe' => $recipe,
         ])->with(['controller' => $this]);

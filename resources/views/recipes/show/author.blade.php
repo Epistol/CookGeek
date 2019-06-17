@@ -1,7 +1,7 @@
 <div class="author">
     <?php
-    $author = DB::table('users')->where('id', '=', $recipe->id_user)->first();
-    $nb_recipes = DB::table('recipes')->where('id_user', '=', $recipe->id_user)->count();
+    $author = User::where('id', '=', $recipe->id_user)->first();
+    $nb_recipes = Recipe::where('id_user', '=', $recipe->id_user)->count();
     ?>
 
     <div class="is-flex">

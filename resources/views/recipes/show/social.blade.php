@@ -11,7 +11,7 @@
             </a>
 
         </p>
-        <?php $univers = DB::table('univers')->where('id', $recipe->univers)->first();
+        <?php $univers = App\Univers::where('id', $recipe->univers)->first();
         ?>
 
         <p class="control">
@@ -28,8 +28,8 @@
                           </span>
                         </a>
         </p>
-        @if($picturesOfAuthor->first()->getCustomProperty('checked') !== null)
-            @if($picturesOfAuthor->first()->getCustomProperty('checked') === true) )
+        <?php dd($recipe->getBestPicture());?>
+        @if($recipe->getBestPicture() !== null)
             <p class="control">
                 <a class="button pinterest "
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recipe->title)) }}">
@@ -50,7 +50,6 @@
                     </a>
                 </p>
             @endif
-        @endif
 
         <p class="control">
             <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}">

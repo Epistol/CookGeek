@@ -1,5 +1,5 @@
 <a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}">
-    <figure class="image is-16by9 ">
+    <figure class="image is-16by9">
         @if($recipe->getMedia()->isEmpty())
             <img class="fit-cover img-radius"
                  src="http://via.placeholder.com/300x200?text={!! strip_tags($recipe->title) !!}"
