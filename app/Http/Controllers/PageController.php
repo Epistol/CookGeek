@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Categunivers;
 use App\Mail\ContactEmail;
 use App\Page;
+use App\Recipe;
+use App\Univers;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -228,14 +231,15 @@ class PageController extends Controller
      */
     public function accueil()
     {
-        $universcateg = DB::table('categunivers')->get();
+        $universcateg = Categunivers::get();
         $pic          = $this->pictureService;
 
         // Petit texte sur l'accueil
         $heartbeat = DB::table('heartbeat')->latest()->first();
         // Recettes
-        $recipes      = DB::table('recipes')->where('validated', '=', 1)->latest()->paginate(12);
-        $univers_list = DB::table('univers')->where('name', 'NOT LIKE', '%script%')
+        $recipes      = Recipe::where('validated', 1)->latest()->paginate(12);
+
+        $univers_list = Univers::where('name', 'NOT LIKE', '%script%')
                           ->join('recipes', 'univers.id', '=', 'recipes.univers')
                           ->where('recipes.validated', '=', 1)
                           ->inRandomOrder()

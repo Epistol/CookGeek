@@ -7,12 +7,11 @@
         @else
             @if($recipe->getMedia()->isNotEmpty())
                 <clazy-load
-                        src="{{collect($img->urls)->firstWhere('name', 'normal')['url']}}">
+                        src="{{$recipe->getFirstMediaUrl()}}">
                     <!-- The image slot renders after the image loads. -->
                     <img class="fit-cover img-radius"
-                         src="{{$urlClazy}}"
+                         src="{{$recipe->getFirstMediaUrl('default', 'index')}}"
                          alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
-
                     <!-- The placeholder slot displays while the image is loading. -->
                     <div slot="placeholder">
                         <!-- You can put any component you want in here. -->

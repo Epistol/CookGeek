@@ -17,13 +17,14 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
-use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+use Spatie\Feed\Feedable;
 
 use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 use Spatie\MediaLibrary\Models\Media;
 use Throwable;
@@ -121,23 +122,17 @@ class Recipe extends Model implements Feedable, HasMedia
         $this->addMediaConversion('thumb')
             ->width(150)
             ->height(150)
-            ->format(Manipulations::FORMAT_JPG)
-            ->nonQueued()
-            ->performOnCollections('default');
+            ->format(Manipulations::FORMAT_JPG);
 
         $this->addMediaConversion('index')
             ->width(300)
             ->height(150)
-            ->format(Manipulations::FORMAT_PNG)
-            ->nonQueued()
-            ->performOnCollections('default');
+            ->format(Manipulations::FORMAT_PNG);
 
         $this->addMediaConversion('thumbSquare')
             ->width(250)
             ->height(250)
-            ->format(Manipulations::FORMAT_WEBP)
-            ->nonQueued()
-            ->performOnCollections('default');
+            ->format(Manipulations::FORMAT_WEBP);
     }
 
     /**
