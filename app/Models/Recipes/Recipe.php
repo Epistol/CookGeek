@@ -171,22 +171,24 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @return |null
+     * @param $element
+     * @return string|null |null
      */
     public function getAuthorElement($element)
     {
         $userElement = User::where('id', $this->id_user)->select($element)->first();
-        if ($element == 'img') {
-            if ($userElement->img !== "users/default.png" && $userElement->img !== "" && $userElement->img !== null) {
-                return $userElement->$element;
+        if ($userElement) {
+            if ($element == 'img') {
+                return $userElement->img !== "users/default.png" && $userElement->img !== ""
+                && $userElement->img !== null ? $userElement->$element : null;
+            } elseif ($element == 'name') {
+                $name = strip_tags(clean($userElement->$element));
+                return $name;
             } else {
-                return null;
+                return $userElement->$element;
             }
-        } elseif ($element == 'name') {
-            $name = strip_tags(clean($userElement->$element));
-            return $name;
         } else {
-            return $userElement->$element;
+            return null;
         }
     }
 

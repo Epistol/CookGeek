@@ -134,8 +134,7 @@ class RecipeController extends Controller
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
         $type = TypeRecipe::where('id', $recipe->type)->first();
         $pictureSet = $recipe->medias()->get();
-
-        if ($pictureSet->count() > 0) {
+        if ($pictureSet->isNotEmpty()) {
             //        $picturesOfAuthor = $pictures->where('custom_properties->first_picture', 'true');
             $picturesOfAuthor = $recipe->id_user;
             $pictureSet->filter(function ($value) {

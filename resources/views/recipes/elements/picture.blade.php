@@ -1,5 +1,5 @@
 <a href="{{route('recipe.show', $recipe->slug)}}">
-
+    <?php dd($pictureSet);?>    
     @if($pictureSet->isEmpty())
         <figure class="image is-1by1 ">
             <img class="fit-cover"
