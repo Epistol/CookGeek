@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ingredient;
-use App\Traits\HasImages;
+use App\Traits\HasMediaCDG;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class IngredientController extends Controller
 {
-    use HasImages;
+    use HasMediaCDG;
 
     /**
      * Display a listing of the resource.

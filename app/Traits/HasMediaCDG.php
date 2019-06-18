@@ -10,15 +10,16 @@ namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-trait HasImages
+trait HasMediaCDG
 {
 
     /**
-     * @return MorphOne
+     * @return mixed
      */
-    public function image()
+    public function medias()
     {
-        return $this->hasMany('App\Image', 'imageable');
+        return $this->morphToMany(\App\Models\Media::class, 'mediable');
     }
+
 
 }

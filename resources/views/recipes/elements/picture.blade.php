@@ -1,5 +1,5 @@
 <a href="{{route('recipe.show', $recipe->slug)}}">
-<?php $img = $recipe->getMedia('images');?>
+<?php $img = $recipe->medias(); dd($img);?>
 
 @if($img->isEmpty())
         <figure class="image is-1by1 ">

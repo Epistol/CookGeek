@@ -8,6 +8,8 @@
 
 namespace App\Traits;
 
+use App\Like;
+
 trait HasLikes
 {
     /**
@@ -15,6 +17,6 @@ trait HasLikes
      */
     public function likes()
     {
-        return $this->morphToMany('App\Likes', 'likeable');
+        return $this->morphToMany(Like::class, 'likeable');
     }
 }

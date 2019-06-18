@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\MailResetPasswordNotification;
 use App\Traits\HasLikes;
+use App\Traits\HasMediaCDG;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +20,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable
 {
-    use  Notifiable, HasRoles, Bannable, SoftDeletes, HasLikes;
+    use  Notifiable, HasRoles, Bannable, SoftDeletes, HasLikes, HasMediaCDG;
 
     /**
      * @var array
@@ -63,14 +64,6 @@ class User extends Authenticatable
         ;
 
         return $user;
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
-    public function image()
-    {
-        return $this->morphOne('App\Image', 'imageable');
     }
 
     /**

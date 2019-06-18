@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Jobs\CheckPicture;
-use App\Traits\HasImages;
 use App\Traits\HasLikes;
+use App\Traits\HasMediaCDG;
 use App\Traits\HasTimes;
 use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
@@ -35,7 +35,7 @@ use Throwable;
  */
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasImages;
+    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
 
     /**
      * @return Collection|static[]
@@ -94,12 +94,14 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function ingredients()
     {
-        return $this->morphToMany('App\Ingredient', 'ingredientable');
+        return $this->morphToMany(Ingredient::class, 'ingredientable');
     }
+
 
     /**
      * @param $request
      * @param $first / Is it first picture ?
+     * @return bool
      */
     public function insertPicture($request, $first = false)
     {
@@ -109,6 +111,11 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->withCustomProperties(['first_picture' => $first, 'checked' => false])
                 ->withResponsiveImages()
                 ->toMediaCollection();
+            // always attach media to user and recipe
+            // todo : if first : order 0; else : increment
+            $this->medias()->attach([$media->id]);
+            Auth::user()->medias()->attach([$media->id]);
+            // then check if recipe is publishable, if not detach and delete
             CheckPicture::dispatch($media, $this);
         }
     }
@@ -138,12 +145,13 @@ class Recipe extends Model implements Feedable, HasMedia
 
     public function getBestPicture()
     {
-        if ($this->getMedia()->count() > 0) {
-            $medias = $this->getMedia();
+        if ($this->medias()->count() > 0) {
+            $medias = $this->medias()->get();
             $likedMedias = collect([]);
 
             foreach ($medias as $media) {
                 // get the medias that got likes
+                dd($media->likes()->get());
                 if ($media->likes()) {
                     $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
                 }
@@ -157,7 +165,6 @@ class Recipe extends Model implements Feedable, HasMedia
                 // if no like, always return first picture
                 return $this->getFirstMedia();
             }
-
         } else {
             return response(null);
         }
