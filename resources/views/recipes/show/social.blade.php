@@ -28,8 +28,7 @@
                           </span>
                         </a>
         </p>
-        <?php dd($recipe->getBestPicture());?>
-        @if($recipe->getBestPicture() !== null)
+        @if($recipe->getBestPicture()->isNotEmpty())
             <p class="control">
                 <a class="button pinterest "
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recipe->title)) }}">

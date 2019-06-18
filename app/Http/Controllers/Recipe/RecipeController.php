@@ -39,7 +39,6 @@ class RecipeController extends Controller
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -134,20 +133,27 @@ class RecipeController extends Controller
 
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
         $type = TypeRecipe::where('id', $recipe->type)->first();
-        $pictureSet = $recipe->getMedia();
+        $pictureSet = $recipe->medias()->get();
 
-//        $picturesOfAuthor = $pictures->where('custom_properties->first_picture', 'true');
-        $picturesOfAuthor = $pictureSet->filter(function ($value) {
-            if ($value->custom_properties['first_picture'] === true) {
-                return $value;
-            }
-        });
+        if ($pictureSet->count() > 0) {
+            //        $picturesOfAuthor = $pictures->where('custom_properties->first_picture', 'true');
+            $picturesOfAuthor = $recipe->id_user;
+            $pictureSet->filter(function ($value) {
+                if ($value->custom_properties['first_picture'] === true) {
+                    return $value;
+                }
+            });
 
-        $picturesOfUsers = $pictureSet->filter(function ($value) {
-            if ($value->custom_properties['first_picture'] === false) {
-                return $value;
-            }
-        });
+            $picturesOfUsers = $pictureSet->filter(function ($value) {
+                if ($value->custom_properties['first_picture'] === false) {
+                    return $value;
+                }
+            });
+        } else {
+            $picturesOfAuthor = collect([]);
+            $picturesOfUsers = collect([]);
+        }
+
 
         // STARS
         $stars1 = RecipeLike::where('id_recipe', $recipe->id)->avg('note');

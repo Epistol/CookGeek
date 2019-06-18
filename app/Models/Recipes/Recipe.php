@@ -151,8 +151,7 @@ class Recipe extends Model implements Feedable, HasMedia
 
             foreach ($medias as $media) {
                 // get the medias that got likes
-                dd($media->likes()->get());
-                if ($media->likes()) {
+                if ($media->likes()->count() > 0) {
                     $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
                 }
             }
@@ -160,13 +159,34 @@ class Recipe extends Model implements Feedable, HasMedia
             if ($likedMedias->isNotEmpty()) {
                 // get the media who got more likes
                 dd($likedMedias->max('count'));
-                // ?maybe a little shuffle to not always get same picture
+            // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture
-                return $this->getFirstMedia();
+                return $this->medias()->first();
+//                return $this->getFirstMedia();
             }
         } else {
-            return response(null);
+            return collect([]);
+        }
+    }
+
+    /**
+     * @return |null
+     */
+    public function getAuthorElement($element)
+    {
+        $userElement = User::where('id', $this->id_user)->select($element)->first();
+        if ($element == 'img') {
+            if ($userElement->img !== "users/default.png" && $userElement->img !== "" && $userElement->img !== null) {
+                return $userElement->$element;
+            } else {
+                return null;
+            }
+        } elseif ($element == 'name') {
+            $name = strip_tags(clean($userElement->$element));
+            return $name;
+        } else {
+            return $userElement->$element;
         }
     }
 
