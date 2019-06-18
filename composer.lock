@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d477ffc7815b2268c35a79e08180541d",
+    "content-hash": "fafa34e5a0820c4c53d451b871d822f5",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -777,6 +777,7 @@
                 "laravel",
                 "translation"
             ],
+            "abandoned": "astrotomic/laravel-translatable",
             "time": "2019-06-03T06:52:37+00:00"
         },
         {
@@ -3280,58 +3281,6 @@
             "time": "2019-04-09T17:27:08+00:00"
         },
         {
-            "name": "maennchen/zipstream-php",
-            "version": "v0.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "95922b6324955974675fd4923f987faa598408af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/95922b6324955974675fd4923f987faa598408af",
-                "reference": "95922b6324955974675fd4923f987faa598408af",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">= 7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ZipStream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Duncan",
-                    "email": "pabs@pablotron.org"
-                },
-                {
-                    "name": "Jesse Donat",
-                    "email": "donatj@gmail.com"
-                },
-                {
-                    "name": "Jonatan Männchen",
-                    "email": "jonatan@maennchen.ch"
-                }
-            ],
-            "description": "ZipStream is a library for dynamically streaming dynamic zip files from PHP without writing to the disk at all on the server.",
-            "keywords": [
-                "stream",
-                "zip"
-            ],
-            "time": "2018-02-09T09:26:57+00:00"
-        },
-        {
             "name": "martinlindhe/laravel-vue-i18n-generator",
             "version": "0.1.39",
             "source": {
@@ -4616,6 +4565,71 @@
                 "dependency injection"
             ],
             "time": "2018-01-21T07:42:36+00:00"
+        },
+        {
+            "name": "plank/laravel-mediable",
+            "version": "2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/plank/laravel-mediable.git",
+                "reference": "034b79452aac0e9e0a42372af21cd8dfe83a6da2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/plank/laravel-mediable/zipball/034b79452aac0e9e0a42372af21cd8dfe83a6da2",
+                "reference": "034b79452aac0e9e0a42372af21cd8dfe83a6da2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.2.0",
+                "illuminate/filesystem": "^5.2.0",
+                "illuminate/support": "^5.2.0",
+                "league/flysystem": "^1.0.8",
+                "php": ">=5.4.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "league/flysystem-aws-s3-v3": "^1.0.8",
+                "orchestra/testbench": "^3.0",
+                "phpunit/phpunit": "^5.7",
+                "satooshi/php-coveralls": "^1.0.1",
+                "vlucas/phpdotenv": "^2.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Plank\\Mediable\\MediableServiceProvider"
+                    ],
+                    "aliases": {
+                        "MediaUploader": "Plank\\Mediable\\MediaUploaderFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Plank\\Mediable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Fraser",
+                    "email": "sean@plankdesign.com"
+                }
+            ],
+            "description": "A package for easily uploading and attaching media files to models with Laravel",
+            "keywords": [
+                "eloquent",
+                "image",
+                "laravel",
+                "media",
+                "uploader"
+            ],
+            "time": "2019-03-23T02:01:17+00:00"
         },
         {
             "name": "pragmarx/firewall",
@@ -5924,89 +5938,6 @@
             "time": "2019-03-06T11:44:14+00:00"
         },
         {
-            "name": "spatie/laravel-medialibrary",
-            "version": "7.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/6ffb8a41e60f024abd35ff47e08628354d6efd0e",
-                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/bus": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/pipeline": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "league/flysystem": "^1.0.8",
-                "maennchen/zipstream-php": "~0.4",
-                "php": "^7.2",
-                "spatie/image": "^1.4.0",
-                "spatie/pdf-to-image": "^1.2",
-                "spatie/temporary-directory": "^1.1"
-            },
-            "conflict": {
-                "php-ffmpeg/php-ffmpeg": "<0.6.1"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.5.2",
-                "ext-pdo_sqlite": "*",
-                "guzzlehttp/guzzle": "^6.3",
-                "league/flysystem-aws-s3-v3": "^1.0.13",
-                "mockery/mockery": "^1.0.0",
-                "orchestra/testbench": "~3.8.0",
-                "phpunit/phpunit": "^8.0",
-                "spatie/phpunit-snapshot-assertions": "^2.0"
-            },
-            "suggest": {
-                "league/flysystem-aws-s3-v3": "Required to use AWS S3 file storage",
-                "php-ffmpeg/php-ffmpeg": "Required for generating video thumbnails"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\MediaLibrary\\MediaLibraryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\MediaLibrary\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://murze.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Associate files with Eloquent models",
-            "homepage": "https://github.com/spatie/laravel-medialibrary",
-            "keywords": [
-                "cms",
-                "conversion",
-                "downloads",
-                "images",
-                "laravel",
-                "laravel-medialibrary",
-                "media",
-                "spatie"
-            ],
-            "time": "2019-02-27T09:31:55+00:00"
-        },
-        {
             "name": "spatie/laravel-permission",
             "version": "2.37.0",
             "source": {
@@ -6195,56 +6126,6 @@
             "time": "2019-02-27T20:30:30+00:00"
         },
         {
-            "name": "spatie/pdf-to-image",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
-                "shasum": ""
-            },
-            "require": {
-                "ext-imagick": "*",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\PdfToImage\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Convert a pdf to an image",
-            "homepage": "https://github.com/spatie/pdf-to-image",
-            "keywords": [
-                "convert",
-                "image",
-                "pdf",
-                "pdf-to-image",
-                "spatie"
-            ],
-            "time": "2018-07-02T09:30:32+00:00"
-        },
-        {
             "name": "spatie/robots-txt",
             "version": "1.0.3",
             "source": {
@@ -6392,16 +6273,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.37.1",
+            "version": "v6.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "8c8e430a57e2ff9d21243580dad9bfc8e1ad2cf9"
+                "reference": "8588b74aecd46ed5df3d97a132c922b020ca80bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/8c8e430a57e2ff9d21243580dad9bfc8e1ad2cf9",
-                "reference": "8c8e430a57e2ff9d21243580dad9bfc8e1ad2cf9",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/8588b74aecd46ed5df3d97a132c922b020ca80bc",
+                "reference": "8588b74aecd46ed5df3d97a132c922b020ca80bc",
                 "shasum": ""
             },
             "require": {
@@ -6444,7 +6325,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2019-06-14T23:21:35+00:00"
+            "time": "2019-06-18T06:29:48+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8059,7 +7940,7 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.8.22",
+            "version": "v5.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",

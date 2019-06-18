@@ -138,9 +138,7 @@ class RecipeController extends Controller
 
 //        $picturesOfAuthor = $pictures->where('custom_properties->first_picture', 'true');
         $picturesOfAuthor = $pictureSet->filter(function ($value) {
-            if ($value->custom_properties['first_picture'] === true) {
-                return $value;
-            }
+            dd($value);
         });
 
         $picturesOfUsers = $pictureSet->filter(function ($value) {

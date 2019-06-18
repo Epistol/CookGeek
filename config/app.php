@@ -187,6 +187,7 @@ return [
         App\Providers\UniverseProvider::class,
         PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
+        Plank\Mediable\MediableServiceProvider::class,
     ],
 
     /*
@@ -241,6 +242,7 @@ return [
         'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
         'Sanitizer' => Waavi\Sanitizer\Laravel\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'MediaUploader' => Plank\Mediable\MediaUploaderFacade::class,
     ],
 
 ];

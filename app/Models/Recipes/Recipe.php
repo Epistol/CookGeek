@@ -17,26 +17,25 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
+use Plank\Mediable\Exceptions\MediaUploadException;
+use Plank\Mediable\HandlesMediaUploadExceptions;
+use Plank\Mediable\MediaUploaderFacade as MediaUploader;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
-use Spatie\Image\Exceptions\InvalidManipulation;
 
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
-use Spatie\MediaLibrary\Models\Media;
 use Throwable;
 
 /**
  * Class Recipe
  * @package App
  */
-class Recipe extends Model implements Feedable, HasMedia
+class Recipe extends Model implements Feedable
 {
-    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasImages;
-
+    use Searchable, HasTimes, HasUniqueID, HasUserInput, HasLikes, HasImages;
+    use HandlesMediaUploadExceptions;
     /**
      * @return Collection|static[]
      */
@@ -105,10 +104,20 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         $picture = isset($request->resume) ? $request->resume : null;
         if ($picture !== null) {
-            $media = $this->addMedia($picture)
-                ->withCustomProperties(['first_picture' => $first, 'checked' => false])
-                ->withResponsiveImages()
-                ->toMediaCollection();
+            try {
+                $media = MediaUploader::fromSource($picture)
+                    ->toDestination('local', 'recipes/' . $this->id)
+                    ->upload();
+                dd($media);
+
+            } catch (MediaUploadException $e) {
+                throw $this->transformMediaUploadException($e);
+            }
+            dd($media);
+            /*  $media = $this->addMedia($picture)
+                  ->withCustomProperties(['first_picture' => $first, 'checked' => false])
+                  ->withResponsiveImages()
+                  ->toMediaCollection();*/
             CheckPicture::dispatch($media, $this);
         }
     }
@@ -136,28 +145,30 @@ class Recipe extends Model implements Feedable, HasMedia
             ->format(Manipulations::FORMAT_WEBP);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|Media|null
+     */
     public function getBestPicture()
     {
         if ($this->getMedia()->count() > 0) {
             $medias = $this->getMedia();
             $likedMedias = collect([]);
 
+            // get the medias that got likes
             foreach ($medias as $media) {
-                // get the medias that got likes
-                if ($media->likes()) {
-                    $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
+                if ($media->likes) {
+                    $likedMedias->push(['media' => $media, 'count' => $media->likes->count()]);
                 }
             }
 
             if ($likedMedias->isNotEmpty()) {
                 // get the media who got more likes
                 dd($likedMedias->max('count'));
-                // ?maybe a little shuffle to not always get same picture
+            // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture
                 return $this->getFirstMedia();
             }
-
         } else {
             return response(null);
         }

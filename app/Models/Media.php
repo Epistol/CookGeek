@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasLikes;
-use Spatie\MediaLibrary\Models\Media as BaseMedia;
+use Plank\Mediable\Media as BaseMedia;
 
 class Media extends BaseMedia
 {
