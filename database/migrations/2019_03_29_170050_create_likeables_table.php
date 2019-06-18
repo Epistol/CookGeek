@@ -15,7 +15,7 @@ class CreateLikeablesTable extends Migration
     {
         Schema::create('likeables', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('likable');
+            $table->morphs('likeable');
             $table->timestamps();
         });
     }

@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    public function likeable()
+    public function recipes()
     {
-        return $this->morphToMany(Like::class, 'likeable');
+        return $this->morphedByMany(
+            Recipe::class,
+            'likeable'
+        );
     }
 }

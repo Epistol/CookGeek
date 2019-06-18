@@ -17,6 +17,9 @@ trait HasLikes
      */
     public function likes()
     {
-        return $this->morphToMany(Like::class, 'likeable');
+        return $this->morphToMany(
+            Like::class,
+            'likeable'
+        );
     }
 }
