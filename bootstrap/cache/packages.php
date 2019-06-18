@@ -174,17 +174,6 @@
       0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
-  'plank/laravel-mediable' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Plank\\Mediable\\MediableServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'MediaUploader' => 'Plank\\Mediable\\MediaUploaderFacade',
-    ),
-  ),
   'pragmarx/firewall' => 
   array (
     'providers' => 
@@ -219,6 +208,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Feed\\FeedServiceProvider',
+    ),
+  ),
+  'spatie/laravel-medialibrary' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 
