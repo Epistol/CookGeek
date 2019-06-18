@@ -106,9 +106,11 @@ class Recipe extends Model implements Feedable
         if ($picture !== null) {
             try {
                 $media = MediaUploader::fromSource($picture)
-                    ->toDestination('local', 'recipes/' . $this->id)
+                    ->toDestination('public', 'recipes/' . $this->id)
+                    ->onDuplicateIncrement()
                     ->upload();
-                dd($media);
+
+                dd($media->getUrl());
 
             } catch (MediaUploadException $e) {
                 throw $this->transformMediaUploadException($e);
