@@ -2,19 +2,19 @@
     <a href="{{$recipe->getAuthorPictures()->first()->getUrl()}}"
        data-lightbox="{{strip_tags(clean($recipe->slug))}}" data-title="{{strip_tags(clean($recipe->title))}}">
         <figure class="image is-64x64">
-            @if($recipe->getAuthorPictures()->first()->getUrl())
-                <clazy-load src="{{$recipe->getAuthorPictures()->first()->getUrl()}}">
+            @if($recipe->getAuthorPictures()->first()->getUrl('thumbSquare'))
+                <clazy-load
+                        src="{{$recipe->getAuthorPictures()->first()->getUrl('thumbSquare')}}">
                     <!-- The image slot renders after the image loads. -->
                     <img class="fit-cover image is-64x64 tovalidate"
-                         src="{{$recipe->getAuthorPictures()->first()->getUrl()}}"
+                         src="{{$recipe->getAuthorPictures()->first()->getUrl('thumbSquare')}}"
                          alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
-                    @else
 
-                        <clazy-load
-                                src="{{$recipe->getAuthorPictures()->first()->getUrl('webp')}}">
-                            <!-- The image slot renders after the image loads. -->
+                    @else
+                        <clazy-load src="{{$recipe->getAuthorPictures()->first()->getUrl()}}">
+                            <!-- The image slot render@s after the image loads. -->
                             <img class="fit-cover image is-64x64 tovalidate"
-                                 src="{{$recipe->getAuthorPictures()->first()->getUrl('webp')}}"
+                                 src="{{$recipe->getAuthorPictures()->first()->getUrl()}}"
                                  alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                         @endif
 
