@@ -37,8 +37,10 @@
         {{--  @include('recipes.show.imageWait')--}}
         {{--IF THERE IS 0 VALID PICTURES--}}
     @else
+        @if($recipe->getAuthorPictures()->isNotEmpty())
+            @include('recipes.show.imageWait')
+        @endif
         @include('recipes.show.addPicture')
-        {{--        @include('recipes.show.imageWait')--}}
     @endif
 </div>
 
