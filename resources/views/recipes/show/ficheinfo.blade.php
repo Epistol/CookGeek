@@ -4,8 +4,6 @@
 
 <div class="ficheinfo">
     {{--@include('recipes.show.social')--}}
-
-
     <section class="section is-paddingless">
         <div style="display:flex;justify-content:flex-end;align-items:center; margin-top: 10%">
             @auth
@@ -20,7 +18,6 @@
                     </div>
                 @endif
                 <SignalRecipe recipeid="{{$recipe->id}}" user_id={{ Auth::user()->id }} ></SignalRecipe>
-
             @endauth
 
             @guest
@@ -29,9 +26,6 @@
         </div>
     </section>
 </div>
-
-
-
 
 {{--// Is-premium (afficher son yt, fb, creations)--}}
 {{--// Parts--}}

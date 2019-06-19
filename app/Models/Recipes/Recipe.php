@@ -145,6 +145,7 @@ class Recipe extends Model implements Feedable, HasMedia
 
     public function getBestPicture()
     {
+        $bestPicture = collect([]);
         if ($this->medias()->count() > 0) {
             $medias = $this->medias()->get();
             $likedMedias = collect([]);
@@ -159,15 +160,15 @@ class Recipe extends Model implements Feedable, HasMedia
             if ($likedMedias->isNotEmpty()) {
                 // get the media who got more likes
                 dd($likedMedias->max('count'));
-            // ?maybe a little shuffle to not always get same picture
+                // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture
-                return $this->medias()->first();
+                $bestPicture->push($this->medias()->first());
 //                return $this->getFirstMedia();
             }
-        } else {
-            return collect([]);
         }
+
+        return $bestPicture;
     }
 
     /**
@@ -437,5 +438,28 @@ class Recipe extends Model implements Feedable, HasMedia
             $somme_m = $val - ((int)$somme_h * 60);
             return $somme_m . "M";
         }
+    }
+
+    /**
+     * @param bool $valid
+     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     */
+    public function getAuthorPictures($valid = false)
+    {
+        $picturesOfAuthor = collect([]);
+        $pictureSetCount = $this->medias()->count();
+        if ($pictureSetCount > 0) {
+            if ($valid == true) {
+                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
+            } else {
+                $pictureSet = $this->medias()->get();
+            }
+            $picturesOfAuthor = $pictureSet->filter(function ($value) {
+                if ($value->users()->first()->id === $this->id_user) {
+                    return $value;
+                }
+            });
+        }
+        return $picturesOfAuthor;
     }
 }

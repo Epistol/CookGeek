@@ -3,21 +3,17 @@
         <p class="control">
             <a class="button facebook"
                href="https://www.facebook.com/sharer.php?u={{url()->current()}}&t={{strip_tags(clean($recipe->title))}}">
-
                           <span class="icon is-small">
                    <i class="fab fa-facebook-f fa-fw  fa-lg"></i>
                               <span hidden>Partager sur Facebook</span>
                           </span>
             </a>
-
         </p>
-        <?php $univers = App\Univers::where('id', $recipe->univers)->first();
-        ?>
 
         <p class="control">
-            @if($univers !== null)
+            @if($recipe->universes !== null)
                 <a class="button twitter"
-                   href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recipe->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{ strip_tags(clean($univers->name))}}">
+                   href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recipe->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{ strip_tags(clean($recipe->universes->first()->name))}}">
                     @else
                         <a class="button twitter"
                            href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recipe->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{strip_tags(clean($recipe->title))}} ">
@@ -31,24 +27,24 @@
         @if($recipe->getBestPicture()->isNotEmpty())
             <p class="control">
                 <a class="button pinterest "
-                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{strip_tags(clean(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']))}}&description={{strip_tags(clean($recipe->title)) }}">
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{$recipe->getBestPicture()->first()->getUrl()}}&description={{strip_tags(clean($recipe->title)) }}">
                           <span class="icon is-medium">
                       <i class="fab fa-pinterest-p fa-fw"></i>
                                <span hidden>Partager sur Pinterest</span>
                           </span>
                 </a>
             </p>
-            @else
-                <p class="control">
-                    <a class="button pinterest "
-                       href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recipe->title))}}">
+        @else
+            <p class="control">
+                <a class="button pinterest "
+                   href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recipe->title))}}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>
                               <span hidden>Partager sur Pinterest</span>
                           </span>
-                    </a>
-                </p>
-            @endif
+                </a>
+            </p>
+        @endif
 
         <p class="control">
             <a class="button tumblr " href="http://tumblr.com/widgets/share/tool?canonicalUrl={{url()->current()}}">

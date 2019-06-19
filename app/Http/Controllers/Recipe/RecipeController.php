@@ -150,7 +150,6 @@ class RecipeController extends Controller
             $picturesOfUsers = collect([]);
         }
 
-        dd($picturesOfAuthor);
 
         // STARS
         $stars1 = RecipeLike::where('id_recipe', $recipe->id)->avg('note');

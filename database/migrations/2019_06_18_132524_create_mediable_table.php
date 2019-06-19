@@ -13,7 +13,6 @@ class CreateMediableTable extends Migration
      */
     public function up()
     {
-
         Schema::create('mediables', function (Blueprint $table) {
             $table->integer("media_id");
             $table->integer("mediable_id");

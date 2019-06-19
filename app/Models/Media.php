@@ -15,5 +15,4 @@ class Media extends BaseMedia
         return $this->morphedByMany(User::class, 'mediable');
     }
 
-
 }
