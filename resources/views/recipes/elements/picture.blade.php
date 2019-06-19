@@ -1,5 +1,5 @@
 <a href="{{route('recipe.show', $recipe->slug)}}">
-    @if($recipe->getAuthorPictures()->isEmpty())
+    @if($recipe->getBestPicture(true)->isEmpty())
         <figure class="image is-1by1 ">
             <img class="fit-cover"
                  src="http://via.placeholder.com/300x200?text={{ strip_tags(clean($recipe->title))}}"
@@ -7,8 +7,8 @@
         </figure>
     @else
         <figure class="image is-1by1 ">
-            @if($recipe->getAuthorPictures()->first())
-                <?php dd($img);?>
+            @if($recipe->getBestPicture(true)->first())
+                <?php $recipe->getBestPicture();?>
                 <clazy-load src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}">
                 @endif
                 @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")

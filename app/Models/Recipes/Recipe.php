@@ -96,7 +96,9 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         return $this->morphToMany(Ingredient::class, 'ingredientable');
     }
-
+    //__________
+    // INSERTS
+    //__________
 
     /**
      * @param $request
@@ -120,56 +122,6 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    /**
-     * @param Media|null $media
-     *
-     * @throws InvalidManipulation
-     */
-    public function registerMediaConversions(Media $media = null)
-    {
-        $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150)
-            ->format(Manipulations::FORMAT_JPG);
-
-        $this->addMediaConversion('index')
-            ->width(300)
-            ->height(150)
-            ->format(Manipulations::FORMAT_PNG);
-
-        $this->addMediaConversion('thumbSquare')
-            ->width(250)
-            ->height(250)
-            ->format(Manipulations::FORMAT_WEBP);
-    }
-
-    public function getBestPicture()
-    {
-        $bestPicture = collect([]);
-        if ($this->medias()->count() > 0) {
-            $medias = $this->medias()->get();
-            $likedMedias = collect([]);
-
-            foreach ($medias as $media) {
-                // get the medias that got likes
-                if ($media->likes()->count() > 0) {
-                    $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
-                }
-            }
-
-            if ($likedMedias->isNotEmpty()) {
-                // get the media who got more likes
-                dd($likedMedias->max('count'));
-                // ?maybe a little shuffle to not always get same picture
-            } else {
-                // if no like, always return first picture
-                $bestPicture->push($this->medias()->first());
-//                return $this->getFirstMedia();
-            }
-        }
-
-        return $bestPicture;
-    }
 
     /**
      * @param $element
@@ -438,6 +390,72 @@ class Recipe extends Model implements Feedable, HasMedia
             $somme_m = $val - ((int)$somme_h * 60);
             return $somme_m . "M";
         }
+    }
+
+    //__________
+    // PICTURE GETTERS
+    //__________
+
+    /**
+     * @param Media|null $media
+     *
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(150)
+            ->height(150)
+            ->format(Manipulations::FORMAT_JPG);
+
+        $this->addMediaConversion('index')
+            ->width(300)
+            ->height(150)
+            ->format(Manipulations::FORMAT_PNG);
+
+        $this->addMediaConversion('thumbSquare')
+            ->width(250)
+            ->height(250)
+            ->format(Manipulations::FORMAT_WEBP);
+    }
+
+    public function getBestPicture($valid = false)
+    {
+        $bestPicture = collect([]);
+
+        if ($valid == true) {
+            $countSet = $this->medias()->wherePivot('valid', true)->count();
+        } else {
+            $countSet = $this->medias()->count();
+        }
+
+        if ($countSet > 0) {
+            if ($valid == true) {
+                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
+            } else {
+                $pictureSet = $this->medias()->get();
+            }
+
+            $likedMedias = collect([]);
+            foreach ($pictureSet as $media) {
+                // get the medias that got likes
+                if ($media->likes()->count() > 0) {
+                    $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
+                }
+            }
+
+            if ($likedMedias->isNotEmpty()) {
+                // get the media who got more likes
+                dd($likedMedias->max('count'));
+                // ?maybe a little shuffle to not always get same picture
+            } else {
+                // if no like, always return first picture
+                $bestPicture->push($this->medias()->first());
+//                return $this->getFirstMedia();
+            }
+        }
+
+        return $bestPicture;
     }
 
     /**

@@ -9,7 +9,6 @@
                     <img class="fit-cover image is-64x64 tovalidate"
                          src="{{$recipe->getAuthorPictures()->first()->getUrl('thumbSquare')}}"
                          alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
-
                     @else
                         <clazy-load src="{{$recipe->getAuthorPictures()->first()->getUrl()}}">
                             <!-- The image slot render@s after the image loads. -->
@@ -17,7 +16,6 @@
                                  src="{{$recipe->getAuthorPictures()->first()->getUrl()}}"
                                  alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                         @endif
-
                         <!-- The placeholder slot displays while the image is loading. -->
                             <div slot="placeholder">
                             </div>

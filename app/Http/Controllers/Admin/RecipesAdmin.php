@@ -26,7 +26,7 @@ class RecipesAdmin extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::paginate(10);
+        $recipes = Recipe::orderBy('created_at', 'desc')->paginate(25);
 
         return view('admin.recipes.index', [
             'recipes' => $recipes,
