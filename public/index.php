@@ -52,7 +52,7 @@ $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
-
+$response->header('Cache-Control', 'max-age=2628000');
 $response->send();
 
 $kernel->terminate($request, $response);

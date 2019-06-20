@@ -38,6 +38,7 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url('../fonts/avenir-black-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -45,6 +46,7 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url('../fonts/avenir-medium-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -52,6 +54,8 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url('../fonts/avenir-book-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -59,6 +63,8 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url('../fonts/avenir-heavy-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -66,21 +72,29 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   src: url('../fonts/avenir-roman-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: 'Conviction';
   src: url("../fonts/Conviction.ttf") format("truetype");
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: 'Futura';
   src: url("../fonts/futura/futur.ttf") format("truetype");
+  font-display: swap;
+
 }
 //404 page
 @font-face {
   font-family: "EurostileBQ";
   src: url("../fonts/EurostileBQ-BoldExtended.otf") format("opentype");
+  font-display: swap;
+
 }
 
 h1, h1.title {
@@ -121,7 +135,7 @@ h2.title{
   font-weight: 500;
   font-size: 1.2rem;
   font-family: 'AvenirMedium', sans-serif;
-  
+
 }
 
 h1.title-website {
