@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\Auth;
                 <div class="column is-2 " id="left_column">
                     @include('user.user_space.parts.menu')
                 </div>
-                <?= var_dump(Auth::user()->getAllPermissions());?>
+
                 <div class="column is-three-quarters blockcontent" id="parameters">
                     @include("user.user_space.switch.parts.param")
+                    <pre>
+                <?= Auth::user()->getAllPermissions();?>
+                    </pre>
+                    <pre>
+                <?= Auth::user()->getRoleNames();?>
+                    </pre>
                 </div>
             </div>
         </div>
