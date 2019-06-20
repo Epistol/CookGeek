@@ -11,6 +11,11 @@ use Illuminate\View\View;
 
 class RecipesAdmin extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:super-admin|admin');
+    }
+
     /**
      * @return mixed
      */
@@ -66,5 +71,9 @@ class RecipesAdmin extends Controller
         return view('admin.recipes.edit', [
             'recipe' => $recipe,
         ])->with(['controller' => $this]);
+    }
+
+    public function validatePicture(Request $request){
+        dd($request);
     }
 }

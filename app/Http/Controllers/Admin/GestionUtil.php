@@ -18,6 +18,12 @@ use Illuminate\View\View;
  */
 class GestionUtil extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:super-admin|admin');
+    }
+
     /**
      * @return Factory|View
      */

@@ -22,7 +22,7 @@ $text-color: $violet;
 //
 // Style guide: hard-rule
 
-$typotitle : "Conviction",Tahoma, Geneva, sans-serif;
+$typotitle: "Conviction", Tahoma, Geneva, sans-serif;
 
 /**
  * Set the Avenir font face
@@ -30,7 +30,7 @@ $typotitle : "Conviction",Tahoma, Geneva, sans-serif;
  * @section Fonts
  *  The font weight to be used.
  */
-$typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
+$typocontent: "AvenirMedium", Arial, Helvetica, sans-serif;
 
 
 @font-face {
@@ -89,6 +89,7 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
   font-display: swap;
 
 }
+
 //404 page
 @font-face {
   font-family: "EurostileBQ";
@@ -98,34 +99,40 @@ $typocontent : "AvenirMedium", Arial, Helvetica, sans-serif;
 }
 
 h1, h1.title {
-  font-size:2rem;
-}
-h2, h2.title {
-  font-size:1.6rem;
-}
-h3, h3.title {
-  font-size:1.4rem;
-}
-h4, h4.title {
-  font-size:1.2rem;
-}
-h5, h5.title {
-  font-size:1.1rem;
-}
-h6, h6.title {
-  font-size:1.05rem;
+  font-size: 2rem;
 }
 
-.content h1,  h1.title{
+h2, h2.title {
+  font-size: 1.6rem;
+}
+
+h3, h3.title {
+  font-size: 1.4rem;
+}
+
+h4, h4.title {
+  font-size: 1.2rem;
+}
+
+h5, h5.title {
+  font-size: 1.1rem;
+}
+
+h6, h6.title {
+  font-size: 1.05rem;
+}
+
+.content h1, h1.title {
   color: $accentsecondary;
 }
-h2.title{
+
+h2.title {
   color: $accentsecondary;
 }
 
 .category-split {
   border-bottom: 1px solid #ebeaf5;
-  padding-bottom: 1rem!important;
+  padding-bottom: 1rem !important;
   padding-top: 0.5rem;
 }
 
@@ -147,21 +154,21 @@ h1.title-website {
 
 h2.title-mini {
   color: $gris_granite;
-  font-size:1.4rem;
+  font-size: 1.4rem;
 }
 
 .content-title {
   font-family: 'AvenirMedium', serif;
   font-weight: 500;
   font-size: 1.2rem;
-  color:$brand-primary;
+  color: $brand-primary;
   padding: 0.5rem;
 }
 
-span.ingredient-title{
+span.ingredient-title {
   font-weight: 900;
   font-size: 16px;
   text-align: left;
   color: #fe688e;
-  text-transform : uppercase;
+  text-transform: uppercase;
 }

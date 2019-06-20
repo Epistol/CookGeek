@@ -24,3 +24,6 @@
     </a>
     <p>En attente de validation</p>
 </div>
+<?php $img = $recipe->getAuthorPictures()->first();?>
+@include('admin.recipes.pictures.validate')
+<?php $img = ''; ?>

@@ -10,6 +10,12 @@ use Illuminate\Http\Response;
 
 class UniverseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:super-admin|admin');
+    }
+
     /**
      * Display a listing of the resource.
      *

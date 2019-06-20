@@ -10,6 +10,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'Admin\AdminController@index');
         // BAN
         Route::get('ban', 'Admin\AdminController@ban')->name('admin.ban.index');
+        Route::post('/validatePicture','Admin\RecipesAdmin@validatePicture')
+            ->name('admin.recipe.picture.validate');
         Route::get('/{id}/ban_user', 'Admin\GestionUtil@ban_user')->name('admin.ban.create');
         Route::post('/ban/submit', 'Admin\GestionUtil@ban_user_store')->name('admin.ban.store');
         // UNBAN

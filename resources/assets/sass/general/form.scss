@@ -1,0 +1,11 @@
+.validate {
+  &:hover {
+    background: $green;
+  }
+}
+
+.invalidate {
+  &:hover {
+    background: $red;
+  }
+}
