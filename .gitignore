@@ -3,7 +3,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-/storage/medialibrary/temp
+/storage/medialibrary/
 
 /vendor
 /.idea
