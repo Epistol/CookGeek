@@ -19,6 +19,8 @@
                 </figure>
             </a>
         </div>
+
+{{--        // TEST--}}
         {{--IF THERE IS MORE THAN ONE PICTURE--}}
         @if($recipe->getAuthorPictures()->count() > 1)
             <div style="display: flex;flex-wrap: wrap;">
