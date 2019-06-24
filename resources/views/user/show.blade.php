@@ -15,6 +15,7 @@
                         <table class="table is-hoverable">
                             <thead>
                             <tr>
+                                <th>Nom</th>
                                 <th>Image</th>
                                 <th><abbr title="Media">Media</abbr></th>
                                 <th><abbr title="Titre">Titre</abbr></th>
@@ -24,10 +25,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($recettes as $recette)
-                                @include('recipes.index.single_line')
-                            @endforeach
-                            {{ $recettes->links() }}
+                            @if($user->recipes)
+                                <?php $recipes = $user->recipes()->paginate(25);?>
+                                @foreach ($recipes as $recipe)
+                                    @include('recipes.index.single_line')
+                                @endforeach
+                                {{$recipes->links()}}
+                            @endif
                             </tbody>
                         </table>
                     </div>

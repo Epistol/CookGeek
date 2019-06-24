@@ -3,8 +3,8 @@
     <div class="field has-addons">
         <p class="control">
             <a class="button tooltip is-tooltip-left like
-{{$controller->check_liked($recette->id)}}
-                    " id="{{$recette->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur">
+{{$controller->check_liked($recipe->id)}}
+                    " id="{{$recipe->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur">
                   <span class="icon is-small">
                     <i class="material-icons">&#xE87E;</i>
                   </span>
@@ -18,9 +18,9 @@
             </a>
         </p>
 
-        @if($recette->id_user === Auth::id())
+        @if($recipe->id_user === Auth::id())
             {{--<p class="control">
-                <a class="button tooltip is-tooltip-left" data-tooltip="Modifier" href="/recette/edit/{{$recette->id}}">
+                <a class="button tooltip is-tooltip-left" data-tooltip="Modifier" href="/recette/edit/{{$recipe->id}}">
                   <span class="icon is-small">
                   <i class="material-icons">mode_edit</i>
                   </span>

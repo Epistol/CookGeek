@@ -12,11 +12,11 @@
                     {{--On affiche 4 recettes par type--}}
                     <section class="section blockcontent">
                         <div class="columns is-multiline">
-                            @foreach($recipes as $i=>$recette)
+                            @foreach($recipes as $i=>$recipe)
                                 <div class="column is-2">
                                     <div class="card cdg">
-                                        <div class="card-image"><a href="{{route('recipe.show', $recette->slug)}}">
-                                                <?php   $img = $pictureService->loadRecipePicturesValid($recette); ?>
+                                        <div class="card-image"><a href="{{route('recipe.show', $recipe->slug)}}">
+                                                <?php   $img = $pictureService->loadRecipePicturesValid($recipe); ?>
                                                 @include('recipes.elements.picture')
                                             </a>
                                         </div>
@@ -26,7 +26,7 @@
                                             <div class="media">
                                                 <div class="media-content is-centered">
                                                     <p class="title is-4"><a
-                                                                href="{{route('recipe.show', $recette->slug)}}"> {{$recette->title}}</a>
+                                                                href="{{route('recipe.show', $recipe->slug)}}"> {{$recipe->title}}</a>
                                                     </p>
                                                 </div>
                                             </div>

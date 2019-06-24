@@ -13,7 +13,7 @@ $type = DB::table('type_recipes')->where("id", "=", $recipe->type)->first();
 $date = Carbon::parse($recipe->created_at)->format('Y-m-d');
 $preptimeiso = "PT" . $recipe->sumerise($recipe->prep_time);
 $cooktimeiso = "PT" . $recipe->sumerise($recipe->cook_time);
-//            $resttimeiso = "PT".$this->sumerise($recette->rest_time);
+//            $resttimeiso = "PT".$this->sumerise($recipe->rest_time);
 $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $recipe->rest_time);
 
 ?>

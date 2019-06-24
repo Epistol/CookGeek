@@ -31,8 +31,8 @@
                         @if($univers_data !== null)
                             @php
                                 $recipe_count = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->count();
-                                $recette = collect(DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->latest()->orderBy('nb_views', 'desc')->get())->random();
-                                $img = $pictureService->loadRecipePicturesValid($recette);
+                                $recipe = collect(DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers_data->id)->latest()->orderBy('nb_views', 'desc')->get())->random();
+                                $img = $pictureService->loadRecipePicturesValid($recipe);
                             @endphp
 
                             {{--Nom de l'univers--}}
@@ -52,8 +52,8 @@
                                                 @if(collect($img->first())->isEmpty())
                                                     <figure class="image is-128x128 ">
                                                         <img class="fit-cover"
-                                                             src="http://via.placeholder.com/300x200?text={!! strip_tags($recette->title) !!}"
-                                                             alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                             src="http://via.placeholder.com/300x200?text={!! strip_tags($recipe->title) !!}"
+                                                             alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                                                         @else
                                                             @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")
                                                                 <clazy-load
@@ -61,14 +61,14 @@
                                                                     <!-- The image slot renders after the image loads. -->
                                                                     <img class="fit-cover"
                                                                          src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}"
-                                                                         alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                         alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                                                                     @else
                                                                         <clazy-load
                                                                                 src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}">
                                                                             <!-- The image slot renders after the image loads. -->
                                                                             <img class="fit-cover"
                                                                                  src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}"
-                                                                                 alt="{{ strip_tags(clean($recette->title)) }} / CDG">
+                                                                                 alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                                                                         @endif
                                                                         <!-- The placeholder slot displays while the image is loading. -->
                                                                             <div slot="placeholder">

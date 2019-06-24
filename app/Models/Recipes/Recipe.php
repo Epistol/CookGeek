@@ -106,7 +106,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function ingredients()
     {
-        return $this->morphToMany(Ingredient::class, 'ingredientable');
+        return $this->morphToMany(Ingredient::class, 'ingredientable')->withPivot('quantity');
     }
     //__________
     // INSERTS

@@ -105,6 +105,14 @@ class User extends Authenticatable
         return ucfirst($value);
     }
 
+    /** Possède plusieurs notes
+     */
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class, 'id_user');
+    }
+
+
     /**
      * Send the password reset notification.
      *

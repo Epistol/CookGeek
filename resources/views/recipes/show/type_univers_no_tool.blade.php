@@ -4,7 +4,6 @@
             <div class="icones {{strtolower($media->name)}} ">
             </div>
         </a>
-
     @else
         <a href="{{route("media.show", lcfirst($media->name)) }}">
             <div class="icones {{strtolower($media->name)}}   ">

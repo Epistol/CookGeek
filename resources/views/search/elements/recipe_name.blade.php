@@ -1,13 +1,9 @@
 {{--Recettes ayant dans le nom la recherche --}}
-
-
 <div class="columns is-multiline" style="margin-top: 3rem; margin-bottom: 2rem;">
-    @foreach ($result['recipe'] as $recette)
+    @foreach ($result['recipe'] as $recipe)
         <?php
-
-        $starsget = (new \App\Search)->explode_star($recette->id);
-        $type = DB::table('type_recipes')->select('name')->where('id', $recette->id)->first();
-        $validPictures = $pictureService->loadRecipePicturesValid($recette);
+        $starsget = (new \App\Search)->explode_star($recipe->id);
+        $type = DB::table('type_recipes')->select('name')->where('id', $recipe->id)->first();
         ?>
 
         <div class="column is-10 is-offset-1 is-result">
@@ -19,54 +15,29 @@
                                href="/{{strtolower($type->name)}}">{{$type->name}}</a>
                         </div>
                     @endif
-                    @if(isset($validPictures->first()->urls))
-                        @if(collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url'] === "")
-                            <figure class="image is-1by1">
-                                @if($recette->id_user != NULL && isset($recette) && isset($first))
-                                    <img src="/recipes/{{$recette->id}}/{{$recette->id_user}}/{{$first}}" style="-webkit-border-radius: 15px 0 0 15px;
-border-radius: 15px 0 0 15px;">
-                                @else
-                                    <img src="http://via.placeholder.com/300x200?text={{strip_tags(clean($recette->title))}}"
-                                         style="-webkit-border-radius: 15px 0 0 15px;
-border-radius: 15px 0 0 15px;">
-                                @endif
-                            </figure>
-                        @else
-                            <figure class="image is-1by1">
-                                <picture>
-                                    <source type="image/webp"
-                                            srcset="{{collect($validPictures->first()->urls)->firstWhere('name', 'webp')['url']}}"
-                                            class="fit-cover"
-                                            alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
-                                    <img src="{{collect($validPictures->first()->urls)->firstWhere('name', 'normal')['url']}}"
-                                         class="fit-cover"
-                                         alt="Image de la recette : {{strip_tags(clean($recette->title))}}">
-                                </picture>
-                            </figure>
-                        @endif
-                    @endif
-
+                    @include('recipes.elements.picture')
                 </div>
                 <div class="column is-7 is-paddingless is-marginless">
                     <div class="top is-flex">
-                        <a href="{{route('recipe.show', $recette->slug)}}"><h2 class="title">
-                                {{strip_tags(clean($recette->title))}}
-                            </h2></a>
-
-
+                        <a href="{{route('recipe.show', $recipe->slug)}}">
+                            <h2 class="title">
+                                {{strip_tags(clean($recipe->title))}}
+                            </h2>
+                        </a>
                     </div>
                     <div class="middle">
                         {{-- Ingredients--}}
-
                         <?php
                         $ingredients = DB::table('recipes_ingredients')
-                            ->where('id_recipe', $recette->id)
+                            ->where('id_recipe', $recipe->id)
                             ->get();
                         ?>
                         <p><b>@lang("recipe.ingredients") : </b>
                             @foreach($ingredients as $index=>$in)
                                 <?php
-                                $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
+                                $nom_in = DB::table('ingredients')
+                                    ->where('id', $in->id_ingredient)
+                                    ->value('name');
                                 ?>
                                 @if($loop->last)
                                     {{$nom_in}}
@@ -75,8 +46,6 @@ border-radius: 15px 0 0 15px;">
                                 @endif
                             @endforeach
                         </p>
-
-
                     </div>
                     <div class="bottom">
                         <div class="is-flex">
@@ -90,7 +59,7 @@ border-radius: 15px 0 0 15px;">
                     <div class="top">
                         <?php
                         $typeuniv = DB::table('categunivers')
-                            ->where('id', $recette->type_univers)
+                            ->where('id', $recipe->type_univers)
                             ->first();
                         ?>
                         @include("recipes.show.type_univers_no_tool")
@@ -100,19 +69,14 @@ border-radius: 15px 0 0 15px;">
                     </div>
                     <div class="bottom">
                         <a class="tag like
-{{$controller->check_liked($recette->id)}}
-                                " id="{{$recette->id}}" verif="{{ csrf_token() }}"><i
+                            {{$controller->check_liked($recipe->id)}}
+                                " id="{{$recipe->id}}" verif="{{ csrf_token() }}"><i
                                     class="material-icons">favorite</i></a>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
     @endforeach
-
-
 </div>
 <span>
                  {{ $result['recipe']->links() }}

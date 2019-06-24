@@ -10,7 +10,7 @@
         {{--// On charge l'info univers--}}
         @php
             $recipe_count = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers->id)->count();
-            $recettes = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers->id)->where('validated', '=', 1)->latest()->orderBy('nb_views', 'desc')->limit(6)->paginate(3);
+            $recipes = DB::table('recipes')->where("type_univers", "=", $categ->id)->where('univers', $univers->id)->where('validated', '=', 1)->latest()->orderBy('nb_views', 'desc')->limit(6)->paginate(3);
         @endphp
 
         @if($recipe_count > 0)

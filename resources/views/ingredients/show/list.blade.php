@@ -1,6 +1,6 @@
 {{--<section class="section">--}}
     {{--<ul>--}}
-        {{--@foreach($recettes as $recette)--}}
+        {{--@foreach($recipes as $recipe)--}}
             {{--@include('recipes.index.recipe_name')--}}
         {{--@endforeach--}}
     {{--</ul>--}}

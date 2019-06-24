@@ -20,9 +20,9 @@
             'class' => 'image',
             'code' => '
             <figure class="image">
-                        <img src="{ {url ("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)} }"
-                        <img src=@{{url ("/recipes/".$recettes[$i]->id."/".$recettes[$i]->id_user."/".$img->image_name)}}"
-                         alt="{ { $recettes[$i]->title } } / CDG">
+                        <img src="{ {url ("/recipes/".$recipes[$i]->id."/".$recipes[$i]->id_user."/".$img->image_name)} }"
+                        <img src=@{{url ("/recipes/".$recipes[$i]->id."/".$recipes[$i]->id_user."/".$img->image_name)}}"
+                         alt="{ { $recipes[$i]->title } } / CDG">
             </figure>']],
             ['image' =>
             ['type' => "Recipe image",
