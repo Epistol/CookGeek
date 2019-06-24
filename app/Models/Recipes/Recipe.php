@@ -82,11 +82,15 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /** Possède plusieurs notes
-     * @return HasMany
      */
     public function notes()
     {
         return $this->hasMany(RecipeNote::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     /**

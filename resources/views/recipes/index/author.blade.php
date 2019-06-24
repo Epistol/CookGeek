@@ -1,29 +1,29 @@
 <div class="">
     <a href="/user/{{$nom}}">
         <?php
-        $author = DB::table('users')->where('id', $recipe->id_user)->first();
-        $nb_recipes = DB::table('recipes')->where('id_user', $recipe->id_user)->count();
+        $nb_recipes = DB::table('recipes')->where('id_user', $recipe->user->id)->count();
         ?>
         <div class="is-flex-center">
             {{--Avatar--}}
-            @if($author->img !== "users/default.png")
-                <figure class="image is-48x48"><img src="/user/{{$author->id}}/{{$author->img}}" class="is-rounded "
-                                                    style="height: 100%; width: 100%;"></figure>
+        @if($recipe->user->img !== '')
+                <figure class="image is-48x48">
+                    <img class="is-rounded "
+                         src="{{cleanInput($recipe->user->img)}}"
+                         style="height: 100%;width: 100%;">
+                </figure>
             @else
                 <figure class="image is-48x48">
-                    <img src="https://api.adorable.io/avatars/64/{{$author->name}}" class="is-rounded "
-                         style="height: 100%; width: 100%;">
+                    <img class="is-rounded"
+                         src="https://api.adorable.io/avatars/64/{{ strip_tags(clean($recipe->user->name))}}">
                 </figure>
             @endif
             {{--pseudo--}}
             <p><span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span><a
-                        href="/user/{{$author->name}}">@php echo str_limit($author->name, 20, ' (...)'); @endphp</a></p>
+                        href="/user/{{$recipe->user->name}}">@php echo str_limit($recipe->user->name, 20, ' (...)'); @endphp</a></p>
         </div>
     </a>
 
     {{--reseaux sociaux--}}
-
-
 </div>
 
 
