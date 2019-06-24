@@ -16,7 +16,6 @@
 <div class="field">
     <label class="label">Vérifiez ce mot de passe</label>
     <div class="control">
-        <input class="input" type="password" name="new_mdp" placeholder="">
         <password name="new_mdp_check"/>
     </div>
 </div>

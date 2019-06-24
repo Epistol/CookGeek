@@ -16,6 +16,7 @@
                 <?php
                 $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
                 $somme = $controller->sum_time_home($somme_t);
+                // TODO : correct this
                 $validPictures = $picturectrl->loadRecipePicturesValid($recipe);
                 if ($validPictures->isNotEmpty()) {
                     $img = $validPictures->first();

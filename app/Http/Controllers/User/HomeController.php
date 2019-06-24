@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -63,7 +64,28 @@ class HomeController extends Controller
      */
     public function paramStore(Request $request)
     {
+        $errors = collect([]);
         $user = $request->user();
+        // Let's check if a new password is set :
+        if (!Hash::check($request->mdp_now, Auth::user()->getAuthPassword())) {
+            return redirect()->back()->with('alert', 'Vous n\'avez pas rentré votre mot de passe actuel');
+        }
+
+        dd($request);
+
+        // Let's check if a new password is set :
+        if ($request->mdp_now && $request->new_mdp_check) {
+            if (Hash::check($request->new_mdp, $request->new_mdp_check)) {
+                $user->update(['password' => Hash::make($request->new_mdp_check)]);
+            }
+        }
+
+        if (User::where('pseudo', $request->pseudo)->count > 0) {
+            $errors->push(['pseudo' => 'Le pseudo est déjà pris par un autre utilisateur :/']);
+        } else {
+            $user->update(['pseudo' => cleanInput($request->pseudo)]);
+        }
+
         if ($request->resume) {
             $fichier = $request->resume;
             if ($fichier->getError() == 0) {
@@ -77,9 +99,9 @@ class HomeController extends Controller
         $traitement = $refus == true ? false : true;
 
         $user_data = [
-            'name'               => $request->pseudo,
-            'email'              => $request->mail,
-            'password'           => $request->mdp,
+            'name' => $request->pseudo,
+            'email' => $request->mail,
+            'password' => $request->mdp,
             'traitement_donnees' => $traitement
         ];
 
@@ -117,16 +139,15 @@ class HomeController extends Controller
     public function favorites(Request $request)
     {
         $recettes = DB::table('recipes')
-                      ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-                      ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
-                      ->select('recipes.*')
-                      ->paginate(12)
-        ;
+            ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
+            ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
+            ->select('recipes.*')
+            ->paginate(12);
 
         return view(
             'user_space.favorites.index',
             [
-                'recipes'        => $recettes,
+                'recipes' => $recettes,
                 'pictureService' => $this->pictureService
             ]
         )
@@ -145,7 +166,7 @@ class HomeController extends Controller
         return view(
             'user_space.recipes.index',
             [
-                'recipes'        => $recettes,
+                'recipes' => $recettes,
                 'pictureService' => $this->pictureService
             ]
         )->with(['controller' => $this]);
@@ -159,10 +180,9 @@ class HomeController extends Controller
     public function checkLiked($id)
     {
         $l_id = DB::table('user_recipe_likes')
-                  ->where(
-                      ['user_id' => Auth::id(), 'recipe_id' => $id]
-                  )->first()
-        ;
+            ->where(
+                ['user_id' => Auth::id(), 'recipe_id' => $id]
+            )->first();
 
         return $l_id ? 'liked' : false;
     }

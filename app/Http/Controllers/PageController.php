@@ -157,7 +157,6 @@ class PageController extends Controller
         $captcha = $request->request->get('g-recaptcha-response');
         if ($captcha !== null) {
             Mail::send(new ContactEmail($request));
-
             return redirect('/contact')->with('status', 'Message envoyé !');
         } else {
             return redirect()->back()->with('alert', 'Validez le recaptcha');
@@ -241,7 +240,7 @@ class PageController extends Controller
 
         $univers_list = Univers::where('name', 'NOT LIKE', '%script%')
                           ->join('recipes', 'univers.id', '=', 'recipes.univers')
-                          ->where('recipes.validated', '=', 1)
+                          ->where('recipes.validated', 1)
                           ->inRandomOrder()
                           ->paginate('12');
 

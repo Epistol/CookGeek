@@ -8,7 +8,7 @@
 Route::get('/home', 'User\HomeController@index')->name('home');
 
 Route::prefix('home')->middleware('forbid-banned-user')->group(function () {
-    Route::post('parameters', 'User\HomeController@param_store')->name('param.store');
+    Route::post('parameters', 'User\HomeController@paramStore')->name('param.store');
     Route::get('parameters', 'User\HomeController@parameters')->name('account.param');
 
     Route::get('favorites', 'User\HomeController@favorites')->name('account.fav');
