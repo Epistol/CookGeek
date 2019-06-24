@@ -60,10 +60,7 @@
                 <div class="columns">
                     <div class="column is-offset-4 is-4">
                         <div class="is-flex">
-                            <?php
-                            $stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
-                            ?>
-                            <star-rating :rating="{{intval($stars1) || 1}}" :increment="0.5" :star-size="20"
+                            <star-rating :rating="{{intval({{$recipe->note->avg('note')) || 1}}" :increment="0.5" :star-size="20"
                                          :recipeid="{{$recette->id}}"></star-rating>
                         </div>
                     </div>

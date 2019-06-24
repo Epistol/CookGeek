@@ -7,30 +7,19 @@
         </figure>
     @else
         <figure class="image is-1by1 ">
-            @if($recipe->getBestPicture(true)->first())
-                <?php $recipe->getBestPicture();?>
-                <clazy-load src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}">
-                @endif
-                @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")
-
+            @if($recipe->getBestPicture()->first())
+                <clazy-load
+                        src="{{$recipe->getBestPicture()->first()->getUrl('thumbSquare')}}">
                     <!-- The image slot renders after the image loads. -->
-                        <img class="fit-cover"
-                             src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}"
-                             alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
-                    @else
-                        <clazy-load
-                                src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}">
-                            <!-- The image slot renders after the image loads. -->
-                            <img class="fit-cover"
-                                 src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}"
-                                 alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
-                        @endif
+                    <img class="fit-cover image is-64x64"
+                         src="{{$recipe->getBestPicture()->first()->getUrl('thumbSquare')}}"
+                         alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
 
-                        <!-- The placeholder slot displays while the image is loading. -->
-                            <div slot="placeholder">
-                                <!-- You can put any component you want in here. -->
-                            </div>
-                        </clazy-load>
+                    <!-- The placeholder slot displays while the image is loading. -->
+                    <div slot="placeholder">
+                    </div>
+                </clazy-load>
+            @endif
         </figure>
     @endif
 </a>

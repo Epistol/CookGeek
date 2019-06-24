@@ -3,13 +3,10 @@
 </p>
 
 <div class="side-bg">
-
     <h4 class="title">Informations</h4>
     <div style="display:flex;" class="">
         @include("recipes.show.diff")
     </div>
-
-
     <div class="">
         @include("recipes.show.price")
     </div>
@@ -17,10 +14,12 @@
 
 @include("recipes.show.times")
 @include("recipes.show.vegan")
+
 <?php
-use App\Categunivers;$typeuniv = Categunivers::where('id', '=', $recipe->type_univers)
-    ->first();
+use App\Categunivers;
+$typeuniv = Categunivers::where('id', $recipe->type_univers)->first();
 ?>
+
 @if($typeuniv)
     @if($typeuniv->name== 'gaming')
         <div class="side-bg pub">

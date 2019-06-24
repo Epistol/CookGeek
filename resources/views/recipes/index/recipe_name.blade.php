@@ -16,12 +16,12 @@
                 @endif
                 {{--L'image--}}
                 <div class="column is-5 to-hover is-marginless is-paddingless">
-                        <div class="bottom-right-aligned">
-                            <div class="hovered">
-                                <a class="tag" style="margin:0.5rem"
-                                   href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
-                            </div>
+                    <div class="bottom-right-aligned">
+                        <div class="hovered">
+                            <a class="tag" style="margin:0.5rem"
+                               href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                         </div>
+                    </div>
                     {{--TODO : image--}}
 
                     @include('recipes.elements.picture')
@@ -34,28 +34,24 @@
                             <a href="{{route('recipe.show',$recipe->slug)}}"><h4 class="title">
                                     @php echo str_limit($recipe->title, 20, ' (...)'); @endphp
                                 </h4></a>
-                            <?php
-                            $stars = DB::table('recipe_likes')->where('id_recipe', '=', $recipe->id)->avg('note');
-                            if ($stars === null) {
-                                $stars = 0;
-                            }
-                            ?>
                             <div class="rating">
-                                <star-rating :rating="{{$stars}}" :increment="0.5" :star-size="20"
-                                             :recipeid="{{$recipe->id}}"></star-rating>
+                                @if($recipe->note)
+                                    <star-rating :rating="{{intval($recipe->note->avg('note')) || 1}}" :increment="0.5" :star-size="20"
+                                                 :recipeid="{{$recipe->id}}"></star-rating>
+                                    @else
+                                    <star-rating :rating="0" :increment="0.5" :star-size="20"
+                                                 :recipeid="{{$recipe->id}}"></star-rating>
+                                    @endif
+
                             </div>
                         </div>
                         {{--Ingrédients--}}
                         <div class="column is-full" id="ingredients">
-                            <?php
-                            $ingredients = DB::table('recipes_ingredients')
-                                ->where('id_recipe', '=', $recipe->id)->limit(8)
-                                ->get();
-                            ?>
-                            <p><b>@lang("recipe.ingredients") : </b>
-                                @foreach($ingredients as $index=>$in)
+                            <p>
+                                <b>@lang("recipe.ingredients") : </b>
+                                @foreach($recipe->ingredients as $index=>$ing)
                                     <?php
-                                    $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
+                                    $nom_in = DB::table('ingredients')->where('id', $ing->id_ingredient)->value('name');
                                     ?>
                                     @if($loop->last)
                                         {{str_limit($nom_in, 15, '...')}}

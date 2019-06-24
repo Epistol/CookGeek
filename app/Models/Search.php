@@ -7,12 +7,22 @@ use Illuminate\Support\Facades\DB;
 
 class Search extends Model
 {
+    /**
+     * @param $value
+     * @return array
+     */
     public function explode_star($value)
     {
-        $stars    = DB::table('recipe_likes')->where('id_recipe', '=', $value)->avg('note');
-        $stars1   = number_format($stars, 1, '.', '');
-        $starsget = explode('.', $stars1, 2);
-
+        $recipe = Recipe::where('id', $value)->first();
+        $note = $recipe->note;
+        if($note !== null){
+            $note = $recipe->note->avg('note');
+            $stars1 = number_format($note, 1, '.', '');
+            $starsget = explode('.', $stars1, 2);
+        }
+        else {
+            $starsget = $note;
+        }
         return $starsget;
     }
 }

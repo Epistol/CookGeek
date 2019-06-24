@@ -1,8 +1,8 @@
 <div class="">
     <a href="/user/{{$nom}}">
         <?php
-        $author = DB::table('users')->where('id', '=', $recipe->id_user)->first();
-        $nb_recipes = DB::table('recipes')->where('id_user', '=', $recipe->id_user)->count();
+        $author = DB::table('users')->where('id', $recipe->id_user)->first();
+        $nb_recipes = DB::table('recipes')->where('id_user', $recipe->id_user)->count();
         ?>
         <div class="is-flex-center">
             {{--Avatar--}}
@@ -17,7 +17,7 @@
             @endif
             {{--pseudo--}}
             <p><span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span><a
-                        href="/user/{{$nom}}">@php echo str_limit($nom, 20, ' (...)'); @endphp</a></p>
+                        href="/user/{{$author->name}}">@php echo str_limit($author->name, 20, ' (...)'); @endphp</a></p>
         </div>
     </a>
 

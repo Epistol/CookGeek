@@ -106,11 +106,13 @@
 			this.selectedRating = this.currentRating;
 			this.createStars(this.roundStartRating);
 			this.recipe_id = this.recipeid;
+			if(this.rating == null){
+			    this.rating = 0;
+            }
 		},
 
 		methods: {
 			setRating($event, persist) {
-
 				if(!this.readOnly) {
 					const position = (this.rtl) ? (100 - $event.position) / 100 : $event.position / 100;
 					this.currentRating = (($event.id + position) - 1).toFixed(2);
@@ -131,38 +133,20 @@
 							userid: this.userid,
 						}).then(function(response) {
 							self.currentRating = response.data;
-							/* if(response.data === "note_update"){
-                                 if($(this).hasClass("note_update")) {
-                                     $(this).removeClass("note_update");
-                                 }
-                             }
-                             else if(response.data === "note_new"){
-                                 console.log("note_new");
-                                 $(this).addClass("note_new");
-
-                             }*/
 						}).catch(function(error) {
 							if(error.response) {
-								// The request was made and the server responded with a status code
-								// that falls out of the range of 2xx
 								console.log(error.response.data);
 								console.log(error.response.status);
 								console.log(error.response.headers);
 							} else if(error.request) {
-								// The request was made but no response was received
-								// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-								// http.ClientRequest in node.js
 								console.log(error.request);
 							} else {
-								// Something happened in setting up the request that triggered an Error
 								console.log('Error', error.message);
 							}
 							console.log(error.config);
 						});
 
 						this.$emit('rating-selected', this.selectedRating);
-
-
 					} else {
 						this.$emit('current-rating', this.currentRating)
 					}

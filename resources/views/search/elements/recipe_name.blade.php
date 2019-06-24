@@ -60,7 +60,7 @@ border-radius: 15px 0 0 15px;">
 
                         <?php
                         $ingredients = DB::table('recipes_ingredients')
-                            ->where('id_recipe', '=', $recette->id)
+                            ->where('id_recipe', $recette->id)
                             ->get();
                         ?>
                         <p><b>@lang("recipe.ingredients") : </b>
@@ -80,15 +80,9 @@ border-radius: 15px 0 0 15px;">
                     </div>
                     <div class="bottom">
                         <div class="is-flex">
-                            <?php
-                            $nom = DB::table('users')->where('id', $recette->id_user)->value('name');
-                            ?>
                             @include("recipes.index.author")<br/>
-                            <?php
-                            // STARS
-                            $stars1 = DB::table('recipe_likes')->where('id_recipe', '=', $recette->id)->avg('note');
-                            ?>
-                            <star-rating :rating="{{intval($stars1) || 1}}" :increment="0.5" :star-size="20"
+                            <star-rating :rating="{{intval($recipe->note->avg('note')) || 1}}"
+                                         :increment="0.5" :star-size="20"
                                          :recipeid="{{$recette->id}}"></star-rating>
                         </div>
                     </div>
@@ -98,7 +92,7 @@ border-radius: 15px 0 0 15px;">
                     <div class="top">
                         <?php
                         $typeuniv = DB::table('categunivers')
-                            ->where('id', '=', $recette->type_univers)
+                            ->where('id',  $recette->type_univers)
                             ->first();
                         ?>
                         @include("recipes.show.type_univers_no_tool")
