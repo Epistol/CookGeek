@@ -81,6 +81,14 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this->morphToMany(Univers::class, 'universable');
     }
 
+    /** Possède plusieurs notes
+     * @return HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany(RecipeNote::class);
+    }
+
     /**
      * @return MorphToMany
      */

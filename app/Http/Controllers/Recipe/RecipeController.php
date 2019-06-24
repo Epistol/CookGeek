@@ -8,7 +8,7 @@ use App\Difficulty;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Recipe;
-use App\RecipeLike;
+use App\RecipeNote;
 use App\Traits\HasTimes;
 use App\Traits\HasUserInput;
 use App\TypeRecipe;
@@ -150,9 +150,9 @@ class RecipeController extends Controller
             $picturesOfUsers = collect([]);
         }
 
-
         // STARS
-        $stars1 = RecipeLike::where('id_recipe', $recipe->id)->avg('note');
+//        $stars1 = $recipe->notes->avg('note');
+        $stars1 = $recipe->notes->avg('note');
         if ($stars1 == null) {
             $stars1 = 1;
         }
@@ -160,7 +160,7 @@ class RecipeController extends Controller
         $stars = explode('.', $stars, 2);
 
         // RATING
-        $countrating = RecipeLike::where('id_recipe', $recipe->id)->count();
+        $countrating = $recipe->notes->count();
         if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }

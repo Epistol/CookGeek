@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\RecipeNote;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
+    const TABLE = 'recipes_note';
+    const ID_RECIPE = 'id_recipe';
+    const ID_USER = 'id_user';
+    const NOTE = 'note';
+
     public function checknote(Request $request)
     {
         if ($request->userid === -1) {
@@ -18,19 +24,17 @@ class NoteController extends Controller
 
         // si la note n'existe pas, on l'ajoute au systeme
         if ($note_system->isEmpty()) {
-
             // on vérifie d'abord qu'aucune note avec cette recette et cet user n'existe, si oui, on l'update
-            $note_without_value = $this->find_without_value($request->recette, $request->userid);
+            $note_without_value = $this->findWithoutValue($request->recette, $request->userid);
 
             if ($note_without_value->count()) {
                 $this->update($request, $note_without_value[0]->id);
-            } // sinon, on créé la note
-            else {
+            } else {
+                // sinon, on créé la note
                 $this->create($request);
             }
 
             $nouvelle_note = $this->getavg($request);
-
             return response()->json($nouvelle_note);
         } else {
             $nouvelle_note = $this->getavg($request);
@@ -41,16 +45,21 @@ class NoteController extends Controller
 
     private function find($recipe, $value, $userid)
     {
-        $notefound = DB::table('recipe_likes')->where('id_recipe', '=', $recipe)->where('id_user', '=', $userid)
-                       ->where('note', '=', $value)->get();
+        $notefound = DB::table(self::TABLE)
+            ->where(self::ID_RECIPE, $recipe)
+            ->where(self::ID_USER, $userid)
+            ->where(self::NOTE, $value)
+            ->get();
 
         return $notefound;
     }
 
-    private function find_without_value($recipe, $userid)
+    private function findWithoutValue($recipe, $userid)
     {
-        $notefound = DB::table('recipe_likes')->where('id_recipe', '=', $recipe)->where('id_user', '=', $userid)
-                       ->get();
+        $notefound = DB::table(self::TABLE)
+            ->where(self::ID_RECIPE, $recipe)
+            ->where(self::ID_USER, $userid)
+            ->get();
 
         return $notefound;
     }
@@ -59,13 +68,15 @@ class NoteController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param int     $id
+     * @param int $id
      *
      * @return int
      */
     public function update(Request $request, $id)
     {
-        $note = DB::table('recipe_likes')->where('id', '=', $id)->update(['note' => $request->note]);
+        $note = DB::table(self::TABLE)
+            ->where('id', $id)
+            ->update([self::NOTE => $request->note]);
 
         return $note;
     }
@@ -79,19 +90,23 @@ class NoteController extends Controller
      */
     public function create(Request $data)
     {
-        $u_id = $data->userid;
-
-        DB::table('recipe_likes')
-          ->insertGetId(
-              ['id_user' => $u_id, 'id_recipe' => $data->recette, 'note' => $data->note]
-          );
+        DB::table(self::TABLE)
+            ->insertGetId(
+                [
+                    self::ID_USER => $data->userid,
+                    self::ID_RECIPE => $data->recette,
+                    self::NOTE => $data->note
+                ]
+            );
 
         return response('note_new', 200);
     }
 
     private function getavg(Request $request)
     {
-        return $stars = DB::table('recipe_likes')->where('id_recipe', '=', $request->recette)->avg('note');
+        return $stars = DB::table(self::TABLE)
+            ->where(self::ID_RECIPE, $request->recette)
+            ->avg(self::NOTE);
     }
 
     /**

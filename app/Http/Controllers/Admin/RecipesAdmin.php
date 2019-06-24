@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Recipe;
-use App\Type_recipe;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class RecipesAdmin extends Controller
@@ -63,7 +63,7 @@ class RecipesAdmin extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         foreach ($request->request as $index => $requestElement) {
-            if ($index !== '_token'  && $index !== '_method') {
+            if ($index !== '_token' && $index !== '_method') {
                 $recipe->$index = $requestElement;
             }
         }
@@ -73,7 +73,30 @@ class RecipesAdmin extends Controller
         ])->with(['controller' => $this]);
     }
 
-    public function validatePicture(Request $request){
-        dd($request);
+    /**
+     * @param Request $request
+     */
+    public function validatePicture(Request $request)
+    {
+        // TODO : pull the log info made on fedora pc
+
+        //TODO finish
+
+        if ($request->recipeId && $request->imgId) {
+            if ($request->validate == 'true') {
+                DB::table('mediables')
+                    ->where('media_id', $request->imgId)
+                    ->update(['valid' => 1]);
+                return redirect()->back();
+                return response()->json(['message' => 'Picture validated']);
+            } else {
+                DB::table('mediables')
+                    ->where('media_id', $request->imgId)
+                    ->update(['valid' => 0]);
+                return redirect()->back();
+
+                return response()->json(['message' => 'Picture invalidated']);
+            }
+        }
     }
 }

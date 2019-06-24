@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Ingredient;
 use App\Recipe;
 use App\Univers;
 use Illuminate\Http\Request;
@@ -41,28 +42,28 @@ class SearchController extends Controller
      */
     public function search($recherche)
     {
-        $rq     = clean($recherche);
+        $rq = clean($recherche);
         $pieces = explode(' ', $rq);
         $recipe = [];
         if ($rq !== null) {
             foreach ($pieces as $p) {
                 // Searching in recipes
-                $ingredient   = DB::table('ingredients')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
-                                  ->paginate(10);
-                $media        = DB::table('categunivers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
-                                  ->paginate(10);
+                $ingredient = DB::table('ingredients')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                    ->paginate(10);
+                $media = DB::table('categunivers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                    ->paginate(10);
                 $type_recipes = DB::table('type_recipes')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
-                                  ->paginate(10);
-                $univers      = DB::table('univers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
-                                  ->paginate(10);
+                    ->paginate(10);
+                $univers = DB::table('univers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                    ->paginate(10);
                 if ($univers) {
                     foreach ($univers as $univer) {
                         if ($ingredient) {
                             $recipe_ingredients = $this->load_recipe_ingredient($ingredient);
                         } else {
-                            $recipe = DB::table('recipes')->where('univers', '=', $univer->id)
-                                        ->orwhere('title', 'like', '%' . strip_tags(clean($p)) . '%')
-                                        ->where('validated', '=', 1)->paginate(10);
+                            $recipe = DB::table('recipes')->where('univers', $univer->id)
+                                ->orwhere('title', 'like', '%' . strip_tags(clean($p)) . '%')
+                                ->where('validated', 1)->paginate(10);
                         }
                     }
                 }
@@ -75,15 +76,15 @@ class SearchController extends Controller
         } else {
             // Searching in recipes
             // TODO : Réduire le nombre de champs retournés par element ?
-            $recipe       = Recipe::getPaginate(true, 10);
-            $ingredient   = DB::table('ingredients')->paginate(10);
-            $media        = DB::table('categunivers')->paginate(10);
+            $recipe = Recipe::getPaginate(true, 10);
+            $ingredient = Ingredient::paginate(10);
+            $media = DB::table('categunivers')->paginate(10);
             $type_recipes = DB::table('type_recipes')->paginate(10);
-            $univers      = DB::table('univers')->paginate(10);
+            $univers = Univers::paginate(10);
         }
 
         $response = collect([
-            'recipe'       => $recipe, 'ingredient' => $ingredient, 'categunivers' => $media,
+            'recipe' => $recipe, 'ingredient' => $ingredient, 'categunivers' => $media,
             'type_recipes' => $type_recipes, 'univers' => $univers, 'value' => strip_tags(clean($rq))
         ]);
 
@@ -95,11 +96,11 @@ class SearchController extends Controller
         if ($ingredient->isNotEmpty()) {
             $liste_recipes = [];
             foreach ($ingredient as $key => $ingredien) {
-                $recipe_ingredients = DB::table('recipes_ingredients')->where('id_ingredient', '=', $ingredien->id)
-                                        ->get();
+                $recipe_ingredients = DB::table('recipes_ingredients')->where('id_ingredient', $ingredien->id)
+                    ->get();
                 foreach ($recipe_ingredients as $recipe_ingredient) {
-                    $recipe              = DB::table('recipes')->where('id', '=', $recipe_ingredient->id_recipe)
-                                             ->paginate(8);
+                    $recipe = DB::table('recipes')->where('id', $recipe_ingredient->id_recipe)
+                        ->paginate(8);
                     $liste_recipes[$key] = $recipe;
                 }
             }
@@ -110,18 +111,25 @@ class SearchController extends Controller
 
     private function load_recipes_titre($titre)
     {
-        $recipe = DB::table('recipes')->where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
-                    ->where('validated', '=', 1)->paginate(10);
+        $recipe = Recipe::where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
+            ->where('validated', 1)
+            ->paginate(10);
 
         return $recipe;
     }
 
+    /**
+     * @param Request $recherche
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function search_univers(Request $recherche)
     {
         $searchquery = strip_tags(clean($recherche->searchquery));
-        $univers     = DB::table('univers')->where('name', 'like', '%' . strip_tags(clean($searchquery)) . '%')
-                         ->join('recipes', 'univers.id', '=', 'recipes.univers')->where('validated', '=', 1)
-                         ->get();
+        $univers = DB::table('univers')
+            ->where('name', 'like', '%' . strip_tags(clean($searchquery)) . '%')
+            ->join('recipes', 'univers.id', 'recipes.univers')
+            ->where('validated', 1)
+            ->get();
 
         return response()->json($univers);
     }

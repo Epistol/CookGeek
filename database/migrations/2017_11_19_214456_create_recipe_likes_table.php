@@ -1,42 +1,43 @@
 <?php
 
-    use Illuminate\Database\Migrations\Migration;
-    use Illuminate\Database\Schema\Blueprint;
-    use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-    class CreateRecipeLikesTable extends Migration
+class CreateRecipeLikesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
-        public function up()
-        {
-            Schema::create('recipe_likes', function (Blueprint $table) {
+        if (Schema::hasTable('recipe_likes')) {
+            Schema::rename('recipe_likes', 'recipes_note');
+        }
+
+        if (!Schema::hasTable('recipes_note')) {
+            Schema::create('recipes_note', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('id_recipe');
-                $table->integer('id_user');
+                $table->integer('recipe_id');
+                $table->integer('user_id');
                 $table->float('note');
                 $table->timestamps();
-
-                //				$table->foreign('id_recipe')
-//					->references('id')
-//					->on('recipes');
-//
-//				$table->foreign('id_user')
-//					->references('id')
-//					->on('users');
             });
         }
-
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
-        public function down()
-        {
-            Schema::dropIfExists('recipe_likes');
-        }
     }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        if (Schema::hasTable('recipe_likes')) {
+            Schema::rename('recipe_likes', 'recipes_note');
+        }
+        Schema::dropIfExists('recipes_note');
+    }
+}

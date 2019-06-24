@@ -28,7 +28,7 @@ class RecipeController extends Controller
         $recipe_id = strip_tags(clean($request->recipeid));
 
         $pic = DB::table('recipe_imgs')
-                 ->where('recipe_id', '=', $recipe_id)
+                 ->where('recipe_id',  $recipe_id)
                  ->first();
 
         // si un id existe, on le supprime et renvoie false
@@ -49,8 +49,8 @@ class RecipeController extends Controller
         $recipe_id = $request->recipeid;
 
         $ingr = DB::table('recipes_ingredients')
-                  ->join('ingredients', 'recipes_ingredients.id_ingredient', '=', 'ingredients.id')
-                  ->where('id_recipe', '=', $recipe_id)
+                  ->join('ingredients', 'recipes_ingredients.id_ingredient', 'ingredients.id')
+                  ->where('id_recipe', $recipe_id)
                   ->get();
 
         // si un id existe, on le supprime et renvoie false
@@ -71,7 +71,7 @@ class RecipeController extends Controller
         $recipe_id = $request->recipeid;
 
         $steps = DB::table('recipes_steps')
-                   ->where('recipe_id', '=', $recipe_id)
+                   ->where('recipe_id',  $recipe_id)
                    ->get();
 
         $all = [];

@@ -10,6 +10,6 @@ class FirewallController extends Controller
     {
         $user_ip   = geoip()->getClientIP();
         $blacklist = Firewall::getAllIps();
-        dd($blacklist);
+//        dd($blacklist);
     }
 }
