@@ -108,6 +108,7 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         return $this->morphToMany(Ingredient::class, 'ingredientable')->withPivot('quantity');
     }
+
     //__________
     // INSERTS
     //__________
@@ -133,7 +134,6 @@ class Recipe extends Model implements Feedable, HasMedia
             CheckPicture::dispatch($media, $this);
         }
     }
-
 
     /**
      * @param $element
@@ -458,6 +458,7 @@ class Recipe extends Model implements Feedable, HasMedia
 
             if ($likedMedias->isNotEmpty()) {
                 // get the media who got more likes
+                // TODO check that
                 dd($likedMedias->max('count'));
                 // ?maybe a little shuffle to not always get same picture
             } else {

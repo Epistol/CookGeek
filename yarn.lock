@@ -13881,6 +13881,11 @@ vue-notification@^1.3.13:
   resolved "https://registry.yarnpkg.com/vue-notification/-/vue-notification-1.3.16.tgz#b2eca3416a94a46e35aa2516710a0fcd2c8515ea"
   integrity sha512-ZL57GcyeAnJK5ItWWkZ3+wcf3OlLFs9WIukxXwJBSIzIXUlXXxXzeVkZrhUf3Q/FkbWWAYRmzKXXP742ZiyxOw==
 
+vue-password-strength-meter@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/vue-password-strength-meter/-/vue-password-strength-meter-1.4.2.tgz#7f4c8610c1eeb44182d7d4e256bc43859cf0c260"
+  integrity sha512-J0onvG2/7mE2szC/KMxiKWToIxUNg0Tz/PyDOOGDWV3pX277fEJ6fNOaHfRm7oaRgdy3vYlt39ifultq4r+5Hw==
+
 vue-picture-input@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/vue-picture-input/-/vue-picture-input-2.1.6.tgz#6a47af68d19c9122cdd20de980d3b113b0a614be"
@@ -14636,3 +14641,8 @@ zwitch@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.3.tgz#159fae4b3f737db1e42bf321d3423e4c96688a18"
   integrity sha512-aynRpmJDw7JIq6X4NDWJoiK1yVSiG57ArWSg4HLC1SFupX5/bo0Cf4jpX0ifwuzBfxpYBuNSyvMlWNNRuy3cVA==
+
+zxcvbn@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/zxcvbn/-/zxcvbn-4.4.2.tgz#28ec17cf09743edcab056ddd8b1b06262cc73c30"
+  integrity sha1-KOwXzwl0PtyrBW3dixsGJizHPDA=

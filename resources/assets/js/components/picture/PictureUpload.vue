@@ -7,7 +7,7 @@
                         <img class="fit-cover" :src="'/recipes/' + recipeid + '/' + user_id + '/' + picture"/>
                     </template>
                     <template v-else>
-                        <img class="fit-cover" :src="'/user/' + user_id + '/' + picture"/>
+                        <img class="fit-cover" :src="picture"/>
                     </template>
                     <div class="change-picture">
                         <i class="fas fa-camera-retro"></i>

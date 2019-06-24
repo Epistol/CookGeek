@@ -49,7 +49,7 @@
                                         </div>
                                     </div>
 
-                                    <a class=" help" @click="showModal = true">
+                                    <a class="help" href="{{route('/password/reset')}}" ">
                                         @lang('passwords.forgot')
                                     </a>
 

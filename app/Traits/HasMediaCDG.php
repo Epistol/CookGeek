@@ -18,7 +18,7 @@ trait HasMediaCDG
      */
     public function medias()
     {
-        return $this->morphToMany(\App\Models\Media::class, 'mediable');
+        return $this->morphToMany(\App\Models\Media::class, 'mediable')->withPivot('valid');
     }
 
 

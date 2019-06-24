@@ -31,6 +31,7 @@ import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import StarRating from './star-rating';
 import PictureInput from 'vue-picture-input';
+import Password from 'vue-password-strength-meter';
 
 //import InstantSearch from 'vue-instantsearch';
 import Datepicker from 'vuejs-datepicker';
@@ -63,6 +64,7 @@ import ImagePicture from "./components/picture/Preview.vue";
 import Time from "./components/Time.vue";
 import BigSearch from "./components/BigSearch";
 import SetPicture from "./components/recipe/_setters/SetPicture";
+import PasswordInputComponent from "./components/PasswordInputComponent";
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -85,6 +87,7 @@ const app = new Vue({
         'modal': ModalView,
         'Notif': Notif,
         VeeValidate,
+        'password' : PasswordInputComponent,
         'new-recipe-form': NewRecipe,
         'likerecipe': LikeRecipe,
         'validationform': validationform,

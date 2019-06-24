@@ -26,7 +26,7 @@
         </p>
         @if($recipe->getBestPicture()->isNotEmpty())
             <p class="control">
-                <a class="button pinterest "
+                <a class="button pinterest"
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&media={{$recipe->getBestPicture()->first()->getUrl()}}&description={{strip_tags(clean($recipe->title)) }}">
                           <span class="icon is-medium">
                       <i class="fab fa-pinterest-p fa-fw"></i>
@@ -36,7 +36,7 @@
             </p>
         @else
             <p class="control">
-                <a class="button pinterest "
+                <a class="button pinterest"
                    href="https://www.pinterest.com/pin/create/button/?url={{url()->current()}}&description={{strip_tags(clean($recipe->title))}}">
                           <span class="icon is-medium 	 ">
                       <i class="fab fa-pinterest-p fa-fw"></i>

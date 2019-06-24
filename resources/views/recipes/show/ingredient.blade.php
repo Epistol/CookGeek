@@ -13,9 +13,7 @@
         @empty
         @endforelse
     </div>
-
 </section>
-
 
 {{--<div class="is-flex-center" style="margin-top: 2rem;"><div class="field"><p class="control">    <a class="button is-direct">Ajouter à mes courses</a></div></div>--}}
 
