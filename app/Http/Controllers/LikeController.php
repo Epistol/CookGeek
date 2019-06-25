@@ -23,8 +23,9 @@ class LikeController extends Controller
      */
     public function checkLikedRecipe(Request $request)
     {
-        $count = $this->nbLikeRecipe($request);
-        return response()->json($count);
+        $recipe = Recipe::find(intval($request->recipeid));
+        $likes = $recipe->likes()->where('user_id', Auth::user()->id)->count();
+        return response()->json(intval($likes));
     }
 
     /**
@@ -59,9 +60,9 @@ class LikeController extends Controller
         $recipe->likes()->save($like);
 
         if ($like) {
-            return response()->json(['message' => 'Recipe liked', 'status' => 'ok']);
+            return response()->json(['message' => 'Recipe liked', 'status' => 'ok', 'value' => 1]);
         } else {
-            return response()->json(['status' => 'error']);
+            return response()->json(['message' => 'Error happened while liking', 'status' => 'error', 'value' => 0]);
         }
     }
 
@@ -80,9 +81,10 @@ class LikeController extends Controller
             foreach ($likesGet as $index => $like) {
                 $like->delete();
             }
-            return response()->json(['message' => 'Recipe unliked', 'status' => 'ok']);
+            return response()->json(['message' => 'Recipe unliked', 'status' => 'ok', 'value' => 0]);
         } else {
             return response()->json(['message' => 'Impossible to unlike : no like set for user',
+                'value' => 1,
                 'status' => 'error']);
         }
     }
@@ -95,7 +97,7 @@ class LikeController extends Controller
     public function nbLikeRecipe(Request $request)
     {
         $recipe = Recipe::find(intval($request->recipeid));
-        $likes = $recipe->likes()->where('user_id', Auth::user()->id)->count();
+        $likes = $recipe->likes()->count();
         return response()->json(intval($likes));
     }
 }

@@ -1,11 +1,11 @@
 <template v-cloak>
     <div>
-        <a class="button tag like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== false }"
-           @click="clickLike()">
+        <a class="button tag like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== 0 }"
+           @click="toggleLike()">
             <i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span>
         </a>
         <template v-if="!userid && clicked">
-            <login-modal :showModal="this.clicked" @close="closing()" ></login-modal>
+            <login-modal :showModal="this.clicked" @close="closing()"></login-modal>
         </template>
     </div>
 </template>
@@ -35,24 +35,13 @@
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
-                        this.retour = response.data;
+                        if (response.data.original.status === 'ok') {
+                            this.retour = response.data.original.value;
+                        }
+                        this.getNbLike();
                     });
                 } else {
-                    console.log("pas connecté");
                     this.retour = false;
-                }
-            },
-            clickLike() {
-                this.clicked = true;
-                if (this.userid) {
-                    axios.post('/like/toggleLikeRecipe/', {
-                        recipeid: this.recipeid,
-                        userid: this.userid
-                    }).then(response => {
-                        this.retour = response.data;
-                    });
-                } else {
-                    console.log("pas connecté");
                 }
             },
             async is_already_liked() {
@@ -76,7 +65,7 @@
                     this.nbLike = false;
                 }
             },
-            closing(){
+            closing() {
                 this.clicked = false;
             }
         },
@@ -85,11 +74,7 @@
             this.getNbLike();
         },
 
-        computed: {
-            countminus: function () {
-                return this.counter - 1;
-            },
-        },
+        computed: {},
 
     }
 </script>
