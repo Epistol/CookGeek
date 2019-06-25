@@ -10,7 +10,8 @@
     //singleton
     var singleToasty;
 
-    function Toasty(elem, options) {
+    function Toasty(elem, options)
+    {
         this.options = options;
     }
 
@@ -67,10 +68,12 @@
 
     };
 
+
+
     $.fn.toasty.defaults = {
         sound: true,
-        image:  toast_png,
-        sound:  toast_mp3
+        image: toast_png,
+        sound: toast_mp3
     };
 
 })(jQuery);

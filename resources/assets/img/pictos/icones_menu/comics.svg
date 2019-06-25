@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.18 42.18">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fcbee1;
+      }
+
+      .cls-2 {
+        fill: #b87bc8;
+      }
+    </style>
+  </defs>
+  <g id="comics" transform="translate(-7.57 -7.57)">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Comics-2" data-name="Comics">
+        <circle id="Ellipse_279" data-name="Ellipse 279" class="cls-1" cx="21.09" cy="21.09" r="21.09" transform="translate(7.57 7.57)"/>
+        <circle id="Ellipse_280" data-name="Ellipse 280" class="cls-2" cx="16.11" cy="16.11" r="16.11" transform="translate(12.55 12.55)"/>
+        <path id="Tracé_267" data-name="Tracé 267" class="cls-1" d="M31.9,25.18l7.22,1.01L33.93,31.3l1.27,7.18-6.47-3.36L22.3,38.55l1.19-7.19L18.25,26.3l7.2-1.09,3.19-6.55Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

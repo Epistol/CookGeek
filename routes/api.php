@@ -15,7 +15,6 @@ Route::post('/search', [
     'uses' => 'Api\SearchController@search',
 ]);
 
-require base_path('routes/api/like.php');
 require base_path('routes/api/user.php');
 require base_path('routes/api/recipe/recipe.php');
 require base_path('routes/api/recipe/step.php');

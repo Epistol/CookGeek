@@ -13,11 +13,4 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
-    public function nameReturn(Request $request)
-    {
-        $user = User::nameReturn($request->user_id);
-
-        return $user ? $user : null;
-    }
 }

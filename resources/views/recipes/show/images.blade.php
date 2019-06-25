@@ -22,10 +22,10 @@
         {{--IF THERE IS MORE THAN ONE PICTURE--}}
         @if($recipe->getAuthorPictures()->count() > 1)
             <div style="display: flex;flex-wrap: wrap;">
-                @foreach($validPictures->slice(0) as $index => $validPicture)
+                @foreach($recipe->getAuthorPictures()->slice(0) as $index => $validPicture)
                     {{--We don't need to load the first picture that already appear--}}
                     @if($index > 0)
-                        @php $img = $validPicture; @endphp
+                        @php $img = $recipe->getAuthorPictures(); @endphp
                         @include('recipes.elements.tinyPicture')
                     @endif
                 @endforeach
@@ -39,12 +39,3 @@
         @include('recipes.show.addPicture')
     @endif
 </div>
-
-
-<script>
-    import LoginModal from "../../../assets/js/components/modal/LoginModal";
-
-    export default {
-        components: {LoginModal}
-    }
-</script>

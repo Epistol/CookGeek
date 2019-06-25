@@ -86,9 +86,7 @@
                         @include('layouts.menu._search')
                     </form>
                 </div>
-
             </div>
-
 
             <div class="navbar-end">
                 <a class="navbar-item bg-white" href="{{route('page.shop')}}">
@@ -107,22 +105,21 @@
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-item user_profile">
                             <div class="user_picture">
-                                @if(Auth::user()->img !== '')
+                                @if(Auth::user()->avatarUser !== '')
                                     <figure class="image is-48x48">
-                                        <img class="is-rounded "
-                                             src="{{cleanInput(Auth::user()->img)}}"
+                                        <img class="is-rounded test"
+                                             src="{{cleanInput(Auth::user()->avatarUser)}}"
                                              style="height: 100%;width: 100%;">
                                     </figure>
                                 @else
                                     <figure class="image is-48x48">
                                         <img class="is-rounded"
-                                             src="https://api.adorable.io/avatars/64/{{ strip_tags(clean(Auth::user()->name))}}">
+                                             src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
                                     </figure>
                                 @endif
-
                             </div>
                             <a class="navbar-link">
-                                {!! str_limit(strip_tags(clean(Auth::user()->name, 25, "..."))) !!} <span
+                               {{Auth::user()->name}} <span
                                         class="caret"></span>
                             </a>
                         </a>
@@ -146,9 +143,7 @@
                     </div>
                 @endguest
                 <switch-light></switch-light>
-
             </div>
-
         </div>
     </div>
 </nav>

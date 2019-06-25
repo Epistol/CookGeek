@@ -1,9 +1,10 @@
 <aside class="menu blockcontent">
     <figure class="image is-128x128 menu-avatar">
-        @if(Auth::user()->img!== "users/default.png")
-            <img class="is-rounded menu-left-avatar" src="/user/{{Auth::user()->id}}/picture/{{Auth::user()->img}}"/>
+        @if(Auth::user()->avatarUser!== "users/default.png")
+            <img class="is-rounded menu-left-avatar" src="{{Auth::user()->avatarUser}}"/>
         @else
-            <img class="is-rounded menu-left-avatar" src="https://api.adorable.io/avatars/{!! Auth::user()->name !!}"/>
+            <img class="is-rounded menu-left-avatar"
+                 src="https://api.adorable.io/avatars/{{ Auth::user()->name }}"/>
         @endif
     </figure>
 
@@ -20,16 +21,22 @@
                     @endif">@lang('account.parameter')</a>
                     <a href="{{route('account.data')}}">@lang('account.my-data')</a>
                 </li>
+                <li>
+                    <a href="{{route('account.password')}}" class="
+                        @if(Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.info'))
+                    {{'is-active'}}
+                    @endif">@lang('account.password')</a>
+                </li>
             </ul>
         </div>
         <div class="sous_cat">
             <p class="menu-label">
-                @lang('recipe.recipe')
+                {{trans_choice('recipe.recipe', 2)}}
             </p>
             <ul class="menu-list">
                 <li>
                     <a href="{{route('account.fav')}}"
-                       class="   @if(Route::currentRouteNamed('account.fav'))
+                       class="@if(Route::currentRouteNamed('account.fav'))
                        {{'is-active'}}
                        @endif">@lang('common.my_favorites')</a>
                     <a href="{{route('account.recipe')}}">@lang('common.my_recipes')</a>

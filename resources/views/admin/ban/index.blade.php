@@ -3,14 +3,13 @@
 @section('content')
     <section class="section blockcontent">
         <div class="container">
-            <ban_list :bans="{{$bans}}" :blacklist="{{$blacklist}}"></ban_list>
+            @include('admin.ban.banList')
         </div>
     </section>
     <section class="section blockcontent">
 
         <div class="container">
             <h1><i class="fas fa-band-aid"></i> IP whitelist </h1>
-
 
             <table class="table is-bordered">
                 <thead>

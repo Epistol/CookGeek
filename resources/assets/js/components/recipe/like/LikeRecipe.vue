@@ -1,11 +1,11 @@
 <template v-cloak>
     <div>
-        <a class="button tag like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== false }"
-           @click="clickLike()">
+        <a class="button tag like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== 0 }"
+           @click="toggleLike()">
             <i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span>
         </a>
-        <template v-if="!user && clicked">
-            <login-modal :showModal="this.clicked" @close="closing()" ></login-modal>
+        <template v-if="!userid && clicked">
+            <login-modal :showModal="this.clicked" @close="closing()"></login-modal>
         </template>
     </div>
 </template>
@@ -31,33 +31,22 @@
         methods: {
             async toggleLike() {
                 if (this.userid) {
-                    axios.post('/api/like/toggle_like/', {
+                    axios.post('/like/toggleLikeRecipe/', {
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
-                        this.retour = response.data;
+                        if (response.data.original.status === 'ok') {
+                            this.retour = response.data.original.value;
+                        }
+                        this.getNbLike();
                     });
                 } else {
-                    console.log("pas connecté");
                     this.retour = false;
-                }
-            },
-            clickLike() {
-                this.clicked = true;
-                if (this.userid) {
-                    axios.post('/api/like/toggle_like/', {
-                        recipeid: this.recipeid,
-                        userid: this.userid
-                    }).then(response => {
-                        this.retour = response.data;
-                    });
-                } else {
-                    console.log("pas connecté");
                 }
             },
             async is_already_liked() {
                 if (this.userid) {
-                    axios.post('/api/like/check_liked/', {
+                    axios.post('/like/checkLikedRecipe/', {
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
@@ -69,14 +58,14 @@
             },
             async getNbLike() {
                 if (this.userid) {
-                    axios.post('/api/like/nblike/', {recipeid: this.recipeid}).then(response => {
+                    axios.post('/like/nbLikeRecipe/', {recipeid: this.recipeid}).then(response => {
                         this.nbLike = response.data;
                     });
                 } else {
                     this.nbLike = false;
                 }
             },
-            closing(){
+            closing() {
                 this.clicked = false;
             }
         },
@@ -85,11 +74,7 @@
             this.getNbLike();
         },
 
-        computed: {
-            countminus: function () {
-                return this.counter - 1;
-            },
-        },
+        computed: {},
 
     }
 </script>

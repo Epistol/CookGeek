@@ -9,5 +9,5 @@
  * Time: 14:31
  */
 
-Route::post('/user/getName', 'Api\UserController@nameReturn')->name('api.user.name');
-Route::post('/picture/update', 'UploadsController@updatePicture');
+//Route::post('/user/getName', 'Api\UserController@nameReturn')->name('api.user.name');
+//Route::post('/picture/update', 'UploadsController@updatePicture');

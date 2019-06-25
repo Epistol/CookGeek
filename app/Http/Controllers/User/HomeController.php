@@ -66,12 +66,10 @@ class HomeController extends Controller
     {
         $errors = collect([]);
         $user = $request->user();
-        // Let's check if a new password is set :
+        // Let's check if a password is set :
         if (!Hash::check($request->mdp_now, Auth::user()->getAuthPassword())) {
-            return redirect()->back()->with('alert', 'Vous n\'avez pas rentré votre mot de passe actuel');
+            return redirect()->back()->with('alert', __('errors.account.no_password'));
         }
-
-        dd($request);
 
         // Let's check if a new password is set :
         if ($request->mdp_now && $request->new_mdp_check) {
@@ -79,46 +77,45 @@ class HomeController extends Controller
                 $user->update(['password' => Hash::make($request->new_mdp_check)]);
             }
         }
-
-        if (User::where('pseudo', $request->pseudo)->count > 0) {
-            $errors->push(['pseudo' => 'Le pseudo est déjà pris par un autre utilisateur :/']);
-        } else {
-            $user->update(['pseudo' => cleanInput($request->pseudo)]);
-        }
-
-        if ($request->resume) {
-            $fichier = $request->resume;
-            if ($fichier->getError() == 0) {
-                $photoName = time() . '.' . $fichier->getClientOriginalExtension();
-                $fichier->move(public_path('user/' . Auth::id() . '/'), $photoName);
-                $user->avatar = $photoName;
-            }
-        }
-
-        $refus = $request->no_traitement_donnees;
-        $traitement = $refus == true ? false : true;
-
-        $user_data = [
-            'name' => $request->pseudo,
-            'email' => $request->mail,
-            'password' => $request->mdp,
-            'traitement_donnees' => $traitement
-        ];
-
-        foreach ($user_data as $column => $value) {
-            if ($this->isDirty($value)) {
-                if ($column == 'password') {
-                    $user->$column = bcrypt($value);
+        // Change pseudo
+        if ($request->pseudo) {
+            if (Auth::user()->pseudo !== $request->pseudo) {
+                if (User::where('pseudo', $request->pseudo)->count() > 0) {
+                    $errors->push(['pseudo' => __('errors.account.pseudo')]);
                 } else {
-                    $user->$column = $value;
+                    $user->update(['pseudo' => cleanInput($request->pseudo)]);
                 }
             }
         }
 
-        $user->save();
-        $request->session()->flash('status', 'Profil mis à jour ! ');
+        // Change email
+        if ($request->email) {
+            if (Auth::user()->email !== $request->email) {
+                if (User::where('email', $request->email)->count > 0) {
+                    $errors->push(['email' => __('errors.account.email_taken')]);
+                } else {
+                    $user->update(['email' => cleanInput($request->email)]);
+                }
+            }
+        }
 
-        return redirect()->back();
+        // Change user picture
+        if ($request->resume) {
+            Auth::user()->insertPicture($request);
+        }
+
+        // RGPD
+        if ($request->no_traitement_donnees) {
+            $refus = $request->no_traitement_donnees;
+            $traitement = $refus == true ? false : true;
+            $user->update(['traitement_donnees' => $traitement]);
+        }
+
+        if ($errors->count() > 0) {
+            $request->session()->flash('alert', $errors);
+        }
+
+        return redirect(route('account.param'));
     }
 
     /**
@@ -138,20 +135,12 @@ class HomeController extends Controller
      */
     public function favorites(Request $request)
     {
-        $recettes = DB::table('recipes')
-            ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-            ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
-            ->select('recipes.*')
-            ->paginate(12);
+        // load only the recipes that the user liked
+        $recipes = Recipe::whereHas('likes', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->paginate(25);
 
-        return view(
-            'user_space.favorites.index',
-            [
-                'recipes' => $recettes,
-                'pictureService' => $this->pictureService
-            ]
-        )
-            ->with(['controller' => $this]);
+        return view('user.user_space.favorites.index', compact('recipes'));
     }
 
     /**
@@ -161,15 +150,8 @@ class HomeController extends Controller
      */
     public function recipes(Request $request)
     {
-        $recettes = Recipe::where('id_user', Auth::user()->id)->paginate(12);
-
-        return view(
-            'user_space.recipes.index',
-            [
-                'recipes' => $recettes,
-                'pictureService' => $this->pictureService
-            ]
-        )->with(['controller' => $this]);
+        $recipes = Auth::user()->recipes()->paginate(12);
+        return view('user.user_space.recipes.index', compact('recipes'));
     }
 
     /**

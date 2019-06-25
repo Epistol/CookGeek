@@ -8,7 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'recipe'       => 'Recette|Recettes',
-    'diff'         => 'Niveau',
+    'diff'         => 'Difficulté',
+    'time_needed' => 'Temps nécessaire',
     'time-total'   => 'Temps total',
     'budget'       => 'Budget',
     'step'         => 'Etape',
