@@ -9,7 +9,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class LikeController
@@ -24,19 +23,8 @@ class LikeController extends Controller
      */
     public function checkLikedRecipe(Request $request)
     {
-        $u_id = intval(strip_tags(clean($request->userid)));
-
-        $l_id = DB::table(self::TABLE)
-            ->where([
-                ['user_id', $u_id],
-                ['recipe_id', intval(strip_tags(clean($request->recipeid)))],
-            ])
-            ->first();
-        if ($l_id) {
-            return response()->json($l_id);
-        } else {
-            return response()->json(false);
-        }
+        $count = $this->nbLikeRecipe($request);
+        return response()->json($count);
     }
 
     /**
@@ -77,7 +65,6 @@ class LikeController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -100,7 +87,6 @@ class LikeController extends Controller
         }
     }
 
-
     /**
      * @param Request $request
      *
@@ -108,13 +94,8 @@ class LikeController extends Controller
      */
     public function nbLikeRecipe(Request $request)
     {
-        $recipe_id = intval(strip_tags(clean($request->recipeid)));
-        $l_id = DB::table(self::TABLE)
-            ->where([
-                ['recipe_id', $recipe_id],
-            ])
-            ->count();
-
-        return response()->json(intval($l_id));
+        $recipe = Recipe::find(intval($request->recipeid));
+        $likes = $recipe->likes()->where('user_id', Auth::user()->id)->count();
+        return response()->json(intval($likes));
     }
 }
