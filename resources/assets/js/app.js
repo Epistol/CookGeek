@@ -9,6 +9,7 @@ import Create from "./components/recipe/Create";
 require('./bootstrap');
 require('./dropzone');
 require('./sticky');
+require('./toasty/jquery.toasty');
 require('./star-rating');
 
 window.Vue = require('vue');
@@ -38,8 +39,8 @@ import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 //import Affix from 'vue-affix';
-import Editor from '@tinymce/tinymce-vue';
-import ModalView from "./components/modal/ModalView";
+import Affix from 'vue-affix';
+Vue.use(Affix);
 
 // Composants CDG
 
@@ -65,6 +66,7 @@ import Time from "./components/Time.vue";
 import BigSearch from "./components/BigSearch";
 import SetPicture from "./components/recipe/_setters/SetPicture";
 import PasswordInputComponent from "./components/PasswordInputComponent";
+import ModalView from "./components/modal/ModalView";
 
 // AUTRE
 Vue.component('ban_list', require('./components/Admin/Ban_List'));
@@ -81,7 +83,6 @@ const app = new Vue({
     i18n,
     components: {
         draggable, VueClazyLoad,
-        'editor': Editor,
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
         'modal': ModalView,

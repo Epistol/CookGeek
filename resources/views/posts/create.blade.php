@@ -23,12 +23,10 @@
                 </div>
             </div>
 
-
             <div>
                 <editor id="tinymce" v-model="content"></editor>
             </div>
         </section>
 
     </div>
-
 @endsection

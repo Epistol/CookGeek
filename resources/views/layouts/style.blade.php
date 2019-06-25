@@ -1,28 +1,40 @@
 <!-- Styles -->
+<script>
+    /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+    (function () {
+    }());
+</script>
+
 {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-<link href="{{ asset('css/print.css') }}" rel="stylesheet" media="print" >
-<link href="{{ asset('css/default.css') }}" rel="stylesheet" media="print" >
+<link href="{{ asset('css/print.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
+<link href="{{ asset('css/default.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Michroma"
-      rel="stylesheet" >
+      rel="stylesheet">
 
-<link rel="preload" href="{{ asset('css/lightbox.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ asset('css/lightbox.css') }}"></noscript>
-<script>
-	/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
-	(function(){  }());
-</script>
+<link rel="preload" href="{{ asset('css/lightbox.min.css') }}" as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
+</noscript>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous">
 
 <script src='https://www.google.com/recaptcha/api.js?render=6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU'></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"  >
-
+<link rel="preload" as="style" onload="this.rel='stylesheet'"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</noscript>
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({
-	    google_ad_client: "ca-pub-3386226072112083",
+        google_ad_client: "ca-pub-3386226072112083",
         enable_page_level_ads: true
     });
 </script>
