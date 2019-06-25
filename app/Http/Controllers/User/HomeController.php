@@ -78,33 +78,42 @@ class HomeController extends Controller
             }
         }
         // Change pseudo
-        if (User::where('pseudo', $request->pseudo)->count > 0) {
-            $errors->push(['pseudo' => __('errors.account.pseudo')]);
-        } else {
-            $user->update(['pseudo' => cleanInput($request->pseudo)]);
+        if ($request->pseudo) {
+            if (Auth::user()->pseudo !== $request->pseudo) {
+                if (User::where('pseudo', $request->pseudo)->count() > 0) {
+                    $errors->push(['pseudo' => __('errors.account.pseudo')]);
+                } else {
+                    $user->update(['pseudo' => cleanInput($request->pseudo)]);
+                }
+            }
         }
 
         // Change email
-        if (User::where('email', $request->email)->count > 0) {
-            $errors->push(['email' => __('errors.account.email_taken')]);
-        } else {
-            $user->update(['email' => cleanInput($request->email)]);
+        if ($request->email) {
+            if (Auth::user()->email !== $request->email) {
+                if (User::where('email', $request->email)->count > 0) {
+                    $errors->push(['email' => __('errors.account.email_taken')]);
+                } else {
+                    $user->update(['email' => cleanInput($request->email)]);
+                }
+            }
         }
 
         // Change user picture
         if ($request->resume) {
             Auth::user()->insertPicture($request);
         }
-        dd(Auth::user());
 
         // RGPD
-        $refus = $request->no_traitement_donnees;
-        $traitement = $refus == true ? false : true;
-        $user->update(['traitement_donnees' => $traitement]);
+        if ($request->no_traitement_donnees) {
+            $refus = $request->no_traitement_donnees;
+            $traitement = $refus == true ? false : true;
+            $user->update(['traitement_donnees' => $traitement]);
+        }
 
         $request->session()->flash('alert', $errors);
 
-        return redirect()->back();
+        return redirect(route('account.param'));
     }
 
     /**

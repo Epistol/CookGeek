@@ -10,16 +10,17 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * Class User
  * @package App
  */
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use  Notifiable, HasRoles, Bannable, SoftDeletes, HasLikes, HasMediaCDG;
+    use  Notifiable, HasRoles, Bannable, SoftDeletes, HasLikes, HasMediaCDG, HasMediaTrait;
 
     /**
      * @var array
@@ -50,7 +51,6 @@ class User extends Authenticatable
         = [
             'provider_name', 'provider_id', 'password', 'remember_token',
         ];
-
 
     /**
      * Get the unique identifier for the user.
@@ -115,7 +115,7 @@ class User extends Authenticatable
                 // always attach media to user and recipe
                 // todo : if first : order 0; else : increment
                 $this->medias()->attach([$media->id]);
-                $this->img = $media;
+                $this->img = $media->id;
                 $this->save();
                 // then check if recipe is publishable, if not detach and delete
                 CheckPicture::dispatch($media, $this);

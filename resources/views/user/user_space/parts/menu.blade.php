@@ -21,6 +21,12 @@
                     @endif">@lang('account.parameter')</a>
                     <a href="{{route('account.data')}}">@lang('account.my-data')</a>
                 </li>
+                <li>
+                    <a href="{{route('account.password')}}" class="
+                        @if(Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.info'))
+                    {{'is-active'}}
+                    @endif">@lang('account.password')</a>
+                </li>
             </ul>
         </div>
         <div class="sous_cat">

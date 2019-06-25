@@ -14,6 +14,7 @@ Route::prefix('home')->middleware('forbid-banned-user')->group(function () {
     Route::get('favorites', 'User\HomeController@favorites')->name('account.fav');
     Route::get('recipes', 'User\HomeController@recipes')->name('account.recipe');
     Route::get('data', 'User\HomeController@data')->name('account.data');
+    Route::get('password', 'User\HomeController@data')->name('account.password');
 });
 
 Route::prefix('user')->group(function () {

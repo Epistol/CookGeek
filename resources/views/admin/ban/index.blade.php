@@ -11,7 +11,6 @@
         <div class="container">
             <h1><i class="fas fa-band-aid"></i> IP whitelist </h1>
 
-
             <table class="table is-bordered">
                 <thead>
                 <tr>

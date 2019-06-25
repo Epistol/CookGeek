@@ -1,5 +1,5 @@
 <div class="field">
-    <label class="label">Mot de passe actuel</label>
+    <label class="label">@lang('account.password_array.actual')</label>
     <div class="control">
         <input class="input" type="password" name="mdp_now" placeholder="">
         <a class="help" href="/password/reset" >
@@ -8,13 +8,13 @@
     </div>
 </div>
 <div class="field">
-    <label class="label">Nouveau mot de passe</label>
+    <label class="label">@lang('account.password_array.new')</label>
     <div class="control">
         <password name="new_mdp"/>
     </div>
 </div>
 <div class="field">
-    <label class="label">Vérifiez ce mot de passe</label>
+    <label class="label">@lang('account.password_array.check')</label>
     <div class="control">
         <password name="new_mdp_check"/>
     </div>
