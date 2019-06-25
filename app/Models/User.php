@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Jobs\CheckPicture;
+use App\Models\Media;
 use App\Notifications\MailResetPasswordNotification;
 use App\Traits\HasLikes;
 use App\Traits\HasMediaCDG;
@@ -10,9 +11,9 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -121,6 +122,25 @@ class User extends Authenticatable implements HasMedia
                 CheckPicture::dispatch($media, $this);
             }
         }
+    }
+
+    public function getAvatarUserAttribute()
+    {
+        if (is_int(intval($this->img))) {
+            return Media::find($this->img)->getUrl();
+        } else {
+            return $this->img;
+        }
+    }
+
+    public function setNameAttribute()
+    {
+        return strip_tags(clean($this->name));
+    }
+
+    public function setPseudoAttribute()
+    {
+        return strip_tags(clean($this->pseudo));
     }
 
     /**

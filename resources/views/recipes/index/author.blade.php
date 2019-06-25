@@ -1,15 +1,12 @@
 <div class="">
     @if($recipe->user)
-    <a href="/user/{{$recipe->user->name}}">
+    <a href="{{route('user.show',$recipe->user->id)}}">
         <div class="is-flex-center">
             {{--Avatar--}}
-                <?php
-//                $nb_recipes = DB::table('recipes')->where('id_user', $recipe->user->id)->count();
-                ?>
                 @if($recipe->user->img !== '')
                     <figure class="image is-48x48">
                         <img class="is-rounded "
-                             src="{{cleanInput($recipe->user->img)}}"
+                             src="{{cleanInput($recipe->user->avatarUser)}}"
                              style="height: 100%;width: 100%;">
                     </figure>
                 @else

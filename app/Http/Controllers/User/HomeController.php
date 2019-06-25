@@ -111,7 +111,9 @@ class HomeController extends Controller
             $user->update(['traitement_donnees' => $traitement]);
         }
 
-        $request->session()->flash('alert', $errors);
+        if ($errors->count() > 0) {
+            $request->session()->flash('alert', $errors);
+        }
 
         return redirect(route('account.param'));
     }

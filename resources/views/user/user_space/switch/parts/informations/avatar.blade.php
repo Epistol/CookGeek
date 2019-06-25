@@ -2,8 +2,8 @@
     <div class="file is-centered is-boxed has-name">
         <div class="recipe-add-img">
             <label class="label">Mon avatar</label>
-            @if(Auth::user()->img!== 'users/default.png' &&Auth::user()->img !== '')
-                <img src="{{Auth::user()->img}}"/>
+            @if(Auth::user()->avatarUser!== 'users/default.png' &&Auth::user()->avatarUser !== '')
+                <img src="{{Auth::user()->avatarUser}}"/>
             @endif
             <set-picture></set-picture>
         </div>

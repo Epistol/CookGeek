@@ -96,8 +96,7 @@ class LikeController extends Controller
      */
     public function nbLikeRecipe(Request $request)
     {
-        $recipe = Recipe::find(intval($request->recipeid));
-        $likes = $recipe->likes()->count();
+        $likes = Recipe::find(intval($request->recipeid))->likes()->count();
         return response()->json(intval($likes));
     }
 }
