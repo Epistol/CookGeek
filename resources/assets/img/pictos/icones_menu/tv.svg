@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.8 33.72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #b87bc8;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #b87bc8;
+      }
+
+      .cls-3 {
+        fill: #fcbee1;
+      }
+    </style>
+  </defs>
+  <g id="TV" transform="translate(-10.76 -8.45)">
+    <line id="Ligne_25" data-name="Ligne 25" class="cls-1" y1="10.55" x2="9.01" transform="translate(24.6 9.99)"/>
+    <line id="Ligne_26" data-name="Ligne 26" class="cls-1" x2="5.05" y2="7.14" transform="translate(19.55 13.4)"/>
+    <circle id="Ellipse_285" data-name="Ellipse 285" class="cls-2" cx="1.54" cy="1.54" r="1.54" transform="translate(32.07 8.45)"/>
+    <circle id="Ellipse_286" data-name="Ellipse 286" class="cls-2" cx="1.32" cy="1.32" r="1.32" transform="translate(18.23 12.08)"/>
+    <rect id="Rectangle_1101" data-name="Rectangle 1101" class="cls-3" width="35.8" height="22.84" rx="4" transform="translate(10.76 19.33)"/>
+    <rect id="Rectangle_1102" data-name="Rectangle 1102" class="cls-2" width="23.73" height="18.28" rx="4" transform="translate(12.95 21.66)"/>
+    <rect id="Rectangle_1103" data-name="Rectangle 1103" class="cls-2" width="5.16" height="5.93" rx="1" transform="translate(39.15 22.62)"/>
+    <rect id="Rectangle_1104" data-name="Rectangle 1104" class="cls-2" width="3.27" height="3.27" rx="1" transform="translate(40.24 30.75)"/>
+  </g>
+</svg>

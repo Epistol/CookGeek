@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.053 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #b87bc8;
+      }
+
+      .cls-3 {
+        fill: #fcbee1;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_139" data-name="Groupe 139" transform="translate(-528 -301)">
+    <rect id="Rectangle_1132" data-name="Rectangle 1132" class="cls-1" width="32" height="32" transform="translate(528 301)"/>
+    <g id="gaming" transform="translate(524.8 296.575)">
+      <g id="games" transform="translate(3.2 9.425)">
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="Jeux_video" data-name="Jeux video">
+            <rect id="Rectangle_1100" data-name="Rectangle 1100" class="cls-2" width="23.889" height="9.373" transform="translate(4.802 3.345)"/>
+            <rect id="Rectangle_1100-2" data-name="Rectangle 1100" class="cls-2" width="4.889" height="5.373" transform="translate(25.803 7.345)"/>
+            <path id="Tracé_270" data-name="Tracé 270" class="cls-3" d="M37.845,19.178c-4.23-6.953-10.606-2.115-10.606-2.115a3.325,3.325,0,0,1-1.7.569H23.834a3.252,3.252,0,0,1-1.69-.569s-6.409-4.807-10.614,2.115A21.461,21.461,0,0,0,9.006,33.694c.3,1.851,1.282,3.092,3.14,2.932s5.872-4.991,5.872-4.991a2.3,2.3,0,0,1,1.546-.721H29.81a2.283,2.283,0,0,1,1.546.729s4.005,4.807,5.88,4.991,2.844-1.081,3.14-2.932a21.453,21.453,0,0,0-2.523-14.524ZM20.838,24.834H18.643v2.115a2.051,2.051,0,0,1-1.186.344,1.426,1.426,0,0,1-1.041-.385V24.834H14.341a1.658,1.658,0,0,1-.328-.937,2.2,2.2,0,0,1,.288-1.266H16.5V20.412a2.4,2.4,0,0,1,1.106-.224,2.9,2.9,0,0,1,1.13.264v2.155H20.79a2.051,2.051,0,0,1,.393,1.025,2.6,2.6,0,0,1-.344,1.2Zm10.07,2.4a1.73,1.73,0,1,1,1.231-.507,1.73,1.73,0,0,1-1.231.507Zm0-4.807a1.73,1.73,0,1,1,1.231-.507,1.73,1.73,0,0,1-1.231.507ZM35.233,25a1.726,1.726,0,1,1,0,.024Zm0,0" transform="translate(-8.665 -15.425)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

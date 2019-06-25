@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.93 30.939">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fcbee1;
+      }
+
+      .cls-2 {
+        fill: #b87bc8;
+      }
+    </style>
+  </defs>
+  <g id="Oeuvres_d_art" data-name="Oeuvres d&apos;art" transform="translate(-11.39 -11.911)">
+    <path id="Tracé_247" data-name="Tracé 247" class="cls-1" d="M11.46,24.56c-.85-7.28,6.25-10.94,15.95-12.36s18.3,2.54,19.22,8.8S40.44,33.6,30.74,35c-7.18,1.05-17.54-1.15-16.83-3.9.6-2.35,5-1.86,4.28-4.2C17.6,24.94,11.71,26.73,11.46,24.56ZM24,31.73a2.44,2.44,0,1,0-2.8-2.06A2.44,2.44,0,0,0,24,31.73Z"/>
+    <path id="Tracé_248" data-name="Tracé 248" class="cls-2" d="M43.15,42.85c2,0,5.17-3.09,5.17-3.09s-3.33.73-4.59-.59-2.44,0-3.39.49a.56.56,0,0,1-.19,0,.22.22,0,0,0-.22.22V41a.22.22,0,0,0,.23.21h.06C41.17,41.92,41.59,42.87,43.15,42.85Z"/>
+    <path id="Tracé_249" data-name="Tracé 249" class="cls-1" d="M40.22,39.81c0-.1-.14-.19-.31-.21l-.52-.05a.27.27,0,0,0-.27-.13l-26,.69a.65.65,0,0,0,0,1.3l26,.06a.3.3,0,0,0,.22-.08l.56-.07c.17,0,.31-.12.3-.21Z"/>
+    <ellipse id="Ellipse_262" data-name="Ellipse 262" class="cls-2" cx="1.9" cy="2.34" rx="1.9" ry="2.34" transform="translate(32.175 17.244) rotate(-76.74)"/>
+    <ellipse id="Ellipse_263" data-name="Ellipse 263" class="cls-2" cx="1.98" cy="2.43" rx="1.98" ry="2.43" transform="matrix(0.758, -0.652, 0.652, 0.758, 38.75, 19.372)"/>
+    <ellipse id="Ellipse_264" data-name="Ellipse 264" class="cls-2" cx="2.48" cy="2.02" rx="2.48" ry="2.02" transform="matrix(0.667, -0.745, 0.745, 0.667, 36.606, 27.78)"/>
+    <ellipse id="Ellipse_265" data-name="Ellipse 265" class="cls-2" cx="2.22" cy="1.8" rx="2.22" ry="1.8" transform="translate(23.979 14.597) rotate(-11.32)"/>
+    <ellipse id="Ellipse_266" data-name="Ellipse 266" class="cls-2" cx="2.22" cy="1.8" rx="2.22" ry="1.8" transform="translate(16.375 17.277) rotate(-11.32)"/>
+  </g>
+</svg>
