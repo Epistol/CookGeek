@@ -49,7 +49,7 @@
                                         </div>
                                     </div>
 
-                                    <a class="help" href="{{route('/password/reset')}}" ">
+                                    <a class="help" href="{{url('/password/reset')}}">
                                         @lang('passwords.forgot')
                                     </a>
 

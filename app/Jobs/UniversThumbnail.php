@@ -49,16 +49,16 @@ class UniversThumbnail implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param          $recipe
-     * @param string   $imageContent
-     * @param string   $imageName
+     * @param $universe
+     * @param string $imageContent
+     * @param string $imageName
      * @param          $user
-     * @param string   $typePicture
+     * @param string $typePicture
      * @param int|null $width
      * @param int|null $height
      */
-    public function __construct($univers, string $imageContent, string $imageName, $user, string $typePicture,
-        int $width = null, ?int $height = null)
+    public function __construct($universe, string $imageContent, string $imageName, $user, string $typePicture,
+        ?int $width = null, ?int $height = null)
     {
         $this->width        = $width;
         $this->height       = $height;
@@ -66,7 +66,7 @@ class UniversThumbnail implements ShouldQueue
         $this->imageName    = $imageName;
         $this->user         = $user;
         $this->typePicture  = $typePicture;
-        $this->univers      = $univers;
+        $this->univers      = $universe;
     }
 
     /**
@@ -129,7 +129,7 @@ class UniversThumbnail implements ShouldQueue
                 $imageName = 'square_' . $imageName . '.webp';
                 break;
             default:
-                $imageName = $imageName . '.jpeg';
+                $imageName .= '.jpeg';
                 break;
         }
 

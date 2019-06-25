@@ -45,8 +45,6 @@ class Univers extends Model
      */
     public function get_first($text)
     {
-        $univ = Univers::select('id')->where('name', 'like', '%' . $text . '%')->get();
-
-        return $univ;
+        return Univers::select('id')->where('name', 'like', '%' . $text . '%')->get();
     }
 }

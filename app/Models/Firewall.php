@@ -9,8 +9,6 @@ class Firewall extends Model
 {
     public static function getAllIps()
     {
-        $list = DB::table('firewall')->get();
-
-        return $list;
+        return DB::table('firewall')->get();
     }
 }

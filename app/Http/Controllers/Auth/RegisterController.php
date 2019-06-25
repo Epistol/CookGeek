@@ -7,7 +7,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller {
+class RegisterController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -33,7 +34,8 @@ class RegisterController extends Controller {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest');
     }
 
@@ -44,21 +46,22 @@ class RegisterController extends Controller {
      *
      * @return User
      */
-    protected function create(array $data) {
+    protected function create(array $data)
+    {
         $validator = $this->validator($data)->validate();
 
         if (!$validator) {
             return redirect()->back()
-                             ->withErrors($validator)
-                             ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $user = User::create([
-                                 'pseudo'   => $data['pseudo'],
-                                 'name'     => $data['pseudo'],
-                                 'email'    => $data['email'],
-                                 'password' => bcrypt($data['password']),
-                             ]);
+            'pseudo' => $data['pseudo'],
+            'name' => $data['pseudo'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
 
         $user->assignRole('user');
 
@@ -72,10 +75,11 @@ class RegisterController extends Controller {
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data) {
+    protected function validator(array $data)
+    {
         return Validator::make($data, [
-            'pseudo'   => 'required|string|max:255|unique:users,name',
-            'email'    => 'required|string|email|max:255|unique:users',
+            'pseudo' => 'required|string|max:255|unique:users,name',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

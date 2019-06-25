@@ -3,7 +3,7 @@
         {{--Avatar--}}
         @if($recipe->getAuthorElement('img') !== null)
             <figure class="image is-48x48">
-                <img src="/user/{{$recipe->id_user}}/{{$recipe->getAuthorElement('img')}}" class="is-rounded"
+                <img src="{{$recipe->getAuthorElement('img')}}" class="is-rounded"
                      alt="Avatar user {{$recipe->getAuthorElement('name')}}"
                      style="height: 100%; width: 100%;"></figure>
         @else
@@ -16,7 +16,7 @@
         @endif
         {{--pseudo--}}
         <p><span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span><a
-                    href="/user/{{$recipe->getAuthorElement('name')}}">
+                    href="{{route('user.show', $recipe->getAuthorElement('id'))}}">
                 {!! str_limit($recipe->getAuthorElement('name'), 20, ' (...)') !!}</a></p>
     </div>
 

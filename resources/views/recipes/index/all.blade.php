@@ -13,22 +13,6 @@
         <div class="columns is-multiline">
 
             @foreach($recipes as $nombre => $recipe)
-                <?php
-                $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
-                $somme = $controller->sum_time_home($somme_t);
-                // TODO : correct this
-                $validPictures = $picturectrl->loadRecipePicturesValid($recipe);
-                if ($validPictures->isNotEmpty()) {
-                    $img = $validPictures->first();
-                    if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
-                        $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
-                    } else {
-                        $urlClazy = collect($img->urls)->firstWhere('name', 'normal')['url'];
-                    }
-                } else {
-                    $urlClazy = collect();
-                }
-                ?>
                 <div class="column is-4">
                     <div class="card card-cdg">
                         <div id="medaillon_index">
@@ -49,7 +33,7 @@
                         </p>
                         <div class="columns is-paddingless is-marginless mini-infos">
                             <div class="column is-4 is-flex-center"><i class="fas fa-clock"
-                                                                       style="margin-right:0.5rem"></i><span>{{ strip_tags($somme) }}</span>
+                                                                       style="margin-right:0.5rem"></i><span>{{ $recipe->timeFormat }}</span>
                             </div>
                             <div class="column is-2 is-flex-center">
                                 <span>{{ $recipe-> nb_guests ?: 1 }}</span>{{-- {{ $recipe->guest_type ?: "personnes"}}--}}
@@ -58,7 +42,7 @@
                             <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
                                 {{--Nom de l'univers--}}
                                 @php
-                                    $univers_data = DB::table('univers')->where('id', '=', $recipe->univers)->first();
+                                    $univers_data = DB::table('univers')->where('id', $recipe->univers)->first();
                                 @endphp
                                 @if($univers_data)
                                     @if(strip_tags(clean($univers_data->name)))

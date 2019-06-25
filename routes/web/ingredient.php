@@ -6,6 +6,9 @@
  * Time: 23:25.
  */
 
+use Illuminate\Support\Facades\Route;
+
+
 // RECETTE
 Route::group(['prefix' => 'ingredient'], function () {
     Route::get('/', 'IngredientController@index')->name('ingredient.index');

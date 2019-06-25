@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
+
 /**
  * Created by PhpStorm.
  * User: mikal

@@ -27,7 +27,7 @@ class UniversController extends Controller
         // on va charger les univers les plus vus de chaque types
 
         // 1) Charger les types (anime, manga, etc)
-        $categunivers = (Categunivers::all());
+        $categunivers = Categunivers::all();
 
         if ($categunivers != null) {
             // On charge les données dans la vue
@@ -43,10 +43,8 @@ class UniversController extends Controller
     public function get_all_universes_in_categ($categ)
     {
         // trouver les univers ayant des recettes de la catégorie (anime, manga, etc)
-        $recettes = DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)
+        return DB::table('recipes')->select('univers')->where('type_univers', '=', $categ)
                       ->where('validated', '=', 1)->distinct()->orderByDesc('nb_views')->get();
-
-        return $recettes;
     }
 
     /**
@@ -80,13 +78,11 @@ class UniversController extends Controller
      */
     public function show($name)
     {
-
         // on va charger les univers les plus vus de chaque types
-
         // 1) Charger les types (anime, manga, etc)
         $univers = Univers::where('name', strip_tags(clean($name)))->firstOrFail();
 
-        $categunivers = (Categunivers::all());
+        $categunivers = Categunivers::all();
 
         if ($univers != null) {
             // On charge les données dans la vue
@@ -144,7 +140,6 @@ class UniversController extends Controller
     public function FirstOrCreate($text)
     {
         $univ = (new Univers())->get_first($text);
-//        dd($univ);
         if ($univ->isEmpty()) {
             $univ = $this->store_api($text);
             if ($univ === false) {
@@ -168,11 +163,9 @@ class UniversController extends Controller
 
         if ($string !== '') {
             // Adding to the DB
-            $id_univers = DB::table('univers')->insertGetId(
+            return DB::table('univers')->insertGetId(
                 ['name' => $string]
             );
-
-            return $univ = $id_univers;
         } else {
             return false;
         }

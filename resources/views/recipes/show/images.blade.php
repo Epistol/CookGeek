@@ -31,10 +31,11 @@
                 @endforeach
             </div>
         @endif
-
+        @include('recipes.show.addMorePicture')
     @else
         @if($recipe->getAuthorPictures()->isNotEmpty())
             @include('recipes.show.imageWait')
+            @include('recipes.show.addMorePicture')
         @endif
         @include('recipes.show.addPicture')
     @endif

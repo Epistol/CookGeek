@@ -13,7 +13,6 @@ class Profanity implements Rule
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -26,7 +25,6 @@ class Profanity implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
     }
 
     public function apply($value, $options = [])

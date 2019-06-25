@@ -34,14 +34,6 @@ class RecipeController extends Controller
     use HasUserInput, HasTimes;
 
     /**
-     * RecipeController constructor.
-     *
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -151,11 +143,13 @@ class RecipeController extends Controller
         }
 
         // STARS
-//        $stars1 = $recipe->notes->avg('note');
-        $stars1 = $recipe->notes->avg('note');
-        if ($stars1 == null) {
+        if($recipe->notes->count() > 0) {
+            $stars1 = $recipe->notes->avg('note');
+        }
+        else {
             $stars1 = 1;
         }
+
         $stars = number_format($stars1, 1, '.', '');
         $stars = explode('.', $stars, 2);
 

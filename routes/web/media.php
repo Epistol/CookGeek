@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 
 // RECETTE/MEDIA
 Route::group(['prefix' => 'media'], function () {

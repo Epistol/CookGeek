@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 // /UNIVERSE
     Route::group(['prefix' => 'univers'], function () {

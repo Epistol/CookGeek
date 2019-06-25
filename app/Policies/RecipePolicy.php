@@ -18,7 +18,6 @@ class RecipePolicy
      * Determine whether the user can view the recipe.
      *
      * @param  $user
-     * @param  $recipe
      * @return mixed
      */
     public function view(?User $user)
@@ -62,7 +61,7 @@ class RecipePolicy
             return true;
         }
 
-        return ($user->hasPermissionTo('edit_' . $this->policyName));
+        return $user->hasPermissionTo('edit_' . $this->policyName);
     }
 
     /**
@@ -75,7 +74,7 @@ class RecipePolicy
      */
     public function delete(User $user, Recipe $recipe)
     {
-        return ($user->hasPermissionTo('delete_' . $this->policyName));
+        return $user->hasPermissionTo('delete_' . $this->policyName);
     }
 
     /**
@@ -88,7 +87,7 @@ class RecipePolicy
      */
     public function restore(User $user, Recipe $recipe)
     {
-        return ($user->hasPermissionTo('edit_' . $this->policyName));
+        return $user->hasPermissionTo('edit_' . $this->policyName);
     }
 
     /**
@@ -101,6 +100,6 @@ class RecipePolicy
      */
     public function forceDelete(User $user, Recipe $recipe)
     {
-        return ($user->hasPermissionTo('delete_' . $this->policyName));
+        return $user->hasPermissionTo('delete_' . $this->policyName);
     }
 }

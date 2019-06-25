@@ -18,7 +18,7 @@
 
                 {{--pseudo--}}
                 <p><span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span>
-                    <a href="/user/{{$recipe->user->name}}">
+                    <a href="{{route('user.show',$recipe->user->id)}}">
                         @php echo str_limit($recipe->user->name, 20, ' (...)'); @endphp
                     </a>
                 </p>

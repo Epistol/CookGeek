@@ -12,11 +12,11 @@ class Permission extends \Spatie\Permission\Models\Permission
     {
         $bread = ['browse', 'read', 'edit', 'add', 'delete'];
         foreach ($bread as $element) {
-            $permission = Permission::create([
-                                                 'name'       => $element . '_' . $table_name,
-                                                 'key'        => $element . '_' . $table_name,
-                                                 'table_name' => $table_name,
-                                             ]);
+            Permission::create([
+                'name' => $element . '_' . $table_name,
+                'key' => $element . '_' . $table_name,
+                'table_name' => $table_name,
+            ]);
         }
     }
 

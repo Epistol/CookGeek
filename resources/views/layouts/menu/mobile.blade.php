@@ -35,7 +35,7 @@
                             @if(Auth::user()->avatarUser!== 'users/default.png')
                                 <figure class="image is-32x32">
                                     <img class="is-rounded "
-                                         src="/user/{{Auth::user()->id}}/{{strip_tags(clean(Auth::user()->avatarUser))}}"
+                                         src="{{Auth::user()->avatarUser}}"
                                          style="height: 100%;width: 100%;">
                                 </figure>
                             @else

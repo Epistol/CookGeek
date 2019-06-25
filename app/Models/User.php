@@ -108,7 +108,7 @@ class User extends Authenticatable implements HasMedia
     {
         $picture = isset($request->resume) ? $request->resume : null;
         if ($picture !== null) {
-            if ($picture->getError() == 0) {
+            if ($picture->getError() === 0) {
                 $media = $this->addMedia($picture)
                     ->withCustomProperties(['first_picture' => $first, 'checked' => false])
                     ->withResponsiveImages()
@@ -126,11 +126,12 @@ class User extends Authenticatable implements HasMedia
 
     public function getAvatarUserAttribute()
     {
-        if (is_int(intval($this->img))) {
-            return Media::find($this->img)->getUrl();
-        } else {
-            return $this->img;
+        if($this->img !== null && $this->img !== ''){
+            if (is_int(intval($this->img))) {
+                return Media::find($this->img)->getUrl();
+            }
         }
+        return $this->img;
     }
 
     public function setNameAttribute()

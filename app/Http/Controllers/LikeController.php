@@ -75,9 +75,10 @@ class LikeController extends Controller
      */
     public function destroyLikeRecipe($recipe, $likes)
     {
-        if ($likesGet = $recipe->likes()->where('user_id', Auth::user()->id)->get()) {
+        if ($recipe->likes()->where('user_id', Auth::user()->id)->get()) {
             $recipe->likes()->where('user_id', Auth::user()->id)->detach();
             $recipe->likes()->where('user_id', Auth::user()->id)->delete();
+            $likesGet = $recipe->likes()->where('user_id', Auth::user()->id)->get();
             foreach ($likesGet as $index => $like) {
                 $like->delete();
             }

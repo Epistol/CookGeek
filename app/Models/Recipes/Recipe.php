@@ -38,7 +38,7 @@ class Recipe extends Model implements Feedable, HasMedia
     use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
 
     /**
-     * @return Collection|static[]
+     * @return Collection
      */
     public static function getAllFeedItems()
     {
@@ -54,9 +54,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public static function getPaginate($valid, $signal, $nbPaginate = 10)
     {
-        $recipes = self::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
-
-        return $recipes;
+        return self::validated($valid)->signaled($signal)->paginate(intval($nbPaginate));
     }
 
     /**
@@ -68,9 +66,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
     {
-        $recipes = self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
-
-        return $recipes;
+        return self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
     }
 
     /** Possède plusieurs univers
@@ -85,7 +81,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function notes()
     {
-        return $this->hasMany(RecipeNote::class);
+        return $this->hasMany(RecipeNote::class, 'id_recipe');
     }
 
     public function user()
@@ -145,10 +141,7 @@ class Recipe extends Model implements Feedable, HasMedia
         if ($userElement) {
             if ($element == 'img') {
                 return $userElement->img !== "users/default.png" && $userElement->img !== ""
-                && $userElement->img !== null ? $userElement->$element : null;
-            } elseif ($element == 'name') {
-                $name = strip_tags(clean($userElement->$element));
-                return $name;
+                && $userElement->img !== null ? $userElement->avatarUser : null;
             } else {
                 return $userElement->$element;
             }
@@ -180,9 +173,8 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function getTypeLower()
     {
-        $typename = (new TypeRecipe())->getnamefromid($this->type);
+        return (new TypeRecipe())->getnamefromid($this->type);
 
-        return strtolower($typename);
     }
 
     /**
@@ -361,7 +353,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
             $related = $related->merge($relatedUniverse);
-            $total = $total + $relatedUniverse->count();
+            $total += $relatedUniverse->count();
         }
 
         if ($total < $nbWanted) {
@@ -371,7 +363,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
             $related = $related->merge($relatedSameAuthor);
-            $total = $total + $relatedSameAuthor->count();
+            $total += $relatedSameAuthor->count();
         }
 
         if ($total < $nbWanted) {
@@ -380,7 +372,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 ->inRandomOrder()->limit($nbWanted - $total)
                 ->get();
             $related = $related->merge($relatedSameAuthor);
-            $total = $total + $relatedSameAuthor->count();
+            $total += $relatedSameAuthor->count();
         }
 
         return $related;
@@ -413,7 +405,7 @@ class Recipe extends Model implements Feedable, HasMedia
      *
      * @throws InvalidManipulation
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(?Media $media = null)
     {
         $this->addMediaConversion('thumb')
             ->width(150)
@@ -442,7 +434,7 @@ class Recipe extends Model implements Feedable, HasMedia
         }
 
         if ($countSet > 0) {
-            if ($valid == true) {
+            if ($valid === true) {
                 $pictureSet = $this->medias()->wherePivot('valid', true)->get();
             } else {
                 $pictureSet = $this->medias()->get();
@@ -471,6 +463,32 @@ class Recipe extends Model implements Feedable, HasMedia
         return $bestPicture;
     }
 
+    public function getTimeFormatAttribute(){
+        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
+
+        $format = '%1$02d';
+        // si il y'a + d'1heure
+        if ($somme_t > 60) {
+            $somme_h = $somme_t / 60;
+            $somme_m = $somme_t - ((int)$somme_h * 60);
+            // si le nb de minute est supérieur a 0, on les affiches
+            if ($somme_m > 0) {
+                return sprintf($format, $somme_h) . ' h ' . sprintf($format, $somme_m);
+            } else {
+                return sprintf($format, $somme_h) . ' h ';
+            }
+        } else {
+            $somme_h = 0;
+            $somme_m = $somme_t - ((int)$somme_h * 60);
+            // si le nb de minute est supérieur a 0, on affiche qqch
+            if ($somme_m > 0) {
+                return sprintf($format, $somme_m) . ' min';
+            } else {
+                return '';
+            }
+        }
+    }
+
     /**
      * @param bool $valid
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
@@ -480,7 +498,7 @@ class Recipe extends Model implements Feedable, HasMedia
         $picturesOfAuthor = collect([]);
         $pictureSetCount = $this->medias()->count();
         if ($pictureSetCount > 0) {
-            if ($valid == true) {
+            if ($valid === true) {
                 $pictureSet = $this->medias()->wherePivot('valid', true)->get();
             } else {
                 $pictureSet = $this->medias()->get();

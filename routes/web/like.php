@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
+
 Route::prefix('like')->group(function () {
     Route::post('/', 'LikeController@create')->name('api.like.create');
     Route::get('/checkLikedRecipe', 'LikeController@checkLikedRecipe')->name('api.like.check');

@@ -2,7 +2,7 @@
     <div class="menu-avatar">
         <figure class="image is-128x128 menu-avatar">
             @if($user->img!== "users/default.png")
-                <img  class="is-rounded menu-left-avatar"  src="/user/{{$user->id}}/picture/{{$user->img}}" />
+                <img  class="is-rounded menu-left-avatar"  src="{{$user->avatarUser}}" />
             @else
                 <img  class="is-rounded menu-left-avatar"  src="https://api.adorable.io/avatars/{{$user->id}}" />
             @endif

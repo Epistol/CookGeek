@@ -6,6 +6,8 @@
  * Time: 23:25.
  */
 
+use Illuminate\Support\Facades\Route;
+
 Route::resource('recipe', 'Recipe\RecipeController');
 
 

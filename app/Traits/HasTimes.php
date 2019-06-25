@@ -19,7 +19,7 @@ trait HasTimes
      */
     public static function verifyTime($time)
     {
-        if (empty($time) || !isset($time) || $time == null) {
+        if (!isset($time) || $time === null) {
             return 0;
         } else {
             return intval($time);
@@ -48,7 +48,7 @@ trait HasTimes
         ]);
 
         $filtered = $datas->filter(function ($value, $key) {
-            if (empty($value) || !isset($value) || $value === null) {
+            if (!isset($value) || $value === null) {
                 return $key;
             } else {
                 return intval($value);
@@ -59,9 +59,7 @@ trait HasTimes
         $cook = self::returnTime($filtered->get('cookH'), $filtered->get('cookM'));
         $rest = self::returnTime($filtered->get('restH'), $filtered->get('restM'));
 
-        $times = collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
-
-        return $times;
+        return collect(['prep' => $prep, 'cook' => $cook, 'rest' => $rest]);
     }
 
     /**
@@ -90,10 +88,10 @@ trait HasTimes
      */
     public function getUnifiedTime($minutes, $hours)
     {
-        if ($minutes == 0) {
+        if ($minutes === 0) {
             $minutes = intval(0);
         }
-        if ($hours == 0) {
+        if ($hours === 0) {
             $minutes = intval(0);
         }
 

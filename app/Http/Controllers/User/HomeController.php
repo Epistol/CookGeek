@@ -125,7 +125,7 @@ class HomeController extends Controller
      */
     private function isDirty($param)
     {
-        return empty($param) || $param == '' ? false : true;
+        return isset($param) || $param == '' ? false : true;
     }
 
     /**

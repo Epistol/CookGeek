@@ -16,7 +16,6 @@
                                 <div class="column is-2">
                                     <div class="card cdg">
                                         <div class="card-image"><a href="{{route('recipe.show', $recipe->slug)}}">
-                                                <?php   $img = $pictureService->loadRecipePicturesValid($recipe); ?>
                                                 @include('recipes.elements.picture')
                                             </a>
                                         </div>

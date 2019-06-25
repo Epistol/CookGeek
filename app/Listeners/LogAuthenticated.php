@@ -28,9 +28,7 @@ class LogAuthenticated
     {
         $ip = geoip()->getClientIP();
 
-        if ($event->user != null) {
-//            Log::notice('IP ' . $ip . ' connected to ' . $event->user->id);
-        } else {
+        if (!$event->user != null) {
             Log::notice('IP ' . $ip . ' tried to connect to an inexistant account (bad mail/username');
         }
     }

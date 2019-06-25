@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
-    const TABLE = 'recipes_note';
-    const ID_RECIPE = 'id_recipe';
-    const ID_USER = 'id_user';
-    const NOTE = 'note';
+    public const TABLE = 'recipes_note';
+    public const ID_RECIPE = 'id_recipe';
+    public const ID_USER = 'id_user';
+    public const NOTE = 'note';
 
     public function checknote(Request $request)
     {

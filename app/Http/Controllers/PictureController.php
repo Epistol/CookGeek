@@ -107,19 +107,6 @@ class PictureController extends Controller
         return response()->json($uploaded);
     }
 
-    /**
-     * @param $recette
-     *
-     * @return \Illuminate\Support\Collection|Collection
-     */
-    public function loadRecipePicturesValid($recette)
-    {
-        $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')
-                      ->where('validated', '=', 1)->paginate(5);
-        $return   = $this->corePicture($pictures, $recette);
-        return $return;
-    }
-
     private function corePicture($pictures, $recette)
     {
         $changev7 = Carbon::create(2019, 01, 20, 20, 10, 00);

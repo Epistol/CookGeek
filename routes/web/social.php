@@ -6,6 +6,9 @@
  * Time: 23:27.
  */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')

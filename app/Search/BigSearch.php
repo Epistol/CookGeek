@@ -15,7 +15,7 @@ class BigSearch extends Aggregator
     /**
      * The names of the models that should be aggregated.
      *
-     * @var string[]
+     * @var array
      */
     protected $models = [
         Recipe::class,
