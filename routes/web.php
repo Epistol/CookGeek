@@ -28,6 +28,7 @@ Route::middleware(['fw-block-blacklisted'])->group(function () {
     require base_path('routes/web/type.php');
     require base_path('routes/web/media.php');
     require base_path('routes/web/pages.php');
+    require base_path('routes/web/like.php');
     require base_path('routes/web/blog.php');
     require base_path('routes/web/ingredient.php');
     // RECHERCHE

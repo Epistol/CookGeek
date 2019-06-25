@@ -4,7 +4,7 @@
            @click="clickLike()">
             <i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span>
         </a>
-        <template v-if="!user && clicked">
+        <template v-if="!userid && clicked">
             <login-modal :showModal="this.clicked" @close="closing()" ></login-modal>
         </template>
     </div>
@@ -31,7 +31,7 @@
         methods: {
             async toggleLike() {
                 if (this.userid) {
-                    axios.post('/api/like/toggle_like/', {
+                    axios.post('/like/toggleLikeRecipe/', {
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
@@ -45,7 +45,7 @@
             clickLike() {
                 this.clicked = true;
                 if (this.userid) {
-                    axios.post('/api/like/toggle_like/', {
+                    axios.post('/like/toggleLikeRecipe/', {
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
@@ -57,7 +57,7 @@
             },
             async is_already_liked() {
                 if (this.userid) {
-                    axios.post('/api/like/check_liked/', {
+                    axios.post('/like/checkLikedRecipe/', {
                         recipeid: this.recipeid,
                         userid: this.userid
                     }).then(response => {
@@ -69,7 +69,7 @@
             },
             async getNbLike() {
                 if (this.userid) {
-                    axios.post('/api/like/nblike/', {recipeid: this.recipeid}).then(response => {
+                    axios.post('/like/nbLikeRecipe/', {recipeid: this.recipeid}).then(response => {
                         this.nbLike = response.data;
                     });
                 } else {

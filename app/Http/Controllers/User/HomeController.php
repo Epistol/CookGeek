@@ -66,12 +66,10 @@ class HomeController extends Controller
     {
         $errors = collect([]);
         $user = $request->user();
-        // Let's check if a new password is set :
+        // Let's check if a password is set :
         if (!Hash::check($request->mdp_now, Auth::user()->getAuthPassword())) {
-            return redirect()->back()->with('alert', 'Vous n\'avez pas rentré votre mot de passe actuel');
+            return redirect()->back()->with('alert', __('errors.account.no_password'));
         }
-
-        dd($request);
 
         // Let's check if a new password is set :
         if ($request->mdp_now && $request->new_mdp_check) {
@@ -79,44 +77,32 @@ class HomeController extends Controller
                 $user->update(['password' => Hash::make($request->new_mdp_check)]);
             }
         }
-
+        // Change pseudo
         if (User::where('pseudo', $request->pseudo)->count > 0) {
-            $errors->push(['pseudo' => 'Le pseudo est déjà pris par un autre utilisateur :/']);
+            $errors->push(['pseudo' => __('errors.account.pseudo')]);
         } else {
             $user->update(['pseudo' => cleanInput($request->pseudo)]);
         }
 
-        if ($request->resume) {
-            $fichier = $request->resume;
-            if ($fichier->getError() == 0) {
-                $photoName = time() . '.' . $fichier->getClientOriginalExtension();
-                $fichier->move(public_path('user/' . Auth::id() . '/'), $photoName);
-                $user->avatar = $photoName;
-            }
+        // Change email
+        if (User::where('email', $request->email)->count > 0) {
+            $errors->push(['email' => __('errors.account.email_taken')]);
+        } else {
+            $user->update(['email' => cleanInput($request->email)]);
         }
 
+        // Change user picture
+        if ($request->resume) {
+            Auth::user()->insertPicture($request);
+        }
+        dd(Auth::user());
+
+        // RGPD
         $refus = $request->no_traitement_donnees;
         $traitement = $refus == true ? false : true;
+        $user->update(['traitement_donnees' => $traitement]);
 
-        $user_data = [
-            'name' => $request->pseudo,
-            'email' => $request->mail,
-            'password' => $request->mdp,
-            'traitement_donnees' => $traitement
-        ];
-
-        foreach ($user_data as $column => $value) {
-            if ($this->isDirty($value)) {
-                if ($column == 'password') {
-                    $user->$column = bcrypt($value);
-                } else {
-                    $user->$column = $value;
-                }
-            }
-        }
-
-        $user->save();
-        $request->session()->flash('status', 'Profil mis à jour ! ');
+        $request->session()->flash('alert', $errors);
 
         return redirect()->back();
     }
@@ -138,17 +124,19 @@ class HomeController extends Controller
      */
     public function favorites(Request $request)
     {
-        $recettes = DB::table('recipes')
-            ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-            ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
-            ->select('recipes.*')
-            ->paginate(12);
+        /* $recettes = DB::table('recipes')
+             ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
+             ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
+             ->select('recipes.*')
+             ->paginate(12);*/
+
+        $recipes = Auth::user()->likes;
+        dd($recipes);
 
         return view(
             'user_space.favorites.index',
             [
-                'recipes' => $recettes,
-                'pictureService' => $this->pictureService
+                'recipes' => $recipes,
             ]
         )
             ->with(['controller' => $this]);

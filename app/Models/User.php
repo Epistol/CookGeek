@@ -2,15 +2,14 @@
 
 namespace App;
 
+use App\Jobs\CheckPicture;
 use App\Notifications\MailResetPasswordNotification;
 use App\Traits\HasLikes;
 use App\Traits\HasMediaCDG;
-use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -60,8 +59,7 @@ class User extends Authenticatable
     public static function nameReturn($user_id)
     {
         $user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))
-                  ->select('name')->get()
-        ;
+            ->select('name')->get();
 
         return $user;
     }
@@ -112,6 +110,37 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class, 'id_user');
     }
 
+   /*
+    public function favorites()
+    {
+        return $this->hasMany(Like::class, 'id_user');
+    }*/
+
+
+    /**
+     * @param $request
+     * @param $first / Is it first picture ?
+     * @return bool
+     */
+    public function insertPicture($request, $first = false)
+    {
+        $picture = isset($request->resume) ? $request->resume : null;
+        if ($picture !== null) {
+            if ($picture->getError() == 0) {
+                $media = $this->addMedia($picture)
+                    ->withCustomProperties(['first_picture' => $first, 'checked' => false])
+                    ->withResponsiveImages()
+                    ->toMediaCollection();
+                // always attach media to user and recipe
+                // todo : if first : order 0; else : increment
+                $this->medias()->attach([$media->id]);
+                $this->avatar = $media;
+                $this->save();
+                // then check if recipe is publishable, if not detach and delete
+                CheckPicture::dispatch($media, $this);
+            }
+        }
+    }
 
     /**
      * Send the password reset notification.
