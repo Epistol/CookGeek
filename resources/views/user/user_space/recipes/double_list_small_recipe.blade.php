@@ -2,12 +2,10 @@
 
 <div class="columns is-multiline" style="margin-top: 2rem; margin-bottom: 2rem;">
     @foreach ($recipes as $i => $recipe)
-
         <?php
         $starsget = (new \App\Search)->explode_star($recipe->id);
         $type = DB::table('type_recipes')->where('id', $recipe->type)->first();
         ?>
-
         <div class="column is-6  ">
             <div class="is-result">
                 <div class="columns  is-paddingless is-marginless">
@@ -15,7 +13,7 @@
                         @if(isset($type))
                             <div class="hovered">
                                 <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
-                                   href="/{{strtolower($type->name)}}">{!!  $type->name!!}</a>
+                                   href="{{route('type.show', strtolower($type->name))}}">{{ $type->name }} </a>
                             </div>
                         @endif
                         @include('recipes.elements.picture')
@@ -64,7 +62,6 @@
 
             </div>
         </div>
-
     @endforeach
 </div>
 

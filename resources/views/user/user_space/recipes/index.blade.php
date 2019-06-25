@@ -10,10 +10,8 @@
                 </div>
 
                 <div class="column is-three-quarters blockcontent">
-
-                    <h1>Mes recettes </h1>
-
-                    @include("user_space.recipes.double_list_small_recipe")
+                    <h1>@lang('common.my_recipes')</h1>
+                    @include("user.user_space.recipes.double_list_small_recipe")
                 </div>
             </div>
         </div>

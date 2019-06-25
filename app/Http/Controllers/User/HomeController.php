@@ -124,22 +124,12 @@ class HomeController extends Controller
      */
     public function favorites(Request $request)
     {
-        /* $recettes = DB::table('recipes')
-             ->join('user_recipe_likes', 'recipes.id', '=', 'user_recipe_likes.recipe_id')
-             ->where('user_recipe_likes.user_id', '=', Auth::user()->id)
-             ->select('recipes.*')
-             ->paginate(12);*/
+        // load only the recipes that the user liked
+        $recipes = Recipe::whereHas('likes', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->paginate(25);
 
-        $recipes = Auth::user()->likes;
-        dd($recipes);
-
-        return view(
-            'user_space.favorites.index',
-            [
-                'recipes' => $recipes,
-            ]
-        )
-            ->with(['controller' => $this]);
+        return view('user.user_space.favorites.index', compact('recipes'));
     }
 
     /**
@@ -149,15 +139,8 @@ class HomeController extends Controller
      */
     public function recipes(Request $request)
     {
-        $recettes = Recipe::where('id_user', Auth::user()->id)->paginate(12);
-
-        return view(
-            'user_space.recipes.index',
-            [
-                'recipes' => $recettes,
-                'pictureService' => $this->pictureService
-            ]
-        )->with(['controller' => $this]);
+        $recipes = Auth::user()->recipes()->paginate(12);
+        return view('user.user_space.recipes.index', compact('recipes'));
     }
 
     /**
