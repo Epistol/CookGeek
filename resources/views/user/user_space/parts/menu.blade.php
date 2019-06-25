@@ -3,7 +3,8 @@
         @if(Auth::user()->img!== "users/default.png")
             <img class="is-rounded menu-left-avatar" src="{{Auth::user()->img}}"/>
         @else
-            <img class="is-rounded menu-left-avatar" src="https://api.adorable.io/avatars/{!! Auth::user()->name !!}"/>
+            <img class="is-rounded menu-left-avatar"
+                 src="https://api.adorable.io/avatars/{{ Auth::user()->name }}"/>
         @endif
     </figure>
 
@@ -24,7 +25,7 @@
         </div>
         <div class="sous_cat">
             <p class="menu-label">
-                @lang('recipe.recipe')
+                {{trans_choice('recipe.recipe', 2)}}
             </p>
             <ul class="menu-list">
                 <li>

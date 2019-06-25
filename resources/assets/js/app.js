@@ -69,7 +69,6 @@ import PasswordInputComponent from "./components/PasswordInputComponent";
 import ModalView from "./components/modal/ModalView";
 
 // AUTRE
-Vue.component('ban_list', require('./components/Admin/Ban_List'));
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
 const lang = document.documentElement.lang.substr(0, 2);

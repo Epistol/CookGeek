@@ -1,7 +1,6 @@
 @extends('layouts.app.app')
 
 @section('content')
-
     <div class="section">
         <div class="container">
             <div class="columns">

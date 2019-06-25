@@ -43,10 +43,8 @@
                                     {{ str_limit(strip_tags(clean($nom_in)), 20, "...") }},
                                 @endforeach
                             </p>
-
                         </div>
                     </div>
-
                 </div>
                 <div class="columns">
                     <div class="column is-offset-4 is-4">
@@ -54,12 +52,7 @@
                             @include('recipes.elements.note')
                         </div>
                     </div>
-                    <div class="ccolumn is-flex-center">
-                        <LikeRecipe :recipeid="'{{$recipe->id}}'" :userid="'{{ Auth::id() }}'"></LikeRecipe>
-
-                    </div>
                 </div>
-
             </div>
         </div>
     @endforeach

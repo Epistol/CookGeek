@@ -44,7 +44,6 @@ Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon
 Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
 Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
 
-Vue.component('ban_list', require('./components/Admin/Ban_List'));
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
 const app = new Vue({

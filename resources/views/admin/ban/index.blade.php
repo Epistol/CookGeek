@@ -3,7 +3,7 @@
 @section('content')
     <section class="section blockcontent">
         <div class="container">
-            <ban_list :bans="{{$bans}}" :blacklist="{{$blacklist}}"></ban_list>
+            @include('admin.ban.banList')
         </div>
     </section>
     <section class="section blockcontent">

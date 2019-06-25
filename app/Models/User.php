@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'identity', 'name', 'email', 'password', 'pseudo',
+        'identity', 'name', 'email', 'password', 'pseudo', 'img'
     ];
     /**
      * @var array
@@ -51,18 +51,6 @@ class User extends Authenticatable
             'provider_name', 'provider_id', 'password', 'remember_token',
         ];
 
-
-    /**
-     * @param $user_id
-     * @return \Illuminate\Support\Collection
-     */
-    public static function nameReturn($user_id)
-    {
-        $user = DB::table('users')->where('id', '=', strip_tags(clean($user_id)))
-            ->select('name')->get();
-
-        return $user;
-    }
 
     /**
      * Get the unique identifier for the user.
@@ -110,13 +98,6 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class, 'id_user');
     }
 
-   /*
-    public function favorites()
-    {
-        return $this->hasMany(Like::class, 'id_user');
-    }*/
-
-
     /**
      * @param $request
      * @param $first / Is it first picture ?
@@ -134,7 +115,7 @@ class User extends Authenticatable
                 // always attach media to user and recipe
                 // todo : if first : order 0; else : increment
                 $this->medias()->attach([$media->id]);
-                $this->avatar = $media;
+                $this->img = $media;
                 $this->save();
                 // then check if recipe is publishable, if not detach and delete
                 CheckPicture::dispatch($media, $this);
