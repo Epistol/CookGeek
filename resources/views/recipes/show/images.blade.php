@@ -2,7 +2,13 @@
 <div class="has-text-centered" style="clear: both;" id="recipe-pictures">
     {{-- Original author picture validated --}}
     @if($recipe->getAuthorPictures(true)->isNotEmpty())
-        @include('recipes.show.pictures.author.show')
+        {{-- Search for validated pictures from other users--}}
+        @php $validPicture = $recipe->getAuthorPictures(true)->first(); @endphp
+        @include('recipes.show.pictures.show_big')
+
+        @foreach($recipe->getAuthorPictures(true, 1) as $index => $validPicture)
+            @include('recipes.show.pictures.show_small')
+        @endforeach
     @endif
 
     {{--  Validation for admin--}}
@@ -14,7 +20,14 @@
 
     {{--    If we have valid pictures from other users--}}
     @if($recipe->getNonAuthorPictures(true)->isNotEmpty())
-        @include('recipes.show.pictures.others.show')
+        @if($recipe->getAuthorPictures(true)->isEmpty())
+            @php $validPicture = $recipe->getNonAuthorPictures(true)->first(); @endphp
+            @include('recipes.show.pictures.show_big')
+        @endif
+
+        @foreach($recipe->getNonAuthorPictures(true, 1) as $index => $validPicture)
+            @include('recipes.show.pictures.show_small')
+        @endforeach
     @else
         @if($recipe->getNonAuthorPictures(false)->isNotEmpty())
             @foreach($recipe->getNonAuthorPictures(false) as $index => $picture)
