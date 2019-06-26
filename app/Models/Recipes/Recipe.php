@@ -325,7 +325,6 @@ class Recipe extends Model implements Feedable, HasMedia
             );
 
             foreach ($request->step->picture as $picture) {
-                $picture = isset($request->resume) ? $request->resume : null;
                 if ($picture !== null) {
                     if ($base) {
                         if ($base === true) {
