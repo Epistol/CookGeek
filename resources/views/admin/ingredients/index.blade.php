@@ -17,7 +17,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($ingredients as $index => $ingredient)
                     <tr>
                     <th>{{$ingredient->name}}</th>

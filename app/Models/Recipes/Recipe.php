@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Jobs\CheckPicture;
+use App\Jobs\CheckPictureStep;
 use App\Traits\HasLikes;
 use App\Traits\HasMediaCDG;
 use App\Traits\HasTimes;
@@ -309,7 +310,7 @@ class Recipe extends Model implements Feedable, HasMedia
     /**
      * @param $request
      */
-    public function insertSteps($request)
+    public function insertSteps($request, $base = null)
     {
         // Storing steps and attach to the recipe
         foreach ($request->step as $key => $step) {
@@ -323,12 +324,31 @@ class Recipe extends Model implements Feedable, HasMedia
                 ['step_number' => $key + 1]
             );
 
-            /*foreach ($request->step->picture as $picture) {
-                if (!empty($picture)) {
-                    $newPicture = $newStep->addMedia($picture)->toMediaCollection('main');
-                    $newStep->image()->attach($newPicture);
+            foreach ($request->step->picture as $picture) {
+                $picture = isset($request->resume) ? $request->resume : null;
+                if ($picture !== null) {
+                    if ($base) {
+                        if ($base === true) {
+                            $media = $this->addMediaFromBase64($picture)
+                                ->withCustomProperties(['checked' => false])
+                                ->withResponsiveImages()
+                                ->toMediaCollection();
+                        }
+                    } else {
+                        $media = $this->addMedia($picture)
+                            ->withCustomProperties(['checked' => false])
+                            ->withResponsiveImages()
+                            ->toMediaCollection();
+                    }
+
+                    // always attach media to user and recipe
+                    // todo : if first : order 0; else : increment
+                    $newStep->medias()->attach([$media->id]);
+                    Auth::user()->medias()->attach([$media->id]);
+                    // then check if recipe is publishable, if not detach and delete
+                    CheckPictureStep::dispatch($media, $step);
                 }
-            }*/
+            }
 
             /*$path = $step->photo->store('public/uploads');
             $picture = $this->addMedia($picture)->toMediaCollection('step');
