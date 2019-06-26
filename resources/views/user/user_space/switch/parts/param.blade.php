@@ -19,7 +19,7 @@
                     <p class="help">@lang('account.email.sub')</p>
                 </div>
             </div>
-            @include('user.user_space.check_psw')
+            @include('user.user_space.password.check_psw')
 {{--            @include('user.user_space.switch.parts.password')--}}
             <div class="is-flex-center">
                 <div class="field is-grouped">

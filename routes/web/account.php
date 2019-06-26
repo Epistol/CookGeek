@@ -14,11 +14,11 @@ Route::get('/home', 'User\HomeController@index')->name('home');
 Route::prefix('home')->middleware('forbid-banned-user')->group(function () {
     Route::post('parameters', 'User\HomeController@paramStore')->name('param.store');
     Route::get('parameters', 'User\HomeController@parameters')->name('account.param');
-
     Route::get('favorites', 'User\HomeController@favorites')->name('account.fav');
     Route::get('recipes', 'User\HomeController@recipes')->name('account.recipe');
     Route::get('data', 'User\HomeController@data')->name('account.data');
-    Route::get('password', 'User\HomeController@data')->name('account.password');
+    Route::get('password', 'User\HomeController@password')->name('account.password');
+    Route::post('password', 'User\HomeController@paramStore')->name('account.password.change');
 });
 
 Route::prefix('user')->group(function () {

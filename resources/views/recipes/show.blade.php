@@ -43,7 +43,6 @@
                                 @include("recipes.show.univers")
                             </div>
                         </div>
-
                         <div class="column">
                             <div class="has-text-centered">
                                 @include("recipes.show.parts")
@@ -66,7 +65,6 @@
                                     @if($recipe->video)
                                         @include("recipes.show.video")
                                     @endif
-
                                     {{--Espace commentaires --}}
                                     <div id="#fb-commentaire_container">
                                         <div class="fb-commentaire">

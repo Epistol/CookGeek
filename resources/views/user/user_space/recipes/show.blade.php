@@ -5,7 +5,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column " id="left_column">
-                    @include('user.show.menu')
+                    @include('user.parts.menu')
                 </div>
                 <div class="column is-three-quarters ">
                     <div class="blockcontent" id="recipes_created">
@@ -17,17 +17,16 @@
                             <tr>
                                 <th>@lang('common.name')</th>
                                 <th>@lang('common.image')</th>
-                                <th><abbr title="Media">@lang('common.image')</abbr></th>
-                                <th><abbr title="Titre">@lang('common.title')</abbr></th>
-                                <th><abbr title="Difficulté">@lang('recipe.diff')</abbr></th>
-                                <th><abbr title="Budget">@lang('recipe.budget')</abbr></th>
-                                <th><abbr title="Temps nécessaire">@lang('recipe.time_needed')</abbr></th>
+                                <th><abbr title="@lang('common.image')">@lang('common.image')</abbr></th>
+                                <th><abbr title="@lang('common.title')">@lang('common.title')</abbr></th>
+                                <th><abbr title="@lang('recipe.diff')">@lang('recipe.diff')</abbr></th>
+                                <th><abbr title="@lang('recipe.budget')">@lang('recipe.budget')</abbr></th>
+                                <th><abbr title="@lang('recipe.time_needed')">@lang('recipe.time_needed')</abbr></th>
                             </tr>
                             </thead>
                             <tbody>
                             @if($user->recipes)
-                                <?php $recipes = $user->recipes()->paginate(25);?>
-                                @foreach ($recipes as $recipe)
+                                @foreach ($user->recipes()->paginate(25) as $recipe)
                                     @include('recipes.index.single_line')
                                 @endforeach
                                 {{$recipes->links()}}

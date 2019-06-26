@@ -9,10 +9,10 @@
                 </div>
                 <div class="column is-three-quarters blockcontent">
                     @lang('account.my-account')
-                    WIP
-                    @include('user.user_space.parts.danger')
-{{--                    TODO : Danger zone--}}
-{{--                    TODO : Unlink social medias--}}
+                    <form href="{{route('account.password.change')}}">
+                        @include('user.user_space.switch.parts.password')
+                        <button type="submit" class="button is-primary">Modifier</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        Hello
+        Hello / WIP
 
     </div>
 @endsection

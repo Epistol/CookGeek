@@ -1,13 +1,12 @@
 <aside class="menu blockcontent">
     <figure class="image is-128x128 menu-avatar">
-        @if(Auth::user()->avatarUser!== "users/default.png")
+        @if(Auth::user()->avatarUser!== "")
             <img class="is-rounded menu-left-avatar" src="{{Auth::user()->avatarUser}}"/>
         @else
             <img class="is-rounded menu-left-avatar"
                  src="https://api.adorable.io/avatars/{{ Auth::user()->name }}"/>
         @endif
     </figure>
-
     <div class="menu">
         <div class="sous_cat">
             <p class="menu-label">
@@ -16,14 +15,14 @@
             <ul class="menu-list">
                 <li>
                     <a href="{{route('account.param')}}" class="
-                        @if(Route::currentRouteNamed('account.param') || Route::currentRouteNamed('account.data') || Route::currentRouteNamed('account.info'))
+                        @if(Route::currentRouteNamed('account.param'))
                     {{'is-active'}}
                     @endif">@lang('account.parameter')</a>
                     <a href="{{route('account.data')}}">@lang('account.my-data')</a>
                 </li>
                 <li>
                     <a href="{{route('account.password')}}" class="
-                        @if(Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.password') || Route::currentRouteNamed('account.info'))
+                        @if(Route::currentRouteNamed('account.password'))
                     {{'is-active'}}
                     @endif">@lang('account.password')</a>
                 </li>

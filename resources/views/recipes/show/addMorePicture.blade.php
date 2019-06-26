@@ -6,8 +6,6 @@
                 user="{{Auth::user()->id}}"></add-recipe>
 
 @else
-
     <add-recipe type="button" recipeid="{{$recipe->id}}" recipehash="{{$recipe->hashid}}"
                 user=""></add-recipe>
-
 @endif

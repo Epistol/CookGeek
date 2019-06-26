@@ -30,5 +30,6 @@ return [
         'actual' => 'Mot de passe actuel',
         'new' => 'Nouveau mot de passe',
         'confirm' => 'Vérifiez ce mot de passe'
-    ]
+    ],
+    'last_connected' => 'Dernière connexion'
 ];

@@ -34,9 +34,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         // If no avatar is set, return empty :  https://api.adorable.io/avatars/{{Pseudo}}
-        return redirect()->route('account.param');
+        return view('user.user_space.index');
     }
 
     /**
@@ -45,6 +44,14 @@ class HomeController extends Controller
     public function parameters()
     {
         return view('user.user_space.switch.param');
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function password()
+    {
+        return view('user.user_space.password');
     }
 
     /**

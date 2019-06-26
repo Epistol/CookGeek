@@ -53,6 +53,11 @@
                 @include("admin.elements.admin_menu")
             </div>
             <div class="column right_admin">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 @yield('content')</div>
         </div>
     </div>

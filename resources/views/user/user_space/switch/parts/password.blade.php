@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="field">
-    <label class="label">@lang('account.password_array.check')</label>
+    <label class="label">@lang('account.password_array.confirm')</label>
     <div class="control">
         <password name="new_mdp_check"/>
     </div>

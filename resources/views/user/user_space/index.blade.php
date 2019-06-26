@@ -9,6 +9,7 @@
                 </div>
                 <div class="column is-three-quarters blockcontent">
                     @lang('account.my-account')
+                    WIP
                 </div>
             </div>
         </div>

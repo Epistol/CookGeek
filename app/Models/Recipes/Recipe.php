@@ -94,7 +94,8 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function steps()
     {
-        return $this->morphToMany(RecipesSteps::class, 'stepable')->withPivot('step_number');
+        return $this->morphToMany(RecipesSteps::class, 'stepable')
+            ->withPivot('step_number');
     }
 
     /**
@@ -102,7 +103,8 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function ingredients()
     {
-        return $this->morphToMany(Ingredient::class, 'ingredientable')->withPivot('quantity');
+        return $this->morphToMany(Ingredient::class, 'ingredientable')
+            ->withPivot('quantity');
     }
 
     //__________

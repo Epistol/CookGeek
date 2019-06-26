@@ -7,6 +7,7 @@ use App\Recipe;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class RecipesAdmin extends Controller
@@ -78,8 +79,15 @@ class RecipesAdmin extends Controller
      */
     public function validatePicture(Request $request)
     {
-        // TODO : pull the log info made on fedora pc
-
+        Log::debug('User : ', ['id' => Auth::user()->id, 'name' => Auth::user()->name]);
+        if ($request->validate == true) {
+            Log::debug('Action : validated the picture of recipe.',
+                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]);
+        } else {
+            Log::debug('Action : unvalidated the picture of recipe.',
+                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]);
+        }
+        Log::debug('____');
         //TODO finish
 
         if ($request->recipeId && $request->imgId) {
@@ -87,26 +95,13 @@ class RecipesAdmin extends Controller
                 DB::table('mediables')
                     ->where('media_id', $request->imgId)
                     ->update(['valid' => 1]);
-                return redirect()->back();
                 return response()->json(['message' => 'Picture validated']);
             } else {
                 DB::table('mediables')
                     ->where('media_id', $request->imgId)
                     ->update(['valid' => 0]);
-                return redirect()->back();
-
                 return response()->json(['message' => 'Picture invalidated']);
             }
         }
-        
-        Log::debug('User : ', ['id' => Auth::user()->id, 'name' => Auth::user()->name]);
-        if($request->validate == true){
-            Log::debug('Action : validated the picture of recipe.' , ['imgId' => $request->imgId , 'recipeId' => $request->recipeId] );
-        }
-        else {
-            Log::debug('Action : unvalidated the picture of recipe.' , ['imgId' => $request->imgId , 'recipeId' => $request->recipeId] );
-        }
-        Log::debug('____');
-
     }
 }
