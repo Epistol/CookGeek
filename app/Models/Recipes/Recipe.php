@@ -81,7 +81,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function notes()
     {
-        return $this->hasMany(RecipeNote::class, 'id_recipe');
+        return $this->hasMany(RecipeNote::class, 'recipe_id');
     }
 
     public function user()
@@ -111,23 +111,37 @@ class Recipe extends Model implements Feedable, HasMedia
 
     /**
      * @param $request
-     * @param $first / Is it first picture ?
-     * @return bool
+     * @param bool $first / Is it first picture ?
+     * @param null $base
+     * @return Media
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
      */
-    public function insertPicture($request, $first = false)
+    public function insertPicture($request, $first = false, $base = null)
     {
         $picture = isset($request->resume) ? $request->resume : null;
         if ($picture !== null) {
-            $media = $this->addMedia($picture)
-                ->withCustomProperties(['first_picture' => $first, 'checked' => false])
-                ->withResponsiveImages()
-                ->toMediaCollection();
+            if ($base) {
+                if ($base === true) {
+                    $media = $this->addMediaFromBase64($picture)
+                        ->withCustomProperties(['first_picture' => $first, 'checked' => false])
+                        ->withResponsiveImages()
+                        ->toMediaCollection();
+                }
+            } else {
+                $media = $this->addMedia($picture)
+                    ->withCustomProperties(['first_picture' => $first, 'checked' => false])
+                    ->withResponsiveImages()
+                    ->toMediaCollection();
+            }
+
             // always attach media to user and recipe
             // todo : if first : order 0; else : increment
             $this->medias()->attach([$media->id]);
             Auth::user()->medias()->attach([$media->id]);
             // then check if recipe is publishable, if not detach and delete
             CheckPicture::dispatch($media, $this);
+            return $media;
         }
     }
 
@@ -174,7 +188,6 @@ class Recipe extends Model implements Feedable, HasMedia
     public function getTypeLower()
     {
         return (new TypeRecipe())->getnamefromid($this->type);
-
     }
 
     /**
@@ -452,7 +465,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 // get the media who got more likes
                 // TODO check that
                 dd($likedMedias->max('count'));
-                // ?maybe a little shuffle to not always get same picture
+            // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture
                 $bestPicture->push($this->medias()->first());
@@ -463,7 +476,28 @@ class Recipe extends Model implements Feedable, HasMedia
         return $bestPicture;
     }
 
-    public function getTimeFormatAttribute(){
+    /**
+     * @return int
+     */
+    public function getTotalTimeHoursAttribute()
+    {
+        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
+        return intval($somme_t / 60);
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTimeMinutesAttribute()
+    {
+        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
+        $somme_h =  $somme_t / 60;
+        return intval($somme_t - ((int)$somme_h * 60));
+    }
+
+
+    public function getTimeFormatAttribute()
+    {
         $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
 
         $format = '%1$02d';
@@ -490,22 +524,59 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param bool $valid
+     * @param null $valid
+     * @param null $skip
      * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
      */
-    public function getAuthorPictures($valid = false)
+    public function getAuthorPictures($valid = null, $skip = null)
     {
         $picturesOfAuthor = collect([]);
         $pictureSetCount = $this->medias()->count();
         if ($pictureSetCount > 0) {
-            if ($valid === true) {
-                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
+            if ($valid) {
+                $pictureSet = $this->medias()->wherePivot('valid', $valid)->get();
             } else {
                 $pictureSet = $this->medias()->get();
             }
+            if ($skip) {
+                $pictureSet = $pictureSet->splice($skip);
+            }
             $picturesOfAuthor = $pictureSet->filter(function ($value) {
-                if ($value->users()->first()->id === $this->id_user) {
-                    return $value;
+                // if the user still exist, otherwise we don't show his pictures
+                if ($value->users()->count() > 0) {
+                    if ($value->users()->first()->id === $this->id_user) {
+                        return $value;
+                    }
+                }
+            });
+        }
+        return $picturesOfAuthor;
+    }
+
+    /**
+     * @param null $valid
+     * @param null $skip
+     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     */
+    public function getNonAuthorPictures($valid = null, $skip = null)
+    {
+        $picturesOfAuthor = collect([]);
+        $pictureSetCount = $this->medias()->count();
+        if ($pictureSetCount > 0) {
+            if ($valid) {
+                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
+            } else {
+                $pictureSet = $this->medias()->wherePivot('valid', false)->get();
+            }
+            if ($skip) {
+                $pictureSet = $pictureSet->splice($skip);
+            }
+            $picturesOfAuthor = $pictureSet->filter(function ($value) {
+                // if the user still exist, otherwise we don't show his pictures
+                if ($value->users()->count() > 0) {
+                    if ($value->users()->first()->id !== $this->id_user) {
+                        return $value;
+                    }
                 }
             });
         }

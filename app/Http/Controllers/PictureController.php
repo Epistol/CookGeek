@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\PictureThumbnail;
 use App\Jobs\UniversThumbnail;
+use App\Recipe;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,15 +20,15 @@ class PictureController extends Controller
      */
     public function addPictureToRecipe(Request $request)
     {
-        $pictureBase = $request->picture;
-        $recipeId    = $request->recipe;
-        $recipeHash  = $request->recipehash;
-        $userId      = $request->user;
-
-        $namePicture = $this->randomName();
-        $uploaded    = $this->storeCreationPicture($recipeHash, $pictureBase, $userId, $namePicture);
-
-        return response()->json(true);
+        if ($request->recipe) {
+            $recipe = Recipe::find(intval($request->recipe));
+            if ($request->picture) {
+                $request->request->add(['resume' => $request->picture]);
+                $recipe->insertPicture($request, false, true);
+                return response()->json(true);
+            }
+        }
+        return response()->json(false);
     }
 
     /**
@@ -41,20 +41,6 @@ class PictureController extends Controller
         $imageName = str_random(10);
 
         return $imageName;
-    }
-
-    /**
-     * @param $recipeHashID
-     * @param $imageContent
-     * @param $userId
-     * @param $imageName
-     */
-    private function storeCreationPicture($recipeHashID, $imageContent, $userId, $imageName)
-    {
-        $thumb    = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'thumbnail');
-        $index    = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'indexRecipe');
-        $square   = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'thumbSquare', 250);
-        $original = PictureThumbnail::dispatch($recipeHashID, $imageContent, $imageName, $userId, 'original');
     }
 
     public function addPictureToUniverse(Request $request)

@@ -1,42 +1,28 @@
 <!-- Image part -->
 <div class="has-text-centered" style="clear: both;" id="recipe-pictures">
+    {{-- Original author picture validated --}}
     @if($recipe->getAuthorPictures(true)->isNotEmpty())
-        <div>
-            <a href="{{ $recipe->getAuthorPictures(true)->first()->getUrl() }}"
-               data-lightbox="{{ cleanInput($recipe->slug) }}"
-               data-title="{{ cleanInput($recipe->title) }}">
-                <figure class="image is-square">
-                    <picture id="picture">
-                        <source type="image/webp"
-                                srcset="{{ $recipe->getAuthorPictures(true)->first()->getUrl('thumbSquare') }}"
-                                class="fit-cover"
-                                alt="{{ __('Image of the recipe :') . cleanInput($recipe->title) }}">
-                        <img src="{{ $recipe->getAuthorPictures(true)->first()->getUrl() }}"
-                             class="fit-cover"
-                             alt="{{  __('Image of the recipe :') . cleanInput($recipe->title) }}">
-                    </picture>
-                </figure>
-            </a>
-        </div>
-
-        {{--IF THERE IS MORE THAN ONE PICTURE--}}
-        @if($recipe->getAuthorPictures()->count() > 1)
-            <div style="display: flex;flex-wrap: wrap;">
-                @foreach($recipe->getAuthorPictures()->slice(0) as $index => $validPicture)
-                    {{--We don't need to load the first picture that already appear--}}
-                    @if($index > 0)
-                        @php $img = $recipe->getAuthorPictures(); @endphp
-                        @include('recipes.elements.tinyPicture')
-                    @endif
-                @endforeach
-            </div>
-        @endif
-        @include('recipes.show.addMorePicture')
-    @else
-        @if($recipe->getAuthorPictures()->isNotEmpty())
-            @include('recipes.show.imageWait')
-            @include('recipes.show.addMorePicture')
-        @endif
-        @include('recipes.show.addPicture')
+        @include('recipes.show.pictures.author.show')
     @endif
+
+    {{--  Validation for admin--}}
+    @if($recipe->getAuthorPictures(false)->isNotEmpty())
+        @foreach($recipe->getAuthorPictures(false) as $index => $picture)
+            @include('recipes.show.pictures.toValidate')
+        @endforeach
+    @endif
+
+    {{--    If we have valid pictures from other users--}}
+    @if($recipe->getNonAuthorPictures(true)->isNotEmpty())
+        @include('recipes.show.pictures.others.show')
+    @else
+        @if($recipe->getNonAuthorPictures(false)->isNotEmpty())
+            @foreach($recipe->getNonAuthorPictures(false) as $index => $picture)
+                @include('recipes.show.pictures.toValidate')
+            @endforeach
+        @endif
+    @endif
+
+    {{--    Always--}}
+    @include('recipes.show.addMorePicture')
 </div>

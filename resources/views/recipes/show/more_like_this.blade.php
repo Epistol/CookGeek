@@ -2,27 +2,12 @@
     {{--NO RECIPE--}}
 @else
     <h2 class="title">
-        Autres recettes à essayer :
+        @lang('recipe.others')
     </h2>
 
     <section class="bordered-cdg">
         <div class="columns is-multiline">
             @foreach($related as $nombre => $recipe)
-
-                <?php
-
-                if ($recipe->getMedia()->isNotEmpty()) {
-                    $img = $recipe->getMedia()->first();
-                    if (collect($img->urls)->firstWhere('name', 'webp')['url']) {
-                        $urlClazy = collect($img->urls)->firstWhere('name', 'webp')['url'];
-                    } else {
-                        $urlClazy = collect($img->urls)->firstWhere('name', 'normal')['url'];
-                    }
-                } else {
-                    $urlClazy = collect();
-                }
-                ?>
-
                 <div class="column is-3">
                     <div class="card card-cdg">
                         <div id="medaillon_index">

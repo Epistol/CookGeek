@@ -122,31 +122,21 @@ class RecipeController extends Controller
     public function show($slug)
     {
         $this->authorize('view', Recipe::class);
-
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
         $type = TypeRecipe::where('id', $recipe->type)->first();
         $pictureSet = $recipe->medias()->get();
         if ($pictureSet->isNotEmpty()) {
-            $picturesOfAuthor = $pictureSet->filter(function ($value) use ($recipe) {
-                if ($value->users()->first()->id === $recipe->id_user) {
-                    return $value;
-                }
-            });
-            $picturesOfUsers = $pictureSet->filter(function ($value) use ($recipe) {
-                if ($value->users()->first()->id !== $recipe->id_user) {
-                    return $value;
-                }
-            });
+            $picturesOfAuthor = $recipe->getAuthorPictures();
+            $picturesOfUsers = $recipe->getNonAuthorPictures();
         } else {
             $picturesOfAuthor = collect([]);
             $picturesOfUsers = collect([]);
         }
 
         // STARS
-        if($recipe->notes->count() > 0) {
+        if ($recipe->notes->count() > 0) {
             $stars1 = $recipe->notes->avg('note');
-        }
-        else {
+        } else {
             $stars1 = 1;
         }
 
@@ -174,7 +164,7 @@ class RecipeController extends Controller
                 'nom',
                 'type'
             )
-        )->with('controller', $this);
+        );
     }
 
 

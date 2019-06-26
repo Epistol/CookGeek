@@ -1,14 +1,8 @@
 <p class="is-brand show-recipe-title">@lang('recipe.time-total')</p>
 
-<?php
-
-$somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
-$somme_h = $somme_t / 60;
-$somme_m = $somme_t - ((int)$somme_h * 60);
-?>
-
 <div class="is-flex-center">
     <b>
-        {{(int)$somme_h}} H {{$somme_m}}
+        {{str_pad((int)$recipe->totalTimeHours, 2, '0', STR_PAD_LEFT)}}
+        H {{str_pad((int)$recipe->totalTimeMinutes, 2, '0', STR_PAD_LEFT)}}
     </b>
 </div>

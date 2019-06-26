@@ -14,7 +14,7 @@
 <meta name="rating" content="@hasSection('rating')@yield('rating')@endif"/>
 <meta name="msvalidate.01" content="D8DFFDCD3C366B8964767CA91DDEEA82"/>
 <meta name="keywords"
-      content="CuisineDeGeek,cuisine,recettes,cuisine,recette,recettes de cuisine,geek
+      content="CuisineDeGeek,cuisine,recettes,cuisine,recette,recettes de cuisine,geek,cdg,CDG,cuisine de geek,CDG recette,
       @if( Route::currentRouteName() === 'recipe.show')
         @if(isset($univers))
             @if(count($univers) == 1)

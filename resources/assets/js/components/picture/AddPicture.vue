@@ -9,7 +9,7 @@
                     </span>
                  </span>
                     <span>Ajouter ma photo</span>
-                </a>é
+                </a>
             </template>
             <template v-else-if="this.type === 'no-button'">
                 <h3 slot="header">Ajouter votre photo</h3>

@@ -12,13 +12,11 @@
                 </a>
             </template>
             <template v-else>
-                <div
-                        class="is-flex-center fit-cover pointer-hover" :alt="this.text"
+                <div class="is-flex-center fit-cover pointer-hover" :alt="this.text"
                         :style="this.colorGenerated + 'height: 20vh;'" @click="showModal()">
                     <span class="uploadIcon"><i class="fas fa-cloud-upload-alt fa-7x"></i></span>
                     <span style="z-index:0;">Ajouter ma propre photo
             </span>
-
                 </div>
             </template>
             <template v-if="clicked">
@@ -103,7 +101,7 @@
                 }
             },
             uploadImage() {
-                return axios.post('/recette/addmypicture', {
+                return axios.post('/recipe/addmypicture', {
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -115,7 +113,7 @@
                     this.sent = true;
                     console.log(response);
                 }).catch(error => {
-
+                    console.log(error);
                 });
             }
         },
