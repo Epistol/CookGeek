@@ -98,7 +98,7 @@ class RecipeController extends Controller
                 $recipe->universes()->attach($universe);
             }
         } else {
-            if ($this->cleanInput($request->univers)) {
+            if ($this->cleanInput($request->univers) !== '') {
                 $universe = new Univers(['name' => $this->cleanInput($request->univers)]);
                 $recipe->universes()->save($universe);
             }
@@ -152,7 +152,7 @@ class RecipeController extends Controller
         if ($countrating == null || $countrating == 0) {
             $countrating = 1;
         }
-        $nom = User::where('id', $recipe->id_user)->value('name');
+        $nom = User::find($recipe->id_user)->value('name');
         $related = $recipe->moreLikeThis(4);
 
         return view(
@@ -171,7 +171,6 @@ class RecipeController extends Controller
         );
     }
 
-
     /**
      * @param $slug
      *
@@ -179,8 +178,8 @@ class RecipeController extends Controller
      */
     public function edit($slug)
     {
-        $recette = Recipe::where('slug', $slug)->firstOrFail();
-        $univers = Univers::where('id', '=', $recette->univers)->select('name')->first();
+        $recipe = Recipe::where('slug', $slug)->firstOrFail();
+        $univers = $recipe->universes;
         $types_univ = DB::table('categunivers')->get();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipes')->get();
@@ -188,7 +187,7 @@ class RecipeController extends Controller
         return view(
             'recipes.edit',
             [
-                compact('univers', 'difficulty', 'recette'),
+                compact('univers', 'difficulty', 'recipe'),
                 'types' => $types_univ,
                 'types_plat' => $types_plat,
             ]
@@ -210,17 +209,18 @@ class RecipeController extends Controller
         ]);
 
         $recipe->update([
-            'univers' => Univers::updateOrCreate(['name' => $request->univers]),
+            'univers' => Univers::updateOrCreate(['name' => $this->cleanInput($request->univers)]),
         ]);
 
         //Filtering the comment
-        $comm = app('profanityFilter')->filter(htmlentities(clean($request->comment)));
+        $comm = $this->cleanInput($request->comment);
 
         //Vegetarian switch
         $vege = clean($request->vegan) == 'on' ? true : false;
 
         // If user is author
         // If main picture is replaced, remove and insert
+        // TODO WIP THAT OMG !
         // If other picture is replaced, remove and insert
 
         // If insert : insert
