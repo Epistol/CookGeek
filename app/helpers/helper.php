@@ -4,7 +4,6 @@
  * @package : cdg_reload
  * @author  : michael
  * @license : https://creativecommons.org/licenses/by-nd/4.0/
- * @link    : Bitbucket // TODO : Change
  * Date: 2019-03-19
  * Time: 18:26
  */

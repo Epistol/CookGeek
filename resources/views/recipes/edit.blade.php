@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage',  __('common.editing') . __('recipe.of') . ": ".$recipe->title)
+@section('titrepage',  __('common.editing') . __('recipe.of') . ": ". $recipe->title)
 @section('content')
 
     <div class="container recipe-add">
@@ -16,7 +16,7 @@
 
         <section class="section">
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
-                  action="{{ route('recipe.edition', $recipe->id) }}">
+                  action="{{ route('recipe.edit', $recipe->id) }}">
                 {{ csrf_field() }}
                 <div class="columns" style="margin-bottom: 2rem;">
                     <div class="column recipe-right-add">

@@ -8,7 +8,6 @@ use App\Difficulty;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Recipe;
-use App\RecipeNote;
 use App\Traits\HasTimes;
 use App\Traits\HasUserInput;
 use App\TypeRecipe;
@@ -186,8 +185,8 @@ class RecipeController extends Controller
 
         return view(
             'recipes.edit',
+            compact('univers', 'difficulty', 'recipe'),
             [
-                compact('univers', 'difficulty', 'recipe'),
                 'types' => $types_univ,
                 'types_plat' => $types_plat,
             ]
@@ -214,7 +213,6 @@ class RecipeController extends Controller
 
         //Filtering the comment
         $comm = $this->cleanInput($request->comment);
-
         //Vegetarian switch
         $vege = clean($request->vegan) == 'on' ? true : false;
 

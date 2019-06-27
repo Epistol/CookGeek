@@ -25,6 +25,9 @@ return [
     'category' => 'Categorie',
     'of' => 'de',
     'video' => 'La vidéo',
+    'video-array' => [
+        'placeholder' => 'Vous avez fait une vidéo ? Mettez l\'url ;)  '
+    ],
     'picture-of' => 'Image de la recette',
     'vegan' => 'Végétarienne',
     'last-recipes' => 'Les dernières recettes',

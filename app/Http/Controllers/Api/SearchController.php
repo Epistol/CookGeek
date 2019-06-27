@@ -75,7 +75,7 @@ class SearchController extends Controller
             }
         } else {
             // Searching in recipes
-            // TODO : Réduire le nombre de champs retournés par element ?
+            // ? TODO : Réduire le nombre de champs retournés par element ?
             $recipe = Recipe::getPaginate(true, 10);
             $ingredient = Ingredient::paginate(10);
             $media = DB::table('categunivers')->paginate(10);

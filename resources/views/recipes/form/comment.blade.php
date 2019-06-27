@@ -5,7 +5,7 @@
                   placeholder="Des suggestions, des améliorations, le site d'origine de la recette ... "
                   name="comment" id="comment">
             @if(isset($recipe)){{cleanInput($recipe->commentary_author)}}@endif
-            {{cleanInput(old('comment')}}
+            {{cleanInput(old('comment'))}}
         </textarea>
     </div>
 </div>
