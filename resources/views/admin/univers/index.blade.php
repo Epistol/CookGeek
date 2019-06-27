@@ -1,12 +1,8 @@
 @extends('layouts.app.admin')
-
-
 @section('content')
 
     <h1 class="title">Liste des univers</h1>
-
     <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter un univers</a>
-
     <table class="table">
         <thead>
         <tr>
@@ -23,12 +19,12 @@
             <tr>
                 <td>{{ $value->id }}</td>
                 <td><a href="{{route('univers.show', $value->name)}}">{{ strip_tags(clean($value->name)) }}</a></td>
-                <td>{{ Carbon\Carbon::parse($value->created_at)->format('d-m-Y H:i:s ') }} </td>
+                <td>{{ Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s ') }} </td>
                 <td><a class="btn btn-small btn-info"
                        href="{{ route('admin.universe.edit',  $value->id ) }}">Editer</a>
                 </td>
                 <td>
-                    <form method="POST" action="{{route('universe.destroy' , $value->id)}}">
+                    <form method="POST" action="{{route('admin.universe.destroy' , $value->id)}}">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
                         <div class="caution">
@@ -38,7 +34,6 @@
                 </td>
             </tr>
         @endforeach
-
         </tbody>
     </table>
 

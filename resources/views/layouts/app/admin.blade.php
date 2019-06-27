@@ -47,19 +47,13 @@
 
 <div id="bodyWebsite">
     <div id="app">
-
         @include("layouts.menu")
-
+        @include('layouts.app_element.alerts')
         <div class="columns is-paddingless is-marginless">
             <div class="column is-2 left_admin">
                 @include("admin.elements.admin_menu")
             </div>
             <div class="column right_admin">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
                 @yield('content')</div>
         </div>
     </div>

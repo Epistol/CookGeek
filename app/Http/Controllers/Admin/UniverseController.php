@@ -7,6 +7,7 @@ use App\Pictures;
 use App\Univers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class UniverseController extends Controller
 {
@@ -23,8 +24,7 @@ class UniverseController extends Controller
      */
     public function index()
     {
-        $univers = Univers::get();
-
+        $univers = Univers::all();
         return view('admin.univers.index', ['univers' => $univers]);
     }
 
@@ -72,8 +72,6 @@ class UniverseController extends Controller
     public function edit($id)
     {
         $univers = Univers::where('id', $id)->first();
-        $prefill = Pictures::loadUniversPicturesValid($univers);
-        dd($prefill);
 
         return view('admin.univers.edit', ['univers' => $univers]);
     }
@@ -82,13 +80,38 @@ class UniverseController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param int     $id
+     * @param int $id
      *
      * @return Response
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        // Do not allow any shady characters
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'max:255']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('admin.universe.edit', $id))
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $universe = Univers::find($id);
+        if ($request->name) {
+            if ($request->name !== $universe->name) {
+                if (cleanInput($request->name) !== '') {
+                    $universe->update(['name' => cleanInput($request->name)]);
+                }
+            }
+        }
+        if ($request->contenu) {
+            if (cleanInput($request->contenu) !== '') {
+                $universe->update(['contenu' => cleanInput($request->contenu)]);
+            }
+        }
+        return redirect(route('admin.universe.edit', $id))->with('status', 'Univers mis à jour');
+
     }
 
     /**

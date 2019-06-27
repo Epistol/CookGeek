@@ -159,7 +159,7 @@ class PageController extends Controller
             Mail::send(new ContactEmail($request));
             return redirect('/contact')->with('status', 'Message envoyé !');
         } else {
-            return redirect()->back()->with('alert', 'Validez le recaptcha');
+            return redirect()->back()->with('errors', 'Validez le recaptcha');
         }
     }
 

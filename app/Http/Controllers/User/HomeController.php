@@ -75,7 +75,7 @@ class HomeController extends Controller
         $user = $request->user();
         // Let's check if a password is set :
         if (!Hash::check($request->mdp_now, Auth::user()->getAuthPassword())) {
-            return redirect()->back()->with('alert', __('errors.account.no_password'));
+            return redirect()->back()->with('errors', __('errors.account.no_password'));
         }
 
         // Let's check if a new password is set :

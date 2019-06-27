@@ -34,8 +34,8 @@
 
     <meta name="mobile-web-app-capable" content="yes">
     @if(Route::currentRouteNamed('admin.*'))
-    <script src="{{asset('/js/tinymce/js/tinymce.min.js')}}"></script>
-    <script>tinymce.init({selector: '#tinymce'});</script>
+        <script src="{{asset('/js/tinymce/js/tinymce.min.js')}}"></script>
+        <script>tinymce.init({selector: '#tinymce'});</script>
     @endif
 
 <!-- Styles -->
@@ -50,31 +50,9 @@
     <div id="app">
         @include("layouts.menu")
         <div class="container">
-            @if ($errors->any())
-                <div class="notification alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            @if (session('status'))
-                <Notif title="is-success" v-if="seen" @close="seen = false">
-                    <span slot="text"> {{ session('status') }}</span>
-                </Notif>
-            @endif
-
-            @if (session('alert'))
-                <Notif title="is-alert" v-if="seen" @close="seen = false">
-                    <span slot="text"> {{ session('alert') }}</span>
-                </Notif>
-            @endif
+            @include('layouts.app_element.alerts')
+            @yield('content')
         </div>
-
-        @yield('content')
-
     </div>
     @include("layouts.footer")
 </div>
@@ -91,6 +69,8 @@
     "query-input": "required name=q"
   }
 }
+
+
 
 </script>
 

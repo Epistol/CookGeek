@@ -41,7 +41,6 @@ class AdminController extends Controller
     public function ban()
     {
         $user_ip = Firewall::getAllIps();
-
         $bans = User::onlyBanned()->get();
 
         $blacklist = Firewall::getAllIps()->filter(function ($item) {

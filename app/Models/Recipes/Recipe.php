@@ -287,7 +287,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function easyInsert($request)
     {
-        $this->title = $request->title;
+        $this->title = $this->cleanInput($request->title);
         $this->vegetarien = $request->vegan == 'on' ? true : false;
         $this->difficulty = intval($request->difficulty);
         $this->type = intval($request->categ_plat);
@@ -295,12 +295,12 @@ class Recipe extends Model implements Feedable, HasMedia
         $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
         $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
         $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
-        $this->nb_guests = $request->unite_part;
-        $this->guest_type = $request->value_part;
+        $this->nb_guests = $this->cleanInput($request->unite_part);
+        $this->guest_type = $this->cleanInput($request->value_part);
         $this->type_univers = intval($request->type);
         $this->id_user = Auth::user()->id;
-        $this->video = $request->video;
-        $this->commentary_author = $request->comment;
+        $this->video = strip_tags($request->video);
+        $this->commentary_author = $this->cleanInput($request->comment);
         $this->validated = 0;
         $this->lang = Lang::locale();
 
@@ -316,7 +316,7 @@ class Recipe extends Model implements Feedable, HasMedia
         foreach ($request->step as $key => $step) {
             $newStep = RecipesSteps::firstOrCreate(
                 [
-                    'instruction' => $step
+                    'instruction' => $this->cleanInput($step)
                 ]
             );
             $this->steps()->attach(
@@ -362,29 +362,36 @@ class Recipe extends Model implements Feedable, HasMedia
     public function insertIngredients($request)
     {
         // Storing ingredients and attach to the recipe
-        foreach ($request->ingredient as $key => $ingredient) {
-            $ingredient = Ingredient::firstOrCreate(['name' => $ingredient, 'lang' => Lang::locale()]);
+        foreach ($this->cleanInput($request->ingredient) as $key => $ingredient) {
+            $ingredient = Ingredient::firstOrCreate([
+                'name' => $this->cleanInput($ingredient),
+                'lang' => Lang::locale()
+            ]);
+
             $this->ingredients()->attach(
-                $ingredient,
+                $this->cleanInput($ingredient),
                 ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
             );
         }
     }
 
-
     public function moreLikeThis($nbRecipes)
     {
         $nbWanted = intval($nbRecipes);
         $related = Recipe::where('type', $this->type)
-            ->where('id', '!=', $this->id)->where('validated', 1)->inRandomOrder()->limit($nbWanted)
+            ->where('id', '!=', $this->id)->where('validated', 1)
+            ->inRandomOrder()
+            ->limit($nbWanted)
             ->get();
+
         $total = $related->count();
 
         // I want to execute theses commands
         if ($total < $nbWanted) {
             $relatedUniverse = Recipe::where('univers', $this->univers)->where('validated', 1)
                 ->where('id', '!=', $this->id)
-                ->inRandomOrder()->limit($nbWanted - $total)
+                ->inRandomOrder()
+                ->limit($nbWanted - $total)
                 ->get();
             $related = $related->merge($relatedUniverse);
             $total += $relatedUniverse->count();
@@ -486,7 +493,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 // get the media who got more likes
                 // TODO check that
                 dd($likedMedias->max('count'));
-            // ?maybe a little shuffle to not always get same picture
+                // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture
                 $bestPicture->push($this->medias()->first());
@@ -512,7 +519,7 @@ class Recipe extends Model implements Feedable, HasMedia
     public function getTotalTimeMinutesAttribute()
     {
         $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
-        $somme_h =  $somme_t / 60;
+        $somme_h = $somme_t / 60;
         return intval($somme_t - ((int)$somme_h * 60));
     }
 
