@@ -180,7 +180,7 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
         $univers = $recipe->universes;
-        $types_univ = DB::table('categunivers')->get();
+        $types_univ = Categunivers::all();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipes')->get();
 

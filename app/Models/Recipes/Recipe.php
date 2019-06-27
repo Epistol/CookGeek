@@ -320,6 +320,9 @@ class Recipe extends Model implements Feedable, HasMedia
 
     /**
      * @param $request
+     * @param null $base
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
      */
     public function insertSteps($request, $base = null)
     {

@@ -30,6 +30,7 @@ return [
     "search" => "Rechercher",
     "register" => "Inscription",
     "logout" => "Déconnexion",
+    "media" => "Media",
     "medias" => "Medias",
     "next" => "Suivant",
     "previous" => "Précédant",

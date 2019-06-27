@@ -14,6 +14,7 @@
         "algolia/algoliasearch-client-php": "^2.2",
         "algolia/scout-extended": "^1.6",
         "askedio/laravel5-profanity-filter": "^1.10",
+        "astrotomic/laravel-translatable": "^11.1",
         "barryvdh/laravel-cors": "^0.11.0",
         "cybercog/laravel-ban": "^3.5",
         "dimsav/laravel-translatable": "^9.4",

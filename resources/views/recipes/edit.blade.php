@@ -64,7 +64,8 @@
                         <div class="column is-4"> @include("recipes.form.comment")
                             @include("recipes.form.video")
                         </div>
-                        <div class="column">  @include("recipes.form.type")
+                        <div class="column">
+                            @include("recipes.form.type")
                         </div>
                     </div>
                 </section>

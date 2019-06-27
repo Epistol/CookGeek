@@ -9,7 +9,7 @@
             <div class="control">
                 <input class="input" id="value_part" name="value_part" type="text"
                        placeholder="personnes, parts, etc"
-                       value="@if(Route::is('*.create')){{clean(strip_tags(old('value_part')))}}@else{{$recipe->guest_type ?: ""}}@endif">
+                       value="@if(Route::is('*.create')){{cleanInput(old('value_part'))}}@else{{$recipe->guest_type ?: ""}}@endif">
             </div>
         </div>
 
