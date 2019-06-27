@@ -18,12 +18,8 @@
     </title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @include("layouts.style")
-
-    <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
-    <script>window.LogRocket && window.LogRocket.init('m44cpr/cdg');
-
-    </script>
 </head>
 <body>
 <div id="app" style="background: black;"> @include("layouts.menu")

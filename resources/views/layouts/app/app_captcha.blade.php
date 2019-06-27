@@ -34,31 +34,33 @@
     @include("layouts.app_element.apple")
 
     <meta name="mobile-web-app-capable" content="yes">
-@include("layouts.style")
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    @include("layouts.style")
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body class="">
 <div id="bodyWebsite">
     <div id="app">
-@include("layouts.menu")
+        @include("layouts.menu")
 
-    <div class="container">
-        @if ($errors->any())
-            <div class="notification alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <div class="container">
+            @if ($errors->any())
+                <div class="notification alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        @if (session('status'))
-            <Notif title="is-success" v-if="seen" @close="seen = false">
-                <span slot="text">   {{ session('status') }}</span>
-            </Notif>
-        @endif
+            @if (session('status'))
+                <Notif title="is-success" v-if="seen" @close="seen = false">
+                    <span slot="text">   {{ session('status') }}</span>
+                </Notif>
+            @endif
 
             @if (session('alert'))
                 <Notif title="is-alert" v-if="seen" @close="seen = false">
@@ -66,15 +68,13 @@
                 </Notif>
             @endif
 
-    </div>
+        </div>
 
         @yield('content')
 
     </div>
     @include("layouts.footer")
 </div>
-
-
 
 
 <!-- SCRIPTS  -->
@@ -98,16 +98,16 @@
 
 <script type="application/javascript">
 
-	var toast_png = "{{ asset('js/toasty/toasty.png')}}";
-	var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
 
-	$(document).ready(function() {
-		$("body").toasty();
+    $(document).ready(function () {
+        $("body").toasty();
 
-		var easter_egg = new Konami(function() {
-			$("body").toasty('pop');
-		});
-	});
+        var easter_egg = new Konami(function () {
+            $("body").toasty('pop');
+        });
+    });
 </script>
 
 <script src="{{ asset('js/toasty/jquery.toasty.js')}}"></script>

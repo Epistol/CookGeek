@@ -36,6 +36,8 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
     @include("layouts.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app.admin')
 @section('titrepage', 'Admin')
 @section('content')
     <div class="container">
@@ -16,7 +16,7 @@
                     <th>Difficulty</th>
                     <th>Type de recette</th>
                     <th>Cost</th>
-                    <th>Univers</th>
+                    <th>@lang('recipe.univers')</th>
                     <th>Média</th>
                     <th>Création</th>
                     <th>Vues</th>
@@ -39,9 +39,12 @@
                             {{strip_tags(clean($r->cost))}}
                         </td>
                         <td>
-                            <?php $univ = DB::table("univers")->where('id', $r->univers)->first();?>
-                            @if($univ)
-                                {{strip_tags(clean($univ->name))}}
+                            @if($r->universes()->count() > 0)
+                                @foreach($r->universes()->get() as $universe)
+                                    <a href="{{route('univers.show', $universe->id)}}">
+                                        {{strip_tags(clean($universe->name))}}
+                                    </a>
+                                @endforeach
                             @endif
                         </td>
                         <td>
@@ -56,10 +59,10 @@
                             {{strip_tags(clean($r->nb_views))}}
                         </td>
                         @if($r->validated === 1)
-                            <td style="background:green">
+                            <td class="valid" style="background:green">
                                 Oui
                         @else
-                            <td style="background:red">
+                            <td class="unvalid">
                                 Non
                                 @endif
                             </td>

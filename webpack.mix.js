@@ -19,6 +19,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/load_content.js', 'public/js')
     .js('resources/assets/js/old_app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/admin.scss', 'public/css')
     .sass('resources/assets/sass/print.scss', 'public/css');
 
 mix.copyDirectory('resources/assets/js/toasty', 'public/js/toasty');

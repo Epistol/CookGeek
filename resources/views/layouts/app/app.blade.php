@@ -39,6 +39,7 @@
     @endif
 
 <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @include("layouts.style")
     @include("layouts.cookie")
 </head>

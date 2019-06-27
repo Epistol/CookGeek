@@ -38,3 +38,12 @@ aside.menu{
 .right_admin {
   background: #fdfdfd;
 }
+
+td.valid {
+  background: $green;
+  color:white;
+}
+td.unvalid {
+  background:$red;
+  color:white;
+}

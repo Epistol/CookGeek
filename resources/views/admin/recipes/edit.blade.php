@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app.admin')
 @section('titrepage', 'Editer recette / ADMIN')
 @section('content')
     <div class="container">

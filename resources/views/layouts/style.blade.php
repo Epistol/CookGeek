@@ -6,7 +6,6 @@
 </script>
 
 {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <link href="{{ asset('css/print.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
 <link href="{{ asset('css/default.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
