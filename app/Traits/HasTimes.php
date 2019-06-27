@@ -97,4 +97,94 @@ trait HasTimes
 
         return intval(($hours * 60) + intval($minutes));
     }
+
+    /**
+     * @return int
+     */
+    public function getRestTimeHoursAttribute()
+    {
+        return intval($this->rest_time / 60);
+    }
+
+    /**
+     * @return int
+     */
+    public function getRestTimeMinutesAttribute()
+    {
+        $somme_h = $this->rest_time / 60;
+        return intval($this->rest_time - ((int)$somme_h * 60));
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrepTimeHoursAttribute()
+    {
+        return intval($this->prep_time / 60);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrepTimeMinutesAttribute()
+    {
+        $somme_h = $this->prep_time / 60;
+        return intval($this->prep_time - ((int)$somme_h * 60));
+    }
+
+    /**
+     * @return int
+     */
+    public function getCookTimeHoursAttribute()
+    {
+        return intval($this->cook_time / 60);
+    }
+
+    /**
+     * @return int
+     */
+    public function getCookTimeMinutesAttribute()
+    {
+        $somme_h = $this->cook_time / 60;
+        return intval($this->cook_time - ((int)$somme_h * 60));
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTimeHoursAttribute()
+    {
+        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
+        return intval($somme_t / 60);
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTimeMinutesAttribute()
+    {
+        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
+        $somme_h = $somme_t / 60;
+        return intval($somme_t - ((int)$somme_h * 60));
+    }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function sumerise($val)
+    {
+        // si il y'a + d'1heure
+        if ($val > 60) {
+            $somme_h = $val / 60;
+            $somme_m = $val - ((int)$somme_h * 60);
+            return $somme_h . "H" . $somme_m . "M";
+        } else {
+            $somme_h = 0;
+            $somme_m = $val - ((int)$somme_h * 60);
+            return $somme_m . "M";
+        }
+    }
+
+
 }

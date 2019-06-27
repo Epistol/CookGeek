@@ -1,4 +1,4 @@
-<p>@lang('recipe.diff') :</p>
+<p>@lang('recipe.difficulty') :</p>
 
 
 <div class="dollar-sum">

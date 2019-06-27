@@ -4,7 +4,7 @@
     </div>
     <div class="column">
         <input class="input_modal blck" type="text" placeholder="" name="title" id="title"
-               value="@if(Route::is('*.edit')){{$recipe->title}}@else{{clean(strip_tags(old('title')))}}@endif">
+               value="@if(Route::is('*.edit')){{cleanInput($recipe->title)}}@else{{cleanInput(old('title'))}}@endif">
     </div>
 </div>
 

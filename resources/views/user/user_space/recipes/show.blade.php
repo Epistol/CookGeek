@@ -19,7 +19,7 @@
                                 <th>@lang('common.image')</th>
                                 <th><abbr title="@lang('common.image')">@lang('common.image')</abbr></th>
                                 <th><abbr title="@lang('common.title')">@lang('common.title')</abbr></th>
-                                <th><abbr title="@lang('recipe.diff')">@lang('recipe.diff')</abbr></th>
+                                <th><abbr title="@lang('recipe.difficulty')">@lang('recipe.difficulty')</abbr></th>
                                 <th><abbr title="@lang('recipe.budget')">@lang('recipe.budget')</abbr></th>
                                 <th><abbr title="@lang('recipe.time_needed')">@lang('recipe.time_needed')</abbr></th>
                             </tr>

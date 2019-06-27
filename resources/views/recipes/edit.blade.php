@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage', "Modification de : ".$recipe->title)
+@section('titrepage',  __('common.editing') . __('recipe.of') . ": ".$recipe->title)
 @section('content')
 
     <div class="container recipe-add">
@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
-                        <h1 class="title">Modification de : {{$recipe->title}}
+                        <h1 class="title">@lang('common.editing') @lang('recipe.of') : {{$recipe->title}}
                             <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
                     </div>
                 </div>
@@ -18,9 +18,8 @@
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.edition', $recipe->id) }}">
                 {{ csrf_field() }}
-                <div class="columns" style="
-  margin-bottom: 2rem;">
-                    <div class="column recipe-right-add  ">
+                <div class="columns" style="margin-bottom: 2rem;">
+                    <div class="column recipe-right-add">
                         {{--Titre recette--}}
                         <div class="columns">
                             <div class="column is-10 is-offset-1">

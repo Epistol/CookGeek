@@ -37,5 +37,6 @@ return [
     'password' => 'Mot de passe',
     'image' => 'Image',
     'title' => 'Titre',
-    'save' => 'Sauvegarder'
+    'save' => 'Sauvegarder',
+    'editing' => 'Modification'
 ];

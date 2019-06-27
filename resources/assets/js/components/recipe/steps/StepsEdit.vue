@@ -37,7 +37,13 @@
 
 <script>
     export default {
-        props: ["recipe_id"],
+        props: {
+            recipe_id: {
+                type: Number,
+                default: null,
+            }
+        },
+
         data: function () {
             return {
                 counter: 0,

@@ -178,6 +178,17 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return cleanInput($value);
+    }
+
+
+    /**
      * @return mixed
      */
     public function getType()
@@ -419,24 +430,6 @@ class Recipe extends Model implements Feedable, HasMedia
         return $related;
     }
 
-    /**
-     * @param $val
-     * @return string
-     */
-    public function sumerise($val)
-    {
-        // si il y'a + d'1heure
-        if ($val > 60) {
-            $somme_h = $val / 60;
-            $somme_m = $val - ((int)$somme_h * 60);
-            return $somme_h . "H" . $somme_m . "M";
-        } else {
-            $somme_h = 0;
-            $somme_m = $val - ((int)$somme_h * 60);
-            return $somme_m . "M";
-        }
-    }
-
     //__________
     // PICTURE GETTERS
     //__________
@@ -504,24 +497,7 @@ class Recipe extends Model implements Feedable, HasMedia
         return $bestPicture;
     }
 
-    /**
-     * @return int
-     */
-    public function getTotalTimeHoursAttribute()
-    {
-        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
-        return intval($somme_t / 60);
-    }
 
-    /**
-     * @return int
-     */
-    public function getTotalTimeMinutesAttribute()
-    {
-        $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
-        $somme_h = $somme_t / 60;
-        return intval($somme_t - ((int)$somme_h * 60));
-    }
 
 
     public function getTimeFormatAttribute()

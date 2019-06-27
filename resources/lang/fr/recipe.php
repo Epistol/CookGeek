@@ -8,8 +8,9 @@ return [
     |--------------------------------------------------------------------------
     */
     'recipe' => 'Recette|Recettes',
-    'diff' => 'Difficulté',
+    'difficulty' => 'Difficulté',
     'time_needed' => 'Temps nécessaire',
+    'time_prep' => 'Temps nécessaire',
     'time-total' => 'Temps total',
     'budget' => 'Budget',
     'step' => 'Etape',
@@ -34,5 +35,14 @@ return [
     'add' => [
         'name' => 'Quel est le nom de la recette ?'
     ],
-    'others' => 'Autres recettes à essayer'
+    'others' => 'Autres recettes à essayer',
+    'cost-making' => 'Coût de réalisation',
+    'timing' => [
+        'minute' => 'Minute(s)',
+        'hour' => 'Heure(s)',
+        'time-needed' => 'Temps nécessaire',
+        'time-prep' => 'Temps de préparation',
+        'time-cook' => 'Temps de cuisson',
+        'time-total' => 'Temps total',
+    ]
 ];

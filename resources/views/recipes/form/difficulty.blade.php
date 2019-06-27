@@ -2,7 +2,7 @@
     <div class="control">
         <div class="select is-fullwidth">
             <select required name="difficulty" id="difficulty">
-                <option disabled value="">Difficulté</option>
+                <option disabled value="">@lang('recipe.difficulty')</option>
                 @foreach ($difficulty as $key=>$diff)
                     @php(++$key)
                     @if(old('difficulty') == $key)
