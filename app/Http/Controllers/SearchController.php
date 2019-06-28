@@ -11,7 +11,6 @@ use Illuminate\View\View;
 class SearchController extends Controller
 {
     private $apisearch;
-    private $pictureService;
 
     /**
      * SearchController constructor.
@@ -20,8 +19,7 @@ class SearchController extends Controller
      */
     public function __construct(Api\SearchController $apisearch)
     {
-        $this->apisearch      = $apisearch;
-        $this->pictureService = new PictureController();
+        $this->apisearch = $apisearch;
     }
 
     /**
@@ -33,9 +31,9 @@ class SearchController extends Controller
     {
         $u_id = Auth::id();
         $l_id = DB::table('user_recipe_likes')
-                  ->where(
-                      ['user_id' => $u_id, 'recipe_id' => $id]
-                  )->first();
+            ->where(
+                ['user_id' => $u_id, 'recipe_id' => $id]
+            )->first();
 
         return $l_id ? 'liked' : false;
     }
@@ -47,11 +45,11 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $rq     = $request->q;
+        $rq = $request->q;
         $result = collect($this->apisearch->search($rq));
 
         return view('search.result', [
-            'result' => $result, 'pictureService' => $this->pictureService
-        ])->with(['controller' => $this]);
+            'result' => $result
+        ]);
     }
 }

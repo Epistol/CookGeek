@@ -23,7 +23,11 @@
                                    name="type" value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>
-                                <?php echo ucfirst($type->name);?>
+                                @if($type->hasTranslation(app()->getLocale()))
+                                    {{ucfirst($type->translateOrDefault(app()->getLocale())->name)}}
+                                @else
+                                    {{ucfirst($type->name)}}
+                                @endif
                             </p>
                         @endif
                     </label>

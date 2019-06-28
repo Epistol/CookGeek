@@ -1,6 +1,5 @@
 <nav class="navbar desktop-only" role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
-
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
@@ -8,12 +7,10 @@
     max-height: fit-content;max-height: 100%;padding: 0.2rem;
 ">
             </a>
-
             <a class="navbar-brand logo" href="{{ url('/') }}">
-
                 {{ ucfirst(config('app.name', 'Laravel')) }}
                 <span class="logo-beta">
-                    BETA
+                    BETA V2
                 </span>
             </a>
 
@@ -63,7 +60,6 @@
                         @endforeach
                     </div>
                 </div>
-
 
                 <a class="navbar-item bg-white" href="{{route("univers.index")}}">
                     @lang('recipe.univers')

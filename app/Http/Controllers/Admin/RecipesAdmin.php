@@ -81,14 +81,17 @@ class RecipesAdmin extends Controller
     {
         Log::debug('User : ', ['id' => Auth::user()->id, 'name' => Auth::user()->name]);
         if ($request->validate == true) {
-            Log::debug('Action : validated the picture of recipe.',
-                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]);
+            Log::debug(
+                'Action : validated the picture of recipe.',
+                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]
+            );
         } else {
-            Log::debug('Action : unvalidated the picture of recipe.',
-                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]);
+            Log::debug(
+                'Action : unvalidated the picture of recipe.',
+                ['imgId' => $request->imgId, 'recipeId' => $request->recipeId]
+            );
         }
         Log::debug('____');
-        //TODO finish
 
         if ($request->recipeId && $request->imgId) {
             if ($request->validate == 'true') {

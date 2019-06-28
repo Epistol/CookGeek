@@ -9,6 +9,10 @@ use App\Univers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SearchController
+ * @package App\Http\Controllers\Api
+ */
 class SearchController extends Controller
 {
     /**
@@ -91,6 +95,10 @@ class SearchController extends Controller
         return $response;
     }
 
+    /**
+     * @param $ingredient
+     * @return array
+     */
     private function load_recipe_ingredient($ingredient)
     {
         if ($ingredient->isNotEmpty()) {
@@ -109,6 +117,10 @@ class SearchController extends Controller
         }
     }
 
+    /**
+     * @param $titre
+     * @return mixed
+     */
     private function load_recipes_titre($titre)
     {
         $recipe = Recipe::where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
@@ -134,6 +146,9 @@ class SearchController extends Controller
         return response()->json($univers);
     }
 
+    /**
+     * @param Request $request
+     */
     public function index(Request $request)
     {
         return abort(404);

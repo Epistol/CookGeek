@@ -3,7 +3,7 @@
         <template v-if="picture">
             <figure class="image is-64x64 radiused">
                 <!--TODO : recuperer l'image crop square (et la generer aussi du coup) -->
-                <img :src="'/recipes/'+picture.recipe_id+'/'+'/'+picture.user_id+'/'+picture.image_name"
+                <img :src="picture"
                      style="background-picture : 'https://picsum.photos/64/?random'" alt=""/>
             </figure>
         </template>
@@ -28,9 +28,7 @@
 				type: Object,
 				required: true
 			},
-
 		},
-
 		data: function() {
 			return {
 				counter: 0,
@@ -54,14 +52,12 @@
 					this.ingredients = response.data;
 				});
 			},
-
 		},
 
 		mounted() {
 			this.getFirstPicture();
 			this.getIngredients();
 		}
-
 	}
 </script>
 

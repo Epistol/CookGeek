@@ -139,7 +139,6 @@ class Recipe extends Model implements Feedable, HasMedia
             }
 
             // always attach media to user and recipe
-            // todo : if first : order 0; else : increment
             $this->medias()->attach([$media->id]);
             Auth::user()->medias()->attach([$media->id]);
             // then check if recipe is publishable, if not detach and delete
@@ -288,7 +287,8 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function slugTitle($title, $uid)
     {
-        return Str::slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid, '-');
+        return Str::slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid,
+            '-');
     }
 
     /**
@@ -298,20 +298,48 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function easyInsert($request)
     {
-        $this->title = $this->cleanInput($request->title);
-        $this->vegetarien = $request->vegan == 'on' ? true : false;
-        $this->difficulty = intval($request->difficulty);
-        $this->type = intval($request->categ_plat);
-        $this->cost = intval($request->cost);
-        $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
-        $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
-        $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
-        $this->nb_guests = $this->cleanInput($request->unite_part);
-        $this->guest_type = $this->cleanInput($request->value_part);
-        $this->type_univers = intval($request->type);
-        $this->id_user = Auth::user()->id;
-        $this->video = strip_tags($request->video);
-        $this->commentary_author = $this->cleanInput($request->comment);
+        if ($request->title) {
+            $this->title = $this->cleanInput($request->title);
+        }
+        if ($request->vegan) {
+            $this->vegetarien = $request->vegan == 'on' ? true : false;
+        }
+        if ($request->difficulty) {
+            $this->difficulty = intval($request->difficulty);
+        }
+        if ($request->categ_plat) {
+            $this->type = intval($request->categ_plat);
+        }
+        if ($request->cost) {
+            $this->cost = intval($request->cost);
+        }
+        if ($request->prep_minute || $request->prep_heure) {
+            $this->prep_time = $this->getUnifiedTime($request->prep_minute, $request->prep_heure);
+        }
+        if ($request->cook_minute || $request->cook_heure) {
+            $this->cook_time = $this->getUnifiedTime($request->cook_minute, $request->cook_heure);
+        }
+        if ($request->rest_minute || $request->rest_heure) {
+            $this->rest_time = $this->getUnifiedTime($request->rest_minute, $request->rest_heure);
+        }
+        if ($request->unite_part) {
+            $this->nb_guests = $this->cleanInput($request->unite_part);
+        }
+        if ($request->value_part) {
+            $this->guest_type = $this->cleanInput($request->value_part);
+        }
+        if ($request->type) {
+            $this->type_univers = intval($request->type);
+        }
+        if (Auth::user()->id) {
+            $this->id_user = Auth::user()->id;
+        }
+        if ($request->video) {
+            $this->video = strip_tags($request->video);
+        }
+        if ($request->comment) {
+            $this->commentary_author = $this->cleanInput($request->comment);
+        }
         $this->validated = 0;
         $this->lang = Lang::locale();
 
@@ -386,6 +414,81 @@ class Recipe extends Model implements Feedable, HasMedia
                 $this->cleanInput($ingredient),
                 ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
             );
+        }
+    }
+
+    /**
+     * @param $request
+     */
+    public function updateIngredients($request)
+    {
+        dd($this->ingredients);
+        // Storing ingredients and attach to the recipe
+        foreach ($this->cleanInput($request->ingredient) as $key => $ingredient) {
+            $ingredient = Ingredient::firstOrCreate([
+                'name' => $this->cleanInput($ingredient),
+                'lang' => Lang::locale()
+            ]);
+            $filteredIngredients = $this->ingredients->filter(function ($value, $key) use ($ingredient) {
+                return $value->id == $ingredient->id;
+            });
+            // if the ingredient already exist
+            if ($filteredIngredients) {
+                $this->ingredients()->toggle($ingredient->id);
+            } else {
+                $this->ingredients()->detach($filteredIngredients->id);
+            }
+        }
+    }
+
+    /**
+     * @param $request
+     * @param null $base
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
+     */
+    public function updateSteps($request, $base = null)
+    {
+        // Storing steps and attach to the recipe
+        foreach ($request->step as $key => $step) {
+            $newStep = RecipesSteps::firstOrCreate(
+                [
+                    'instruction' => $this->cleanInput($step)
+                ]
+            );
+            $this->steps()->attach(
+                $newStep,
+                ['step_number' => $key + 1]
+            );
+
+            foreach ($request->step->picture as $picture) {
+                if ($picture !== null) {
+                    if ($base) {
+                        if ($base === true) {
+                            $media = $this->addMediaFromBase64($picture)
+                                ->withCustomProperties(['checked' => false])
+                                ->withResponsiveImages()
+                                ->toMediaCollection();
+                        }
+                    } else {
+                        $media = $this->addMedia($picture)
+                            ->withCustomProperties(['checked' => false])
+                            ->withResponsiveImages()
+                            ->toMediaCollection();
+                    }
+
+                    // always attach media to user and recipe
+                    // todo : if first : order 0; else : increment
+                    $newStep->medias()->attach([$media->id]);
+                    Auth::user()->medias()->attach([$media->id]);
+                    // then check if recipe is publishable, if not detach and delete
+                    CheckPictureStep::dispatch($media, $step);
+                }
+            }
+
+            /*$path = $step->photo->store('public/uploads');
+            $picture = $this->addMedia($picture)->toMediaCollection('step');
+            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');*/
         }
     }
 
@@ -499,8 +602,6 @@ class Recipe extends Model implements Feedable, HasMedia
 
         return $bestPicture;
     }
-
-
 
 
     public function getTimeFormatAttribute()

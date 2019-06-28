@@ -177,6 +177,8 @@ class RecipeController extends Controller
      */
     public function edit($slug)
     {
+        $this->authorize('update', Recipe::class);
+
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
         $univers = $recipe->universes;
         $types_univ = Categunivers::all();
@@ -198,34 +200,33 @@ class RecipeController extends Controller
      * @param Recipe $recipe
      *
      * @return RedirectResponse
+     * @throws Throwable
      * @throws ValidationException
      */
     public function update(StoreRecipeRequest $request, Recipe $recipe)
     {
+        $this->authorize('update', Recipe::class);
+
         // Parties image
         $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'title' => 'required'
         ]);
 
         $recipe->update([
-            'univers' => Univers::updateOrCreate(['name' => $this->cleanInput($request->univers)]),
+            'univers' => Univers::updateOrCreate([
+                'name' => $this->cleanInput($request->univers)
+            ]),
         ]);
-
-        //Filtering the comment
-        $comm = $this->cleanInput($request->comment);
-        //Vegetarian switch
-        $vege = clean($request->vegan) == 'on' ? true : false;
-
-        // If user is author
-        // If main picture is replaced, remove and insert
-        // TODO WIP THAT OMG !
-        // If other picture is replaced, remove and insert
-
-        // If insert : insert
-        // If removed : remove
-        if (Auth::user()->id == $recipe->id_user) {
-            $recipe->insertPicture($request);
-        }
+        $recipe = $recipe->easyInsert($request);
+        $recipe->update();
+        // TODO : following code is C/C of create
+        // SLUG & UID
+        $recipe->updateIngredients($request);
+        // TODO : update steps linked to insert steps
+//        $recipe->updateSteps($request);
+        // TODO : pictures that weren't here before are added, otherwise it's updated
+//        $recipe->insertPicture($request, true);
 
         return redirect()->route('recipe.show', ['post' => $recipe->slug]);
     }
@@ -240,6 +241,8 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+        $this->authorize('delete', Recipe::class);
+
         return $recipe->delete();
     }
 
