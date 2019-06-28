@@ -1,1 +1,1 @@
-<big-search index-prop="BigSearch" ></big-search>
+<big-search index-prop="big_search" ></big-search>

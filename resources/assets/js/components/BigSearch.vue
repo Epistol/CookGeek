@@ -3,7 +3,13 @@
             :search-client="searchClient"
             :index-name="indexProp"
     >
-        <!-- Other search components go here -->
+        <ais-search-box
+                placeholder="Search"
+                submit-title="string"
+                reset-title="string"
+                :autofocus="false"
+                :show-loading-indicator="true"
+        />
     </ais-instant-search>
 
 </template>
@@ -13,7 +19,8 @@
 
     export default {
         props: {
-            indexProp: String
+            indexProp: String,
+            default: 'big_search'
         },
 
         data() {
