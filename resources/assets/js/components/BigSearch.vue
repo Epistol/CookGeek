@@ -10,6 +10,13 @@
                 :autofocus="false"
                 :show-loading-indicator="true"
         />
+        <ais-hits>
+            <template slot="item" slot-scope="{ item }">
+                <div>
+                    <h1>@{{ item.title }}</h1>
+                </div>
+            </template>
+        </ais-hits>
     </ais-instant-search>
 
 </template>
