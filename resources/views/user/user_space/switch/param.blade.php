@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
                 <div class="column is-three-quarters-desktop is-full-mobile blockcontent" id="parameters">
                     @include("user.user_space.switch.parts.param")
                     <pre>
-                <?= Auth::user()->getAllPermissions();?>
+                <?= Auth::user()->getAllPermissions();
+                        ?>
                     </pre>
                     <pre>
                 <?= Auth::user()->getRoleNames();?>

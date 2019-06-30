@@ -1,4 +1,4 @@
-<div class="field is-clearfix">&
+<div class="field is-clearfix">
     <div class="control">
         <div class="lecout">
             <p>@lang('recipe.cost-making')</p>

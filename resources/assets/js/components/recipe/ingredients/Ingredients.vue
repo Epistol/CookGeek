@@ -1,6 +1,5 @@
 <template>
     <div class="column">
-        <draggable :options="{group:'people'}" @start="drag=true" @end="drag=false">
             <template v-for="(item, index) in liste">
                 <div class="columns">
                     <div class="column is-3">
@@ -28,7 +27,6 @@
                     </div>
                 </div>
             </template>
-        </draggable>
     </div>
 </template>
 
@@ -39,6 +37,12 @@
 		components: {
 			draggable,
 		},
+        props: {
+            ingredients: null,
+        },
+        mounted() {
+            this.loadIngredients();
+        },
 		data: function() {
 			return {
 				liste: [
@@ -59,7 +63,11 @@
 			removeRow: function(index) {
 				this.liste.splice(index, 1);
 			},
+            loadIngredients: function(){
+			    if(this.ingredients){
+			        this.liste = this.ingredients;
+                }
+            }
 		},
-
 	}
 </script>

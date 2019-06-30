@@ -18,6 +18,12 @@
                         @endif
                     </a>
                 @endforeach
+                    {{--<a class="navbar-item " href="/vegan">
+                        Vegan
+                    </a>--}}
+                    {{--<a class="navbar-item " href="/debut">
+                            Débutant
+                        </a>--}}
             </div>
             <div class="navbar-end">
                 <a class="navbar-item " href="https://www.facebook.com/Cuisine2Geek/">

@@ -67,6 +67,7 @@ import BigSearch from "./components/BigSearch";
 import SetPicture from "./components/recipe/_setters/SetPicture";
 import PasswordInputComponent from "./components/PasswordInputComponent";
 import ModalView from "./components/modal/ModalView";
+import StepsAdd from "./components/recipe/steps/StepsAdd";
 
 // AUTRE
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
@@ -108,6 +109,7 @@ const app = new Vue({
         'create-recipe': Create,
         'big-search' : BigSearch,
         'set-picture': SetPicture,
+        'stepsadd': StepsAdd,
     },
 
     data: {

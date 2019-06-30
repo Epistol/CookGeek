@@ -366,7 +366,7 @@ class Recipe extends Model implements Feedable, HasMedia
                 ['step_number' => $key + 1]
             );
 
-            foreach ($request->step->picture as $picture) {
+            /*foreach ($request->step->picture as $picture) {
                 if ($picture !== null) {
                     if ($base) {
                         if ($base === true) {
@@ -389,7 +389,7 @@ class Recipe extends Model implements Feedable, HasMedia
                     // then check if recipe is publishable, if not detach and delete
                     CheckPictureStep::dispatch($media, $step);
                 }
-            }
+            }*/
 
             /*$path = $step->photo->store('public/uploads');
             $picture = $this->addMedia($picture)->toMediaCollection('step');
@@ -404,27 +404,7 @@ class Recipe extends Model implements Feedable, HasMedia
     public function insertIngredients($request)
     {
         // Storing ingredients and attach to the recipe
-        foreach ($this->cleanInput($request->ingredient) as $key => $ingredient) {
-            $ingredient = Ingredient::firstOrCreate([
-                'name' => $this->cleanInput($ingredient),
-                'lang' => Lang::locale()
-            ]);
-
-            $this->ingredients()->attach(
-                $this->cleanInput($ingredient),
-                ['quantity' => $this->cleanInput($request->qtt_ingredient[$key])]
-            );
-        }
-    }
-
-    /**
-     * @param $request
-     */
-    public function updateIngredients($request)
-    {
-        dd($this->ingredients);
-        // Storing ingredients and attach to the recipe
-        foreach ($this->cleanInput($request->ingredient) as $key => $ingredient) {
+        foreach ($request->ingredient as $key => $ingredient) {
             $ingredient = Ingredient::firstOrCreate([
                 'name' => $this->cleanInput($ingredient),
                 'lang' => Lang::locale()
@@ -434,6 +414,7 @@ class Recipe extends Model implements Feedable, HasMedia
             });
             // if the ingredient already exist
             if ($filteredIngredients) {
+                dd($filteredIngredients);
                 $this->ingredients()->toggle($ingredient->id);
             } else {
                 $this->ingredients()->detach($filteredIngredients->id);

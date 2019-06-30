@@ -16,6 +16,7 @@
         "askedio/laravel5-profanity-filter": "^1.10",
         "astrotomic/laravel-translatable": "^11.1",
         "barryvdh/laravel-cors": "^0.11.0",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "cybercog/laravel-ban": "^3.5",
         "dimsav/laravel-translatable": "^9.4",
         "doctrine/dbal": "^2.9",
@@ -28,7 +29,7 @@
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^3.2",
         "laravel/passport": "5.0.*",
-        "laravel/scout": "^7.0",
+        "laravel/scout": "^7.1",
         "laravel/socialite": "^4.1",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "~1.0",
@@ -53,7 +54,7 @@
         "waavi/sanitizer": "dev-master"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "dev-master",
+        "barryvdh/laravel-debugbar": "^3.2",
         "filp/whoops": "~2.0",
         "friendsofphp/php-cs-fixer": "^2.14",
         "fzaninotto/faker": "~1.4",

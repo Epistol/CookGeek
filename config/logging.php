@@ -32,8 +32,9 @@ return [
 
     'channels' => [
         'stack' => [
-            'driver'   => 'stack',
-            'channels' => ['single'],
+            'driver' => 'stack',
+            // Add bugsnag to the stack:
+            'channels' => ['single', 'bugsnag'],
         ],
 
         'single' => [
@@ -53,7 +54,9 @@ return [
             'driver' => 'syslog',
             'level'  => 'debug',
         ],
-
+        'bugsnag' => [
+            'driver' => 'bugsnag',
+        ],
         'errorlog' => [
             'driver' => 'errorlog',
             'level'  => 'debug',

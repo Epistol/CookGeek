@@ -3,20 +3,26 @@
             :search-client="searchClient"
             :index-name="indexProp"
     >
-        <ais-search-box
-                placeholder="Search"
-                submit-title="string"
-                reset-title="string"
-                :autofocus="false"
-                :show-loading-indicator="true"
-        />
-        <ais-hits>
-            <template slot="item" slot-scope="{ item }">
-                <div>
-                    <h1>@{{ item.title }}</h1>
-                </div>
-            </template>
-        </ais-hits>
+        <ais-autocomplete>
+            <div slot-scope="{ currentRefinement, indices, refine }">
+                <input
+                        type="search"
+                        :value="currentRefinement"
+                        placeholder="Search for a product"
+                        @input="refine($event.currentTarget.value)"
+                >
+                <ul v-if="currentRefinement" v-for="index in indices" :key="index.label">
+                    <li>
+                        <h3>{{ index.label }}</h3>
+                        <ul>
+                            <li v-for="hit in index.hits" :key="hit.objectID">
+                                <ais-highlight attribute="name" :hit="hit"/>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </ais-autocomplete>
     </ais-instant-search>
 
 </template>

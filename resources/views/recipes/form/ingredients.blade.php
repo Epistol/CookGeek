@@ -10,7 +10,7 @@
         @else
             {{--If edit--}}
             <h2 class="title is-4">@lang('recipe.ingredients')</h2>
-            <ingredient-edit-form recipe_id="{{intval($recipe->id)}}"></ingredient-edit-form>
+            <ingredient_form ingredients="{{json_encode($recipe)}}"></ingredient_form>
         @endif
 
     </div>

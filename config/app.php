@@ -173,7 +173,7 @@ return [
         \SocialiteProviders\Manager\ServiceProvider::class,
 
         Dimsav\Translatable\TranslatableServiceProvider::class,
-
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         /*
          * Application Service Providers...
          */

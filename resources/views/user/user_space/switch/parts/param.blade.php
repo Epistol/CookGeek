@@ -8,7 +8,11 @@
             <div class="field">
                 <label class="label">@lang('account.pseudo.pseudo')</label>
                 <div class="control">
-                    <input class="input" type="text" name="pseudo" value="{{Auth::user()->name}}">
+                    <input class="input" type="text" name="pseudo"
+                           @if(isset(Auth::user()->pseudo))
+                           value="{{Auth::user()->pseudo}}"
+                            @endif
+                    >
                     <p class="help">@lang('account.pseudo.sub')</p>
                 </div>
             </div>
@@ -20,7 +24,7 @@
                 </div>
             </div>
             @include('user.user_space.password.check_psw')
-{{--            @include('user.user_space.switch.parts.password')--}}
+            {{--            @include('user.user_space.switch.parts.password')--}}
             <div class="is-flex-center">
                 <div class="field is-grouped">
                     <div class="control">

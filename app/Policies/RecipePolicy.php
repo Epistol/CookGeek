@@ -14,17 +14,23 @@ class RecipePolicy
 
     private $policyName = 'recipes';
 
+
     /**
      * Determine whether the user can view the recipe.
      *
-     * @param  $user
+     * @param User|null $user
+     * @param Recipe $recipe
      * @return mixed
      */
-    public function view(?User $user)
+    public function view(?User $user, Recipe $recipe)
     {
         if ($user) {
-            if ($user->hasPermissionTo('read_recipes')) {
+            if ($user->id == $recipe->id) {
                 return true;
+            } else {
+                if ($user->hasPermissionTo('read_'.$this->policyName)) {
+                    return true;
+                }
             }
             return false;
         }
@@ -40,7 +46,7 @@ class RecipePolicy
      */
     public function create(User $user)
     {
-        if ($user->hasPermissionTo('add_recipes')) {
+        if ($user->hasPermissionTo('add_'.$this->policyName)) {
             return true;
         } else {
             return false;
@@ -57,11 +63,14 @@ class RecipePolicy
      */
     public function update(User $user, Recipe $recipe)
     {
-        if (Auth::user()->id === $recipe->creator->id) {
-            return true;
+        if ($user->hasPermissionTo('edit_' . $this->policyName)) {
+            // if user is author of recipe
+            if ($user->id === $recipe->id_user) {
+                return true;
+            }
+            return false;
         }
-
-        return $user->hasPermissionTo('edit_' . $this->policyName);
+        return false;
     }
 
     /**

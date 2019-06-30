@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage',  __('common.editing') . __('recipe.of') . ": ". $recipe->title)
+@section('titrepage',  __('common.editing') . ' ' . __('recipe.of') . " : ". $recipe->title)
 @section('content')
 
     <div class="container recipe-add">

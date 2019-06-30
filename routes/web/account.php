@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Route;
  * Date: 24/04/2018
  * Time: 23:32.
  */
-Route::get('/home', 'User\HomeController@index')->name('home');
 
 Route::prefix('home')->middleware('forbid-banned-user')->group(function () {
+    Route::get('/', 'User\HomeController@index')->name('home');
     Route::post('parameters', 'User\HomeController@paramStore')->name('param.store');
     Route::get('parameters', 'User\HomeController@parameters')->name('account.param');
     Route::get('favorites', 'User\HomeController@favorites')->name('account.fav');

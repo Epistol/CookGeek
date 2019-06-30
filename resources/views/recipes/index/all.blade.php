@@ -42,7 +42,7 @@
                             <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
                                 {{--Nom de l'univers--}}
                                 @php
-                                    $univers_data = DB::table('univers')->where('id', $recipe->univers)->first();
+                                    $univers_data = DB::table('univers')->where('id', $recipe->universes)->first();
                                 @endphp
                                 @if($univers_data)
                                     @if(strip_tags(clean($univers_data->name)))

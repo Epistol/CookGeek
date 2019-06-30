@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Throwable;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use RuntimeException;
 
 /**
  * Class RecipeController
@@ -37,8 +39,6 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $this->authorize('index', Recipe::class);
-
         $medias = Categunivers::all();
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
@@ -62,7 +62,6 @@ class RecipeController extends Controller
         if (!Auth::check()) {
             return redirect('/');
         }
-        $this->authorize('create', Recipe::class);
 
         $types_univ = Categunivers::all();
         $difficulty = Difficulty::all();
@@ -124,8 +123,8 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $this->authorize('view', Recipe::class);
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
+
         $type = TypeRecipe::where('id', $recipe->type)->first();
         $pictureSet = $recipe->medias()->get();
         if ($pictureSet->isNotEmpty()) {
@@ -137,6 +136,7 @@ class RecipeController extends Controller
         }
 
         // STARS
+//        dd($recipe->notes);
         if ($recipe->notes->count() > 0) {
             $stars1 = $recipe->notes->avg('note');
         } else {
@@ -177,9 +177,9 @@ class RecipeController extends Controller
      */
     public function edit($slug)
     {
-        $this->authorize('update', Recipe::class);
-
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
+        $this->authorize('update', $recipe);
+
         $univers = $recipe->universes;
         $types_univ = Categunivers::all();
         $difficulty = DB::table('difficulty')->get();

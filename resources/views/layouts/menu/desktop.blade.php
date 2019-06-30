@@ -115,7 +115,7 @@
                                 @endif
                             </div>
                             <a class="navbar-link">
-                               {{Auth::user()->name}} <span
+                               {{Auth::user()->pseudo}} <span
                                         class="caret"></span>
                             </a>
                         </a>

@@ -27,22 +27,21 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 import Ingredients from "./components/recipe/ingredients/Ingredients.vue";
 
-import IngredientsEdit from './components/Recipe/IngredientsEdit.vue';
-import SignalRecipe from "./components/Recipe/Signal.vue";
+import SignalRecipe from "./components/recipe/Signal.vue";
 import StepsEdit from "./components/recipe/steps/StepsEdit";
 
 // Utilisation des composants
 
-Vue.use(InstantSearch, Datepicker, VueClazyLoad, SignalRecipe, StepsEdit, StarRating, Ingredients, IngredientsEdit);
+Vue.use(InstantSearch, Datepicker, VueClazyLoad, SignalRecipe, StepsEdit, StarRating, Ingredients);
 
 // Vue.component('recherche', require('./components/Recherche.vue'));
 Vue.component('validationform', require('./components/ValidateFormButton.vue'));
 Vue.component('searchautocomplete', require('./components/Autocomplete.vue'));
 
 // AUTRE
-Vue.component('categ_icon', require("./components/Elements/Icons/TypeUniversIcon"));
-Vue.component('pictureupload', require("./components/Picture/PictureUpload"));
-Vue.component('univpictureupload', require("./components/Picture/UnivPictureUpload"));
+import TypeUniversIcon from "./components/elements/Icons/TypeUniversIcon.vue";
+import PictureUpload from "./components/picture/PictureUpload.vue";
+import UnivPictureUpload from "./components/picture/UnivPictureUpload.vue";
 
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
@@ -56,7 +55,6 @@ const app = new Vue({
         'ingredient_form': Ingredients,
         'star-rating': StarRating,
         'datepicker': Datepicker,
-        'ingredient-edit-form': IngredientsEdit,
         'stepsedit': StepsEdit,
     },
 

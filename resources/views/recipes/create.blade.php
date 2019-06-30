@@ -25,10 +25,11 @@
                                 @include("recipes.form.titre")
                                 @include("recipes.form.univers")
                                 @include("recipes.form.ingredients")
-                                @include("recipes.form.step")
+                                 @include("recipes.form.step")
 {{--                                Liste des ingrédients--}}
                             </div>
                         </div>
+
                     </div>
                     <div class="column  is-paddingless page is-4">
                         <div class="padding-sides">
