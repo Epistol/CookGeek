@@ -86,13 +86,19 @@
 
             <div class="navbar-end">
                 <a class="navbar-item bg-white" href="{{route('page.shop')}}">
-                    {{__('common.goodies')}}
+                    <div style="position:relative">
+                        <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+                        <span>  {{__('common.goodies')}}</span>
+                    </div>
                 </a>
                 @guest
-                    <div class="navbar-item"><a class="button"
-                                                href="{{ route('register') }}">{{__('common.register')}}</a></div>
-                    <div class="navbar-item"><a class="button is-primary"
-                                                href="{{ route('login') }}">{{__('common.login')}}</a>
+                    <div class="navbar-item">
+                        <a class="button is-primary" href="{{ route('login') }}">
+                            <span class="icon is-small">
+                            <i class="far fa-user-circle"></i>
+                            </span>
+                            {{__('common.login')}}
+                        </a>
                     </div>
 
                     {{--<div class="navbar-item" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
@@ -115,7 +121,7 @@
                                 @endif
                             </div>
                             <a class="navbar-link">
-                               {{Auth::user()->pseudo}} <span
+                                {{Auth::user()->pseudo}} <span
                                         class="caret"></span>
                             </a>
                         </a>
