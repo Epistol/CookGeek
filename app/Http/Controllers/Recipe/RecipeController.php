@@ -40,6 +40,9 @@ class RecipeController extends Controller
     public function index()
     {
         $medias = Categunivers::all();
+        /* if(Auth::user()){
+             $recipes = Recipe::getLastPaginate(false, false, 12);
+         }*/
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
         // On charge les données dans la vue
@@ -184,10 +187,26 @@ class RecipeController extends Controller
         $types_univ = Categunivers::all();
         $difficulty = DB::table('difficulty')->get();
         $types_plat = DB::table('type_recipes')->get();
+        $type = TypeRecipe::where('id', $recipe->type)->first();
+        if ($recipe->notes->count() > 0) {
+            $stars1 = $recipe->notes->avg('note');
+        } else {
+            $stars1 = 1;
+        }
 
+        $stars = number_format($stars1, 1, '.', '');
+        $stars = explode('.', $stars, 2);
+
+        // RATING
+        $countrating = $recipe->notes->count();
+        if ($countrating == null || $countrating == 0) {
+            $countrating = 1;
+        }
+        $nom = User::find($recipe->id_user)->value('name');
+        $related = $recipe->moreLikeThis(4);
         return view(
             'recipes.edit',
-            compact('univers', 'difficulty', 'recipe'),
+            compact('univers', 'difficulty', 'recipe', 'type', 'nom', 'related', 'stars'),
             [
                 'types' => $types_univ,
                 'types_plat' => $types_plat,

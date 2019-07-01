@@ -11,7 +11,7 @@
                     <label class="radio">
                         @if($type->name== 'tv')
                             <input type="radio" id="{{$type->name}}"
-                                   @if(Route::has('edit')){{ $key === $recipe->type_univers ? "checked":"" }}@endif
+                                   @if(Route::is('*.edit')){{ $key === $recipe->type_univers ? "checked":"" }}@endif
                                    name="type" value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>
@@ -19,7 +19,7 @@
                             </p>
                         @else
                             <input type="radio" id="{{$type->name}}"
-                                   @if(Route::has('edit')){{ $key === $recipe->type_univers ? "checked":"" }}@endif
+                                   @if(Route::has('*.edit')){{ $key === $recipe->type_univers ? "checked":"" }}@endif
                                    name="type" value="{{$type->id}}">
                             <label class="drinkcard-cc {{$type->name}}" for="{{$type->name}}"></label>
                             <p>

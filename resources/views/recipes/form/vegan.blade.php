@@ -4,7 +4,7 @@
             <div class="column">
                 <div class="field">
                     <input id="switchNormal"
-                           @if(Route::has('edit')){{  $recipe->vegetarien === 1 ? "checked":"" }}@endif type="checkbox"
+                           @if(Route::is('*.edit')){{  $recipe->vegetarien === 1 ? "checked":"" }}@endif type="checkbox"
                            name="vegan" class="switch is-rounded is-success">
                     <label for="switchNormal"> <i class="fas fa-leaf" aria-hidden="true"></i> @lang('recipe.vegan')
                     </label>

@@ -14,7 +14,11 @@
     {{--  Validation for admin--}}
     @if($recipe->getAuthorPictures(false)->isNotEmpty())
         @foreach($recipe->getAuthorPictures(false) as $index => $picture)
-            @include('recipes.show.pictures.toValidate')
+            @auth
+                @if($picture->users->first()->id == Auth::user()->id OR Auth::user()->hasRole('super-admin'))
+                    @include('recipes.show.pictures.toValidate')
+                @endif
+            @endif
         @endforeach
     @endif
 
@@ -31,7 +35,11 @@
     @else
         @if($recipe->getNonAuthorPictures(false)->isNotEmpty())
             @foreach($recipe->getNonAuthorPictures(false) as $index => $picture)
-                @include('recipes.show.pictures.toValidate')
+                @auth
+                    @if($picture->users->first()->id == Auth::user()->id  OR Auth::user()->hasRole('super-admin'))
+                        @include('recipes.show.pictures.toValidate')
+                    @endif
+                @endif
             @endforeach
         @endif
     @endif

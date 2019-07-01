@@ -1,79 +1,100 @@
 @extends('layouts.app.app')
 @section('titrepage',  __('common.editing') . ' ' . __('recipe.of') . " : ". $recipe->title)
+
+@if ($urlToFirstListImage = $recipe->getFirstMediaUrl('images', 'thumb'))
+    @php
+        $pic = $urlToFirstListImage;
+    @endphp
+@else
+    @php
+        $pic = collect();
+    @endphp
+@endif
+
+@if(collect($pic)->isNotEmpty())
+    @section('image_og', $pic)
+@endif
+
 @section('content')
 
-    <div class="container recipe-add">
-        <div class="background-round">
-            <div class="columns">
-                <div class="column">
-                    <div class="has-text-centered">
-                        <h1 class="title">@lang('common.editing') @lang('recipe.of') : {{$recipe->title}}
-                            <span v-cloak v-if="titre" class="ajout-recette-titre"> /  @{{titre}} </span></h1>
+    @include('notifications')
+    <div class="recipeAddBg">
+        <div class="container">
+            @include("recipes.show.breadcrumb")
+            <div class="section columns shadowbox">
+                {{--Photo + ingredients--}}
+                <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
+                    @include("recipes.show.images")
+                    {{--Fiche gauche - INGREDIENTS --}}
+                    @include("recipes.show.ficheinfo")
+                </div>
+                {{--    Infos + steps--}}
+                <div class="column is-marginless is-paddingless ">
+                    {{--// Budget--}}
+                    <div class="columns list-h-show  is-marginless is-paddingless">
+                        <div class="column">
+                            <div class="has-text-centered">
+                                @include("recipes.show.timing")
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="has-text-centered">
+                                @include("recipes.show.univers")
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="has-text-centered">
+                                @include("recipes.show.parts")
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="has-text-centered">
+                                @include("recipes.show.stars")
+                            </div>
+                        </div>
+
+                        {{--// Auteur--}}
+                    </div>
+                    <div class="page--no-pading">
+                        <div class="content">
+                            <div class="columns is-marginless">
+                                <div class="column is-9" style="padding: 2.5rem;">
+                                    @include("recipes.show.comment")
+                                    @include("recipes.show.steps")
+                                    @if($recipe->video)
+                                        @include("recipes.show.video")
+                                    @endif
+                                    {{--Espace commentaires --}}
+                                    <div id="#fb-commentaire_container">
+                                        <div class="fb-commentaire">
+                                            <div class="fb-comments" data-href="{{url()->current()}}"
+                                                 data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <aside class="column is-3 list-h-show ">
+                                    @include('recipes.show.fiche_droite')
+                                </aside>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <section class="section">
-            <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
-                  action="{{ route('recipe.edit', $recipe->id) }}">
-                {{ csrf_field() }}
-                <div class="columns" style="margin-bottom: 2rem;">
-                    <div class="column recipe-right-add">
-                        {{--Titre recette--}}
-                        <div class="columns">
-                            <div class="column is-10 is-offset-1">
-                                @include("recipes.form.titre")
-                                @include("recipes.form.univers")
-                                @include("recipes.form.ingredients")
-                                @include("recipes.form.step")
-                                {{--Liste des ingrédients --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column  is-paddingless page is-4">
-                        <div class="padding-sides">
-                            @include('recipes.form.image')
 
-                            <div class="columns">
-                                <div class="column is-10 is-offset-1">
-                                    @include("recipes.form.difficulty")
-                                    @include("recipes.form.categorie")
-                                    @include("recipes.form.cost")
-                                </div>
-                            </div>
-                            <div class="columns timing">
-                                <div class="column is-10 is-offset-1 ">
-                                    {{--// Timing--}}
-                                    @include("recipes.form.timing.tps_preparation")
-                                    @include("recipes.form.timing.tps_cuisson")
-                                    @include("recipes.form.timing.tps_repos")
-                                    @include("recipes.form.nb_parts")
-
-                                    @include("recipes.form.vegan")
-                                    {{--// Nombre de portions--}}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <section class="section page">
-                    <div class="columns">
-                        <div class="column is-4"> @include("recipes.form.comment")
-                            @include("recipes.form.video")
-                        </div>
-                        <div class="column">
-                            @include("recipes.form.type")
-                        </div>
-                    </div>
-                </section>
-
-                <section class="section page">
-                    @include("recipes.form.submit")
-                </section>
-            </form>
+    <div class="container">
+        <section class="section blockcontent">
+            {{-- RECETTE SIMILAIRES (4 BLOCS) --}}
+            @include('recipes.show.more_like_this')
         </section>
     </div>
+
+    @include('recipes.show.schema_json')
+
 @endsection
+
+
+
+

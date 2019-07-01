@@ -37,7 +37,9 @@ return [
         'array' => [
             'driver' => 'array',
         ],
-
+        'none' => [
+            'driver' => 'null',
+        ],
         'database' => [
             'driver'     => 'database',
             'table'      => 'cache',

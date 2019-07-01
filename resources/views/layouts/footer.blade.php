@@ -40,7 +40,7 @@
                         <a href="{{route('sitemap')}}">Sitemap</a>
                     </li>
                     @auth
-                        @if (Auth::user()->hasRole('admin'))
+                        @if (Auth::user()->hasRole('super-admin'))
                                 <li>
                                     <a href="/admin">Admin</a>
                                 </li>

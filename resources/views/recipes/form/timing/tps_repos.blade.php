@@ -5,7 +5,7 @@
         <div class="field has-addons">
             <div class="control">
                 <input class="input" id="" name="rest_heure" type="number" placeholder="0"
-                       value="@if(Route::has('edit')){{$recipe->restTimeHours}}@endif" min="0"
+                       value="@if(Route::is('*.edit')){{$recipe->restTimeHours}}@endif" min="0"
                        pattern="[0-9]">
             </div>
             <div class="control">
@@ -17,7 +17,7 @@
         <div class="field has-addons">
             <div class="control">
                 <input class="input" id="rest_minute" name="rest_minute" type="number" placeholder="0"
-                       value="@if(Route::has('edit')){{$recipe->restTimeMinutes}}@endif" min="0"
+                       value="@if(Route::is('*.edit')){{$recipe->restTimeMinutes}}@endif" min="0"
                        pattern="[0-9]">
             </div>
             <div class="control">
