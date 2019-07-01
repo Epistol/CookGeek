@@ -1,20 +1,19 @@
 resources/assets/sass/.idea
 public/recipes/
-public/js/tinymce/src/
+/public/js/tinymce/src/core/
 storage/*.key
-storage/medialibrary/
+/storage/medialibrary/
 
 .idea
 .vagrant
 npm-debug.log
 yarn-error.log
 
-public/js/toasty/
+/public/js/toasty/
 
 public/css/app.css
 public/js/app.js
-public/recipes/
-public/vendor/
+/public/vendor/
 
 # Created by https://www.gitignore.io/api/laravel
 # Edit at https://www.gitignore.io/?templates=laravel
@@ -22,17 +21,14 @@ public/vendor/
 ### Laravel ###
 /vendor/
 node_modules/
-npm-debug.log
-yarn-error.log
 
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
-public/storage
+/public/storage/
 public/hot
-storage/*.key
 .env
 Homestead.yaml
 Homestead.json
@@ -40,3 +36,7 @@ Homestead.json
 .phpunit.result.cache
 
 # End of https://www.gitignore.io/api/laravel
+
+
+
+
