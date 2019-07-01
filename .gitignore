@@ -24,3 +24,4 @@ config\.nucleus\.json
 /public/js/app.js
 /public/recipes/
 storage/medialibrary
+/public/vendor
