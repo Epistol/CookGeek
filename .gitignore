@@ -23,3 +23,4 @@ config\.nucleus\.json
 /public/css/app.css
 /public/js/app.js
 /public/recipes/
+storage/medialibrary
