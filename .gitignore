@@ -2,6 +2,8 @@
 /resources/assets/sass/.idea
 /public/hot
 /public/storage
+/public/recipes
+/public/js/tinymce/src
 /storage/*.key
 /storage/medialibrary/
 
