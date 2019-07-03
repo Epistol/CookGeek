@@ -227,30 +227,6 @@ figure.image img {
   margin-bottom: 2rem;
 }
 
-.menu-left-avatar {
-  border: 3px solid white;
-  -webkit-box-shadow: 0 4px 10px 0 $brand-primary;
-  box-shadow: 0 4px 10px 0 $brand-primary;
-}
-
-
-.menu-user {
-  padding-top: 33%;
-  -webkit-border-radius: 30px;
-  border-radius: 30px;
-}
-
-.menu-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-figure.menu-avatar {
-  position: absolute;
-  top: 0px;
-}
-
 nav.breadcrumb {
   padding: 1rem;
   color: $brand-primary !important;

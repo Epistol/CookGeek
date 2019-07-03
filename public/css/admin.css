@@ -17886,34 +17886,6 @@ figure.image img {
   margin-bottom: 2rem;
 }
 
-.menu-left-avatar {
-  border: 3px solid white;
-  -webkit-box-shadow: 0 4px 10px 0 #7f5fbf;
-  box-shadow: 0 4px 10px 0 #7f5fbf;
-}
-
-.menu-user {
-  padding-top: 33%;
-  border-radius: 30px;
-}
-
-.menu-avatar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-figure.menu-avatar {
-  position: absolute;
-  top: 0px;
-}
-
 nav.breadcrumb {
   padding: 1rem;
   color: #7f5fbf !important;
@@ -18284,6 +18256,40 @@ img.tovalidate {
   background: #FE688E;
 }
 
+.mobile-bottom-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu-left-avatar {
+  border: 3px solid white;
+  -webkit-box-shadow: 0 4px 10px 0 #7f5fbf;
+  box-shadow: 0 4px 10px 0 #7f5fbf;
+}
+
+.menu-user {
+  padding-top: 33%;
+  border-radius: 30px;
+}
+
+.menu-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+figure.menu-avatar {
+  position: absolute;
+  top: 0px;
+}
+
 .show-dan {
   -webkit-animation: showToastyGuy 1.2s;
   animation: showToastyGuy 1.2s;
@@ -18641,6 +18647,12 @@ footer.footer {
   background: #eeedf5;
   -webkit-box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
   box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
+}
+
+@media (max-width: 768px) {
+  .second-menu {
+    display: none;
+  }
 }
 
 #checkbutton {
