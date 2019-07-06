@@ -22,7 +22,7 @@
     <div class="recipeAddBg">
         <div class="container">
             @include("recipes.show.breadcrumb")
-            <div class="section columns shadowbox">
+            <div class="columns shadowbox is-marginless">
                 {{--Photo + ingredients--}}
                 <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                     @include("recipes.show.images")

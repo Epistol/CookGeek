@@ -1,4 +1,5 @@
-<div class="sharing-block">
+@if(!Route::is('*.edit'))
+    <div class="sharing-block">
     <div class="field has-addons" style="margin-left: 1rem">
         <p class="control">
             <a class="button facebook"
@@ -9,9 +10,8 @@
                           </span>
             </a>
         </p>
-
         <p class="control">
-            @if($recipe->universes !== null)
+            @if($recipe->universes->count() > 0)
                 <a class="button twitter"
                    href="https://twitter.com/intent/tweet?text={{strip_tags(clean($recipe->title))}}+-+CDG&url={{url()->current()}}&via=CuisineDeGeek&hashtags=cuisine,geek,{{ strip_tags(clean($recipe->universes->first()->name))}}">
                     @else
@@ -59,3 +59,4 @@
 
     </div>
 </div>
+@endif

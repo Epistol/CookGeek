@@ -46,6 +46,7 @@ return [
         'time-needed' => 'Temps nécessaire',
         'time-prep' => 'Temps de préparation',
         'time-cook' => 'Temps de cuisson',
+        'time-rest' => 'Temps de repos',
         'time-total' => 'Temps total',
     ]
 ];

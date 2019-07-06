@@ -24,8 +24,6 @@
         {{--   -> tout les univers--}}
         @foreach($universcateg as $index=>$c)
             <?php $i = $index+1;?>
-
-
             {{--  -> si la recette n'est pas nulle--}}
             @if($recipes[$i] != null)
                 {{-- -> si la categorie correspond à celle de la recette--}}

@@ -13,6 +13,7 @@
             <a class="navbar-item bg-white" href="{{route('page.shop')}}">
                 <i class="fas fa-shopping-cart"></i>
             </a>
+            @auth
             <div class="user_picture">
                 @if(Auth::user()->avatarUser !== '')
                     <figure class="image is-32x32">
@@ -27,6 +28,7 @@
                     </figure>
                 @endif
             </div>
+                @endauth
         </div>
     </nav>
 

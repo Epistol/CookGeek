@@ -3,7 +3,7 @@
     <div class="control">
         <input class="input" placeholder="{{__('recipe.video-array.placeholder')}}"
                value="@if(Route::is('*.edit')){{$recipe->video}}@endif
-               {{cleanInput(old('video'))}}" name="video"
+               @if(old('video')){{cleanInput(old('video'))}}@endif" name="video"
                id="video">
     </div>
 </div>

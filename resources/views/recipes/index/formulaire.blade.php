@@ -22,7 +22,7 @@ Pas de pub ! Et des bonbons en récompense ! </p>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input " name="email" type="email" placeholder="Email input" value="hello@">
+                    <input class="input " name="email" type="email" placeholder="hello@">
                     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>

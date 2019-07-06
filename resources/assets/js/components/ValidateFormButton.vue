@@ -16,7 +16,7 @@
         methods: {
             SubmitFn: function (event) {
                 grecaptcha.ready(function () {
-                    grecaptcha.execute('6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU', {action: 'action_name'})
+                    grecaptcha.execute(process.env.mix.MIX_INVISIBLE_RECAPTCHA_SITEKEY, {action: 'action_name'})
                         .then(function (token) {
                             $.ajax({
                                 type: "POST",

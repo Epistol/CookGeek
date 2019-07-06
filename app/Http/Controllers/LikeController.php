@@ -23,8 +23,7 @@ class LikeController extends Controller
      */
     public function checkLikedRecipe(Request $request)
     {
-        $recipe = Recipe::find(intval($request->recipeid));
-        $likes = $recipe->likes()->where('user_id', Auth::user()->id)->count();
+        $likes = Recipe::find(intval($request->recipeid))->likes()->where('user_id', Auth::user()->id)->count();
         return response()->json(intval($likes));
     }
 

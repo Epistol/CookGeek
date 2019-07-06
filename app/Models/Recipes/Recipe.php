@@ -186,6 +186,16 @@ class Recipe extends Model implements Feedable, HasMedia
         return cleanInput($value);
     }
 
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getVideoAttribute($value)
+    {
+        return cleanInput($value);
+    }
+
 
     /**
      * @return mixed
@@ -269,9 +279,9 @@ class Recipe extends Model implements Feedable, HasMedia
      * @return string
      * @throws Throwable
      */
-    public function slugUpdate($newSlug, $uid)
+    public function slugUpdate($uid)
     {
-        $slug = $this->slugTitle($newSlug, $uid);
+        $slug = $this->slugTitle($uid);
 
         $this->slug = $slug;
         $this->hashid = $uid;
@@ -280,14 +290,13 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param $title
      * @param $uid
      *
      * @return string
      */
-    public function slugTitle($title, $uid)
+    public function slugTitle($uid)
     {
-        return Str::slug(strip_tags(clean(app('profanityFilter')->filter($title))) . '-' . $uid,
+        return Str::slug($uid,
             '-');
     }
 
@@ -397,6 +406,21 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
+    public function insertUniverse($request){
+        $universes = Univers::where(['name' => $this->cleanInput($request->univers)])->get();
+        if ($universes->isNotEmpty()) {
+            foreach ($universes as $universe) {
+                $this->universes()->attach($universe);
+            }
+        } else {
+            if ($this->cleanInput($request->univers) !== '') {
+                $universe = new Univers(['name' => $this->cleanInput($request->univers)]);
+                $this->universes()->save($universe);
+            }
+        }
+        return $this->universes();
+    }
+
 
     /**
      * @param $request
@@ -414,7 +438,6 @@ class Recipe extends Model implements Feedable, HasMedia
             });
             // if the ingredient already exist
             if ($filteredIngredients) {
-                dd($filteredIngredients);
                 $this->ingredients()->toggle($ingredient->id);
             } else {
                 $this->ingredients()->detach($filteredIngredients->id);
@@ -572,7 +595,6 @@ class Recipe extends Model implements Feedable, HasMedia
             if ($likedMedias->isNotEmpty()) {
                 // get the media who got more likes
                 // TODO check that
-                dd($likedMedias->max('count'));
                 // ?maybe a little shuffle to not always get same picture
             } else {
                 // if no like, always return first picture

@@ -24,7 +24,6 @@
     "kss": "^3.0.0-beta.23",
     "laravel-mix": "^1.7.2",
     "lodash": "^4.17.11",
-    "sw-precache-webpack-plugin": "^0.11.5",
     "vue": "^2.5.22",
     "vue-friendly-iframe": "^0.10.0",
     "vue-template-compiler": "^2.5.17",

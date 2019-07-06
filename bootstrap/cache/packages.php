@@ -210,11 +210,25 @@
       'Sentry' => 'Sentry\\Laravel\\Facade',
     ),
   ),
+  'silviolleite/laravelpwa' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LaravelPWA\\Providers\\LaravelPWAServiceProvider',
+    ),
+  ),
   'socialiteproviders/manager' => 
   array (
     'providers' => 
     array (
       0 => 'SocialiteProviders\\Manager\\ServiceProvider',
+    ),
+  ),
+  'spatie/laravel-collection-macros' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\CollectionMacros\\CollectionMacroServiceProvider',
     ),
   ),
   'spatie/laravel-feed' => 

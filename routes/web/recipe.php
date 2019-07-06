@@ -7,9 +7,9 @@
  */
 
 use Illuminate\Support\Facades\Route;
+Route::get('random', 'Recipe\RecipeController@random')->name('recipe.random');
 
 Route::resource('recipe', 'Recipe\RecipeController');
-
 
 // RECETTE
 Route::group(['prefix' => 'recipe'], function () {

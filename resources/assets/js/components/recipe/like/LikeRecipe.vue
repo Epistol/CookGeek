@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
     import LoginModal from "../../modal/LoginModal";
 
     export default {
@@ -58,9 +57,10 @@
             },
             async getNbLike() {
                 if (this.userid) {
-                    axios.post('/like/nbLikeRecipe/', {recipeid: this.recipeid}).then(response => {
-                        this.nbLike = response.data;
-                    });
+                    axios.post('/like/nbLikeRecipe/', {recipeid: this.recipeid})
+                        .then(response => {
+                            this.nbLike = response.data;
+                        });
                 } else {
                     this.nbLike = false;
                 }
@@ -73,8 +73,6 @@
             this.is_already_liked();
             this.getNbLike();
         },
-
         computed: {},
-
     }
 </script>

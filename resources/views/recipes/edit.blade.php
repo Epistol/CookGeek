@@ -21,7 +21,7 @@
     <div class="recipeAddBg">
         <div class="container">
             @include("recipes.show.breadcrumb")
-            <div class="section columns shadowbox">
+            <div class="columns shadowbox is-marginless">
                 {{--Photo + ingredients--}}
                 <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                     @include("recipes.show.images")
@@ -32,11 +32,6 @@
                 <div class="column is-marginless is-paddingless ">
                     {{--// Budget--}}
                     <div class="columns list-h-show  is-marginless is-paddingless">
-                        <div class="column">
-                            <div class="has-text-centered">
-                                @include("recipes.show.timing")
-                            </div>
-                        </div>
                         <div class="column">
                             <div class="has-text-centered">
                                 @include("recipes.show.univers")

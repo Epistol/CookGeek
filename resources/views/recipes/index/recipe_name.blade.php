@@ -9,7 +9,7 @@
         <div class="column is-6">
             {{--Une recette--}}
             <div class="columns is-paddingless is-marginless is-result is-flex">
-                @if($recipe->universes()->get())
+                @if($recipe->universes->count() > 0)
                     <div class="recipe-category">
                         @include("recipes.show.type_univers_no_tool")
                     </div>
@@ -69,7 +69,6 @@
                 </div>
             </div>
         </div>
-
     @endforeach
 </div>
 <span>

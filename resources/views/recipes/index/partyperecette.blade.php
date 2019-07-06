@@ -8,7 +8,7 @@ $i = 0;
     <div class="columns">
         @foreach($recipes as $index=>$recipe)
             <?php $i = $index + 1;
-            $c = DB::table('categunivers')->where('id', '=', $recipe->type_univers)->first();
+            $c = DB::table('categunivers')->where('id',  $recipe->type_univers)->first();
             ?>
             <div class="column is-one-quarter">
                 @include("recipes.index.excerptsimple")

@@ -25,7 +25,7 @@
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
       crossorigin="anonymous">
 
-<script src='https://www.google.com/recaptcha/api.js?render=6Le3UV0UAAAAAC7lpn-K7fr5gxI2qjNUe4Kf3tAU'></script>
+
 <link rel="preload" as="style" onload="this.rel='stylesheet'"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 <noscript>

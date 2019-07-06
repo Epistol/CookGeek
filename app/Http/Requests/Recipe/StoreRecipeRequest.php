@@ -18,7 +18,7 @@ class StoreRecipeRequest extends BaseFormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('add_recipes');
     }
 
     /**

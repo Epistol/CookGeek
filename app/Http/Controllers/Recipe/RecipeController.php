@@ -93,25 +93,13 @@ class RecipeController extends Controller
         $recipe = new Recipe;
         $recipe = $recipe->easyInsert($request);
         $recipe->saveOrFail();
-        $universes = Univers::where(['name' => $this->cleanInput($request->univers)])->get();
-        if ($universes->isNotEmpty()) {
-            foreach ($universes as $universe) {
-                $recipe->universes()->attach($universe);
-            }
-        } else {
-            if ($this->cleanInput($request->univers) !== '') {
-                $universe = new Univers(['name' => $this->cleanInput($request->univers)]);
-                $recipe->universes()->save($universe);
-            }
-        }
-
         // SLUG & UID
-        $uid = $recipe->generateUid($recipe->id);
-        $recipe->slugUpdate($recipe->id, $uid);
+        $recipe->slugUpdate($recipe->generateUid($recipe->id));
 
         $recipe->insertIngredients($request);
         $recipe->insertSteps($request);
         $recipe->insertPicture($request, true);
+        $recipe->insertUniverse($request);
 
         return redirect()->route('recipe.show', $recipe->slug);
     }
@@ -270,11 +258,11 @@ class RecipeController extends Controller
      */
     public function random()
     {
-        $rand = Recipe::where('validated', 1)->inRandomOrder()->first();
+        $rand = Recipe::validated(1)->inRandomOrder()->first();
         if ($rand) {
             return redirect()->route('recipe.show', ['recipe' => $rand->slug]);
         } else {
-            return redirect('/');
+            return redirect(route('index'));
         }
     }
 }

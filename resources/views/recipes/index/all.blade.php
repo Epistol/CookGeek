@@ -41,14 +41,13 @@
                             </div>
                             <div id="bottom_right_content" class="column is-6 is-flex is-paddingless">
                                 {{--Nom de l'univers--}}
-                                @php
-                                    $univers_data = DB::table('univers')->where('id', $recipe->universes)->first();
-                                @endphp
-                                @if($univers_data)
-                                    @if(strip_tags(clean($univers_data->name)))
-                                        <a href="{{ route('univers.show', $univers_data->name) }}"
-                                           style='margin-right:0.5rem'>{{ strip_tags(clean(str_limit($univers_data->name, 25, ' ...'))) }}</a>
-                                    @endif
+                                @if($recipe->universes->count() > 0)
+                                    @foreach($recipe->universes as $universe)
+                                        @if(strip_tags(clean($universe->name)))
+                                            <a href="{{ route('univers.show', $universe->name) }}"
+                                               style='margin-right:0.5rem'>{{ strip_tags(clean(str_limit($universe->name, 25, ' ...'))) }}</a>
+                                        @endif
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
