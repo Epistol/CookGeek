@@ -40,7 +40,6 @@
     "lightbox2": "^2.10.0",
     "nouislider": "^10.1.0",
     "snyk": "^1.124.0",
-    "tinymce": "tinymce/tinymce",
     "vee-validate": "^2.1.2",
     "vue-affix": "^0.5.2",
     "vue-clazy-load": "^0.4.2",
