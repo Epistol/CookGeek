@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="content">
+                    <div class="container">
                         <ul >
                             <li v-for="ingredient in ingredients">
                                 {{ ingredient.qtt }} {{ ingredient.name }}

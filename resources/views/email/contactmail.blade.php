@@ -1,1 +1,1 @@
-{!!clean($email->message)  !!}
+{{clean($email->message)}}

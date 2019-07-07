@@ -11,25 +11,18 @@
         </div>
     </div>
 
-    <div class="columns">
-        <div class="column">
-            @forelse($recipe->steps()->get() as $step)
-                <div class="columns">
-                    <div class="column is-1 is-flex-top">
-                        <div class="step_number">
-                            <span> {{ intval($step->step_number+1) }}</span>
-                        </div>
-                    </div>
-                    <div class="column is-lateral ">
-                        <div class="content">
-                            <?php  $etape = app('profanityFilter')->filter($step->instruction);?>
-                            <p class="instruction"> {{ strip_tags(clean($etape)) }} </p>
-                        </div>
-                    </div>
+    <div class="columns is-multiline">
+        @forelse($recipe->steps()->get() as $step)
+            <div class="column is-1 is-flex-top">
+                <div class="step_number">
+                    <span> {{ intval($step->step_number+1) }}</span>
                 </div>
-            @empty
-            @endforelse
-        </div>
+            </div>
+            <div class="column is-11 is-lateral ">
+                    <p > {{ strip_tags(clean(app('profanityFilter')->filter($step->instruction))) }} </p>
+            </div>
+        @empty
+        @endforelse
     </div>
 </div>
 

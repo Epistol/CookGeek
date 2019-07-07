@@ -7,7 +7,7 @@
 
             @include("ingredients.index.bread")
 
-            <div class="content">
+            <div class="container">
                 {{--@include("recipes.index.searchbar")--}}
                 {{--@include("recipes.index.partype")--}}
 

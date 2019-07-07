@@ -24,11 +24,11 @@
             @include("recipes.show.breadcrumb")
             <div class="columns shadowbox is-marginless">
                 {{--Photo + ingredients--}}
-                <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
+                <aside class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                     @include("recipes.show.images")
                     {{--Fiche gauche - INGREDIENTS --}}
                     @include("recipes.show.ficheinfo")
-                </div>
+                </aside>
                 {{--    Infos + steps--}}
                 <div class="column is-marginless is-paddingless ">
                     {{--// Budget--}}
@@ -53,18 +53,15 @@
                                 @include("recipes.show.stars")
                             </div>
                         </div>
-
                         {{--// Auteur--}}
                     </div>
                     <div class="page--no-pading">
-                        <div class="content">
+                        <div class="container">
                             <div class="columns is-marginless">
                                 <div class="column is-9" style="padding: 2.5rem;">
                                     @include("recipes.show.comment")
                                     @include("recipes.show.steps")
-                                    @if($recipe->video)
-                                        @include("recipes.show.video")
-                                    @endif
+                                    @include("recipes.show.video")
                                     {{--Espace commentaires --}}
                                     <div id="#fb-commentaire_container">
                                         <div class="fb-commentaire">

@@ -69,7 +69,6 @@
                     </div>
                     <div class="bottom">
                         <a class="tag like
-                            {{$controller->check_liked($recipe->id)}}
                                 " id="{{$recipe->id}}" verif="{{ csrf_token() }}"><i
                                     class="material-icons">favorite</i></a>
                     </div>

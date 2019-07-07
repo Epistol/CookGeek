@@ -10,8 +10,5 @@
                 <p class="title is-4"><a href="{{route('recipe.show', $recipe->slug)}}"> {{ strip_tags(clean($recipe->title)) }}</a></p>
             </div>
         </div>
-
-        <div class="content">
-        </div>
     </div>
 </div>

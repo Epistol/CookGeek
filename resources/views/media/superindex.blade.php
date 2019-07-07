@@ -4,11 +4,11 @@
     <div class="recipeaddbg">
         <div class="container">
             <section class="">
-                <div class="background-round">
+                <header class="background-round">
                     @include("types.index.bread")
-                </div>
+                </header>
 
-                <div class="content">
+                <div class="container">
                     <section class="section ficheinfo">
                         <div class="columns is-multiline is-mobile">
                             @foreach($types as $type)

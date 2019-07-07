@@ -3,7 +3,7 @@
   padding: 1rem;
 }
 
-.background-round {
+.background-round, header.background-round {
   background: white;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -152,8 +152,6 @@ span.logo-beta {
   border: 1px solid #f3f2fd;
   -webkit-border-radius: 15px;
   border-radius: 15px;
-  display: flex;
-  align-items: center;
   margin-bottom: 1rem;
 }
 

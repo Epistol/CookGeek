@@ -1,4 +1,4 @@
-<div class="background-round">
+<header class="background-round">
     <div class="columns">
         <div class="column" style="display:flex;justify-content:center;align-items:center;">
             <nav class="breadcrumb" aria-label="breadcrumbs">
@@ -28,8 +28,8 @@
         </div>
         <div class="column has-text-centered" style="display:flex;justify-content:center;align-items:center;">
             @if(Route::is('*.edit'))
-                <input value="{{$recipe->title}}"   />
-                @else
+                <input value="{{$recipe->title}}"/>
+            @else
                 <h1 class="title is-paddingless">{{ strip_tags(clean($recipe->title)) }}</h1>
             @endif
         </div>
@@ -37,4 +37,4 @@
             @include('recipes.likeh')
         </div>
     </div>
-</div>
+</header>

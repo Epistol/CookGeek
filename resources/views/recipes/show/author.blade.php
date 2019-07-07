@@ -17,7 +17,9 @@
         {{--pseudo--}}
         <p><span style="padding-right: 0.3rem; margin-left: 1rem">@lang("common.by") </span><a
                     href="{{route('user.show', $recipe->getAuthorElement('id'))}}">
-                {!! str_limit($recipe->getAuthorElement('name'), 20, ' (...)') !!}</a></p>
+                {{
+                str_limit($recipe->getAuthorElement('name'), 20, ' (...)')
+                }}</a></p>
     </div>
 
     {{--date inscription--}}

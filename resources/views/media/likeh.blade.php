@@ -3,7 +3,6 @@
     <div class="field has-addons">
         <p class="control">
             <a class="button tooltip is-tooltip-left like
-{{$controller->check_liked($recipe->id)}}
                     " id="{{$recipe->id}}" verif="{{ csrf_token() }}" data-tooltip="Ajouter aux coups de coeur">
                   <span class="icon is-small">
                     <i class="material-icons">&#xE87E;</i>

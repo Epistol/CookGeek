@@ -36,3 +36,12 @@ li.autocomplete-result.is-active {
 .is-selected {
   display:none;
 }
+
+.ais-VoiceSearch-status {
+  display: none;
+}
+button.ais-VoiceSearch-button {
+  position: absolute;
+  right: -2rem;
+  top: 0.25rem;
+}

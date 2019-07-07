@@ -4,11 +4,11 @@
     <div class="recipeaddbg">
         <div class="container">
             <section class="">
-                <div class="background-round">
+                <header class="background-round">
                     @include("types.show.bread")
-                </div>
+                </header>
 
-                <div class="content">
+                <div class="container">
                         {{--On affiche 4 recettes par type--}}
                         <section class="section blockcontent">
                             <div>

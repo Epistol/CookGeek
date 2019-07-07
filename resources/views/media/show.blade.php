@@ -3,12 +3,12 @@
 @section('content')
     <div class="recipeaddbg">
         <div class="container">
-            <section class="">
+            <header class="">
                 <div class="background-round">
                     @include("media.show.bread")
                 </div>
 
-                <div class="content">
+                <div class="container">
                     {{--On affiche 4 recettes par type--}}
                     <section class="section blockcontent">
                         <div class="columns is-multiline">
@@ -37,7 +37,7 @@
                         </div>
                     </section>
                 </div>
-            </section>
+            </header>
         </div>
     </div>
 

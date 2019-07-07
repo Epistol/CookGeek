@@ -24,3 +24,11 @@
 @include("layouts.js.analytics")
 @include("layouts.js.tartecitron")
 {{--@include("layouts.js.pwa")--}}
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>

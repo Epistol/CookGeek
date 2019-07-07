@@ -14,6 +14,7 @@
                 </span>
                 </a>
             </div>
+{{--        TODO : mobile view recipe : add steps / ingredients / comments tab--}}
             {{--User--}}
             @guest
                 <div class="navbar-item"><a class="button"

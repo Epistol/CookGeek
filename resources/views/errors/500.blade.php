@@ -1,4 +1,4 @@
-<div class="content">
+<div class="container">
     <div class="title">Something went wrong.</div>
 
     @if(app()->bound('sentry') && !empty(Sentry::getLastEventID()))

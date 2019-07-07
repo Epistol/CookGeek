@@ -23,11 +23,11 @@
             @include("recipes.show.breadcrumb")
             <div class="columns shadowbox is-marginless">
                 {{--Photo + ingredients--}}
-                <div class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
+                <aside class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
                     @include("recipes.show.images")
                     {{--Fiche gauche - INGREDIENTS --}}
                     @include("recipes.show.ficheinfo")
-                </div>
+                </aside>
                 {{--    Infos + steps--}}
                 <div class="column is-marginless is-paddingless ">
                     {{--// Budget--}}

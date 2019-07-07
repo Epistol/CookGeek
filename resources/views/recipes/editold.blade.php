@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container recipe-add">
-        <div class="background-round">
+        <header class="background-round">
             <div class="columns">
                 <div class="column">
                     <div class="has-text-centered">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
 
 
         <section class="section">

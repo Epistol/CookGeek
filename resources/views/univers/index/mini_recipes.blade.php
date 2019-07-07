@@ -9,7 +9,7 @@
 
                         @if($img == null or empty($img) or $img->isEmpty())
                             <img class="fit-cover"
-                                 src="http://via.placeholder.com/300x200?text={!! strip_tags($recipe->title) !!}"
+                                 src="http://via.placeholder.com/300x200?text={{strip_tags($recipe->title)}}"
                                  alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                         @else
                             @if(collect($img->first())->firstWhere('name', 'index')['url'] == "")

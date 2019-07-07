@@ -6,7 +6,7 @@
 
         <section class="section blockcontent">
 
-            <div class="background-round">
+            <header class="background-round">
                 <div class="columns">
                     <div class="column">
                         <div class="has-text-centered">
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
 
             <div class="field">
                 <label class="label">Titre</label>

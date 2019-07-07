@@ -2,7 +2,7 @@
     <figure class="image is-16by9">
         @if($recipe->getMedia()->isEmpty())
             <img class="fit-cover img-radius"
-                 src="http://via.placeholder.com/300x200?text={!! strip_tags($recipe->title) !!}"
+                 src="http://via.placeholder.com/300x200?text={{strip_tags($recipe->title)}}"
                  alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
         @else
             @if($recipe->getMedia()->isNotEmpty())

@@ -3,11 +3,11 @@
 @section('content')
     <div class="recipeaddbg">
         <div class="container">
-            <section class="">
+            <header class="">
                 <div class="background-round">
                     @include("types.index.bread")
                 </div>
-                <div class="content">
+                <div class="container">
                     <section class="section ficheinfo">
                         <div class="columns is-multiline is-mobile">
                             @foreach($types as $type)
@@ -33,7 +33,7 @@
 
                 </div>
 
-            </section>
+            </header>
         </div>
     </div>
 

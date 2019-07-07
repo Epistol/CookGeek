@@ -9,7 +9,7 @@
                         <meta property="position" content="1">
                     </li>
                     <li property="itemListElement" typeof="ListItem">
-                        <a property="item" typeof="WebPage" href="{!! route("ingredient.index") !!}">
+                        <a property="item" typeof="WebPage" href="{{route("ingredient.index") }}">
                             <span property="name">Ingredients</span>
                         </a>
                         <meta property="position" content="2">

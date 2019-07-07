@@ -52,7 +52,7 @@
                                                 @if(collect($img->first())->isEmpty())
                                                     <figure class="image is-128x128 ">
                                                         <img class="fit-cover"
-                                                             src="http://via.placeholder.com/300x200?text={!! strip_tags($recipe->title) !!}"
+                                                             src="http://via.placeholder.com/300x200?text={{ strip_tags($recipe->title)}}"
                                                              alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
                                                         @else
                                                             @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")

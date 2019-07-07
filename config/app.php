@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'CDG'),
+    'long_name' => env('APP_LONG_NAME', 'CUISINE DE GEEK'),
 
     /*
     |--------------------------------------------------------------------------

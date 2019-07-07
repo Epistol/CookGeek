@@ -5,22 +5,26 @@
     >
         <ais-autocomplete>
             <div slot-scope="{ currentRefinement, indices, refine }">
-                <input
-                        type="search"
-                        :value="currentRefinement"
-                        placeholder="Search for a product"
-                        @input="refine($event.currentTarget.value)"
-                >
-                <ul v-if="currentRefinement" v-for="index in indices" :key="index.label">
-                    <li>
-                        <h3>{{ index.label }}</h3>
-                        <ul>
-                            <li v-for="hit in index.hits" :key="hit.objectID">
+                <div class="field dropdown-item">
+                    <div class="control has-icons-left">
+                        <input type="search" :value="currentRefinement" @input="refine($event.currentTarget.value)"
+                               placeholder="Rechercher" class="input is-transparent">
+                        <span class="icon is-left">
+            <i class="fa fa-search"></i>
+          </span>
+                        <ais-voice-search :search-as-you-speak="true"/>
+                    </div>
+<!--                    <div class="dropdown-menu" id="dropdown-menu" style="display:block">
+                        <div class="dropdown-content" v-if="currentRefinement" v-for="index in indices"
+                             :key="index.label">
+                            <div class="dropdown-item" v-for="hit in index.hits" :key="hit.objectID">
                                 <ais-highlight attribute="name" :hit="hit"/>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                            </div>
+                            <ais-powered-by/>
+
+                        </div>
+                    </div>-->
+                </div>
             </div>
         </ais-autocomplete>
     </ais-instant-search>
@@ -35,7 +39,6 @@
             indexProp: String,
             default: 'big_search'
         },
-
         data() {
             return {
                 searchClient: algoliasearch(
@@ -44,6 +47,11 @@
                 ),
             };
         },
+        methods: {
+            searching() {
+                console.log("jhdsjs");
+            }
+        }
     }
 </script>
 
