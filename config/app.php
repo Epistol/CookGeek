@@ -171,8 +171,6 @@ return [
         Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
-
-        Dimsav\Translatable\TranslatableServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         /*
          * Application Service Providers...
@@ -186,7 +184,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\UniverseProvider::class,
         PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
-        Dimsav\Translatable\TranslatableServiceProvider::class,
     ],
 
     /*
