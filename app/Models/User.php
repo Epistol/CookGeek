@@ -126,9 +126,13 @@ class User extends Authenticatable implements HasMedia
 
     public function getAvatarUserAttribute()
     {
-        if($this->img !== null && $this->img !== ''){
-            if (is_int(intval($this->img))) {
-                return Media::find($this->img)->getUrl();
+        if ($this->img !== null && $this->img !== '') {
+            if ($this->provider_name !== null) {
+                return $this->img;
+            } else {
+                if (is_int(intval($this->img))) {
+                    return Media::find($this->img)->getUrl();
+                }
             }
         }
         return $this->img;

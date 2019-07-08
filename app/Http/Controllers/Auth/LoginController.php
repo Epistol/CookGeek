@@ -79,16 +79,20 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver($driver)->user();
+            dd($user);
         } catch (Exception $e) {
             return redirect()->route('login');
         }
         $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
 
         if ($existingUser) {
+            // TODO : update user informations
+            $existingUser->update($user);
             auth()->login($existingUser, true);
         } else {
             $existingUserOther = User::where('email', $user->getEmail())->first();
             if ($existingUserOther) {
+                // An account already exist with the email given
                 return redirect(route('login'))->with('status', __('account.already-exit'));
             } else {
                 $newUser = new User;
@@ -96,10 +100,11 @@ class LoginController extends Controller
                 $newUser->provider_id = $user->getId();
                 $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
                 $newUser->email = $user->getEmail();
-                $newUser->pseudo = null;
+                $newUser->pseudo = $newUser->name;
                 $newUser->email_verified_at = now();
                 $newUser->img = $user->getAvatar();
                 $newUser->save();
+                // TODO : if role exist
                 $newUser->assignRole('user');
                 auth()->login($newUser, true);
             }
