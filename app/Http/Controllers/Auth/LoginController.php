@@ -83,37 +83,44 @@ class LoginController extends Controller
             return redirect()->route('login');
         }
         $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
-
         if ($existingUser) {
+            auth()->login($existingUser, true);
+
             if ($existingUser->provider_name == 'twitter') {
                 if ($existingUser->img !== $user->avatar_original) {
                     $existingUser->update([
-                        'img' => $user->avatar_original
+                        'img' => $user->avatar_original,
                     ]);
+                    $existingUser->save();
                 }
             } else {
                 if ($existingUser->img !== $user->getAvatar()) {
                     $existingUser->update([
                         'img' => $user->getAvatar()
                     ]);
+                    $existingUser->save();
                 }
             }
 
             if ($existingUser->pseudo !== $user->getNickname()) {
-                if (User::where('pseudo', '!=', $user->getNickname())) {
-                    $existingUser->update([
-                        'pseudo' => $user->getNickname()
-                    ]);
+                // if no user have this pseudo
+                if (User::where('pseudo', $user->getNickname())->count() === 0) {
+                    $pseudo = $user->getNickname();
+                    $existingUser->pseudo = $pseudo;
+                    $existingUser->save();
+                    $existingUser->update(['pseudo' => $pseudo]);
+                    dd($existingUser->pseudo);
                 }
             }
             if ($existingUser->email !== $user->getEmail()) {
-                if (User::where('email', '!=', $user->getEmail())) {
+                // if no user have this mail
+                if (User::where('email', $user->getEmail())->count() === 0) {
                     $existingUser->update([
                         'email' => $user->getEmail()
                     ]);
+                    $existingUser->save();
                 }
             }
-            auth()->login($existingUser, true);
         } else {
             $existingUserOther = User::where('email', $user->getEmail())->first();
             if ($existingUserOther) {
