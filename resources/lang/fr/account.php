@@ -12,7 +12,8 @@ return [
     'parameter' => 'Paramètres',
     'password' => 'Mot de passe',
     'my-data' => 'Mes données',
-    'already-exit' => 'Un utilisateur avec la même adresse e-mail existe déjà',
+    'already-exit' => 'Un utilisateur avec la même adresse e-mail existe déjà, connecter-vous pour lier
+    le réseau social',
     'fav' => [
         'title' => 'Mes favoris <3',
         'subtitle' => 'C\'est la liste des recettes que vous avez mis en favoris',

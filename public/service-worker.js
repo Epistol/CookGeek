@@ -24,11 +24,11 @@ if (workbox) {
   },
   {
     "url": "css/admin.css",
-    "revision": "0d6c7139435833ab0bb4ab3ede28871e"
+    "revision": "9c7f5ae00cb8d0cc2c61f4eb17cf97ba"
   },
   {
     "url": "css/app.css",
-    "revision": "ec90d635eac5fd5353444a05a1e7fa22"
+    "revision": "79242291fca99d8ffd05f44deada111b"
   },
   {
     "url": "css/default.css",
@@ -920,7 +920,7 @@ if (workbox) {
   },
   {
     "url": "js/app.js",
-    "revision": "449802e91e9981c0f8708f9e3a2ceeea"
+    "revision": "0f3e98da1c84aa733ff7f5d43b97a93d"
   },
   {
     "url": "js/bulma.js",
@@ -960,7 +960,7 @@ if (workbox) {
   },
   {
     "url": "js/recipeEdit.js",
-    "revision": "4b97f6712f5f82988bf193125d000d00"
+    "revision": "35c3a7a2fded3c909147580a35a213f0"
   },
   {
     "url": "js/tarteaucitron/advertising.js",
@@ -1585,6 +1585,538 @@ if (workbox) {
   {
     "url": "sitemap.xml",
     "revision": "994dc9bdbd4bf3fcb1d0aa46227422be"
+  },
+  {
+    "url": "storage/1/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/1/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/1/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/1/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/1/conversions/742-400x400-index.png",
+    "revision": "43a09c302d4b59cf34207198b19c6f89"
+  },
+  {
+    "url": "storage/1/conversions/742-400x400-thumb.jpg",
+    "revision": "676c76a656943cfc567e68bff4983391"
+  },
+  {
+    "url": "storage/1/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/1/responsive-images/742-400x400___medialibrary_original_334_334.jpg",
+    "revision": "8922ba90bd520b82f0efab5d100580f1"
+  },
+  {
+    "url": "storage/1/responsive-images/742-400x400___medialibrary_original_400_400.jpg",
+    "revision": "b5bfaf6f0342304aa0f95c5c96e551af"
+  },
+  {
+    "url": "storage/10/0-400x400.jpg",
+    "revision": "6f23317ed4f05f931a01a820a36a9d4e"
+  },
+  {
+    "url": "storage/10/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/10/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/10/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/10/responsive-images/0-400x400___medialibrary_original_334_334.jpg",
+    "revision": "ef1dfad9c3d5b77ca070d70627e49581"
+  },
+  {
+    "url": "storage/10/responsive-images/0-400x400___medialibrary_original_400_400.jpg",
+    "revision": "6d64070fe540794360b78102503be57e"
+  },
+  {
+    "url": "storage/10/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/11/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/11/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/11/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/11/conversions/medialibraryeBxuIb-index.png",
+    "revision": "43a09c302d4b59cf34207198b19c6f89"
+  },
+  {
+    "url": "storage/11/conversions/medialibraryeBxuIb-thumb.jpg",
+    "revision": "676c76a656943cfc567e68bff4983391"
+  },
+  {
+    "url": "storage/11/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/12/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/12/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/12/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/12/conversions/medialibraryacdBtB-index.png",
+    "revision": "dc0473307752a7e75f13343af066c591"
+  },
+  {
+    "url": "storage/12/conversions/medialibraryacdBtB-thumb.jpg",
+    "revision": "48c869d32a2c01548ab6c4832917fde7"
+  },
+  {
+    "url": "storage/12/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/13/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/13/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/13/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/13/conversions/medialibraryzN9xVg-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/13/conversions/medialibraryzN9xVg-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/13/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/14/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/14/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/14/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/14/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/15/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/15/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/15/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/15/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/16/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/16/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/16/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/16/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/17/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/17/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/17/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/17/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/18/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/18/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/18/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/18/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/19/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/19/conversions/1040-400x400-index.png",
+    "revision": "dc0473307752a7e75f13343af066c591"
+  },
+  {
+    "url": "storage/19/conversions/1040-400x400-thumb.jpg",
+    "revision": "48c869d32a2c01548ab6c4832917fde7"
+  },
+  {
+    "url": "storage/19/responsive-images/1040-400x400___index_125_125.jpg",
+    "revision": "50e1ea7188d99c1e9f7f1e084468db49"
+  },
+  {
+    "url": "storage/19/responsive-images/1040-400x400___index_150_150.jpg",
+    "revision": "03ae010cdeab59cb38f4049d0563bd3d"
+  },
+  {
+    "url": "storage/2/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/2/5ca8d2cf4509d8e5e03eb07f936b230b.jpg",
+    "revision": "7e5b94357577fc797ff130ea5de90759"
+  },
+  {
+    "url": "storage/2/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/2/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/2/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/2/conversions/5ca8d2cf4509d8e5e03eb07f936b230b-index.png",
+    "revision": "7f9c3aeb07692c627f5c2d131d1e960c"
+  },
+  {
+    "url": "storage/2/conversions/5ca8d2cf4509d8e5e03eb07f936b230b-thumb.jpg",
+    "revision": "e2a9258b6ace4e32c8c80e05ed639ad5"
+  },
+  {
+    "url": "storage/2/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/2/responsive-images/5ca8d2cf4509d8e5e03eb07f936b230b___medialibrary_original_284_188.jpg",
+    "revision": "f70909bc59e327787c71aac272649e97"
+  },
+  {
+    "url": "storage/2/responsive-images/5ca8d2cf4509d8e5e03eb07f936b230b___medialibrary_original_340_226.jpg",
+    "revision": "93d70f0e9d64bd2b506b081442b9b496"
+  },
+  {
+    "url": "storage/20/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/20/conversions/1040-400x400-index.png",
+    "revision": "dc0473307752a7e75f13343af066c591"
+  },
+  {
+    "url": "storage/20/conversions/1040-400x400-thumb.jpg",
+    "revision": "48c869d32a2c01548ab6c4832917fde7"
+  },
+  {
+    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/3/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/3/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/3/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/3/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/3/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/3/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/4/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/4/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/4/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/4/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/4/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/4/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/5/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/5/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/5/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/5/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/5/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/5/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/6/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/6/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/6/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/6/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/6/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/7/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+  },
+  {
+    "url": "storage/7/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/7/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/7/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
+    "revision": "4b9c7a8f366220607ef892e4dd90d455"
+  },
+  {
+    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
+    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
+  },
+  {
+    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
+    "revision": "f0ff89538ea68b8eb8c780691323fa28"
+  },
+  {
+    "url": "storage/7/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/8/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/8/742-400x400.jpg",
+    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
+  },
+  {
+    "url": "storage/8/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/8/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/8/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/8/responsive-images/742-400x400___medialibrary_original_334_334.jpg",
+    "revision": "8922ba90bd520b82f0efab5d100580f1"
+  },
+  {
+    "url": "storage/8/responsive-images/742-400x400___medialibrary_original_400_400.jpg",
+    "revision": "b5bfaf6f0342304aa0f95c5c96e551af"
+  },
+  {
+    "url": "storage/9/268-400x400.jpg",
+    "revision": "46df74f36c04588049902be630e07a2f"
+  },
+  {
+    "url": "storage/9/conversions/268-400x400-index.png",
+    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+  },
+  {
+    "url": "storage/9/conversions/268-400x400-thumb.jpg",
+    "revision": "9502dcb76abc3c97316d261e2184f84e"
+  },
+  {
+    "url": "storage/9/responsive-images/268-400x400___index_150_150.jpg",
+    "revision": "2afd16b92ddadf776d071bccf873aa15"
+  },
+  {
+    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_280_280.jpg",
+    "revision": "160b9035c7ac87f8aa9f8b84e734f136"
+  },
+  {
+    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_334_334.jpg",
+    "revision": "97c50b7e08776a7b2639837bb24fbf82"
+  },
+  {
+    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_400_400.jpg",
+    "revision": "5da895d78882ffa5329990d05c6c65bc"
+  },
+  {
+    "url": "storage/recipes/77/1040-400x400.jpg",
+    "revision": "8f007dd31d6f931bf793167aaf7d086c"
   },
   {
     "url": "univers/18/2/index_KUqjFveT2s.png",

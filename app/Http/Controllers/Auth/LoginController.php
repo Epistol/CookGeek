@@ -79,15 +79,40 @@ class LoginController extends Controller
     {
         try {
             $user = Socialite::driver($driver)->user();
-            dd($user);
         } catch (Exception $e) {
             return redirect()->route('login');
         }
         $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
 
         if ($existingUser) {
-            // TODO : update user informations
-            $existingUser->update($user);
+            if ($existingUser->provider_name == 'twitter') {
+                if ($existingUser->img !== $user->avatar_original) {
+                    $existingUser->update([
+                        'img' => $user->avatar_original
+                    ]);
+                }
+            } else {
+                if ($existingUser->img !== $user->getAvatar()) {
+                    $existingUser->update([
+                        'img' => $user->getAvatar()
+                    ]);
+                }
+            }
+
+            if ($existingUser->pseudo !== $user->getNickname()) {
+                if (User::where('pseudo', '!=', $user->getNickname())) {
+                    $existingUser->update([
+                        'pseudo' => $user->getNickname()
+                    ]);
+                }
+            }
+            if ($existingUser->email !== $user->getEmail()) {
+                if (User::where('email', '!=', $user->getEmail())) {
+                    $existingUser->update([
+                        'email' => $user->getEmail()
+                    ]);
+                }
+            }
             auth()->login($existingUser, true);
         } else {
             $existingUserOther = User::where('email', $user->getEmail())->first();
@@ -95,14 +120,19 @@ class LoginController extends Controller
                 // An account already exist with the email given
                 return redirect(route('login'))->with('status', __('account.already-exit'));
             } else {
+                if ($driver == 'twitter') {
+                    $avatar = $user->avatar_original;
+                } else {
+                    $avatar = $user->getAvatar();
+                }
                 $newUser = new User;
                 $newUser->provider_name = $driver;
                 $newUser->provider_id = $user->getId();
-                $newUser->name = $user->getNickname() !== null ? $user->getNickname() : $user->getName();
+                $newUser->name = $user->getName() ?: null;
                 $newUser->email = $user->getEmail();
-                $newUser->pseudo = $newUser->name;
+                $newUser->pseudo = $user->getNickname();
                 $newUser->email_verified_at = now();
-                $newUser->img = $user->getAvatar();
+                $newUser->img = $avatar;
                 $newUser->save();
                 // TODO : if role exist
                 $newUser->assignRole('user');
