@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/print.scss', 'public/css');
 
 mix.copyDirectory('resources/assets/js/toasty', 'public/js/toasty');
+mix.copyDirectory('resources/assets/js/lightbox', 'public/js/lightbox');
 mix.copyDirectory('resources/assets/js/tarteaucitron', 'public/js/tarteaucitron');
 
 mix.disableNotifications();

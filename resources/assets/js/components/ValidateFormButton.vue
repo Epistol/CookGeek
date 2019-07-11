@@ -13,6 +13,7 @@
         mounted() {
             console.log('Component mounted.')
         },
+        name : "validationform",
         methods: {
             SubmitFn: function (event) {
                 grecaptcha.ready(function () {

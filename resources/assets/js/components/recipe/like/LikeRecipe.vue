@@ -24,6 +24,7 @@
 
             };
         },
+        name : "LikeRecipe",
         components: {
             LoginModal
         },

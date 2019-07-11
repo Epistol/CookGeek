@@ -38,6 +38,7 @@
         components: {
             PictureInput
         },
+        name : 'set-picture',
         data() {
             return {
                 url: null,

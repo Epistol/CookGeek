@@ -27,7 +27,7 @@
 
 <script>
     export default {
-        name: 'autocomplete',
+        name: 'searchautocomplete',
         props: ['searchtype', 'data_old'],
         data: function () {
             return {

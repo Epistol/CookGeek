@@ -10,6 +10,7 @@
 <script>
 	export default {
 		props: ['text_icon'],
+        name : "categ_icon",
 		data: function() {
 			return {
 				counter: 0,

@@ -37,6 +37,7 @@
 
 	export default {
 		props: ["picture", "universe_id", "user_id"],
+        name : "univpictureupload",
 		data: function() {
 			return {
 				picture_sent: '',

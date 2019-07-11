@@ -98,7 +98,7 @@
 <script>
 	export default {
 		props: ["recipeid", "user_id"],
-
+        name : "signalrecipe",
 		data() {
 			return {
 				componentshow: false,
@@ -108,7 +108,6 @@
 				option: false,
 				alert_txt: "",
 				retour: "",
-
 				items: [
 					{message: 'Elle comporte des fautes d\'orthographe', type: 'ortho'},
 					// {message: 'Elle ne m\'intéresse pas', type: 'interest'},

@@ -9,5 +9,6 @@
         components: {
             Clock,
         },
+        name : "fulltime"
     }
 </script>

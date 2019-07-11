@@ -78,7 +78,7 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 
-<script src="{{ asset('js/lightbox.js') }}" defer async></script>
+<script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
 
 {{--
     <script src="/js/konami.js"></script>

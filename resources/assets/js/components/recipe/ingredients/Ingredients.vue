@@ -43,6 +43,7 @@
         mounted() {
             this.loadIngredients();
         },
+        name: "ingredient_form",
         data: function () {
             return {
                 liste: [

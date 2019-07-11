@@ -68,12 +68,11 @@
     import ModalView from "./ModalView";
 
     export default {
-        name: "LoginModal",
+        name: "login-modal",
         props: ['showModal', 'url'],
         components: {
             ModalView
         },
-
         data() {
             return {
                 'pseudo': '',
@@ -86,8 +85,6 @@
 
             }
         },
-
-
         methods: {
             onSubmit() {
                 this.errorCode = '';

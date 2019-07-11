@@ -42,6 +42,7 @@
 
 	export default {
 		props: ["picture", "user", "user_id", "type", "recipeid"],
+        name : 'pictureupload',
 		data: function() {
 			return {
 				picture_sent: '',

@@ -39,6 +39,7 @@
             indexProp: String,
             default: 'big_search'
         },
+        name : 'big-search',
         data() {
             return {
                 searchClient: algoliasearch(

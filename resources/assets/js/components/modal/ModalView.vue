@@ -31,6 +31,7 @@
 
 <script>
     export default {
+        name : 'modal',
         mounted() {
             //console.log('Component mounted.')
         },

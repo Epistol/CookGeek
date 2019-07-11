@@ -21,9 +21,11 @@ import Locale from './vue-i18n-locales.generated';
 Vue.use(VueMoment);
 
 import VueInternationalization from 'vue-i18n';
+
 Vue.use(VueInternationalization);
 
 import InstantSearch from 'vue-instantsearch';
+
 Vue.use(InstantSearch);
 
 // Imports des composants
@@ -40,6 +42,7 @@ import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 //import Affix from 'vue-affix';
 import Affix from 'vue-affix';
+
 Vue.use(Affix);
 
 // Composants CDG
@@ -63,9 +66,7 @@ import AddPicture from "./components/picture/AddPicture.vue";
 import ImagePicture from "./components/picture/Preview.vue";
 
 import Time from "./components/Time.vue";
-import BigSearch from "./components/BigSearch";
 import SetPicture from "./components/recipe/_setters/SetPicture";
-import PasswordInputComponent from "./components/PasswordInputComponent";
 import ModalView from "./components/modal/ModalView";
 import StepsAdd from "./components/recipe/steps/StepsAdd";
 
@@ -77,7 +78,6 @@ const i18n = new VueInternationalization({
     locale: lang,
     messages: Locale
 });
-
 const app = new Vue({
     el: '#bodyWebsite',
     i18n,
@@ -86,9 +86,10 @@ const app = new Vue({
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
         'modal': ModalView,
-        'Notif': Notif,
         VeeValidate,
-        'password' : PasswordInputComponent,
+        'Notif': Notif,
+        'bigsearch': () => import('./components/BigSearch'),
+        'password' : () => import("./components/PasswordInputComponent"),
         'new-recipe-form': NewRecipe,
         'likerecipe': LikeRecipe,
         'validationform': validationform,
@@ -107,7 +108,6 @@ const app = new Vue({
         'fulltime': Time,
         'preview-image': ImagePicture,
         'create-recipe': Create,
-        'big-search' : BigSearch,
         'set-picture': SetPicture,
         'stepsadd': StepsAdd,
     },
@@ -146,4 +146,16 @@ const app = new Vue({
             this.steps.splice(index, 1);
         },
     },
+});
+$(document).ready(function () {
+    $("body").toasty();
+
+    var easter_egg = new Konami(function () {
+        $("body").toasty('pop');
+    });
+
+    if (localStorage.getItem('nightmode')) {
+        document.body.classList.add('nightmode');
+        document.documentElement.classList.add('nightmode');
+    }
 });

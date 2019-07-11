@@ -56,7 +56,7 @@
     import ModalView from "../modal/ModalView";
 
     export default {
-        name: "AddPictureRecipe",
+        name: "add-recipe",
         props: ["recipeid", "recipehash", "user", "type"],
         data() {
             return {

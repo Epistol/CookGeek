@@ -15,7 +15,7 @@
         mounted() {
             // console.log('Component mounted.')
         },
-
+        name : 'notif',
         props: ['title', 'content'],
         methods: {
         }

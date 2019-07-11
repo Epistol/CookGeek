@@ -1,5 +1,5 @@
 
-<script src="{{ asset('js/lightbox.js') }}" defer async></script>
+<script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
 <script async defer src="https://cdn.headwayapp.co/widget.js" ></script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver" defer async></script>
 <div id="fb-root"></div>

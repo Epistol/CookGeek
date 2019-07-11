@@ -33,6 +33,7 @@
                 steps: []
             };
         },
+        name : 'stepsadd',
         methods: {
             addStep() {
                 this.counter++;

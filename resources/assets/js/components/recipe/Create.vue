@@ -136,7 +136,7 @@
     import PictureInput from 'vue-picture-input';
 
     export default {
-        name: "Create",
+        name: "create-recipe",
         components: {
             SetCost,
             SetCategory,

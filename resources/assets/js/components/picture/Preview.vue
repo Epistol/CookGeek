@@ -21,6 +21,7 @@
                 url: null,
             }
         },
+        name : "preview-image",
         components: {
             PictureInput, ModalView, LoginModal
         },

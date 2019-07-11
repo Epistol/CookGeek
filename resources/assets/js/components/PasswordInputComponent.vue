@@ -14,6 +14,7 @@
         data: () => ({
             password: null
         }),
+        name : "password",
         props: {
             name: {
                 type: String,
