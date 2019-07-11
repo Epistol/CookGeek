@@ -16,9 +16,7 @@ $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
-$violet : #7f5fbf;
-$brand-primary: $violet;
-$lavender : #CBC2F6;
+
 
 $accent : #4c6ee6;
 
@@ -30,12 +28,27 @@ $accentsecondary : $pink;
  * @color PaleBlue
  * @section Background informations
  */
-$brand-info: #CBC2F6;
-$brand-success: #2ab27b;
-$brand-warning: #ffc145;
-$brand-danger: #ff6b6c;
+
 
 
 $red : #FE688E;
 $green : #76db8e;
 
+$brand-info: #66B5FF;
+$brand-success: #40B748;
+$brand-warning: #FCC120;
+$brand-danger: #FC4B37;
+
+$primary-100 : #EEE2FB;
+$primary-200 : #DCC6F8;
+$primary-300 : #C1A4EB;
+$primary-400 : #A486D8;
+$primary-500 : #7F5FBF;
+$primary-600 : #6145A4;
+$primary-700 : #472F89;
+$primary-800 : #301E6E;
+$primary-900 : #20125B;
+
+$violet : $primary-500;
+$brand-primary: $primary-500;
+$lavender : #CBC2F6;
