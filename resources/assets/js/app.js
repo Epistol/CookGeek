@@ -4,7 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Create from "./components/recipe/Create";
 
 require('./bootstrap');
 require('./dropzone');
@@ -32,12 +31,9 @@ Vue.use(InstantSearch);
 
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
-import StarRating from './star-rating';
-import PictureInput from 'vue-picture-input';
 import Password from 'vue-password-strength-meter';
 
 //import InstantSearch from 'vue-instantsearch';
-import Datepicker from 'vuejs-datepicker';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 //import Affix from 'vue-affix';
@@ -47,26 +43,11 @@ Vue.use(Affix);
 
 // Composants CDG
 
-import LoginModal from "./components/modal/LoginModal.vue";
 import Notif from "./components/modal/NotifAlert.vue";
-import LikeRecipe from "./components/recipe/like/LikeRecipe.vue";
-import validationform from "./components/ValidateFormButton.vue";
-import Autocomplete from "./components/Autocomplete.vue";
-import Ingredients from "./components/recipe/ingredients/Ingredients.vue";
-import NewRecipe from "./components/recipe/NewRecipe";
 
 import SignalRecipe from "./components/recipe/Signal.vue";
-import HomeRecipes from "./components/recipe/Home_Recipes.vue";
 
-import TypeUniversIcon from "./components/elements/Icons/TypeUniversIcon.vue";
-import PictureUpload from "./components/picture/PictureUpload.vue";
-import UnivPictureUpload from "./components/picture/UnivPictureUpload.vue";
-import AddPictureRecipe from "./components/picture/AddPictureRecipe.vue";
-import AddPicture from "./components/picture/AddPicture.vue";
-import ImagePicture from "./components/picture/Preview.vue";
 
-import Time from "./components/Time.vue";
-import SetPicture from "./components/recipe/_setters/SetPicture";
 import ModalView from "./components/modal/ModalView";
 import StepsAdd from "./components/recipe/steps/StepsAdd";
 
@@ -78,6 +59,7 @@ const i18n = new VueInternationalization({
     locale: lang,
     messages: Locale
 });
+
 const app = new Vue({
     el: '#bodyWebsite',
     i18n,
@@ -86,29 +68,29 @@ const app = new Vue({
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
         'modal': ModalView,
-        VeeValidate,
+         VeeValidate,
         'Notif': Notif,
         'bigsearch': () => import('./components/BigSearch'),
         'password' : () => import("./components/PasswordInputComponent"),
-        'new-recipe-form': NewRecipe,
-        'likerecipe': LikeRecipe,
-        'validationform': validationform,
-        'ingredient_form': Ingredients,
-        'star-rating': StarRating,
-        'datepicker': Datepicker,
-        'homerecipes': HomeRecipes,
-        'searchautocomplete': Autocomplete,
-        'categ_icon': TypeUniversIcon,
-        'pictureupload': PictureUpload,
-        'univpictureupload': UnivPictureUpload,
-        'picture-input': PictureInput,
-        'add-recipe': AddPictureRecipe,
-        'add-any-picture': AddPicture,
-        'login-modal': LoginModal,
-        'fulltime': Time,
-        'preview-image': ImagePicture,
-        'create-recipe': Create,
-        'set-picture': SetPicture,
+        'new-recipe-form':  () => import("./components/recipe/NewRecipe"),
+        'likerecipe': () => import("./components/recipe/like/LikeRecipe.vue"),
+        'validationform': () => import("./components/ValidateFormButton.vue"),
+        'ingredient_form': () => import("./components/recipe/ingredients/Ingredients.vue"),
+        'star-rating': () => import("./star-rating"),
+        'datepicker': () => import("vuejs-datepicker"),
+        'homerecipes': () => import("./components/recipe/Home_Recipes.vue"),
+        'searchautocomplete': () => import("./components/Autocomplete.vue"),
+        'categ_icon': () => import("./components/elements/Icons/TypeUniversIcon.vue"),
+        'pictureupload': () => import("./components/picture/PictureUpload.vue"),
+        'univpictureupload': () => import("./components/picture/UnivPictureUpload.vue"),
+        'picture-input': () => import("vue-picture-input"),
+        'add-recipe': () => import("./components/picture/AddPictureRecipe.vue"),
+        'add-any-picture': () => import("./components/picture/AddPicture.vue"),
+        'login-modal':  () => import("./components/modal/LoginModal.vue"),
+        'fulltime': () => import("./components/Time.vue"),
+        'preview-image': () => import("./components/picture/Preview.vue"),
+        'create-recipe': () => import("./components/recipe/Create.vue"),
+        'set-picture': () => import("./components/recipe/_setters/SetPicture.vue"),
         'stepsadd': StepsAdd,
     },
 
