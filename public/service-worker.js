@@ -24,11 +24,11 @@ if (workbox) {
   },
   {
     "url": "css/admin.css",
-    "revision": "9c7f5ae00cb8d0cc2c61f4eb17cf97ba"
+    "revision": "88559ca6a43b851dbdd6642e4151e19e"
   },
   {
     "url": "css/app.css",
-    "revision": "79242291fca99d8ffd05f44deada111b"
+    "revision": "0a8863cf010b99de68f7162c020159a7"
   },
   {
     "url": "css/default.css",

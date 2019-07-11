@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Search extends Model
 {
@@ -15,12 +14,11 @@ class Search extends Model
     {
         $recipe = Recipe::where('id', $value)->first();
         $note = $recipe->note;
-        if($note !== null){
+        if ($note !== null) {
             $note = $recipe->note->avg('note');
             $stars1 = number_format($note, 1, '.', '');
             $starsget = explode('.', $stars1, 2);
-        }
-        else {
+        } else {
             $starsget = $note;
         }
         return $starsget;
