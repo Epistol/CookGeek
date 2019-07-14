@@ -44,7 +44,6 @@
 </head>
 <body class="">
 @include("layouts.menuMobile")
-
 <div id="bodyWebsite">
     <div id="app">
         @include("layouts.menu")
@@ -59,7 +58,6 @@
     </div>
 </div>
 @include("layouts.footer")
-
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -73,19 +71,15 @@
     ?>
 </script>
 
+<script>
+    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+</script>
 <script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
-<script src="https://use.fontawesome.com/403c56d95d.js"></script>
-
 <script src="{{ asset('js/app.js') }}"></script>
-
 <script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
-
-{{--
-    <script src="/js/konami.js"></script>
-    <script src="/js/toasty/jquery.toasty.js"></script>--}}
-<script src="/js/nouislider.min.js"></script>
+@include('layouts.scripts')
 <div id="fb-root"></div>
-
 <script type="application/javascript">
     $(document).ready(function () {
         CKEDITOR.replace('contenu');

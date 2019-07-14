@@ -14,15 +14,11 @@ class CreateIngredientablesTable extends Migration
     public function up()
     {
         Schema::create('ingredientables', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('ingredient_id');
-            $table->string('locale');
-            // Not sure about that, i could simplify by
-            // creating another table with relation but heh, it's not for the amount of data ...
-            $table->morphs('ingredientable');
+            $table->increments('id'); // Unique id
+            $table->integer('ingredient_id'); // ingredient id from table
+            $table->string('locale'); // locale
+            $table->morphs('ingredientable'); // ingredientable_id & ingredientable_type, the id of the recipe for example
             $table->string('quantity');
-
-            $table->unique(['ingredientable_id', 'locale']);
         });
     }
 

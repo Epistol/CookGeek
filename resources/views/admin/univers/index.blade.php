@@ -2,7 +2,7 @@
 @section('content')
 
     <h1 class="title">Liste des univers</h1>
-    <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter un univers</a>
+    <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un univers</a>
     <table class="table">
         <thead>
         <tr>

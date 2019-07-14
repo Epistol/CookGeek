@@ -20,9 +20,7 @@
                 @endforeach
             </div>
         </div>
-
     </div>
-
 </div>
 
 {{--{{ menu('admin' ) }}--}}

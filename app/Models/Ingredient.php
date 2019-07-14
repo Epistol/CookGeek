@@ -19,7 +19,6 @@ class Ingredient extends Model
      */
     protected $fillable = ['name'];
 
-    // Un ingrédient ne peut appartenir qu'a une recette
     // Une recette peut avoir plusieurs ingrédients
 
     /**
@@ -63,7 +62,7 @@ class Ingredient extends Model
      */
     public function setNameAttribute($value)
     {
-        $value                    = app('profanityFilter')->filter($value);
+        $value = app('profanityFilter')->filter($value);
         $this->attributes['name'] = strip_tags(clean($value));
     }
 }

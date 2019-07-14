@@ -1,9 +1,11 @@
 <div class="fixed is-fixed-top">
     @include('layouts.menu.desktop')
     @include('layouts.menu.mobile')
-    @include('layouts.nav_icons')
+    @if(!Route::is('admin.*'))
+        @include('layouts.menu_second.nav_icons')
+    @endif
 </div>
-
-@include('layouts.nav_icons_mobile')
-
+@if(!Route::is('admin.*'))
+    @include('layouts.menu_second.nav_icons_mobile')
+@endif
 

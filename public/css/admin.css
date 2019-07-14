@@ -15889,13 +15889,28 @@ p.menu-label {
 }
 
 aside.menu {
-  padding-top: 50%;
+  padding-top: 10%;
 }
 
-.left-menu {
-  background: #fdfdfd;
+.left_menu {
+  background: #fafafa;
   padding-right: 0px;
   padding-left: 5%;
+}
+
+.left_admin {
+  background: #363457;
+  padding-right: 0px;
+}
+.left_admin .menu-list a {
+  color: white;
+}
+.left_admin .menu-list a:hover {
+  color: #363457;
+}
+
+.menu-label a:hover {
+  color: antiquewhite;
 }
 
 .content ul {

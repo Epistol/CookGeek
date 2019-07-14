@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Utilisateurs</h1>
 
-        <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter un membre </a>
+        <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un membre </a>
 
         <section class="section">
             <table class="table is-striped is-bordered is-hoverable ">

@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function () {
     Route::middleware(['admin'])->group(function () {
-        Route::get('/', 'Admin\AdminController@index');
+        Route::get('/', 'Admin\AdminController@index')->name('admin.index');
         // BAN
         Route::get('ban', 'Admin\AdminController@ban')->name('admin.ban.index');
         Route::post('/validatePicture', 'Admin\RecipesAdmin@validatePicture')
@@ -17,8 +17,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('user', 'Admin\GestionUtil', ['as' => 'admin']);
         Route::resource('universe', 'Admin\UniverseController', ['as' => 'admin']);
         Route::resource('recipe', 'Admin\RecipesAdmin', ['as' => 'admin']);
-        Route::resource('page', 'PageController');
-
+        Route::resource('page', 'PageController', ['as' => 'admin']);
         // Ingredients
         Route::get('ingredients', 'Admin\IngredientController@index');
     });

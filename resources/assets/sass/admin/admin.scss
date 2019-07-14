@@ -4,13 +4,28 @@ p.menu-label{
   align-items: center;
 }
 aside.menu{
-  padding-top: 50%;
+  padding-top: 10%;
 }
-
-.left-menu{
-  background:$antiwhite;
+.left_menu{
+  background:$white-bis;
   padding-right:0px;
   padding-left:5%;
+}
+.left_admin{
+  background:#363457;
+  padding-right:0px;
+  & .menu-list a {
+    color:white;
+    &:hover {
+      color:#363457;
+    }
+  }
+}
+
+.menu-label {
+  & a:hover{
+    color:antiquewhite;
+  }
 }
 .content ul {
   list-style: none;

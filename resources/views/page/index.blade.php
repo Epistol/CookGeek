@@ -5,7 +5,7 @@
 
     <h1 class="title">Liste des pages</h1>
 
-    <a href="{{route('page.create')}}" class="button is-primary">+ Ajouter une page</a>
+    <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter une page</a>
 
     <table class="table">
         <thead>

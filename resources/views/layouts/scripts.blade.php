@@ -3,7 +3,7 @@
 <script async defer src="https://cdn.headwayapp.co/widget.js" ></script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver" defer async></script>
 <div id="fb-root"></div>
-<script defer async src="https://use.fontawesome.com/releases/v5.0.11/js/v4-shims.js"></script>
+<script src="https://kit.fontawesome.com/6af8152230.js"></script>
 
 <script type="application/javascript" src="{{ asset('js/load_content.js')}}"></script>
 <script  async defer  type="application/javascript">

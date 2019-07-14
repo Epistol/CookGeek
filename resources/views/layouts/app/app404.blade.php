@@ -46,7 +46,7 @@
 
 </script>
 
-<script src="https://use.fontawesome.com/403c56d95d.js"></script>
+<script src="https://kit.fontawesome.com/6af8152230.js"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
