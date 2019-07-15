@@ -25,7 +25,7 @@ class RecipePolicy
     public function view(?User $user, Recipe $recipe)
     {
         if ($user) {
-            if ($user->id == $recipe->id) {
+            if ($user->id === $recipe->id) {
                 return true;
             } else {
                 if ($user->hasPermissionTo('read_'.$this->policyName)) {

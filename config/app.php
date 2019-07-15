@@ -173,6 +173,7 @@ return [
         MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

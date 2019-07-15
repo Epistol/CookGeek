@@ -6,6 +6,7 @@
                 @if($recipe->user->img !== '')
                     <figure class="image is-48x48">
                         <img class="is-rounded "
+                             alt="Avatar"
                              src="{{cleanInput($recipe->user->avatarUser)}}"
                              style="height: 100%;width: 100%;">
                     </figure>

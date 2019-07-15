@@ -87,6 +87,7 @@
                         @if(Auth::user()->avatarUser !== '')
                             <figure class="image is-48x48">
                                 <img class="is-rounded test"
+                                     alt="Avatar"
                                      src="{{cleanInput(Auth::user()->avatarUser)}}"
                                      style="height: 100%;width: 100%;">
                             </figure>

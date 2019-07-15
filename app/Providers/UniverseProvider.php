@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class UniverseProvider extends ServiceProvider
 {
-
     /**
      * @param $text
      *
@@ -18,21 +17,16 @@ class UniverseProvider extends ServiceProvider
 
         if ($univ->isEmpty()) {
             $string = app('profanityFilter')->filter($text);
-
-            if (preg_match("/^(?:.*)[\*\*](?:.*)$/", $string)) {
+            if (preg_match("/^(?:.*)[\*\*](?:.*)$/", app('profanityFilter')->filter($text))) {
                 $string = '';
             }
-
             // Adding to the DB
-            $id_univers = DB::table('univers')->insertGetId(
+            $univ = DB::table('univers')->insertGetId(
                 ['name' => $string]
             );
-            $univ       = $id_univers;
         } else {
-            $univ = $univ->first();
-            $univ = $univ->id;
+            $univ = $univ->first()->id;
         }
-
         return $univ;
     }
 }

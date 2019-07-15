@@ -44,10 +44,10 @@ class MailResetPasswordNotification extends Notification
         $link = url(config('app.url') . route('password.reset', $this->token, false));
 
         return (new MailMessage())
-            ->subject('Changement de mot de passe - CDG')
-            ->line('Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.')
-            ->action('Changer mon mot de passe', $link)
-            ->line('A très vite sur Cuisine De Geek !');
+            ->subject(__('mails/password.change.subject') . ' - ' . config('app.name'))
+            ->line(__('mails/password.change.text'))
+            ->action(__('mails/password.change.action'), $link)
+            ->line(__('mails/mail.tag') . ' ' . config('app.name') . ' !');
     }
 
     /**

@@ -7,8 +7,10 @@
 
 {{--<link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">--}}
 
-<link href="{{ asset('css/print.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
-<link href="{{ asset('css/default.css') }}"  rel="preload" as="style" onload="this.rel='stylesheet'" media="print">
+<link href="{{ asset('css/print.css') }}"  rel="preload" as="style"
+      onload="this.rel='stylesheet'" media="print">
+<link href="{{ asset('css/default.css') }}"  rel="preload" as="style"
+      onload="this.rel='stylesheet'" media="print">
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Michroma"
       rel="stylesheet">

@@ -4,7 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
 require('./bootstrap');
 require('./dropzone');
 require('./sticky');
@@ -18,13 +17,10 @@ import VueMoment from 'vue-moment';
 import Locale from './vue-i18n-locales.generated';
 
 Vue.use(VueMoment);
-
 import VueInternationalization from 'vue-i18n';
 
 Vue.use(VueInternationalization);
-
 import InstantSearch from 'vue-instantsearch';
-
 Vue.use(InstantSearch);
 
 // Imports des composants
@@ -32,7 +28,6 @@ Vue.use(InstantSearch);
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import Password from 'vue-password-strength-meter';
-
 //import InstantSearch from 'vue-instantsearch';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
@@ -44,12 +39,8 @@ Vue.use(Affix);
 // Composants CDG
 
 import Notif from "./components/modal/NotifAlert.vue";
-
 import SignalRecipe from "./components/recipe/Signal.vue";
-
-
 import ModalView from "./components/modal/ModalView";
-import StepsAdd from "./components/recipe/steps/StepsAdd";
 
 // AUTRE
 Vue.component('switchLight', require('./components/SwitchLight.vue'));
@@ -91,7 +82,7 @@ const app = new Vue({
         'preview-image': () => import("./components/picture/Preview.vue"),
         'create-recipe': () => import("./components/recipe/Create.vue"),
         'set-picture': () => import("./components/recipe/_setters/SetPicture.vue"),
-        'stepsadd': StepsAdd,
+        'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
     },
 
     data: {

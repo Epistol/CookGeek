@@ -90,6 +90,16 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this->belongsTo(User::class, 'id_user');
     }
 
+    public function types()
+    {
+        return $this->belongsTo(TypeRecipe::class, 'type');
+    }
+
+    public function typeuniverse()
+    {
+        return $this->belongsTo(TypeRecipe::class, 'type_univers');
+    }
+
     /**
      * @return MorphToMany
      */
@@ -149,13 +159,13 @@ class Recipe extends Model implements Feedable, HasMedia
 
     /**
      * @param $element
-     * @return string|null |null
+     * @return string|null
      */
     public function getAuthorElement($element)
     {
         $userElement = User::where('id', $this->id_user)->select($element)->first();
         if ($userElement) {
-            if ($element == 'img') {
+            if ($element === 'img') {
                 return $userElement->img !== "users/default.png" && $userElement->img !== ""
                 && $userElement->img !== null ? $userElement->avatarUser : null;
             } else {
@@ -218,7 +228,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function toFeedItem()
     {
-        if ($this->commentary_author == null) {
+        if ($this->commentary_author === null) {
             $contenu = $this->title . ', Pour ' . $this->nb_guests . ' ' . $this->guest_type;
         } else {
             $contenu = $this->commentary_author;
@@ -296,8 +306,7 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public function slugTitle($uid)
     {
-        return Str::slug($uid,
-            '-');
+        return Str::slug($uid, '-');
     }
 
     /**
@@ -311,7 +320,7 @@ class Recipe extends Model implements Feedable, HasMedia
             $this->title = $this->cleanInput($request->title);
         }
         if ($request->vegan) {
-            $this->vegetarien = $request->vegan == 'on' ? true : false;
+            $this->vegetarien = $request->vegan === 'on' ? true : false;
         }
         if ($request->difficulty) {
             $this->difficulty = intval($request->difficulty);
@@ -406,7 +415,8 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    public function insertUniverse($request){
+    public function insertUniverse($request)
+    {
         $universes = Univers::where(['name' => $this->cleanInput($request->univers)])->get();
         if ($universes->isNotEmpty()) {
             foreach ($universes as $universe) {
@@ -428,13 +438,13 @@ class Recipe extends Model implements Feedable, HasMedia
     public function insertIngredients($request)
     {
         // Storing ingredients and attach to the recipe
-        foreach ($request->ingredient as $key => $ingredient) {
+        foreach ($request->ingredient as $ingredient) {
             $ingredient = Ingredient::firstOrCreate([
                 'name' => $this->cleanInput($ingredient),
                 'lang' => Lang::locale()
             ]);
             $filteredIngredients = $this->ingredients->filter(function ($value, $key) use ($ingredient) {
-                return $value->id == $ingredient->id;
+                return $value->id === $ingredient->id;
             });
             // if the ingredient already exist
             if ($filteredIngredients) {
@@ -571,7 +581,7 @@ class Recipe extends Model implements Feedable, HasMedia
     {
         $bestPicture = collect([]);
 
-        if ($valid == true) {
+        if ($valid === true) {
             $countSet = $this->medias()->wherePivot('valid', true)->count();
         } else {
             $countSet = $this->medias()->count();
@@ -591,16 +601,19 @@ class Recipe extends Model implements Feedable, HasMedia
                     $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
                 }
             }
-
-            if ($likedMedias->isNotEmpty()) {
-                // get the media who got more likes
-                // TODO check that
-                // ?maybe a little shuffle to not always get same picture
-            } else {
-                // if no like, always return first picture
+            // TODO check that
+            if ($likedMedias->isEmpty()) {
                 $bestPicture->push($this->medias()->first());
-//                return $this->getFirstMedia();
             }
+
+            /*            if ($likedMedias->isNotEmpty()) {
+                            // get the media who got more likes
+                            // ?maybe a little shuffle to not always get same picture
+                        } else {
+                            // if no like, always return first picture
+                            $bestPicture->push($this->medias()->first());
+            //                return $this->getFirstMedia();
+                        }*/
         }
 
         return $bestPicture;

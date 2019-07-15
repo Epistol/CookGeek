@@ -11,8 +11,15 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class RecipesAdmin
+ * @package App\Http\Controllers\Admin
+ */
 class RecipesAdmin extends Controller
 {
+    /**
+     * RecipesAdmin constructor.
+     */
     public function __construct()
     {
         $this->middleware('role:super-admin|admin');
@@ -33,13 +40,19 @@ class RecipesAdmin extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::orderBy('created_at', 'desc')->paginate(25);
+        $recipes = Recipe::orderBy('created_at', 'desc')
+            ->with(['universes','types', 'typeuniverse'])
+            ->paginate(25);
 
         return view('admin.recipes.index', [
             'recipes' => $recipes,
         ])->with(['controller' => $this]);
     }
 
+    /**
+     * @param $id
+     * @return Factory|View
+     */
     public function edit($id)
     {
         $recipe = Recipe::where('id', $id)->get();
@@ -49,11 +62,19 @@ class RecipesAdmin extends Controller
         ])->with(['controller' => $this]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function show($id)
     {
         return redirect()->route('recipe.show', $id);
     }
 
+    /**
+     * @param $id
+     * @return Factory|View
+     */
     public function store($id)
     {
         $recipe = Recipe::where('id', $id)->first();
@@ -62,6 +83,11 @@ class RecipesAdmin extends Controller
         ])->with(['controller' => $this]);
     }
 
+    /**
+     * @param Request $request
+     * @param Recipe $recipe
+     * @return Factory|View
+     */
     public function update(Request $request, Recipe $recipe)
     {
         foreach ($request->request as $index => $requestElement) {
@@ -77,6 +103,7 @@ class RecipesAdmin extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function validatePicture(Request $request)
     {
@@ -107,5 +134,19 @@ class RecipesAdmin extends Controller
                 return response()->json(['message' => 'Picture invalidated']);
             }
         }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Recipe $recipe
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Recipe $recipe)
+    {
+        $this->authorize('delete', $recipe);
+        $recipe->delete();
+        return redirect()->back();
     }
 }

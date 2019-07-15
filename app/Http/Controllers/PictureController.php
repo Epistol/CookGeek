@@ -38,9 +38,7 @@ class PictureController extends Controller
      */
     private function randomName()
     {
-        $imageName = str_random(10);
-
-        return $imageName;
+        return  str_random(10);
     }
 
     public function addPictureToUniverse(Request $request)
@@ -138,9 +136,7 @@ class PictureController extends Controller
         $pictures = DB::table('recipe_imgs')->where('recipe_id', '=', $recette->id)->orderBy('created_at', 'asc')
                       ->where('validated', '=', 0)->where('user_id', '=', intval($user))->paginate(5);
 
-        $return = $this->corePicture($pictures, $recette);
-
-        return $return;
+        return $this->corePicture($pictures, $recette);
     }
 
     /**
@@ -157,8 +153,6 @@ class PictureController extends Controller
         $urlWebp  = '';
         $urlThumb = '';
         $urlIndex = '';
-        $return   = collect();
-
-        return $return;
+        return collect();
     }
 }

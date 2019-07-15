@@ -29,9 +29,7 @@ class TypeController extends Controller
 
     public function alltypes()
     {
-        $all_types = DB::table('type_recipes')->get();
-
-        return $all_types;
+        return DB::table('type_recipes')->get();
     }
 
     /**

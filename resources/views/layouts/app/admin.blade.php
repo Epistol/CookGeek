@@ -35,12 +35,13 @@
 
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
     @include("layouts.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
+
+    <link href="{{ asset('css/admin.css') }}"
+          rel="preload" as="style" onload="this.rel='stylesheet'">
 </head>
 <body class="">
 @include("layouts.menuMobile")
@@ -48,7 +49,7 @@
     <div id="app">
         @include("layouts.menu")
         @include('layouts.app_element.alerts')
-        <div class="columns is-paddingless is-marginless">
+        <div class="columns is-paddingless is-marginless full-height">
             <div class="column is-2 left_admin">
                 @include("admin.elements.admin_menu")
             </div>

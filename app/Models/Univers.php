@@ -47,4 +47,16 @@ class Univers extends Model
     {
         return Univers::select('id')->where('name', 'like', '%' . $text . '%')->get();
     }
+
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getNameAttribute($value)
+    {
+        return cleanInput($value);
+    }
+
 }

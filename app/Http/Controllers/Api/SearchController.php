@@ -87,12 +87,11 @@ class SearchController extends Controller
             $univers = Univers::paginate(10);
         }
 
-        $response = collect([
+        return collect([
             'recipe' => $recipe, 'ingredient' => $ingredient, 'categunivers' => $media,
             'type_recipes' => $type_recipes, 'univers' => $univers, 'value' => strip_tags(clean($rq))
         ]);
 
-        return $response;
     }
 
     /**
@@ -123,11 +122,10 @@ class SearchController extends Controller
      */
     private function load_recipes_titre($titre)
     {
-        $recipe = Recipe::where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
+        return Recipe::where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
             ->where('validated', 1)
             ->paginate(10);
 
-        return $recipe;
     }
 
     /**

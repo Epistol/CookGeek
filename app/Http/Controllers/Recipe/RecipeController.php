@@ -23,8 +23,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Throwable;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
-use RuntimeException;
 
 /**
  * Class RecipeController
@@ -194,7 +192,16 @@ class RecipeController extends Controller
         $related = $recipe->moreLikeThis(4);
         return view(
             'recipes.edit',
-            compact('univers', 'difficulty', 'recipe', 'type', 'nom', 'related', 'stars'),
+            compact(
+                'univers',
+                'difficulty',
+                'recipe',
+                'type',
+                'nom',
+                'related',
+                'stars',
+                'countrating'
+            ),
             [
                 'types' => $types_univ,
                 'types_plat' => $types_plat,

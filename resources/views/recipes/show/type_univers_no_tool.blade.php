@@ -1,4 +1,4 @@
-@foreach($recipe->universes()->get() as $media)
+@foreach($recipe->universes as $media)
     @if($media->name== 'tv')
         <a href="{{route("media.show", lcfirst($media->name))}} ">
             <div class="icones {{strtolower($media->name)}} ">

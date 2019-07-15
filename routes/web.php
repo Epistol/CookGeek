@@ -28,7 +28,7 @@ Route::middleware(['fw-block-blacklisted'])->group(function () {
     Route::feeds();
 
     /// API
-    Route::post('/like', 'Api\LikeController@create')->name('api.like.create');
+//    Route::post('/like', 'Api\LikeController@create')->name('api.like.create');
     Route::get('/', 'PageController@accueil')->name('index');
 
     require base_path('routes/web/admin.php');

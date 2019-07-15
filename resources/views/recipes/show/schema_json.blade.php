@@ -42,7 +42,7 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
         "totalTime" : "{{$totaliso}}",
         "recipeCategory" : "{{strip_tags(clean($type->name))}}",
         "recipeIngredient": [
-        @foreach ($recipe->ingredients()->get() as $key => $ingredient)
+        @foreach ($recipe->ingredients as $key => $ingredient)
             <?php
             $qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
             $nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
