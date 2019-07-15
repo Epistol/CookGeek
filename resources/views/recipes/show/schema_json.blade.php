@@ -9,7 +9,6 @@
  */
 use Carbon\Carbon;
 
-$type = DB::table('type_recipes')->where("id", "=", $recipe->type)->first();
 $date = Carbon::parse($recipe->created_at)->format('Y-m-d');
 $preptimeiso = "PT" . $recipe->sumerise($recipe->prep_time);
 $cooktimeiso = "PT" . $recipe->sumerise($recipe->cook_time);
@@ -40,7 +39,7 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
         "prepTime" : "{{$preptimeiso}}",
         "cookTime" : "{{$cooktimeiso}}",
         "totalTime" : "{{$totaliso}}",
-        "recipeCategory" : "{{strip_tags(clean($type->name))}}",
+        "recipeCategory" : "{{$recipe->types->name}}",
         "recipeIngredient": [
         @foreach ($recipe->ingredients as $key => $ingredient)
             <?php

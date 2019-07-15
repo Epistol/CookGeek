@@ -3,7 +3,6 @@
     @foreach($recipes as $recipe)
         <?php
         $starsget = (new \App\Search)->explode_star($recipe->id);
-        $type = (new \App\TypeRecipe())::where('id', $recipe->type)->firstOrFail();
         ?>
         {{--Séparation en deux du nombre de colonne--}}
         <div class="column is-6">
@@ -19,11 +18,11 @@
                     <div class="bottom-right-aligned">
                         <div class="hovered">
                             <a class="tag" style="margin:0.5rem"
-                               href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
+                               href="{{route("type.show", lcfirst($recipe->types->name))}}">
+                                {{$recipe->types->name}}</a>
                         </div>
                     </div>
                     {{--TODO : image--}}
-
                     @include('recipes.elements.picture')
                 </div>
                 {{--Les infos--}}
@@ -43,22 +42,16 @@
                             <p>
                                 <b>@lang("recipe.ingredients") : </b>
                                 @foreach($recipe->ingredients as $index=>$ing)
-                                    <?php
-                                    $nom_in = DB::table('ingredients')->where('id', $ing->id_ingredient)->value('name');
-                                    ?>
                                     @if($loop->last)
-                                        {{str_limit($nom_in, 15, '...')}}
+                                        {{str_limit($ing->name, 15, '...')}}
                                     @else
-                                        {{str_limit($nom_in, 15, '...')}},
+                                        {{str_limit($ing->name, 15, '...')}},
                                     @endif
                                 @endforeach
                             </p>
                         </div>
                         {{--Author--}}
                         <div class="column is-three-quarters" id="author">
-                            <?php
-                            $nom = DB::table('users')->where('id', $recipe->id_user)->value('name');
-                            ?>
                             @include("recipes.index.author")<br/>
                         </div>
                         <div class="column  is-flex-center">

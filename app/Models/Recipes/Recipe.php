@@ -67,7 +67,9 @@ class Recipe extends Model implements Feedable, HasMedia
      */
     public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
     {
-        return self::validated($valid)->signaled($signal)->latest()->paginate(intval($nbPaginate));
+        return self::validated($valid)->signaled($signal)
+            ->with(['universes','types', 'user', 'typeuniverse', 'ingredients'])
+            ->latest()->paginate(intval($nbPaginate));
     }
 
     /** Possède plusieurs univers

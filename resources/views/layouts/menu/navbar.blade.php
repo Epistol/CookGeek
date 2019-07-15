@@ -52,7 +52,6 @@
             <i class="fas fa-dice-d20"></i>
             <span hidden>Recette aléatoire</span>
         </a>
-
         <div class=" search-header navbar-item bg-white">
             <form action="{{route('search.post')}}" method="POST" role="search">
                 @csrf
@@ -60,7 +59,6 @@
             </form>
         </div>
     </div>
-
     <div class="navbar-end">
         <a class="navbar-item bg-white" href="{{route('page.shop')}}">
             <div style="position:relative">

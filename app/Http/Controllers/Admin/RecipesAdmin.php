@@ -41,7 +41,7 @@ class RecipesAdmin extends Controller
     public function index()
     {
         $recipes = Recipe::orderBy('created_at', 'desc')
-            ->with(['universes','types', 'typeuniverse'])
+            ->with(['universes','types', 'user', 'typeuniverse'])
             ->paginate(25);
 
         return view('admin.recipes.index', [

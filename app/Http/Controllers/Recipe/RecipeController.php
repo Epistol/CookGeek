@@ -112,7 +112,9 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        $recipe = Recipe::where('slug', $slug)->firstOrFail();
+        $recipe = Recipe::where('slug', $slug)
+            ->with(['universes','types', 'typeuniverse'])
+            ->firstOrFail();
 
         $type = TypeRecipe::where('id', $recipe->type)->first();
         $pictureSet = $recipe->medias()->get();
