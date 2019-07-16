@@ -3,11 +3,11 @@
 namespace App\Traits\Recipe;
 
 use App\Jobs\CheckPictureStep;
+use App\RecipesSteps;
 use Illuminate\Support\Facades\Auth;
 
 trait HasSteps
 {
-
     /**
      * @param $request
      * @param null $base

@@ -50,14 +50,6 @@ class Ingredient extends Model
     }
 
     /**
-     * @return HasMany
-     */
-    public function quantities()
-    {
-        return $this->hasMany('App\RecipeIngredient');
-    }
-
-    /**
      * @param $value
      */
     public function setNameAttribute($value)

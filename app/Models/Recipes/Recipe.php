@@ -10,7 +10,10 @@ use App\Traits\HasTimes;
 use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
 
+use App\Traits\Recipe\HasIngredients;
+use App\Traits\Recipe\HasPictures;
 use App\Traits\Recipe\HasSteps;
+use App\Traits\Recipe\HasUniverses;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -38,8 +41,9 @@ use Throwable;
  */
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
-    use HasSteps;
+    use Searchable, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
+    // Recipe only
+    use HasSteps, HasIngredients, HasPictures, HasUniverses, HasTimes;
 
     /**
      * @return Collection
@@ -126,28 +130,6 @@ class Recipe extends Model implements Feedable, HasMedia
     //__________
     // INSERTS
     //__________
-
-    /**
-     * @param $request
-     * @param bool $first / Is it first picture ?
-     * @param null $base
-     * @return Media
-     */
-    public function insertPicture($request, $first = false, $base = null)
-    {
-        $picture = isset($request->resume) ? $request->resume : null;
-        if ($picture !== null) {
-            $media = self::insertPictureModel($base, $picture, false, $first);
-            // always attach media to user and recipe
-            if ($media) {
-                $this->medias()->attach([$media->id]);
-                Auth::user()->medias()->attach([$media->id]);
-                // then check if recipe is publishable, if not detach and delete
-                CheckPicture::dispatch($media, $this);
-            }
-            return $media;
-        }
-    }
 
     /**
      * @param $element
@@ -355,47 +337,6 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this;
     }
 
-    public function insertUniverse($request)
-    {
-        $universes = Univers::where(['name' => $this->cleanInput($request->univers)])->get();
-        if ($universes->isNotEmpty()) {
-            foreach ($universes as $universe) {
-                $this->universes()->attach($universe);
-            }
-        } else {
-            if ($this->cleanInput($request->univers) !== '') {
-                $universe = new Univers(['name' => $this->cleanInput($request->univers)]);
-                $this->universes()->save($universe);
-            }
-        }
-        return $this->universes();
-    }
-
-
-    /**
-     * @param $request
-     */
-    public function insertIngredients($request)
-    {
-        // Storing ingredients and attach to the recipe
-        foreach ($request->ingredient as $ingredient) {
-            $ingredient = Ingredient::firstOrCreate([
-                'name' => $this->cleanInput($ingredient),
-                'lang' => Lang::locale()
-            ]);
-            $filteredIngredients = $this->ingredients->filter(function ($value, $key) use ($ingredient) {
-                return $value->id === $ingredient->id;
-            });
-            // if the ingredient already exist
-            if ($filteredIngredients) {
-                $this->ingredients()->toggle($ingredient->id);
-            } else {
-                $this->ingredients()->detach($filteredIngredients->id);
-            }
-        }
-    }
-
-
     public function moreLikeThis($nbRecipes)
     {
         $nbWanted = intval($nbRecipes);
@@ -440,76 +381,6 @@ class Recipe extends Model implements Feedable, HasMedia
         return $related;
     }
 
-    //__________
-    // PICTURE GETTERS
-    //__________
-
-    /**
-     * @param Media|null $media
-     *
-     * @throws InvalidManipulation
-     */
-    public function registerMediaConversions(?Media $media = null)
-    {
-        $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150)
-            ->format(Manipulations::FORMAT_JPG);
-
-        $this->addMediaConversion('index')
-            ->width(300)
-            ->height(150)
-            ->format(Manipulations::FORMAT_PNG);
-
-        $this->addMediaConversion('thumbSquare')
-            ->width(250)
-            ->height(250)
-            ->format(Manipulations::FORMAT_WEBP);
-    }
-
-    public function getBestPicture($valid = false)
-    {
-        $bestPicture = collect([]);
-
-        if ($valid === true) {
-            $countSet = $this->medias()->wherePivot('valid', true)->count();
-        } else {
-            $countSet = $this->medias()->count();
-        }
-
-        if ($countSet > 0) {
-            if ($valid === true) {
-                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
-            } else {
-                $pictureSet = $this->medias()->get();
-            }
-
-            $likedMedias = collect([]);
-            foreach ($pictureSet as $media) {
-                // get the medias that got likes
-                if ($media->likes()->count() > 0) {
-                    $likedMedias->push(['media' => $media, 'count' => $media->likes()->count()]);
-                }
-            }
-            // TODO check that
-            if ($likedMedias->isEmpty()) {
-                $bestPicture->push($this->medias()->first());
-            }
-
-            /*            if ($likedMedias->isNotEmpty()) {
-                            // get the media who got more likes
-                            // ?maybe a little shuffle to not always get same picture
-                        } else {
-                            // if no like, always return first picture
-                            $bestPicture->push($this->medias()->first());
-            //                return $this->getFirstMedia();
-                        }*/
-        }
-
-        return $bestPicture;
-    }
-
-
     public function getTimeFormatAttribute()
     {
         $somme_t = $this->prep_time + $this->cook_time + $this->rest_time;
@@ -535,66 +406,6 @@ class Recipe extends Model implements Feedable, HasMedia
                 return '';
             }
         }
-    }
-
-    /**
-     * @param null $valid
-     * @param null $skip
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
-     */
-    public function getAuthorPictures($valid = null, $skip = null)
-    {
-        $picturesOfAuthor = collect([]);
-        $pictureSetCount = $this->medias()->count();
-        if ($pictureSetCount > 0) {
-            if ($valid) {
-                $pictureSet = $this->medias()->wherePivot('valid', $valid)->get();
-            } else {
-                $pictureSet = $this->medias()->get();
-            }
-            if ($skip) {
-                $pictureSet = $pictureSet->splice($skip);
-            }
-            $picturesOfAuthor = $pictureSet->filter(function ($value) {
-                // if the user still exist, otherwise we don't show his pictures
-                if ($value->users()->count() > 0) {
-                    if ($value->users()->first()->id === $this->id_user) {
-                        return $value;
-                    }
-                }
-            });
-        }
-        return $picturesOfAuthor;
-    }
-
-    /**
-     * @param null $valid
-     * @param null $skip
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
-     */
-    public function getNonAuthorPictures($valid = null, $skip = null)
-    {
-        $picturesOfAuthor = collect([]);
-        $pictureSetCount = $this->medias()->count();
-        if ($pictureSetCount > 0) {
-            if ($valid) {
-                $pictureSet = $this->medias()->wherePivot('valid', true)->get();
-            } else {
-                $pictureSet = $this->medias()->wherePivot('valid', false)->get();
-            }
-            if ($skip) {
-                $pictureSet = $pictureSet->splice($skip);
-            }
-            $picturesOfAuthor = $pictureSet->filter(function ($value) {
-                // if the user still exist, otherwise we don't show his pictures
-                if ($value->users()->count() > 0) {
-                    if ($value->users()->first()->id !== $this->id_user) {
-                        return $value;
-                    }
-                }
-            });
-        }
-        return $picturesOfAuthor;
     }
 
     /**

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasMediaCDG
 {
-
     /**
      * @return mixed
      */
@@ -20,6 +19,4 @@ trait HasMediaCDG
     {
         return $this->morphToMany(\App\Models\Media::class, 'mediable')->withPivot('valid');
     }
-
-
 }
