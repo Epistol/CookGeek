@@ -4,7 +4,6 @@
         <div class="navbar-menu mobile-only" id="navMenu">
             <div class="navbar-start" style="display: flex;">
 				<?php $typeuniv = DB::table('categunivers')->get(); ?>
-
                 @foreach($typeuniv as $type)
                     <a class="navbar-item " href="{{route("media.show", lcfirst($type->name))}}">
                         <figure class="image is-32x32">

@@ -9,6 +9,10 @@ use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 
+/**
+ * Trait HasPictures
+ * @package App\Traits\Recipe
+ */
 trait HasPictures
 {
 
@@ -72,6 +76,10 @@ trait HasPictures
         return $picturesOfAuthor;
     }
 
+    /**
+     * @param bool $valid
+     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection
+     */
     public function getBestPicture($valid = false)
     {
         $bestPicture = collect([]);

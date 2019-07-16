@@ -4,13 +4,13 @@
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                     <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/">
-                            <span property="name">Accueil</span>
+                            <i class="fas fa-home"></i>  <span property="name">@lang('common.home')</span>
                         </a>
                         <meta property="position" content="1">
                     </li>
                     <li property="itemListElement" typeof="ListItem">
                         <a property="item" typeof="WebPage" href="{{route("ingredient.index")}}">
-                            <span property="name">Ingredients</span>
+                            <span property="name">{{trans_choice('ingredients.ingredient', 2)}}</span>
                         </a>
                         <meta property="position" content="2">
                     </li>

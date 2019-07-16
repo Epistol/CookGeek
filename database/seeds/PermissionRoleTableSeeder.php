@@ -5,7 +5,6 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-
 class PermissionRoleTableSeeder extends Seeder
 {
     /**
@@ -15,37 +14,29 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
+        // Super Admin
         $superAdmin = Role::firstOrNew(['name' =>  'super-admin']);
         if (!$superAdmin->exists) {
             $superAdmin->fill([
                 'display_name' => 'super-admin',
             ])->save();
         }
-
         $permissions = Permission::all();
         $superAdmin->permissions()->sync(
             $permissions->pluck('id')->all()
         );
 
+        // User
         $user = Role::firstOrNew(['name' => 'user']);
         if (!$user->exists) {
             $user->fill([
                 'display_name' => __('voyager::seeders.roles.user'),
             ])->save();
         }
-
-        $ban = Role::firstOrNew(['name' =>  'banned']);
-        if (!$ban->exists) {
-            $ban->fill([
-                'display_name' => 'banned',
-            ])->save();
-        }
-
         $user->syncPermissions([
             'browse_users',
             'read_users',
             'edit_users',
-            'delete_users',
 
             'browse_recipes',
             'read_recipes',
@@ -55,7 +46,6 @@ class PermissionRoleTableSeeder extends Seeder
 
             'browse_universes',
             'read_universes',
-            'edit_universes',
             'add_universes',
 
             'browse_images',
@@ -68,7 +58,6 @@ class PermissionRoleTableSeeder extends Seeder
             'read_ingredients',
             'edit_ingredients',
             'add_ingredients',
-            'delete_ingredients',
 
             'browse_pages',
             'read_pages',
@@ -77,5 +66,13 @@ class PermissionRoleTableSeeder extends Seeder
             'read_posts',
 
         ]);
+        // Banned
+        $ban = Role::firstOrNew(['name' =>  'banned']);
+        if (!$ban->exists) {
+            $ban->fill([
+                'display_name' => 'banned',
+            ])->save();
+        }
+        // no role, is banned
     }
 }

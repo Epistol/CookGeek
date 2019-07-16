@@ -4,7 +4,6 @@
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
 				<?php $typeuniv = DB::table('categunivers')->get(); ?>
-
                 @foreach($typeuniv as $type)
                     <a class="navbar-item " href="{{route("media.show", lcfirst($type->name))}}">
                         <figure class="image is-32x32">
@@ -26,6 +25,12 @@
                         </a>--}}
             </div>
             <div class="navbar-end">
+                <a class="navbar-item bg-white" href="{{route('page.shop')}}">
+                    <div style="position:relative">
+                        <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+                        <span>{{__('common.goodies')}}</span>
+                    </div>
+                </a>
                 <a class="navbar-item " href="https://www.facebook.com/Cuisine2Geek/">
                     <i class="fab fa-facebook-f fa-fw"></i>
                     <span hidden>Facebook</span>
@@ -34,8 +39,6 @@
                     <i class="fab fa-twitter fa-fw"></i>
                     <span hidden>Twitter</span>
                 </a>
-
-
             </div>
         </div>
 

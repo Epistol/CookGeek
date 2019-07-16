@@ -8,6 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'recipe' => 'Recette|Recettes',
+    'random' => 'Recette aléatoire|Recettes aléatoires',
     'difficulty' => 'Difficulté',
     'time_needed' => 'Temps nécessaire',
     'time_prep' => 'Temps nécessaire',

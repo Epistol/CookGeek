@@ -10,23 +10,20 @@
             <div class="content">
                 {{--@include("recipes.index.searchbar")--}}
                 {{--@include("recipes.index.partype")--}}
-
                 @if($ingredients)
                     <section class="hero">
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
-                                    Index des ingrédients
+                                    @lang('ingredients.index-of')
+                                    {{strtolower(trans_choice('ingredients.ingredient', 2))}}
                                 </h1>
                             </div>
                         </div>
                     </section>
-
                     @include("ingredients.index.list")
                 @endif
-
             </div>
-
         </section>
     </div>
 

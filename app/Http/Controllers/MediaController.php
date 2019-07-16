@@ -2,57 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Ingredient;
-use App\Traits\HasMediaCDG;
+use App\Categunivers;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class IngredientController extends Controller
+class MediaController extends Controller
 {
-    use HasMediaCDG;
-
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // Get the ingredient matching the user lang
-        // Sort them by most used in recipes OR alphabet order
-        $ingredients = Ingredient::where('lang', config('app.locale'))->paginate(25);
-        return view('ingredients.index', compact('ingredients'));
+        $medias = Categunivers::all();
+        return view('media.index', compact('medias'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        // no need for now
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     *
-     * @return void
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $ingredient       = new Ingredient();
-        $ingredient->name = cleanInput($request->name);
-        $ingredient->save();
+        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param int $id
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -63,8 +54,7 @@ class IngredientController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -74,11 +64,11 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param \Illuminate\Http\Request $request
      * @param int $id
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -87,8 +77,7 @@ class IngredientController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {

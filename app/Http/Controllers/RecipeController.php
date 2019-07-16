@@ -20,6 +20,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Throwable;
@@ -38,30 +39,27 @@ class RecipeController extends Controller
     public function index()
     {
         $medias = Categunivers::all();
-        /* if(Auth::user()){
-             $recipes = Recipe::getLastPaginate(false, false, 12);
-         }*/
         $recipes = Recipe::getLastPaginate(true, false, 12);
 
         // On charge les données dans la vue
         return view(
             'recipes.index',
-            [
-                'medias' => $medias,
-                'recipes' => $recipes
-            ]
-        )->with(['controller' => $this]);
+            compact('medias', 'recipes')
+        );
     }
 
     /**
      * Show the form for creating a new resource
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
         if (!Auth::check()) {
             return redirect('/');
+        }
+
+        if (Gate::denies('create', Recipe::class)) {
+            return redirect(route('recipe.index'));
         }
 
         $types_univ = Categunivers::all();
@@ -85,7 +83,9 @@ class RecipeController extends Controller
      */
     public function store(StoreRecipeRequest $request)
     {
-        $this->authorize('create', Recipe::class);
+        if (Gate::denies('create', Recipe::class)) {
+            return redirect(route('recipe.index'));
+        }
 
         // Insert recipe
         $recipe = new Recipe;
@@ -108,12 +108,15 @@ class RecipeController extends Controller
      * @param $slug
      *
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($slug)
     {
+        if (Gate::denies('view', Recipe::class)) {
+            return redirect(route('recipe.index'));
+        }
+
         $recipe = Recipe::where('slug', $slug)
-            ->with(['universes','types', 'typeuniverse'])
+            ->with(['universes', 'types', 'typeuniverse'])
             ->firstOrFail();
 
         $type = TypeRecipe::where('id', $recipe->type)->first();
@@ -169,8 +172,9 @@ class RecipeController extends Controller
     public function edit($slug)
     {
         $recipe = Recipe::where('slug', $slug)->firstOrFail();
-        $this->authorize('update', $recipe);
-
+        if (Gate::denies('update', $recipe)) {
+            return redirect(route('recipe.show', $recipe->slug));
+        }
         $univers = $recipe->universes;
         $types_univ = Categunivers::all();
         $difficulty = DB::table('difficulty')->get();
@@ -221,8 +225,9 @@ class RecipeController extends Controller
      */
     public function update(StoreRecipeRequest $request, Recipe $recipe)
     {
-        $this->authorize('update', Recipe::class);
-
+        if (Gate::denies('update', Recipe::class)) {
+            return redirect(route('recipe.index'));
+        }
         // Parties image
         $this->validate($request, [
             'resume' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
@@ -252,14 +257,20 @@ class RecipeController extends Controller
      *
      * @param Recipe $recipe
      *
-     * @return bool|null
-     * @throws Exception
+     * @return bool|Exception
      */
     public function destroy(Recipe $recipe)
     {
-        $this->authorize('delete', Recipe::class);
-
-        return $recipe->delete();
+        if (Gate::denies('delete', Recipe::class)) {
+            return redirect(route('recipe.index'));
+        }
+        try {
+            if ($recipe->delete()) {
+                return true;
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     /**

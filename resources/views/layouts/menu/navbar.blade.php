@@ -21,7 +21,6 @@
                     <img src="{{asset('/img/icons/ingredients.svg')}}" style="padding-right: 0.5rem"/>
                     @lang('recipe.ingredients')
                 </a>
-
             </div>
         </div>
 
@@ -50,7 +49,7 @@
 
         <a class="navbar-item bg-white" href="{{route("recipe.random")}}">
             <i class="fas fa-dice-d20"></i>
-            <span hidden>Recette aléatoire</span>
+            <span hidden>{{trans_choice('recipe.random', 2)}}</span>
         </a>
         <div class=" search-header navbar-item bg-white">
             <form action="{{route('search.post')}}" method="POST" role="search">
@@ -60,12 +59,6 @@
         </div>
     </div>
     <div class="navbar-end">
-        <a class="navbar-item bg-white" href="{{route('page.shop')}}">
-            <div style="position:relative">
-                <span class="icon"><i class="fas fa-shopping-bag"></i></span>
-                <span>  {{__('common.goodies')}}</span>
-            </div>
-        </a>
         @guest
             <div class="navbar-item">
                 <a class="button is-primary" href="{{ route('login') }}">
@@ -75,7 +68,6 @@
                     {{__('common.login')}}
                 </a>
             </div>
-
             {{--<div class="navbar-item" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
             {{--@include("auth.modal.login")--}}
         @else
@@ -110,7 +102,7 @@
 
                     <a class="navbar-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();">
                         {{__('common.logout')}}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

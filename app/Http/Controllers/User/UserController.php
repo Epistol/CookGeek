@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use App\Recipe;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
@@ -39,8 +39,8 @@ class UserController extends Controller
     {
         Carbon::setLocale('fr');
         $user = User::select('id', 'name', 'img', 'created_at', 'updated_at')
-            ->where('name',  $id)->first();
-        $recipes = Recipe::where('id_user',  $user->id)->paginate(5);
+            ->where('name', $id)->first();
+        $recipes = Recipe::where('id_user', $user->id)->paginate(5);
 
         return view('user.show')->with('user', $user)->with('recettes', $recipes)->with(['controller' => $this]);
     }
