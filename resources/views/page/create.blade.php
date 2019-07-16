@@ -7,7 +7,7 @@
 
         <h1 class="title">Ajouter une page</h1>
 
-        <form method="POST" action="{{route('page.store')}}">
+        <form method="POST" action="{{route('admin.page.store')}}">
             @csrf
             <div class="field">
                 <label class="label">Nom de la page</label>
@@ -26,10 +26,7 @@
 
             <div class="field is-grouped">
                 <p class="control">
-                    <button class="button is-primary">Ajouter</button>
-                </p>
-                <p class="control">
-                    <button class="button is-link">Cancel</button>
+                    <button type="submit" class="button is-primary">Ajouter</button>
                 </p>
             </div>
         </form>

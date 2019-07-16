@@ -10,11 +10,13 @@ use App\Traits\HasTimes;
 use App\Traits\HasUniqueID;
 use App\Traits\HasUserInput;
 
+use App\Traits\Recipe\HasSteps;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
@@ -37,6 +39,7 @@ use Throwable;
 class Recipe extends Model implements Feedable, HasMedia
 {
     use Searchable, HasTimes, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
+    use HasSteps;
 
     /**
      * @return Collection
@@ -68,7 +71,7 @@ class Recipe extends Model implements Feedable, HasMedia
     public static function getLastPaginate($valid, $signal, $nbPaginate = 10)
     {
         return self::validated($valid)->signaled($signal)
-            ->with(['universes','types', 'user', 'typeuniverse', 'ingredients'])
+            ->with(['universes', 'types', 'user', 'typeuniverse', 'ingredients'])
             ->latest()->paginate(intval($nbPaginate));
     }
 
@@ -129,32 +132,19 @@ class Recipe extends Model implements Feedable, HasMedia
      * @param bool $first / Is it first picture ?
      * @param null $base
      * @return Media
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
      */
     public function insertPicture($request, $first = false, $base = null)
     {
         $picture = isset($request->resume) ? $request->resume : null;
         if ($picture !== null) {
-            if ($base) {
-                if ($base === true) {
-                    $media = $this->addMediaFromBase64($picture)
-                        ->withCustomProperties(['first_picture' => $first, 'checked' => false])
-                        ->withResponsiveImages()
-                        ->toMediaCollection();
-                }
-            } else {
-                $media = $this->addMedia($picture)
-                    ->withCustomProperties(['first_picture' => $first, 'checked' => false])
-                    ->withResponsiveImages()
-                    ->toMediaCollection();
-            }
-
+            $media = self::insertPictureModel($base, $picture, false, $first);
             // always attach media to user and recipe
-            $this->medias()->attach([$media->id]);
-            Auth::user()->medias()->attach([$media->id]);
-            // then check if recipe is publishable, if not detach and delete
-            CheckPicture::dispatch($media, $this);
+            if ($media) {
+                $this->medias()->attach([$media->id]);
+                Auth::user()->medias()->attach([$media->id]);
+                // then check if recipe is publishable, if not detach and delete
+                CheckPicture::dispatch($media, $this);
+            }
             return $media;
         }
     }
@@ -285,7 +275,6 @@ class Recipe extends Model implements Feedable, HasMedia
     }
 
     /**
-     * @param $newSlug
      * @param $uid
      *
      * @return string
@@ -366,57 +355,6 @@ class Recipe extends Model implements Feedable, HasMedia
         return $this;
     }
 
-    /**
-     * @param $request
-     * @param null $base
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
-     */
-    public function insertSteps($request, $base = null)
-    {
-        // Storing steps and attach to the recipe
-        foreach ($request->step as $key => $step) {
-            $newStep = RecipesSteps::firstOrCreate(
-                [
-                    'instruction' => $this->cleanInput($step)
-                ]
-            );
-            $this->steps()->attach(
-                $newStep,
-                ['step_number' => $key + 1]
-            );
-
-            /*foreach ($request->step->picture as $picture) {
-                if ($picture !== null) {
-                    if ($base) {
-                        if ($base === true) {
-                            $media = $this->addMediaFromBase64($picture)
-                                ->withCustomProperties(['checked' => false])
-                                ->withResponsiveImages()
-                                ->toMediaCollection();
-                        }
-                    } else {
-                        $media = $this->addMedia($picture)
-                            ->withCustomProperties(['checked' => false])
-                            ->withResponsiveImages()
-                            ->toMediaCollection();
-                    }
-
-                    // always attach media to user and recipe
-                    // todo : if first : order 0; else : increment
-                    $newStep->medias()->attach([$media->id]);
-                    Auth::user()->medias()->attach([$media->id]);
-                    // then check if recipe is publishable, if not detach and delete
-                    CheckPictureStep::dispatch($media, $step);
-                }
-            }*/
-
-            /*$path = $step->photo->store('public/uploads');
-            $picture = $this->addMedia($picture)->toMediaCollection('step');
-            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');*/
-        }
-    }
-
     public function insertUniverse($request)
     {
         $universes = Univers::where(['name' => $this->cleanInput($request->univers)])->get();
@@ -457,56 +395,6 @@ class Recipe extends Model implements Feedable, HasMedia
         }
     }
 
-    /**
-     * @param $request
-     * @param null $base
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data
-     */
-    public function updateSteps($request, $base = null)
-    {
-        // Storing steps and attach to the recipe
-        foreach ($request->step as $key => $step) {
-            $newStep = RecipesSteps::firstOrCreate(
-                [
-                    'instruction' => $this->cleanInput($step)
-                ]
-            );
-            $this->steps()->attach(
-                $newStep,
-                ['step_number' => $key + 1]
-            );
-
-            foreach ($request->step->picture as $picture) {
-                if ($picture !== null) {
-                    if ($base) {
-                        if ($base === true) {
-                            $media = $this->addMediaFromBase64($picture)
-                                ->withCustomProperties(['checked' => false])
-                                ->withResponsiveImages()
-                                ->toMediaCollection();
-                        }
-                    } else {
-                        $media = $this->addMedia($picture)
-                            ->withCustomProperties(['checked' => false])
-                            ->withResponsiveImages()
-                            ->toMediaCollection();
-                    }
-
-                    // always attach media to user and recipe
-                    // todo : if first : order 0; else : increment
-                    $newStep->medias()->attach([$media->id]);
-                    Auth::user()->medias()->attach([$media->id]);
-                    // then check if recipe is publishable, if not detach and delete
-                    CheckPictureStep::dispatch($media, $step);
-                }
-            }
-
-            /*$path = $step->photo->store('public/uploads');
-            $picture = $this->addMedia($picture)->toMediaCollection('step');
-            PictureThumbnail::dispatch($newStep, $path, 'thumbnail');*/
-        }
-    }
 
     public function moreLikeThis($nbRecipes)
     {
@@ -707,5 +595,40 @@ class Recipe extends Model implements Feedable, HasMedia
             });
         }
         return $picturesOfAuthor;
+    }
+
+    /**
+     * @param $base
+     * @param $picture
+     * @param $checked
+     * @param $first
+     * @return Media|null
+     */
+    private function insertPictureModel($base, $picture, $checked, $first)
+    {
+        $media = null;
+        if ($base) {
+            if ($base === true) {
+                try {
+                    $media = $this->addMediaFromBase64($picture)
+                        ->withCustomProperties(['first_picture' => $first, 'checked' => $checked])
+                        ->withResponsiveImages()
+                        ->toMediaCollection();
+                } catch (\Exception $e) {
+                    Log::error($e);
+                }
+
+            }
+        } else {
+            try {
+                $media = $this->addMedia($picture)
+                    ->withCustomProperties(['first_picture' => $first, 'checked' => $checked])
+                    ->withResponsiveImages()
+                    ->toMediaCollection();
+            } catch (\Exception $e) {
+                Log::error($e);
+            }
+        }
+        return $media;
     }
 }

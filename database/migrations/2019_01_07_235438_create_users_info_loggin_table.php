@@ -13,16 +13,7 @@ class CreateUsersInfoLogginTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_info_loggin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('ip_address');
-            $table->integer('account_state');
-            $table->integer('login')->nullable();
-            $table->integer('logout')->nullable();
-            $table->integer('register')->nullable();
-            $table->timestamps();
-        });
+        Schema::dropIfExists('users_info_loggin');
     }
 
     /**

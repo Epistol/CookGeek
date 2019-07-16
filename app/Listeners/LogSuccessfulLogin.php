@@ -40,16 +40,6 @@ class LogSuccessfulLogin
             $state = 0;
         }
 
-        DB::table('users_info_loggin')
-          ->insertGetId([
-              'user_id'       => $event->user->id,
-              'ip_address'    => $client_ip,
-              'account_state' => $state,
-              'login'         => 1,
-              'created_at'    => now(),
-              'updated_at'    => now(),
-          ]);
-
         if ($state == 2) {
             Firewall::blacklist($client_ip, true); /// true = force in case IP is whitelisted
         }

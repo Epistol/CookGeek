@@ -18,8 +18,10 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        $ingredients = Ingredient::all();
-
+        // Get the ingredient matching the user lang
+        // Sort them by most used in recipes OR alphabet order
+        $ingredients = Ingredient::where('lang', config('app.locale'))
+        ->paginate(25);
         return response()->json($ingredients);
     }
 

@@ -9,9 +9,8 @@
             <th><abbr title="Position">Id</abbr></th>
             <th>Nom</th>
             <th><abbr title="Won">Date</abbr></th>
-            <th>Editer</th>
-            <th>Supprimer</th>
             <th>Auteur</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -20,17 +19,25 @@
                 <td>{{ $value->id }}</td>
                 <td><a href="{{route('univers.show', $value->name)}}">{{ strip_tags(clean($value->name)) }}</a></td>
                 <td>{{ Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s ') }} </td>
-                <td><a class="btn btn-small btn-info"
-                       href="{{ route('admin.universe.edit',  $value->id ) }}">Editer</a>
+                <td> {{ $value->first_creator }}
                 </td>
-                <td>
-                    <form method="POST" action="{{route('admin.universe.destroy' , $value->id)}}">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <div class="caution">
-                            <button class="button is-danger" @click="showModal = true">Supprimer</button>
-                        </div>
-                    </form>
+                <td class="is-flex">
+                    @can('delete', $value)
+                        <form action="{{route('admin.universe.destroy', $value->id)}}"
+                              accept-charset="UTF-8"
+                              method="POST"
+                              onsubmit="return confirm('You sure ?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                    class="button is-danger
+                                                       has-icon-text btn-left-align full-width">
+                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    @endcan
+                    <a href="{{route("admin.universe.edit", strip_tags(clean($value->id)))}}"
+                       class="button is-info"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         @endforeach

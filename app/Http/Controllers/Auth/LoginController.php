@@ -82,7 +82,8 @@ class LoginController extends Controller
         } catch (Exception $e) {
             return redirect()->route('login');
         }
-        $existingUser = User::where('email', $user->getEmail())->where('provider_name', $driver)->first();
+        $existingUser = User::where('email', $user->getEmail())
+            ->where('provider_name', $driver)->first();
         if ($existingUser) {
             auth()->login($existingUser, true);
 
@@ -125,7 +126,8 @@ class LoginController extends Controller
             $existingUserOther = User::where('email', $user->getEmail())->first();
             if ($existingUserOther) {
                 // An account already exist with the email given
-                return redirect(route('login'))->with('status', __('account.already-exit'));
+                return redirect(route('login'))
+                    ->with('status', __('account.already-exit'));
             } else {
                 if ($driver == 'twitter') {
                     $avatar = $user->avatar_original;
@@ -140,6 +142,7 @@ class LoginController extends Controller
                 $newUser->pseudo = $user->getNickname();
                 $newUser->email_verified_at = now();
                 $newUser->img = $avatar;
+                $newUser->lang = config('app.locale');
                 $newUser->save();
                 // TODO : if role exist
                 $newUser->assignRole('user');

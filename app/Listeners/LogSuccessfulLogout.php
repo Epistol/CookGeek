@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LogSuccessfulLogout
 {
@@ -28,14 +29,8 @@ class LogSuccessfulLogout
     {
         $ip = geoip()->getClientIP();
 
-        DB::table('users_info_loggin')
-          ->insertGetId([
-              'user_id'       => $event->user->id,
-              'ip_address'    => $ip,
-              'account_state' => 0,
-              'logout'        => 1,
-              'created_at'    => now(),
-              'updated_at'    => now(),
-          ]);
+        if ($event->user != null) {
+            Log::notice('IP ' . $ip . '  logged in ' . $event->user->id . ' on ' . now());
+        }
     }
 }

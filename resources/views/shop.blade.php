@@ -14,12 +14,6 @@
         };
     </script>
 
-    <script type="text/javascript"
-            src="https://shop.spreadshirt.fr/shopfiles/shopclient/shopclient.nocache.js">
-    </script>
-
-
-
-
+    <script type="text/javascript" src="https://shop.spreadshirt.net/js/shopclient.nocache.js"></script>
 
 @endsection

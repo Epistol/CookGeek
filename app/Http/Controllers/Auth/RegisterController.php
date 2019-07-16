@@ -61,6 +61,7 @@ class RegisterController extends Controller
             'name' => $data['pseudo'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'lang' => config('app.locale')
         ]);
 
         $user->assignRole('user');

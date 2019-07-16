@@ -4,7 +4,6 @@
 
     <div class="container">
         <section class="section blockcontent is-paddingless ">
-
             @include("recipes.index.bread")
 
             <div class="content">
@@ -24,15 +23,9 @@
                             </div>
                         </div>
                     </section>
-
                     @include("univers.index.index_list")
                 @endif
-
             </div>
-
         </section>
     </div>
-
-
-
 @endsection
