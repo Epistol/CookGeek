@@ -49,6 +49,17 @@ class Ingredient extends Model
         return $this->morphedByMany('App\Recipe', 'ingredientable');
     }
 
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getNameAttribute($value)
+    {
+        return cleanInput($value);
+    }
+
     /**
      * @param $value
      */
