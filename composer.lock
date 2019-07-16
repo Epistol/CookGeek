@@ -252,16 +252,16 @@
         },
         {
             "name": "astrotomic/laravel-translatable",
-            "version": "v11.1.1",
+            "version": "v11.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Astrotomic/laravel-translatable.git",
-                "reference": "e64ad8548191847d4247ea7d06ab649e6949e7ae"
+                "reference": "a048bf4ff191818230f22ae3bbc5e5c58c02f44d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Astrotomic/laravel-translatable/zipball/e64ad8548191847d4247ea7d06ab649e6949e7ae",
-                "reference": "e64ad8548191847d4247ea7d06ab649e6949e7ae",
+                "url": "https://api.github.com/repos/Astrotomic/laravel-translatable/zipball/a048bf4ff191818230f22ae3bbc5e5c58c02f44d",
+                "reference": "a048bf4ff191818230f22ae3bbc5e5c58c02f44d",
                 "shasum": ""
             },
             "require": {
@@ -311,7 +311,7 @@
                 "laravel",
                 "translation"
             ],
-            "time": "2019-06-24T10:47:39+00:00"
+            "time": "2019-07-16T09:52:39+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -6305,16 +6305,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.6.4",
+            "version": "7.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "13904ca57d8c8a530ec6e35c40072557df595317"
+                "reference": "981673429e1039186735392d126e6d846bbf9da6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/13904ca57d8c8a530ec6e35c40072557df595317",
-                "reference": "13904ca57d8c8a530ec6e35c40072557df595317",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/981673429e1039186735392d126e6d846bbf9da6",
+                "reference": "981673429e1039186735392d126e6d846bbf9da6",
                 "shasum": ""
             },
             "require": {
@@ -6385,7 +6385,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2019-07-15T08:01:10+00:00"
+            "time": "2019-07-16T08:06:23+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -11922,7 +11922,7 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v6.0.1",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",

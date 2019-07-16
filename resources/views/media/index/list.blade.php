@@ -1,6 +1,5 @@
 <section class=" bordered-cdg">
     <div class="columns is-multiline">
-
         @foreach($medias as $index=>$media)
             <div class="column is-2">
                 <a class="" style="margin-left: 1rem"
@@ -12,7 +11,6 @@ border-radius: 20px;">
                     </figure>
                 </a>
             </div>
-
         @endforeach
     </div>
 </section>

@@ -27,7 +27,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $recipes  = Recipe::where('validated', 0)->paginate(25);
+        $recipes = Recipe::where('validated', 0)->paginate(25);
         // Retrieve posts with at least one comment containing words like foo%...
         $recipePictures = Recipe::whereHas('medias', function ($query) {
             $query->where('valid', 0);

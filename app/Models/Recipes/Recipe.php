@@ -41,9 +41,9 @@ use Throwable;
  */
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG;
+    use Searchable, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG
+    ,HasSteps, HasIngredients, HasPictures, HasUniverses, HasTimes;
     // Recipe only
-    use HasSteps, HasIngredients, HasPictures, HasUniverses, HasTimes;
 
     /**
      * @return Collection
@@ -51,6 +51,28 @@ class Recipe extends Model implements Feedable, HasMedia
     public static function getAllFeedItems()
     {
         return self::all();
+    }
+
+    /**
+     * @param Media|null $media
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(?Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(150)
+            ->height(150)
+            ->format(Manipulations::FORMAT_JPG);
+
+        $this->addMediaConversion('index')
+            ->width(300)
+            ->height(150)
+            ->format(Manipulations::FORMAT_PNG);
+
+        $this->addMediaConversion('thumbSquare')
+            ->width(250)
+            ->height(250)
+            ->format(Manipulations::FORMAT_WEBP);
     }
 
     /**

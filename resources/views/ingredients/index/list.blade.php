@@ -4,4 +4,5 @@
             <li><a href="{{route('ingredient.show', $ingredient->name )}}"> {{$ingredient->name}}</a></li>
         @endforeach
     </ul>
+    {{ $ingredients->links() }}
 </section>

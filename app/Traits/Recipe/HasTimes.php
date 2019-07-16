@@ -185,6 +185,4 @@ trait HasTimes
             return $somme_m . "M";
         }
     }
-
-
 }

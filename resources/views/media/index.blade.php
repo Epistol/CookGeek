@@ -25,8 +25,6 @@
                             @include("media.index.list")
                         </div>
                     </div>
-
-
             </section>
         </div>
     </div>

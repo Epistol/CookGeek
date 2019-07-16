@@ -122,28 +122,7 @@ trait HasPictures
         return $bestPicture;
     }
 
-    /**
-     * @param Media|null $media
-     *
-     * @throws InvalidManipulation
-     */
-    public function registerMediaConversions(?Media $media = null)
-    {
-        $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150)
-            ->format(Manipulations::FORMAT_JPG);
 
-        $this->addMediaConversion('index')
-            ->width(300)
-            ->height(150)
-            ->format(Manipulations::FORMAT_PNG);
-
-        $this->addMediaConversion('thumbSquare')
-            ->width(250)
-            ->height(250)
-            ->format(Manipulations::FORMAT_WEBP);
-    }
 
     /**
      * @param $request

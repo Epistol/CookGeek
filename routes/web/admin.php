@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('user', 'Admin\GestionUtil', ['as' => 'admin']);
         Route::resource('universe', 'Admin\UniverseController', ['as' => 'admin']);
         Route::resource('recipe', 'Admin\RecipesAdmin', ['as' => 'admin']);
+        Route::resource('ingredient', 'Admin\IngredientController', ['as' => 'admin']);
+        Route::post('ingredient/deletedup', 'Admin\IngredientController@deleteDuplicates')
+            ->name('admin.ingredient.deletedup');
         Route::resource('page', 'PageController', ['as' => 'admin']);
         // Ingredients
         Route::get('ingredients', 'Admin\IngredientController@index');

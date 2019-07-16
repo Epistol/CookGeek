@@ -5,16 +5,32 @@
     <ul class="menu-list">
         <li>
             <a href="{{route("admin.page.index")}}"
-                    {{ Route::currentRouteNamed('page.*') ? ' class=is-active' : null  }}>
-                <i class="far fa-file-alt"></i> Pages
+                    {{ Route::currentRouteNamed('*.page.*') ? ' class=is-active' : null  }}>
+                <span class="icon ">
+                    <i class="far fa-file-alt"></i>
+                </span> Pages
             </a>
             <a href="{{route("admin.recipe.index")}}"
-                    {{ Route::currentRouteNamed('voyager.users.*') ? ' class=is-active' : null  }} >
-                <i class="fas fa-hamburger"></i>    Recipes
+                    {{ Route::currentRouteNamed('*.recipe.*') ? ' class=is-active' : null  }} >
+                 <span class="icon ">
+                  <i class="fas fa-hamburger"></i>
+                </span>
+                Recipes
+            </a>
+            <a href="{{route("admin.ingredient.index")}}"
+                    {{ Route::currentRouteNamed('*.ingredient.*') ? ' class=is-active' : null  }} >
+                <span class="icon ">
+                 <i class="fas fa-apple-alt"></i>
+                </span>
+
+                Ingrédients
             </a>
             <a href="{{route("admin.universe.index")}}"
-                    {{ Route::currentRouteNamed('admin.universe.*') ? ' class=is-active' : null  }} >
-                <i class="fas fa-globe-europe"></i> Univers
+                    {{ Route::currentRouteNamed('*.universe.*') ? ' class=is-active' : null  }} >
+                <span class="icon ">
+               <i class="fas fa-globe-europe"></i>
+                </span>
+                Univers
             </a>
         </li>
     </ul>
@@ -28,7 +44,7 @@
         <li>
             <a href="{{route("admin.ban.index")}}"
                     {{ Route::currentRouteNamed('admin.ban.*') ? ' class=is-active' : null  }}>
-                <i class="far fa-times-circle"></i>  Ban
+                <i class="far fa-times-circle"></i> Ban
             </a>
         </li>
     </ul>
