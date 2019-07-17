@@ -16,43 +16,43 @@ if (workbox) {
   },
   {
     "url": "10.js",
-    "revision": "7acbb1113ebd894012fe4cee348840a9"
+    "revision": "6c9f256da0705e6e32d024cbe9125660"
   },
   {
     "url": "11.js",
-    "revision": "bb3a75246aebb81b5f3947a6c6ca61d6"
+    "revision": "d2cef5f822a4b11bf9ad3765f145070a"
   },
   {
     "url": "12.js",
-    "revision": "31dfd44b48bed137fff089cdb27c2b7e"
+    "revision": "e071e4de40cefe7387b592edfb8a2349"
   },
   {
     "url": "13.js",
-    "revision": "8b737131c9f0233cc7388ea4b79ac4c3"
+    "revision": "fc64a7f7208d948ecf5e92fc69fe2562"
   },
   {
     "url": "14.js",
-    "revision": "56fa3ce1a5653ac03f4ae891802ef4b3"
+    "revision": "f0e39809a6c56f4d759ea272e9533c35"
   },
   {
     "url": "15.js",
-    "revision": "23ae9ba4f70342b1d216114d35f41118"
+    "revision": "e0a3d153d92cac63a6290201e81b6cef"
   },
   {
     "url": "16.js",
-    "revision": "1ce257b474de4ef1724c4c554bcbbe9d"
+    "revision": "4447587c84f49552c0ff9f2f17fb23d0"
   },
   {
     "url": "17.js",
-    "revision": "f551e92c05faea7e53ef50071ace1168"
+    "revision": "ec8594d05bc27497dfa68cf2e9c6562b"
   },
   {
     "url": "18.js",
-    "revision": "c3d3727fe997be1f2f318f58ecddb4c6"
+    "revision": "7fd6c86da7ef8aec608ef302b085c20c"
   },
   {
     "url": "19.js",
-    "revision": "56e5c019c7b5ef7e12fa384dbfc3b982"
+    "revision": "380ce49927b3a23d0eb5bd87a72430b8"
   },
   {
     "url": "2.js",
@@ -60,27 +60,27 @@ if (workbox) {
   },
   {
     "url": "20.js",
-    "revision": "5645ad62ca8d90401460d9cca7acad15"
+    "revision": "cf77e36b4bfeec17e11a72f0f2248e5e"
   },
   {
     "url": "21.js",
-    "revision": "31d71d6bd9325fdf18d3270bb20f14e5"
+    "revision": "72d1d42c91ec53d64f6927adf6538849"
   },
   {
     "url": "22.js",
-    "revision": "8298ad6475b25087d820624d92bedb45"
+    "revision": "702258e71b18db8e1800f1320593f028"
   },
   {
     "url": "23.js",
-    "revision": "293246945fb7a36873d45c3d8f657c75"
+    "revision": "caf0b86f8496732a0616d927eb4b5d1e"
   },
   {
     "url": "24.js",
-    "revision": "1bdbaef285e79f18e658cc0a41e01ffc"
+    "revision": "1687ae59ad0bd8e6aac10bb6a5bd9661"
   },
   {
     "url": "25.js",
-    "revision": "326629ba80cf035c7a9fdf11b5e2bad4"
+    "revision": "ac6568a6e79eaca24209c9cebe9f7eac"
   },
   {
     "url": "26.js",
@@ -92,27 +92,27 @@ if (workbox) {
   },
   {
     "url": "4.js",
-    "revision": "0b8e47cf02ba1ebc7729dcd5d0d5a6cd"
+    "revision": "47ce98f0320dc15e1db2c5ea22bb9d40"
   },
   {
     "url": "5.js",
-    "revision": "e26aaaae2707427cb65d1b07a459cce3"
+    "revision": "dbf9483e10359bcf43c1f2bcdcabfb9c"
   },
   {
     "url": "6.js",
-    "revision": "f5ec3982094db71f6ead79c4a1cd1495"
+    "revision": "a6e643bec2d24a597d3c166c7263e851"
   },
   {
     "url": "7.js",
-    "revision": "4a8c2befc1c3ca13337597b61a30bae6"
+    "revision": "346c7bae7974773878b5eecdb146ed0f"
   },
   {
     "url": "8.js",
-    "revision": "cda1ae4b10d9250cdbbf08789406baae"
+    "revision": "67876ede6a3b59287ecc1b7e1a826605"
   },
   {
     "url": "9.js",
-    "revision": "94aae1550f6a9df3f56b03f9b2131fd9"
+    "revision": "7630b61513ac3f7946e2b5f65265518e"
   },
   {
     "url": "android-chrome-192x192.png",
@@ -132,11 +132,11 @@ if (workbox) {
   },
   {
     "url": "css/admin.css",
-    "revision": "661e186e8d158c0c88f4039be345411b"
+    "revision": "97c2088ed2af68137356f62c01ce096c"
   },
   {
     "url": "css/app.css",
-    "revision": "9626873f607e80df5f72bd5d578088aa"
+    "revision": "41874abe87891fe9d4634d50f45c23da"
   },
   {
     "url": "css/default.css",
@@ -156,7 +156,7 @@ if (workbox) {
   },
   {
     "url": "css/print.css",
-    "revision": "a77f4014244c4b138dc2a19d9d0534f8"
+    "revision": "61baf34bdfff5eb605105a506554c00b"
   },
   {
     "url": "favicon (1).ico",
@@ -1027,10 +1027,6 @@ if (workbox) {
     "revision": "8654cb1bdbc9370e79ccdda1d8d194ce"
   },
   {
-    "url": "js/app.js",
-    "revision": "f7ea15aa0a3da8c1a1eb772fc86322e1"
-  },
-  {
     "url": "js/bulma.js",
     "revision": "84fc68fea62cc695dbda39646fbb4971"
   },
@@ -1052,7 +1048,7 @@ if (workbox) {
   },
   {
     "url": "js/load_content.js",
-    "revision": "9342e3ce795cadfecf48ab73cf84f49b"
+    "revision": "7c546f173a4f462a3c3e34d008fe208e"
   },
   {
     "url": "js/modals.js",
@@ -1064,11 +1060,7 @@ if (workbox) {
   },
   {
     "url": "js/old_app.js",
-    "revision": "6ebf790fb2b50e6cf3a88c3273f11b12"
-  },
-  {
-    "url": "js/recipeEdit.js",
-    "revision": "d574473cfc12a8da65893df905a48712"
+    "revision": "a96f39dc69c4123ceb09bf4f44def2ee"
   },
   {
     "url": "js/tarteaucitron/advertising.js",
@@ -1695,500 +1687,196 @@ if (workbox) {
     "revision": "994dc9bdbd4bf3fcb1d0aa46227422be"
   },
   {
-    "url": "storage/10/0-400x400.jpg",
-    "revision": "6f23317ed4f05f931a01a820a36a9d4e"
+    "url": "storage/1/119-400x400.jpg",
+    "revision": "339f2677b789f16f150b2d305e9f92bb"
   },
   {
-    "url": "storage/10/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/1/180-400x400.jpg",
+    "revision": "9203715313b2efcb060e7bd2583c7c0f"
   },
   {
-    "url": "storage/10/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/1/conversions/119-400x400-index.png",
+    "revision": "66c566658e28a8ea02e3f2a020959160"
   },
   {
-    "url": "storage/10/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/1/conversions/119-400x400-thumb.jpg",
+    "revision": "822075e8b335d613269bb0d88ffb3cc4"
   },
   {
-    "url": "storage/10/responsive-images/0-400x400___medialibrary_original_334_334.jpg",
-    "revision": "ef1dfad9c3d5b77ca070d70627e49581"
+    "url": "storage/1/responsive-images/119-400x400___medialibrary_original_400_400.jpg",
+    "revision": "45e6a9c124704b430b49943fc0420ea6"
   },
   {
-    "url": "storage/10/responsive-images/0-400x400___medialibrary_original_400_400.jpg",
-    "revision": "6d64070fe540794360b78102503be57e"
+    "url": "storage/2/658-400x400.jpg",
+    "revision": "35b2ea06a7b130b5b9714dfe178002a1"
   },
   {
-    "url": "storage/10/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/2/conversions/tv-index.png",
+    "revision": "e2d50f94696cbc75b33ea102e18d2bf0"
   },
   {
-    "url": "storage/11/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/2/conversions/tv-thumb.jpg",
+    "revision": "316fa093326d5e4c9c869bf7fba5ffc3"
   },
   {
-    "url": "storage/11/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_1124_632.png",
+    "revision": "c5179f97787258527c8987b8ee5e772d"
   },
   {
-    "url": "storage/11/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_1344_756.png",
+    "revision": "0c254abe388f265b4f0e2364ec2d5c9b"
   },
   {
-    "url": "storage/11/conversions/medialibraryeBxuIb-index.png",
-    "revision": "43a09c302d4b59cf34207198b19c6f89"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_1606_903.png",
+    "revision": "e27b800116230f76fdaa2fa466e2ab1f"
   },
   {
-    "url": "storage/11/conversions/medialibraryeBxuIb-thumb.jpg",
-    "revision": "676c76a656943cfc567e68bff4983391"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_1920_1080.png",
+    "revision": "94fa4f8697b00c8637fdb84641ef3a5d"
   },
   {
-    "url": "storage/11/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_225_126.png",
+    "revision": "a6214e5dc5cb65c9e01371369e9f3f77"
   },
   {
-    "url": "storage/12/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_269_151.png",
+    "revision": "ef5a157c140b7aeb8a4dd086fa2580fc"
   },
   {
-    "url": "storage/12/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_322_181.png",
+    "revision": "eac070e9405e2c36338b6c222b2508bb"
   },
   {
-    "url": "storage/12/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_385_216.png",
+    "revision": "c41a6f76cb6740cae1aab4bb1a37d6af"
   },
   {
-    "url": "storage/12/conversions/medialibraryacdBtB-index.png",
-    "revision": "dc0473307752a7e75f13343af066c591"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_460_258.png",
+    "revision": "fef87175ffdfae983685a41b37bcab71"
   },
   {
-    "url": "storage/12/conversions/medialibraryacdBtB-thumb.jpg",
-    "revision": "48c869d32a2c01548ab6c4832917fde7"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_550_309.png",
+    "revision": "60805e0a1fd837a2394136a09f056c23"
   },
   {
-    "url": "storage/12/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_658_370.png",
+    "revision": "fd78e89eb7fc5edd2c0a6d65724bfbc5"
   },
   {
-    "url": "storage/13/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_787_442.png",
+    "revision": "092aa07686d9d93e9723259aa083f032"
   },
   {
-    "url": "storage/13/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/2/responsive-images/tv___medialibrary_original_940_528.png",
+    "revision": "d457286866bc2a4bc1a8bbbf2e7f4f72"
   },
   {
-    "url": "storage/13/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/2/tv.png",
+    "revision": "f51b5b4eedc029cdd2465dae1c4b1a88"
   },
   {
-    "url": "storage/13/conversions/medialibraryzN9xVg-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/3/228-400x400.jpg",
+    "revision": "64478ec575e606e8b6fe8edd1ebd8770"
   },
   {
-    "url": "storage/13/conversions/medialibraryzN9xVg-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/3/conversions/228-400x400-index.png",
+    "revision": "95a968c790c499522b42580399601508"
   },
   {
-    "url": "storage/13/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/3/conversions/228-400x400-thumb.jpg",
+    "revision": "c02f9121a611bb5d3404235366c090b1"
   },
   {
-    "url": "storage/14/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/3/conversions/manga-index.png",
+    "revision": "19e6a6184177ca7bd5770a52870e2240"
   },
   {
-    "url": "storage/14/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/3/conversions/manga-thumb.jpg",
+    "revision": "620345b8b62bc3ed8af66244ec1f5600"
   },
   {
-    "url": "storage/14/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/3/manga.png",
+    "revision": "22d2cf5f1f9137703b3ce5b7b918a274"
   },
   {
-    "url": "storage/14/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/3/responsive-images/228-400x400___index_104_104.jpg",
+    "revision": "ce8cce9e93ac4e515d14e4bfc85dd7a1"
   },
   {
-    "url": "storage/15/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/3/responsive-images/228-400x400___index_125_125.jpg",
+    "revision": "64a5aa42f88c2d961efac2e73a3916fb"
   },
   {
-    "url": "storage/15/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/3/responsive-images/228-400x400___index_150_150.jpg",
+    "revision": "c02f9121a611bb5d3404235366c090b1"
   },
   {
-    "url": "storage/15/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_1124_632.png",
+    "revision": "044439f45c66397d1ca1ae84c2f552f3"
   },
   {
-    "url": "storage/15/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_1344_756.png",
+    "revision": "fcc0ef9973174e9e1d861b634e7c6f7b"
   },
   {
-    "url": "storage/16/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_1606_903.png",
+    "revision": "854f6bbb433f1a9512d29400af9d82de"
   },
   {
-    "url": "storage/16/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_1920_1080.png",
+    "revision": "bf6c39f8cda03ffe94191776fd754f46"
   },
   {
-    "url": "storage/16/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_322_181.png",
+    "revision": "20aa41917e7dd53c789f3f0aaee2576d"
   },
   {
-    "url": "storage/16/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_385_216.png",
+    "revision": "d49b203bbe864ad6febd0f8db0cf74a5"
   },
   {
-    "url": "storage/17/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_460_258.png",
+    "revision": "f940df894ed62c548e228b79c7e33d42"
   },
   {
-    "url": "storage/17/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_550_309.png",
+    "revision": "b45e93ae2dca80e489ac8dba31fd7bbc"
   },
   {
-    "url": "storage/17/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_658_370.png",
+    "revision": "9614f4921d31f2928bbb73c57f1ff59c"
   },
   {
-    "url": "storage/17/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_787_442.png",
+    "revision": "e865b1d1230cc311377a8ec3d99a1645"
   },
   {
-    "url": "storage/18/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
+    "url": "storage/3/responsive-images/manga___medialibrary_original_940_528.png",
+    "revision": "04889a9da5f2be28f0a0452a7143a7c2"
   },
   {
-    "url": "storage/18/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
+    "url": "storage/4/180-400x400.jpg",
+    "revision": "9203715313b2efcb060e7bd2583c7c0f"
   },
   {
-    "url": "storage/18/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
+    "url": "storage/4/conversions/180-400x400-index.png",
+    "revision": "fcec74225bb3a910973c50f62641cea7"
   },
   {
-    "url": "storage/18/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
+    "url": "storage/4/conversions/180-400x400-thumb.jpg",
+    "revision": "731d85493f49a32a4edc06736e9d65d4"
   },
   {
-    "url": "storage/19/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+    "url": "storage/4/responsive-images/180-400x400___medialibrary_original_280_280.jpg",
+    "revision": "59516147ba73bd93e736ff5ca3ee8774"
   },
   {
-    "url": "storage/19/conversions/1040-400x400-index.png",
-    "revision": "dc0473307752a7e75f13343af066c591"
+    "url": "storage/4/responsive-images/180-400x400___medialibrary_original_334_334.jpg",
+    "revision": "b6d2b6434ddd6739faae1904d5205614"
   },
   {
-    "url": "storage/19/conversions/1040-400x400-thumb.jpg",
-    "revision": "48c869d32a2c01548ab6c4832917fde7"
-  },
-  {
-    "url": "storage/19/responsive-images/1040-400x400___index_125_125.jpg",
-    "revision": "50e1ea7188d99c1e9f7f1e084468db49"
-  },
-  {
-    "url": "storage/19/responsive-images/1040-400x400___index_150_150.jpg",
-    "revision": "03ae010cdeab59cb38f4049d0563bd3d"
-  },
-  {
-    "url": "storage/2/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/2/5ca8d2cf4509d8e5e03eb07f936b230b.jpg",
-    "revision": "7e5b94357577fc797ff130ea5de90759"
-  },
-  {
-    "url": "storage/2/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/2/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/2/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/2/conversions/5ca8d2cf4509d8e5e03eb07f936b230b-index.png",
-    "revision": "7f9c3aeb07692c627f5c2d131d1e960c"
-  },
-  {
-    "url": "storage/2/conversions/5ca8d2cf4509d8e5e03eb07f936b230b-thumb.jpg",
-    "revision": "e2a9258b6ace4e32c8c80e05ed639ad5"
-  },
-  {
-    "url": "storage/2/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/2/responsive-images/5ca8d2cf4509d8e5e03eb07f936b230b___medialibrary_original_284_188.jpg",
-    "revision": "f70909bc59e327787c71aac272649e97"
-  },
-  {
-    "url": "storage/2/responsive-images/5ca8d2cf4509d8e5e03eb07f936b230b___medialibrary_original_340_226.jpg",
-    "revision": "93d70f0e9d64bd2b506b081442b9b496"
-  },
-  {
-    "url": "storage/20/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/20/conversions/1040-400x400-index.png",
-    "revision": "dc0473307752a7e75f13343af066c591"
-  },
-  {
-    "url": "storage/20/conversions/1040-400x400-thumb.jpg",
-    "revision": "48c869d32a2c01548ab6c4832917fde7"
-  },
-  {
-    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/20/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/3/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/3/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/3/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/3/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/3/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/3/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/3/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/4/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/4/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/4/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/4/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/4/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/4/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/4/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/5/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/5/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/5/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/5/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/5/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/5/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/5/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/6/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/6/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/6/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/6/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/6/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/6/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/7/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
-  },
-  {
-    "url": "storage/7/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/7/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/7/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_280_280.jpg",
-    "revision": "4b9c7a8f366220607ef892e4dd90d455"
-  },
-  {
-    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_334_334.jpg",
-    "revision": "9abbf0c85809c848c00bd78d4252cbd2"
-  },
-  {
-    "url": "storage/7/responsive-images/1040-400x400___medialibrary_original_400_400.jpg",
-    "revision": "f0ff89538ea68b8eb8c780691323fa28"
-  },
-  {
-    "url": "storage/7/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/8/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/8/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/8/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/8/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/8/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/8/responsive-images/742-400x400___medialibrary_original_334_334.jpg",
-    "revision": "8922ba90bd520b82f0efab5d100580f1"
-  },
-  {
-    "url": "storage/8/responsive-images/742-400x400___medialibrary_original_400_400.jpg",
-    "revision": "b5bfaf6f0342304aa0f95c5c96e551af"
-  },
-  {
-    "url": "storage/9/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/9/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/9/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/9/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_280_280.jpg",
-    "revision": "160b9035c7ac87f8aa9f8b84e734f136"
-  },
-  {
-    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_334_334.jpg",
-    "revision": "97c50b7e08776a7b2639837bb24fbf82"
-  },
-  {
-    "url": "storage/9/responsive-images/268-400x400___medialibrary_original_400_400.jpg",
-    "revision": "5da895d78882ffa5329990d05c6c65bc"
-  },
-  {
-    "url": "storage/recipes/77/1040-400x400.jpg",
-    "revision": "8f007dd31d6f931bf793167aaf7d086c"
+    "url": "storage/4/responsive-images/180-400x400___medialibrary_original_400_400.jpg",
+    "revision": "36cf40f3c324212308ec302d636dd146"
   },
   {
     "url": "univers/18/2/index_KUqjFveT2s.png",
@@ -2257,798 +1945,6 @@ if (workbox) {
   {
     "url": "vendor/horizon/mix-manifest.json",
     "revision": "0bb35e6a5cdcfe69d083c7bdb4676047"
-  },
-  {
-    "url": "vendor/laraberg/css/laraberg.css",
-    "revision": "02a857c2af4f42251e6230202dda71d9"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/advlist/index.js",
-    "revision": "344ca56d8dedfae33380a44b89dfdd1d"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/advlist/plugin.js",
-    "revision": "f3f6295f2480f7007fa0e28c78da28f6"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/advlist/plugin.min.js",
-    "revision": "dc8f8d6ffc796b854935e8ab3633dae6"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/anchor/index.js",
-    "revision": "dd697e3891ed83de226860a7aa436b10"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/anchor/plugin.js",
-    "revision": "c64632f057f9ecd6ec4085d6705811da"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/anchor/plugin.min.js",
-    "revision": "5404b5b0853396cca82e2586455cfbf2"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autolink/index.js",
-    "revision": "fa84bd3bd42aeb01da94b784344d4d84"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autolink/plugin.js",
-    "revision": "4f89384bcea7a58ea873b40bf9948181"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autolink/plugin.min.js",
-    "revision": "c935a5a8bbd70f38d5ff5afbf2ae7e2c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autoresize/index.js",
-    "revision": "00116480a9865b9b84937b8c6ec471ed"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autoresize/plugin.js",
-    "revision": "e14b8ef82e6207dc14647987b01dbeb3"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autoresize/plugin.min.js",
-    "revision": "e9dc1b7890978f74621868a55e767aea"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autosave/index.js",
-    "revision": "8d9bb78be9ddbce43bfd7964b71678ae"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autosave/plugin.js",
-    "revision": "ee007de446b9e60eb7fbb0011d37fbc6"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/autosave/plugin.min.js",
-    "revision": "6f8ef4af1f000a2912d847732049204e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/bbcode/index.js",
-    "revision": "bed89377ddde78f2d27067c6b3dcc633"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/bbcode/plugin.js",
-    "revision": "1d383b219d00914894e553cbdbc008dd"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/bbcode/plugin.min.js",
-    "revision": "9ce1571716e8be256aeb28f10ee6657d"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/charmap/index.js",
-    "revision": "18775f459a8bd073ba47b3ad3e2f6bdf"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/charmap/plugin.js",
-    "revision": "da3e3f0bdd942015871b1869376e3b59"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/charmap/plugin.min.js",
-    "revision": "e6ece30bcc662b6be56a391d0347bfcf"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/code/index.js",
-    "revision": "d2db687200588ab654afd39728df329f"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/code/plugin.js",
-    "revision": "e61fc62591ca8aa4581fea400f1b9bf3"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/code/plugin.min.js",
-    "revision": "ad7f5101d1da1da39e53dfa95c93ddad"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/codesample/css/prism.css",
-    "revision": "df3f7d54eba0f7771dce00316ed62361"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/codesample/index.js",
-    "revision": "23fdb57b1d401abe9ff929ab26ec394e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/codesample/plugin.js",
-    "revision": "5ac8c146f561e2347d3d8a9cb66070d4"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/codesample/plugin.min.js",
-    "revision": "f837bfff3994f4ad98c87747e25f602b"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/colorpicker/index.js",
-    "revision": "f1771fdd14cab627310b813da43fa5ba"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/colorpicker/plugin.js",
-    "revision": "42778d0304a3a47734173ca1d1d3bbc3"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/colorpicker/plugin.min.js",
-    "revision": "ddcdbcdab8913af0c37dc661c1177447"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/contextmenu/index.js",
-    "revision": "92e19a31db91abb704ccaa13cc28b766"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/contextmenu/plugin.js",
-    "revision": "6eddbe335983f0be0c4630ae4cc0c479"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/contextmenu/plugin.min.js",
-    "revision": "37f694b9106a6977ed3ee1f017a81351"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/directionality/index.js",
-    "revision": "cd2c90f18e8c7d1215bc4ede4a2ed3ff"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/directionality/plugin.js",
-    "revision": "5b44d9925db94c8a6cac2c78c958de68"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/directionality/plugin.min.js",
-    "revision": "4b088692b26fb58c9ae5c23ca108048e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/emoticons/index.js",
-    "revision": "57e489f4ab69ca17dc7c95aef7052d88"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/emoticons/js/emojis.js",
-    "revision": "ab9f070de0c717e1421b35f6985d0206"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/emoticons/js/emojis.min.js",
-    "revision": "ce55902c66cdb06217b9ad72598d95df"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/emoticons/plugin.js",
-    "revision": "6265ce17e7668b80b627feb37678eb94"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/emoticons/plugin.min.js",
-    "revision": "8eafdb8b1ded39a819da13dde1923286"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullpage/index.js",
-    "revision": "f5837caffaa3ead2f0b68daa0463cac0"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullpage/plugin.js",
-    "revision": "385eeae113fd86920e635e953e2e7969"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullpage/plugin.min.js",
-    "revision": "313527938b0a8b4ba23dc103df1d6c25"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullscreen/index.js",
-    "revision": "2a071ce05b6865fc1a874f298b920e9e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullscreen/plugin.js",
-    "revision": "189b9c0c736f4d5208ecdfe739e3b488"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/fullscreen/plugin.min.js",
-    "revision": "f0b6a09b7503519b2088f5a9f69505d5"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/help/img/logo.png",
-    "revision": "64ae1cb2051b82fb5af952b89b20b411"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/help/index.js",
-    "revision": "b7c64e9d5f9003aacb929b6944987c2e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/help/plugin.js",
-    "revision": "a8369496ad81f4255faed8bd89d4e1df"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/help/plugin.min.js",
-    "revision": "8c0b71b414e1e261f0447e9543792466"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/hr/index.js",
-    "revision": "95e49e5a2cd979c3e7345c78d2d15779"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/hr/plugin.js",
-    "revision": "c22dc614841e6bf4fe7ec03b9c60172b"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/hr/plugin.min.js",
-    "revision": "debeffe6383d49bbf5d0788fd144bc93"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/image/index.js",
-    "revision": "27415d3d43098d4bdb48c6c45c15e08c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/image/plugin.js",
-    "revision": "18e2e5a43a47e93e6fc80ba71fa67ec0"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/image/plugin.min.js",
-    "revision": "4efcebf19ad9ed934e4a45c00c379826"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/imagetools/index.js",
-    "revision": "1fcdb4ed72eff27ef54bdd585e306d29"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/imagetools/plugin.js",
-    "revision": "dc185d666e0c0e62ea031a5d677cfb9c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/imagetools/plugin.min.js",
-    "revision": "de96f85e1b9e0f2ea4baf39b55539af1"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/importcss/index.js",
-    "revision": "2409fda93c2625fad2c9dfffe31b1473"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/importcss/plugin.js",
-    "revision": "3f5d77d48f6741690d82b5fb5083e066"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/importcss/plugin.min.js",
-    "revision": "ef58c5d77d3263b49bc7c3bc29a4173b"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/insertdatetime/index.js",
-    "revision": "4ece334f6233df3aa3e5becbfe1f9a8e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/insertdatetime/plugin.js",
-    "revision": "e96f2f5f1ae1d9c30b2e7915fe3f8e5c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/insertdatetime/plugin.min.js",
-    "revision": "9075f8d7795cdf73f7d622fc08ebb086"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/legacyoutput/index.js",
-    "revision": "ccdb9783bca4eebefc56e308b5fd8169"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/legacyoutput/plugin.js",
-    "revision": "eda0ff76beb99cd913732d25890ffaa3"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/legacyoutput/plugin.min.js",
-    "revision": "d41b42f9bca0c362e8d87cfa1df3c7ed"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/link/index.js",
-    "revision": "5837f9d0ed7b2cc610dbffa6a7d7dafe"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/link/plugin.js",
-    "revision": "fe361ccffc107a3b4e6004c46b2f42af"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/link/plugin.min.js",
-    "revision": "f3889b97bc1905540042164ecf484f0c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/lists/index.js",
-    "revision": "959bf9c345e983ce032814178b94cb09"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/lists/plugin.js",
-    "revision": "7c443f200d68db604960e2d29d2631d5"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/lists/plugin.min.js",
-    "revision": "61355204a5a689cd22e09ade479c76c9"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/media/index.js",
-    "revision": "22710d182e71e1bef50ee3838ac15b07"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/media/plugin.js",
-    "revision": "04f56ea9c797ff7c7cf182575ca36fe0"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/media/plugin.min.js",
-    "revision": "84758e1d9aa22177633021cb0faabb95"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/nonbreaking/index.js",
-    "revision": "851e4039437062e49d5729f1fe30cb40"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/nonbreaking/plugin.js",
-    "revision": "602616aba1eb159662c4fe20a5070334"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/nonbreaking/plugin.min.js",
-    "revision": "f1cfd50b43b9dc287c15172fe3edde3a"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/noneditable/index.js",
-    "revision": "6f84addf13157d5abd4c1f2e9f1189f5"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/noneditable/plugin.js",
-    "revision": "3a8b9f93a56f8751431f4fa4efe23b00"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/noneditable/plugin.min.js",
-    "revision": "e90adfb0883e5d925e433e9a9b9f2af6"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/pagebreak/index.js",
-    "revision": "b2ec3630c22897879bc089749ca3466e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/pagebreak/plugin.js",
-    "revision": "2a8417c64b1cec8e54e1fe49f20c3bc0"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/pagebreak/plugin.min.js",
-    "revision": "590ac105f3a35afdadbd409123281f11"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/paste/index.js",
-    "revision": "cd72ad7d99e1849620ff535b4f64daed"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/paste/plugin.js",
-    "revision": "3d3070b9662fefd43836f830da81ff79"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/paste/plugin.min.js",
-    "revision": "5b89e8ddeda77f833562c822a4fe4cce"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/preview/index.js",
-    "revision": "ac924715206330e49ae83f0ce0a41a7c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/preview/plugin.js",
-    "revision": "8f07db1a6f0eb9c7df575e0304e50b47"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/preview/plugin.min.js",
-    "revision": "d88f5cd7c99db9c067317e165751d658"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/print/index.js",
-    "revision": "7f3c93e1e7cf55fb60d83431fbe0af2c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/print/plugin.js",
-    "revision": "b302b5efd4cfea4270d598b58b6e328d"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/print/plugin.min.js",
-    "revision": "93a3f837a4ba4f5b8e615c77cfb462a2"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/quickbars/index.js",
-    "revision": "24942b053967586fefe96a215c44ae07"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/quickbars/plugin.js",
-    "revision": "d80628024764105cb30603afe7de3b2c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/quickbars/plugin.min.js",
-    "revision": "ccc53bec5fc9c1c948d9060061b291dd"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/save/index.js",
-    "revision": "d2a87bcc64b326fc6dfa962fcbc662e8"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/save/plugin.js",
-    "revision": "08cfb1a34a0f1741aa51f7b4f757b855"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/save/plugin.min.js",
-    "revision": "b853520272e9ef093d84bac571b3c42e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/searchreplace/index.js",
-    "revision": "027916795b63233ba94d3938bc15cc28"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/searchreplace/plugin.js",
-    "revision": "01a878ead4ebae66b57f9dfdf3759803"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/searchreplace/plugin.min.js",
-    "revision": "b1e81134ac4c3c933e02c360ff670652"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/spellchecker/index.js",
-    "revision": "e22949d41a8208123a8694f0c8e6dec4"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/spellchecker/plugin.js",
-    "revision": "ef6520018bea66b3ebf7d3e2840f0468"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/spellchecker/plugin.min.js",
-    "revision": "74759a5a373349db09de48ceb6e202ac"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/tabfocus/index.js",
-    "revision": "c8dd5b7b07c3808712c5000e3b1d252a"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/tabfocus/plugin.js",
-    "revision": "fd88bcf7f273e92c077c252a56f4861e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/tabfocus/plugin.min.js",
-    "revision": "47d4d7d07e432ac07ffb30dd633df855"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/table/index.js",
-    "revision": "dc0a57cf52e5c96e8886974820620f30"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/table/plugin.js",
-    "revision": "c00d35dfb12eb64f8583c0bdd80b68cb"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/table/plugin.min.js",
-    "revision": "af539f29f5685701f60344166c819276"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/template/index.js",
-    "revision": "4629fcd244d51c5f71a77cca7a6f0b36"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/template/plugin.js",
-    "revision": "2cc87dfb9b80a5008501a9c4002e25db"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/template/plugin.min.js",
-    "revision": "dd18310504dc70f77d5c145d64670cb7"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textcolor/index.js",
-    "revision": "ceb47c7e6b71b1089ec10b30a6aac374"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textcolor/plugin.js",
-    "revision": "5d5417a65e2f0d6c68900f3981fd9cde"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textcolor/plugin.min.js",
-    "revision": "7288afbfcae33b1a14061d698fcf0bf0"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textpattern/index.js",
-    "revision": "4ca571ec216214e68d950539134d2e66"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textpattern/plugin.js",
-    "revision": "66e1c41c0a5064554ade31c7b5bd280d"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/textpattern/plugin.min.js",
-    "revision": "cf8a25122bed19b01143a447066943b7"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/toc/index.js",
-    "revision": "4fb0e875239aec497c229dcaf18d7bb5"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/toc/plugin.js",
-    "revision": "54d3071ea1d0b832653b7e6c4080e75f"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/toc/plugin.min.js",
-    "revision": "acbfcc3a896939d538c737a158a8e972"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualblocks/css/visualblocks.css",
-    "revision": "03ea1695db057e6a1aa0b24699401ef7"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualblocks/index.js",
-    "revision": "1f348278fc3fa3ae9d560a2c6074537d"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualblocks/plugin.js",
-    "revision": "433f7cfdc63a48319328db305415a789"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualblocks/plugin.min.js",
-    "revision": "6efa5f001aeb97f9995b52db9c0916e8"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualchars/index.js",
-    "revision": "01e4394764848c643482a4e060c3c16c"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualchars/plugin.js",
-    "revision": "2a9e63ed36c83b33064ef14f04c12da8"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/visualchars/plugin.min.js",
-    "revision": "87a74747dfe98debcbeb704cbbf54e7e"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/wordcount/index.js",
-    "revision": "8702637f4301b2c60b0d036a74a57952"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/wordcount/plugin.js",
-    "revision": "b3727d8a5675fb186c9d49da2b6c7994"
-  },
-  {
-    "url": "vendor/laraberg/js/plugins/wordcount/plugin.min.js",
-    "revision": "ce8de5df1704576116296d0f76550054"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/default/content.css",
-    "revision": "7731675a9091b95d8882d88fd44ea978"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/default/content.min.css",
-    "revision": "f92b7b2906b654e2dfb3650fa44a9b42"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/document/content.css",
-    "revision": "4dc634a4f2def9e0f376a93589928ada"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/document/content.min.css",
-    "revision": "91f332a1c4884ad5adf4107e304f84fe"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/writer/content.css",
-    "revision": "e0b194a072920c39e1e3818b74896063"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/content/writer/content.min.css",
-    "revision": "8cd71063696a2f374dd4e479c2cdcb41"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/content.inline.min.css",
-    "revision": "0de56511864c9de2a5cdb878010fc550"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/content.min.css",
-    "revision": "0be8f6d47b7eb85f49cbb5b54feb4b40"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/content.mobile.min.css",
-    "revision": "0684a64086ad1114949a1e51f06aa750"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/fonts/tinymce-small.svg",
-    "revision": "a2a1f732cc34764c684ed521c6f3327c"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/fonts/tinymce.svg",
-    "revision": "d031f47facf4331979b6f9fbac3187ef"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/skin.min.css",
-    "revision": "535a474e0799c2da9168379230ea07fd"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/lightgray/skin.mobile.min.css",
-    "revision": "b7a6f110d8850de4aee094cff66bcc28"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.css",
-    "revision": "ad95d0601391dbee00704ee030248d34"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.inline.css",
-    "revision": "7e5bd9d47f72ec7164586fae310e9127"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.inline.min.css",
-    "revision": "053751b579abc654314ae1f068b2d337"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.min.css",
-    "revision": "26fa5207380405e0c21869c7253aefcb"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.mobile.css",
-    "revision": "e84062c0d71bace6637586be7c2590d3"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.mobile.min.css",
-    "revision": "4e83ff7c5a3009d223b4502e51e6428e"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.css",
-    "revision": "4ced2cce0859900377654d007efb1b7a"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.min.css",
-    "revision": "8a68675db1af9465664212606ebc2366"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.mobile.css",
-    "revision": "facca67ad6951942195189b0478e4d4b"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.mobile.min.css",
-    "revision": "5d4667e1b66bb2bda0c4a06e6d8a0878"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.css",
-    "revision": "ad95d0601391dbee00704ee030248d34"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.inline.css",
-    "revision": "7e5bd9d47f72ec7164586fae310e9127"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.inline.min.css",
-    "revision": "053751b579abc654314ae1f068b2d337"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.min.css",
-    "revision": "26fa5207380405e0c21869c7253aefcb"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.mobile.css",
-    "revision": "e84062c0d71bace6637586be7c2590d3"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/content.mobile.min.css",
-    "revision": "4e83ff7c5a3009d223b4502e51e6428e"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/skin.css",
-    "revision": "6219ab3a71de171451a414da62a69917"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/skin.min.css",
-    "revision": "229ee941ea26438cda23f1570af733af"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/skin.mobile.css",
-    "revision": "facca67ad6951942195189b0478e4d4b"
-  },
-  {
-    "url": "vendor/laraberg/js/skins/ui/oxide/skin.mobile.min.css",
-    "revision": "5d4667e1b66bb2bda0c4a06e6d8a0878"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/inlite/index.js",
-    "revision": "30a111876b3216d9e51474a483c9a068"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/inlite/theme.js",
-    "revision": "77930c82ebe7bc5fb285ef8145e95c9d"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/inlite/theme.min.js",
-    "revision": "9cba2d62377b91304375c96226eba843"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/mobile/index.js",
-    "revision": "a136bd2faba801a12080888b27e65afb"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/mobile/theme.js",
-    "revision": "cc59eb634dd5471add4ce393da6399ef"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/mobile/theme.min.js",
-    "revision": "bc74f443daf193cc48f55560bbe55275"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/modern/index.js",
-    "revision": "0d16153c5ec8d0abb0151c5fc56b806f"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/modern/theme.js",
-    "revision": "0e50bcfc23e66938c5585ce303105cf2"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/modern/theme.min.js",
-    "revision": "af3b295e3eed46ece77323d00021090b"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/silver/index.js",
-    "revision": "7281b0268319c90508a1a300a7c06d97"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/silver/theme.js",
-    "revision": "e52aae6bed7710b81af7609279f1df99"
-  },
-  {
-    "url": "vendor/laraberg/js/themes/silver/theme.min.js",
-    "revision": "61c7aa14f167f686a14ffdc9aa9850b0"
-  },
-  {
-    "url": "vendor/laravel-filemanager/css/cropper.min.css",
-    "revision": "d5f9bed1d1ce4ee36f61a417c727f267"
-  },
-  {
-    "url": "vendor/laravel-filemanager/css/dropzone.min.css",
-    "revision": "2f735dbf472afcd77604ecf439319f7b"
-  },
-  {
-    "url": "vendor/laravel-filemanager/css/lfm.css",
-    "revision": "f486b1f08f846bc37927eb5eed575b8f"
-  },
-  {
-    "url": "vendor/laravel-filemanager/css/mfb.css",
-    "revision": "552eacea274176a26c205e6d5f770ef2"
-  },
-  {
-    "url": "vendor/laravel-filemanager/files/folder-1/sleeping-dog.jpg",
-    "revision": "56001609aa893663e1282c539b81c861"
-  },
-  {
-    "url": "vendor/laravel-filemanager/images/test-folder/sleeping-dog.jpg",
-    "revision": "56001609aa893663e1282c539b81c861"
-  },
-  {
-    "url": "vendor/laravel-filemanager/images/test-folder/thumbs/sleeping-dog.jpg",
-    "revision": "79d0cfb0971dd3f31447a4d6ea0b60f0"
-  },
-  {
-    "url": "vendor/laravel-filemanager/img/folder.png",
-    "revision": "248e1bd33de52ca2e251844eb834f173"
-  },
-  {
-    "url": "vendor/laravel-filemanager/img/loader.svg",
-    "revision": "7627bc820cce40098e897ca98413d895"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/cropper.min.js",
-    "revision": "08143dfcfef4e05e8e593f0fa9fa046c"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/dropzone.min.js",
-    "revision": "ef382b2b5e18d24161ba0fb2b90322b6"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/jquery.form.min.js",
-    "revision": "c752e8d46b09b498997a56aa3e22c3e1"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/lfm.js",
-    "revision": "f80c8cd8276b3a876cac0cd072028328"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/mfb.js",
-    "revision": "98f2dbd642c14395d70b8946ce044a52"
-  },
-  {
-    "url": "vendor/laravel-filemanager/js/script.js",
-    "revision": "a61c85eb1be81a771b95119d45cbd828"
   },
   {
     "url": "vendor/tcg/voyager/assets/css/app.css",

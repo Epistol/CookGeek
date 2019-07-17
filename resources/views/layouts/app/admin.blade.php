@@ -79,15 +79,20 @@
 @include('layouts.scripts')
 <div id="fb-root"></div>
 <script type="application/javascript">
+    var CSRFToken = $('meta[name="csrf-token"]').attr('content');
     var options = {
         filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token='+CSRFToken,
         filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='+CSRFToken,
+        image_previewText : 'In publishing and graphic design, lorem ipsum is' +
+            'placeholder text (filler text) commonly used to demonstrate the graphic' +
+            'elements of a document or visual presentation'
     };
 
     $(document).ready(function () {
         CKEDITOR.replace('gutenvel', options);
+
         /*var slider = document.getElementById('slider');
 
         noUiSlider.create(slider, {

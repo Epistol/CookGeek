@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ayctor/Documents/Prive/CookGeek/resources/assets/js/old_app.js */"./resources/assets/js/old_app.js");
+module.exports = __webpack_require__(/*! /home/epistol/Documents/Sites/CookGeek/resources/assets/js/old_app.js */"./resources/assets/js/old_app.js");
 
 
 /***/ })

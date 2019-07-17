@@ -1,14 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuedraggable */ "./node_modules/vuedraggable/dist/vuedraggable.common.js");
+/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuedraggable__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -36,40 +38,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      counter: -1,
-      steps: []
-    };
+  components: {
+    draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  name: 'stepsadd',
-  methods: {
-    addStep: function addStep() {
-      this.counter++;
-      this.steps.push({
-        instruction: '',
-        images: {},
-        video: '',
-        type: ''
-      });
-    },
-    removeStep: function removeStep(index) {
-      this.counter--;
-      this.steps.splice(index, 1);
-    }
+  props: {
+    ingredients: null
   },
   mounted: function mounted() {
-    this.addStep();
+    this.loadIngredients();
+  },
+  name: "ingredient_form",
+  data: function data() {
+    return {
+      liste: [{
+        name: '',
+        qtt: ''
+      }]
+    };
+  },
+  methods: {
+    addRow: function addRow() {
+      this.liste.push({
+        name: '',
+        qtt: ''
+      });
+    },
+    removeRow: function removeRow(index) {
+      this.liste.splice(index, 1);
+    },
+    loadIngredients: function loadIngredients() {
+      if (this.ingredients) {
+        this.liste = this.ingredients;
+      }
+    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -85,60 +102,129 @@ var render = function() {
     "div",
     { staticClass: "column" },
     [
-      _vm._l(_vm.steps, function(item, index) {
+      _vm._l(_vm.liste, function(item, index) {
         return [
           _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-2" }, [
-              _c("span", [_vm._v("Etape " + _vm._s(index + 1))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-8" }, [
-              _c("textarea", {
+            _c("div", { staticClass: "column is-3" }, [
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: item.instruction,
-                    expression: "item.instruction"
+                    value: item.qtt,
+                    expression: "item.qtt"
                   }
                 ],
+                ref: "search",
+                refInFor: true,
                 staticClass: "input_modal blck",
                 attrs: {
                   type: "text",
-                  rows: "4",
-                  name: "step[]",
-                  id: "step[]"
+                  placeholder: "Quantité",
+                  name: "qtt_ingredient[]",
+                  id: "qtt_ingredient[]"
                 },
-                domProps: { value: item.instruction },
+                domProps: { value: item.qtt },
                 on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "tab", 9, $event.key, "Tab")
-                    ) {
-                      return null
-                    }
-                    return _vm.addStep()
-                  },
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(item, "instruction", $event.target.value)
+                    _vm.$set(item, "qtt", $event.target.value)
                   }
                 }
               })
             ]),
             _vm._v(" "),
-            index === _vm.steps.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+            _c(
+              "div",
+              { staticClass: "column is-7" },
+              [
+                index === _vm.liste.length - 1
+                  ? [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: item.name,
+                            expression: "item.name"
+                          }
+                        ],
+                        staticClass: "input_modal blck",
+                        attrs: {
+                          type: "text",
+                          placeholder: "ingrédient",
+                          name: "ingredient[]",
+                          id: "ingredient[]"
+                        },
+                        domProps: { value: item.name },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "tab",
+                                9,
+                                $event.key,
+                                "Tab"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.addRow($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(item, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]
+                  : [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: item.name,
+                            expression: "item.name"
+                          }
+                        ],
+                        staticClass: "input_modal blck",
+                        attrs: {
+                          type: "text",
+                          placeholder: "ingrédient",
+                          name: "ingredient[]",
+                          id: "ingredient[]"
+                        },
+                        domProps: { value: item.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(item, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]
+              ],
+              2
+            ),
+            _vm._v(" "),
+            index === _vm.liste.length - 1
+              ? _c("div", { staticClass: "column is-2 is-flex-center " }, [
                   _c(
                     "a",
                     {
                       staticClass: "button is-primary  is-small icon-delete",
                       on: {
                         click: function($event) {
-                          return _vm.addStep()
+                          return _vm.addRow()
                         }
                       }
                     },
@@ -150,15 +236,17 @@ var render = function() {
                     ]
                   )
                 ])
-              : index === _vm.steps.length - 2
-              ? _c("div", { staticClass: "column is-2  is-flex-center" }, [
+              : _vm._e(),
+            _vm._v(" "),
+            index === _vm.liste.length - 2
+              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
                   _c(
                     "a",
                     {
                       staticClass: "button is-small icon-delete",
                       on: {
                         click: function($event) {
-                          return _vm.removeStep(index)
+                          return _vm.removeRow(index)
                         }
                       }
                     },
@@ -170,7 +258,7 @@ var render = function() {
                     ]
                   )
                 ])
-              : _c("div", {})
+              : _vm._e()
           ])
         ]
       })
@@ -185,17 +273,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/recipe/steps/StepsAdd.vue":
-/*!******************************************************************!*\
-  !*** ./resources/assets/js/components/recipe/steps/StepsAdd.vue ***!
-  \******************************************************************/
+/***/ "./resources/assets/js/components/recipe/ingredients/Ingredients.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/assets/js/components/recipe/ingredients/Ingredients.vue ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StepsAdd.vue?vue&type=template&id=bd9a9cc8& */ "./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8&");
-/* harmony import */ var _StepsAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StepsAdd.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ingredients.vue?vue&type=template&id=1756ab2b& */ "./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b&");
+/* harmony import */ var _Ingredients_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ingredients.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -205,9 +293,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _StepsAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Ingredients_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -217,38 +305,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/assets/js/components/recipe/steps/StepsAdd.vue"
+component.options.__file = "resources/assets/js/components/recipe/ingredients/Ingredients.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
+/***/ "./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StepsAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./StepsAdd.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StepsAdd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ingredients_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Ingredients.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ingredients_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8& ***!
-  \*************************************************************************************************/
+/***/ "./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b& ***!
+  \**********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./StepsAdd.vue?vue&type=template&id=bd9a9cc8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/steps/StepsAdd.vue?vue&type=template&id=bd9a9cc8&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Ingredients.vue?vue&type=template&id=1756ab2b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/recipe/ingredients/Ingredients.vue?vue&type=template&id=1756ab2b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StepsAdd_vue_vue_type_template_id_bd9a9cc8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ingredients_vue_vue_type_template_id_1756ab2b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

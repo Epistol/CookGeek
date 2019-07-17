@@ -29,8 +29,8 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="title is-5">Utilisateurs actifs</span>
-                        <?php dd($users);?>
-                        <line-chart :chartdata="{{$users}}"></line-chart>
+<!--                        --><?php //dd($users);?>
+{{--                        <line-chart :chartdata="{{$users}}"></line-chart>--}}
                     </div>
                 </div>
             </div>
