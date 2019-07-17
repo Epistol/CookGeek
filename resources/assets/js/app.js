@@ -83,6 +83,7 @@ const app = new Vue({
         'create-recipe': () => import("./components/recipe/Create.vue"),
         'set-picture': () => import("./components/recipe/_setters/SetPicture.vue"),
         'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
+        'line-chart': () => import("./components/charts/LineComponent"),
     },
 
     data: {

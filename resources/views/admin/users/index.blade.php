@@ -28,17 +28,13 @@
             <div class="column">
                 <div class="card">
                     <div class="card-content">
-                        <span class="title is-5">Nouveaux utilisateurs (ce mois-ci)</span>
-                        {{--                        <br />--}}
-                        {{--                        <span class="subtitle is-12">(durant le mois en cours)</span>--}}
-                        <br />
-                        <span class="title is-2">{{$users->where('created_at', '>=',
-                         Carbon\Carbon::now()->subMonth()->format('d/m/Y'))->count()}}</span>
+                        <span class="title is-5">Utilisateurs actifs</span>
+                        <?php dd($users);?>
+                        <line-chart :chartdata="{{$users}}"></line-chart>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un utilisateur </a>
 
