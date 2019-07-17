@@ -274,6 +274,16 @@
       'GeoIP' => 'Torann\\GeoIP\\Facades\\GeoIP',
     ),
   ),
+  'unisharp/laravel-filemanager' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider',
+    ),
+    'aliases' => 
+    array (
+    ),
+  ),
   'vinkla/hashids' => 
   array (
     'providers' => 

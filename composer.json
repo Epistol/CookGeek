@@ -52,6 +52,7 @@
         "spatie/laravel-sitemap": "^5.2",
         "spatie/schema-org": "^1.4",
         "torann/geoip": "^1.0",
+        "unisharp/laravel-filemanager": "~1.8",
         "vinkla/hashids": "^5.1",
         "waavi/sanitizer": "dev-master"
     },

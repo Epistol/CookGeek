@@ -1,4 +1,4 @@
-@extends('layouts.app.app')
+@extends('layouts.app.admin')
 @section('titrepage', "Ajouter une recette")
 @section('content')
 
@@ -15,16 +15,21 @@
                     </div>
                 </div>
             </header>
-
             <div class="field">
                 <label class="label">Titre</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input class="input" type="text" placeholder="Titre">
                 </div>
             </div>
 
-            <div>
-                <editor id="tinymce" v-model="content"></editor>
+            <div class="field">
+                <label class="label">Contenu</label>
+                {{--                <editor id="tinymce" v-model="content"></editor>--}}
+                <div class="control">
+                    <textarea id="gutenvel" name="gutenvel" class="form-control">
+                        {!! old('gutenvel') !!}
+                    </textarea>
+                </div>
             </div>
         </section>
 

@@ -5,8 +5,6 @@ namespace App\Traits\Recipe;
 
 use App\Jobs\CheckPicture;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Image\Exceptions\InvalidManipulation;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 
 /**

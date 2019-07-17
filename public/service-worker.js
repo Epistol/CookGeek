@@ -1695,42 +1695,6 @@ if (workbox) {
     "revision": "994dc9bdbd4bf3fcb1d0aa46227422be"
   },
   {
-    "url": "storage/1/268-400x400.jpg",
-    "revision": "46df74f36c04588049902be630e07a2f"
-  },
-  {
-    "url": "storage/1/742-400x400.jpg",
-    "revision": "0ad129955e6fbbe0fdec979f0ec68d8b"
-  },
-  {
-    "url": "storage/1/conversions/268-400x400-index.png",
-    "revision": "3df3f0f52c99d6033d775a0ad0ae02a3"
-  },
-  {
-    "url": "storage/1/conversions/268-400x400-thumb.jpg",
-    "revision": "9502dcb76abc3c97316d261e2184f84e"
-  },
-  {
-    "url": "storage/1/conversions/742-400x400-index.png",
-    "revision": "43a09c302d4b59cf34207198b19c6f89"
-  },
-  {
-    "url": "storage/1/conversions/742-400x400-thumb.jpg",
-    "revision": "676c76a656943cfc567e68bff4983391"
-  },
-  {
-    "url": "storage/1/responsive-images/268-400x400___index_150_150.jpg",
-    "revision": "2afd16b92ddadf776d071bccf873aa15"
-  },
-  {
-    "url": "storage/1/responsive-images/742-400x400___medialibrary_original_334_334.jpg",
-    "revision": "8922ba90bd520b82f0efab5d100580f1"
-  },
-  {
-    "url": "storage/1/responsive-images/742-400x400___medialibrary_original_400_400.jpg",
-    "revision": "b5bfaf6f0342304aa0f95c5c96e551af"
-  },
-  {
     "url": "storage/10/0-400x400.jpg",
     "revision": "6f23317ed4f05f931a01a820a36a9d4e"
   },
@@ -2293,6 +2257,798 @@ if (workbox) {
   {
     "url": "vendor/horizon/mix-manifest.json",
     "revision": "0bb35e6a5cdcfe69d083c7bdb4676047"
+  },
+  {
+    "url": "vendor/laraberg/css/laraberg.css",
+    "revision": "02a857c2af4f42251e6230202dda71d9"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/advlist/index.js",
+    "revision": "344ca56d8dedfae33380a44b89dfdd1d"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/advlist/plugin.js",
+    "revision": "f3f6295f2480f7007fa0e28c78da28f6"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/advlist/plugin.min.js",
+    "revision": "dc8f8d6ffc796b854935e8ab3633dae6"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/anchor/index.js",
+    "revision": "dd697e3891ed83de226860a7aa436b10"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/anchor/plugin.js",
+    "revision": "c64632f057f9ecd6ec4085d6705811da"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/anchor/plugin.min.js",
+    "revision": "5404b5b0853396cca82e2586455cfbf2"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autolink/index.js",
+    "revision": "fa84bd3bd42aeb01da94b784344d4d84"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autolink/plugin.js",
+    "revision": "4f89384bcea7a58ea873b40bf9948181"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autolink/plugin.min.js",
+    "revision": "c935a5a8bbd70f38d5ff5afbf2ae7e2c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autoresize/index.js",
+    "revision": "00116480a9865b9b84937b8c6ec471ed"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autoresize/plugin.js",
+    "revision": "e14b8ef82e6207dc14647987b01dbeb3"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autoresize/plugin.min.js",
+    "revision": "e9dc1b7890978f74621868a55e767aea"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autosave/index.js",
+    "revision": "8d9bb78be9ddbce43bfd7964b71678ae"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autosave/plugin.js",
+    "revision": "ee007de446b9e60eb7fbb0011d37fbc6"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/autosave/plugin.min.js",
+    "revision": "6f8ef4af1f000a2912d847732049204e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/bbcode/index.js",
+    "revision": "bed89377ddde78f2d27067c6b3dcc633"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/bbcode/plugin.js",
+    "revision": "1d383b219d00914894e553cbdbc008dd"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/bbcode/plugin.min.js",
+    "revision": "9ce1571716e8be256aeb28f10ee6657d"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/charmap/index.js",
+    "revision": "18775f459a8bd073ba47b3ad3e2f6bdf"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/charmap/plugin.js",
+    "revision": "da3e3f0bdd942015871b1869376e3b59"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/charmap/plugin.min.js",
+    "revision": "e6ece30bcc662b6be56a391d0347bfcf"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/code/index.js",
+    "revision": "d2db687200588ab654afd39728df329f"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/code/plugin.js",
+    "revision": "e61fc62591ca8aa4581fea400f1b9bf3"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/code/plugin.min.js",
+    "revision": "ad7f5101d1da1da39e53dfa95c93ddad"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/codesample/css/prism.css",
+    "revision": "df3f7d54eba0f7771dce00316ed62361"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/codesample/index.js",
+    "revision": "23fdb57b1d401abe9ff929ab26ec394e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/codesample/plugin.js",
+    "revision": "5ac8c146f561e2347d3d8a9cb66070d4"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/codesample/plugin.min.js",
+    "revision": "f837bfff3994f4ad98c87747e25f602b"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/colorpicker/index.js",
+    "revision": "f1771fdd14cab627310b813da43fa5ba"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/colorpicker/plugin.js",
+    "revision": "42778d0304a3a47734173ca1d1d3bbc3"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/colorpicker/plugin.min.js",
+    "revision": "ddcdbcdab8913af0c37dc661c1177447"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/contextmenu/index.js",
+    "revision": "92e19a31db91abb704ccaa13cc28b766"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/contextmenu/plugin.js",
+    "revision": "6eddbe335983f0be0c4630ae4cc0c479"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/contextmenu/plugin.min.js",
+    "revision": "37f694b9106a6977ed3ee1f017a81351"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/directionality/index.js",
+    "revision": "cd2c90f18e8c7d1215bc4ede4a2ed3ff"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/directionality/plugin.js",
+    "revision": "5b44d9925db94c8a6cac2c78c958de68"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/directionality/plugin.min.js",
+    "revision": "4b088692b26fb58c9ae5c23ca108048e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/emoticons/index.js",
+    "revision": "57e489f4ab69ca17dc7c95aef7052d88"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/emoticons/js/emojis.js",
+    "revision": "ab9f070de0c717e1421b35f6985d0206"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/emoticons/js/emojis.min.js",
+    "revision": "ce55902c66cdb06217b9ad72598d95df"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/emoticons/plugin.js",
+    "revision": "6265ce17e7668b80b627feb37678eb94"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/emoticons/plugin.min.js",
+    "revision": "8eafdb8b1ded39a819da13dde1923286"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullpage/index.js",
+    "revision": "f5837caffaa3ead2f0b68daa0463cac0"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullpage/plugin.js",
+    "revision": "385eeae113fd86920e635e953e2e7969"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullpage/plugin.min.js",
+    "revision": "313527938b0a8b4ba23dc103df1d6c25"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullscreen/index.js",
+    "revision": "2a071ce05b6865fc1a874f298b920e9e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullscreen/plugin.js",
+    "revision": "189b9c0c736f4d5208ecdfe739e3b488"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/fullscreen/plugin.min.js",
+    "revision": "f0b6a09b7503519b2088f5a9f69505d5"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/help/img/logo.png",
+    "revision": "64ae1cb2051b82fb5af952b89b20b411"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/help/index.js",
+    "revision": "b7c64e9d5f9003aacb929b6944987c2e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/help/plugin.js",
+    "revision": "a8369496ad81f4255faed8bd89d4e1df"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/help/plugin.min.js",
+    "revision": "8c0b71b414e1e261f0447e9543792466"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/hr/index.js",
+    "revision": "95e49e5a2cd979c3e7345c78d2d15779"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/hr/plugin.js",
+    "revision": "c22dc614841e6bf4fe7ec03b9c60172b"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/hr/plugin.min.js",
+    "revision": "debeffe6383d49bbf5d0788fd144bc93"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/image/index.js",
+    "revision": "27415d3d43098d4bdb48c6c45c15e08c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/image/plugin.js",
+    "revision": "18e2e5a43a47e93e6fc80ba71fa67ec0"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/image/plugin.min.js",
+    "revision": "4efcebf19ad9ed934e4a45c00c379826"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/imagetools/index.js",
+    "revision": "1fcdb4ed72eff27ef54bdd585e306d29"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/imagetools/plugin.js",
+    "revision": "dc185d666e0c0e62ea031a5d677cfb9c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/imagetools/plugin.min.js",
+    "revision": "de96f85e1b9e0f2ea4baf39b55539af1"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/importcss/index.js",
+    "revision": "2409fda93c2625fad2c9dfffe31b1473"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/importcss/plugin.js",
+    "revision": "3f5d77d48f6741690d82b5fb5083e066"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/importcss/plugin.min.js",
+    "revision": "ef58c5d77d3263b49bc7c3bc29a4173b"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/insertdatetime/index.js",
+    "revision": "4ece334f6233df3aa3e5becbfe1f9a8e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/insertdatetime/plugin.js",
+    "revision": "e96f2f5f1ae1d9c30b2e7915fe3f8e5c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/insertdatetime/plugin.min.js",
+    "revision": "9075f8d7795cdf73f7d622fc08ebb086"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/legacyoutput/index.js",
+    "revision": "ccdb9783bca4eebefc56e308b5fd8169"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/legacyoutput/plugin.js",
+    "revision": "eda0ff76beb99cd913732d25890ffaa3"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/legacyoutput/plugin.min.js",
+    "revision": "d41b42f9bca0c362e8d87cfa1df3c7ed"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/link/index.js",
+    "revision": "5837f9d0ed7b2cc610dbffa6a7d7dafe"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/link/plugin.js",
+    "revision": "fe361ccffc107a3b4e6004c46b2f42af"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/link/plugin.min.js",
+    "revision": "f3889b97bc1905540042164ecf484f0c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/lists/index.js",
+    "revision": "959bf9c345e983ce032814178b94cb09"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/lists/plugin.js",
+    "revision": "7c443f200d68db604960e2d29d2631d5"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/lists/plugin.min.js",
+    "revision": "61355204a5a689cd22e09ade479c76c9"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/media/index.js",
+    "revision": "22710d182e71e1bef50ee3838ac15b07"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/media/plugin.js",
+    "revision": "04f56ea9c797ff7c7cf182575ca36fe0"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/media/plugin.min.js",
+    "revision": "84758e1d9aa22177633021cb0faabb95"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/nonbreaking/index.js",
+    "revision": "851e4039437062e49d5729f1fe30cb40"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/nonbreaking/plugin.js",
+    "revision": "602616aba1eb159662c4fe20a5070334"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/nonbreaking/plugin.min.js",
+    "revision": "f1cfd50b43b9dc287c15172fe3edde3a"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/noneditable/index.js",
+    "revision": "6f84addf13157d5abd4c1f2e9f1189f5"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/noneditable/plugin.js",
+    "revision": "3a8b9f93a56f8751431f4fa4efe23b00"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/noneditable/plugin.min.js",
+    "revision": "e90adfb0883e5d925e433e9a9b9f2af6"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/pagebreak/index.js",
+    "revision": "b2ec3630c22897879bc089749ca3466e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/pagebreak/plugin.js",
+    "revision": "2a8417c64b1cec8e54e1fe49f20c3bc0"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/pagebreak/plugin.min.js",
+    "revision": "590ac105f3a35afdadbd409123281f11"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/paste/index.js",
+    "revision": "cd72ad7d99e1849620ff535b4f64daed"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/paste/plugin.js",
+    "revision": "3d3070b9662fefd43836f830da81ff79"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/paste/plugin.min.js",
+    "revision": "5b89e8ddeda77f833562c822a4fe4cce"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/preview/index.js",
+    "revision": "ac924715206330e49ae83f0ce0a41a7c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/preview/plugin.js",
+    "revision": "8f07db1a6f0eb9c7df575e0304e50b47"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/preview/plugin.min.js",
+    "revision": "d88f5cd7c99db9c067317e165751d658"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/print/index.js",
+    "revision": "7f3c93e1e7cf55fb60d83431fbe0af2c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/print/plugin.js",
+    "revision": "b302b5efd4cfea4270d598b58b6e328d"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/print/plugin.min.js",
+    "revision": "93a3f837a4ba4f5b8e615c77cfb462a2"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/quickbars/index.js",
+    "revision": "24942b053967586fefe96a215c44ae07"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/quickbars/plugin.js",
+    "revision": "d80628024764105cb30603afe7de3b2c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/quickbars/plugin.min.js",
+    "revision": "ccc53bec5fc9c1c948d9060061b291dd"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/save/index.js",
+    "revision": "d2a87bcc64b326fc6dfa962fcbc662e8"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/save/plugin.js",
+    "revision": "08cfb1a34a0f1741aa51f7b4f757b855"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/save/plugin.min.js",
+    "revision": "b853520272e9ef093d84bac571b3c42e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/searchreplace/index.js",
+    "revision": "027916795b63233ba94d3938bc15cc28"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/searchreplace/plugin.js",
+    "revision": "01a878ead4ebae66b57f9dfdf3759803"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/searchreplace/plugin.min.js",
+    "revision": "b1e81134ac4c3c933e02c360ff670652"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/spellchecker/index.js",
+    "revision": "e22949d41a8208123a8694f0c8e6dec4"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/spellchecker/plugin.js",
+    "revision": "ef6520018bea66b3ebf7d3e2840f0468"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/spellchecker/plugin.min.js",
+    "revision": "74759a5a373349db09de48ceb6e202ac"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/tabfocus/index.js",
+    "revision": "c8dd5b7b07c3808712c5000e3b1d252a"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/tabfocus/plugin.js",
+    "revision": "fd88bcf7f273e92c077c252a56f4861e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/tabfocus/plugin.min.js",
+    "revision": "47d4d7d07e432ac07ffb30dd633df855"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/table/index.js",
+    "revision": "dc0a57cf52e5c96e8886974820620f30"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/table/plugin.js",
+    "revision": "c00d35dfb12eb64f8583c0bdd80b68cb"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/table/plugin.min.js",
+    "revision": "af539f29f5685701f60344166c819276"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/template/index.js",
+    "revision": "4629fcd244d51c5f71a77cca7a6f0b36"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/template/plugin.js",
+    "revision": "2cc87dfb9b80a5008501a9c4002e25db"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/template/plugin.min.js",
+    "revision": "dd18310504dc70f77d5c145d64670cb7"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textcolor/index.js",
+    "revision": "ceb47c7e6b71b1089ec10b30a6aac374"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textcolor/plugin.js",
+    "revision": "5d5417a65e2f0d6c68900f3981fd9cde"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textcolor/plugin.min.js",
+    "revision": "7288afbfcae33b1a14061d698fcf0bf0"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textpattern/index.js",
+    "revision": "4ca571ec216214e68d950539134d2e66"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textpattern/plugin.js",
+    "revision": "66e1c41c0a5064554ade31c7b5bd280d"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/textpattern/plugin.min.js",
+    "revision": "cf8a25122bed19b01143a447066943b7"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/toc/index.js",
+    "revision": "4fb0e875239aec497c229dcaf18d7bb5"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/toc/plugin.js",
+    "revision": "54d3071ea1d0b832653b7e6c4080e75f"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/toc/plugin.min.js",
+    "revision": "acbfcc3a896939d538c737a158a8e972"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualblocks/css/visualblocks.css",
+    "revision": "03ea1695db057e6a1aa0b24699401ef7"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualblocks/index.js",
+    "revision": "1f348278fc3fa3ae9d560a2c6074537d"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualblocks/plugin.js",
+    "revision": "433f7cfdc63a48319328db305415a789"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualblocks/plugin.min.js",
+    "revision": "6efa5f001aeb97f9995b52db9c0916e8"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualchars/index.js",
+    "revision": "01e4394764848c643482a4e060c3c16c"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualchars/plugin.js",
+    "revision": "2a9e63ed36c83b33064ef14f04c12da8"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/visualchars/plugin.min.js",
+    "revision": "87a74747dfe98debcbeb704cbbf54e7e"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/wordcount/index.js",
+    "revision": "8702637f4301b2c60b0d036a74a57952"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/wordcount/plugin.js",
+    "revision": "b3727d8a5675fb186c9d49da2b6c7994"
+  },
+  {
+    "url": "vendor/laraberg/js/plugins/wordcount/plugin.min.js",
+    "revision": "ce8de5df1704576116296d0f76550054"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/default/content.css",
+    "revision": "7731675a9091b95d8882d88fd44ea978"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/default/content.min.css",
+    "revision": "f92b7b2906b654e2dfb3650fa44a9b42"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/document/content.css",
+    "revision": "4dc634a4f2def9e0f376a93589928ada"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/document/content.min.css",
+    "revision": "91f332a1c4884ad5adf4107e304f84fe"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/writer/content.css",
+    "revision": "e0b194a072920c39e1e3818b74896063"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/content/writer/content.min.css",
+    "revision": "8cd71063696a2f374dd4e479c2cdcb41"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/content.inline.min.css",
+    "revision": "0de56511864c9de2a5cdb878010fc550"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/content.min.css",
+    "revision": "0be8f6d47b7eb85f49cbb5b54feb4b40"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/content.mobile.min.css",
+    "revision": "0684a64086ad1114949a1e51f06aa750"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/fonts/tinymce-small.svg",
+    "revision": "a2a1f732cc34764c684ed521c6f3327c"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/fonts/tinymce.svg",
+    "revision": "d031f47facf4331979b6f9fbac3187ef"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/skin.min.css",
+    "revision": "535a474e0799c2da9168379230ea07fd"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/lightgray/skin.mobile.min.css",
+    "revision": "b7a6f110d8850de4aee094cff66bcc28"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.css",
+    "revision": "ad95d0601391dbee00704ee030248d34"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.inline.css",
+    "revision": "7e5bd9d47f72ec7164586fae310e9127"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.inline.min.css",
+    "revision": "053751b579abc654314ae1f068b2d337"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.min.css",
+    "revision": "26fa5207380405e0c21869c7253aefcb"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.mobile.css",
+    "revision": "e84062c0d71bace6637586be7c2590d3"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/content.mobile.min.css",
+    "revision": "4e83ff7c5a3009d223b4502e51e6428e"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.css",
+    "revision": "4ced2cce0859900377654d007efb1b7a"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.min.css",
+    "revision": "8a68675db1af9465664212606ebc2366"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.mobile.css",
+    "revision": "facca67ad6951942195189b0478e4d4b"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide-dark/skin.mobile.min.css",
+    "revision": "5d4667e1b66bb2bda0c4a06e6d8a0878"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.css",
+    "revision": "ad95d0601391dbee00704ee030248d34"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.inline.css",
+    "revision": "7e5bd9d47f72ec7164586fae310e9127"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.inline.min.css",
+    "revision": "053751b579abc654314ae1f068b2d337"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.min.css",
+    "revision": "26fa5207380405e0c21869c7253aefcb"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.mobile.css",
+    "revision": "e84062c0d71bace6637586be7c2590d3"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/content.mobile.min.css",
+    "revision": "4e83ff7c5a3009d223b4502e51e6428e"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/skin.css",
+    "revision": "6219ab3a71de171451a414da62a69917"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/skin.min.css",
+    "revision": "229ee941ea26438cda23f1570af733af"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/skin.mobile.css",
+    "revision": "facca67ad6951942195189b0478e4d4b"
+  },
+  {
+    "url": "vendor/laraberg/js/skins/ui/oxide/skin.mobile.min.css",
+    "revision": "5d4667e1b66bb2bda0c4a06e6d8a0878"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/inlite/index.js",
+    "revision": "30a111876b3216d9e51474a483c9a068"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/inlite/theme.js",
+    "revision": "77930c82ebe7bc5fb285ef8145e95c9d"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/inlite/theme.min.js",
+    "revision": "9cba2d62377b91304375c96226eba843"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/mobile/index.js",
+    "revision": "a136bd2faba801a12080888b27e65afb"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/mobile/theme.js",
+    "revision": "cc59eb634dd5471add4ce393da6399ef"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/mobile/theme.min.js",
+    "revision": "bc74f443daf193cc48f55560bbe55275"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/modern/index.js",
+    "revision": "0d16153c5ec8d0abb0151c5fc56b806f"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/modern/theme.js",
+    "revision": "0e50bcfc23e66938c5585ce303105cf2"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/modern/theme.min.js",
+    "revision": "af3b295e3eed46ece77323d00021090b"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/silver/index.js",
+    "revision": "7281b0268319c90508a1a300a7c06d97"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/silver/theme.js",
+    "revision": "e52aae6bed7710b81af7609279f1df99"
+  },
+  {
+    "url": "vendor/laraberg/js/themes/silver/theme.min.js",
+    "revision": "61c7aa14f167f686a14ffdc9aa9850b0"
+  },
+  {
+    "url": "vendor/laravel-filemanager/css/cropper.min.css",
+    "revision": "d5f9bed1d1ce4ee36f61a417c727f267"
+  },
+  {
+    "url": "vendor/laravel-filemanager/css/dropzone.min.css",
+    "revision": "2f735dbf472afcd77604ecf439319f7b"
+  },
+  {
+    "url": "vendor/laravel-filemanager/css/lfm.css",
+    "revision": "f486b1f08f846bc37927eb5eed575b8f"
+  },
+  {
+    "url": "vendor/laravel-filemanager/css/mfb.css",
+    "revision": "552eacea274176a26c205e6d5f770ef2"
+  },
+  {
+    "url": "vendor/laravel-filemanager/files/folder-1/sleeping-dog.jpg",
+    "revision": "56001609aa893663e1282c539b81c861"
+  },
+  {
+    "url": "vendor/laravel-filemanager/images/test-folder/sleeping-dog.jpg",
+    "revision": "56001609aa893663e1282c539b81c861"
+  },
+  {
+    "url": "vendor/laravel-filemanager/images/test-folder/thumbs/sleeping-dog.jpg",
+    "revision": "79d0cfb0971dd3f31447a4d6ea0b60f0"
+  },
+  {
+    "url": "vendor/laravel-filemanager/img/folder.png",
+    "revision": "248e1bd33de52ca2e251844eb834f173"
+  },
+  {
+    "url": "vendor/laravel-filemanager/img/loader.svg",
+    "revision": "7627bc820cce40098e897ca98413d895"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/cropper.min.js",
+    "revision": "08143dfcfef4e05e8e593f0fa9fa046c"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/dropzone.min.js",
+    "revision": "ef382b2b5e18d24161ba0fb2b90322b6"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/jquery.form.min.js",
+    "revision": "c752e8d46b09b498997a56aa3e22c3e1"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/lfm.js",
+    "revision": "f80c8cd8276b3a876cac0cd072028328"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/mfb.js",
+    "revision": "98f2dbd642c14395d70b8946ce044a52"
+  },
+  {
+    "url": "vendor/laravel-filemanager/js/script.js",
+    "revision": "a61c85eb1be81a771b95119d45cbd828"
   },
   {
     "url": "vendor/tcg/voyager/assets/css/app.css",

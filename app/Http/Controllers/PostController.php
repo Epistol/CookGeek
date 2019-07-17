@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -16,7 +18,6 @@ class PostController extends Controller
     public function index()
     {
         $all = Post::all();
-
         return response($all);
     }
 
@@ -27,16 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function admin_create()
-    {
+        if (Gate::denies('create', Post::class)) {
+            return redirect(route('/blog'));
+        }
         return view('posts.create');
     }
 
@@ -49,7 +43,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Gate::denies('create', Post::class)) {
+            return redirect(route('/blog'));
+        }
+        dd($request);
     }
 
     /**
@@ -61,7 +58,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+//        return view('posts.create');
     }
 
     /**

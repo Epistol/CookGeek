@@ -1,3 +1,9 @@
+#bodySite {
+  -webkit-box-shadow: 0 2px 2px 0 #E8E8E8;
+  box-shadow: 0 0px 10px 0 #eaeaea;
+}
+
+
 p.menu-label{
   color:$brand-primary;
   display: flex;
@@ -11,11 +17,13 @@ aside.menu{
   padding-right:0px;
   padding-left:5%;
 }
+
 .left_admin{
   background:#363457;
   padding-right:0px;
   & .menu-list a {
-    color:white;
+    color:$lavender;
+    font-size:0.85rem;
     &:hover {
       color:#363457;
     }
@@ -23,9 +31,14 @@ aside.menu{
 }
 
 .menu-label {
-  & a:hover{
-    color:antiquewhite;
+  & a {
+    font-size:0.9rem;
+    color:white;
+    &:hover{
+      color:antiquewhite;
+    }
   }
+
 }
 .content ul {
   list-style: none;

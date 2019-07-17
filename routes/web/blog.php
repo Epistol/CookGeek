@@ -9,9 +9,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => 'blog'], function () {
-//    Route::get('/', 'PostController@index');
-
-    Route::middleware(['admin'])->group(function () {
-        Route::get('/create', 'PostController@admin_create')->name('blog.add');
-    });
+    Route::get('/', 'PostController@index');
 });

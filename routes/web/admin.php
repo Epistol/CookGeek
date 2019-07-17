@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function () {
@@ -23,5 +24,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('page', 'PageController', ['as' => 'admin']);
         // Ingredients
         Route::get('ingredients', 'Admin\IngredientController@index');
+        Route::group(['prefix' => 'blog'], function () {
+            Route::get('create', 'PostController@create')
+                ->name('admin.blog.add');
+        });
     });
 });
