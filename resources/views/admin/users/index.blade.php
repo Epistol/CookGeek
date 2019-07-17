@@ -3,8 +3,44 @@
 @section('content')
     <div class="container">
         <h1>Utilisateurs</h1>
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="title is-5">Total utilisateurs</span>
+                        <br />
+                        <span class="title is-2">{{$users->count()}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="title is-5">Nouveaux utilisateurs (ce mois-ci)</span>
+{{--                        <br />--}}
+{{--                        <span class="subtitle is-12">(durant le mois en cours)</span>--}}
+                        <br />
+                        <span class="title is-2">{{$users->where('created_at', '>=',
+                         Carbon\Carbon::now()->subMonth()->format('d/m/Y'))->count()}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="title is-5">Nouveaux utilisateurs (ce mois-ci)</span>
+                        {{--                        <br />--}}
+                        {{--                        <span class="subtitle is-12">(durant le mois en cours)</span>--}}
+                        <br />
+                        <span class="title is-2">{{$users->where('created_at', '>=',
+                         Carbon\Carbon::now()->subMonth()->format('d/m/Y'))->count()}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un membre </a>
+
+        <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un utilisateur </a>
 
         <section class="section">
             <table class="table is-striped is-bordered is-hoverable ">
@@ -36,7 +72,7 @@
                             {{$rec}}
                         </td>
                         <td>
-                            <a href="{{route("user.show", $user->name)}}" class="button is-info"><i
+                            <a href="{{route("admin.user.show", $user->id)}}" class="button is-info"><i
                                         class="fas fa-eye"></i></a>
                             <a href="{{route("admin.user.edit", $user->id)}}" class="button is-info"><i
                                         class="fas fa-edit"></i></a>
