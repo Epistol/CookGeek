@@ -43,7 +43,6 @@ import TypeUniversIcon from "./components/elements/Icons/TypeUniversIcon.vue";
 import PictureUpload from "./components/picture/PictureUpload.vue";
 import UnivPictureUpload from "./components/picture/UnivPictureUpload.vue";
 
-Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
 const app = new Vue({
     el: '#bodyWebsite',

@@ -43,7 +43,6 @@ import SignalRecipe from "./components/recipe/Signal.vue";
 import ModalView from "./components/modal/ModalView";
 
 // AUTRE
-Vue.component('switchLight', require('./components/SwitchLight.vue'));
 
 const lang = document.documentElement.lang.substr(0, 2);
 const i18n = new VueInternationalization({
@@ -84,6 +83,7 @@ const app = new Vue({
         'set-picture': () => import("./components/recipe/_setters/SetPicture.vue"),
         'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
         'line-chart': () => import("./components/charts/LineComponent"),
+        'switch-light': () => import("./components/SwitchLight.vue"),
     },
 
     data: {

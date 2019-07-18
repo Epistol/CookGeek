@@ -11,6 +11,10 @@ body.nightmode {
     background: #272838;
   }
 
+  & .category-split {
+    border:0px;
+  }
+
   & .second-menu {
     background: #273043;
     box-shadow: none;
@@ -30,7 +34,7 @@ body.nightmode {
     opacity: 0.5;
   }
 
-  & .blockcontent, .searchresult, .list-h-show {
+  & .blockcontent, .searchresult, .list-h-show, .recipe-index-description {
     background: #595F72;
   }
 

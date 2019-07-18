@@ -20,8 +20,9 @@
             <div class="column">
                 <ul>
                     <li>
-                        @lang('common.time-is') <fulltime></fulltime> | <i class="fas fa-bullhorn"></i> <span
-                                id="updates" style="position:absolute;"></span>
+                        @lang('common.time-is') <fulltime></fulltime> |
+                        <i class="fas fa-bullhorn"></i>
+                        <span id="updates"></span>
                     </li>
                     <li><br />
                         <a href="{{url('/contact')}}"> Contact </a>

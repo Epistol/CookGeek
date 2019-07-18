@@ -15793,6 +15793,9 @@ body.nightmode .is-brand {
 body.nightmode nav.navbar {
   background: #272838;
 }
+body.nightmode .category-split {
+  border: 0px;
+}
 body.nightmode .second-menu {
   background: #273043;
   box-shadow: none;
@@ -15813,7 +15816,7 @@ body.nightmode::placeholder, body.nightmode ::-webkit-input-placeholder {
   color: #E0E2DB;
   opacity: 0.5;
 }
-body.nightmode .blockcontent, body.nightmode .searchresult, body.nightmode .list-h-show {
+body.nightmode .blockcontent, body.nightmode .searchresult, body.nightmode .list-h-show, body.nightmode .recipe-index-description {
   background: #595F72;
 }
 body.nightmode h1, body.nightmode h2, body.nightmode h3, body.nightmode h4, body.nightmode h5, body.nightmode h6, body.nightmode .title, body.nightmode .label {
