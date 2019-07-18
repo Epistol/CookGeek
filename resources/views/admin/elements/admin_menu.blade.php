@@ -2,14 +2,14 @@
     <p class="menu-label">
         <a href="{{"/admin"}}">
             <span class="icon ">
-                    <i class="fas fa-home"></i>
+                   <i class="fas fa-tachometer-alt"></i>
                 </span>
             Tableau de bord</a>
     </p>
-    <ul class="menu-list">
+    <ul class="menu-list has-dropdown is-hoverable">
         <li>
             <a href="{{route("admin.page.index")}}"
-                    {{ Route::currentRouteNamed('*.page.*') ? ' class=is-active' : null  }}>
+                    {{ Route::currentRouteNamed('*.page.*') ? ' class="is-active"' : null  }}>
 
                  <span class="icon ">
                   <i class="fas fa-book"></i>
@@ -17,14 +17,14 @@
                 Pages
             </a>
             <a href="{{route("admin.recipe.index")}}"
-                    {{ Route::currentRouteNamed('*.recipe.*') ? ' class=is-active' : null  }} >
+                    {{ Route::currentRouteNamed('*.recipe.*') ? ' class="is-active"' : null  }} >
                  <span class="icon ">
                   <i class="fas fa-hamburger"></i>
                 </span>
                 Recipes
             </a>
             <a href="{{route("admin.ingredient.index")}}"
-                    {{ Route::currentRouteNamed('*.ingredient.*') ? ' class=is-active' : null  }} >
+                    {{ Route::currentRouteNamed('*.ingredient.*') ? ' class="is-active"' : null  }} >
                 <span class="icon ">
                  <i class="fas fa-apple-alt"></i>
                 </span>
@@ -32,7 +32,7 @@
                 Ingrédients
             </a>
             <a href="{{route("admin.universe.index")}}"
-                    {{ Route::currentRouteNamed('*.universe.*') ? ' class=is-active' : null  }} >
+                    {{ Route::currentRouteNamed('*.universe.*') ? ' class="is-active"' : null  }} >
                 <span class="icon ">
                <i class="fas fa-globe-europe"></i>
                 </span>
@@ -41,7 +41,7 @@
         </li>
     </ul>
 
-    <p class="menu-label">
+    <p class="menu-label {{ Route::currentRouteNamed('admin.user.*') ? 'is-open' : null  }}">
         <a href="{{route("admin.user.index")}}">
             <span class="icon">
                 <i class="fas fa-users"></i>
@@ -52,7 +52,25 @@
     <ul class="menu-list">
         <li>
             <a href="{{route("admin.ban.index")}}"
-                    {{ Route::currentRouteNamed('admin.ban.*') ? ' class=is-active' : null  }}>
+                    {{ Route::currentRouteNamed('admin.ban.*') ? ' class="is-active"' : null  }}>
+                Tout les utilisateurs
+            </a>
+        </li>
+        <li>
+            <a href="{{route("admin.ban.index")}}"
+                    {{ Route::currentRouteNamed('admin.ban.*') ? ' class="is-active"' : null  }}>
+                Ajouter
+            </a>
+        </li>
+        <li>
+            <a href="{{route("admin.ban.index")}}"
+                    {{ Route::currentRouteNamed('admin.ban.*') ? ' class="is-active"' : null  }}>
+                Votre profil
+            </a>
+        </li>
+        <li>
+            <a href="{{route("admin.ban.index")}}"
+                    {{ Route::currentRouteNamed('admin.ban.*') ? ' class="is-active"' : null  }}>
                             <span class="icon">
                                 <i class="far fa-times-circle"></i>
                             </span>
@@ -61,7 +79,7 @@
         </li>
     </ul>
 
-    <p class="menu-label">
+    <p class="menu-label  {{ Route::currentRouteNamed('admin.blog.*') ? 'is-open' : null  }}">
         <a>
             <span class="icon">
                   <i class="fas fa-th-large"></i>
@@ -72,7 +90,7 @@
     <ul class="menu-list">
         <li>
             <a href="{{route("admin.blog.add")}}"
-                    {{ Route::currentRouteNamed('admin.blog.*') ? ' class=is-active' : null  }}>
+                    {{ Route::currentRouteNamed('admin.blog.*') ? 'class="is-active"' : null  }}>
                 <span class="icon">
                     <i class="fas fa-plus-circle"></i>
                     </span>

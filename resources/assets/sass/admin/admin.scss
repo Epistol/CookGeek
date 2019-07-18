@@ -4,58 +4,87 @@
 }
 
 
-p.menu-label{
-  color:$brand-primary;
-  display: flex;
-  align-items: center;
-}
-aside.menu{
+
+aside.menu {
   padding-top: 10%;
 }
-.left_menu{
-  background:$white-bis;
-  padding-right:0px;
-  padding-left:5%;
+
+.left_menu {
+  background: $white-bis;
+  padding-right: 0px;
+  padding-left: 5%;
 }
 
-.left_admin{
-  background:#363457;
-  padding-right:0px;
-  & .menu-list a {
-    color:$lavender;
-    font-size:0.85rem;
-    &:hover {
-      color:#363457;
+.left_admin {
+  background: #363457;
+  padding-right: 0px;
+  & .menu-list {
+    & a {
+      color: $lavender;
+      font-size: 0.85rem;
+      &:hover {
+        color: #363457;
+      }
     }
   }
 }
-
-.menu-label {
+ul.menu-list {
+  opacity: 1;
+  //position: absolute;
+  //left: 14%;
+  //top: 64px;
+  //pointer-events: none;
+}
+p.menu-label {
+  @include transition_all();
+  color: $brand-primary;
+  align-items: center;
   & a {
-    font-size:0.9rem;
-    color:white;
-    &:hover{
-      color:antiquewhite;
+    font-size: 0.9rem;
+    color: white;
+    &:hover {
+      color: antiquewhite;
     }
   }
+ /* &:hover {
+    @include transition_all();
+    cursor:pointer;
+    pointer-events: all;
+    & + ul {
+      @include transition_all();
+      opacity:1;
+      background:white;
+    }
+  }*/
 
+  // If it contains a opened div
+  &.is-open {
+    background: $white-bis;
+    & a {
+      color: #363457;
+    }
+    & + ul.menu-list {
+      display: block;
+      background : rgba(0,0,0,0.2);
+    }
+  }
 }
+
 .content ul {
   list-style: none;
   margin-left: 2em;
   margin-top: 1em;
 }
 
-.entity{
+.entity {
   border-bottom: 3px solid $body-bg;
   padding: 1rem;
 }
 
-
 .box-color {
-  background:transparent;
+  background: transparent;
   border-radius: 2px;
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,.1), inset 0 0 0 1px rgba(0,0,0,.1);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), inset 0 0 0 1px rgba(0, 0, 0, .1);
   display: inline-block;
   float: left;
   height: 24px;
@@ -69,10 +98,11 @@ aside.menu{
 
 td.valid {
   background: $green;
-  color:white;
+  color: white;
 }
+
 td.unvalid {
-  background:$red;
-  color:white;
+  background: $red;
+  color: white;
 }
 

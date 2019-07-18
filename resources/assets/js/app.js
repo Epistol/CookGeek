@@ -84,6 +84,7 @@ const app = new Vue({
         'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
         'line-chart': () => import("./components/charts/LineComponent"),
         'switch-light': () => import("./components/SwitchLight.vue"),
+        'drop-picture': () => import("./components/picture/DropPicturePreview"),
     },
 
     data: {

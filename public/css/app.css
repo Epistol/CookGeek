@@ -15827,7 +15827,7 @@ body.nightmode .input, body.nightmode .textarea, body.nightmode input.input_moda
   color: #E0E2DB;
   border: 0;
 }
-body.nightmode .card-cdg, body.nightmode .background-round, body.nightmode header.background-round, body.nightmode .column.recipe-right-add, body.nightmode .page, body.nightmode .autocomplete-results, body.nightmode .is-result, body.nightmode .card, body.nightmode .univers-element, body.nightmode .page--no-pading, body.nightmode .side-left, body.nightmode .list-h-show, body.nightmode .timeline-Widget, body.nightmode .side-bg.pub, body.nightmode .author {
+body.nightmode .card-cdg, body.nightmode .background-round, body.nightmode .right_admin, body.nightmode header.background-round, body.nightmode .column.recipe-right-add, body.nightmode .page, body.nightmode .autocomplete-results, body.nightmode .is-result, body.nightmode .card, body.nightmode .univers-element, body.nightmode .page--no-pading, body.nightmode .side-left, body.nightmode .list-h-show, body.nightmode .timeline-Widget, body.nightmode .side-bg.pub, body.nightmode .author {
   background: #273043;
   color: #E0E2DB;
 }

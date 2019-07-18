@@ -15827,7 +15827,7 @@ body.nightmode .input, body.nightmode .textarea, body.nightmode input.input_moda
   color: #E0E2DB;
   border: 0;
 }
-body.nightmode .card-cdg, body.nightmode .background-round, body.nightmode header.background-round, body.nightmode .column.recipe-right-add, body.nightmode .page, body.nightmode .autocomplete-results, body.nightmode .is-result, body.nightmode .card, body.nightmode .univers-element, body.nightmode .page--no-pading, body.nightmode .side-left, body.nightmode .list-h-show, body.nightmode .timeline-Widget, body.nightmode .side-bg.pub, body.nightmode .author {
+body.nightmode .card-cdg, body.nightmode .background-round, body.nightmode .right_admin, body.nightmode header.background-round, body.nightmode .column.recipe-right-add, body.nightmode .page, body.nightmode .autocomplete-results, body.nightmode .is-result, body.nightmode .card, body.nightmode .univers-element, body.nightmode .page--no-pading, body.nightmode .side-left, body.nightmode .list-h-show, body.nightmode .timeline-Widget, body.nightmode .side-bg.pub, body.nightmode .author {
   background: #273043;
   color: #E0E2DB;
 }
@@ -15893,12 +15893,6 @@ html.nightmode {
   box-shadow: 0 0px 10px 0 #eaeaea;
 }
 
-p.menu-label {
-  color: #7F5FBF;
-  display: flex;
-  align-items: center;
-}
-
 aside.menu {
   padding-top: 10%;
 }
@@ -15921,12 +15915,41 @@ aside.menu {
   color: #363457;
 }
 
-.menu-label a {
+ul.menu-list {
+  opacity: 1;
+}
+
+p.menu-label {
+  transition: all 0.3s ease-in-out;
+  color: #7F5FBF;
+  align-items: center;
+  /* &:hover {
+     @include transition_all();
+     cursor:pointer;
+     pointer-events: all;
+     & + ul {
+       @include transition_all();
+       opacity:1;
+       background:white;
+     }
+   }*/
+}
+p.menu-label a {
   font-size: 0.9rem;
   color: white;
 }
-.menu-label a:hover {
+p.menu-label a:hover {
   color: antiquewhite;
+}
+p.menu-label.is-open {
+  background: #fafafa;
+}
+p.menu-label.is-open a {
+  color: #363457;
+}
+p.menu-label.is-open + ul.menu-list {
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .content ul {

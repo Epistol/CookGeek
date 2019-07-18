@@ -107,5 +107,11 @@
 
 </script>
 
+<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+<script>
+    var route_prefix = "{{ url(config('lfm.url_prefix', config('app.url'))) }}";
+    $('#lfm').filemanager('image', {prefix: route_prefix});
+    $('#lfm2').filemanager('file', {prefix: route_prefix});
+</script>
 </body>
 </html>

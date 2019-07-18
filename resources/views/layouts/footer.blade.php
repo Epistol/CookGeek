@@ -5,10 +5,10 @@
                 {{--Logo et infos--}}
                 <ul>
                     <li>
-                        CuisineDeGeek - © 2019 @if(now()->year != 2019) / {{ now()->year }} @endif
+                        <span>CuisineDeGeek - © 2019 @if(now()->year != 2019) / {{ now()->year }} @endif</span>
                     </li>
                     <li><br />
-                        @lang('common.cdg.description')
+                        <p>@lang('common.cdg.description')</p>
                     </li>
                     <li>
                         <br /><a href="{{url('/contact')}}">Devenir annonceur </a>
