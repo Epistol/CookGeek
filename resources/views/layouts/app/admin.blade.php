@@ -38,6 +38,58 @@
 
     <link href="{{ asset('css/admin.css') }}"
           rel="preload" as="style" onload="this.rel='stylesheet'">
+
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    {{-- <script src="https://unpkg.com/react@16.6.3/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.6.3/umd/react-dom.development.js"></script> --}}
+    <script src="https://unpkg.com/moment@2.22.1/min/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('vendor/laraberg/css/laraberg.css')}}">
+    <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            // CKEDITOR.replace('ckedivel', options);
+            var toast_png = "{{ asset('js/toasty/toasty.png')}}";
+            var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
+            var route_prefix = "{{ url(config('lfm.url_prefix', config('app.url'))) }}";
+            $('#lfm').filemanager('image', {prefix: route_prefix});
+            $('#lfm2').filemanager('file', {prefix: route_prefix});
+        });
+    </script>
+    <script type="application/javascript">
+        Laraberg.init('gutenvel', { laravelFilemanager: true });
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        <?php
+        if (Auth::check() == false || Auth::check() == '') {
+            echo "var userIsLoggedIn = 0;";
+        } else {
+            echo "var userIsLoggedIn = 1;";
+        }
+        ?>
+    </script>
+
+    <script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
+    <script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
+    @include('layouts.scripts')
+    <script type="application/javascript">
+        var CSRFToken = $('meta[name="csrf-token"]').attr('content');
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=' + CSRFToken,
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=' + CSRFToken,
+            image_previewText: 'In publishing and graphic design, lorem ipsum is' +
+                'placeholder text (filler text) commonly used to demonstrate the graphic' +
+                'elements of a document or visual presentation'
+        };
+    </script>
 </head>
 <body class="">
 @include("layouts.menuMobile")
@@ -47,7 +99,7 @@
         @include('layouts.app_element.alerts')
         <div class="columns is-paddingless is-marginless full-height" id="bodySite">
             <div class="column is-2 left_admin">
-{{--               Left menu admin--}}
+                {{--               Left menu admin--}}
                 @include("admin.elements.admin_menu")
             </div>
             <div class="column right_admin">
@@ -57,61 +109,10 @@
 </div>
 @include("layouts.footer")
 <!-- Scripts -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    <?php
-    if (Auth::check() == false || Auth::check() == '') {
-        echo "var userIsLoggedIn = 0;";
-    } else {
-        echo "var userIsLoggedIn = 1;";
-    }
-    ?>
-</script>
 
-<script>
-    var toast_png = "{{ asset('js/toasty/toasty.png')}}";
-    var toast_mp3 = "{{ asset('js/toasty/toasty.mp3')}}";
-</script>
-<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
-
-@include('layouts.scripts')
 <div id="fb-root"></div>
-<script type="application/javascript">
-    var CSRFToken = $('meta[name="csrf-token"]').attr('content');
-    var options = {
-        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token='+CSRFToken,
-        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='+CSRFToken,
-        image_previewText : 'In publishing and graphic design, lorem ipsum is' +
-            'placeholder text (filler text) commonly used to demonstrate the graphic' +
-            'elements of a document or visual presentation'
-    };
 
-    $(document).ready(function () {
-        CKEDITOR.replace('gutenvel', options);
-
-        /*var slider = document.getElementById('slider');
-
-        noUiSlider.create(slider, {
-            start: [20, 80],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });*/
-    });
-
-</script>
-
-<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
-<script>
-    var route_prefix = "{{ url(config('lfm.url_prefix', config('app.url'))) }}";
-    $('#lfm').filemanager('image', {prefix: route_prefix});
-    $('#lfm2').filemanager('file', {prefix: route_prefix});
-</script>
 </body>
 </html>
+
+

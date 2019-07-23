@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d77515673dfefb3dcd6ef3f108a5adf",
+    "content-hash": "13749c404fb4730725ee40bca89aaa1a",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1646,6 +1646,59 @@
                 "validator"
             ],
             "time": "2019-06-23T10:14:27+00:00"
+        },
+        {
+            "name": "embed/embed",
+            "version": "v3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/Embed.git",
+                "reference": "960bbd5a62c5697302bd5394d58efba2e998b787"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/960bbd5a62c5697302bd5394d58efba2e998b787",
+                "reference": "960bbd5a62c5697302bd5394d58efba2e998b787",
+                "shasum": ""
+            },
+            "require": {
+                "composer/ca-bundle": "^1.0",
+                "ext-curl": "*",
+                "ext-mbstring": "*",
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^4.8|^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Embed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "role": "Developer",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com"
+                }
+            ],
+            "description": "PHP library to retrieve page info using oembed, opengraph, etc",
+            "homepage": "https://github.com/oscarotero/Embed",
+            "keywords": [
+                "embed",
+                "embedly",
+                "oembed",
+                "opengraph",
+                "twitter cards"
+            ],
+            "time": "2019-07-20T17:05:41+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -8684,6 +8737,51 @@
             "time": "2018-07-05T11:36:08+00:00"
         },
         {
+            "name": "van-ons/laraberg",
+            "version": "v0.0.6-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VanOns/laraberg.git",
+                "reference": "9fda1daf62170cd02ef92bc56e90f7084fe49440"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/VanOns/laraberg/zipball/9fda1daf62170cd02ef92bc56e90f7084fe49440",
+                "reference": "9fda1daf62170cd02ef92bc56e90f7084fe49440",
+                "shasum": ""
+            },
+            "require": {
+                "embed/embed": "^3.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.7",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": "VanOns\\Laraberg\\LarabergServiceProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VanOns\\Laraberg\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maurice Wijnia",
+                    "email": "maurice@van-ons.nl"
+                }
+            ],
+            "description": "A Gutenberg implementation for Laravel",
+            "time": "2019-05-21T14:51:50+00:00"
+        },
+        {
             "name": "vinkla/hashids",
             "version": "5.2.0",
             "source": {
@@ -13039,6 +13137,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "van-ons/laraberg": 10,
         "waavi/sanitizer": 20,
         "phpmd/phpmd": 0
     },

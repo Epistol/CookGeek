@@ -53,6 +53,7 @@
         "spatie/schema-org": "^1.4",
         "torann/geoip": "^1.0",
         "unisharp/laravel-filemanager": "~1.8",
+        "van-ons/laraberg": "v0.0.6-beta",
         "vinkla/hashids": "^5.1",
         "waavi/sanitizer": "dev-master"
     },

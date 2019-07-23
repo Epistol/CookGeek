@@ -1,2451 +1,1931 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[26],{
 
-/***/ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/react/cjs/react.development.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react/cjs/react.development.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
+/** @license React v16.8.6
+ * react.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+var _assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+// TODO: this is special because it gets imported during build.
+
+var ReactVersion = '16.8.6';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
   }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
   }
+  return null;
 }
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function () {};
+
+{
+  validateFormat = function (format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
 }
 
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+  if (!condition) {
+    var error = void 0;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
       }));
+      error.name = 'Invariant Violation';
     }
 
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+// Relying on the `invariant()` implementation lets us
+// preserve the format and params in the www builds.
+
+/**
+ * Forked from fbjs/warning:
+ * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+ *
+ * Only change is we use console.warn instead of console.error,
+ * and do nothing when 'console' is not supported.
+ * This really simplifies the code.
+ * ---
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var lowPriorityWarning = function () {};
+
+{
+  var printWarning = function (format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.warn(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  lowPriorityWarning = function (condition, format) {
+    if (format === undefined) {
+      throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+var lowPriorityWarning$1 = lowPriorityWarning;
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warningWithoutStack = function () {};
+
+{
+  warningWithoutStack = function (condition, format) {
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    if (format === undefined) {
+      throw new Error('`warningWithoutStack(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+    if (args.length > 8) {
+      // Check before the condition to catch violations early.
+      throw new Error('warningWithoutStack() currently supports at most 8 arguments.');
+    }
+    if (condition) {
+      return;
+    }
+    if (typeof console !== 'undefined') {
+      var argsWithFormat = args.map(function (item) {
+        return '' + item;
+      });
+      argsWithFormat.unshift('Warning: ' + format);
+
+      // We intentionally don't use spread (or .apply) directly because it
+      // breaks IE9: https://github.com/facebook/react/issues/13610
+      Function.prototype.apply.call(console.error, console, argsWithFormat);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      var argIndex = 0;
+      var message = 'Warning: ' + format.replace(/%s/g, function () {
+        return args[argIndex++];
+      });
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+var warningWithoutStack$1 = warningWithoutStack;
+
+var didWarnStateUpdateForUnmountedComponent = {};
+
+function warnNoop(publicInstance, callerName) {
+  {
+    var _constructor = publicInstance.constructor;
+    var componentName = _constructor && (_constructor.displayName || _constructor.name) || 'ReactClass';
+    var warningKey = componentName + '.' + callerName;
+    if (didWarnStateUpdateForUnmountedComponent[warningKey]) {
+      return;
+    }
+    warningWithoutStack$1(false, "Can't call %s on a component that is not yet mounted. " + 'This is a no-op, but it might indicate a bug in your application. ' + 'Instead, assign to `this.state` directly or define a `state = {};` ' + 'class property with the desired state in the %s component.', callerName, componentName);
+    didWarnStateUpdateForUnmountedComponent[warningKey] = true;
+  }
+}
+
+/**
+ * This is the abstract API for an update queue.
+ */
+var ReactNoopUpdateQueue = {
+  /**
+   * Checks whether or not this composite component is mounted.
+   * @param {ReactClass} publicInstance The instance we want to test.
+   * @return {boolean} True if mounted, false otherwise.
+   * @protected
+   * @final
+   */
+  isMounted: function (publicInstance) {
+    return false;
+  },
+
+  /**
+   * Forces an update. This should only be invoked when it is known with
+   * certainty that we are **not** in a DOM transaction.
+   *
+   * You may want to call this when you know that some deeper aspect of the
+   * component's state has changed but `setState` was not called.
+   *
+   * This will not invoke `shouldComponentUpdate`, but it will invoke
+   * `componentWillUpdate` and `componentDidUpdate`.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} callerName name of the calling function in the public API.
+   * @internal
+   */
+  enqueueForceUpdate: function (publicInstance, callback, callerName) {
+    warnNoop(publicInstance, 'forceUpdate');
+  },
+
+  /**
+   * Replaces all of the state. Always use this or `setState` to mutate state.
+   * You should treat `this.state` as immutable.
+   *
+   * There is no guarantee that `this.state` will be immediately updated, so
+   * accessing `this.state` after calling this method may return the old value.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} completeState Next state.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} callerName name of the calling function in the public API.
+   * @internal
+   */
+  enqueueReplaceState: function (publicInstance, completeState, callback, callerName) {
+    warnNoop(publicInstance, 'replaceState');
+  },
+
+  /**
+   * Sets a subset of the state. This only exists because _pendingState is
+   * internal. This provides a merging strategy that is not available to deep
+   * properties which is confusing. TODO: Expose pendingState or don't use it
+   * during the merge.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} partialState Next partial state to be merged with state.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} Name of the calling function in the public API.
+   * @internal
+   */
+  enqueueSetState: function (publicInstance, partialState, callback, callerName) {
+    warnNoop(publicInstance, 'setState');
+  }
+};
+
+var emptyObject = {};
+{
+  Object.freeze(emptyObject);
+}
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function Component(props, context, updater) {
+  this.props = props;
+  this.context = context;
+  // If a component has string refs, we will assign a different object later.
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+Component.prototype.isReactComponent = {};
+
+/**
+ * Sets a subset of the state. Always use this to mutate
+ * state. You should treat `this.state` as immutable.
+ *
+ * There is no guarantee that `this.state` will be immediately updated, so
+ * accessing `this.state` after calling this method may return the old value.
+ *
+ * There is no guarantee that calls to `setState` will run synchronously,
+ * as they may eventually be batched together.  You can provide an optional
+ * callback that will be executed when the call to setState is actually
+ * completed.
+ *
+ * When a function is provided to setState, it will be called at some point in
+ * the future (not synchronously). It will be called with the up to date
+ * component arguments (state, props, context). These values can be different
+ * from this.* because your function may be called after receiveProps but before
+ * shouldComponentUpdate, and this new state, props, and context will not yet be
+ * assigned to this.
+ *
+ * @param {object|function} partialState Next partial state or function to
+ *        produce next partial state to be merged with current state.
+ * @param {?function} callback Called after state is updated.
+ * @final
+ * @protected
+ */
+Component.prototype.setState = function (partialState, callback) {
+  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+  this.updater.enqueueSetState(this, partialState, callback, 'setState');
+};
+
+/**
+ * Forces an update. This should only be invoked when it is known with
+ * certainty that we are **not** in a DOM transaction.
+ *
+ * You may want to call this when you know that some deeper aspect of the
+ * component's state has changed but `setState` was not called.
+ *
+ * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * `componentWillUpdate` and `componentDidUpdate`.
+ *
+ * @param {?function} callback Called after update is complete.
+ * @final
+ * @protected
+ */
+Component.prototype.forceUpdate = function (callback) {
+  this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
+};
+
+/**
+ * Deprecated APIs. These APIs used to exist on classic React classes but since
+ * we would like to deprecate them, we're not going to move them over to this
+ * modern base class. Instead, we define a getter that warns if it's accessed.
+ */
+{
+  var deprecatedAPIs = {
+    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+  };
+  var defineDeprecationWarning = function (methodName, info) {
+    Object.defineProperty(Component.prototype, methodName, {
+      get: function () {
+        lowPriorityWarning$1(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
+        return undefined;
+      }
+    });
+  };
+  for (var fnName in deprecatedAPIs) {
+    if (deprecatedAPIs.hasOwnProperty(fnName)) {
+      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+    }
+  }
+}
+
+function ComponentDummy() {}
+ComponentDummy.prototype = Component.prototype;
+
+/**
+ * Convenience component with default shallow equality check for sCU.
+ */
+function PureComponent(props, context, updater) {
+  this.props = props;
+  this.context = context;
+  // If a component has string refs, we will assign a different object later.
+  this.refs = emptyObject;
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
+pureComponentPrototype.constructor = PureComponent;
+// Avoid an extra prototype jump for these methods.
+_assign(pureComponentPrototype, Component.prototype);
+pureComponentPrototype.isPureReactComponent = true;
+
+// an immutable object with a single mutable value
+function createRef() {
+  var refObject = {
+    current: null
+  };
+  {
+    Object.seal(refObject);
+  }
+  return refObject;
+}
+
+/**
+ * Keeps track of the current dispatcher.
+ */
+var ReactCurrentDispatcher = {
+  /**
+   * @internal
+   * @type {ReactComponent}
+   */
+  current: null
+};
+
+/**
+ * Keeps track of the current owner.
+ *
+ * The current owner is the component who should own any components that are
+ * currently being constructed.
+ */
+var ReactCurrentOwner = {
+  /**
+   * @internal
+   * @type {ReactComponent}
+   */
+  current: null
+};
+
+var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+
+var describeComponentFrame = function (name, source, ownerName) {
+  var sourceInfo = '';
+  if (source) {
+    var path = source.fileName;
+    var fileName = path.replace(BEFORE_SLASH_RE, '');
+    {
+      // In DEV, include code for a common special case:
+      // prefer "folder/index.js" instead of just "index.js".
+      if (/^index\./.test(fileName)) {
+        var match = path.match(BEFORE_SLASH_RE);
+        if (match) {
+          var pathBeforeSlash = match[1];
+          if (pathBeforeSlash) {
+            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+            fileName = folderName + '/' + fileName;
+          }
+        }
+      }
+    }
+    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+  } else if (ownerName) {
+    sourceInfo = ' (created by ' + ownerName + ')';
+  }
+  return '\n    in ' + (name || 'Unknown') + sourceInfo;
+};
+
+var Resolved = 1;
+
+
+function refineResolvedLazyComponent(lazyComponent) {
+  return lazyComponent._status === Resolved ? lazyComponent._result : null;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var functionName = innerType.displayName || innerType.name || '';
+  return outerType.displayName || (functionName !== '' ? wrapperName + '(' + functionName + ')' : wrapperName);
+}
+
+function getComponentName(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+  {
+    if (typeof type.tag === 'number') {
+      warningWithoutStack$1(false, 'Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+  if (typeof type === 'string') {
+    return type;
+  }
+  switch (type) {
+    case REACT_CONCURRENT_MODE_TYPE:
+      return 'ConcurrentMode';
+    case REACT_FRAGMENT_TYPE:
+      return 'Fragment';
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+    case REACT_PROFILER_TYPE:
+      return 'Profiler';
+    case REACT_STRICT_MODE_TYPE:
+      return 'StrictMode';
+    case REACT_SUSPENSE_TYPE:
+      return 'Suspense';
+  }
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        return 'Context.Consumer';
+      case REACT_PROVIDER_TYPE:
+        return 'Context.Provider';
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+      case REACT_MEMO_TYPE:
+        return getComponentName(type.type);
+      case REACT_LAZY_TYPE:
+        {
+          var thenable = type;
+          var resolvedThenable = refineResolvedLazyComponent(thenable);
+          if (resolvedThenable) {
+            return getComponentName(resolvedThenable);
+          }
+        }
+    }
+  }
+  return null;
+}
+
+var ReactDebugCurrentFrame = {};
+
+var currentlyValidatingElement = null;
+
+function setCurrentlyValidatingElement(element) {
+  {
+    currentlyValidatingElement = element;
+  }
+}
+
+{
+  // Stack implementation injected by the current renderer.
+  ReactDebugCurrentFrame.getCurrentStack = null;
+
+  ReactDebugCurrentFrame.getStackAddendum = function () {
+    var stack = '';
+
+    // Add an extra top frame while an element is being validated
+    if (currentlyValidatingElement) {
+      var name = getComponentName(currentlyValidatingElement.type);
+      var owner = currentlyValidatingElement._owner;
+      stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
+    }
+
+    // Delegate to the injected renderer-specific implementation
+    var impl = ReactDebugCurrentFrame.getCurrentStack;
+    if (impl) {
+      stack += impl() || '';
+    }
+
+    return stack;
+  };
+}
+
+var ReactSharedInternals = {
+  ReactCurrentDispatcher: ReactCurrentDispatcher,
+  ReactCurrentOwner: ReactCurrentOwner,
+  // Used by renderers to avoid bundling object-assign twice in UMD bundles:
+  assign: _assign
+};
+
+{
+  _assign(ReactSharedInternals, {
+    // These should not be included in production.
+    ReactDebugCurrentFrame: ReactDebugCurrentFrame,
+    // Shim for React DOM 16.0.0 which still destructured (but not used) this.
+    // TODO: remove in React 17.0.
+    ReactComponentTreeHook: {}
+  });
+}
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = warningWithoutStack$1;
+
+{
+  warning = function (condition, format) {
+    if (condition) {
+      return;
+    }
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    var stack = ReactDebugCurrentFrame.getStackAddendum();
+    // eslint-disable-next-line react-internal/warning-and-invariant-args
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    warningWithoutStack$1.apply(undefined, [false, format + '%s'].concat(args, [stack]));
+  };
+}
+
+var warning$1 = warning;
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+var RESERVED_PROPS = {
+  key: true,
+  ref: true,
+  __self: true,
+  __source: true
+};
+
+var specialPropKeyWarningShown = void 0;
+var specialPropRefWarningShown = void 0;
+
+function hasValidRef(config) {
+  {
+    if (hasOwnProperty.call(config, 'ref')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+  return config.ref !== undefined;
+}
+
+function hasValidKey(config) {
+  {
+    if (hasOwnProperty.call(config, 'key')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+  return config.key !== undefined;
+}
+
+function defineKeyPropWarningGetter(props, displayName) {
+  var warnAboutAccessingKey = function () {
+    if (!specialPropKeyWarningShown) {
+      specialPropKeyWarningShown = true;
+      warningWithoutStack$1(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+    }
+  };
+  warnAboutAccessingKey.isReactWarning = true;
+  Object.defineProperty(props, 'key', {
+    get: warnAboutAccessingKey,
+    configurable: true
+  });
+}
+
+function defineRefPropWarningGetter(props, displayName) {
+  var warnAboutAccessingRef = function () {
+    if (!specialPropRefWarningShown) {
+      specialPropRefWarningShown = true;
+      warningWithoutStack$1(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+    }
+  };
+  warnAboutAccessingRef.isReactWarning = true;
+  Object.defineProperty(props, 'ref', {
+    get: warnAboutAccessingRef,
+    configurable: true
+  });
+}
+
+/**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, no instanceof check
+ * will work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @param {*} owner
+ * @param {*} props
+ * @internal
+ */
+var ReactElement = function (type, key, ref, self, source, owner, props) {
+  var element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
+
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
+
+    // Record the component responsible for creating this element.
+    _owner: owner
+  };
+
+  {
+    // The validation flag is currently mutative. We put it on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    element._store = {};
+
+    // To make comparing ReactElements easier for testing purposes, we make
+    // the validation flag non-enumerable (where possible, which should
+    // include every environment we run tests in), so the test framework
+    // ignores it.
+    Object.defineProperty(element._store, 'validated', {
+      configurable: false,
+      enumerable: false,
+      writable: true,
+      value: false
+    });
+    // self and source are DEV only properties.
+    Object.defineProperty(element, '_self', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: self
+    });
+    // Two elements created in two different places should be considered
+    // equal for testing purposes and therefore we hide it from enumeration.
+    Object.defineProperty(element, '_source', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: source
+    });
+    if (Object.freeze) {
+      Object.freeze(element.props);
+      Object.freeze(element);
+    }
+  }
+
+  return element;
+};
+
+/**
+ * Create and return a new ReactElement of the given type.
+ * See https://reactjs.org/docs/react-api.html#createelement
+ */
+function createElement(type, config, children) {
+  var propName = void 0;
+
+  // Reserved names are extracted
+  var props = {};
+
+  var key = null;
+  var ref = null;
+  var self = null;
+  var source = null;
+
+  if (config != null) {
+    if (hasValidRef(config)) {
+      ref = config.ref;
+    }
+    if (hasValidKey(config)) {
+      key = '' + config.key;
+    }
+
+    self = config.__self === undefined ? null : config.__self;
+    source = config.__source === undefined ? null : config.__source;
+    // Remaining properties are added to a new props object
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    }
+  }
+
+  // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+  var childrenLength = arguments.length - 2;
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = Array(childrenLength);
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
+    }
+    {
+      if (Object.freeze) {
+        Object.freeze(childArray);
+      }
+    }
+    props.children = childArray;
+  }
+
+  // Resolve default props
+  if (type && type.defaultProps) {
+    var defaultProps = type.defaultProps;
+    for (propName in defaultProps) {
+      if (props[propName] === undefined) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  }
+  {
+    if (key || ref) {
+      var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+      if (key) {
+        defineKeyPropWarningGetter(props, displayName);
+      }
+      if (ref) {
+        defineRefPropWarningGetter(props, displayName);
+      }
+    }
+  }
+  return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+}
+
+/**
+ * Return a function that produces ReactElements of a given type.
+ * See https://reactjs.org/docs/react-api.html#createfactory
+ */
+
+
+function cloneAndReplaceKey(oldElement, newKey) {
+  var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
+
+  return newElement;
+}
+
+/**
+ * Clone and return a new ReactElement using element as the starting point.
+ * See https://reactjs.org/docs/react-api.html#cloneelement
+ */
+function cloneElement(element, config, children) {
+  !!(element === null || element === undefined) ? invariant(false, 'React.cloneElement(...): The argument must be a React element, but you passed %s.', element) : void 0;
+
+  var propName = void 0;
+
+  // Original props are copied
+  var props = _assign({}, element.props);
+
+  // Reserved names are extracted
+  var key = element.key;
+  var ref = element.ref;
+  // Self is preserved since the owner is preserved.
+  var self = element._self;
+  // Source is preserved since cloneElement is unlikely to be targeted by a
+  // transpiler, and the original source is probably a better indicator of the
+  // true owner.
+  var source = element._source;
+
+  // Owner will be preserved, unless ref is overridden
+  var owner = element._owner;
+
+  if (config != null) {
+    if (hasValidRef(config)) {
+      // Silently steal the ref from the parent.
+      ref = config.ref;
+      owner = ReactCurrentOwner.current;
+    }
+    if (hasValidKey(config)) {
+      key = '' + config.key;
+    }
+
+    // Remaining properties override existing props
+    var defaultProps = void 0;
+    if (element.type && element.type.defaultProps) {
+      defaultProps = element.type.defaultProps;
+    }
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        if (config[propName] === undefined && defaultProps !== undefined) {
+          // Resolve default props
+          props[propName] = defaultProps[propName];
+        } else {
+          props[propName] = config[propName];
+        }
+      }
+    }
+  }
+
+  // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+  var childrenLength = arguments.length - 2;
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = Array(childrenLength);
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
+    }
+    props.children = childArray;
+  }
+
+  return ReactElement(element.type, key, ref, self, source, owner, props);
+}
+
+/**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */
+function isValidElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+
+var SEPARATOR = '.';
+var SUBSEPARATOR = ':';
+
+/**
+ * Escape and wrap key so it is safe to use as a reactid
+ *
+ * @param {string} key to be escaped.
+ * @return {string} the escaped key.
+ */
+function escape(key) {
+  var escapeRegex = /[=:]/g;
+  var escaperLookup = {
+    '=': '=0',
+    ':': '=2'
+  };
+  var escapedString = ('' + key).replace(escapeRegex, function (match) {
+    return escaperLookup[match];
+  });
+
+  return '$' + escapedString;
+}
+
+/**
+ * TODO: Test that a single child and an array with one item have the same key
+ * pattern.
+ */
+
+var didWarnAboutMaps = false;
+
+var userProvidedKeyEscapeRegex = /\/+/g;
+function escapeUserProvidedKey(text) {
+  return ('' + text).replace(userProvidedKeyEscapeRegex, '$&/');
+}
+
+var POOL_SIZE = 10;
+var traverseContextPool = [];
+function getPooledTraverseContext(mapResult, keyPrefix, mapFunction, mapContext) {
+  if (traverseContextPool.length) {
+    var traverseContext = traverseContextPool.pop();
+    traverseContext.result = mapResult;
+    traverseContext.keyPrefix = keyPrefix;
+    traverseContext.func = mapFunction;
+    traverseContext.context = mapContext;
+    traverseContext.count = 0;
+    return traverseContext;
+  } else {
+    return {
+      result: mapResult,
+      keyPrefix: keyPrefix,
+      func: mapFunction,
+      context: mapContext,
+      count: 0
+    };
+  }
+}
+
+function releaseTraverseContext(traverseContext) {
+  traverseContext.result = null;
+  traverseContext.keyPrefix = null;
+  traverseContext.func = null;
+  traverseContext.context = null;
+  traverseContext.count = 0;
+  if (traverseContextPool.length < POOL_SIZE) {
+    traverseContextPool.push(traverseContext);
+  }
+}
+
+/**
+ * @param {?*} children Children tree container.
+ * @param {!string} nameSoFar Name of the key path so far.
+ * @param {!function} callback Callback to invoke with each child found.
+ * @param {?*} traverseContext Used to pass information throughout the traversal
+ * process.
+ * @return {!number} The number of children in this subtree.
+ */
+function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
+  var type = typeof children;
+
+  if (type === 'undefined' || type === 'boolean') {
+    // All of the above are perceived as null.
+    children = null;
+  }
+
+  var invokeCallback = false;
+
+  if (children === null) {
+    invokeCallback = true;
+  } else {
+    switch (type) {
+      case 'string':
+      case 'number':
+        invokeCallback = true;
+        break;
+      case 'object':
+        switch (children.$$typeof) {
+          case REACT_ELEMENT_TYPE:
+          case REACT_PORTAL_TYPE:
+            invokeCallback = true;
+        }
+    }
+  }
+
+  if (invokeCallback) {
+    callback(traverseContext, children,
+    // If it's the only child, treat the name as if it was wrapped in an array
+    // so that it's consistent if the number of children grows.
+    nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar);
+    return 1;
+  }
+
+  var child = void 0;
+  var nextName = void 0;
+  var subtreeCount = 0; // Count of children found in the current subtree.
+  var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
+
+  if (Array.isArray(children)) {
+    for (var i = 0; i < children.length; i++) {
+      child = children[i];
+      nextName = nextNamePrefix + getComponentKey(child, i);
+      subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
+    }
+  } else {
+    var iteratorFn = getIteratorFn(children);
+    if (typeof iteratorFn === 'function') {
+      {
+        // Warn about using Maps as children
+        if (iteratorFn === children.entries) {
+          !didWarnAboutMaps ? warning$1(false, 'Using Maps as children is unsupported and will likely yield ' + 'unexpected results. Convert it to a sequence/iterable of keyed ' + 'ReactElements instead.') : void 0;
+          didWarnAboutMaps = true;
+        }
+      }
+
+      var iterator = iteratorFn.call(children);
+      var step = void 0;
+      var ii = 0;
+      while (!(step = iterator.next()).done) {
+        child = step.value;
+        nextName = nextNamePrefix + getComponentKey(child, ii++);
+        subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
+      }
+    } else if (type === 'object') {
+      var addendum = '';
+      {
+        addendum = ' If you meant to render a collection of children, use an array ' + 'instead.' + ReactDebugCurrentFrame.getStackAddendum();
+      }
+      var childrenString = '' + children;
+      invariant(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum);
+    }
+  }
+
+  return subtreeCount;
+}
+
+/**
+ * Traverses children that are typically specified as `props.children`, but
+ * might also be specified through attributes:
+ *
+ * - `traverseAllChildren(this.props.children, ...)`
+ * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
+ *
+ * The `traverseContext` is an optional argument that is passed through the
+ * entire traversal. It can be used to store accumulations or anything else that
+ * the callback might find relevant.
+ *
+ * @param {?*} children Children tree object.
+ * @param {!function} callback To invoke upon traversing each child.
+ * @param {?*} traverseContext Context for traversal.
+ * @return {!number} The number of children in this subtree.
+ */
+function traverseAllChildren(children, callback, traverseContext) {
+  if (children == null) {
+    return 0;
+  }
+
+  return traverseAllChildrenImpl(children, '', callback, traverseContext);
+}
+
+/**
+ * Generate a key string that identifies a component within a set.
+ *
+ * @param {*} component A component that could contain a manual key.
+ * @param {number} index Index that is used if a manual key is not provided.
+ * @return {string}
+ */
+function getComponentKey(component, index) {
+  // Do some typechecking here since we call this blindly. We want to ensure
+  // that we don't block potential future ES APIs.
+  if (typeof component === 'object' && component !== null && component.key != null) {
+    // Explicit key
+    return escape(component.key);
+  }
+  // Implicit key determined by the index in the set
+  return index.toString(36);
+}
+
+function forEachSingleChild(bookKeeping, child, name) {
+  var func = bookKeeping.func,
+      context = bookKeeping.context;
+
+  func.call(context, child, bookKeeping.count++);
+}
+
+/**
+ * Iterates through children that are typically specified as `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenforeach
+ *
+ * The provided forEachFunc(child, index) will be called for each
+ * leaf child.
+ *
+ * @param {?*} children Children tree container.
+ * @param {function(*, int)} forEachFunc
+ * @param {*} forEachContext Context for forEachContext.
+ */
+function forEachChildren(children, forEachFunc, forEachContext) {
+  if (children == null) {
+    return children;
+  }
+  var traverseContext = getPooledTraverseContext(null, null, forEachFunc, forEachContext);
+  traverseAllChildren(children, forEachSingleChild, traverseContext);
+  releaseTraverseContext(traverseContext);
+}
+
+function mapSingleChildIntoContext(bookKeeping, child, childKey) {
+  var result = bookKeeping.result,
+      keyPrefix = bookKeeping.keyPrefix,
+      func = bookKeeping.func,
+      context = bookKeeping.context;
+
+
+  var mappedChild = func.call(context, child, bookKeeping.count++);
+  if (Array.isArray(mappedChild)) {
+    mapIntoWithKeyPrefixInternal(mappedChild, result, childKey, function (c) {
+      return c;
+    });
+  } else if (mappedChild != null) {
+    if (isValidElement(mappedChild)) {
+      mappedChild = cloneAndReplaceKey(mappedChild,
+      // Keep both the (mapped) and old keys if they differ, just as
+      // traverseAllChildren used to do for objects as children
+      keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + '/' : '') + childKey);
+    }
+    result.push(mappedChild);
+  }
+}
+
+function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
+  var escapedPrefix = '';
+  if (prefix != null) {
+    escapedPrefix = escapeUserProvidedKey(prefix) + '/';
+  }
+  var traverseContext = getPooledTraverseContext(array, escapedPrefix, func, context);
+  traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
+  releaseTraverseContext(traverseContext);
+}
+
+/**
+ * Maps children that are typically specified as `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenmap
+ *
+ * The provided mapFunction(child, key, index) will be called for each
+ * leaf child.
+ *
+ * @param {?*} children Children tree container.
+ * @param {function(*, int)} func The map function.
+ * @param {*} context Context for mapFunction.
+ * @return {object} Object containing the ordered map of results.
+ */
+function mapChildren(children, func, context) {
+  if (children == null) {
+    return children;
+  }
+  var result = [];
+  mapIntoWithKeyPrefixInternal(children, result, null, func, context);
+  return result;
+}
+
+/**
+ * Count the number of children that are typically specified as
+ * `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrencount
+ *
+ * @param {?*} children Children tree container.
+ * @return {number} The number of children.
+ */
+function countChildren(children) {
+  return traverseAllChildren(children, function () {
+    return null;
+  }, null);
+}
+
+/**
+ * Flatten a children object (typically specified as `props.children`) and
+ * return an array with appropriately re-keyed children.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrentoarray
+ */
+function toArray(children) {
+  var result = [];
+  mapIntoWithKeyPrefixInternal(children, result, null, function (child) {
+    return child;
+  });
+  return result;
+}
+
+/**
+ * Returns the first child in a collection of children and verifies that there
+ * is only one child in the collection.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenonly
+ *
+ * The current implementation of this function assumes that a single child gets
+ * passed without a wrapper, but the purpose of this helper function is to
+ * abstract away the particular structure of children.
+ *
+ * @param {?object} children Child collection structure.
+ * @return {ReactElement} The first and only `ReactElement` contained in the
+ * structure.
+ */
+function onlyChild(children) {
+  !isValidElement(children) ? invariant(false, 'React.Children.only expected to receive a single React element child.') : void 0;
+  return children;
+}
+
+function createContext(defaultValue, calculateChangedBits) {
+  if (calculateChangedBits === undefined) {
+    calculateChangedBits = null;
+  } else {
+    {
+      !(calculateChangedBits === null || typeof calculateChangedBits === 'function') ? warningWithoutStack$1(false, 'createContext: Expected the optional second argument to be a ' + 'function. Instead received: %s', calculateChangedBits) : void 0;
+    }
+  }
+
+  var context = {
+    $$typeof: REACT_CONTEXT_TYPE,
+    _calculateChangedBits: calculateChangedBits,
+    // As a workaround to support multiple concurrent renderers, we categorize
+    // some renderers as primary and others as secondary. We only expect
+    // there to be two concurrent renderers at most: React Native (primary) and
+    // Fabric (secondary); React DOM (primary) and React ART (secondary).
+    // Secondary renderers store their context values on separate fields.
+    _currentValue: defaultValue,
+    _currentValue2: defaultValue,
+    // Used to track how many concurrent renderers this context currently
+    // supports within in a single renderer. Such as parallel server rendering.
+    _threadCount: 0,
+    // These are circular
+    Provider: null,
+    Consumer: null
+  };
+
+  context.Provider = {
+    $$typeof: REACT_PROVIDER_TYPE,
+    _context: context
+  };
+
+  var hasWarnedAboutUsingNestedContextConsumers = false;
+  var hasWarnedAboutUsingConsumerProvider = false;
+
+  {
+    // A separate object, but proxies back to the original context object for
+    // backwards compatibility. It has a different $$typeof, so we can properly
+    // warn for the incorrect usage of Context as a Consumer.
+    var Consumer = {
+      $$typeof: REACT_CONTEXT_TYPE,
+      _context: context,
+      _calculateChangedBits: context._calculateChangedBits
+    };
+    // $FlowFixMe: Flow complains about not setting a value, which is intentional here
+    Object.defineProperties(Consumer, {
+      Provider: {
+        get: function () {
+          if (!hasWarnedAboutUsingConsumerProvider) {
+            hasWarnedAboutUsingConsumerProvider = true;
+            warning$1(false, 'Rendering <Context.Consumer.Provider> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Provider> instead?');
+          }
+          return context.Provider;
+        },
+        set: function (_Provider) {
+          context.Provider = _Provider;
+        }
+      },
+      _currentValue: {
+        get: function () {
+          return context._currentValue;
+        },
+        set: function (_currentValue) {
+          context._currentValue = _currentValue;
+        }
+      },
+      _currentValue2: {
+        get: function () {
+          return context._currentValue2;
+        },
+        set: function (_currentValue2) {
+          context._currentValue2 = _currentValue2;
+        }
+      },
+      _threadCount: {
+        get: function () {
+          return context._threadCount;
+        },
+        set: function (_threadCount) {
+          context._threadCount = _threadCount;
+        }
+      },
+      Consumer: {
+        get: function () {
+          if (!hasWarnedAboutUsingNestedContextConsumers) {
+            hasWarnedAboutUsingNestedContextConsumers = true;
+            warning$1(false, 'Rendering <Context.Consumer.Consumer> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Consumer> instead?');
+          }
+          return context.Consumer;
+        }
+      }
+    });
+    // $FlowFixMe: Flow complains about missing properties because it doesn't understand defineProperty
+    context.Consumer = Consumer;
+  }
+
+  {
+    context._currentRenderer = null;
+    context._currentRenderer2 = null;
+  }
+
+  return context;
+}
+
+function lazy(ctor) {
+  var lazyType = {
+    $$typeof: REACT_LAZY_TYPE,
+    _ctor: ctor,
+    // React uses these fields to store the result.
+    _status: -1,
+    _result: null
+  };
+
+  {
+    // In production, this would just set it on the object.
+    var defaultProps = void 0;
+    var propTypes = void 0;
+    Object.defineProperties(lazyType, {
+      defaultProps: {
+        configurable: true,
+        get: function () {
+          return defaultProps;
+        },
+        set: function (newDefaultProps) {
+          warning$1(false, 'React.lazy(...): It is not supported to assign `defaultProps` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
+          defaultProps = newDefaultProps;
+          // Match production behavior more closely:
+          Object.defineProperty(lazyType, 'defaultProps', {
+            enumerable: true
+          });
+        }
+      },
+      propTypes: {
+        configurable: true,
+        get: function () {
+          return propTypes;
+        },
+        set: function (newPropTypes) {
+          warning$1(false, 'React.lazy(...): It is not supported to assign `propTypes` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
+          propTypes = newPropTypes;
+          // Match production behavior more closely:
+          Object.defineProperty(lazyType, 'propTypes', {
+            enumerable: true
+          });
+        }
+      }
     });
   }
 
-  return target;
+  return lazyType;
 }
 
-var Language =
-/*#__PURE__*/
-function () {
-  function Language(language, months, monthsAbbr, days) {
-    _classCallCheck(this, Language);
-
-    this.language = language;
-    this.months = months;
-    this.monthsAbbr = monthsAbbr;
-    this.days = days;
-    this.rtl = false;
-    this.ymd = false;
-    this.yearSuffix = '';
-  }
-
-  _createClass(Language, [{
-    key: "language",
-    get: function get() {
-      return this._language;
-    },
-    set: function set(language) {
-      if (typeof language !== 'string') {
-        throw new TypeError('Language must be a string');
-      }
-
-      this._language = language;
-    }
-  }, {
-    key: "months",
-    get: function get() {
-      return this._months;
-    },
-    set: function set(months) {
-      if (months.length !== 12) {
-        throw new RangeError("There must be 12 months for ".concat(this.language, " language"));
-      }
-
-      this._months = months;
-    }
-  }, {
-    key: "monthsAbbr",
-    get: function get() {
-      return this._monthsAbbr;
-    },
-    set: function set(monthsAbbr) {
-      if (monthsAbbr.length !== 12) {
-        throw new RangeError("There must be 12 abbreviated months for ".concat(this.language, " language"));
-      }
-
-      this._monthsAbbr = monthsAbbr;
-    }
-  }, {
-    key: "days",
-    get: function get() {
-      return this._days;
-    },
-    set: function set(days) {
-      if (days.length !== 7) {
-        throw new RangeError("There must be 7 days for ".concat(this.language, " language"));
-      }
-
-      this._days = days;
-    }
-  }]);
-
-  return Language;
-}(); // eslint-disable-next-line
-
-var en = new Language('English', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']) // eslint-disable-next-line
-;
-
-var utils = {
-  /**
-   * @type {Boolean}
-   */
-  useUtc: false,
-
-  /**
-   * Returns the full year, using UTC or not
-   * @param {Date} date
-   */
-  getFullYear: function getFullYear(date) {
-    return this.useUtc ? date.getUTCFullYear() : date.getFullYear();
-  },
-
-  /**
-   * Returns the month, using UTC or not
-   * @param {Date} date
-   */
-  getMonth: function getMonth(date) {
-    return this.useUtc ? date.getUTCMonth() : date.getMonth();
-  },
-
-  /**
-   * Returns the date, using UTC or not
-   * @param {Date} date
-   */
-  getDate: function getDate(date) {
-    return this.useUtc ? date.getUTCDate() : date.getDate();
-  },
-
-  /**
-   * Returns the day, using UTC or not
-   * @param {Date} date
-   */
-  getDay: function getDay(date) {
-    return this.useUtc ? date.getUTCDay() : date.getDay();
-  },
-
-  /**
-   * Returns the hours, using UTC or not
-   * @param {Date} date
-   */
-  getHours: function getHours(date) {
-    return this.useUtc ? date.getUTCHours() : date.getHours();
-  },
-
-  /**
-   * Returns the minutes, using UTC or not
-   * @param {Date} date
-   */
-  getMinutes: function getMinutes(date) {
-    return this.useUtc ? date.getUTCMinutes() : date.getMinutes();
-  },
-
-  /**
-   * Sets the full year, using UTC or not
-   * @param {Date} date
-   */
-  setFullYear: function setFullYear(date, value, useUtc) {
-    return this.useUtc ? date.setUTCFullYear(value) : date.setFullYear(value);
-  },
-
-  /**
-   * Sets the month, using UTC or not
-   * @param {Date} date
-   */
-  setMonth: function setMonth(date, value, useUtc) {
-    return this.useUtc ? date.setUTCMonth(value) : date.setMonth(value);
-  },
-
-  /**
-   * Sets the date, using UTC or not
-   * @param {Date} date
-   * @param {Number} value
-   */
-  setDate: function setDate(date, value, useUtc) {
-    return this.useUtc ? date.setUTCDate(value) : date.setDate(value);
-  },
-
-  /**
-   * Check if date1 is equivalent to date2, without comparing the time
-   * @see https://stackoverflow.com/a/6202196/4455925
-   * @param {Date} date1
-   * @param {Date} date2
-   */
-  compareDates: function compareDates(date1, date2) {
-    var d1 = new Date(date1.getTime());
-    var d2 = new Date(date2.getTime());
-
-    if (this.useUtc) {
-      d1.setUTCHours(0, 0, 0, 0);
-      d2.setUTCHours(0, 0, 0, 0);
+function forwardRef(render) {
+  {
+    if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
+      warningWithoutStack$1(false, 'forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');
+    } else if (typeof render !== 'function') {
+      warningWithoutStack$1(false, 'forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);
     } else {
-      d1.setHours(0, 0, 0, 0);
-      d2.setHours(0, 0, 0, 0);
+      !(
+      // Do not warn for 0 arguments because it could be due to usage of the 'arguments' object
+      render.length === 0 || render.length === 2) ? warningWithoutStack$1(false, 'forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.') : void 0;
     }
 
-    return d1.getTime() === d2.getTime();
-  },
-
-  /**
-   * Validates a date object
-   * @param {Date} date - an object instantiated with the new Date constructor
-   * @return {Boolean}
-   */
-  isValidDate: function isValidDate(date) {
-    if (Object.prototype.toString.call(date) !== '[object Date]') {
-      return false;
-    }
-
-    return !isNaN(date.getTime());
-  },
-
-  /**
-   * Return abbreviated week day name
-   * @param {Date}
-   * @param {Array}
-   * @return {String}
-   */
-  getDayNameAbbr: function getDayNameAbbr(date, days) {
-    if (_typeof(date) !== 'object') {
-      throw TypeError('Invalid Type');
-    }
-
-    return days[this.getDay(date)];
-  },
-
-  /**
-   * Return name of the month
-   * @param {Number|Date}
-   * @param {Array}
-   * @return {String}
-   */
-  getMonthName: function getMonthName(month, months) {
-    if (!months) {
-      throw Error('missing 2nd parameter Months array');
-    }
-
-    if (_typeof(month) === 'object') {
-      return months[this.getMonth(month)];
-    }
-
-    if (typeof month === 'number') {
-      return months[month];
-    }
-
-    throw TypeError('Invalid type');
-  },
-
-  /**
-   * Return an abbreviated version of the month
-   * @param {Number|Date}
-   * @return {String}
-   */
-  getMonthNameAbbr: function getMonthNameAbbr(month, monthsAbbr) {
-    if (!monthsAbbr) {
-      throw Error('missing 2nd paramter Months array');
-    }
-
-    if (_typeof(month) === 'object') {
-      return monthsAbbr[this.getMonth(month)];
-    }
-
-    if (typeof month === 'number') {
-      return monthsAbbr[month];
-    }
-
-    throw TypeError('Invalid type');
-  },
-
-  /**
-   * Alternative get total number of days in month
-   * @param {Number} year
-   * @param {Number} m
-   * @return {Number}
-   */
-  daysInMonth: function daysInMonth(year, month) {
-    return /8|3|5|10/.test(month) ? 30 : month === 1 ? !(year % 4) && year % 100 || !(year % 400) ? 29 : 28 : 31;
-  },
-
-  /**
-   * Get nth suffix for date
-   * @param {Number} day
-   * @return {String}
-   */
-  getNthSuffix: function getNthSuffix(day) {
-    switch (day) {
-      case 1:
-      case 21:
-      case 31:
-        return 'st';
-
-      case 2:
-      case 22:
-        return 'nd';
-
-      case 3:
-      case 23:
-        return 'rd';
-
-      default:
-        return 'th';
-    }
-  },
-
-  /**
-   * Formats date object
-   * @param {Date}
-   * @param {String}
-   * @param {Object}
-   * @return {String}
-   */
-  formatDate: function formatDate(date, format, translation) {
-    translation = !translation ? en : translation;
-    var year = this.getFullYear(date);
-    var month = this.getMonth(date) + 1;
-    var day = this.getDate(date);
-    var str = format.replace(/dd/, ('0' + day).slice(-2)).replace(/d/, day).replace(/yyyy/, year).replace(/yy/, String(year).slice(2)).replace(/MMMM/, this.getMonthName(this.getMonth(date), translation.months)).replace(/MMM/, this.getMonthNameAbbr(this.getMonth(date), translation.monthsAbbr)).replace(/MM/, ('0' + month).slice(-2)).replace(/M(?!a|ä|e)/, month).replace(/su/, this.getNthSuffix(this.getDate(date))).replace(/D(?!e|é|i)/, this.getDayNameAbbr(date, translation.days));
-    return str;
-  },
-
-  /**
-   * Creates an array of dates for each day in between two dates.
-   * @param {Date} start
-   * @param {Date} end
-   * @return {Array}
-   */
-  createDateArray: function createDateArray(start, end) {
-    var dates = [];
-
-    while (start <= end) {
-      dates.push(new Date(start));
-      start = this.setDate(new Date(start), this.getDate(new Date(start)) + 1);
-    }
-
-    return dates;
-  },
-
-  /**
-   * method used as a prop validator for input values
-   * @param {*} val
-   * @return {Boolean}
-   */
-  validateDateInput: function validateDateInput(val) {
-    return val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number';
-  }
-};
-var makeDateUtils = function makeDateUtils(useUtc) {
-  return _objectSpread({}, utils, {
-    useUtc: useUtc
-  });
-};
-var utils$1 = _objectSpread({}, utils) // eslint-disable-next-line
-;
-
-var script = {
-  props: {
-    selectedDate: Date,
-    resetTypedDate: [Date],
-    format: [String, Function],
-    translation: Object,
-    inline: Boolean,
-    id: String,
-    name: String,
-    refName: String,
-    openDate: Date,
-    placeholder: String,
-    inputClass: [String, Object, Array],
-    clearButton: Boolean,
-    clearButtonIcon: String,
-    calendarButton: Boolean,
-    calendarButtonIcon: String,
-    calendarButtonIconContent: String,
-    disabled: Boolean,
-    required: Boolean,
-    typeable: Boolean,
-    bootstrapStyling: Boolean,
-    useUtc: Boolean
-  },
-  data: function data() {
-    var constructedDateUtils = makeDateUtils(this.useUtc);
-    return {
-      input: null,
-      typedDate: false,
-      utils: constructedDateUtils
-    };
-  },
-  computed: {
-    formattedValue: function formattedValue() {
-      if (!this.selectedDate) {
-        return null;
-      }
-
-      if (this.typedDate) {
-        return this.typedDate;
-      }
-
-      return typeof this.format === 'function' ? this.format(this.selectedDate) : this.utils.formatDate(new Date(this.selectedDate), this.format, this.translation);
-    },
-    computedInputClass: function computedInputClass() {
-      if (this.bootstrapStyling) {
-        if (typeof this.inputClass === 'string') {
-          return [this.inputClass, 'form-control'].join(' ');
-        }
-
-        return _objectSpread({
-          'form-control': true
-        }, this.inputClass);
-      }
-
-      return this.inputClass;
-    }
-  },
-  watch: {
-    resetTypedDate: function resetTypedDate() {
-      this.typedDate = false;
-    }
-  },
-  methods: {
-    showCalendar: function showCalendar() {
-      this.$emit('showCalendar');
-    },
-
-    /**
-     * Attempt to parse a typed date
-     * @param {Event} event
-     */
-    parseTypedDate: function parseTypedDate(event) {
-      // close calendar if escape or enter are pressed
-      if ([27, // escape
-      13 // enter
-      ].includes(event.keyCode)) {
-        this.input.blur();
-      }
-
-      if (this.typeable) {
-        var typedDate = Date.parse(this.input.value);
-
-        if (!isNaN(typedDate)) {
-          this.typedDate = this.input.value;
-          this.$emit('typedDate', new Date(this.typedDate));
-        }
-      }
-    },
-
-    /**
-     * nullify the typed date to defer to regular formatting
-     * called once the input is blurred
-     */
-    inputBlurred: function inputBlurred() {
-      if (this.typeable && isNaN(Date.parse(this.input.value))) {
-        this.clearDate();
-        this.input.value = null;
-        this.typedDate = null;
-      }
-
-      this.$emit('closeCalendar');
-    },
-
-    /**
-     * emit a clearDate event
-     */
-    clearDate: function clearDate() {
-      this.$emit('clearDate');
-    }
-  },
-  mounted: function mounted() {
-    this.input = this.$el.querySelector('input');
-  }
-} // eslint-disable-next-line
-;
-
-function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
-/* server only */
-, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-  if (typeof shadowMode !== 'boolean') {
-    createInjectorSSR = createInjector;
-    createInjector = shadowMode;
-    shadowMode = false;
-  } // Vue.extend constructor export interop.
-
-
-  var options = typeof script === 'function' ? script.options : script; // render functions
-
-  if (template && template.render) {
-    options.render = template.render;
-    options.staticRenderFns = template.staticRenderFns;
-    options._compiled = true; // functional template
-
-    if (isFunctionalTemplate) {
-      options.functional = true;
-    }
-  } // scopedId
-
-
-  if (scopeId) {
-    options._scopeId = scopeId;
-  }
-
-  var hook;
-
-  if (moduleIdentifier) {
-    // server build
-    hook = function hook(context) {
-      // 2.3 injection
-      context = context || // cached call
-      this.$vnode && this.$vnode.ssrContext || // stateful
-      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
-      // 2.2 with runInNewContext: true
-
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__;
-      } // inject component styles
-
-
-      if (style) {
-        style.call(this, createInjectorSSR(context));
-      } // register component module identifier for async chunk inference
-
-
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier);
-      }
-    }; // used by ssr in case component is cached and beforeCreate
-    // never gets called
-
-
-    options._ssrRegister = hook;
-  } else if (style) {
-    hook = shadowMode ? function () {
-      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
-    } : function (context) {
-      style.call(this, createInjector(context));
-    };
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // register for functional component in vue file
-      var originalRender = options.render;
-
-      options.render = function renderWithStyleInjection(h, context) {
-        hook.call(context);
-        return originalRender(h, context);
-      };
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate;
-      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+    if (render != null) {
+      !(render.defaultProps == null && render.propTypes == null) ? warningWithoutStack$1(false, 'forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?') : void 0;
     }
   }
 
-  return script;
-}
-
-var normalizeComponent_1 = normalizeComponent;
-
-/* script */
-const __vue_script__ = script;
-
-/* template */
-var __vue_render__ = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { class: { "input-group": _vm.bootstrapStyling } },
-    [
-      _vm.calendarButton
-        ? _c(
-            "span",
-            {
-              staticClass: "vdp-datepicker__calendar-button",
-              class: { "input-group-prepend": _vm.bootstrapStyling },
-              style: { "cursor:not-allowed;": _vm.disabled },
-              on: { click: _vm.showCalendar }
-            },
-            [
-              _c(
-                "span",
-                { class: { "input-group-text": _vm.bootstrapStyling } },
-                [
-                  _c("i", { class: _vm.calendarButtonIcon }, [
-                    _vm._v(
-                      "\n        " +
-                        _vm._s(_vm.calendarButtonIconContent) +
-                        "\n        "
-                    ),
-                    !_vm.calendarButtonIcon
-                      ? _c("span", [_vm._v("…")])
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("input", {
-        ref: _vm.refName,
-        class: _vm.computedInputClass,
-        attrs: {
-          type: _vm.inline ? "hidden" : "text",
-          name: _vm.name,
-          id: _vm.id,
-          "open-date": _vm.openDate,
-          placeholder: _vm.placeholder,
-          "clear-button": _vm.clearButton,
-          disabled: _vm.disabled,
-          required: _vm.required,
-          readonly: !_vm.typeable,
-          autocomplete: "off"
-        },
-        domProps: { value: _vm.formattedValue },
-        on: {
-          click: _vm.showCalendar,
-          keyup: _vm.parseTypedDate,
-          blur: _vm.inputBlurred
-        }
-      }),
-      _vm._v(" "),
-      _vm.clearButton && _vm.selectedDate
-        ? _c(
-            "span",
-            {
-              staticClass: "vdp-datepicker__clear-button",
-              class: { "input-group-append": _vm.bootstrapStyling },
-              on: {
-                click: function($event) {
-                  return _vm.clearDate()
-                }
-              }
-            },
-            [
-              _c(
-                "span",
-                { class: { "input-group-text": _vm.bootstrapStyling } },
-                [
-                  _c("i", { class: _vm.clearButtonIcon }, [
-                    !_vm.clearButtonIcon ? _c("span", [_vm._v("×")]) : _vm._e()
-                  ])
-                ]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._t("afterDateInput")
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__ = [];
-__vue_render__._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__ = undefined;
-  /* scoped */
-  const __vue_scope_id__ = undefined;
-  /* module identifier */
-  const __vue_module_identifier__ = undefined;
-  /* functional template */
-  const __vue_is_functional_template__ = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var DateInput = normalizeComponent_1(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
-    undefined,
-    undefined
-  );
-
-//
-var script$1 = {
-  props: {
-    showDayView: Boolean,
-    selectedDate: Date,
-    pageDate: Date,
-    pageTimestamp: Number,
-    fullMonthName: Boolean,
-    allowedToShowView: Function,
-    dayCellContent: {
-      type: Function,
-      "default": function _default(day) {
-        return day.date;
-      }
-    },
-    disabledDates: Object,
-    highlighted: Object,
-    calendarClass: [String, Object, Array],
-    calendarStyle: Object,
-    translation: Object,
-    isRtl: Boolean,
-    mondayFirst: Boolean,
-    useUtc: Boolean
-  },
-  data: function data() {
-    var constructedDateUtils = makeDateUtils(this.useUtc);
-    return {
-      utils: constructedDateUtils
-    };
-  },
-  computed: {
-    /**
-     * Returns an array of day names
-     * @return {String[]}
-     */
-    daysOfWeek: function daysOfWeek() {
-      if (this.mondayFirst) {
-        var tempDays = this.translation.days.slice();
-        tempDays.push(tempDays.shift());
-        return tempDays;
-      }
-
-      return this.translation.days;
-    },
-
-    /**
-     * Returns the day number of the week less one for the first of the current month
-     * Used to show amount of empty cells before the first in the day calendar layout
-     * @return {Number}
-     */
-    blankDays: function blankDays() {
-      var d = this.pageDate;
-      var dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
-
-      if (this.mondayFirst) {
-        return this.utils.getDay(dObj) > 0 ? this.utils.getDay(dObj) - 1 : 6;
-      }
-
-      return this.utils.getDay(dObj);
-    },
-
-    /**
-     * @return {Object[]}
-     */
-    days: function days() {
-      var d = this.pageDate;
-      var days = []; // set up a new date object to the beginning of the current 'page'
-
-      var dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)) : new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
-      var daysInMonth = this.utils.daysInMonth(this.utils.getFullYear(dObj), this.utils.getMonth(dObj));
-
-      for (var i = 0; i < daysInMonth; i++) {
-        days.push({
-          date: this.utils.getDate(dObj),
-          timestamp: dObj.getTime(),
-          isSelected: this.isSelectedDate(dObj),
-          isDisabled: this.isDisabledDate(dObj),
-          isHighlighted: this.isHighlightedDate(dObj),
-          isHighlightStart: this.isHighlightStart(dObj),
-          isHighlightEnd: this.isHighlightEnd(dObj),
-          isToday: this.utils.compareDates(dObj, new Date()),
-          isWeekend: this.utils.getDay(dObj) === 0 || this.utils.getDay(dObj) === 6,
-          isSaturday: this.utils.getDay(dObj) === 6,
-          isSunday: this.utils.getDay(dObj) === 0
-        });
-        this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
-      }
-
-      return days;
-    },
-
-    /**
-     * Gets the name of the month the current page is on
-     * @return {String}
-     */
-    currMonthName: function currMonthName() {
-      var monthName = this.fullMonthName ? this.translation.months : this.translation.monthsAbbr;
-      return this.utils.getMonthNameAbbr(this.utils.getMonth(this.pageDate), monthName);
-    },
-
-    /**
-     * Gets the name of the year that current page is on
-     * @return {Number}
-     */
-    currYearName: function currYearName() {
-      var yearSuffix = this.translation.yearSuffix;
-      return "".concat(this.utils.getFullYear(this.pageDate)).concat(yearSuffix);
-    },
-
-    /**
-     * Is this translation using year/month/day format?
-     * @return {Boolean}
-     */
-    isYmd: function isYmd() {
-      return this.translation.ymd && this.translation.ymd === true;
-    },
-
-    /**
-     * Is the left hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isLeftNavDisabled: function isLeftNavDisabled() {
-      return this.isRtl ? this.isNextMonthDisabled(this.pageTimestamp) : this.isPreviousMonthDisabled(this.pageTimestamp);
-    },
-
-    /**
-     * Is the right hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isRightNavDisabled: function isRightNavDisabled() {
-      return this.isRtl ? this.isPreviousMonthDisabled(this.pageTimestamp) : this.isNextMonthDisabled(this.pageTimestamp);
-    }
-  },
-  methods: {
-    selectDate: function selectDate(date) {
-      if (date.isDisabled) {
-        this.$emit('selectedDisabled', date);
-        return false;
-      }
-
-      this.$emit('selectDate', date);
-    },
-
-    /**
-     * @return {Number}
-     */
-    getPageMonth: function getPageMonth() {
-      return this.utils.getMonth(this.pageDate);
-    },
-
-    /**
-     * Emit an event to show the month picker
-     */
-    showMonthCalendar: function showMonthCalendar() {
-      this.$emit('showMonthCalendar');
-    },
-
-    /**
-     * Change the page month
-     * @param {Number} incrementBy
-     */
-    changeMonth: function changeMonth(incrementBy) {
-      var date = this.pageDate;
-      this.utils.setMonth(date, this.utils.getMonth(date) + incrementBy);
-      this.$emit('changedMonth', date);
-    },
-
-    /**
-     * Decrement the page month
-     */
-    previousMonth: function previousMonth() {
-      if (!this.isPreviousMonthDisabled()) {
-        this.changeMonth(-1);
-      }
-    },
-
-    /**
-     * Is the previous month disabled?
-     * @return {Boolean}
-     */
-    isPreviousMonthDisabled: function isPreviousMonthDisabled() {
-      if (!this.disabledDates || !this.disabledDates.to) {
-        return false;
-      }
-
-      var d = this.pageDate;
-      return this.utils.getMonth(this.disabledDates.to) >= this.utils.getMonth(d) && this.utils.getFullYear(this.disabledDates.to) >= this.utils.getFullYear(d);
-    },
-
-    /**
-     * Increment the current page month
-     */
-    nextMonth: function nextMonth() {
-      if (!this.isNextMonthDisabled()) {
-        this.changeMonth(+1);
-      }
-    },
-
-    /**
-     * Is the next month disabled?
-     * @return {Boolean}
-     */
-    isNextMonthDisabled: function isNextMonthDisabled() {
-      if (!this.disabledDates || !this.disabledDates.from) {
-        return false;
-      }
-
-      var d = this.pageDate;
-      return this.utils.getMonth(this.disabledDates.from) <= this.utils.getMonth(d) && this.utils.getFullYear(this.disabledDates.from) <= this.utils.getFullYear(d);
-    },
-
-    /**
-     * Whether a day is selected
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isSelectedDate: function isSelectedDate(dObj) {
-      return this.selectedDate && this.utils.compareDates(this.selectedDate, dObj);
-    },
-
-    /**
-     * Whether a day is disabled
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isDisabledDate: function isDisabledDate(date) {
-      var _this = this;
-
-      var disabledDates = false;
-
-      if (typeof this.disabledDates === 'undefined') {
-        return false;
-      }
-
-      if (typeof this.disabledDates.dates !== 'undefined') {
-        this.disabledDates.dates.forEach(function (d) {
-          if (_this.utils.compareDates(date, d)) {
-            disabledDates = true;
-            return true;
-          }
-        });
-      }
-
-      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to && date < this.disabledDates.to) {
-        disabledDates = true;
-      }
-
-      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from && date > this.disabledDates.from) {
-        disabledDates = true;
-      }
-
-      if (typeof this.disabledDates.ranges !== 'undefined') {
-        this.disabledDates.ranges.forEach(function (range) {
-          if (typeof range.from !== 'undefined' && range.from && typeof range.to !== 'undefined' && range.to) {
-            if (date < range.to && date > range.from) {
-              disabledDates = true;
-              return true;
-            }
-          }
-        });
-      }
-
-      if (typeof this.disabledDates.days !== 'undefined' && this.disabledDates.days.indexOf(this.utils.getDay(date)) !== -1) {
-        disabledDates = true;
-      }
-
-      if (typeof this.disabledDates.daysOfMonth !== 'undefined' && this.disabledDates.daysOfMonth.indexOf(this.utils.getDate(date)) !== -1) {
-        disabledDates = true;
-      }
-
-      if (typeof this.disabledDates.customPredictor === 'function' && this.disabledDates.customPredictor(date)) {
-        disabledDates = true;
-      }
-
-      return disabledDates;
-    },
-
-    /**
-     * Whether a day is highlighted (only if it is not disabled already except when highlighted.includeDisabled is true)
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isHighlightedDate: function isHighlightedDate(date) {
-      var _this2 = this;
-
-      if (!(this.highlighted && this.highlighted.includeDisabled) && this.isDisabledDate(date)) {
-        return false;
-      }
-
-      var highlighted = false;
-
-      if (typeof this.highlighted === 'undefined') {
-        return false;
-      }
-
-      if (typeof this.highlighted.dates !== 'undefined') {
-        this.highlighted.dates.forEach(function (d) {
-          if (_this2.utils.compareDates(date, d)) {
-            highlighted = true;
-            return true;
-          }
-        });
-      }
-
-      if (this.isDefined(this.highlighted.from) && this.isDefined(this.highlighted.to)) {
-        highlighted = date >= this.highlighted.from && date <= this.highlighted.to;
-      }
-
-      if (typeof this.highlighted.days !== 'undefined' && this.highlighted.days.indexOf(this.utils.getDay(date)) !== -1) {
-        highlighted = true;
-      }
-
-      if (typeof this.highlighted.daysOfMonth !== 'undefined' && this.highlighted.daysOfMonth.indexOf(this.utils.getDate(date)) !== -1) {
-        highlighted = true;
-      }
-
-      if (typeof this.highlighted.customPredictor === 'function' && this.highlighted.customPredictor(date)) {
-        highlighted = true;
-      }
-
-      return highlighted;
-    },
-    dayClasses: function dayClasses(day) {
-      return {
-        'selected': day.isSelected,
-        'disabled': day.isDisabled,
-        'highlighted': day.isHighlighted,
-        'today': day.isToday,
-        'weekend': day.isWeekend,
-        'sat': day.isSaturday,
-        'sun': day.isSunday,
-        'highlight-start': day.isHighlightStart,
-        'highlight-end': day.isHighlightEnd
-      };
-    },
-
-    /**
-     * Whether a day is highlighted and it is the first date
-     * in the highlighted range of dates
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isHighlightStart: function isHighlightStart(date) {
-      return this.isHighlightedDate(date) && this.highlighted.from instanceof Date && this.utils.getFullYear(this.highlighted.from) === this.utils.getFullYear(date) && this.utils.getMonth(this.highlighted.from) === this.utils.getMonth(date) && this.utils.getDate(this.highlighted.from) === this.utils.getDate(date);
-    },
-
-    /**
-     * Whether a day is highlighted and it is the first date
-     * in the highlighted range of dates
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isHighlightEnd: function isHighlightEnd(date) {
-      return this.isHighlightedDate(date) && this.highlighted.to instanceof Date && this.utils.getFullYear(this.highlighted.to) === this.utils.getFullYear(date) && this.utils.getMonth(this.highlighted.to) === this.utils.getMonth(date) && this.utils.getDate(this.highlighted.to) === this.utils.getDate(date);
-    },
-
-    /**
-     * Helper
-     * @param  {mixed}  prop
-     * @return {Boolean}
-     */
-    isDefined: function isDefined(prop) {
-      return typeof prop !== 'undefined' && prop;
-    }
-  } // eslint-disable-next-line
-
-};
-
-/* script */
-const __vue_script__$1 = script$1;
-
-/* template */
-var __vue_render__$1 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.showDayView,
-          expression: "showDayView"
-        }
-      ],
-      class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-      style: _vm.calendarStyle,
-      on: {
-        mousedown: function($event) {
-          $event.preventDefault();
-        }
-      }
-    },
-    [
-      _vm._t("beforeCalendarHeader"),
-      _vm._v(" "),
-      _c("header", [
-        _c(
-          "span",
-          {
-            staticClass: "prev",
-            class: { disabled: _vm.isLeftNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.nextMonth() : _vm.previousMonth();
-              }
-            }
-          },
-          [_vm._v("<")]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "day__month_btn",
-            class: _vm.allowedToShowView("month") ? "up" : "",
-            on: { click: _vm.showMonthCalendar }
-          },
-          [
-            _vm._v(
-              _vm._s(_vm.isYmd ? _vm.currYearName : _vm.currMonthName) +
-                " " +
-                _vm._s(_vm.isYmd ? _vm.currMonthName : _vm.currYearName)
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "next",
-            class: { disabled: _vm.isRightNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.previousMonth() : _vm.nextMonth();
-              }
-            }
-          },
-          [_vm._v(">")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: _vm.isRtl ? "flex-rtl" : "" },
-        [
-          _vm._l(_vm.daysOfWeek, function(d) {
-            return _c(
-              "span",
-              { key: d.timestamp, staticClass: "cell day-header" },
-              [_vm._v(_vm._s(d))]
-            )
-          }),
-          _vm._v(" "),
-          _vm.blankDays > 0
-            ? _vm._l(_vm.blankDays, function(d) {
-                return _c("span", {
-                  key: d.timestamp,
-                  staticClass: "cell day blank"
-                })
-              })
-            : _vm._e(),
-          _vm._l(_vm.days, function(day) {
-            return _c("span", {
-              key: day.timestamp,
-              staticClass: "cell day",
-              class: _vm.dayClasses(day),
-              domProps: { innerHTML: _vm._s(_vm.dayCellContent(day)) },
-              on: {
-                click: function($event) {
-                  return _vm.selectDate(day)
-                }
-              }
-            })
-          })
-        ],
-        2
-      )
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1 = undefined;
-  /* scoped */
-  const __vue_scope_id__$1 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var PickerDay = normalizeComponent_1(
-    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-    __vue_inject_styles__$1,
-    __vue_script__$1,
-    __vue_scope_id__$1,
-    __vue_is_functional_template__$1,
-    __vue_module_identifier__$1,
-    undefined,
-    undefined
-  );
-
-//
-var script$2 = {
-  props: {
-    showMonthView: Boolean,
-    selectedDate: Date,
-    pageDate: Date,
-    pageTimestamp: Number,
-    disabledDates: Object,
-    calendarClass: [String, Object, Array],
-    calendarStyle: Object,
-    translation: Object,
-    isRtl: Boolean,
-    allowedToShowView: Function,
-    useUtc: Boolean
-  },
-  data: function data() {
-    var constructedDateUtils = makeDateUtils(this.useUtc);
-    return {
-      utils: constructedDateUtils
-    };
-  },
-  computed: {
-    months: function months() {
-      var d = this.pageDate;
-      var months = []; // set up a new date object to the beginning of the current 'page'
-
-      var dObj = this.useUtc ? new Date(Date.UTC(d.getUTCFullYear(), 0, d.getUTCDate())) : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
-
-      for (var i = 0; i < 12; i++) {
-        months.push({
-          month: this.utils.getMonthName(i, this.translation.months),
-          timestamp: dObj.getTime(),
-          isSelected: this.isSelectedMonth(dObj),
-          isDisabled: this.isDisabledMonth(dObj)
-        });
-        this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
-      }
-
-      return months;
-    },
-
-    /**
-     * Get year name on current page.
-     * @return {String}
-     */
-    pageYearName: function pageYearName() {
-      var yearSuffix = this.translation.yearSuffix;
-      return "".concat(this.utils.getFullYear(this.pageDate)).concat(yearSuffix);
-    },
-
-    /**
-     * Is the left hand navigation disabled
-     * @return {Boolean}
-     */
-    isLeftNavDisabled: function isLeftNavDisabled() {
-      return this.isRtl ? this.isNextYearDisabled(this.pageTimestamp) : this.isPreviousYearDisabled(this.pageTimestamp);
-    },
-
-    /**
-     * Is the right hand navigation disabled
-     * @return {Boolean}
-     */
-    isRightNavDisabled: function isRightNavDisabled() {
-      return this.isRtl ? this.isPreviousYearDisabled(this.pageTimestamp) : this.isNextYearDisabled(this.pageTimestamp);
-    }
-  },
-  methods: {
-    /**
-     * Emits a selectMonth event
-     * @param {Object} month
-     */
-    selectMonth: function selectMonth(month) {
-      if (month.isDisabled) {
-        return false;
-      }
-
-      this.$emit('selectMonth', month);
-    },
-
-    /**
-     * Changes the year up or down
-     * @param {Number} incrementBy
-     */
-    changeYear: function changeYear(incrementBy) {
-      var date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changedYear', date);
-    },
-
-    /**
-     * Decrements the year
-     */
-    previousYear: function previousYear() {
-      if (!this.isPreviousYearDisabled()) {
-        this.changeYear(-1);
-      }
-    },
-
-    /**
-     * Checks if the previous year is disabled or not
-     * @return {Boolean}
-     */
-    isPreviousYearDisabled: function isPreviousYearDisabled() {
-      if (!this.disabledDates || !this.disabledDates.to) {
-        return false;
-      }
-
-      return this.utils.getFullYear(this.disabledDates.to) >= this.utils.getFullYear(this.pageDate);
-    },
-
-    /**
-     * Increments the year
-     */
-    nextYear: function nextYear() {
-      if (!this.isNextYearDisabled()) {
-        this.changeYear(1);
-      }
-    },
-
-    /**
-     * Checks if the next year is disabled or not
-     * @return {Boolean}
-     */
-    isNextYearDisabled: function isNextYearDisabled() {
-      if (!this.disabledDates || !this.disabledDates.from) {
-        return false;
-      }
-
-      return this.utils.getFullYear(this.disabledDates.from) <= this.utils.getFullYear(this.pageDate);
-    },
-
-    /**
-     * Emits an event that shows the year calendar
-     */
-    showYearCalendar: function showYearCalendar() {
-      this.$emit('showYearCalendar');
-    },
-
-    /**
-     * Whether the selected date is in this month
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isSelectedMonth: function isSelectedMonth(date) {
-      return this.selectedDate && this.utils.getFullYear(this.selectedDate) === this.utils.getFullYear(date) && this.utils.getMonth(this.selectedDate) === this.utils.getMonth(date);
-    },
-
-    /**
-     * Whether a month is disabled
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isDisabledMonth: function isDisabledMonth(date) {
-      var disabledDates = false;
-
-      if (typeof this.disabledDates === 'undefined') {
-        return false;
-      }
-
-      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to) {
-        if (this.utils.getMonth(date) < this.utils.getMonth(this.disabledDates.to) && this.utils.getFullYear(date) <= this.utils.getFullYear(this.disabledDates.to) || this.utils.getFullYear(date) < this.utils.getFullYear(this.disabledDates.to)) {
-          disabledDates = true;
-        }
-      }
-
-      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from) {
-        if (this.utils.getMonth(date) > this.utils.getMonth(this.disabledDates.from) && this.utils.getFullYear(date) >= this.utils.getFullYear(this.disabledDates.from) || this.utils.getFullYear(date) > this.utils.getFullYear(this.disabledDates.from)) {
-          disabledDates = true;
-        }
-      }
-
-      if (typeof this.disabledDates.customPredictor === 'function' && this.disabledDates.customPredictor(date)) {
-        disabledDates = true;
-      }
-
-      return disabledDates;
-    }
-  } // eslint-disable-next-line
-
-};
-
-/* script */
-const __vue_script__$2 = script$2;
-
-/* template */
-var __vue_render__$2 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.showMonthView,
-          expression: "showMonthView"
-        }
-      ],
-      class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-      style: _vm.calendarStyle,
-      on: {
-        mousedown: function($event) {
-          $event.preventDefault();
-        }
-      }
-    },
-    [
-      _vm._t("beforeCalendarHeader"),
-      _vm._v(" "),
-      _c("header", [
-        _c(
-          "span",
-          {
-            staticClass: "prev",
-            class: { disabled: _vm.isLeftNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.nextYear() : _vm.previousYear();
-              }
-            }
-          },
-          [_vm._v("<")]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "month__year_btn",
-            class: _vm.allowedToShowView("year") ? "up" : "",
-            on: { click: _vm.showYearCalendar }
-          },
-          [_vm._v(_vm._s(_vm.pageYearName))]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "next",
-            class: { disabled: _vm.isRightNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.previousYear() : _vm.nextYear();
-              }
-            }
-          },
-          [_vm._v(">")]
-        )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.months, function(month) {
-        return _c(
-          "span",
-          {
-            key: month.timestamp,
-            staticClass: "cell month",
-            class: { selected: month.isSelected, disabled: month.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectMonth(month)
-              }
-            }
-          },
-          [_vm._v(_vm._s(month.month))]
-        )
-      })
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$2 = undefined;
-  /* scoped */
-  const __vue_scope_id__$2 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$2 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var PickerMonth = normalizeComponent_1(
-    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
-    __vue_inject_styles__$2,
-    __vue_script__$2,
-    __vue_scope_id__$2,
-    __vue_is_functional_template__$2,
-    __vue_module_identifier__$2,
-    undefined,
-    undefined
-  );
-
-//
-var script$3 = {
-  props: {
-    showYearView: Boolean,
-    selectedDate: Date,
-    pageDate: Date,
-    pageTimestamp: Number,
-    disabledDates: Object,
-    highlighted: Object,
-    calendarClass: [String, Object, Array],
-    calendarStyle: Object,
-    translation: Object,
-    isRtl: Boolean,
-    allowedToShowView: Function,
-    useUtc: Boolean
-  },
-  computed: {
-    years: function years() {
-      var d = this.pageDate;
-      var years = []; // set up a new date object to the beginning of the current 'page'7
-
-      var dObj = this.useUtc ? new Date(Date.UTC(Math.floor(d.getUTCFullYear() / 10) * 10, d.getUTCMonth(), d.getUTCDate())) : new Date(Math.floor(d.getFullYear() / 10) * 10, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
-
-      for (var i = 0; i < 10; i++) {
-        years.push({
-          year: this.utils.getFullYear(dObj),
-          timestamp: dObj.getTime(),
-          isSelected: this.isSelectedYear(dObj),
-          isDisabled: this.isDisabledYear(dObj)
-        });
-        this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
-      }
-
-      return years;
-    },
-
-    /**
-     * @return {String}
-     */
-    getPageDecade: function getPageDecade() {
-      var decadeStart = Math.floor(this.utils.getFullYear(this.pageDate) / 10) * 10;
-      var decadeEnd = decadeStart + 9;
-      var yearSuffix = this.translation.yearSuffix;
-      return "".concat(decadeStart, " - ").concat(decadeEnd).concat(yearSuffix);
-    },
-
-    /**
-     * Is the left hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isLeftNavDisabled: function isLeftNavDisabled() {
-      return this.isRtl ? this.isNextDecadeDisabled(this.pageTimestamp) : this.isPreviousDecadeDisabled(this.pageTimestamp);
-    },
-
-    /**
-     * Is the right hand navigation button disabled?
-     * @return {Boolean}
-     */
-    isRightNavDisabled: function isRightNavDisabled() {
-      return this.isRtl ? this.isPreviousDecadeDisabled(this.pageTimestamp) : this.isNextDecadeDisabled(this.pageTimestamp);
-    }
-  },
-  data: function data() {
-    var constructedDateUtils = makeDateUtils(this.useUtc);
-    return {
-      utils: constructedDateUtils
-    };
-  },
-  methods: {
-    selectYear: function selectYear(year) {
-      if (year.isDisabled) {
-        return false;
-      }
-
-      this.$emit('selectYear', year);
-    },
-    changeYear: function changeYear(incrementBy) {
-      var date = this.pageDate;
-      this.utils.setFullYear(date, this.utils.getFullYear(date) + incrementBy);
-      this.$emit('changedDecade', date);
-    },
-    previousDecade: function previousDecade() {
-      if (this.isPreviousDecadeDisabled()) {
-        return false;
-      }
-
-      this.changeYear(-10);
-    },
-    isPreviousDecadeDisabled: function isPreviousDecadeDisabled() {
-      if (!this.disabledDates || !this.disabledDates.to) {
-        return false;
-      }
-
-      var disabledYear = this.utils.getFullYear(this.disabledDates.to);
-      var lastYearInPreviousPage = Math.floor(this.utils.getFullYear(this.pageDate) / 10) * 10 - 1;
-      return disabledYear > lastYearInPreviousPage;
-    },
-    nextDecade: function nextDecade() {
-      if (this.isNextDecadeDisabled()) {
-        return false;
-      }
-
-      this.changeYear(10);
-    },
-    isNextDecadeDisabled: function isNextDecadeDisabled() {
-      if (!this.disabledDates || !this.disabledDates.from) {
-        return false;
-      }
-
-      var disabledYear = this.utils.getFullYear(this.disabledDates.from);
-      var firstYearInNextPage = Math.ceil(this.utils.getFullYear(this.pageDate) / 10) * 10;
-      return disabledYear < firstYearInNextPage;
-    },
-
-    /**
-     * Whether the selected date is in this year
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isSelectedYear: function isSelectedYear(date) {
-      return this.selectedDate && this.utils.getFullYear(this.selectedDate) === this.utils.getFullYear(date);
-    },
-
-    /**
-     * Whether a year is disabled
-     * @param {Date}
-     * @return {Boolean}
-     */
-    isDisabledYear: function isDisabledYear(date) {
-      var disabledDates = false;
-
-      if (typeof this.disabledDates === 'undefined' || !this.disabledDates) {
-        return false;
-      }
-
-      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to) {
-        if (this.utils.getFullYear(date) < this.utils.getFullYear(this.disabledDates.to)) {
-          disabledDates = true;
-        }
-      }
-
-      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from) {
-        if (this.utils.getFullYear(date) > this.utils.getFullYear(this.disabledDates.from)) {
-          disabledDates = true;
-        }
-      }
-
-      if (typeof this.disabledDates.customPredictor === 'function' && this.disabledDates.customPredictor(date)) {
-        disabledDates = true;
-      }
-
-      return disabledDates;
-    }
-  } // eslint-disable-next-line
-
-};
-
-/* script */
-const __vue_script__$3 = script$3;
-
-/* template */
-var __vue_render__$3 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.showYearView,
-          expression: "showYearView"
-        }
-      ],
-      class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-      style: _vm.calendarStyle,
-      on: {
-        mousedown: function($event) {
-          $event.preventDefault();
-        }
-      }
-    },
-    [
-      _vm._t("beforeCalendarHeader"),
-      _vm._v(" "),
-      _c("header", [
-        _c(
-          "span",
-          {
-            staticClass: "prev",
-            class: { disabled: _vm.isLeftNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.nextDecade() : _vm.previousDecade();
-              }
-            }
-          },
-          [_vm._v("<")]
-        ),
-        _vm._v(" "),
-        _c("span", [_vm._v(_vm._s(_vm.getPageDecade))]),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "next",
-            class: { disabled: _vm.isRightNavDisabled },
-            on: {
-              click: function($event) {
-                _vm.isRtl ? _vm.previousDecade() : _vm.nextDecade();
-              }
-            }
-          },
-          [_vm._v(">")]
-        )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.years, function(year) {
-        return _c(
-          "span",
-          {
-            key: year.timestamp,
-            staticClass: "cell year",
-            class: { selected: year.isSelected, disabled: year.isDisabled },
-            on: {
-              click: function($event) {
-                $event.stopPropagation();
-                return _vm.selectYear(year)
-              }
-            }
-          },
-          [_vm._v(_vm._s(year.year))]
-        )
-      })
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$3 = undefined;
-  /* scoped */
-  const __vue_scope_id__$3 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$3 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$3 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var PickerYear = normalizeComponent_1(
-    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
-    __vue_inject_styles__$3,
-    __vue_script__$3,
-    __vue_scope_id__$3,
-    __vue_is_functional_template__$3,
-    __vue_module_identifier__$3,
-    undefined,
-    undefined
-  );
-
-//
-var script$4 = {
-  components: {
-    DateInput: DateInput,
-    PickerDay: PickerDay,
-    PickerMonth: PickerMonth,
-    PickerYear: PickerYear
-  },
-  props: {
-    value: {
-      validator: function validator(val) {
-        return utils$1.validateDateInput(val);
-      }
-    },
-    name: String,
-    refName: String,
-    id: String,
-    format: {
-      type: [String, Function],
-      "default": 'dd MMM yyyy'
-    },
-    language: {
-      type: Object,
-      "default": function _default() {
-        return en;
-      }
-    },
-    openDate: {
-      validator: function validator(val) {
-        return utils$1.validateDateInput(val);
-      }
-    },
-    dayCellContent: Function,
-    fullMonthName: Boolean,
-    disabledDates: Object,
-    highlighted: Object,
-    placeholder: String,
-    inline: Boolean,
-    calendarClass: [String, Object, Array],
-    inputClass: [String, Object, Array],
-    wrapperClass: [String, Object, Array],
-    mondayFirst: Boolean,
-    clearButton: Boolean,
-    clearButtonIcon: String,
-    calendarButton: Boolean,
-    calendarButtonIcon: String,
-    calendarButtonIconContent: String,
-    bootstrapStyling: Boolean,
-    initialView: String,
-    disabled: Boolean,
-    required: Boolean,
-    typeable: Boolean,
-    useUtc: Boolean,
-    minimumView: {
-      type: String,
-      "default": 'day'
-    },
-    maximumView: {
-      type: String,
-      "default": 'year'
-    }
-  },
-  data: function data() {
-    var startDate = this.openDate ? new Date(this.openDate) : new Date();
-    var constructedDateUtils = makeDateUtils(this.useUtc);
-    var pageTimestamp = constructedDateUtils.setDate(startDate, 1);
-    return {
-      /*
-       * Vue cannot observe changes to a Date Object so date must be stored as a timestamp
-       * This represents the first day of the current viewing month
-       * {Number}
-       */
-      pageTimestamp: pageTimestamp,
-
-      /*
-       * Selected Date
-       * {Date}
-       */
-      selectedDate: null,
-
-      /*
-       * Flags to show calendar views
-       * {Boolean}
-       */
-      showDayView: false,
-      showMonthView: false,
-      showYearView: false,
-
-      /*
-       * Positioning
-       */
-      calendarHeight: 0,
-      resetTypedDate: new Date(),
-      utils: constructedDateUtils
-    };
-  },
-  watch: {
-    value: function value(_value) {
-      this.setValue(_value);
-    },
-    openDate: function openDate() {
-      this.setPageDate();
-    },
-    initialView: function initialView() {
-      this.setInitialView();
-    }
-  },
-  computed: {
-    computedInitialView: function computedInitialView() {
-      if (!this.initialView) {
-        return this.minimumView;
-      }
-
-      return this.initialView;
-    },
-    pageDate: function pageDate() {
-      return new Date(this.pageTimestamp);
-    },
-    translation: function translation() {
-      return this.language;
-    },
-    calendarStyle: function calendarStyle() {
-      return {
-        position: this.isInline ? 'static' : undefined
-      };
-    },
-    isOpen: function isOpen() {
-      return this.showDayView || this.showMonthView || this.showYearView;
-    },
-    isInline: function isInline() {
-      return !!this.inline;
-    },
-    isRtl: function isRtl() {
-      return this.translation.rtl === true;
-    }
-  },
-  methods: {
-    /**
-     * Called in the event that the user navigates to date pages and
-     * closes the picker without selecting a date.
-     */
-    resetDefaultPageDate: function resetDefaultPageDate() {
-      if (this.selectedDate === null) {
-        this.setPageDate();
-        return;
-      }
-
-      this.setPageDate(this.selectedDate);
-    },
-
-    /**
-     * Effectively a toggle to show/hide the calendar
-     * @return {mixed}
-     */
-    showCalendar: function showCalendar() {
-      if (this.disabled || this.isInline) {
-        return false;
-      }
-
-      if (this.isOpen) {
-        return this.close(true);
-      }
-
-      this.setInitialView();
-    },
-
-    /**
-     * Sets the initial picker page view: day, month or year
-     */
-    setInitialView: function setInitialView() {
-      var initialView = this.computedInitialView;
-
-      if (!this.allowedToShowView(initialView)) {
-        throw new Error("initialView '".concat(this.initialView, "' cannot be rendered based on minimum '").concat(this.minimumView, "' and maximum '").concat(this.maximumView, "'"));
-      }
-
-      switch (initialView) {
-        case 'year':
-          this.showYearCalendar();
-          break;
-
-        case 'month':
-          this.showMonthCalendar();
-          break;
-
-        default:
-          this.showDayCalendar();
-          break;
-      }
-    },
-
-    /**
-     * Are we allowed to show a specific picker view?
-     * @param {String} view
-     * @return {Boolean}
-     */
-    allowedToShowView: function allowedToShowView(view) {
-      var views = ['day', 'month', 'year'];
-      var minimumViewIndex = views.indexOf(this.minimumView);
-      var maximumViewIndex = views.indexOf(this.maximumView);
-      var viewIndex = views.indexOf(view);
-      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex;
-    },
-
-    /**
-     * Show the day picker
-     * @return {Boolean}
-     */
-    showDayCalendar: function showDayCalendar() {
-      if (!this.allowedToShowView('day')) {
-        return false;
-      }
-
-      this.close();
-      this.showDayView = true;
-      return true;
-    },
-
-    /**
-     * Show the month picker
-     * @return {Boolean}
-     */
-    showMonthCalendar: function showMonthCalendar() {
-      if (!this.allowedToShowView('month')) {
-        return false;
-      }
-
-      this.close();
-      this.showMonthView = true;
-      return true;
-    },
-
-    /**
-     * Show the year picker
-     * @return {Boolean}
-     */
-    showYearCalendar: function showYearCalendar() {
-      if (!this.allowedToShowView('year')) {
-        return false;
-      }
-
-      this.close();
-      this.showYearView = true;
-      return true;
-    },
-
-    /**
-     * Set the selected date
-     * @param {Number} timestamp
-     */
-    setDate: function setDate(timestamp) {
-      var date = new Date(timestamp);
-      this.selectedDate = date;
-      this.setPageDate(date);
-      this.$emit('selected', date);
-      this.$emit('input', date);
-    },
-
-    /**
-     * Clear the selected date
-     */
-    clearDate: function clearDate() {
-      this.selectedDate = null;
-      this.setPageDate();
-      this.$emit('selected', null);
-      this.$emit('input', null);
-      this.$emit('cleared');
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDate: function selectDate(date) {
-      this.setDate(date.timestamp);
-
-      if (!this.isInline) {
-        this.close(true);
-      }
-
-      this.resetTypedDate = new Date();
-    },
-
-    /**
-     * @param {Object} date
-     */
-    selectDisabledDate: function selectDisabledDate(date) {
-      this.$emit('selectedDisabled', date);
-    },
-
-    /**
-     * @param {Object} month
-     */
-    selectMonth: function selectMonth(month) {
-      var date = new Date(month.timestamp);
-
-      if (this.allowedToShowView('day')) {
-        this.setPageDate(date);
-        this.$emit('changedMonth', month);
-        this.showDayCalendar();
-      } else {
-        this.selectDate(month);
-      }
-    },
-
-    /**
-     * @param {Object} year
-     */
-    selectYear: function selectYear(year) {
-      var date = new Date(year.timestamp);
-
-      if (this.allowedToShowView('month')) {
-        this.setPageDate(date);
-        this.$emit('changedYear', year);
-        this.showMonthCalendar();
-      } else {
-        this.selectDate(year);
-      }
-    },
-
-    /**
-     * Set the datepicker value
-     * @param {Date|String|Number|null} date
-     */
-    setValue: function setValue(date) {
-      if (typeof date === 'string' || typeof date === 'number') {
-        var parsed = new Date(date);
-        date = isNaN(parsed.valueOf()) ? null : parsed;
-      }
-
-      if (!date) {
-        this.setPageDate();
-        this.selectedDate = null;
-        return;
-      }
-
-      this.selectedDate = date;
-      this.setPageDate(date);
-    },
-
-    /**
-     * Sets the date that the calendar should open on
-     */
-    setPageDate: function setPageDate(date) {
-      if (!date) {
-        if (this.openDate) {
-          date = new Date(this.openDate);
-        } else {
-          date = new Date();
-        }
-      }
-
-      this.pageTimestamp = this.utils.setDate(new Date(date), 1);
-    },
-
-    /**
-     * Handles a month change from the day picker
-     */
-    handleChangedMonthFromDayPicker: function handleChangedMonthFromDayPicker(date) {
-      this.setPageDate(date);
-      this.$emit('changedMonth', date);
-    },
-
-    /**
-     * Set the date from a typedDate event
-     */
-    setTypedDate: function setTypedDate(date) {
-      this.setDate(date.getTime());
-    },
-
-    /**
-     * Close all calendar layers
-     * @param {Boolean} emitEvent - emit close event
-     */
-    close: function close(emitEvent) {
-      this.showDayView = this.showMonthView = this.showYearView = false;
-
-      if (!this.isInline) {
-        if (emitEvent) {
-          this.$emit('closed');
-        }
-
-        document.removeEventListener('click', this.clickOutside, false);
-      }
-    },
-
-    /**
-     * Initiate the component
-     */
-    init: function init() {
-      if (this.value) {
-        this.setValue(this.value);
-      }
-
-      if (this.isInline) {
-        this.setInitialView();
-      }
-    }
-  },
-  mounted: function mounted() {
-    this.init();
-  }
-} // eslint-disable-next-line
-;
-
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
-function createInjector(context) {
-  return function (id, style) {
-    return addStyle(id, style);
+  return {
+    $$typeof: REACT_FORWARD_REF_TYPE,
+    render: render
   };
 }
-var HEAD = document.head || document.getElementsByTagName('head')[0];
-var styles = {};
 
-function addStyle(id, css) {
-  var group = isOldIE ? css.media || 'default' : id;
-  var style = styles[group] || (styles[group] = {
-    ids: new Set(),
-    styles: []
-  });
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' ||
+  // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+}
 
-  if (!style.ids.has(id)) {
-    style.ids.add(id);
-    var code = css.source;
-
-    if (css.map) {
-      // https://developer.chrome.com/devtools/docs/javascript-debugging
-      // this makes source maps inside style tags work properly in Chrome
-      code += '\n/*# sourceURL=' + css.map.sources[0] + ' */'; // http://stackoverflow.com/a/26603875
-
-      code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
+function memo(type, compare) {
+  {
+    if (!isValidElementType(type)) {
+      warningWithoutStack$1(false, 'memo: The first argument must be a component. Instead ' + 'received: %s', type === null ? 'null' : typeof type);
     }
+  }
+  return {
+    $$typeof: REACT_MEMO_TYPE,
+    type: type,
+    compare: compare === undefined ? null : compare
+  };
+}
 
-    if (!style.element) {
-      style.element = document.createElement('style');
-      style.element.type = 'text/css';
-      if (css.media) style.element.setAttribute('media', css.media);
-      HEAD.appendChild(style.element);
+function resolveDispatcher() {
+  var dispatcher = ReactCurrentDispatcher.current;
+  !(dispatcher !== null) ? invariant(false, 'Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://fb.me/react-invalid-hook-call for tips about how to debug and fix this problem.') : void 0;
+  return dispatcher;
+}
+
+function useContext(Context, unstable_observedBits) {
+  var dispatcher = resolveDispatcher();
+  {
+    !(unstable_observedBits === undefined) ? warning$1(false, 'useContext() second argument is reserved for future ' + 'use in React. Passing it is not supported. ' + 'You passed: %s.%s', unstable_observedBits, typeof unstable_observedBits === 'number' && Array.isArray(arguments[2]) ? '\n\nDid you call array.map(useContext)? ' + 'Calling Hooks inside a loop is not supported. ' + 'Learn more at https://fb.me/rules-of-hooks' : '') : void 0;
+
+    // TODO: add a more generic warning for invalid values.
+    if (Context._context !== undefined) {
+      var realContext = Context._context;
+      // Don't deduplicate because this legitimately causes bugs
+      // and nobody should be using this in existing code.
+      if (realContext.Consumer === Context) {
+        warning$1(false, 'Calling useContext(Context.Consumer) is not supported, may cause bugs, and will be ' + 'removed in a future major release. Did you mean to call useContext(Context) instead?');
+      } else if (realContext.Provider === Context) {
+        warning$1(false, 'Calling useContext(Context.Provider) is not supported. ' + 'Did you mean to call useContext(Context) instead?');
+      }
     }
+  }
+  return dispatcher.useContext(Context, unstable_observedBits);
+}
 
-    if ('styleSheet' in style.element) {
-      style.styles.push(code);
-      style.element.styleSheet.cssText = style.styles.filter(Boolean).join('\n');
-    } else {
-      var index = style.ids.size - 1;
-      var textNode = document.createTextNode(code);
-      var nodes = style.element.childNodes;
-      if (nodes[index]) style.element.removeChild(nodes[index]);
-      if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+function useState(initialState) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useState(initialState);
+}
+
+function useReducer(reducer, initialArg, init) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useReducer(reducer, initialArg, init);
+}
+
+function useRef(initialValue) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useRef(initialValue);
+}
+
+function useEffect(create, inputs) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useEffect(create, inputs);
+}
+
+function useLayoutEffect(create, inputs) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useLayoutEffect(create, inputs);
+}
+
+function useCallback(callback, inputs) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useCallback(callback, inputs);
+}
+
+function useMemo(create, inputs) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useMemo(create, inputs);
+}
+
+function useImperativeHandle(ref, create, inputs) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useImperativeHandle(ref, create, inputs);
+}
+
+function useDebugValue(value, formatterFn) {
+  {
+    var dispatcher = resolveDispatcher();
+    return dispatcher.useDebugValue(value, formatterFn);
+  }
+}
+
+/**
+ * ReactElementValidator provides a wrapper around a element factory
+ * which validates the props passed to the element. This is intended to be
+ * used only in DEV and could be replaced by a static type checker for languages
+ * that support it.
+ */
+
+var propTypesMisspellWarningShown = void 0;
+
+{
+  propTypesMisspellWarningShown = false;
+}
+
+function getDeclarationErrorAddendum() {
+  if (ReactCurrentOwner.current) {
+    var name = getComponentName(ReactCurrentOwner.current.type);
+    if (name) {
+      return '\n\nCheck the render method of `' + name + '`.';
+    }
+  }
+  return '';
+}
+
+function getSourceInfoErrorAddendum(elementProps) {
+  if (elementProps !== null && elementProps !== undefined && elementProps.__source !== undefined) {
+    var source = elementProps.__source;
+    var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+    var lineNumber = source.lineNumber;
+    return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+  }
+  return '';
+}
+
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+var ownerHasKeyUseWarning = {};
+
+function getCurrentComponentErrorInfo(parentType) {
+  var info = getDeclarationErrorAddendum();
+
+  if (!info) {
+    var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+    if (parentName) {
+      info = '\n\nCheck the top-level render call using <' + parentName + '>.';
+    }
+  }
+  return info;
+}
+
+/**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */
+function validateExplicitKey(element, parentType) {
+  if (!element._store || element._store.validated || element.key != null) {
+    return;
+  }
+  element._store.validated = true;
+
+  var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+  if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+    return;
+  }
+  ownerHasKeyUseWarning[currentComponentErrorInfo] = true;
+
+  // Usually the current owner is the offender, but if it accepts children as a
+  // property, it may be the creator of the child that's responsible for
+  // assigning it a key.
+  var childOwner = '';
+  if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
+    // Give the component that originally created this child.
+    childOwner = ' It was passed a child from ' + getComponentName(element._owner.type) + '.';
+  }
+
+  setCurrentlyValidatingElement(element);
+  {
+    warning$1(false, 'Each child in a list should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.', currentComponentErrorInfo, childOwner);
+  }
+  setCurrentlyValidatingElement(null);
+}
+
+/**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */
+function validateChildKeys(node, parentType) {
+  if (typeof node !== 'object') {
+    return;
+  }
+  if (Array.isArray(node)) {
+    for (var i = 0; i < node.length; i++) {
+      var child = node[i];
+      if (isValidElement(child)) {
+        validateExplicitKey(child, parentType);
+      }
+    }
+  } else if (isValidElement(node)) {
+    // This element was passed in a valid location.
+    if (node._store) {
+      node._store.validated = true;
+    }
+  } else if (node) {
+    var iteratorFn = getIteratorFn(node);
+    if (typeof iteratorFn === 'function') {
+      // Entry iterators used to provide implicit keys,
+      // but now we print a separate warning for them later.
+      if (iteratorFn !== node.entries) {
+        var iterator = iteratorFn.call(node);
+        var step = void 0;
+        while (!(step = iterator.next()).done) {
+          if (isValidElement(step.value)) {
+            validateExplicitKey(step.value, parentType);
+          }
+        }
+      }
     }
   }
 }
 
-var browser = createInjector;
+/**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */
+function validatePropTypes(element) {
+  var type = element.type;
+  if (type === null || type === undefined || typeof type === 'string') {
+    return;
+  }
+  var name = getComponentName(type);
+  var propTypes = void 0;
+  if (typeof type === 'function') {
+    propTypes = type.propTypes;
+  } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE ||
+  // Note: Memo only checks outer props here.
+  // Inner props are checked in the reconciler.
+  type.$$typeof === REACT_MEMO_TYPE)) {
+    propTypes = type.propTypes;
+  } else {
+    return;
+  }
+  if (propTypes) {
+    setCurrentlyValidatingElement(element);
+    checkPropTypes(propTypes, element.props, 'prop', name, ReactDebugCurrentFrame.getStackAddendum);
+    setCurrentlyValidatingElement(null);
+  } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+    propTypesMisspellWarningShown = true;
+    warningWithoutStack$1(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
+  }
+  if (typeof type.getDefaultProps === 'function') {
+    !type.getDefaultProps.isReactClassApproved ? warningWithoutStack$1(false, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.') : void 0;
+  }
+}
 
-/* script */
-const __vue_script__$4 = script$4;
+/**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */
+function validateFragmentProps(fragment) {
+  setCurrentlyValidatingElement(fragment);
 
-/* template */
-var __vue_render__$4 = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    {
-      staticClass: "vdp-datepicker",
-      class: [_vm.wrapperClass, _vm.isRtl ? "rtl" : ""]
-    },
-    [
-      _c(
-        "date-input",
-        {
-          attrs: {
-            selectedDate: _vm.selectedDate,
-            resetTypedDate: _vm.resetTypedDate,
-            format: _vm.format,
-            translation: _vm.translation,
-            inline: _vm.inline,
-            id: _vm.id,
-            name: _vm.name,
-            refName: _vm.refName,
-            openDate: _vm.openDate,
-            placeholder: _vm.placeholder,
-            inputClass: _vm.inputClass,
-            typeable: _vm.typeable,
-            clearButton: _vm.clearButton,
-            clearButtonIcon: _vm.clearButtonIcon,
-            calendarButton: _vm.calendarButton,
-            calendarButtonIcon: _vm.calendarButtonIcon,
-            calendarButtonIconContent: _vm.calendarButtonIconContent,
-            disabled: _vm.disabled,
-            required: _vm.required,
-            bootstrapStyling: _vm.bootstrapStyling,
-            "use-utc": _vm.useUtc
-          },
-          on: {
-            showCalendar: _vm.showCalendar,
-            closeCalendar: _vm.close,
-            typedDate: _vm.setTypedDate,
-            clearDate: _vm.clearDate
-          }
-        },
-        [_vm._t("afterDateInput", null, { slot: "afterDateInput" })],
-        2
-      ),
-      _vm._v(" "),
-      _vm.allowedToShowView("day")
-        ? _c(
-            "picker-day",
-            {
-              attrs: {
-                pageDate: _vm.pageDate,
-                selectedDate: _vm.selectedDate,
-                showDayView: _vm.showDayView,
-                fullMonthName: _vm.fullMonthName,
-                allowedToShowView: _vm.allowedToShowView,
-                disabledDates: _vm.disabledDates,
-                highlighted: _vm.highlighted,
-                calendarClass: _vm.calendarClass,
-                calendarStyle: _vm.calendarStyle,
-                translation: _vm.translation,
-                pageTimestamp: _vm.pageTimestamp,
-                isRtl: _vm.isRtl,
-                mondayFirst: _vm.mondayFirst,
-                dayCellContent: _vm.dayCellContent,
-                "use-utc": _vm.useUtc
-              },
-              on: {
-                changedMonth: _vm.handleChangedMonthFromDayPicker,
-                selectDate: _vm.selectDate,
-                showMonthCalendar: _vm.showMonthCalendar,
-                selectedDisabled: _vm.selectDisabledDate
-              }
-            },
-            [
-              _vm._t("beforeCalendarHeader", null, {
-                slot: "beforeCalendarHeader"
-              })
-            ],
-            2
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.allowedToShowView("month")
-        ? _c(
-            "picker-month",
-            {
-              attrs: {
-                pageDate: _vm.pageDate,
-                selectedDate: _vm.selectedDate,
-                showMonthView: _vm.showMonthView,
-                allowedToShowView: _vm.allowedToShowView,
-                disabledDates: _vm.disabledDates,
-                calendarClass: _vm.calendarClass,
-                calendarStyle: _vm.calendarStyle,
-                translation: _vm.translation,
-                isRtl: _vm.isRtl,
-                "use-utc": _vm.useUtc
-              },
-              on: {
-                selectMonth: _vm.selectMonth,
-                showYearCalendar: _vm.showYearCalendar,
-                changedYear: _vm.setPageDate
-              }
-            },
-            [
-              _vm._t("beforeCalendarHeader", null, {
-                slot: "beforeCalendarHeader"
-              })
-            ],
-            2
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.allowedToShowView("year")
-        ? _c(
-            "picker-year",
-            {
-              attrs: {
-                pageDate: _vm.pageDate,
-                selectedDate: _vm.selectedDate,
-                showYearView: _vm.showYearView,
-                allowedToShowView: _vm.allowedToShowView,
-                disabledDates: _vm.disabledDates,
-                calendarClass: _vm.calendarClass,
-                calendarStyle: _vm.calendarStyle,
-                translation: _vm.translation,
-                isRtl: _vm.isRtl,
-                "use-utc": _vm.useUtc
-              },
-              on: { selectYear: _vm.selectYear, changedDecade: _vm.setPageDate }
-            },
-            [
-              _vm._t("beforeCalendarHeader", null, {
-                slot: "beforeCalendarHeader"
-              })
-            ],
-            2
-          )
-        : _vm._e()
-    ],
-    1
-  )
+  var keys = Object.keys(fragment.props);
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (key !== 'children' && key !== 'key') {
+      warning$1(false, 'Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+      break;
+    }
+  }
+
+  if (fragment.ref !== null) {
+    warning$1(false, 'Invalid attribute `ref` supplied to `React.Fragment`.');
+  }
+
+  setCurrentlyValidatingElement(null);
+}
+
+function createElementWithValidation(type, props, children) {
+  var validType = isValidElementType(type);
+
+  // We warn in this case but don't throw. We expect the element creation to
+  // succeed and there will likely be errors in render.
+  if (!validType) {
+    var info = '';
+    if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+      info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+    }
+
+    var sourceInfo = getSourceInfoErrorAddendum(props);
+    if (sourceInfo) {
+      info += sourceInfo;
+    } else {
+      info += getDeclarationErrorAddendum();
+    }
+
+    var typeString = void 0;
+    if (type === null) {
+      typeString = 'null';
+    } else if (Array.isArray(type)) {
+      typeString = 'array';
+    } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+      typeString = '<' + (getComponentName(type.type) || 'Unknown') + ' />';
+      info = ' Did you accidentally export a JSX literal instead of a component?';
+    } else {
+      typeString = typeof type;
+    }
+
+    warning$1(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
+  }
+
+  var element = createElement.apply(this, arguments);
+
+  // The result can be nullish if a mock or a custom function is used.
+  // TODO: Drop this when these are no longer allowed as the type argument.
+  if (element == null) {
+    return element;
+  }
+
+  // Skip key warning if the type isn't valid since our key validation logic
+  // doesn't expect a non-string/function type and can throw confusing errors.
+  // We don't want exception behavior to differ between dev and prod.
+  // (Rendering will throw with a helpful message and as soon as the type is
+  // fixed, the key warnings will appear.)
+  if (validType) {
+    for (var i = 2; i < arguments.length; i++) {
+      validateChildKeys(arguments[i], type);
+    }
+  }
+
+  if (type === REACT_FRAGMENT_TYPE) {
+    validateFragmentProps(element);
+  } else {
+    validatePropTypes(element);
+  }
+
+  return element;
+}
+
+function createFactoryWithValidation(type) {
+  var validatedFactory = createElementWithValidation.bind(null, type);
+  validatedFactory.type = type;
+  // Legacy hook: remove it
+  {
+    Object.defineProperty(validatedFactory, 'type', {
+      enumerable: false,
+      get: function () {
+        lowPriorityWarning$1(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
+        Object.defineProperty(this, 'type', {
+          value: type
+        });
+        return type;
+      }
+    });
+  }
+
+  return validatedFactory;
+}
+
+function cloneElementWithValidation(element, props, children) {
+  var newElement = cloneElement.apply(this, arguments);
+  for (var i = 2; i < arguments.length; i++) {
+    validateChildKeys(arguments[i], newElement.type);
+  }
+  validatePropTypes(newElement);
+  return newElement;
+}
+
+// Helps identify side effects in begin-phase lifecycle hooks and setState reducers:
+
+
+// In some cases, StrictMode should also double-render lifecycles.
+// This can be confusing for tests though,
+// And it can be bad for performance in production.
+// This feature flag can be used to control the behavior:
+
+
+// To preserve the "Pause on caught exceptions" behavior of the debugger, we
+// replay the begin phase of a failed component inside invokeGuardedCallback.
+
+
+// Warn about deprecated, async-unsafe lifecycles; relates to RFC #6:
+
+
+// Gather advanced timing metrics for Profiler subtrees.
+
+
+// Trace which interactions trigger each commit.
+
+
+// Only used in www builds.
+ // TODO: true? Here it might just be false.
+
+// Only used in www builds.
+
+
+// Only used in www builds.
+
+
+// React Fire: prevent the value and checked attributes from syncing
+// with their related DOM properties
+
+
+// These APIs will no longer be "unstable" in the upcoming 16.7 release,
+// Control this behavior with a flag to support 16.6 minor releases in the meanwhile.
+var enableStableConcurrentModeAPIs = false;
+
+var React = {
+  Children: {
+    map: mapChildren,
+    forEach: forEachChildren,
+    count: countChildren,
+    toArray: toArray,
+    only: onlyChild
+  },
+
+  createRef: createRef,
+  Component: Component,
+  PureComponent: PureComponent,
+
+  createContext: createContext,
+  forwardRef: forwardRef,
+  lazy: lazy,
+  memo: memo,
+
+  useCallback: useCallback,
+  useContext: useContext,
+  useEffect: useEffect,
+  useImperativeHandle: useImperativeHandle,
+  useDebugValue: useDebugValue,
+  useLayoutEffect: useLayoutEffect,
+  useMemo: useMemo,
+  useReducer: useReducer,
+  useRef: useRef,
+  useState: useState,
+
+  Fragment: REACT_FRAGMENT_TYPE,
+  StrictMode: REACT_STRICT_MODE_TYPE,
+  Suspense: REACT_SUSPENSE_TYPE,
+
+  createElement: createElementWithValidation,
+  cloneElement: cloneElementWithValidation,
+  createFactory: createFactoryWithValidation,
+  isValidElement: isValidElement,
+
+  version: ReactVersion,
+
+  unstable_ConcurrentMode: REACT_CONCURRENT_MODE_TYPE,
+  unstable_Profiler: REACT_PROFILER_TYPE,
+
+  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: ReactSharedInternals
 };
-var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
 
-  /* style */
-  const __vue_inject_styles__$4 = function (inject) {
-    if (!inject) return
-    inject("data-v-64ca2bb5_0", { source: ".rtl {\n  direction: rtl;\n}\n.vdp-datepicker {\n  position: relative;\n  text-align: left;\n}\n.vdp-datepicker * {\n  box-sizing: border-box;\n}\n.vdp-datepicker__calendar {\n  position: absolute;\n  z-index: 100;\n  background: #fff;\n  width: 300px;\n  border: 1px solid #ccc;\n}\n.vdp-datepicker__calendar header {\n  display: block;\n  line-height: 40px;\n}\n.vdp-datepicker__calendar header span {\n  display: inline-block;\n  text-align: center;\n  width: 71.42857142857143%;\n  float: left;\n}\n.vdp-datepicker__calendar header .prev,\n.vdp-datepicker__calendar header .next {\n  width: 14.285714285714286%;\n  float: left;\n  text-indent: -10000px;\n  position: relative;\n}\n.vdp-datepicker__calendar header .prev:after,\n.vdp-datepicker__calendar header .next:after {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  border: 6px solid transparent;\n}\n.vdp-datepicker__calendar header .prev:after {\n  border-right: 10px solid #000;\n  margin-left: -5px;\n}\n.vdp-datepicker__calendar header .prev.disabled:after {\n  border-right: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .next:after {\n  border-left: 10px solid #000;\n  margin-left: 5px;\n}\n.vdp-datepicker__calendar header .next.disabled:after {\n  border-left: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled),\n.vdp-datepicker__calendar header .next:not(.disabled),\n.vdp-datepicker__calendar header .up:not(.disabled) {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled):hover,\n.vdp-datepicker__calendar header .next:not(.disabled):hover,\n.vdp-datepicker__calendar header .up:not(.disabled):hover {\n  background: #eee;\n}\n.vdp-datepicker__calendar .disabled {\n  color: #ddd;\n  cursor: default;\n}\n.vdp-datepicker__calendar .flex-rtl {\n  display: flex;\n  width: inherit;\n  flex-wrap: wrap;\n}\n.vdp-datepicker__calendar .cell {\n  display: inline-block;\n  padding: 0 5px;\n  width: 14.285714285714286%;\n  height: 40px;\n  line-height: 40px;\n  text-align: center;\n  vertical-align: middle;\n  border: 1px solid transparent;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {\n  border: 1px solid #4bd;\n}\n.vdp-datepicker__calendar .cell.selected {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected:hover {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected.highlighted {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.highlighted {\n  background: #cae5ed;\n}\n.vdp-datepicker__calendar .cell.highlighted.disabled {\n  color: #a3a3a3;\n}\n.vdp-datepicker__calendar .cell.grey {\n  color: #888;\n}\n.vdp-datepicker__calendar .cell.grey:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header {\n  font-size: 75%;\n  white-space: nowrap;\n  cursor: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .month,\n.vdp-datepicker__calendar .year {\n  width: 33.333%;\n}\n.vdp-datepicker__clear-button,\n.vdp-datepicker__calendar-button {\n  cursor: pointer;\n  font-style: normal;\n}\n.vdp-datepicker__clear-button.disabled,\n.vdp-datepicker__calendar-button.disabled {\n  color: #999;\n  cursor: default;\n}\n", map: {"version":3,"sources":["Datepicker.vue"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;AACA;EACE,kBAAkB;EAClB,gBAAgB;AAClB;AACA;EACE,sBAAsB;AACxB;AACA;EACE,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,YAAY;EACZ,sBAAsB;AACxB;AACA;EACE,cAAc;EACd,iBAAiB;AACnB;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,yBAAyB;EACzB,WAAW;AACb;AACA;;EAEE,0BAA0B;EAC1B,WAAW;EACX,qBAAqB;EACrB,kBAAkB;AACpB;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,SAAS;EACT,QAAQ;EACR,4CAA4C;EAC5C,6BAA6B;AAC/B;AACA;EACE,6BAA6B;EAC7B,iBAAiB;AACnB;AACA;EACE,6BAA6B;AAC/B;AACA;EACE,4BAA4B;EAC5B,gBAAgB;AAClB;AACA;EACE,4BAA4B;AAC9B;AACA;;;EAGE,eAAe;AACjB;AACA;;;EAGE,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,eAAe;AACjB;AACA;EACE,aAAa;EACb,cAAc;EACd,eAAe;AACjB;AACA;EACE,qBAAqB;EACrB,cAAc;EACd,0BAA0B;EAC1B,YAAY;EACZ,iBAAiB;EACjB,kBAAkB;EAClB,sBAAsB;EACtB,6BAA6B;AAC/B;AACA;;;EAGE,eAAe;AACjB;AACA;;;EAGE,sBAAsB;AACxB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;AAChB;AACA;EACE,WAAW;AACb;AACA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,mBAAmB;EACnB,eAAe;AACjB;AACA;EACE,mBAAmB;AACrB;AACA;;EAEE,cAAc;AAChB;AACA;;EAEE,eAAe;EACf,kBAAkB;AACpB;AACA;;EAEE,WAAW;EACX,eAAe;AACjB","file":"Datepicker.vue","sourcesContent":[".rtl {\n  direction: rtl;\n}\n.vdp-datepicker {\n  position: relative;\n  text-align: left;\n}\n.vdp-datepicker * {\n  box-sizing: border-box;\n}\n.vdp-datepicker__calendar {\n  position: absolute;\n  z-index: 100;\n  background: #fff;\n  width: 300px;\n  border: 1px solid #ccc;\n}\n.vdp-datepicker__calendar header {\n  display: block;\n  line-height: 40px;\n}\n.vdp-datepicker__calendar header span {\n  display: inline-block;\n  text-align: center;\n  width: 71.42857142857143%;\n  float: left;\n}\n.vdp-datepicker__calendar header .prev,\n.vdp-datepicker__calendar header .next {\n  width: 14.285714285714286%;\n  float: left;\n  text-indent: -10000px;\n  position: relative;\n}\n.vdp-datepicker__calendar header .prev:after,\n.vdp-datepicker__calendar header .next:after {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  border: 6px solid transparent;\n}\n.vdp-datepicker__calendar header .prev:after {\n  border-right: 10px solid #000;\n  margin-left: -5px;\n}\n.vdp-datepicker__calendar header .prev.disabled:after {\n  border-right: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .next:after {\n  border-left: 10px solid #000;\n  margin-left: 5px;\n}\n.vdp-datepicker__calendar header .next.disabled:after {\n  border-left: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled),\n.vdp-datepicker__calendar header .next:not(.disabled),\n.vdp-datepicker__calendar header .up:not(.disabled) {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled):hover,\n.vdp-datepicker__calendar header .next:not(.disabled):hover,\n.vdp-datepicker__calendar header .up:not(.disabled):hover {\n  background: #eee;\n}\n.vdp-datepicker__calendar .disabled {\n  color: #ddd;\n  cursor: default;\n}\n.vdp-datepicker__calendar .flex-rtl {\n  display: flex;\n  width: inherit;\n  flex-wrap: wrap;\n}\n.vdp-datepicker__calendar .cell {\n  display: inline-block;\n  padding: 0 5px;\n  width: 14.285714285714286%;\n  height: 40px;\n  line-height: 40px;\n  text-align: center;\n  vertical-align: middle;\n  border: 1px solid transparent;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {\n  border: 1px solid #4bd;\n}\n.vdp-datepicker__calendar .cell.selected {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected:hover {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected.highlighted {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.highlighted {\n  background: #cae5ed;\n}\n.vdp-datepicker__calendar .cell.highlighted.disabled {\n  color: #a3a3a3;\n}\n.vdp-datepicker__calendar .cell.grey {\n  color: #888;\n}\n.vdp-datepicker__calendar .cell.grey:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header {\n  font-size: 75%;\n  white-space: nowrap;\n  cursor: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .month,\n.vdp-datepicker__calendar .year {\n  width: 33.333%;\n}\n.vdp-datepicker__clear-button,\n.vdp-datepicker__calendar-button {\n  cursor: pointer;\n  font-style: normal;\n}\n.vdp-datepicker__clear-button.disabled,\n.vdp-datepicker__calendar-button.disabled {\n  color: #999;\n  cursor: default;\n}\n"]}, media: undefined });
+// Note: some APIs are added with feature flags.
+// Make sure that stable builds for open source
+// don't modify the React object to avoid deopts.
+// Also let's not expose their names in stable builds.
 
-  };
-  /* scoped */
-  const __vue_scope_id__$4 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$4 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$4 = false;
-  /* style inject SSR */
-  
+if (enableStableConcurrentModeAPIs) {
+  React.ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+  React.Profiler = REACT_PROFILER_TYPE;
+  React.unstable_ConcurrentMode = undefined;
+  React.unstable_Profiler = undefined;
+}
 
-  
-  var Datepicker = normalizeComponent_1(
-    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-    __vue_inject_styles__$4,
-    __vue_script__$4,
-    __vue_scope_id__$4,
-    __vue_is_functional_template__$4,
-    __vue_module_identifier__$4,
-    browser,
-    undefined
-  );
 
-/* harmony default export */ __webpack_exports__["default"] = (Datepicker);
+
+var React$2 = Object.freeze({
+	default: React
+});
+
+var React$3 = ( React$2 && React ) || React$2;
+
+// TODO: decide on the top-level export form.
+// This is hacky but makes it work with both Rollup and Jest.
+var react = React$3.default || React$3;
+
+module.exports = react;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react/index.js":
+/*!*************************************!*\
+  !*** ./node_modules/react/index.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
+}
 
 
 /***/ })

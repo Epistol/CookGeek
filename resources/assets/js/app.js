@@ -21,6 +21,7 @@ import VueInternationalization from 'vue-i18n';
 
 Vue.use(VueInternationalization);
 import InstantSearch from 'vue-instantsearch';
+
 Vue.use(InstantSearch);
 
 // Imports des composants
@@ -58,11 +59,12 @@ const app = new Vue({
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
         'signalrecipe': SignalRecipe,
         'modal': ModalView,
-         VeeValidate,
+        VeeValidate,
         'Notif': Notif,
+        'React': () => import('react'),
         'bigsearch': () => import('./components/BigSearch'),
-        'password' : () => import("./components/PasswordInputComponent"),
-        'new-recipe-form':  () => import("./components/recipe/NewRecipe"),
+        'password': () => import("./components/PasswordInputComponent"),
+        'new-recipe-form': () => import("./components/recipe/NewRecipe"),
         'likerecipe': () => import("./components/recipe/like/LikeRecipe.vue"),
         'validationform': () => import("./components/ValidateFormButton.vue"),
         'ingredient_form': () => import("./components/recipe/ingredients/Ingredients.vue"),
@@ -76,7 +78,7 @@ const app = new Vue({
         'picture-input': () => import("vue-picture-input"),
         'add-recipe': () => import("./components/picture/AddPictureRecipe.vue"),
         'add-any-picture': () => import("./components/picture/AddPicture.vue"),
-        'login-modal':  () => import("./components/modal/LoginModal.vue"),
+        'login-modal': () => import("./components/modal/LoginModal.vue"),
         'fulltime': () => import("./components/Time.vue"),
         'preview-image': () => import("./components/picture/Preview.vue"),
         'create-recipe': () => import("./components/recipe/Create.vue"),

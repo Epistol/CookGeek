@@ -1,0 +1,9 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "helper-module-imports",
+    "transform-async-to-bluebird",
+    "transform-async-to-generator",
+    "transform-react-jsx-source"
+  ]
+}

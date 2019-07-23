@@ -19,7 +19,7 @@
     <link rel="author" href="{{asset('humans.txt')}}">
     <link rel="index" href="{{url('/')}}">
     <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention"/>
-    <link rel='dns-prefetch' href='//cuisinedegeek.com'>
+    <link rel='dns-prefetch' href='//{{config('app.url')}}'>
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Feeds -->

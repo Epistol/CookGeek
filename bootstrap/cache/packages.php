@@ -284,6 +284,10 @@
     array (
     ),
   ),
+  'van-ons/laraberg' => 
+  array (
+    'providers' => 'VanOns\\Laraberg\\LarabergServiceProvider',
+  ),
   'vinkla/hashids' => 
   array (
     'providers' => 
