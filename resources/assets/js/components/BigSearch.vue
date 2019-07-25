@@ -8,7 +8,9 @@
                 <div class="field dropdown-item">
                     <div class="control has-icons-left">
                         <input type="search" :value="currentRefinement" @input="refine($event.currentTarget.value)"
-                               placeholder="Rechercher" class="input is-transparent">
+                               placeholder="Rechercher"
+                               class="rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300
+                                rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
                         <span class="icon is-left">
             <i class="fa fa-search"></i>
           </span>

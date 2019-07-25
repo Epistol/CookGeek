@@ -37,12 +37,7 @@ import Affix from 'vue-affix';
 
 Vue.use(Affix);
 
-// Composants CDG
-
-import Notif from "./components/modal/NotifAlert.vue";
-import SignalRecipe from "./components/recipe/Signal.vue";
-import ModalView from "./components/modal/ModalView";
-
+// import 'semantic-ui-sass';
 // AUTRE
 
 const lang = document.documentElement.lang.substr(0, 2);
@@ -52,15 +47,15 @@ const i18n = new VueInternationalization({
 });
 
 const app = new Vue({
-    el: '#bodyWebsite',
+    el: '#app',
     i18n,
     components: {
         draggable, VueClazyLoad,
         'like-recipe-async': () => ('./components/LikeRecipe.vue'),
-        'signalrecipe': SignalRecipe,
-        'modal': ModalView,
+        'signalrecipe': () => import('./components/recipe/Signal.vue'),
+        'modal': () => import('./components/modal/ModalView'),
         VeeValidate,
-        'Notif': Notif,
+        'Notif': () => import('./components/modal/NotifAlert.vue'),
         'React': () => import('react'),
         'bigsearch': () => import('./components/BigSearch'),
         'password': () => import("./components/PasswordInputComponent"),
@@ -86,6 +81,7 @@ const app = new Vue({
         'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
         'line-chart': () => import("./components/charts/LineComponent"),
         'switch-light': () => import("./components/SwitchLight.vue"),
+        'menu-element': () => import("./components/menu/DropDown.vue"),
         'drop-picture': () => import("./components/picture/DropPicturePreview"),
     },
 

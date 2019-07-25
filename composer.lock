@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13749c404fb4730725ee40bca89aaa1a",
+    "content-hash": "c40a6489f67d5e61cbd9682e97f0536b",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "2.2.6",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "55f1a7e2549ac1865d94ff00e8ec6d4aeee952e6"
+                "reference": "823dc934f1ad82cb43988e474a4597c7e660104b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/55f1a7e2549ac1865d94ff00e8ec6d4aeee952e6",
-                "reference": "55f1a7e2549ac1865d94ff00e8ec6d4aeee952e6",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/823dc934f1ad82cb43988e474a4597c7e660104b",
+                "reference": "823dc934f1ad82cb43988e474a4597c7e660104b",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
                 "php",
                 "search"
             ],
-            "time": "2019-05-15T09:16:37+00:00"
+            "time": "2019-07-18T18:05:23+00:00"
         },
         {
             "name": "algolia/scout-extended",
@@ -374,6 +374,65 @@
                 "laravel"
             ],
             "time": "2019-02-26T18:08:30+00:00"
+        },
+        {
+            "name": "binarytorch/blogged",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saleem-hadad/blogged.git",
+                "reference": "a6380ad6319fc9879c876d34b43e6759947a1766"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saleem-hadad/blogged/zipball/a6380ad6319fc9879c876d34b43e6759947a1766",
+                "reference": "a6380ad6319fc9879c876d34b43e6759947a1766",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown-extra": "^0.7.1",
+                "illuminate/support": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "mews/purifier": "^2.1",
+                "mockery/mockery": "^1.2",
+                "symfony/dom-crawler": "^4.1"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "orchestra/database": "~3.4.0|~3.5.0|~3.6.0|~3.7.0|~3.8.0",
+                "orchestra/testbench": "~3.4.0|~3.5.0|~3.6.0|~3.7.0|~3.8.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BinaryTorch\\Blogged\\BloggedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BinaryTorch\\Blogged\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saleem Hadad",
+                    "email": "saleem@binary-torch.com"
+                }
+            ],
+            "description": "Write gorgeous articles for your Laravel applications using MarkDown",
+            "keywords": [
+                "articles",
+                "blog",
+                "laravel",
+                "markdown"
+            ],
+            "time": "2019-05-04T12:58:07+00:00"
         },
         {
             "name": "bugsnag/bugsnag",
@@ -1018,68 +1077,6 @@
             "time": "2019-06-27T06:47:18+00:00"
         },
         {
-            "name": "dimsav/laravel-translatable",
-            "version": "v10.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dimsav/laravel-translatable.git",
-                "reference": "0980ddd41bfa00f4ec2aef0de6d106f8e0471ae7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dimsav/laravel-translatable/zipball/0980ddd41bfa00f4ec2aef0de6d106f8e0471ae7",
-                "reference": "0980ddd41bfa00f4ec2aef0de6d106f8e0471ae7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.6.*|5.7.*|5.8.*",
-                "php": ">=7.1.3"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.6.*|3.7.*|3.8.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Dimsav\\Translatable\\TranslatableServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dimsav\\Translatable\\": "src/Translatable/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dimitrios Savvopoulos",
-                    "email": "ds@dimsav.com",
-                    "homepage": "http://dimsav.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Tom Witkowski",
-                    "email": "dev.gummibeer@gmail.com",
-                    "homepage": "https://gummibeer.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A Laravel package for multilingual models",
-            "keywords": [
-                "database",
-                "language",
-                "laravel",
-                "translation"
-            ],
-            "abandoned": "astrotomic/laravel-translatable",
-            "time": "2019-06-03T06:56:57+00:00"
-        },
-        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -1592,16 +1589,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.9",
+            "version": "2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25"
+                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/128cc721d771ec2c46ce59698f4ca42b73f71b25",
-                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
+                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1608,8 @@
             "require-dev": {
                 "dominicsayers/isemail": "dev-master",
                 "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
-                "satooshi/php-coveralls": "^1.0.1"
+                "satooshi/php-coveralls": "^1.0.1",
+                "symfony/phpunit-bridge": "^4.4@dev"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -1645,60 +1643,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-06-23T10:14:27+00:00"
-        },
-        {
-            "name": "embed/embed",
-            "version": "v3.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "960bbd5a62c5697302bd5394d58efba2e998b787"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/960bbd5a62c5697302bd5394d58efba2e998b787",
-                "reference": "960bbd5a62c5697302bd5394d58efba2e998b787",
-                "shasum": ""
-            },
-            "require": {
-                "composer/ca-bundle": "^1.0",
-                "ext-curl": "*",
-                "ext-mbstring": "*",
-                "php": "^5.6|^7.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^4.8|^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Embed\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oscar Otero",
-                    "role": "Developer",
-                    "email": "oom@oscarotero.com",
-                    "homepage": "http://oscarotero.com"
-                }
-            ],
-            "description": "PHP library to retrieve page info using oembed, opengraph, etc",
-            "homepage": "https://github.com/oscarotero/Embed",
-            "keywords": [
-                "embed",
-                "embedly",
-                "oembed",
-                "opengraph",
-                "twitter cards"
-            ],
-            "time": "2019-07-20T17:05:41+00:00"
+            "time": "2019-07-19T20:52:08+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -1745,6 +1690,50 @@
                 "parser"
             ],
             "time": "2019-03-17T18:48:37+00:00"
+        },
+        {
+            "name": "erusev/parsedown-extra",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown-extra.git",
+                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown-extra/zipball/0db5cce7354e4b76f155d092ab5eb3981c21258c",
+                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "~1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ParsedownExtra": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "An extension of Parsedown that adds support for Markdown Extra.",
+            "homepage": "https://github.com/erusev/parsedown-extra",
+            "keywords": [
+                "markdown",
+                "markdown extra",
+                "parsedown",
+                "parser"
+            ],
+            "time": "2015-11-01T10:19:22+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -2139,6 +2128,54 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2016-01-20T08:20:44+00:00"
         },
         {
             "name": "hashids/hashids",
@@ -3638,24 +3675,29 @@
         },
         {
             "name": "maennchen/zipstream-php",
-            "version": "v0.5.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "95922b6324955974675fd4923f987faa598408af"
+                "reference": "6373eefe0b3274d7b702d81f2c99aa977ff97dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/95922b6324955974675fd4923f987faa598408af",
-                "reference": "95922b6324955974675fd4923f987faa598408af",
+                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/6373eefe0b3274d7b702d81f2c99aa977ff97dc2",
+                "reference": "6373eefe0b3274d7b702d81f2c99aa977ff97dc2",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">= 7.0"
+                "myclabs/php-enum": "^1.5",
+                "php": ">= 7.1",
+                "psr/http-message": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.3"
+                "ext-zip": "*",
+                "guzzlehttp/guzzle": ">= 6.3",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": ">= 7.5"
             },
             "type": "library",
             "autoload": {
@@ -3679,6 +3721,10 @@
                 {
                     "name": "Jonatan Männchen",
                     "email": "jonatan@maennchen.ch"
+                },
+                {
+                    "name": "András Kolesár",
+                    "email": "kolesar@kolesar.hu"
                 }
             ],
             "description": "ZipStream is a library for dynamically streaming dynamic zip files from PHP without writing to the disk at all on the server.",
@@ -3686,7 +3732,7 @@
                 "stream",
                 "zip"
             ],
-            "time": "2018-02-09T09:26:57+00:00"
+            "time": "2019-07-17T11:01:58+00:00"
         },
         {
             "name": "martinlindhe/laravel-vue-i18n-generator",
@@ -3815,6 +3861,71 @@
                 "xss"
             ],
             "time": "2019-03-07T07:55:14+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2019-02-13T09:37:52+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3989,17 +4100,62 @@
             "time": "2017-11-03T21:04:01+00:00"
         },
         {
-            "name": "nesbot/carbon",
-            "version": "2.21.2",
+            "name": "myclabs/php-enum",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "a8bfb6631e3bc982427406d13ad817fc45d47b61"
+                "url": "https://github.com/myclabs/php-enum.git",
+                "reference": "f46847626b8739de22e4ebc6b56010f317d4448d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/a8bfb6631e3bc982427406d13ad817fc45d47b61",
-                "reference": "a8bfb6631e3bc982427406d13ad817fc45d47b61",
+                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/f46847626b8739de22e4ebc6b56010f317d4448d",
+                "reference": "f46847626b8739de22e4ebc6b56010f317d4448d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MyCLabs\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP Enum contributors",
+                    "homepage": "https://github.com/myclabs/php-enum/graphs/contributors"
+                }
+            ],
+            "description": "PHP Enum implementation",
+            "homepage": "http://github.com/myclabs/php-enum",
+            "keywords": [
+                "enum"
+            ],
+            "time": "2019-05-05T10:12:03+00:00"
+        },
+        {
+            "name": "nesbot/carbon",
+            "version": "2.21.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "58bdbbfab17ccd2ec7347b99e997f18232def4dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/58bdbbfab17ccd2ec7347b99e997f18232def4dc",
+                "reference": "58bdbbfab17ccd2ec7347b99e997f18232def4dc",
                 "shasum": ""
             },
             "require": {
@@ -4053,7 +4209,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-07-17T07:49:05+00:00"
+            "time": "2019-07-18T18:47:28+00:00"
         },
         {
             "name": "nicmart/tree",
@@ -6003,16 +6159,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.31.0",
+            "version": "3.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "30c0b4f7543e42b2647f34fde20eec3cad7247b8"
+                "reference": "5d8039e963b7fc4369dda876616930fd8aa35622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/30c0b4f7543e42b2647f34fde20eec3cad7247b8",
-                "reference": "30c0b4f7543e42b2647f34fde20eec3cad7247b8",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/5d8039e963b7fc4369dda876616930fd8aa35622",
+                "reference": "5d8039e963b7fc4369dda876616930fd8aa35622",
                 "shasum": ""
             },
             "require": {
@@ -6055,20 +6211,20 @@
                 "screenshot",
                 "webpage"
             ],
-            "time": "2019-06-20T21:57:39+00:00"
+            "time": "2019-07-19T13:49:14+00:00"
         },
         {
             "name": "spatie/crawler",
-            "version": "4.4.3",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "54b268ff561af070062e1a15f128ef41b6315eae"
+                "reference": "05fbcfeaabb92e9a96a4c30a2c7d327e7fc321cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/54b268ff561af070062e1a15f128ef41b6315eae",
-                "reference": "54b268ff561af070062e1a15f128ef41b6315eae",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/05fbcfeaabb92e9a96a4c30a2c7d327e7fc321cb",
+                "reference": "05fbcfeaabb92e9a96a4c30a2c7d327e7fc321cb",
                 "shasum": ""
             },
             "require": {
@@ -6114,7 +6270,7 @@
                 "spatie",
                 "website"
             ],
-            "time": "2019-06-23T18:09:43+00:00"
+            "time": "2019-07-22T09:58:37+00:00"
         },
         {
             "name": "spatie/image",
@@ -6289,16 +6445,16 @@
         },
         {
             "name": "spatie/laravel-feed",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-feed.git",
-                "reference": "b8dc5ce330d61c4b4edc851014b54cf0e0b7b68f"
+                "reference": "a273e4e316915ee0a0001adece7a3accf7222cfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-feed/zipball/b8dc5ce330d61c4b4edc851014b54cf0e0b7b68f",
-                "reference": "b8dc5ce330d61c4b4edc851014b54cf0e0b7b68f",
+                "url": "https://api.github.com/repos/spatie/laravel-feed/zipball/a273e4e316915ee0a0001adece7a3accf7222cfb",
+                "reference": "a273e4e316915ee0a0001adece7a3accf7222cfb",
                 "shasum": ""
             },
             "require": {
@@ -6329,22 +6485,22 @@
             ],
             "authors": [
                 {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "name": "Jolita Grazyte",
+                    "role": "Developer",
+                    "email": "jolita@spatie.be",
+                    "homepage": "https://spatie.be"
                 },
                 {
                     "name": "Freek Van der Herten",
+                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "homepage": "https://spatie.be"
                 },
                 {
-                    "name": "Jolita Grazyte",
-                    "email": "jolita@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "name": "Sebastian De Deyne",
+                    "role": "Developer",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be"
                 }
             ],
             "description": "Generates rss feed",
@@ -6355,23 +6511,24 @@
                 "rss",
                 "spatie"
             ],
-            "time": "2019-03-06T11:44:14+00:00"
+            "time": "2019-07-24T19:17:42+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.6.5",
+            "version": "7.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "981673429e1039186735392d126e6d846bbf9da6"
+                "reference": "b73de128de2fbc124beff3bc3dd9b6e549c4e009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/981673429e1039186735392d126e6d846bbf9da6",
-                "reference": "981673429e1039186735392d126e6d846bbf9da6",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/b73de128de2fbc124beff3bc3dd9b6e549c4e009",
+                "reference": "b73de128de2fbc124beff3bc3dd9b6e549c4e009",
                 "shasum": ""
             },
             "require": {
+                "ext-fileinfo": "*",
                 "ext-imagick": "*",
                 "illuminate/bus": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
@@ -6379,7 +6536,7 @@
                 "illuminate/pipeline": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "league/flysystem": "^1.0.8",
-                "maennchen/zipstream-php": "~0.4",
+                "maennchen/zipstream-php": "^0.4|^1.0",
                 "php": "^7.2",
                 "spatie/image": "^1.4.0",
                 "spatie/pdf-to-image": "^1.2",
@@ -6422,9 +6579,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
+                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://murze.be",
-                    "role": "Developer"
+                    "homepage": "https://murze.be"
                 }
             ],
             "description": "Associate files with Eloquent models",
@@ -6439,7 +6596,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2019-07-16T08:06:23+00:00"
+            "time": "2019-07-22T23:50:27+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -8494,16 +8651,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.8.28",
+            "version": "v5.8.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "6e19a825908ceacf06e1ce2fc43c7e34427756bf"
+                "reference": "cef25a65cbeeb20057f60449530d2ac8b16164d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/6e19a825908ceacf06e1ce2fc43c7e34427756bf",
-                "reference": "6e19a825908ceacf06e1ce2fc43c7e34427756bf",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/cef25a65cbeeb20057f60449530d2ac8b16164d8",
+                "reference": "cef25a65cbeeb20057f60449530d2ac8b16164d8",
                 "shasum": ""
             },
             "require": {
@@ -8540,7 +8697,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2019-07-10T19:09:53+00:00"
+            "time": "2019-07-19T12:57:39+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -8735,51 +8892,6 @@
                 "upload"
             ],
             "time": "2018-07-05T11:36:08+00:00"
-        },
-        {
-            "name": "van-ons/laraberg",
-            "version": "v0.0.6-beta",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/VanOns/laraberg.git",
-                "reference": "9fda1daf62170cd02ef92bc56e90f7084fe49440"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/VanOns/laraberg/zipball/9fda1daf62170cd02ef92bc56e90f7084fe49440",
-                "reference": "9fda1daf62170cd02ef92bc56e90f7084fe49440",
-                "shasum": ""
-            },
-            "require": {
-                "embed/embed": "^3.3"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.7",
-                "phpunit/phpunit": "^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": "VanOns\\Laraberg\\LarabergServiceProvider"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "VanOns\\Laraberg\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Maurice Wijnia",
-                    "email": "maurice@van-ons.nl"
-                }
-            ],
-            "description": "A Gutenberg implementation for Laravel",
-            "time": "2019-05-21T14:51:50+00:00"
         },
         {
             "name": "vinkla/hashids",
@@ -9669,51 +9781,6 @@
             "time": "2018-07-12T10:23:15+00:00"
         },
         {
-            "name": "hamcrest/hamcrest-php",
-            "version": "v1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b37020aa976fa52d3de9aa904aa2522dc518f79c",
-                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "replace": {
-                "cordoval/hamcrest-php": "*",
-                "davedevelopment/hamcrest-php": "*",
-                "kodova/hamcrest-php": "*"
-            },
-            "require-dev": {
-                "phpunit/php-file-iterator": "1.3.3",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "hamcrest"
-                ],
-                "files": [
-                    "hamcrest/Hamcrest.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "description": "This is the PHP port of Hamcrest Matchers",
-            "keywords": [
-                "test"
-            ],
-            "time": "2015-05-11T14:41:42+00:00"
-        },
-        {
             "name": "justinrainbow/json-schema",
             "version": "5.2.8",
             "source": {
@@ -9955,71 +10022,6 @@
                 "debugbar"
             ],
             "time": "2017-12-15T11:13:46+00:00"
-        },
-        {
-            "name": "mockery/mockery",
-            "version": "0.9.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mockery/mockery.git",
-                "reference": "be9bf28d8e57d67883cba9fcadfcff8caab667f8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/be9bf28d8e57d67883cba9fcadfcff8caab667f8",
-                "reference": "be9bf28d8e57d67883cba9fcadfcff8caab667f8",
-                "shasum": ""
-            },
-            "require": {
-                "hamcrest/hamcrest-php": "~1.1",
-                "lib-pcre": ">=7.0",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.9.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Mockery": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pádraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
-                },
-                {
-                    "name": "Dave Marshall",
-                    "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
-                }
-            ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-            "homepage": "http://github.com/padraic/mockery",
-            "keywords": [
-                "BDD",
-                "TDD",
-                "library",
-                "mock",
-                "mock objects",
-                "mockery",
-                "stub",
-                "test",
-                "test double",
-                "testing"
-            ],
-            "time": "2019-02-12T16:07:13+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -13135,13 +13137,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "van-ons/laraberg": 10,
         "waavi/sanitizer": 20,
         "phpmd/phpmd": 0
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.2.0",

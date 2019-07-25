@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Recipe::class => RecipePolicy::class,
+        \BinaryTorch\Blogged\Models\Article::class => \App\Policies\BloggedArticlePolicy::class,
+        \BinaryTorch\Blogged\Models\Category::class => \App\Policies\BloggedCategoryPolicy::class,
     ];
 
     /**

@@ -1,17 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_picture_input__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-picture-input */ "./node_modules/vue-picture-input/PictureInput.vue");
-/* harmony import */ var _modal_LoginModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modal/LoginModal.vue */ "./resources/assets/js/components/modal/LoginModal.vue");
-/* harmony import */ var _modal_ModalView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modal/ModalView */ "./resources/assets/js/components/modal/ModalView.vue");
+/* WEBPACK VAR INJECTION */(function(process) {//
 //
 //
 //
@@ -21,147 +19,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["url", "anyid", "height", "width", "send", "recipeid", "recipehash", "user", "type", "prefilled"],
-  name: "add-any-picture",
-  data: function data() {
-    return {
-      colors: ['background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);', 'background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);', 'background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);', 'background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);', 'background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);', 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);', 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);', 'background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);', 'background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);'],
-      colorGenerated: '',
-      clicked: false,
-      image: '',
-      sent: false
-    };
+  mounted: function mounted() {
+    console.log('Component mounted.');
   },
-  components: {
-    PictureInput: vue_picture_input__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ModalView: _modal_ModalView__WEBPACK_IMPORTED_MODULE_2__["default"],
-    LoginModal: _modal_LoginModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
+  name: "validationform",
   methods: {
-    generateColors: function generateColors() {
-      var idFirst = Math.floor(Math.random() * this.colors.length);
-      this.colorGenerated = this.colors[idFirst];
-    },
-    closing: function closing() {
-      this.clicked = false;
-    },
-    showModal: function showModal() {
-      this.clicked = true;
-    },
-    onChange: function onChange(image) {
-      console.log('New picture selected!');
-
-      if (image) {
-        console.log('Picture loaded.');
-        this.image = image; // this.$refs.pictureInput.file
-
-        this.$emit('updated', this.$refs.pictureInput.file);
-      } else {
-        console.log('FileReader API not supported: use the <form>, Luke!');
-      }
-    },
-    uploadImage: function uploadImage() {
-      var _this = this;
-
-      return axios.post('/' + this.url + '/addmypicture', {
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        anyid: this.anyid,
-        user: this.user,
-        picture: this.image
-      }).then(function (response) {
-        _this.sent = true;
-        console.log(response);
-      })["catch"](function (error) {});
-    }
-  },
-  created: function created() {
-    this.generateColors();
-  },
-  computed: {
-    clicked: function clicked() {
-      if (this.clicked === true) {
-        if (this.user === '') {
-          this.showModal = true;
-        }
-      }
+    SubmitFn: function SubmitFn(event) {
+      grecaptcha.ready(function () {
+        grecaptcha.execute(process.env.mix.MIX_INVISIBLE_RECAPTCHA_SITEKEY, {
+          action: 'action_name'
+        }).then(function (token) {
+          $.ajax({
+            type: "POST",
+            url: "https://www.google.com/recaptcha/api/siteverify",
+            data: {
+              token: token
+            },
+            success: function success(response) {
+              if (response === true) {
+                document.getElementById("formulaire").submit();
+              }
+            }
+          });
+        });
+      });
     }
   }
 });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -173,210 +66,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "vodal-zoom" } }, [
-    _c(
-      "div",
-      [
-        this.type === "button"
-          ? [
-              _c(
-                "a",
-                {
-                  staticClass: "button-picture button is-outlined is-rounded ",
-                  on: {
-                    click: function($event) {
-                      return _vm.showModal()
-                    }
-                  }
-                },
-                [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("span", { staticClass: " fa-stack " }, [
-                      _c("i", {
-                        staticClass: "fas fa-camera fa-stack-1x ",
-                        staticStyle: { color: "#7f5fbf" }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Ajouter ma photo")])
-                ]
-              )
-            ]
-          : this.type === "no-button"
-          ? [
-              _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Ajouter votre photo")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { attrs: { slot: "body" }, slot: "body" },
-                [
-                  !_vm.sent
-                    ? [
-                        _c("picture-input", {
-                          ref: "pictureInput",
-                          attrs: {
-                            height: this.height,
-                            width: this.width,
-                            prefill: this.prefilled,
-                            removable: "true",
-                            id: "picture",
-                            name: "picture",
-                            "custom-strings": {
-                              upload: "<h1>Bummer!</h1>",
-                              drag:
-                                "<i class='fas fa-camera-retro'></i> Ajouter votre photo"
-                            }
-                          },
-                          on: { change: _vm.onChange }
-                        })
-                      ]
-                    : [
-                        _c("h1", { staticClass: "title" }, [
-                          _vm._v(
-                            "Photo envoyée ! Nous la validerons d'ici peu ! "
-                          )
-                        ])
-                      ]
-                ],
-                2
-              ),
-              _vm._v(" "),
-              !_vm.sent && this.send === "true"
-                ? _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "button is-primary",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.uploadImage()
-                          }
-                        }
-                      },
-                      [_vm._v("Envoyer")]
-                    )
-                  ])
-                : _vm._e()
-            ]
-          : [
-              _c(
-                "div",
-                {
-                  staticClass: "is-flex-center fit-cover pointer-hover",
-                  style: this.colorGenerated + "height: 20vh;",
-                  attrs: { alt: this.text },
-                  on: {
-                    click: function($event) {
-                      return _vm.showModal()
-                    }
-                  }
-                },
-                [
-                  _c("span", { staticClass: "uploadIcon" }, [
-                    _c("i", { staticClass: "fas fa-cloud-upload-alt fa-7x" })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticStyle: { "z-index": "0" } }, [
-                    _vm._v("Ajouter ma propre photo\n        ")
-                  ])
-                ]
-              )
-            ],
-        _vm._v(" "),
-        _vm.clicked
-          ? [
-              _vm.user !== ""
-                ? [
-                    _vm.clicked
-                      ? _c(
-                          "ModalView",
-                          {
-                            on: {
-                              close: function($event) {
-                                _vm.clicked = false
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "h3",
-                              { attrs: { slot: "header" }, slot: "header" },
-                              [_vm._v("Ajouter votre photo")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { attrs: { slot: "body" }, slot: "body" },
-                              [
-                                !_vm.sent
-                                  ? [
-                                      _c("picture-input", {
-                                        attrs: {
-                                          "custom-strings": {
-                                            upload: "<h1>Bummer!</h1>",
-                                            drag:
-                                              "<i class='fas fa-camera-retro'></i> Ajouter votre photo"
-                                          }
-                                        },
-                                        on: { change: _vm.onChange }
-                                      })
-                                    ]
-                                  : [
-                                      _c("h1", { staticClass: "title" }, [
-                                        _vm._v(
-                                          "Photo envoyée ! Nous la validerons d'ici peu ! "
-                                        )
-                                      ])
-                                    ]
-                              ],
-                              2
-                            ),
-                            _vm._v(" "),
-                            !_vm.sent
-                              ? _c(
-                                  "div",
-                                  { attrs: { slot: "footer" }, slot: "footer" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "button is-primary",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.uploadImage()
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Envoyer")]
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          ]
-                        )
-                      : _vm._e()
-                  ]
-                : [
-                    _c("login-modal", {
-                      attrs: { showModal: true },
-                      on: {
-                        close: function($event) {
-                          return _vm.closing()
-                        }
-                      }
-                    })
-                  ]
-            ]
-          : _vm._e()
-      ],
-      2
-    )
-  ])
+  return _c(
+    "button",
+    { staticClass: "button is-primary ", on: { click: _vm.SubmitFn } },
+    [_vm._t("text", [_vm._v("\n        Inscription\n    ")])],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -385,18 +80,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/picture/AddPicture.vue":
+/***/ "./resources/assets/js/components/ValidateFormButton.vue":
 /*!***************************************************************!*\
-  !*** ./resources/assets/js/components/picture/AddPicture.vue ***!
+  !*** ./resources/assets/js/components/ValidateFormButton.vue ***!
   \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPicture.vue?vue&type=template&id=f02e7376&scoped=true& */ "./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true&");
-/* harmony import */ var _AddPicture_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPicture.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ValidateFormButton.vue?vue&type=template&id=79764743& */ "./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743&");
+/* harmony import */ var _ValidateFormButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ValidateFormButton.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -405,50 +100,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _AddPicture_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ValidateFormButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "f02e7376",
+  null,
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/assets/js/components/picture/AddPicture.vue"
+component.options.__file = "resources/assets/js/components/ValidateFormButton.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js&":
+/***/ "./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************!*\
-  !*** ./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPicture_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPicture.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/picture/AddPicture.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPicture_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ValidateFormButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ValidateFormButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ValidateFormButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ValidateFormButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743& ***!
+  \**********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPicture.vue?vue&type=template&id=f02e7376&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/picture/AddPicture.vue?vue&type=template&id=f02e7376&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ValidateFormButton.vue?vue&type=template&id=79764743& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ValidateFormButton.vue?vue&type=template&id=79764743&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPicture_vue_vue_type_template_id_f02e7376_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ValidateFormButton_vue_vue_type_template_id_79764743___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

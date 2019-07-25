@@ -1,25 +1,20 @@
-<nav class="navbar desktop-only" role="navigation" aria-label="main navigation">
+<nav class="flex items-center justify-between flex-wrap
+visible sm:invisible md:invisible lg:visible xl:visible w-full
+" role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
-{{--                <img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek" style="--}}
-{{--    max-height: fit-content;max-height: 100%;padding: 0.2rem">
-;--}}
-            </a>
-            <a class="navbar-brand logo" href="{{ url('/') }}">
-                {{ ucfirst(config('app.name', 'Laravel')) }}
+
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <a class="navbar-item is-paddingless is-marginless" href="{{ url('/') }}" style="width: 4.2rem;">
+            <img src="{{asset('img/logoo_rond.png')}}" alt="CDG : Cuisine De geek"
+                 class="max-h-full p-1"
+                 style="
+             max-height: fit-content;">
+               <span class="font-brand">{{ ucfirst(config('app.name', 'Laravel')) }}</span>
                 <span class="logo-beta">
                     BETA V2
                 </span>
-            </a>
-
-            <button class="button navbar-burger" data-target="navMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-            @include('layouts.menu.navbar')
+        </a>
     </div>
+
+    @include('layouts.menu.navbar')
 </nav>

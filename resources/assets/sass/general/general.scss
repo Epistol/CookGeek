@@ -124,9 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-[v-cloak] {
-  display: none;
-}
+[v-cloak] > * { display:none; }
 
 .button.is-round.is-small {
   -webkit-border-radius: 50%;

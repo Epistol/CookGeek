@@ -39,17 +39,7 @@
     <link href="{{ asset('css/admin.css') }}"
           rel="preload" as="style" onload="this.rel='stylesheet'">
 
-
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-    {{-- <script src="https://unpkg.com/react@16.6.3/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.6.3/umd/react-dom.development.js"></script> --}}
-    <script src="https://unpkg.com/moment@2.22.1/min/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-
     <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('vendor/laraberg/css/laraberg.css')}}">
-    <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $(document).ready(function () {
@@ -60,9 +50,6 @@
             $('#lfm').filemanager('image', {prefix: route_prefix});
             $('#lfm2').filemanager('file', {prefix: route_prefix});
         });
-    </script>
-    <script type="application/javascript">
-        Laraberg.init('gutenvel', { laravelFilemanager: true });
     </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>

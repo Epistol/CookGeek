@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/ayctor/Documents/Prive/CookGeek/.babelrc: Error while parsing config - JSON5: invalid character '\\\"' at 7:3\n    at syntaxError (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:1083:17)\n    at invalidChar (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:1028:12)\n    at Object.afterPropertyValue (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:654:15)\n    at Object.default (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:146:37)\n    at lex (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:78:42)\n    at Object.parse (/Users/ayctor/Documents/Prive/CookGeek/node_modules/json5/lib/parse.js:25:17)\n    at readConfigJSON5 (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/files/configuration.js:248:31)\n    at /Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/files/utils.js:29:12\n    at cachedFunction (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/caching.js:33:19)\n    at readConfig (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/files/configuration.js:176:8)\n    at config.reduce (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/files/configuration.js:105:24)\n    at Array.reduce (<anonymous>)\n    at findRelativeConfig (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/files/configuration.js:102:56)\n    at buildRootChain (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/config-chain.js:113:39)\n    at loadPrivatePartialConfig (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/partial.js:85:55)\n    at Object.loadPartialConfig (/Users/ayctor/Documents/Prive/CookGeek/node_modules/@babel/core/lib/config/partial.js:110:18)\n    at Object.<anonymous> (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:144:26)\n    at Generator.next (<anonymous>)\n    at asyncGeneratorStep (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:3:103)\n    at _next (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:5:194)\n    at /Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:5:364\n    at new Promise (<anonymous>)\n    at Object.<anonymous> (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:5:97)\n    at Object.loader (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:60:18)\n    at Object.<anonymous> (/Users/ayctor/Documents/Prive/CookGeek/node_modules/babel-loader/lib/index.js:55:12)");
+
 
 /***/ }),
 
@@ -104,7 +104,7 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ayctor/Documents/Prive/CookGeek/resources/assets/js/load_content.js */"./resources/assets/js/load_content.js");
+module.exports = __webpack_require__(/*! /home/epistol/Documents/Sites/CookGeek/resources/assets/js/load_content.js */"./resources/assets/js/load_content.js");
 
 
 /***/ })

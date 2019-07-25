@@ -38,18 +38,18 @@
       'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
     ),
   ),
+  'binarytorch/blogged' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BinaryTorch\\Blogged\\BloggedServiceProvider',
+    ),
+  ),
   'cybercog/laravel-ban' => 
   array (
     'providers' => 
     array (
       0 => 'Cog\\Laravel\\Ban\\Providers\\BanServiceProvider',
-    ),
-  ),
-  'dimsav/laravel-translatable' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Dimsav\\Translatable\\TranslatableServiceProvider',
     ),
   ),
   'fideloper/proxy' => 
@@ -283,10 +283,6 @@
     'aliases' => 
     array (
     ),
-  ),
-  'van-ons/laraberg' => 
-  array (
-    'providers' => 'VanOns\\Laraberg\\LarabergServiceProvider',
   ),
   'vinkla/hashids' => 
   array (

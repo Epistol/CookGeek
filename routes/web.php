@@ -40,4 +40,9 @@ Route::middleware(['fw-block-blacklisted'])->group(function () {
             'Content-Type' => 'application/xml',
         ]);
     })->name('sitemap');
+
+    Route::get('/blog', function () {
+        return redirect('/');
+    });
+
 });

@@ -47,12 +47,8 @@
                                 </li>
                         @endif
                     @endauth
-
-
                 </ul>
             </div>
-
-
         </div>
         </div>
 </footer>

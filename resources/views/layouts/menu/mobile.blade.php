@@ -1,4 +1,4 @@
-<div class="navbar mobile-only" role="navigation" aria-label="main navigation">
+<div class="navbar sm:visible md:visible lg:invisible" role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
     <div class="columns is-mobile is-marginless is-paddingless is-multiline">
             {{--Logo--}}
