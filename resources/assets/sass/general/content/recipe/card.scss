@@ -35,6 +35,6 @@ section.bgwhite {
 
 
 .img-radius {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  @apply rounded-sm;
 }
+

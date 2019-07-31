@@ -1,7 +1,7 @@
 <div class="second-menu " role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
     <div class="container">
-        <div class="navbar-menu sm:visible md:visible lg:invisible" id="navMenu">
+        <div class="sm:visible md:visible lg:hidden" id="navMenu">
             <div class="navbar-start" style="display: flex;">
 				<?php $typeuniv = DB::table('categunivers')->get(); ?>
                 @foreach($typeuniv as $type)

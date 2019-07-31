@@ -1,4 +1,4 @@
-<body>
+<body class="overflow-hidden flex items-center justify-center">
 @include("layouts.menuMobile")
 <div id="app">
     <div v-cloak>

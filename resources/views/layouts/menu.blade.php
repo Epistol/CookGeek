@@ -1,6 +1,6 @@
-<div class="flex items-center justify-between flex-wrap bg-white
-visible sm:invisible md:invisible lg:visible xl:visible
- w-full h-20  z-10 top-0 mx-auto fixed">
+<div class="
+visible sm:hidden md:flex lg:visible xl:visible
+ h-20 z-10 top-0 fixed">
 
     @include('layouts.menu.desktop')
     @include('layouts.menu.mobile')

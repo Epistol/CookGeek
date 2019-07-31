@@ -75,11 +75,6 @@ $danger: $brand-danger;
 $success: $brand-success;
 $warning: $brand-warning;
 
-// BULMA
-@import "general/indexing";
-@import "darktheme";
-@import "components/autocomplete";
-@import '~instantsearch.css/themes/algolia-min';
 /*
 // ----------------------------------------------------------------------
 // Margin auto
@@ -100,3 +95,9 @@ $warning: $brand-warning;
 
 @tailwind utilities;
 
+
+// BULMA
+@import "general/indexing";
+@import "darktheme";
+@import "components/autocomplete";
+@import '~instantsearch.css/themes/algolia-min';

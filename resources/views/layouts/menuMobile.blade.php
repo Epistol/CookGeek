@@ -1,4 +1,4 @@
-<div class="is-fixed-bottom sm:visible md:visible lg:invisible">
+<div class="is-fixed-bottom sm:hidden md:hidden lg:hidden">
     <nav class="navbar mobile-bottom-menu" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item bg-white" href="{{ route('home') }}">

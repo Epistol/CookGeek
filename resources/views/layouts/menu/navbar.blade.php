@@ -1,4 +1,4 @@
-<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="navMenu">
+<div class="" id="navMenu">
     <menu-element>
         <div slot="buttontext">
             {{trans_choice('recipe.recipe', 2)}}

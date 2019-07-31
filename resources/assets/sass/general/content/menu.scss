@@ -1,9 +1,6 @@
 #app {
-  min-height: 100%;
-  position: relative;
-  //padding-top: 4rem;
+@apply  flex flex-col min-h-screen w-full;
 }
-
 
 .navbar {
   width: 100%;
@@ -33,6 +30,7 @@
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
   color: $accentsecondary;
 }
+
 .is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
   color: $brand-primary;
 }
@@ -59,9 +57,9 @@ span.navbar-secondaire-item {
   color: $brand-primary;
   padding: 0.5rem 1rem;
   @include transition_all();
-  
+
   &:hover {
-	@include transition_all();
+    @include transition_all();
   }
 }
 
@@ -72,12 +70,12 @@ span.navbar-secondaire-item {
   /* border-radius: 5px; */
   margin-top: 5%;
   border-top: 3px solid #ebeaf5;
-  
+
   &.pub {
-	background: #ebeaf5;
-	-webkit-border-radius: 20px 40px 20px 40px;
-	border-radius: 20px 40px 20px 40px;
-	text-align: center;
+    background: #ebeaf5;
+    -webkit-border-radius: 20px 40px 20px 40px;
+    border-radius: 20px 40px 20px 40px;
+    text-align: center;
   }
 }
 
@@ -87,12 +85,13 @@ span.navbar-secondaire-item {
 }
 
 
-.is-hoverable:hover .navbar-dropdown  {
+.is-hoverable:hover .navbar-dropdown {
   -webkit-box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
   box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
 }
-.is-hoverable:hover  .navbar-link {
-  background: $brand-primary!important;
+
+.is-hoverable:hover .navbar-link {
+  background: $brand-primary !important;
   color: white;
 }
 
@@ -106,36 +105,36 @@ span.navbar-secondaire-item {
   -webkit-box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
   box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
   @include transition_all();
-  
+
   &#types {
-	@include sm_1 {
-	  display: none;
-	}
+    @include sm_1 {
+      display: none;
+    }
   }
 }
 
 
 .desktop-only {
   @include mobile {
-    display:none;
+    display: none;
   }
   @include tablet {
-    display:none;
+    display: none;
   }
 }
 
 
 .mobile-only {
   @include mobile {
-    display:inherit;
+    display: inherit;
   }
 
   @include tablet {
-    display:inherit;
+    display: inherit;
   }
 
   @include laptop {
-    display:none;
+    display: none;
   }
 
 }
@@ -154,33 +153,33 @@ span.navbar-secondaire-item {
 }
 
 .navbar-menu.mobile-only {
-    @include mobile {
-      display:inherit;
+  @include mobile {
+    display: inherit;
   }
   @include tablet {
-    display:inherit;
+    display: inherit;
   }
 
-  @include small-laptop{
-    display:inherit;
+  @include small-laptop {
+    display: inherit;
 
   }
 }
 
 
-
 a.navbar-item, a.navbar-link {
 
   @include sm_1 {
-    color:white;
+    color: white;
   }
   @include small-laptop {
-    color:grey;
+    color: grey;
   }
+
   &.bg-white {
     color: $brand-primary;
     @include small-laptop {
-      color:white;
+      color: white;
     }
   }
 
@@ -189,8 +188,6 @@ a.navbar-item, a.navbar-link {
   @include transition_all();
 
 }
-
-
 
 
 .search-header {
@@ -207,10 +204,42 @@ a.navbar-item, a.navbar-link {
   background: transparent;
   border: 0px;
   cursor: pointer;
-  
+
   &:hover {
-	color: $brand-primary;
+    color: $brand-primary;
   }
 }
 
+#first-navbar {
+ @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20;
+}
 
+#logo-navbar {
+  @apply items-center text-white mr-6 h-20 flex-auto;
+}
+#navMenu {
+  @apply items-center justify-between flex-shrink-0 visible flex-auto h-20 w-full;
+}
+
+
+#second-navbar {
+  @apply w-full flex items-center justify-between flex-wrap h-20;
+}
+
+@screen sm {
+  #second-navbar {
+    @apply hidden;
+  }
+}
+
+@screen md {
+  #second-navbar {
+    @apply hidden;
+  }
+}
+
+@screen lg {
+  #second-navbar {
+    @apply hidden;
+  }
+}
