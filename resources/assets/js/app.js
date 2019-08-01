@@ -25,7 +25,6 @@ import InstantSearch from 'vue-instantsearch';
 Vue.use(InstantSearch);
 
 // Imports des composants
-
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import Password from 'vue-password-strength-meter';

@@ -1,5 +1,251 @@
+#app {
+@apply  flex flex-col min-h-screen w-full;
+}
+
+.navbar {
+  width: 100%;
+  top: 0;
+  z-index: 901;
+  @include transition_all();
+  //position: fixed;
+}
+
+.second-menu {
+  background: $body-bg;
+  //border-bottom: 0.1rem $brand-primary solid;
+  -webkit-box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+  box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+  @include sm_1 {
+    display: none;
+  }
+
+}
+
+#checkbutton {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+  color: $accentsecondary;
+}
+
+.is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
+  color: $brand-primary;
+}
+
+span.navbar-secondaire-item {
+  padding-left: 1rem;
+
+  @include sm_1 {
+    display: none;
+  }
+
+}
+
+.nav-item-centered {
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.logo {
+  font-family: $typotitle;
+  font-size: 2rem;
+  color: $brand-primary;
+  padding: 0.5rem 1rem;
+  @include transition_all();
+
+  &:hover {
+    @include transition_all();
+  }
+}
+
+.side-bg {
+  /* background: #ffffffb8; */
+  padding: 1rem 0.5rem 0.5rem;
+  /* -webkit-border-radius: 5px; */
+  /* border-radius: 5px; */
+  margin-top: 5%;
+  border-top: 3px solid #ebeaf5;
+
+  &.pub {
+    background: #ebeaf5;
+    -webkit-border-radius: 20px 40px 20px 40px;
+    border-radius: 20px 40px 20px 40px;
+    text-align: center;
+  }
+}
+
+
+.is-hoverable:hover .navbar-dropdown .navbar-item {
+  color: white;
+}
+
+
+.is-hoverable:hover .navbar-dropdown {
+  -webkit-box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
+  box-shadow: 0 5px 10px 0px hsla(245, 35%, 80%, 1);
+}
+
+.is-hoverable:hover .navbar-link {
+  background: $brand-primary !important;
+  color: white;
+}
+
+.navbar-dropdown {
+  padding-top: 0px;
+  background-color: $brand-primary !important;
+  color: white;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top: 0px solid $brand-primary;
+  -webkit-box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1);
+  @include transition_all();
+
+  &#types {
+    @include sm_1 {
+      display: none;
+    }
+  }
+}
+
+
+.desktop-only {
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+
+.mobile-only {
+  @include mobile {
+    display: inherit;
+  }
+
+  @include tablet {
+    display: inherit;
+  }
+
+  @include laptop {
+    display: none;
+  }
+
+}
+
+.is-fixed-bottom {
+  position: fixed;
+  background: white;
+  z-index: 9999;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 0 1px 1px #e2dfe2;
+}
+
+.navbar-menu.mobile-only {
+  @include mobile {
+    display: inherit;
+  }
+  @include tablet {
+    display: inherit;
+  }
+
+  @include small-laptop {
+    display: inherit;
+
+  }
+}
+
+
+a.navbar-item, a.navbar-link {
+
+  @include sm_1 {
+    color: white;
+  }
+  @include small-laptop {
+    color: grey;
+  }
+
+  &.bg-white {
+    color: $brand-primary;
+    @include small-laptop {
+      color: white;
+    }
+  }
+
+  color: $brand-primary;
+  font-size: 1.1rem;
+  @include transition_all();
+
+}
+
+
+.search-header {
+  display: table-cell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-search-button {
+  position: absolute;
+  right: 2rem;
+  top: 35%;
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+#first-navbar {
+ @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20  p-6;
+}
+
+#logo-navbar {
+  @apply flex items-center flex-shrink-0 text-white mr-6 h-20 ;
+}
+#navMenu {
+  @apply items-center justify-between flex-shrink-0 visible flex-auto h-20 w-full;
+}
+
+
+#second-navbar {
+  @apply w-full flex items-center justify-between flex-wrap h-20;
+}
+
+@screen sm {
+  #second-navbar {
+    @apply hidden;
+  }
+}
+
+@screen md {
+  #second-navbar {
+    @apply hidden;
+  }
+}
+
+@screen lg {
+  #second-navbar {
+    @apply hidden;
+  }
+}
+
 .mobile-bottom-menu {
- display:flex;
+  display:flex;
 }
 
 .menu-left-avatar {
@@ -25,3 +271,4 @@ figure.menu-avatar {
   position: absolute;
   top: 0px;
 }
+
