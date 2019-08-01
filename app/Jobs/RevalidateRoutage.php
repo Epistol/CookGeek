@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Mail\RoutageDateToRevalidate;
-use App\Routage;
 use App\User;
 use Exception;
 use Illuminate\Bus\Queueable;
@@ -44,15 +43,7 @@ class RevalidateRoutage implements ShouldQueue
     {
 
         $mails = collect(['']);
-        $admins = User::where('role', 'manager')->orWhere('role', 'admin')
-            ->where('email', '!=', '')->get('email');
-        $callCenters = User::where('role', 'basic')
-            ->where('email', '!=', '')
-            ->get('email');
-        $author = User::find($this->routage->creator_id)
-            ->where('email', '!=', '')
-            ->get('email');
-        $mails = $mails->merge($admins)->merge($callCenters)->merge($author);
+
         try {
             Mail::to($mails->slice(1))->send(new RoutageDateToRevalidate($this->routage, $this->date));
         } catch (Exception $e) {
