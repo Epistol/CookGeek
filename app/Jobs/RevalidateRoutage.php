@@ -22,6 +22,7 @@ class RevalidateRoutage implements ShouldQueue
     private $routage;
     private $date;
 
+    /**
      * Create a new job instance.
      *
      * @param $message
