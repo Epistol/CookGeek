@@ -2,18 +2,18 @@
     <h3 slot="header">Connexion</h3>
     <div slot="body">
 
-        <div class="columns">
-            <div class="column is-5 is-paddingless">
+        <div class="flex mb-4">
+            <div class="flex-1 is-5 is-paddingless">
                 <div class="left-register">
                     <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                 </div>
             </div>
-            <div class="column is-two-fifths is-paddingless">
+            <div class="flex-1 w-2/5 is-paddingless">
                 <H1 class="title">Connexion</H1>
 
                 <div class="blockcontent">
-                    <div class="columns">
-                        <div class="column is-three-quarters is-offset-1">
+                    <div class="flex mb-4">
+                        <div class="flex-1 is-three-quarters is-offset-1">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
 

@@ -1857,7 +1857,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "column" }, [
             _c("div", { staticClass: "field" }, [
               _c("input", {
-                staticClass: "switch  is-rounded is-success",
+                staticClass: "switch  rounded-full is-success",
                 attrs: { id: "switchNormal", type: "checkbox", name: "vegan" }
               }),
               _vm._v(" "),

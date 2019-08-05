@@ -9,9 +9,9 @@
                 </div>
                 <div class="container">
                     <section class="section ficheinfo">
-                        <div class="columns is-multiline is-mobile">
+                        <div class="flex mb-4 is-multiline is-mobile">
                             @foreach($types as $type)
-                                <div class="column is-one-third is-flex-center">
+                                <div class="flex-1 is-one-third is-flex-center">
                                     {{--On affiche la liste des types de recettes--}}
                                     <a class="tag is-primary is-medium"
                                        href="{{route('type.show', lcfirst($type->name))}}">{{$type->name}}s</a>

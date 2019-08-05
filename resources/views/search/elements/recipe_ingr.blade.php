@@ -4,7 +4,7 @@
 <section class="">
     @if($result['ingredient'])
         @foreach($result['ingredient'] as $ingredient)
-            <a class="button is-rounded"> {{$ingredient->name}}</a>
+            <a class="button rounded-full"> {{$ingredient->name}}</a>
         @endforeach
     @endif
 </section>

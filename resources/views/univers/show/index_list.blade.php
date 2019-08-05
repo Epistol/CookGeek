@@ -14,10 +14,10 @@
         @endphp
 
         @if($recipe_count > 0)
-            <div class="columns is-marginless">
-                <div class="univers-element column">
+            <div class="flex mb-4 m-0">
+                <div class="univers-element flex-1">
                     {{--Nom de l'univers--}}
-                    <div class="columns is-marginless is-paddingless    ">
+                    <div class="flex mb-4 m-0 is-paddingless    ">
                         @include("univers.index.mini_recipes")
                     </div>
                 </div>

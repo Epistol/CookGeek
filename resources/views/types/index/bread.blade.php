@@ -1,4 +1,4 @@
-<div class="column">
+<div class="flex-1">
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/">Accueil</a></li>

@@ -3,16 +3,16 @@
 @section('content')
     <div class="section">
         <div class="container">
-            <div class="columns">
-                <div class="column " id="left_column">
+            <div class="flex mb-4">
+                <div class="flex-1 " id="left_column">
                     @include('user.parts.menu')
                 </div>
-                <div class="column is-three-quarters ">
+                <div class="flex-1 is-three-quarters ">
                     <div class="blockcontent" id="recipes_created">
                         <h2 class="title">
                             @lang('common.my_recipes')
                         </h2>
-                        <table class="table is-hoverable">
+                        <table class="table cursor-pointer">
                             <thead>
                             <tr>
                                 <th>@lang('common.name')</th>

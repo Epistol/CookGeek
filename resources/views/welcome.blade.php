@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <div class="columns">
-            <div class="column is-12">
+        <div class="flex mb-4">
+            <div class="flex-1 is-12">
                 <div class="blockcontent is-paddingless">
                     <div class="is-flex-center">
                         <h1 class="title-website"><?= env('APP_LONG_NAME');?></h1>

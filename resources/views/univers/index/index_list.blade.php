@@ -17,7 +17,7 @@
             </section>
             <div class="univers-element ">
                 <!-- Liste des univers contenus -->
-                <ul class=" columns is-multiline is-flex-center">
+                <ul class=" flex mb-4 is-multiline is-flex-center">
 
                     {{--Pour chaque univers dans le categ--}}
                     @foreach($univers_list_id as $nb => $univers_id)
@@ -36,7 +36,7 @@
                             @endphp
 
                             {{--Nom de l'univers--}}
-                            <li class="column is-2" style="margin: 1%;">
+                            <li class="flex-1 is-2" style="margin: 1%;">
                                 <div class="card">
                                     @if(strip_tags(clean($univers_data->name)))
                                     <header class="card-header">

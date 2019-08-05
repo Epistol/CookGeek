@@ -3,7 +3,7 @@
 
         {{--If add--}}
         @if(Route::is('*.create'))
-            <div class="column is-3" style="text-align: left;">
+            <div class="flex-1 is-3" style="text-align: left;">
                 <h2 class="title is-4">@lang('recipe.ingredients')</h2>
             </div>
             <ingredient_form></ingredient_form>

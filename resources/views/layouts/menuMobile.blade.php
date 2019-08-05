@@ -17,14 +17,14 @@
             <div class="user_picture">
                 @if(Auth::user()->avatarUser !== '')
                     <figure class="image is-32x32">
-                        <img class="is-rounded test"
+                        <img class="rounded-full test"
                              alt="Avatar"
                              src="{{cleanInput(Auth::user()->avatarUser)}}"
                              style="height: 100%;width: 100%;">
                     </figure>
                 @else
                     <figure class="image is-32x32">
-                        <img class="is-rounded"
+                        <img class="rounded-full"
                              src="https://api.adorable.io/avatars/32/{{Auth::user()->name}}">
                     </figure>
                 @endif

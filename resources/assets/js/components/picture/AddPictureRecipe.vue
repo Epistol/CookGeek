@@ -2,7 +2,7 @@
     <transition name="vodal-zoom">
         <div>
             <template v-if="this.type === 'button'">
-                <a class="button-picture button is-outlined is-rounded " @click="showModal()">
+                <a class="button-picture button is-outlined rounded-full " @click="showModal()">
                 <span class="icon is-small">
                       <span class=" fa-stack ">
                       <i class="fas fa-camera fa-stack-1x " style="color: #7f5fbf;"></i>

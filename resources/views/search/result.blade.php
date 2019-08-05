@@ -4,20 +4,20 @@
 
     <div class="container">
         <section class="section searchresult">
-            <div class="columns is-paddingless is-marginless ">
-                {{--  <div class="column is-8 is-offset-2">
+            <div class="flex mb-4 is-paddingless m-0 ">
+                {{--  <div class="flex-1 is-8 is-offset-2">
 
                   </div>--}}
-                <div class="column">
+                <div class="flex-1">
                     @include("search.searchbar")
                     {{--  @include("search.settings")--}}
                 </div>
             </div>
         </section>
         {{--    <transition name="slide">
-                <div v-bind:class="{ active: seen }" class="columns is-marginless results not-active " v-if="seen"
+                <div v-bind:class="{ active: seen }" class="flex mb-4 m-0 results not-active " v-if="seen"
                      v-cloak>
-                    <div class="column">
+                    <div class="flex-1">
                         --}}{{--@include("search.advanced.type")--}}{{--
                         --}}{{--@include("search.advanced.diff")--}}{{--
                         --}}{{--@include("search.advanced.prix")--}}{{--
@@ -29,8 +29,8 @@
             </transition>--}}
         <section class="section ">
 
-            <div class="columns" id="results">
-                <div class="column is-7 searchresult">
+            <div class="flex mb-4" id="results">
+                <div class="flex-1 is-7 searchresult">
                     @if($result['recipe']->count() > 0)
                         @include("search.elements.recipe_name")
                     @else
@@ -41,7 +41,7 @@
 
                     @endif
                 </div>
-                <div class="column is-4 is-offset-1 searchresult">
+                <div class="flex-1 is-4 is-offset-1 searchresult">
                     <div class="">
                         {{--Medaillons--}}
                         <h2 class="title">Médias :</h2>

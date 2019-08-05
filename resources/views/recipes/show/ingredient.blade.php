@@ -1,13 +1,13 @@
 <section class="section-nomargin-side" id="liste-ingredients">
     <h3 class="title is_big">@lang("recipe.ingredients")</h3>
-    <div class="columns is-mobile is-multiline" id="ingredients">
+    <div class="flex mb-4 is-mobile is-multiline" id="ingredients">
         @forelse($recipe->ingredients as $index => $ingredient)
-            <div class="column is-2 field" id="checkbutton">
+            <div class="flex-1 is-2 field" id="checkbutton">
                 <input class="is-checkradio is-ingredient-member" id="ingredientCheckbox[{{$index}}]" type="checkbox"
                        name="ingredientCheckbox[{{$index}}]">
                 <label for="ingredientCheckbox[{{$index}}]"></label>
             </div>
-            <div class="column is-10 field" id="checkbutton">
+            <div class="flex-1 is-10 field" id="checkbutton">
                 <label for="ingredientCheckbox[{{$index}}]">{{$ingredient->pivot->quantity}} {{$ingredient->name}}</label>
             </div>
         @empty

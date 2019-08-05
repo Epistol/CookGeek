@@ -1,9 +1,9 @@
 <aside class="menu blockcontent">
     <figure class="image is-128x128 menu-avatar">
         @if(Auth::user()->avatarUser!== "")
-            <img class="is-rounded menu-left-avatar" src="{{Auth::user()->avatarUser}}"/>
+            <img class="rounded-full menu-left-avatar" src="{{Auth::user()->avatarUser}}"/>
         @else
-            <img class="is-rounded menu-left-avatar"
+            <img class="rounded-full menu-left-avatar"
                  src="https://api.adorable.io/avatars/{{ Auth::user()->name }}"/>
         @endif
     </figure>

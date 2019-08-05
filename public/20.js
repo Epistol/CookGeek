@@ -164,7 +164,8 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "button-picture button is-outlined is-rounded ",
+                  staticClass:
+                    "button-picture button is-outlined rounded-full ",
                   on: {
                     click: function($event) {
                       return _vm.showModal()

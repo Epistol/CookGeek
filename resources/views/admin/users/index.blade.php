@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <h1>Utilisateurs</h1>
-        <div class="columns">
-            <div class="column">
+        <div class="flex mb-4">
+            <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
                         <span class="title is-5">Total utilisateurs</span>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column">
+            <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
                         <span class="title is-5">Nouveaux utilisateurs (ce mois-ci)</span>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column">
+            <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
                         <span class="title is-5">Utilisateurs actifs</span>
@@ -39,7 +39,7 @@
         <a href="{{route('admin.page.create')}}" class="button is-primary">+ Ajouter un utilisateur </a>
 
         <section class="section">
-            <table class="table is-striped is-bordered is-hoverable ">
+            <table class="table is-striped is-bordered cursor-pointer ">
                 <thead>
                 <tr>
                     <th><abbr title="Position">Id</abbr></th>

@@ -1,8 +1,8 @@
 <div class="" style="padding-bottom: 2rem">
 
 
-    <div class="columns">
-        <div class="column is-4">
+    <div class="flex mb-4">
+        <div class="flex-1 is-4">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="/">Accueil</a></li>

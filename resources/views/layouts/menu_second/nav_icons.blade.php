@@ -1,4 +1,4 @@
-<div class="" id="navMenu" role="navigation" aria-label="main navigation">
+<div class="" id="navIcons" role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
             <div class="navbar-start">
 				<?php $typeuniv = DB::table('categunivers')->get(); ?>

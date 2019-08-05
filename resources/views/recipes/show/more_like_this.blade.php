@@ -6,9 +6,9 @@
     </h2>
 
     <section class="bordered-cdg">
-        <div class="columns is-multiline">
+        <div class="flex mb-4 is-multiline">
             @foreach($related as $nombre => $recipe)
-                <div class="column is-3">
+                <div class="flex-1 is-3">
                     <div class="card card-cdg">
                         <div id="medaillon_index">
                             @include('recipes.show.media')

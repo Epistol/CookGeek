@@ -8,8 +8,8 @@
                 @include("media.index.bread")
 
 
-                    <div class="columns">
-                        <div class="column">
+                    <div class="flex mb-4">
+                        <div class="flex-1">
                             <section class="hero">
                                 <div class="hero-body">
                                     <div class="container">

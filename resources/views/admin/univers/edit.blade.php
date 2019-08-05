@@ -7,8 +7,8 @@
             @csrf
             <input type="hidden" name="_method" value="PATCH">
 
-            <div class="columns">
-                <div class="column">
+            <div class="flex mb-4">
+                <div class="flex-1">
                     <div class="field">
                         <label class="label">Nom de l'univers</label>
                         <p class="control">
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="column">
+                <div class="flex-1">
                     <div class="field">
                         <label class="label">Miniature</label>
                     </div>

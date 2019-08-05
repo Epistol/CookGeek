@@ -4,10 +4,10 @@
             <label class="title is-4">@lang('common.media')</label>
         </div>
 
-        <div class="columns is-multiline">
+        <div class="flex mb-4 is-multiline">
             @foreach ($types as $key=>$type)
                 @php(++$key)
-                <div class="column has-text-centered">
+                <div class="flex-1 has-text-centered">
                     <label class="radio">
                         @if($type->name== 'tv')
                             <input type="radio" id="{{$type->name}}"

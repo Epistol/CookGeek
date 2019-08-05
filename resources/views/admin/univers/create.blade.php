@@ -7,8 +7,8 @@
         <section class="section blockcontent">
 
             <header class="background-round">
-                <div class="columns">
-                    <div class="column">
+                <div class="flex mb-4">
+                    <div class="flex-1">
                         <div class="has-text-centered">
                             <h1 class="title">Créer un univers</h1>
                         </div>

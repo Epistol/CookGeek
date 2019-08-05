@@ -1,7 +1,7 @@
 <section class="bordered-cdg">
-    <div class="columns">
+    <div class="flex mb-4">
         {{--Colonne image--}}
-        <div class="column">
+        <div class="flex-1">
 
 
             @isset($heartbeat->recipe_id)
@@ -17,7 +17,7 @@
 
             {{--image principale--}}
         </div>
-        <div class="column">
+        <div class="flex-1">
             {{--<h1 class="title">Le coup de coeur</h1>--}}
             @isset($heartbeat->texte)
                 <p>{{$heartbeat->texte}}</p>

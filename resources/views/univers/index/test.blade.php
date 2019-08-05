@@ -8,9 +8,9 @@
 
                    ?>
 
-                   <div class="column is-6 is-result">
-                       <div class="columns">
-                           <div class="column is-4 to-hover is-paddingless is-marginless">
+                   <div class="flex-1 is-6 is-result">
+                       <div class="flex mb-4">
+                           <div class="flex-1 is-4 to-hover is-paddingless m-0">
                                @if(isset($type))
                                    <div class="hovered">
                                        <a class="tag" style="margin:0.5rem"
@@ -20,7 +20,7 @@
 
 
                            </div>
-                           <div class="column is-7">
+                           <div class="flex-1 is-7">
                                <div class=" is-flex">
                                    <a href="{{route('univers.show',$univers->name)}}"><h2 class="title">
                                            @php echo str_limit($univers->name, 20, ' (...)'); @endphp
@@ -32,7 +32,7 @@
                                </div>
 
                            </div>
-                           <div class="column is-1 ">
+                           <div class="flex-1 is-1 ">
                                <div class="top">
 
                                </div>

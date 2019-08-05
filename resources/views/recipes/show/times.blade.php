@@ -45,34 +45,34 @@ $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
     <div class="side-bg">
         <h4 class="title">Timing</h4>
         @if($recipe->prep_time && $recipe->prep_time > 0)
-            <div class="columns">
-                <div class="column is-1">
+            <div class="flex mb-4">
+                <div class="flex-1 is-1">
                     <p><i aria-hidden="true" class="fas fa-utensils"></i>
                     </p>
                 </div>
-                <div class="column">
+                <div class="flex-1">
                     <p>{{ucfirst(trans('recipe.making-t')) }} : {{$prep}}</p>
                 </div>
             </div>
         @endif
         @if($recipe->cook_time && $recipe->cook_time > 0)
-            <div class="columns">
-                <div class="column is-1">
+            <div class="flex mb-4">
+                <div class="flex-1 is-1">
                     <p><i aria-hidden="true" class="fas fa-thermometer-three-quarters"></i>
                     </p>
                 </div>
-                <div class="column">
+                <div class="flex-1">
                     <p> {{ucfirst(trans('recipe.cooking-t')) }} : {{$cook}}</p>
                 </div>
             </div>
         @endif
         @if($recipe->rest_time && $recipe->rest_time > 0)
-            <div class="columns">
-                <div class="column is-1">
+            <div class="flex mb-4">
+                <div class="flex-1 is-1">
                     <p><i aria-hidden="true" class="far fa-clock"></i>
                     </p>
                 </div>
-                <div class="column">
+                <div class="flex-1">
                     <p> {{ucfirst(trans('recipe.resting-t')) }} : {{$rest}}</p>
                 </div>
             </div>

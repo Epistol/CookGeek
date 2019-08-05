@@ -1,8 +1,8 @@
 #app {
-  @apply flex flex-col min-h-screen w-full;
+  @apply min-h-screen w-full;
 }
 
-.topmenu {
+#topmenu {
   @apply w-full;
 }
 
@@ -209,7 +209,7 @@ a.navbar-item, a.navbar-link {
 }
 
 #first-navbar {
-  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20  p-6;
+  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20 bg-white;
 }
 
 #logo-navbar {
@@ -217,9 +217,15 @@ a.navbar-item, a.navbar-link {
 }
 
 #navMenu {
-  @apply items-center justify-between flex-shrink-0 visible flex-auto h-20 w-full;
+  @apply items-start justify-between flex-shrink-0 visible flex-auto h-20 flex-1 p-6;
 }
 
+#iconsMenu {
+  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20 bg-fog;
+}
+#navIcons {
+  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  ;
+}
 
 #second-navbar {
   @apply w-full flex items-center justify-between flex-wrap h-20;

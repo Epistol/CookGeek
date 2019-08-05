@@ -15,8 +15,8 @@ Pas de pub ! Et des bonbons en récompense ! </p>
       action="{{ route('form.store') }}">
 {{ csrf_field() }}
 
-    <div class="columns">
-        <div class="column">
+    <div class="flex mb-4">
+        <div class="flex-1">
 
 
             <div class="field">

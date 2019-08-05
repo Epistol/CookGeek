@@ -7,7 +7,7 @@
         <a href="{{route('recipe.create')}}" class="button is-primary">+ Ajouter une recette</a>
 
         <section class="section">
-            <table class="table is-striped  is-bordered is-hoverable">
+            <table class="table is-striped  is-bordered cursor-pointer">
                 <thead>
                 <tr>
                     <th><input type="checkbox"/></th>

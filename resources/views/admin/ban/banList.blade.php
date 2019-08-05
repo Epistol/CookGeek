@@ -30,9 +30,9 @@
 
     <div class="is-lateral" style="padding:1rem">
         <form @submit.prevent="submit">
-            <div class="columns">
+            <div class="flex mb-4">
 
-                <div class="column">
+                <div class="flex-1">
                     <div class="field">
                         <label for="ip">IP</label>
                         <input type="ip" class="input" name="ip" id="ip" v-model="champs.ip"/>

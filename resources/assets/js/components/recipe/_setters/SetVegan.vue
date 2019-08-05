@@ -6,7 +6,7 @@
                     <div class="field">
                         <input id="switchNormal"
                                type="checkbox"
-                               name="vegan" class="switch  is-rounded is-success">
+                               name="vegan" class="switch  rounded-full is-success">
                         <label for="switchNormal"> <i class="fas fa-leaf" aria-hidden="true"></i> Vegan
                         </label>
                     </div>

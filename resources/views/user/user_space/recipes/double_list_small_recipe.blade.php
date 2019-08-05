@@ -1,15 +1,15 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-<div class="columns is-multiline" style="margin-top: 2rem; margin-bottom: 2rem;">
+<div class="flex mb-4 is-multiline" style="margin-top: 2rem; margin-bottom: 2rem;">
     @foreach ($recipes as $i => $recipe)
         <?php
         $starsget = (new \App\Search)->explode_star($recipe->id);
         $type = DB::table('type_recipes')->where('id', $recipe->type)->first();
         ?>
-        <div class="column is-6  ">
+        <div class="flex-1 is-6  ">
             <div class="is-result">
-                <div class="columns  is-paddingless is-marginless">
-                    <div class="column is-4 to-hover is-paddingless is-marginless">
+                <div class="flex mb-4  is-paddingless m-0">
+                    <div class="flex-1 is-4 to-hover is-paddingless m-0">
                         @if(isset($type))
                             <div class="hovered">
                                 <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
@@ -18,7 +18,7 @@
                         @endif
                         @include('recipes.elements.picture')
                     </div>
-                    <div class="column is-8 ">
+                    <div class="flex-1 is-8 ">
                         <div class="top is-flex">
                             @include("recipes.show.type_univers_no_tool")
 
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column is-offset-4 is-4">
+                <div class="flex mb-4">
+                    <div class="flex-1 is-offset-4 is-4">
                         <div class="is-flex">
                             @include('recipes.elements.note')
                         </div>

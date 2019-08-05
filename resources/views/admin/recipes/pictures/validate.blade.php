@@ -9,7 +9,7 @@
         <input type="hidden" name="imgId" value="{{$picture->id}}"/>
         <input type="hidden" name="validate" value="true"/>
         <button type="submit" class="button validate">
-    <span class="icon is-large is-rounded">
+    <span class="icon is-large rounded-full">
        <i class="far fa-check-circle"></i>
     </span>
         </button>
@@ -17,7 +17,7 @@
 
 
     <a class="button invalidate">
-    <span class="icon is-large is-rounded">
+    <span class="icon is-large rounded-full">
       <i class="far fa-times-circle"></i>
     </span>
     </a>

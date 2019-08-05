@@ -5,9 +5,9 @@
       action="{{ route('recipe.store') }}">
     {{ csrf_field() }}
 
-    <div class="columns">
+    <div class="flex mb-4">
         {{--Infos complémentaires--}}
-        <div class="column">
+        <div class="flex-1">
             @include("user.user.user_space.switch.parts.account.informations.basic")
         </div>
     </div>

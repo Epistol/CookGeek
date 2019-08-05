@@ -2,9 +2,9 @@
     <div class="menu-avatar">
         <figure class="image is-128x128 menu-avatar">
             @if($user->img !== "")
-                <img class="is-rounded menu-left-avatar" src="{{$user->avatarUser}}"/>
+                <img class="rounded-full menu-left-avatar" src="{{$user->avatarUser}}"/>
             @else
-                <img class="is-rounded menu-left-avatar" src="https://api.adorable.io/avatars/{{$user->id}}"/>
+                <img class="rounded-full menu-left-avatar" src="https://api.adorable.io/avatars/{{$user->id}}"/>
             @endif
         </figure>
     </div>

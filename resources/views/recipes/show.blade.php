@@ -22,33 +22,33 @@
     <div class="recipeAddBg">
         <div class="container">
             @include("recipes.show.breadcrumb")
-            <div class="columns shadowbox is-marginless">
+            <div class="flex mb-4 shadowbox m-0">
                 {{--Photo + ingredients--}}
-                <aside class="column is-one-fifth is-marginless is-paddingless side-left" id="side_recipe">
+                <aside class="w-1/5 m-0 is-paddingless side-left" id="side_recipe">
                     @include("recipes.show.images")
                     {{--Fiche gauche - INGREDIENTS --}}
                     @include("recipes.show.ficheinfo")
                 </aside>
                 {{--    Infos + steps--}}
-                <div class="column is-marginless is-paddingless ">
+                <div class="flex-1 m-0 is-paddingless ">
                     {{--// Budget--}}
-                    <div class="columns list-h-show  is-marginless is-paddingless">
-                        <div class="column">
+                    <div class="flex mb-4 list-h-show  m-0 is-paddingless">
+                        <div class="flex-1">
                             <div class="has-text-centered">
                                 @include("recipes.show.timing")
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="flex-1">
                             <div class="has-text-centered">
                                 @include("recipes.show.univers")
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="flex-1">
                             <div class="has-text-centered">
                                 @include("recipes.show.parts")
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="flex-1">
                             <div class="has-text-centered">
                                 @include("recipes.show.stars")
                             </div>
@@ -57,8 +57,8 @@
                     </div>
                     <div class="page--no-pading">
                         <div class="container">
-                            <div class="columns is-marginless">
-                                <div class="column is-9" style="padding: 2.5rem;">
+                            <div class="flex mb-4 m-0">
+                                <div class="flex-1 is-9" style="padding: 2.5rem;">
                                     @include("recipes.show.comment")
                                     @include("recipes.show.steps")
                                     @include("recipes.show.video")
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <aside class="column is-3 list-h-show ">
+                                <aside class="flex-1 is-3 list-h-show ">
                                     @include('recipes.show.fiche_droite')
                                 </aside>
                             </div>

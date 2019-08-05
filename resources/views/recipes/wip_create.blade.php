@@ -4,14 +4,14 @@
 
     <div class="container recipe-add">
         <section class="section">
-            <div class="columns">
-                <div class="column is-10 is-offset-1">
+            <div class="flex mb-4">
+                <div class="flex-1 is-10 is-offset-1">
                     <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                           action="{{ route('recipe.store') }}">
                         @csrf
                         <create-recipe></create-recipe>
-                        <div class="columns">
-                            <div class="column is-centered is-flex-center">
+                        <div class="flex mb-4">
+                            <div class="flex-1 is-centered is-flex-center">
                                 <button type="submit" class="button is-primary is-large publish">Ajouter ma recette</button>
                             </div>
                         </div>

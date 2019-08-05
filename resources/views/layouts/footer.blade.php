@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container">
-        <div class="columns">
-            <div class="column">
+        <div class="flex mb-4">
+            <div class="flex-1">
                 {{--Logo et infos--}}
                 <ul>
                     <li>
@@ -17,7 +17,7 @@
                 </ul>
 
             </div>
-            <div class="column">
+            <div class="flex-1">
                 <ul>
                     <li>
                         @lang('common.time-is') <fulltime></fulltime> |

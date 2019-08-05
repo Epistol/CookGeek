@@ -1,10 +1,10 @@
 <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST" id="params"
       action="{{ route('param.store') }}">
     @csrf
-    <div class="columns ">
+    <div class="flex mb-4 ">
         {{--Photo profil--}}
         {{--Infos classique--}}
-        <div class="column">
+        <div class="flex-1">
             <div class="field">
                 <label class="label">@lang('account.pseudo.pseudo')</label>
                 <div class="control">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="column is-4">
+        <div class="flex-1 is-4">
             @include("user.user_space.switch.parts.informations.avatar")
         </div>
     </div>

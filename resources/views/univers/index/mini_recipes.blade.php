@@ -1,7 +1,7 @@
-<div class="column radiused">
-    <div class="columns is-multiline">
+<div class="flex-1 radiused">
+    <div class="flex mb-4 is-multiline">
 
-        <div class="column is-3">
+        <div class="flex-1 is-3">
             @foreach($recipes as $recipe)
                 <div class="is-flex">
                     <?php   $img = $pictureService->loadRecipePicturesValid($recipe); ?>

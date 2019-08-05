@@ -1,9 +1,10 @@
+{{--
 <div class="second-menu " role="navigation" aria-label="main navigation">
     <!-- Collapsed Hamburger -->
     <div class="container">
-        <div class="sm:visible md:visible lg:hidden" id="navMenu">
+        <div class="sm:visible md:visible lg:hidden" id="navIcons">
             <div class="navbar-start" style="display: flex;">
-				<?php $typeuniv = DB::table('categunivers')->get(); ?>
+                <?php $typeuniv = DB::table('categunivers')->get(); ?>
                 @foreach($typeuniv as $type)
                     <a class="navbar-item " href="{{route("media.show", lcfirst($type->name))}}">
                         <figure class="image is-32x32">
@@ -22,4 +23,5 @@
     </div>
 </div>
 
-{{--{{ menu('admin' ) }}--}}
+--}}
+{{--{{ menu('admin' ) }}--}}--}}

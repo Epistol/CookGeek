@@ -7,9 +7,7 @@
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
@@ -66,7 +64,6 @@
     "mix-tailwindcss": "^1.1.0",
     "nouislider": "^10.1.0",
     "react": "^16.8.6",
-    "snyk": "^1.193.2",
     "vee-validate": "^2.1.2",
     "vue-affix": "^0.5.2",
     "vue-chartjs": "^3.4.2",
@@ -86,6 +83,5 @@
     "webpack": "^4.35.3",
     "workbox-webpack-plugin": "^4.3.1",
     "zxcvbn": "^4.4.2"
-  },
-  "snyk": true
+  }
 }

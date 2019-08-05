@@ -11,9 +11,9 @@
                 <div class="container">
                     {{--On affiche 4 recettes par type--}}
                     <section class="section blockcontent">
-                        <div class="columns is-multiline">
+                        <div class="flex mb-4 is-multiline">
                             @foreach($recipes as $i=>$recipe)
-                                <div class="column is-2">
+                                <div class="flex-1 is-2">
                                     <div class="card cdg">
                                         <div class="card-image"><a href="{{route('recipe.show', $recipe->slug)}}">
                                                 @include('recipes.elements.picture')

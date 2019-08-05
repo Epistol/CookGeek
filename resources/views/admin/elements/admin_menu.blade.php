@@ -6,7 +6,7 @@
                 </span>
             Tableau de bord</a>
     </p>
-    <ul class="menu-list has-dropdown is-hoverable">
+    <ul class="menu-list has-dropdown cursor-pointer">
         <li>
             <a href="{{route("admin.page.index")}}"
                     {{ Route::currentRouteNamed('*.page.*') ? ' class="is-active"' : null  }}>

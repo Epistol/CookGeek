@@ -1,7 +1,7 @@
 @if($recipe->video)
 
-    <div class="columns">
-        <div class="column ">
+    <div class="flex mb-4">
+        <div class="flex-1 ">
             <h2 class="title title-mini">
                 @lang('recipe.video')
             </h2>
@@ -36,8 +36,8 @@
 
 
     @else
-        <div class="columns">
-            <div class="column is-lateral">
+        <div class="flex mb-4">
+            <div class="flex-1 is-lateral">
                 <p> {{str_limit($recipe->video, 150, "...") }} </p>
             </div>
         </div>

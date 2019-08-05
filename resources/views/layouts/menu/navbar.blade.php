@@ -27,7 +27,7 @@
         </div>
     </menu-element>
 
-    <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown is-hoverable">
+    <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown cursor-pointer">
         <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
            href="{{ route('type.index') }}">
             {{trans_choice('recipe.types', 2)}}
@@ -75,19 +75,19 @@
         {{--<div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
         {{--@include("auth.modal.login")--}}
     @else
-        <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown is-hoverable">
+        <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown cursor-pointer">
             <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 user_profile">
-                <div class="user_picture">
+                <div class="user_picture rounded-full w-8 h-8">
                     @if(Auth::user()->avatarUser !== '')
                         <figure class="image is-48x48">
-                            <img class="is-rounded test"
+                            <img class="rounded-full test"
                                  alt="Avatar"
                                  src="{{cleanInput(Auth::user()->avatarUser)}}"
                                  style="height: 100%;width: 100%;">
                         </figure>
                     @else
                         <figure class="image is-48x48">
-                            <img class="is-rounded"
+                            <img class="rounded-full"
                                  src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
                         </figure>
                     @endif

@@ -1,6 +1,6 @@
 <div class="background-round">
-    <div class="columns">
-        <div class="column" style="">
+    <div class="flex mb-4">
+        <div class="flex-1" style="">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                     <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/">
