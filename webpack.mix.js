@@ -29,3 +29,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.disableNotifications();
 
+
+mix.babelConfig({
+    plugins: ['@babel/plugin-syntax-dynamic-import'],
+});

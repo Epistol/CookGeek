@@ -19,7 +19,7 @@ aside.menu {
   & .menu-list {
     & a {
       color: $lavender;
-      font-size: 0.85rem;
+      @apply text-sm;
       &:hover {
         color: #363457;
       }
@@ -38,7 +38,7 @@ p.menu-label {
   color: $brand-primary;
   align-items: center;
   & a {
-    font-size: 0.9rem;
+    @apply text-sm;
     color: white;
     &:hover {
       color: antiquewhite;

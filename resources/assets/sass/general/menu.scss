@@ -1,24 +1,26 @@
 #app {
-@apply  flex flex-col min-h-screen w-full;
+  @apply flex flex-col min-h-screen w-full;
+}
+
+.topmenu {
+  @apply w-full;
 }
 
 .navbar {
-  width: 100%;
-  top: 0;
-  z-index: 901;
+  @apply w-full z-10 top-0;
   @include transition_all();
   //position: fixed;
 }
 
 .second-menu {
   background: $body-bg;
+  @apply shadow;
   //border-bottom: 0.1rem $brand-primary solid;
-  -webkit-box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
-  box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
-  @include sm_1 {
+  //-webkit-box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+  //box-shadow: 0px 4px 10px rgba($darkGrey, 0.1);
+  @screen sm {
     display: none;
   }
-
 }
 
 #checkbutton {
@@ -38,7 +40,7 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 span.navbar-secondaire-item {
   padding-left: 1rem;
 
-  @include sm_1 {
+  @screen sm {
     display: none;
   }
 
@@ -53,7 +55,7 @@ span.navbar-secondaire-item {
 
 .logo {
   font-family: $typotitle;
-  font-size: 2rem;
+ @apply text-3xl;
   color: $brand-primary;
   padding: 0.5rem 1rem;
   @include transition_all();
@@ -64,12 +66,8 @@ span.navbar-secondaire-item {
 }
 
 .side-bg {
-  /* background: #ffffffb8; */
-  padding: 1rem 0.5rem 0.5rem;
-  /* -webkit-border-radius: 5px; */
-  /* border-radius: 5px; */
-  margin-top: 5%;
-  border-top: 3px solid #ebeaf5;
+  @apply pt-4 pr-2 pb-2 pl-2 my-4;
+  @apply border-t-2 border-fog;
 
   &.pub {
     background: #ebeaf5;
@@ -107,7 +105,7 @@ span.navbar-secondaire-item {
   @include transition_all();
 
   &#types {
-    @include sm_1 {
+    @screen sm {
       display: none;
     }
   }
@@ -141,7 +139,7 @@ span.navbar-secondaire-item {
 
 .is-fixed-bottom {
   position: fixed;
-  background: white;
+  @apply bg-white;
   z-index: 9999;
   top: auto;
   left: 0;
@@ -169,7 +167,7 @@ span.navbar-secondaire-item {
 
 a.navbar-item, a.navbar-link {
 
-  @include sm_1 {
+  @screen sm {
     color: white;
   }
   @include small-laptop {
@@ -184,7 +182,7 @@ a.navbar-item, a.navbar-link {
   }
 
   color: $brand-primary;
-  font-size: 1.1rem;
+@apply text-lg;
   @include transition_all();
 
 }
@@ -211,12 +209,13 @@ a.navbar-item, a.navbar-link {
 }
 
 #first-navbar {
- @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20  p-6;
+  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20  p-6;
 }
 
 #logo-navbar {
   @apply flex items-center flex-shrink-0 text-white mr-6 h-20 ;
 }
+
 #navMenu {
   @apply items-center justify-between flex-shrink-0 visible flex-auto h-20 w-full;
 }
@@ -245,7 +244,7 @@ a.navbar-item, a.navbar-link {
 }
 
 .mobile-bottom-menu {
-  display:flex;
+  display: flex;
 }
 
 .menu-left-avatar {

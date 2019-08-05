@@ -4,7 +4,7 @@
 }
 
 .background-round, header.background-round {
-  background: white;
+  @apply bg-white;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -24,7 +24,7 @@
 }
 
 span.logo-beta {
-  font-size: 0.7rem;
+  @apply text-xs;
   color: #fcbee1;
   font-family: "AvenirMedium", Arial, Helvetica, sans-serif;
   /* position: absolute; */
@@ -57,7 +57,7 @@ span.logo-beta {
 .dollar {
   color: $accentsecondary;
   font-weight: bold;
-  font-size: 1.3rem;
+  @apply text-xl;
 }
 
 
@@ -120,7 +120,7 @@ span.logo-beta {
 .shadowbox {
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
-  background: white;
+  @apply bg-white;
   
 }
 
@@ -135,7 +135,7 @@ span.logo-beta {
 }
 
 .step .column.is-1 {
-  font-size: 1.2rem;
+  @apply text-lg;
   color: $brand-primary;
   
   &::after {
@@ -143,7 +143,7 @@ span.logo-beta {
 	position: absolute;
 	/*white-space: pre;*/
 	margin-top: 0.2rem;
-	font-size: 2rem;
+	@apply text-3xl;
   }
 }
 
@@ -155,7 +155,7 @@ span.logo-beta {
 }
 
 .instruction {
-  font-size: 1rem;
+  @apply text-base;
   color: #707070;
   
 }
@@ -166,7 +166,7 @@ span.logo-beta {
 
 .is_big {
   color: $brand-primary;
-  font-size: 1.2rem;
+  @apply text-lg font-normal;
   font-weight: 400;
 }
 
@@ -200,7 +200,7 @@ span.logo-beta {
 }
 
 .sidebar-menu.affix{
-  background: white;
+  @apply bg-white;
   left: 0px;
   border-radius: 0px 20px 20px 0px;
   box-shadow: rgba(69, 72, 81, 0.2) 0px 1px 18px 2px;

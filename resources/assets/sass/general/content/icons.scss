@@ -3,7 +3,7 @@
 }
 
 .type-selector input {
-  margin: 0;
+  @apply m-0;
   padding: 0;
   -webkit-appearance: none;
   -moz-appearance: none;

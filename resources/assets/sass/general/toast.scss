@@ -108,7 +108,7 @@
   float: right;
   background: transparent;
   color: $gris;
-  font-size: 1.2rem;
+  @apply text-lg;
   border: none;
   cursor: pointer;
   -webkit-appearance: button; /* for input */
@@ -154,7 +154,7 @@
   padding: 1rem;
   -webkit-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
-  background: white;
+  @apply bg-white;
   
   .bg {
 	background: #F1F3F5;

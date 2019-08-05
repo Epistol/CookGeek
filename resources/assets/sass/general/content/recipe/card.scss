@@ -6,21 +6,21 @@
 }
 
 p.card-header-title {
-  display:flex;justify-content:center;align-items:center;
+  @apply flex justify-center items-center;
 }
 
 .columns.mini-infos {
-  font-size:0.8rem;
+  @apply text-sm;
   border-bottom: 1px solid rgba(112, 112, 112, 0.1);
 }
 
 section.bgwhite {
-  background : white;
+  @apply bg-white;
 }
 
 .recipe-index-description {
-  background: white;
-  width: 90%;
+  @apply bg-white;
+  @apply w-11/12;
   border: 0px solid #ccc;
   padding: 23px 22px 15px 22px;
   margin: 0 auto!important;

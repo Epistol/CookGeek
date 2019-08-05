@@ -111,27 +111,27 @@ a {
 }
 
 h1, h1.title {
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
 
 h2, h2.title {
-  font-size: 1.6rem;
+  font-size: 1.875rem;
 }
 
 h3, h3.title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 h4, h4.title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 h5, h5.title {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
 }
 
 h6, h6.title {
-  font-size: 1.05rem;
+  font-size: 1.125rem;
 }
 
 .content h1, h1.title {
@@ -160,25 +160,25 @@ h1.title-website {
   font-family: "Conviction", Arial, serif;
   color: #7F5FBF;
   font-weight: normal;
-  font-size: 2.2rem;
+  font-size: 2.25rem;
 }
 
 h2.title-mini {
   color: #524d55;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
 }
 
 .content-title {
   font-family: "AvenirMedium", serif;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   color: #7F5FBF;
   padding: 0.5rem;
 }
 
 span.ingredient-title {
   font-weight: 900;
-  font-size: 16px;
+  font-size: 1rem;
   text-align: left;
   color: #fe688e;
   text-transform: uppercase;
@@ -343,7 +343,7 @@ table.times th {
   padding-top: 3.5rem;
   z-index: 1;
   padding-left: 2rem;
-  background: white;
+  background-color: #fff;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
@@ -354,7 +354,7 @@ table.times th {
 .column.steps {
   z-index: 1;
   margin-top: 2rem;
-  background: white;
+  background-color: #fff;
   box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
@@ -588,7 +588,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .univers-element {
-  background: white;
+  background-color: #fff;
   margin-top: 0% !important;
 }
 
@@ -623,9 +623,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  color: #6c548f;
-  border-radius: 50%;
-  min-height: 64px;
+  font-size: 1.5rem;
+  color: #7f5fbf;
+  border-radius: 9999px;
+  max-height: 1.25rem;
+  min-height: 1.25rem;
   min-width: 64px;
   top: 25%;
   left: 25%;
@@ -1011,19 +1013,23 @@ img.tovalidate {
   width: 100%;
 }
 
+.topmenu {
+  width: 100%;
+}
+
 .navbar {
   width: 100%;
+  z-index: 10;
   top: 0;
-  z-index: 901;
   transition: all 0.3s ease-in-out;
 }
 
 .second-menu {
   background: #eeedf5;
-  box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   .second-menu {
     display: none;
   }
@@ -1049,7 +1055,7 @@ span.navbar-secondaire-item {
   padding-left: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   span.navbar-secondaire-item {
     display: none;
   }
@@ -1063,7 +1069,7 @@ span.navbar-secondaire-item {
 
 .logo {
   font-family: "Conviction", Tahoma, Geneva, sans-serif;
-  font-size: 2rem;
+  font-size: 1.875rem;
   color: #7F5FBF;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
@@ -1074,12 +1080,14 @@ span.navbar-secondaire-item {
 }
 
 .side-bg {
-  /* background: #ffffffb8; */
-  padding: 1rem 0.5rem 0.5rem;
-  /* -webkit-border-radius: 5px; */
-  /* border-radius: 5px; */
-  margin-top: 5%;
-  border-top: 3px solid #ebeaf5;
+  padding-top: 1rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top-width: 2px;
+  border-color: #ebeaf5;
 }
 
 .side-bg.pub {
@@ -1112,7 +1120,7 @@ span.navbar-secondaire-item {
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   .navbar-dropdown#types {
     display: none;
   }
@@ -1150,7 +1158,7 @@ span.navbar-secondaire-item {
 
 .is-fixed-bottom {
   position: fixed;
-  background: white;
+  background-color: #fff;
   z-index: 9999;
   top: auto;
   left: 0;
@@ -1181,11 +1189,11 @@ span.navbar-secondaire-item {
 
 a.navbar-item, a.navbar-link {
   color: #7F5FBF;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   a.navbar-item, a.navbar-link {
     color: white;
   }
@@ -1392,7 +1400,7 @@ figure.menu-avatar {
   float: right;
   background: transparent;
   color: #898989;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   border: none;
   cursor: pointer;
   -webkit-appearance: button;
@@ -1436,7 +1444,7 @@ figure.menu-avatar {
   align-items: center;
   padding: 1rem;
   border-radius: 0 0 5px 5px;
-  background: white;
+  background-color: #fff;
 }
 
 .modal-footer .bg {
@@ -1660,19 +1668,23 @@ footer.footer {
   width: 100%;
 }
 
+.topmenu {
+  width: 100%;
+}
+
 .navbar {
   width: 100%;
+  z-index: 10;
   top: 0;
-  z-index: 901;
   transition: all 0.3s ease-in-out;
 }
 
 .second-menu {
   background: #eeedf5;
-  box-shadow: 0px 4px 10px rgba(69, 72, 81, 0.1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   .second-menu {
     display: none;
   }
@@ -1698,7 +1710,7 @@ span.navbar-secondaire-item {
   padding-left: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   span.navbar-secondaire-item {
     display: none;
   }
@@ -1712,7 +1724,7 @@ span.navbar-secondaire-item {
 
 .logo {
   font-family: "Conviction", Tahoma, Geneva, sans-serif;
-  font-size: 2rem;
+  font-size: 1.875rem;
   color: #7F5FBF;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
@@ -1723,12 +1735,14 @@ span.navbar-secondaire-item {
 }
 
 .side-bg {
-  /* background: #ffffffb8; */
-  padding: 1rem 0.5rem 0.5rem;
-  /* -webkit-border-radius: 5px; */
-  /* border-radius: 5px; */
-  margin-top: 5%;
-  border-top: 3px solid #ebeaf5;
+  padding-top: 1rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top-width: 2px;
+  border-color: #ebeaf5;
 }
 
 .side-bg.pub {
@@ -1761,7 +1775,7 @@ span.navbar-secondaire-item {
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   .navbar-dropdown#types {
     display: none;
   }
@@ -1799,7 +1813,7 @@ span.navbar-secondaire-item {
 
 .is-fixed-bottom {
   position: fixed;
-  background: white;
+  background-color: #fff;
   z-index: 9999;
   top: auto;
   left: 0;
@@ -1830,11 +1844,11 @@ span.navbar-secondaire-item {
 
 a.navbar-item, a.navbar-link {
   color: #7F5FBF;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) {
   a.navbar-item, a.navbar-link {
     color: white;
   }
@@ -2171,7 +2185,7 @@ form.recipe-add .field {
 }
 
 .background-round, header.background-round {
-  background: white;
+  background-color: #fff;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -2190,7 +2204,7 @@ form.recipe-add .field {
 }
 
 span.logo-beta {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #fcbee1;
   font-family: "AvenirMedium", Arial, Helvetica, sans-serif;
   /* position: absolute; */
@@ -2220,7 +2234,7 @@ span.logo-beta {
 .dollar {
   color: #fa5c86;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
 }
 
 .recipe-list-object {
@@ -2273,7 +2287,7 @@ span.logo-beta {
 .shadowbox {
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
   -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
-  background: white;
+  background-color: #fff;
 }
 
 .rating img {
@@ -2287,7 +2301,7 @@ span.logo-beta {
 }
 
 .step .column.is-1 {
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   color: #7F5FBF;
 }
 
@@ -2296,7 +2310,7 @@ span.logo-beta {
   position: absolute;
   /*white-space: pre;*/
   margin-top: 0.2rem;
-  font-size: 2rem;
+  font-size: 1.875rem;
 }
 
 .is-lateral {
@@ -2312,7 +2326,8 @@ span.logo-beta {
 
 .is_big {
   color: #7F5FBF;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
+  font-weight: 400;
   font-weight: 400;
 }
 
@@ -2339,7 +2354,7 @@ span.logo-beta {
 }
 
 .sidebar-menu.affix {
-  background: white;
+  background-color: #fff;
   left: 0px;
   border-radius: 0px 20px 20px 0px;
   box-shadow: rgba(69, 72, 81, 0.2) 0px 1px 18px 2px;
@@ -2360,17 +2375,17 @@ p.card-header-title {
 }
 
 .columns.mini-infos {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   border-bottom: 1px solid rgba(112, 112, 112, 0.1);
 }
 
 section.bgwhite {
-  background: white;
+  background-color: #fff;
 }
 
 .recipe-index-description {
-  background: white;
-  width: 90%;
+  background-color: #fff;
+  width: 91.666667%;
   border: 0px solid #ccc;
   padding: 23px 22px 15px 22px;
   margin: 0 auto !important;
@@ -2733,7 +2748,7 @@ aside.menu {
 
 .left_admin .menu-list a {
   color: #CBC2F6;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 .left_admin .menu-list a:hover {
@@ -2761,7 +2776,7 @@ p.menu-label {
 }
 
 p.menu-label a {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: white;
 }
 
@@ -2830,7 +2845,7 @@ td.unvalid {
   min-height: 1px;
   overflow: auto;
   position: absolute;
-  background: white;
+  background-color: #fff;
   min-width: 33rem;
   border-radius: 0 0 25px 25px;
 }

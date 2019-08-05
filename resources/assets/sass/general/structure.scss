@@ -24,7 +24,7 @@ table.times th {
   padding-top: 3.5rem;
   z-index: 1;
   padding-left: 2rem;
-  background: white;
+  @apply bg-white;
   -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
@@ -36,7 +36,7 @@ table.times th {
 .column.steps {
   z-index: 1;
   margin-top: 2rem;
-  background: white;
+  @apply bg-white;
   -webkit-box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3)
 }
