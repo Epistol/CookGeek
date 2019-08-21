@@ -2,9 +2,6 @@
   @apply min-h-screen w-full;
 }
 
-#topmenu {
-  @apply w-full;
-}
 
 .navbar {
   @apply w-full z-10 top-0;
@@ -29,12 +26,17 @@
   hyphens: auto;
 }
 
+span.font-brand {
+  @apply text-purple font-brand;
+
+}
+
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
-  color: $accentsecondary;
+  @apply text-pink;
 }
 
 .is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
-  color: $brand-primary;
+  @apply text-purple;
 }
 
 span.navbar-secondaire-item {
@@ -55,8 +57,7 @@ span.navbar-secondaire-item {
 
 .logo {
   font-family: $typotitle;
- @apply text-3xl;
-  color: $brand-primary;
+ @apply text-3xl text-purple;
   padding: 0.5rem 1rem;
   @include transition_all();
 
@@ -175,13 +176,13 @@ a.navbar-item, a.navbar-link {
   }
 
   &.bg-white {
-    color: $brand-primary;
+    @apply text-purple;
     @include small-laptop {
       color: white;
     }
   }
 
-  color: $brand-primary;
+  @apply text-purple;
 @apply text-lg;
   @include transition_all();
 
@@ -204,12 +205,12 @@ a.navbar-item, a.navbar-link {
   cursor: pointer;
 
   &:hover {
-    color: $brand-primary;
+    @apply text-purple;
   }
 }
 
 #first-navbar {
-  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20 bg-white;
+  @apply items-center  mx-auto justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20;
 }
 
 #logo-navbar {
@@ -217,7 +218,7 @@ a.navbar-item, a.navbar-link {
 }
 
 #navMenu {
-  @apply items-start justify-between flex-shrink-0 visible flex-auto h-20 flex-1 p-6;
+  @apply items-start justify-between flex-shrink-0 visible flex-auto h-20 flex-1 p-6 flex;
 }
 
 #iconsMenu {

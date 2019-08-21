@@ -6,12 +6,12 @@
         <ais-autocomplete>
             <div slot-scope="{ currentRefinement, indices, refine }">
                 <div class="field dropdown-item">
-                    <div class="control has-icons-left">
+                    <div class="control has-icons-left relative mr-6 my-2">
                         <input type="search" :value="currentRefinement" @input="refine($event.currentTarget.value)"
                                placeholder="Rechercher"
                                class="rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300
                                 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-                        <span class="icon is-left">
+                        <span class="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
             <i class="fa fa-search"></i>
           </span>
                         <ais-voice-search :search-as-you-speak="true"/>

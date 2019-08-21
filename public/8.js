@@ -110,13 +110,13 @@ var render = function() {
   return _c("on-click-outside", { attrs: { do: _vm.handleClickOutside } }, [
     _c(
       "div",
-      { staticClass: "relative w-48 mx-auto" },
+      { staticClass: "relative w-48 " },
       [
         _c(
           "button",
           {
             staticClass:
-              "w-full block text-purple rounded px-4 py-2\n                hover:bg-purple hover:text-white\n                focus:outline-0 cursor-pointer",
+              "w-full block text-purple rounded px-4\n                hover:bg-purple hover:text-white\n                focus:outline-0 cursor-pointer",
             attrs: { type: "button" },
             on: {
               click: function($event) {

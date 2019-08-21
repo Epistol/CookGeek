@@ -100,7 +100,9 @@ var render = function() {
                 _c("div", { staticClass: "field dropdown-item" }, [
                   _c(
                     "div",
-                    { staticClass: "control has-icons-left" },
+                    {
+                      staticClass: "control has-icons-left relative mr-6 my-2"
+                    },
                     [
                       _c("input", {
                         staticClass:
@@ -114,9 +116,14 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("span", { staticClass: "icon is-left" }, [
-                        _c("i", { staticClass: "fa fa-search" })
-                      ]),
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "absolute pin-r pin-t mt-3 mr-4 text-purple-lighter"
+                        },
+                        [_c("i", { staticClass: "fa fa-search" })]
+                      ),
                       _vm._v(" "),
                       _c("ais-voice-search", {
                         attrs: { "search-as-you-speak": true }

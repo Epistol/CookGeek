@@ -4,7 +4,7 @@
     <div v-cloak>
         <div id="bodyWebsite">
             @include("layouts.menu")
-            <div class="container mt-20 mx-auto">
+            <div class="container mt-40 mx-auto">
                 @include('layouts.app_element.alerts')
                 @yield('content')
             </div>

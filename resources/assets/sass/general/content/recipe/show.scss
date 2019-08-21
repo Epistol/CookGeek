@@ -55,7 +55,7 @@ span.logo-beta {
 }
 
 .dollar {
-  color: $accentsecondary;
+  @apply text-pink;
   font-weight: bold;
   @apply text-xl;
 }
@@ -136,7 +136,7 @@ span.logo-beta {
 
 .step .column.is-1 {
   @apply text-lg;
-  color: $brand-primary;
+  @apply text-purple;
   
   &::after {
 	content: " ";
@@ -165,7 +165,7 @@ span.logo-beta {
 }
 
 .is_big {
-  color: $brand-primary;
+  @apply text-purple;
   @apply text-lg font-normal;
   font-weight: 400;
 }

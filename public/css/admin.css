@@ -158,7 +158,7 @@ h2.title {
 
 h1.title-website {
   font-family: "Conviction", Arial, serif;
-  color: #7F5FBF;
+  color: #7f5fbf;
   font-weight: normal;
   font-size: 2.25rem;
 }
@@ -172,7 +172,7 @@ h2.title-mini {
   font-family: "AvenirMedium", serif;
   font-weight: 500;
   font-size: 1.125rem;
-  color: #7F5FBF;
+  color: #7f5fbf;
   padding: 0.5rem;
 }
 
@@ -540,7 +540,7 @@ a.tag.like:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #7F5FBF;
+  color: #7f5fbf;
   padding-top: 0.7rem;
   padding-bottom: 0.2rem;
 }
@@ -562,7 +562,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .is-brand {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 .container .navbar-brand {
@@ -1011,10 +1011,6 @@ img.tovalidate {
   width: 100%;
 }
 
-#topmenu {
-  width: 100%;
-}
-
 .navbar {
   width: 100%;
   z-index: 10;
@@ -1041,12 +1037,17 @@ img.tovalidate {
           hyphens: auto;
 }
 
+span.font-brand {
+  color: #7f5fbf;
+  font-family: Conviction, sans-serif;
+}
+
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
   color: #fa5c86;
 }
 
 .is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 span.navbar-secondaire-item {
@@ -1068,7 +1069,7 @@ span.navbar-secondaire-item {
 .logo {
   font-family: "Conviction", Tahoma, Geneva, sans-serif;
   font-size: 1.875rem;
-  color: #7F5FBF;
+  color: #7f5fbf;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
 }
@@ -1186,7 +1187,7 @@ span.navbar-secondaire-item {
 }
 
 a.navbar-item, a.navbar-link {
-  color: #7F5FBF;
+  color: #7f5fbf;
   font-size: 1.125rem;
   transition: all 0.3s ease-in-out;
 }
@@ -1204,7 +1205,7 @@ a.navbar-item, a.navbar-link {
 }
 
 a.navbar-item.bg-white, a.navbar-link.bg-white {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -1230,11 +1231,13 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
 }
 
 .header-search-button:hover {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 #first-navbar {
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
@@ -1242,7 +1245,6 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   visibility: visible;
   width: 100%;
   height: 5rem;
-  background-color: #fff;
 }
 
 #logo-navbar {
@@ -1263,6 +1265,7 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   height: 5rem;
   flex: 1 1 0%;
   padding: 1.5rem;
+  display: flex;
 }
 
 #iconsMenu {
@@ -1687,10 +1690,6 @@ footer.footer {
   width: 100%;
 }
 
-#topmenu {
-  width: 100%;
-}
-
 .navbar {
   width: 100%;
   z-index: 10;
@@ -1717,12 +1716,17 @@ footer.footer {
           hyphens: auto;
 }
 
+span.font-brand {
+  color: #7f5fbf;
+  font-family: Conviction, sans-serif;
+}
+
 a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
   color: #fa5c86;
 }
 
 .is-hoverable:hover .navbar-dropdown a.navbar-item:hover {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 span.navbar-secondaire-item {
@@ -1744,7 +1748,7 @@ span.navbar-secondaire-item {
 .logo {
   font-family: "Conviction", Tahoma, Geneva, sans-serif;
   font-size: 1.875rem;
-  color: #7F5FBF;
+  color: #7f5fbf;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
 }
@@ -1862,7 +1866,7 @@ span.navbar-secondaire-item {
 }
 
 a.navbar-item, a.navbar-link {
-  color: #7F5FBF;
+  color: #7f5fbf;
   font-size: 1.125rem;
   transition: all 0.3s ease-in-out;
 }
@@ -1880,7 +1884,7 @@ a.navbar-item, a.navbar-link {
 }
 
 a.navbar-item.bg-white, a.navbar-link.bg-white {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -1906,11 +1910,13 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
 }
 
 .header-search-button:hover {
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 #first-navbar {
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
@@ -1918,7 +1924,6 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   visibility: visible;
   width: 100%;
   height: 5rem;
-  background-color: #fff;
 }
 
 #logo-navbar {
@@ -1939,6 +1944,7 @@ a.navbar-item.bg-white, a.navbar-link.bg-white {
   height: 5rem;
   flex: 1 1 0%;
   padding: 1.5rem;
+  display: flex;
 }
 
 #iconsMenu {
@@ -2344,7 +2350,7 @@ span.logo-beta {
 
 .step .column.is-1 {
   font-size: 1.125rem;
-  color: #7F5FBF;
+  color: #7f5fbf;
 }
 
 .step .column.is-1::after {
@@ -2367,7 +2373,7 @@ span.logo-beta {
 }
 
 .is_big {
-  color: #7F5FBF;
+  color: #7f5fbf;
   font-size: 1.125rem;
   font-weight: 400;
   font-weight: 400;
@@ -2803,7 +2809,7 @@ ul.menu-list {
 
 p.menu-label {
   transition: all 0.3s ease-in-out;
-  color: #7F5FBF;
+  color: #7f5fbf;
   align-items: center;
   /* &:hover {
      @include transition_all();

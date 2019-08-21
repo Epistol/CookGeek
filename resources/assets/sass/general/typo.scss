@@ -123,11 +123,11 @@ h6, h6.title {
 }
 
 .content h1, h1.title {
-  color: $accentsecondary;
+  @apply text-pink;
 }
 
 h2.title {
-  color: $accentsecondary;
+  @apply text-pink;
 }
 
 .category-split {
@@ -147,7 +147,7 @@ h2.title {
 
 h1.title-website {
   font-family: "Conviction", Arial, serif;
-  color: $brand-primary;
+  @apply text-purple;
   font-weight: normal;
   @apply text-4xl;
 }
@@ -161,7 +161,7 @@ h2.title-mini {
   font-family: 'AvenirMedium', serif;
   font-weight: 500;
   @apply text-lg;
-  color: $brand-primary;
+  @apply text-purple;
   padding: 0.5rem;
 }
 
