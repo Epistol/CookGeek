@@ -111,14 +111,13 @@ class RecipeController extends Controller
      */
     public function show($slug)
     {
-        if (Gate::denies('view', Recipe::class)) {
-            return redirect(route('recipe.index'));
-        }
-
         $recipe = Recipe::where('slug', $slug)
             ->with(['universes', 'types', 'typeuniverse'])
             ->firstOrFail();
 
+        if (Gate::denies('view', $recipe)) {
+            return redirect(route('recipe.index'));
+        }
         $type = TypeRecipe::where('id', $recipe->type)->first();
         $pictureSet = $recipe->medias()->get();
         if ($pictureSet->isNotEmpty()) {

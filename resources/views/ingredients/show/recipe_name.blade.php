@@ -10,14 +10,14 @@
             $type = DB::table('type_recipes')->where('id', $recipe->type)->first();
             ?>
             {{--Séparation en deux du nombre de colonne--}}
-            <div class="flex-1 is-6">
+            <div class="flex-1 w-6/12">
                 {{--Une recette--}}
                 <div class="flex mb-4 is-paddingless m-0 is-result is-flex">
                     <div class="recipe-category">
                         @include("recipes.show.type_univers_no_tool")
                     </div>
                     {{--L'image--}}
-                    <div class="flex-1 is-5 to-hover m-0 is-paddingless">
+                    <div class="flex-1 w-5/12 to-hover m-0 is-paddingless">
                         @if(isset($type))
                             <div class="bottom-right-aligned">
                                 <div class="hovered">

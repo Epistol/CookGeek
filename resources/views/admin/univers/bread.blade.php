@@ -2,7 +2,7 @@
 
 
     <div class="flex mb-4">
-        <div class="flex-1 is-4">
+        <div class="flex-1 w-4/12">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="/">Accueil</a></li>

@@ -17,6 +17,8 @@ module.exports = {
                 cyan: '#9cdbff',
                 fog: '#ebeaf5',
                 purple: '#7f5fbf',
+                purpleclear : '#9c83ce',
+                lightpurple : '#cbc2f6',
                 pink: '#fa5c86'
             },
             minHeight: {
@@ -71,5 +73,11 @@ module.exports = {
                 '64': '16rem',
             }
         }
-    }
+    },
+    variants: {
+        backgroundColor: ['responsive', 'hover', 'focus' , 'group-hover', 'active'],
+        textColor: ['responsive', 'hover', 'focus' , 'group-hover', 'active'],
+        appearance: ['responsive', 'hover', 'focus' , 'group-hover', 'active'],
+        visibility: ['responsive', 'hover', 'focus' , 'group-hover', 'active'],
+    },
 }

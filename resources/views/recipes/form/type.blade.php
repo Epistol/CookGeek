@@ -1,7 +1,7 @@
 <div class="field">
     <div class="control type-selector cc-selector">
         <div class="field-label" style="text-align: left;padding-bottom: 2rem;">
-            <label class="title is-4">@lang('common.media')</label>
+            <label class="title w-4/12">@lang('common.media')</label>
         </div>
 
         <div class="flex mb-4 is-multiline">

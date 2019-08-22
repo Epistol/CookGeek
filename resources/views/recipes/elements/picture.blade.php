@@ -11,7 +11,7 @@
                 <clazy-load
                         src="{{$recipe->getBestPicture()->first()->getUrl('thumbSquare')}}">
                     <!-- The image slot renders after the image loads. -->
-                    <img class="fit-cover image is-64x64"
+                    <img class="fit-cover image w-6/124x64"
                          src="{{$recipe->getBestPicture()->first()->getUrl('thumbSquare')}}"
                          alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
 

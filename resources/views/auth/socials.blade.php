@@ -1,5 +1,5 @@
-<div class="flex mb-4 is-multiline">
-    <div class="flex-1 is-6 is-flex-center">
+<div class="mb-4 flex justify-center items-center ">
+    <div class="  ">
         <a href="{{ route('login.provider', 'google') }}"
            class="">
             <div class="g-signin2">
@@ -7,26 +7,20 @@
             </div>
         </a>
     </div>
-    <div class="flex-1 is-6 is-flex-center">
-        <a href="{{ route('login.provider', 'facebook') }}" class="button facebook">
-                                        <span class="icon">
-<i class="fab fa-facebook-f"></i>
-    </span>
-            Facebook</a>
+    <div class="rounded-full border-gray-300 border-solid border flex justify-center items-center mx-4">
+        <a href="{{ route('login.provider', 'facebook') }}" class="button is-round">
+    <i class="fab fa-facebook-f"></i>
+        </a>
     </div>
-    <div class="flex-1 is-6 is-flex-center">
-        <a href="{{ route('login.provider', 'twitter') }}" class="button twitter">
-                                        <span class="icon">
+    <div class="rounded-full border-gray-300 border-solid border flex justify-center items-center mx-4">
+        <a href="{{ route('login.provider', 'twitter') }}" class="button is-round">
     <i class="fab fa-twitter"></i>
-    </span>
-            Twitter</a>
+            </a>
     </div>
-    <div class="flex-1 is-6 is-flex-center">
-        <a href="{{ route('login.provider', 'instagram') }}" class="button">
-                                        <span class="icon">
+    <div class="rounded-full border-gray-300 border-solid border flex justify-center items-center mx-4">
+        <a href="{{ route('login.provider', 'instagram') }}" class="button is-round">
     <i class="fab fa-instagram"></i>
-    </span>
-            Instagram</a>
+            </a>
     </div>
 </div>
 

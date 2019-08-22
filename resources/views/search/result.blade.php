@@ -5,7 +5,7 @@
     <div class="container">
         <section class="section searchresult">
             <div class="flex mb-4 is-paddingless m-0 ">
-                {{--  <div class="flex-1 is-8 is-offset-2">
+                {{--  <div class="flex-1 w-8/12 is-offset-2">
 
                   </div>--}}
                 <div class="flex-1">
@@ -30,7 +30,7 @@
         <section class="section ">
 
             <div class="flex mb-4" id="results">
-                <div class="flex-1 is-7 searchresult">
+                <div class="flex-1 w-7/12 searchresult">
                     @if($result['recipe']->count() > 0)
                         @include("search.elements.recipe_name")
                     @else
@@ -41,7 +41,7 @@
 
                     @endif
                 </div>
-                <div class="flex-1 is-4 is-offset-1 searchresult">
+                <div class="flex-1 w-4/12 is-offset-1 searchresult">
                     <div class="">
                         {{--Medaillons--}}
                         <h2 class="title">Médias :</h2>

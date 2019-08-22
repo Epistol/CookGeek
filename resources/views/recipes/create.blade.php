@@ -21,7 +21,7 @@
                     <div class="flex-1  recipe-right-add ">
                         {{--Titre recette--}}
                         <div class="flex mb-4">
-                            <div class="flex-1 is-12">
+                            <div class="flex-1 w-full">
                                 @include("recipes.form.titre")
                                 @include("recipes.form.univers")
                                 @include("recipes.form.ingredients")
@@ -31,18 +31,18 @@
                         </div>
 
                     </div>
-                    <div class="flex-1  is-paddingless page is-4">
+                    <div class="flex-1  is-paddingless page w-4/12">
                         <div class="padding-sides">
                             @include('recipes.form.image')
                             <div class="flex mb-4">
-                                <div class="flex-1 is-10 is-offset-1">
+                                <div class="flex-1 w-10/12 is-offset-1">
                                     @include("recipes.form.difficulty")
                                     @include("recipes.form.categorie")
                                     @include("recipes.form.cost")
                                 </div>
                             </div>
                           <div class="flex mb-4 timing">
-                                <div class="flex-1 is-10 is-offset-1 ">
+                                <div class="flex-1 w-10/12 is-offset-1 ">
                                     @include("recipes.form.timing.tps_preparation")
                                     @include("recipes.form.timing.tps_cuisson")
                                     @include("recipes.form.timing.tps_repos")
@@ -55,7 +55,7 @@
                 </div>
                 <section class="section page">
                     <div class="flex mb-4">
-                        <div class="flex-1 is-4"> @include("recipes.form.comment")
+                        <div class="flex-1 w-4/12"> @include("recipes.form.comment")
                             @include("recipes.form.video")
                         </div>
                         <div class="flex-1">  @include("recipes.form.type")

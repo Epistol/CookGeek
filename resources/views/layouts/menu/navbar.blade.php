@@ -62,9 +62,9 @@
         </form>
     </div>
 </div>
-<div class="">
+<div class="flex">
     @guest
-        <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4">
+        <div class=" mt-4 flex lg:mt-0 text-purple hover:text-pink mr-4 items-center" >
             <a class="button is-primary" href="{{ route('login') }}">
                             <span class="icon is-small">
                             <i class="far fa-user-circle"></i>
@@ -79,14 +79,14 @@
             <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 user_profile">
                 <div class="user_picture rounded-full w-8 h-8">
                     @if(Auth::user()->avatarUser !== '')
-                        <figure class="image is-48x48">
+                        <figure class="image w-12">
                             <img class="rounded-full test"
                                  alt="Avatar"
                                  src="{{cleanInput(Auth::user()->avatarUser)}}"
                                  style="height: 100%;width: 100%;">
                         </figure>
                     @else
-                        <figure class="image is-48x48">
+                        <figure class="image w-12">
                             <img class="rounded-full"
                                  src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
                         </figure>

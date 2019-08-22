@@ -19,7 +19,7 @@
 
     @include('notifications')
 
-    <div class="recipeAddBg">
+    <div class="pt-4">
         <div class="container">
             @include("recipes.show.breadcrumb")
             <div class="flex mb-4 shadowbox m-0">
@@ -58,7 +58,7 @@
                     <div class="page--no-pading">
                         <div class="container">
                             <div class="flex mb-4 m-0">
-                                <div class="flex-1 is-9" style="padding: 2.5rem;">
+                                <div class="flex-1 w-9/12" style="padding: 2.5rem;">
                                     @include("recipes.show.comment")
                                     @include("recipes.show.steps")
                                     @include("recipes.show.video")
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <aside class="flex-1 is-3 list-h-show ">
+                                <aside class="w-1/4 list-h-show ">
                                     @include('recipes.show.fiche_droite')
                                 </aside>
                             </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
 
 @section('content')
-    <div class="recipeaddbg">
+    <div class="pt-4">
         <div class="container">
             <section class="section blockcontent">
 

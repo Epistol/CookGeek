@@ -46,7 +46,7 @@ $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
         <h4 class="title">Timing</h4>
         @if($recipe->prep_time && $recipe->prep_time > 0)
             <div class="flex mb-4">
-                <div class="flex-1 is-1">
+                <div class="flex-1 w-1/12">
                     <p><i aria-hidden="true" class="fas fa-utensils"></i>
                     </p>
                 </div>
@@ -57,7 +57,7 @@ $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
         @endif
         @if($recipe->cook_time && $recipe->cook_time > 0)
             <div class="flex mb-4">
-                <div class="flex-1 is-1">
+                <div class="flex-1 w-1/12">
                     <p><i aria-hidden="true" class="fas fa-thermometer-three-quarters"></i>
                     </p>
                 </div>
@@ -68,7 +68,7 @@ $somme_t = $recipe->prep_time + $recipe->cook_time + $recipe->rest_time;
         @endif
         @if($recipe->rest_time && $recipe->rest_time > 0)
             <div class="flex mb-4">
-                <div class="flex-1 is-1">
+                <div class="flex-1 w-1/12">
                     <p><i aria-hidden="true" class="far fa-clock"></i>
                     </p>
                 </div>

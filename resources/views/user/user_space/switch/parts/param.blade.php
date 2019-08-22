@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 is-4">
+        <div class="flex-1 w-4/12">
             @include("user.user_space.switch.parts.informations.avatar")
         </div>
     </div>

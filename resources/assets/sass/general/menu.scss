@@ -20,12 +20,6 @@
   }
 }
 
-#checkbutton {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
 span.font-brand {
   @apply text-purple font-brand;
 
@@ -40,12 +34,11 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 }
 
 span.navbar-secondaire-item {
-  padding-left: 1rem;
+  @apply hidden pl-4 text-purple;
 
   @screen sm {
-    display: none;
+    @apply flex;
   }
-
 }
 
 .nav-item-centered {
@@ -53,7 +46,13 @@ span.navbar-secondaire-item {
   flex-direction: column;
   justify-content: center;
 }
+.navbar-start {
+  @apply justify-start mr-auto flex items-stretch;
+}
 
+.navbar-end {
+  @apply justify-end ml-auto flex items-stretch;
+}
 
 .logo {
   font-family: $typotitle;
@@ -208,21 +207,23 @@ a.navbar-item, a.navbar-link {
     @apply text-purple;
   }
 }
-
+a.navbar-item, a.navbar-link {
+  @apply text-purple;
+}
 #first-navbar {
-  @apply items-center  mx-auto justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20;
+  @apply items-center  mx-auto justify-between flex flex-wrap flex-shrink-0 visible w-full ;
 }
 
 #logo-navbar {
-  @apply flex items-center flex-shrink-0 text-white mr-6 h-20 ;
+  @apply flex items-center flex-shrink-0 text-white mr-6 ;
 }
 
 #navMenu {
-  @apply items-start justify-between flex-shrink-0 visible flex-auto h-20 flex-1 p-6 flex;
+  @apply items-start justify-between flex-shrink-0 visible flex-auto items-center flex-1 flex;
 }
 
 #iconsMenu {
-  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  h-20 bg-fog;
+  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full bg-fog;
 }
 #navIcons {
   @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  ;
@@ -260,6 +261,9 @@ a.navbar-item, a.navbar-link {
   box-shadow: 0 4px 10px 0 $brand-primary;
 }
 
+.navbar-item {
+  @apply flex py-2 px-3;
+}
 
 .menu-user {
   padding-top: 33%;

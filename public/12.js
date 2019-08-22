@@ -106,7 +106,7 @@ var render = function() {
                     [
                       _c("input", {
                         staticClass:
-                          "rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300\n                                rounded-lg py-2 px-4 block w-full appearance-none leading-normal",
+                          "rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300\n                                rounded-lg py-2 px-4 pr-10 block w-full appearance-none leading-normal relative",
                         attrs: { type: "search", placeholder: "Rechercher" },
                         domProps: { value: currentRefinement },
                         on: {
@@ -120,7 +120,7 @@ var render = function() {
                         "span",
                         {
                           staticClass:
-                            "absolute pin-r pin-t mt-3 mr-4 text-purple-lighter"
+                            "pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-purple-lighter"
                         },
                         [_c("i", { staticClass: "fa fa-search" })]
                       ),

@@ -3,7 +3,7 @@
     <div slot="body">
 
         <div class="flex mb-4">
-            <div class="flex-1 is-5 is-paddingless">
+            <div class="flex-1 w-5/12 is-paddingless">
                 <div class="left-register">
                     <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                 </div>
@@ -13,7 +13,7 @@
 
                 <div class="blockcontent">
                     <div class="flex mb-4">
-                        <div class="flex-1 is-three-quarters is-offset-1">
+                        <div class="flex-1 w-3/4 is-offset-1">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
 

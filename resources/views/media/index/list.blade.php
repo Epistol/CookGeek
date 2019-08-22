@@ -1,7 +1,7 @@
 <section class=" bordered-cdg">
     <div class="flex mb-4 is-multiline">
         @foreach($medias as $index=>$media)
-            <div class="flex-1 is-2">
+            <div class="flex-1 w-2/12">
                 <a class="" style="margin-left: 1rem"
                    href="{{route('media.show', $media->name)}}">
                     <figure class="image">

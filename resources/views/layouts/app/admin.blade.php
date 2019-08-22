@@ -85,7 +85,7 @@
         @include("layouts.menu")
         @include('layouts.app_element.alerts')
         <div class="flex mb-4 is-paddingless m-0 full-height" id="bodySite">
-            <div class="flex-1 is-2 left_admin">
+            <div class="flex-1 w-2/12 left_admin">
                 {{--               Left menu admin--}}
                 @include("admin.elements.admin_menu")
             </div>

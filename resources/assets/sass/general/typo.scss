@@ -1,8 +1,14 @@
 a {
-  color: $lavender;
-  cursor: pointer;
-  text-decoration: none;
+  @apply cursor-pointer no-underline text-purpleclear;
 }
+
+.label {
+  color: #363636;
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
@@ -167,7 +173,7 @@ h2.title-mini {
 
 span.ingredient-title {
   font-weight: 900;
-@apply text-base;
+  @apply text-base;
   text-align: left;
   color: #fe688e;
   text-transform: uppercase;

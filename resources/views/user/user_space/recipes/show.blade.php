@@ -7,7 +7,7 @@
                 <div class="flex-1 " id="left_column">
                     @include('user.parts.menu')
                 </div>
-                <div class="flex-1 is-three-quarters ">
+                <div class="flex-1 w-3/4 ">
                     <div class="blockcontent" id="recipes_created">
                         <h2 class="title">
                             @lang('common.my_recipes')

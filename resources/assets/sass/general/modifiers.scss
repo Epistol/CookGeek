@@ -100,3 +100,14 @@ section.conduite {
   border-top: 1px solid #dbdbdb;
   background: #ebeaf5;
 }
+
+.break-more {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.has-text-centered {
+  display:flex;justify-content:center;align-items:center;
+}
+

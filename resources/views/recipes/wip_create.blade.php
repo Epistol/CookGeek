@@ -5,7 +5,7 @@
     <div class="container recipe-add">
         <section class="section">
             <div class="flex mb-4">
-                <div class="flex-1 is-10 is-offset-1">
+                <div class="flex-1 w-10/12 is-offset-1">
                     <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                           action="{{ route('recipe.store') }}">
                         @csrf

@@ -5,7 +5,7 @@
 
         <div class="container">
             <div class="flex mb-4">
-                <div class="flex-1 is-5 is-paddingless">
+                <div class="flex-1 w-2/3 is-paddingless">
                     <div class="left-register">
                         <img src="/img/chat_mascotte.png" alt="" class="chat-hover">
                     </div>

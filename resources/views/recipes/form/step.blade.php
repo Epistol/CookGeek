@@ -1,5 +1,5 @@
 <section class="ingredients">
-    <h2 class="title is-4">Etapes</h2>
+    <h2 class="title w-4/12">Etapes</h2>
 
     @if(Route::is('*.create'))
         <stepsadd></stepsadd>

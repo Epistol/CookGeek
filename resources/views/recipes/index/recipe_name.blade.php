@@ -5,7 +5,7 @@
         $starsget = (new \App\Search)->explode_star($recipe->id);
         ?>
         {{--Séparation en deux du nombre de colonne--}}
-        <div class="flex-1 is-6">
+        <div class="flex-1 w-6/12">
             {{--Une recette--}}
             <div class="flex mb-4 is-paddingless m-0 is-result is-flex">
                 @if($recipe->universes->count() > 0)
@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 {{--L'image--}}
-                <div class="flex-1 is-5 to-hover m-0 is-paddingless">
+                <div class="flex-1 w-5/12 to-hover m-0 is-paddingless">
                     <div class="bottom-right-aligned">
                         <div class="hovered">
                             <a class="tag" style="margin:0.5rem"

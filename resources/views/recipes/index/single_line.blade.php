@@ -2,7 +2,7 @@
     <td>{{$recipe->title}}</td>
     <td>
         <a href="{{route('recipe.show', $recipe->slug)}}">
-            <figure class="image is-96x96	">
+            <figure class="image w-9/126x96	">
 {{--                @if($img == null or empty($img))
                     <img src="http://via.placeholder.com/300x200?text={{$recipe->title}}" class="fit-cover"
                          alt="{{$recipe->title}} / CDG">

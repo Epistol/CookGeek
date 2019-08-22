@@ -18,7 +18,7 @@
     <div class="card-content recipe-index">
         <div class="media">
             <div class="media-content is-centered">
-                <p class="title is-4">
+                <p class="title w-4/12">
                     <a href="{{route('recipe.show', $recipes[$i]->slug)}}"> {{$recipes[$i]->title}}</a></p>
             </div>
         </div>

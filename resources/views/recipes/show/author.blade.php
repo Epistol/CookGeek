@@ -2,12 +2,12 @@
     <div class="is-flex">
         {{--Avatar--}}
         @if($recipe->getAuthorElement('img') !== null)
-            <figure class="image is-48x48">
+            <figure class="image w-12">
                 <img src="{{$recipe->getAuthorElement('img')}}" class="rounded-full"
                      alt="Avatar user {{$recipe->getAuthorElement('name')}}"
                      style="height: 100%; width: 100%;"></figure>
         @else
-            <figure class="image is-48x48">
+            <figure class="image w-12">
                 <img src="https://api.adorable.io/avatars/64/{{$recipe->getAuthorElement('name')}}"
                      class="rounded-full"
                      alt="Avatar utilisateur : {{$recipe->getAuthorElement('name')}}"

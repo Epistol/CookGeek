@@ -8,7 +8,7 @@
                     class="fit-cover"
                     alt="{{ __('Image of the recipe :') . cleanInput($recipe->title) }}">
             <img src="{{ $validPicture->getUrl('thumb') }}"
-                 class="fit-cover image is-64x64"
+                 class="fit-cover image w-6/124x64"
                  alt="{{  __('Image of the recipe :') . cleanInput($recipe->title) }}">
         </picture>
     </figure>

@@ -13,7 +13,7 @@
         <div class="flex mb-4 is-multiline">
 
             @foreach($recipes as $nombre => $recipe)
-                <div class="flex-1 is-4">
+                <div class="flex-1 w-4/12">
                     <div class="card card-cdg">
                         <div id="medaillon_index">
                             @include('recipes.show.media')
@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="recipe-index-description " id="checkbutton">
+                    <div class="recipe-index-description break-more" id="checkbutton">
                         <p class="card-header-title">
                             <a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}"
                                class="home-text">
@@ -32,14 +32,14 @@
                             </a>
                         </p>
                         <div class="flex mb-4 is-paddingless m-0 mini-infos">
-                            <div class="flex-1 is-4 is-flex-center"><i class="fas fa-clock"
+                            <div class="flex-1 w-4/12 is-flex-center"><i class="fas fa-clock"
                                                                        style="margin-right:0.5rem"></i><span>{{ $recipe->timeFormat }}</span>
                             </div>
-                            <div class="flex-1 is-2 is-flex-center">
+                            <div class="flex-1 w-2/12 is-flex-center">
                                 <span>{{ $recipe-> nb_guests ?: 1 }}</span>{{-- {{ $recipe->guest_type ?: "personnes"}}--}}
                                 <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
                             </div>
-                            <div id="bottom_right_content" class="flex-1 is-6 is-flex is-paddingless">
+                            <div id="bottom_right_content" class="flex-1 w-6/12 is-flex is-paddingless">
                                 {{--Nom de l'univers--}}
                                 @if($recipe->universes->count() > 0)
                                     @foreach($recipe->universes as $universe)

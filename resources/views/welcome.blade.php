@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="flex mb-4">
-            <div class="flex-1 is-12">
+            <div class="flex-1 w-full">
                 <div class="blockcontent is-paddingless">
                     <div class="is-flex-center">
                         <h1 class="title-website"><?= env('APP_LONG_NAME');?></h1>

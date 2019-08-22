@@ -1,7 +1,7 @@
 @extends('layouts.app.app')
 
 @section('content')
-    <div class="recipeaddbg">
+    <div class="pt-4">
         <div class="container">
             <header class="">
                 <div class="background-round">
@@ -13,7 +13,7 @@
                     <section class="section blockcontent">
                         <div class="flex mb-4 is-multiline">
                             @foreach($recipes as $i=>$recipe)
-                                <div class="flex-1 is-2">
+                                <div class="flex-1 w-2/12">
                                     <div class="card cdg">
                                         <div class="card-image"><a href="{{route('recipe.show', $recipe->slug)}}">
                                                 @include('recipes.elements.picture')
@@ -24,7 +24,7 @@
                                         <div class="card-content recipe-index">
                                             <div class="media">
                                                 <div class="media-content is-centered">
-                                                    <p class="title is-4"><a
+                                                    <p class="title w-4/12"><a
                                                                 href="{{route('recipe.show', $recipe->slug)}}"> {{$recipe->title}}</a>
                                                     </p>
                                                 </div>

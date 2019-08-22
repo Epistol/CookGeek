@@ -3,12 +3,12 @@
 @section('content')
 
     <div class="flex mb-4">
-        <div class="flex-1 is-1 is-offset-2">
+        <div class="flex-1 w-1/12 is-offset-2">
             <div class="err404">
                 <span class="404">            </span>
             </div>
         </div>
-        <div class="flex-1 is-2 ">
+        <div class="flex-1 w-2/12 ">
             <div class="err404">
                 <p id="sorry">
                     @guest
@@ -19,7 +19,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex-1 is-3 ">
+        <div class="flex-1 w-3/12 ">
             <div class="err404">
                 <p>
                     I’m afraid I can’t do that.

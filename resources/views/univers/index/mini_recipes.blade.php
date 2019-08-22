@@ -1,11 +1,11 @@
 <div class="flex-1 radiused">
     <div class="flex mb-4 is-multiline">
 
-        <div class="flex-1 is-3">
+        <div class="flex-1 w-3/12">
             @foreach($recipes as $recipe)
                 <div class="is-flex">
                     <?php   $img = $pictureService->loadRecipePicturesValid($recipe); ?>
-                    <figure class="image is-64x64 radiused">
+                    <figure class="image w-6/124x64 radiused">
 
                         @if($img == null or empty($img) or $img->isEmpty())
                             <img class="fit-cover"

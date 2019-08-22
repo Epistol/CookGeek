@@ -9,3 +9,18 @@
     background: $red;
   }
 }
+
+.field {
+  margin-bottom: .75rem;
+}
+
+.input, .textarea, input, textarea {
+  @apply rounded p-1 px-3 items-center;
+  background-color: #fff;
+  border-color: #dbdbdb;
+  color: #363636;
+  -webkit-box-shadow: inset 0 1px 2px hsla(0, 0%, 4%, .1);
+  box-shadow: inset 0 1px 2px hsla(0, 0%, 4%, .1);
+  max-width: 100%;
+  width: 100%;
+}

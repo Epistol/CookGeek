@@ -36,7 +36,7 @@
                             @endphp
 
                             {{--Nom de l'univers--}}
-                            <li class="flex-1 is-2" style="margin: 1%;">
+                            <li class="flex-1 w-2/12" style="margin: 1%;">
                                 <div class="card">
                                     @if(strip_tags(clean($univers_data->name)))
                                     <header class="card-header">

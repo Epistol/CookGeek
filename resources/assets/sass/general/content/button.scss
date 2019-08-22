@@ -33,3 +33,17 @@
   position: absolute;
   z-index:0;
 }
+
+.button {
+  @apply rounded p-1 px-3 items-center;
+
+  &.is-round {
+    @apply w-8 h-8 p-1 px-1;
+    display:flex;justify-content:center;align-items:center;
+  }
+  &.is-primary {
+    @apply bg-purple text-white;
+    border-color: transparent;
+  }
+}
+

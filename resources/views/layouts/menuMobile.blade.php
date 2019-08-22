@@ -1,16 +1,16 @@
 <div class="is-fixed-bottom sm:hidden md:hidden lg:hidden">
     <nav class="navbar mobile-bottom-menu" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item bg-white" href="{{ route('home') }}">
+            <a class="navbar-item " href="{{ route('home') }}">
                 <i class="fas fa-home"></i>
             </a>
-            <a class="navbar-item bg-white" href="{{ route('recipe.index') }}">
+            <a class="navbar-item " href="{{ route('recipe.index') }}">
                 <i class="fas fa-utensils"></i>
             </a>
-            <a class="navbar-item bg-white" href="{{ route('recipe.index') }}">
+            <a class="navbar-item " href="{{ route('recipe.index') }}">
                 <i class="far fa-treasure-chest"></i>
             </a>
-            <a class="navbar-item bg-white" href="{{route('page.shop')}}">
+            <a class="navbar-item " href="{{route('page.shop')}}">
                 <i class="fas fa-shopping-cart"></i>
             </a>
             @auth

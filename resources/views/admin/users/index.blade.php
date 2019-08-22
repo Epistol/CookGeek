@@ -7,20 +7,20 @@
             <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
-                        <span class="title is-5">Total utilisateurs</span>
+                        <span class="title w-5/12">Total utilisateurs</span>
                         <br />
-                        <span class="title is-2">{{$users->count()}}</span>
+                        <span class="title w-2/12">{{$users->count()}}</span>
                     </div>
                 </div>
             </div>
             <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
-                        <span class="title is-5">Nouveaux utilisateurs (ce mois-ci)</span>
+                        <span class="title w-5/12">Nouveaux utilisateurs (ce mois-ci)</span>
 {{--                        <br />--}}
-{{--                        <span class="subtitle is-12">(durant le mois en cours)</span>--}}
+{{--                        <span class="subtitle w-full">(durant le mois en cours)</span>--}}
                         <br />
-                        <span class="title is-2">{{$users->where('created_at', '>=',
+                        <span class="title w-2/12">{{$users->where('created_at', '>=',
                          Carbon\Carbon::now()->subMonth()->format('d/m/Y'))->count()}}</span>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
             <div class="flex-1">
                 <div class="card">
                     <div class="card-content">
-                        <span class="title is-5">Utilisateurs actifs</span>
+                        <span class="title w-5/12">Utilisateurs actifs</span>
 <!--                        --><?php //dd($users);?>
 {{--                        <line-chart :chartdata="{{$users}}"></line-chart>--}}
                     </div>

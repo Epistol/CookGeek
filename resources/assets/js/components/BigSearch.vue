@@ -10,8 +10,8 @@
                         <input type="search" :value="currentRefinement" @input="refine($event.currentTarget.value)"
                                placeholder="Rechercher"
                                class="rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300
-                                rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-                        <span class="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
+                                rounded-lg py-2 px-4 pr-10 block w-full appearance-none leading-normal relative">
+                        <span class="pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-purple-lighter">
             <i class="fa fa-search"></i>
           </span>
                         <ais-voice-search :search-as-you-speak="true"/>

@@ -4,14 +4,14 @@
         <div class="is-flex-center">
             {{--Avatar--}}
                 @if($recipe->user->img !== '')
-                    <figure class="image is-48x48">
+                    <figure class="image w-12">
                         <img class="rounded-full "
                              alt="Avatar"
                              src="{{cleanInput($recipe->user->avatarUser)}}"
                              style="height: 100%;width: 100%;">
                     </figure>
                 @else
-                    <figure class="image is-48x48">
+                    <figure class="image w-12">
                         <img class="rounded-full"
                              src="https://api.adorable.io/avatars/64/{{ strip_tags(clean($recipe->user->name))}}">
                     </figure>

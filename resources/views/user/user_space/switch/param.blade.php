@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Auth;
     <div class="section">
         <div class="container">
             <div class="flex mb-4">
-                <div class="flex-1 is-2-desktop is-hidden-mobile is-4-tablet " id="left_column">
+                <div class="flex-1 w-2/12 is-hidden-mobile" id="left_column">
                     @include('user.user_space.parts.menu')
                 </div>
 
-                <div class="flex-1 is-three-quarters-desktop is-full-mobile blockcontent" id="parameters">
+                <div class="flex-1 w-3/4 is-full-mobile blockcontent" id="parameters">
                     @include("user.user_space.switch.parts.param")
                     <pre>
                 <?= Auth::user()->getAllPermissions();
