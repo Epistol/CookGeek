@@ -4,7 +4,7 @@
 
     <div class="container">
         <section class="section searchresult">
-            <div class="flex mb-4 is-paddingless m-0 ">
+            <div class="flex mb-4  m-0 ">
                 {{--  <div class="flex-1 w-8/12 is-offset-2">
 
                   </div>--}}

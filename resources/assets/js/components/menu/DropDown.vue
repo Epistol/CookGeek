@@ -17,7 +17,7 @@
                     leave-active-class="animated fadeOutUp faster"
             >
                 <div v-show="open"
-                     class="absolute mt-px z-0 text-sm text-center text-grey-darker leading-normal rounded bg-purple border p-4">
+                     class="absolute mt-px z-10 text-sm text-center text-grey-darker leading-normal rounded bg-purple border p-4">
                     <slot name="menuelems">
                     </slot>
                 </div>

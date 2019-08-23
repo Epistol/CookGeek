@@ -64,7 +64,7 @@
 </div>
 <div class="flex">
     @guest
-        <div class=" mt-4 flex lg:mt-0 text-purple hover:text-pink mr-4 items-center" >
+        <div class=" mt-4 flex lg:mt-0 text-purple hover:text-pink mr-4 items-center">
             <a class="button is-primary" href="{{ route('login') }}">
                             <span class="icon is-small">
                             <i class="far fa-user-circle"></i>
@@ -76,46 +76,48 @@
         {{--@include("auth.modal.login")--}}
     @else
         <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown cursor-pointer">
-            <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 user_profile">
-                <div class="user_picture rounded-full w-8 h-8">
-                    @if(Auth::user()->avatarUser !== '')
-                        <figure class="image w-12">
-                            <img class="rounded-full test"
-                                 alt="Avatar"
-                                 src="{{cleanInput(Auth::user()->avatarUser)}}"
-                                 style="height: 100%;width: 100%;">
-                        </figure>
-                    @else
-                        <figure class="image w-12">
-                            <img class="rounded-full"
-                                 src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
-                        </figure>
-                    @endif
+            <menu-element>
+                <div slot="buttontext">
+                    <div class="user_picture rounded-full w-8 h-8">
+                        @if(Auth::user()->avatarUser !== '')
+                            <figure class="image w-12">
+                                <img class="rounded-full test"
+                                     alt="Avatar"
+                                     src="{{cleanInput(Auth::user()->avatarUser)}}"
+                                     style="height: 100%;width: 100%;">
+                            </figure>
+                        @else
+                            <figure class="image w-12">
+                                <img class="rounded-full"
+                                     src="https://api.adorable.io/avatars/64/{{Auth::user()->name}}">
+                            </figure>
+                        @endif
+                    </div>
+                    <a class="navbar-link hover:text-white">
+                        {{Auth::user()->pseudo}}
+                        <span class="caret"></span>
+                    </a>
                 </div>
-                <a class="navbar-link">
-                    {{Auth::user()->pseudo}} <span
-                            class="caret"></span>
-                </a>
-            </a>
-            <div class="navbar-dropdown">
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
-                   href="{{ route('home') }}">{{__('common.my_space')}}</a>
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
-                   href="{{ route('account.fav') }}">{{__('common.my_favorites')}}</a>
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
-                   href="{{ route('account.recipe') }}">{{__('common.my_recipes')}}</a>
-
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
-                   href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
+                <div slot="menuelems">
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
+                       href="{{ route('home') }}">{{__('common.my_space')}}</a>
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
+                       href="{{ route('account.fav') }}">{{__('common.my_favorites')}}</a>
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
+                       href="{{ route('account.recipe') }}">{{__('common.my_recipes')}}</a>
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
+                       href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                    {{__('common.logout')}}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                      style="display: none;">
-                    @csrf
-                </form>
-            </div>
+                        {{__('common.logout')}}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">
+                        @csrf
+                    </form>
+
+                </div>
+            </menu-element>
         </div>
     @endguest
     <switch-light></switch-light>

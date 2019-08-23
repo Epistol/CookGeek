@@ -8758,26 +8758,32 @@ a {
 
 h1, h1.title {
   font-size: 2.25rem;
+  font-weight: 600;
 }
 
 h2, h2.title {
   font-size: 1.875rem;
+  font-weight: 600;
 }
 
 h3, h3.title {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 h4, h4.title {
   font-size: 1.25rem;
+  font-weight: 600;
 }
 
 h5, h5.title {
   font-size: 1.125rem;
+  font-weight: 600;
 }
 
 h6, h6.title {
   font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .content h1, h1.title {
@@ -8976,6 +8982,19 @@ section.conduite {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+pre {
+  white-space: pre-wrap;
+  /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
 }
 
 .page {
@@ -9218,7 +9237,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .breadcrumb:not(:last-child) {
+  display: flex;
   margin-bottom: 0.5rem;
+}
+
+.breadcrumb:not(:last-child) ul {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.breadcrumb:not(:last-child) li {
+  align-items: center;
+  display: flex;
+}
+
+.breadcrumb:not(:last-child) a {
+  color: #cbc2f6;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.breadcrumb:not(:last-child) li + li:before {
+  color: #b5b5b5;
+  content: "/";
+}
+
+.breadcrumb:not(:last-child) li.is-active a {
+  color: #363636;
+  cursor: default;
+  pointer-events: none;
 }
 
 .is-brand {

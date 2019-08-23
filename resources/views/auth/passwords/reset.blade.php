@@ -7,13 +7,13 @@
 
         <div class="container">
             <div class="flex mb-4">
-                <div class="flex-1 w-5/12 is-paddingless">
+                <div class="flex-1 w-5/12 ">
                     <div class="left-register">
                         <img src="/img/chat_mascotte.png" alt="" class="chat-hover">
                     </div>
 
                 </div>
-                <div class="flex-1 w-2/5 is-paddingless">
+                <div class="flex-1 w-2/5 ">
                     <h1 class="title">Changement de mot de passe </h1>
 
                     <div class="blockcontent">

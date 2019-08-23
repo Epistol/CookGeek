@@ -23,15 +23,15 @@
             @include("recipes.show.breadcrumb")
             <div class="flex mb-4 shadowbox m-0">
                 {{--Photo + ingredients--}}
-                <aside class="w-1/5 m-0 is-paddingless side-left" id="side_recipe">
+                <aside class="w-1/5 m-0  side-left" id="side_recipe">
                     @include("recipes.show.images")
                     {{--Fiche gauche - INGREDIENTS --}}
                     @include("recipes.show.ficheinfo")
                 </aside>
                 {{--    Infos + steps--}}
-                <div class="flex-1 m-0 is-paddingless ">
+                <div class="flex-1 m-0  ">
                     {{--// Budget--}}
-                    <div class="flex mb-4 list-h-show  m-0 is-paddingless">
+                    <div class="flex mb-4 list-h-show  m-0 ">
                         <div class="flex-1">
                             <div class="has-text-centered">
                                 @include("recipes.show.univers")

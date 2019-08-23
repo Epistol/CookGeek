@@ -8,7 +8,7 @@
 
         <div class="flex-1 w-4/5 is-offset-1 is-result">
             <div class="flex mb-4">
-                <div class="flex-1 w-1/3 to-hover is-paddingless m-0">
+                <div class="flex-1 w-1/3 to-hover  m-0">
                     @if(isset($type))
                         <div class="hovered">
                             <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"
@@ -17,7 +17,7 @@
                     @endif
                     @include('recipes.elements.picture')
                 </div>
-                <div class="flex-1 w-7/12 is-paddingless m-0">
+                <div class="flex-1 w-7/12  m-0">
                     <div class="top is-flex">
                         <a href="{{route('recipe.show', $recipe->slug)}}">
                             <h2 class="title">
@@ -55,7 +55,7 @@
                     </div>
 
                 </div>
-                <div class="flex-1 w-1/12 m-0 is-paddingless">
+                <div class="flex-1 w-1/12 m-0 ">
                     <div class="top">
                         <?php
                         $typeuniv = DB::table('categunivers')

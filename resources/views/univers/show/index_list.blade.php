@@ -17,7 +17,7 @@
             <div class="flex mb-4 m-0">
                 <div class="univers-element flex-1">
                     {{--Nom de l'univers--}}
-                    <div class="flex mb-4 m-0 is-paddingless    ">
+                    <div class="flex mb-4 m-0     ">
                         @include("univers.index.mini_recipes")
                     </div>
                 </div>

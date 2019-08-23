@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <section class="section blockcontent is-paddingless ">
+        <section class="section blockcontent  ">
             @include("recipes.index.bread")
 
             <div class="content">

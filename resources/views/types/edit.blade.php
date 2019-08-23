@@ -38,7 +38,7 @@
 
 
                     </div>
-                    <div class="flex-1  is-paddingless page w-4/12">
+                    <div class="flex-1   page w-4/12">
                         <div class="padding-sides">
                             @include('recipes.form.image')
 

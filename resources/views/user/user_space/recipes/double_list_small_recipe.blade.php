@@ -8,8 +8,8 @@
         ?>
         <div class="flex-1 w-6/12  ">
             <div class="is-result">
-                <div class="flex mb-4  is-paddingless m-0">
-                    <div class="flex-1 w-4/12 to-hover is-paddingless m-0">
+                <div class="flex mb-4   m-0">
+                    <div class="flex-1 w-4/12 to-hover  m-0">
                         @if(isset($type))
                             <div class="hovered">
                                 <a class="tag" style="margin-left: 0.5rem; margin-right:0.5rem"

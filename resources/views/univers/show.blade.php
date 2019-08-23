@@ -9,7 +9,7 @@
         @endif
 
     <div class="container">
-        <section class="section blockcontent is-paddingless ">
+        <section class="section blockcontent  ">
 
 
             @include("univers.show.bread")

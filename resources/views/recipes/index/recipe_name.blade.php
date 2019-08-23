@@ -7,14 +7,14 @@
         {{--Séparation en deux du nombre de colonne--}}
         <div class="flex-1 w-6/12">
             {{--Une recette--}}
-            <div class="flex mb-4 is-paddingless m-0 is-result is-flex">
+            <div class="flex mb-4  m-0 is-result is-flex">
                 @if($recipe->universes->count() > 0)
                     <div class="recipe-category">
                         @include("recipes.show.type_univers_no_tool")
                     </div>
                 @endif
                 {{--L'image--}}
-                <div class="flex-1 w-5/12 to-hover m-0 is-paddingless">
+                <div class="flex-1 w-5/12 to-hover m-0 ">
                     <div class="bottom-right-aligned">
                         <div class="hovered">
                             <a class="tag" style="margin:0.5rem"
@@ -26,8 +26,8 @@
                     @include('recipes.elements.picture')
                 </div>
                 {{--Les infos--}}
-                <div class="flex-1 is-paddingless">
-                    <div class="flex mb-4 m-0 is-paddingless is-multiline is-mobile right-side-recipe">
+                <div class="flex-1 ">
+                    <div class="flex mb-4 m-0  is-multiline is-mobile right-side-recipe">
                         {{--Titre--}}
                         <div class="flex-1 is-full" id="titre">
                             <a href="{{route('recipe.show',$recipe->slug)}}"><h4 class="title">

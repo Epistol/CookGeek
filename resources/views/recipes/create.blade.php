@@ -18,10 +18,10 @@
                   action="{{ route('recipe.store') }}">
                 @csrf
                 <div class="flex mb-4" style="margin-bottom: 2rem;">
-                    <div class="flex-1  recipe-right-add ">
+                    <div class="flex-1  recipe-right-add w-8/12  ">
                         {{--Titre recette--}}
                         <div class="flex mb-4">
-                            <div class="flex-1 w-full">
+                            <div class="flex-1 bg-white p-3">
                                 @include("recipes.form.titre")
                                 @include("recipes.form.univers")
                                 @include("recipes.form.ingredients")
@@ -29,9 +29,8 @@
 {{--                                Liste des ingrédients--}}
                             </div>
                         </div>
-
                     </div>
-                    <div class="flex-1  is-paddingless page w-4/12">
+                    <div class=" page w-4/12">
                         <div class="padding-sides">
                             @include('recipes.form.image')
                             <div class="flex mb-4">

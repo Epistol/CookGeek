@@ -11,7 +11,7 @@
                                placeholder="Rechercher"
                                class="rounded bg-white focus:outline-0 focus:shadow-outline border border-gray-300
                                 rounded-lg py-2 px-4 pr-10 block w-full appearance-none leading-normal relative">
-                        <span class="pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-purple-lighter">
+                        <span class="pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-gray-500">
             <i class="fa fa-search"></i>
           </span>
                         <ais-voice-search :search-as-you-speak="true"/>

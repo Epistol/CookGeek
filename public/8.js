@@ -161,7 +161,7 @@ var render = function() {
                   }
                 ],
                 staticClass:
-                  "absolute mt-px z-0 text-sm text-center text-grey-darker leading-normal rounded bg-purple border p-4"
+                  "absolute mt-px z-10 text-sm text-center text-grey-darker leading-normal rounded bg-purple border p-4"
               },
               [_vm._t("menuelems")],
               2

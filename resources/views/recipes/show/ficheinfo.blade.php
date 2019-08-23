@@ -4,7 +4,7 @@
 
 <div class="ficheinfo">
     {{--@include('recipes.show.social')--}}
-    <section class="section is-paddingless">
+    <section class="section ">
         <div style="display:flex;justify-content:flex-end;align-items:center; margin-top: 10%">
             {{--@auth
                 @if($recipe->id_user === Auth::user()->id )

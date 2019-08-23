@@ -108,7 +108,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .breadcrumb:not(:last-child) {
-  margin-bottom: .5rem;
+  @apply flex mb-2;
+  & ul {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+
+  & li {
+    @apply items-center flex;
+  }
+
+  & a {
+    @apply text-lightpurple items-center flex justify-center py-0 px-2 ;
+  }
+
+  & li+li:before {
+    color: #b5b5b5;
+    content: "/";
+  }
+
+  & li.is-active a {
+    color: #363636;
+    cursor: default;
+    pointer-events: none;
+  }
+
 }
 
 .is-brand {

@@ -30,7 +30,7 @@
             @if(Route::is('*.edit'))
                 <input value="{{$recipe->title}}"/>
             @else
-                <h1 class="title is-paddingless">{{ strip_tags(clean($recipe->title)) }}</h1>
+                <h1 class="title ">{{ strip_tags(clean($recipe->title)) }}</h1>
             @endif
         </div>
         <div class="flex-1 " style="display:flex;justify-content:flex-end;align-items:center;">

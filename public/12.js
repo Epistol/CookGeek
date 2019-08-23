@@ -120,7 +120,7 @@ var render = function() {
                         "span",
                         {
                           staticClass:
-                            "pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-purple-lighter"
+                            "pointer-events-none absolute inset-y-0 right-0 pr-4 flex items-center text-gray-500"
                         },
                         [_c("i", { staticClass: "fa fa-search" })]
                       ),

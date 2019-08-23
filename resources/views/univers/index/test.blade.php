@@ -10,7 +10,7 @@
 
                    <div class="flex-1 w-6/12 is-result">
                        <div class="flex mb-4">
-                           <div class="flex-1 w-4/12 to-hover is-paddingless m-0">
+                           <div class="flex-1 w-4/12 to-hover  m-0">
                                @if(isset($type))
                                    <div class="hovered">
                                        <a class="tag" style="margin:0.5rem"

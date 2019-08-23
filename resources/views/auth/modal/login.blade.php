@@ -3,12 +3,12 @@
     <div slot="body">
 
         <div class="flex mb-4">
-            <div class="flex-1 w-5/12 is-paddingless">
+            <div class="flex-1 w-5/12 ">
                 <div class="left-register">
                     <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                 </div>
             </div>
-            <div class="flex-1 w-2/5 is-paddingless">
+            <div class="flex-1 w-2/5 ">
                 <H1 class="title">Connexion</H1>
 
                 <div class="blockcontent">

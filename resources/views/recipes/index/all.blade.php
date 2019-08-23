@@ -31,7 +31,7 @@
                                 {{ (str_limit(strip_tags(clean($recipe->title)), 40, ' (...)'))  }}
                             </a>
                         </p>
-                        <div class="flex mb-4 is-paddingless m-0 mini-infos">
+                        <div class="flex mb-4  m-0 mini-infos">
                             <div class="flex-1 w-4/12 is-flex-center"><i class="fas fa-clock"
                                                                        style="margin-right:0.5rem"></i><span>{{ $recipe->timeFormat }}</span>
                             </div>
@@ -39,7 +39,7 @@
                                 <span>{{ $recipe-> nb_guests ?: 1 }}</span>{{-- {{ $recipe->guest_type ?: "personnes"}}--}}
                                 <i class="fas fa-utensils" style="margin-left:0.5rem"></i>
                             </div>
-                            <div id="bottom_right_content" class="flex-1 w-6/12 is-flex is-paddingless">
+                            <div id="bottom_right_content" class="flex-1 w-6/12 is-flex ">
                                 {{--Nom de l'univers--}}
                                 @if($recipe->universes->count() > 0)
                                     @foreach($recipe->universes as $universe)

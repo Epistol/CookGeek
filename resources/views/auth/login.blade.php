@@ -4,7 +4,7 @@
 
     <section class="section">
         <div class="flex">
-            <div class="w-full sm:w-4/12 is-paddingless">
+            <div class="w-full sm:w-4/12 ">
                 <div class="left-register h-full flex justify-center items-center flex-wrap flex-col">
                     <img src="{{asset('/img/chat_mascotte.png')}}" alt="" class="chat-hover">
                     <div>
@@ -19,7 +19,7 @@
 
                 </div>
             </div>
-            <div class="w-full sm:w-8/12 is-paddingless">
+            <div class="w-full sm:w-8/12 ">
                 <h1 class="title p-6 text-center">@lang('auth.log_to') {{config('app.long_name')}}</h1>
                 <div class="blockcontent">
                     <div class="flex mb-4">

@@ -1,9 +1,9 @@
-<div class="blockcontent is-paddingless" id="mini-info">
+<div class="blockcontent " id="mini-info">
     <div class="mini-cat" title=""> </div>
 
     <p>Hey</p>
 </div>
 
-<div class="blockcontent is-paddingless">
+<div class="blockcontent ">
     <p>Hey</p>
 </div>
