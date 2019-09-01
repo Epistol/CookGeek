@@ -19,7 +19,13 @@ module.exports = {
                 purple: '#7f5fbf',
                 purpleclear : '#9c83ce',
                 lightpurple : '#cbc2f6',
-                pink: '#fa5c86'
+                pink: '#fa5c86',
+
+                main : '#FF8C42',
+                secondary : '#FF3C38',
+                yellow : '#FFF275',
+                blue : '#3A86FF',
+                black : '#615D6C'
             },
             minHeight: {
                 full: '100%',

@@ -1,13 +1,13 @@
 <template>
-    <div class="columns">
-        <div class="column is-10 is-offset-1">
+    <div class="flex">
+        <div class="w-full">
             <div class="is-flex-center file has-name is-boxed">
-                    <div class="columns is-multiline">
-                        <div class="column is-12 is-flex-center">
-                            <label class="file-label">
-                                <input class="file-input" type="file" name="resume" @change="onFileChange" id="upload"
-                                       accept="image/x-png,image/jpeg">
-                                <span class="file-cta span-flex-center" >
+                <div class="flex is-multiline">
+                    <div class="w-full is-flex-center">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="resume" @change="onFileChange" id="upload"
+                                   accept="image/x-png,image/jpeg">
+                            <span class="file-cta span-flex-center">
       <span class="file-icon">
         <i class="fas fa-upload"></i>
       </span>
@@ -15,17 +15,17 @@
         Ajouter une image
       </span>
     </span>
-                                <span class="file-name" v-if="filename">
+                            <span class="file-name" v-if="filename">
       {{this.filename}}
     </span>
-                            </label>
-                        </div>
-                        <div class="column is-12 is-flex-center">
-                            <div id="preview">
-                                <img v-if="url" :src="url" style="max-width: 15rem; max-height: 10rem"/>
-                            </div>
+                        </label>
+                    </div>
+                    <div class="w-full is-flex-center">
+                        <div id="preview">
+                            <img v-if="url" :src="url" style="max-width: 15rem; max-height: 10rem"/>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
 
@@ -38,7 +38,7 @@
         components: {
             PictureInput
         },
-        name : 'set-picture',
+        name: 'set-picture',
         data() {
             return {
                 url: null,

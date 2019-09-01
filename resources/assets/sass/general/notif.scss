@@ -9,12 +9,8 @@
 }
 
 #medaillon_index {
-  position: absolute;
-  right: 4px;
-  opacity: 0.4;
-  top: 4px;
-  z-index: 900;
+  @apply z-10 absolute top-0 right-0 opacity-50 p-1;
   &:hover {
-    opacity: 1;
+    @apply opacity-100;
   }
 }

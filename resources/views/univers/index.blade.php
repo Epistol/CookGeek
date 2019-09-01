@@ -4,7 +4,7 @@
 
     <div class="container">
         <section class="section blockcontent  ">
-            @include("recipes.index.bread")
+            @include("recipes.bread")
 
             <div class="content">
                 {{--@include("recipes.index.searchbar")--}}

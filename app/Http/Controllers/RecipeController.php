@@ -127,23 +127,6 @@ class RecipeController extends Controller
             $picturesOfAuthor = collect([]);
             $picturesOfUsers = collect([]);
         }
-
-        // STARS
-//        dd($recipe->notes);
-        if ($recipe->notes->count() > 0) {
-            $stars1 = $recipe->notes->avg('note');
-        } else {
-            $stars1 = 1;
-        }
-
-        $stars = number_format($stars1, 1, '.', '');
-        $stars = explode('.', $stars, 2);
-
-        // RATING
-        $countrating = $recipe->notes->count();
-        if ($countrating == null || $countrating == 0) {
-            $countrating = 1;
-        }
         $nom = User::find($recipe->id_user)->value('name');
         $related = $recipe->moreLikeThis(4);
 
@@ -154,9 +137,6 @@ class RecipeController extends Controller
                 'related',
                 'picturesOfAuthor',
                 'picturesOfUsers',
-                'stars',
-                'countrating',
-                'stars1',
                 'nom',
                 'type'
             )
@@ -188,11 +168,6 @@ class RecipeController extends Controller
         $stars = number_format($stars1, 1, '.', '');
         $stars = explode('.', $stars, 2);
 
-        // RATING
-        $countrating = $recipe->notes->count();
-        if ($countrating == null || $countrating == 0) {
-            $countrating = 1;
-        }
         $nom = User::find($recipe->id_user)->value('name');
         $related = $recipe->moreLikeThis(4);
         return view(
@@ -203,9 +178,7 @@ class RecipeController extends Controller
                 'recipe',
                 'type',
                 'nom',
-                'related',
-                'stars',
-                'countrating'
+                'related'
             ),
             [
                 'types' => $types_univ,

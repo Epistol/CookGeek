@@ -2,8 +2,8 @@
     <on-click-outside :do="handleClickOutside">
         <div class="relative w-48 ">
             <button @click="open = !open" type="button"
-                    class="w-full block text-purple rounded px-4
-                    hover:bg-purple hover:text-white
+                    class="w-full block text-black rounded px-4
+                    hover:text-main
                     focus:outline-0 cursor-pointer">
                 <slot name="buttontext">
                 </slot>

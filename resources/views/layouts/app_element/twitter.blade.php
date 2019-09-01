@@ -8,10 +8,4 @@
 @else
     <meta name="twitter:description" content="@hasSection('titrepage')@yield('titrepage') - sur {{ config('app.name', 'Laravel') }}@else @lang('common.site_description') - {{ config('app.name', 'Laravel') }} @endif">
 @endif
-
-<meta name="twitter:image" content="
-@if(isset($firstimg))
-    @if($firstimg->firstWhere('name', 'normal')['url'] !== "")
-        {{strip_tags(clean($firstimg->firstWhere('name', 'normal')['url']))}}
-@endif
-@endif" />
+<meta name="twitter:image" content="@if(isset($ogimage)){{$ogimage}}@endif" />

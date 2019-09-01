@@ -83,16 +83,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "column" },
+    {},
     [
       _vm._l(_vm.steps, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-2" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-2/12" }, [
               _c("span", [_vm._v("Etape " + _vm._s(index + 1))])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column is-8" }, [
+            _c("div", { staticClass: "w-8/12" }, [
               _c("textarea", {
                 directives: [
                   {
@@ -131,7 +131,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             index === _vm.steps.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center" }, [
                   _c(
                     "a",
                     {
@@ -151,7 +151,7 @@ var render = function() {
                   )
                 ])
               : index === _vm.steps.length - 2
-              ? _c("div", { staticClass: "column is-2  is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12  is-flex-center" }, [
                   _c(
                     "a",
                     {

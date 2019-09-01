@@ -23,4 +23,4 @@
 @endif
 
 
-@include('layouts.scripts')
+@include('layouts.app_element.scripts')

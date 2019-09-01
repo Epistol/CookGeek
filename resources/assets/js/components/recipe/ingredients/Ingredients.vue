@@ -1,12 +1,12 @@
 <template>
-    <div class="column">
+    <div class="">
         <template v-for="(item, index) in liste">
-            <div class="columns">
-                <div class="column is-3">
+            <div class="flex">
+                <div class="w-3/12">
                     <input class="input_modal blck" type="text" v-model="item.qtt" ref="search"
                            placeholder="Quantité" name="qtt_ingredient[]" id="qtt_ingredient[]">
                 </div>
-                <div class="column is-7">
+                <div class="w-7/12">
                     <template v-if="index === liste.length - 1">
                         <input class="input_modal blck" type="text" v-model="item.name" @keyup.tab="addRow"
                                placeholder="ingrédient" name="ingredient[]" id="ingredient[]">
@@ -17,11 +17,11 @@
                                placeholder="ingrédient" name="ingredient[]" id="ingredient[]">
                     </template>
                 </div>
-                <div class="column is-2 is-flex-center " v-cloak v-if="index === liste.length -1">
+                <div class="w-2/12 is-flex-center " v-cloak v-if="index === liste.length -1">
                     <a @click="addRow()" class="button is-primary  is-small icon-delete">
                         <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
-                <div class="column is-2 is-flex-center" v-cloak v-if="index === liste.length -2 ">
+                <div class="w-2/12 is-flex-center" v-cloak v-if="index === liste.length -2 ">
                     <a @click="removeRow(index)" class="button is-small icon-delete">
                         <i class="fa fa-minus" aria-hidden="true"></i></a>
                 </div>

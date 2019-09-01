@@ -11,7 +11,7 @@
     @else
         <title>{{config('app.long_name')}}</title>
     @endif
-    @include('layouts.leetcdg')
+    @include('layouts.app_element.leetcdg')
 
 <!-- ROBOTS -->
     @include("layouts.app_element.robot")
@@ -29,7 +29,7 @@
     @include("layouts.app_element.icons")
 
 <!-- Meta OG -->
-    @include("layouts.app_element.meta_og")
+    @include("layouts.app_element.seo")
     @include("layouts.app_element.twitter")
     @include("layouts.app_element.gplus")
     @include("layouts.app_element.fb")
@@ -43,21 +43,21 @@
 
 <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @include("layouts.style")
+    @include("layouts.app_element.style")
     @include("layouts.cookie")
 </head>
 <body class="">
-@include("layouts.menuMobile")
+@include("layouts.app_element.menuMobile")
 
 <div id="bodyWebsite">
     <div id="app">
-        @include("layouts.menu")
+        @include("layouts.app_element.menu")
         <div class="container">
             @include('layouts.app_element.alerts')
             @yield('content')
         </div>
     </div>
-    @include("layouts.footer")
+    @include("layouts.app_element.footer")
 </div>
 
 <!-- SCRIPTS  -->
@@ -85,6 +85,6 @@
 @endif
 
 
-@include('layouts.scripts')
+@include('layouts.app_element.scripts')
 </body>
 </html>

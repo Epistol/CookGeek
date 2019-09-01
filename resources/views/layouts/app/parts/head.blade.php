@@ -9,7 +9,7 @@
     @else
         <title>{{config('app.long_name')}}</title>
     @endif
-    @include('layouts.leetcdg')
+    @include('layouts.app_element.leetcdg')
 
 <!-- ROBOTS -->
     @include("layouts.app_element.robot")
@@ -27,7 +27,7 @@
     @include("layouts.app_element.icons")
 
 <!-- Meta OG -->
-    @include("layouts.app_element.meta_og")
+    @include("layouts.app_element.seo")
     @include("layouts.app_element.twitter")
     @include("layouts.app_element.gplus")
     @include("layouts.app_element.fb")
@@ -37,6 +37,5 @@
 
 <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @include("layouts.style")
-    @include("layouts.cookie")
+    @include("layouts.app_element.style")
 </head>

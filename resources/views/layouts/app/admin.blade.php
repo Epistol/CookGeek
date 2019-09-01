@@ -26,13 +26,13 @@
     @include("layouts.app_element.icons")
 
 <!-- Meta OG -->
-    @include("layouts.app_element.meta_og")
+    @include("layouts.app_element.seo")
     @include("layouts.app_element.twitter")
     @include("layouts.app_element.gplus")
     @include("layouts.app_element.fb")
     @include("layouts.app_element.apple")
     <meta name="mobile-web-app-capable" content="yes">
-    @include("layouts.style")
+    @include("layouts.app_element.style")
     @include("layouts.cookie")
     {{--@include("layouts.cookiebot")--}}
 
@@ -64,7 +64,7 @@
 
     <script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
     <script src="{{ asset('js/lightbox/lightbox.js') }}" defer async></script>
-    @include('layouts.scripts')
+    @include('layouts.app_element.scripts')
     <script type="application/javascript">
         var CSRFToken = $('meta[name="csrf-token"]').attr('content');
         var options = {
@@ -79,10 +79,10 @@
     </script>
 </head>
 <body class="">
-@include("layouts.menuMobile")
+@include("layouts.app_element.menuMobile")
 <div id="bodyWebsite">
     <div id="app">
-        @include("layouts.menu")
+        @include("layouts.app_element.menu")
         @include('layouts.app_element.alerts')
         <div class="flex mb-4  m-0 full-height" id="bodySite">
             <div class="flex-1 w-2/12 left_admin">
@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-@include("layouts.footer")
+@include("layouts.app_element.footer")
 <!-- Scripts -->
 
 <div id="fb-root"></div>

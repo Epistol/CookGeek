@@ -1,7 +1,6 @@
 <div id="picture-zone-validation-wait" class="is-flex-center">
     <a href="{{$picture->getUrl()}}"
        data-lightbox="{{strip_tags(clean($recipe->slug))}}" data-title="{{strip_tags(clean($recipe->title))}}">
-        <?php dd( $picture);?>
         <figure class="image w-6/124x64">
             @if($picture->getUrl('thumbSquare'))
                 <clazy-load

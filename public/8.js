@@ -116,7 +116,7 @@ var render = function() {
           "button",
           {
             staticClass:
-              "w-full block text-purple rounded px-4\n                hover:bg-purple hover:text-white\n                focus:outline-0 cursor-pointer",
+              "w-full block text-black rounded px-4\n                hover:text-main\n                focus:outline-0 cursor-pointer",
             attrs: { type: "button" },
             on: {
               click: function($event) {

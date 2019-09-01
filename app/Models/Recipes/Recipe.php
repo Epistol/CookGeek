@@ -41,8 +41,8 @@ use Throwable;
  */
 class Recipe extends Model implements Feedable, HasMedia
 {
-    use Searchable, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG
-    ,HasSteps, HasIngredients, HasPictures, HasUniverses, HasTimes;
+    use Searchable, HasUniqueID, HasMediaTrait, HasUserInput, HasLikes, HasMediaCDG,
+        HasSteps, HasIngredients, HasPictures, HasUniverses, HasTimes;
     // Recipe only
 
     /**
@@ -190,6 +190,20 @@ class Recipe extends Model implements Feedable, HasMedia
     public function getTitleAttribute($value)
     {
         return cleanInput($value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public function getRatingCountAttribute($value)
+    {
+        $countrating = $this->notes->count();
+        if ($countrating == null || $countrating == 0) {
+            $countrating = 1;
+        }
+        return $countrating;
     }
 
     /**
@@ -428,6 +442,14 @@ class Recipe extends Model implements Feedable, HasMedia
                 return '';
             }
         }
+    }
+
+    public function getAvgNote(){
+        $stars = 1;
+        if ($this->notes->count() > 0) {
+            $stars = $this->notes->avg('note');
+        }
+        return $stars;
     }
 
     /**

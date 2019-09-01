@@ -1192,10 +1192,10 @@ var render = function() {
         { staticClass: "section blockcontent", attrs: { id: "title-picture" } },
         [
           _c("div", { attrs: { id: "recipe-name-img" } }, [
-            _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "flex" }, [
               _c(
                 "div",
-                { staticClass: "column is-3" },
+                { staticClass: "w-3/12" },
                 [
                   _c("picture-input", {
                     ref: "pictureInput",
@@ -1216,7 +1216,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "column has-text-centered" },
+                { staticClass: "w-9/12 has-text-centered" },
                 [
                   _c("span", { staticClass: "timing" }, [
                     _vm._v(_vm._s(_vm.$t("recipe.add.name")) + " ")
@@ -1259,10 +1259,10 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("section", { staticClass: "section blockcontent" }, [
-        _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "flex" }, [
           _c(
             "div",
-            { staticClass: "column is-half" },
+            { staticClass: "w-6/12" },
             [
               _c(
                 "div",
@@ -1271,7 +1271,7 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "column is-3",
+                      staticClass: "w-3/12",
                       staticStyle: { "text-align": "left" }
                     },
                     [
@@ -1283,10 +1283,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    {
-                      staticClass: "column is-8",
-                      attrs: { id: "universe_input" }
-                    },
+                    { staticClass: "w-8/12", attrs: { id: "universe_input" } },
                     [
                       _c("SearchAutocomplete", {
                         attrs: { searchtype: "univers" }
@@ -1302,42 +1299,35 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-half" }, [
-            _c(
-              "div",
-              { staticClass: "columns", attrs: { id: "category-name" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "column is-3",
-                    staticStyle: { "text-align": "left" }
-                  },
-                  [
-                    _c("label", { staticClass: "label" }, [
-                      _vm._v(_vm._s(_vm.$t("recipe.category")))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "column is-8",
-                    attrs: { id: "category_input" }
-                  },
-                  [_c("SetCategory")],
-                  1
-                )
-              ]
-            ),
+          _c("div", { staticClass: "w-6/12" }, [
+            _c("div", { staticClass: "flex", attrs: { id: "category-name" } }, [
+              _c(
+                "div",
+                {
+                  staticClass: "w-3/12",
+                  staticStyle: { "text-align": "left" }
+                },
+                [
+                  _c("label", { staticClass: "label" }, [
+                    _vm._v(_vm._s(_vm.$t("recipe.category")))
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "w-8/12", attrs: { id: "category_input" } },
+                [_c("SetCategory")],
+                1
+              )
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "flex" }, [
               _c("div", { staticClass: "field" }, [
-                _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "flex" }, [
                   _vm._m(0),
                   _vm._v(" "),
-                  _c("div", { staticClass: "column" }, [_c("SetDifficulty")], 1)
+                  _c("div", { staticClass: "w-9/12" }, [_c("SetDifficulty")], 1)
                 ])
               ])
             ])
@@ -1384,7 +1374,7 @@ var render = function() {
             _c("div", { staticClass: "padding-sides columns timing" }, [
               _c(
                 "div",
-                { staticClass: "column is-12" },
+                { staticClass: "w-full" },
                 [
                   _c("SetTimePreparation"),
                   _vm._v(" "),
@@ -1413,7 +1403,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "columns", staticStyle: { "margin-bottom": "2rem" } },
-          [_c("div", { staticClass: "column is-12 " }, [_c("SetVideo")], 1)]
+          [_c("div", { staticClass: "w-full " }, [_c("SetVideo")], 1)]
         )
       ])
     ])
@@ -1424,7 +1414,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-3" }, [
+    return _c("div", { staticClass: "w-3/12" }, [
       _c("label", { staticClass: "label" }, [_vm._v("Difficulté")])
     ])
   },
@@ -1434,7 +1424,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "column is-3", staticStyle: { "text-align": "left" } },
+      { staticClass: "w-3/12", staticStyle: { "text-align": "left" } },
       [_c("p", { staticClass: "title is-4" }, [_vm._v("Ingredients")])]
     )
   }
@@ -2201,12 +2191,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "column" },
+    {},
     [
       _vm._l(_vm.liste, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-3" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-3/12" }, [
               _c("input", {
                 directives: [
                   {
@@ -2239,7 +2229,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "column is-7" },
+              { staticClass: "w-7/12" },
               [
                 index === _vm.liste.length - 1
                   ? [
@@ -2318,7 +2308,7 @@ var render = function() {
             ),
             _vm._v(" "),
             index === _vm.liste.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center " }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center " }, [
                   _c(
                     "a",
                     {
@@ -2340,7 +2330,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             index === _vm.liste.length - 2
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center" }, [
                   _c(
                     "a",
                     {
@@ -2391,16 +2381,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "column" },
+    {},
     [
       _vm._l(_vm.steps, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-2" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-2/12" }, [
               _c("span", [_vm._v("Etape " + _vm._s(index + 1))])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column is-8" }, [
+            _c("div", { staticClass: "w-8/12" }, [
               _c("textarea", {
                 directives: [
                   {
@@ -2439,7 +2429,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             index === _vm.steps.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center" }, [
                   _c(
                     "a",
                     {
@@ -2459,7 +2449,7 @@ var render = function() {
                   )
                 ])
               : index === _vm.steps.length - 2
-              ? _c("div", { staticClass: "column is-2  is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12  is-flex-center" }, [
                   _c(
                     "a",
                     {

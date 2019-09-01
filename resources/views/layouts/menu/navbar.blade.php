@@ -27,35 +27,35 @@
         </div>
     </menu-element>
 
-    <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown cursor-pointer">
-        <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4"
+    <div class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4 has-dropdown cursor-pointer">
+        <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4"
            href="{{ route('type.index') }}">
             {{trans_choice('recipe.types', 2)}}
         </a>
         {{--<div class="navbar-dropdown" id="types">
             @foreach(DB::table('type_recipes')->get() as $type)
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 bg-white" href="{{ route('type.show', lcfirst($type->name)) }}">
+                <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4 bg-white" href="{{ route('type.show', lcfirst($type->name)) }}">
                     {{ strip_tags(clean($type->name)) }}
                 </a>
             @endforeach
         </div>--}}
     </div>
 
-    <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4" href="{{route("univers.index")}}">
+    <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4" href="{{route("univers.index")}}">
         @lang('recipe.univers')
     </a>
-    <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4" href="{{route('media.index')}}">
+    <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4" href="{{route('media.index')}}">
         @lang('common.medias')
     </a>
-    {{-- <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4">
+    {{-- <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4">
          Tendances
      </a>--}}
 
-    <a class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4" href="{{route("recipe.random")}}">
+    <a class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4" href="{{route("recipe.random")}}">
         <i class="fas fa-dice-d20"></i>
         <span hidden>{{trans_choice('recipe.random', 2)}}</span>
     </a>
-    <div class=" search-header block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4">
+    <div class=" search-header block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4">
         <form action="{{route('search.post')}}" method="POST" role="search">
             @csrf
             @include('layouts.menu._search')
@@ -72,10 +72,10 @@
                 {{__('common.login')}}
             </a>
         </div>
-        {{--<div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
+        {{--<div class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4" ><a class="button is-primary"  @click="showModal = true" >Connexion</a></div>--}}
         {{--@include("auth.modal.login")--}}
     @else
-        <div class="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-pink mr-4 has-dropdown cursor-pointer">
+        <div class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-main mr-4 has-dropdown cursor-pointer">
             <menu-element>
                 <div slot="buttontext">
                     <div class="user_picture rounded-full w-8 h-8">

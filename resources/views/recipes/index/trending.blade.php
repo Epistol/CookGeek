@@ -4,7 +4,7 @@
         <div class="" style="padding:1rem">
             <div class="">
                 <h2 class="title">
-                   Nouvelles recettes :
+                    Tendances :
                 </h2>
             </div>
         </div>

@@ -6,8 +6,8 @@
         <div class="">
             <section class="section blockcontent" id="title-picture">
                 <div id="recipe-name-img">
-                    <div class="columns">
-                        <div class="column is-3">
+                    <div class="flex">
+                        <div class="w-3/12">
                             <picture-input
                                     ref="pictureInput"
                                     :width="500"
@@ -20,7 +20,7 @@
                                     :customStrings="this.pictureStrings">
                             </picture-input>
                         </div>
-                        <div class="column has-text-centered">
+                        <div class="w-9/12 has-text-centered">
                             <span class="timing">{{ $t('recipe.add.name')}} </span>
                             <input class="ajout-recette-titre input_modal blck" type="text" placeholder=""
                                    v-model="registration.title" name="title" id="title">
@@ -30,34 +30,34 @@
                 </div>
             </section>
             <section class="section blockcontent">
-                <div class="columns">
-                    <div class="column is-half">
+                <div class="flex">
+                    <div class="w-6/12">
                         <div id="universe-name" class="columns">
-                            <div class="column is-3" style="text-align: left;">
+                            <div class="w-3/12" style="text-align: left;">
                                 <label class="label">{{ $t('recipe.univers')}}</label>
                             </div>
-                            <div class="column is-8" id="universe_input">
+                            <div class="w-8/12" id="universe_input">
                                 <SearchAutocomplete searchtype="univers"></SearchAutocomplete>
                             </div>
                         </div>
                         <SetMedia></SetMedia>
                     </div>
-                    <div class="column is-half">
-                        <div id="category-name" class="columns">
-                            <div class="column is-3" style="text-align: left;">
+                    <div class="w-6/12">
+                        <div id="category-name" class="flex">
+                            <div class="w-3/12" style="text-align: left;">
                                 <label class="label">{{ $t('recipe.category')}}</label>
                             </div>
-                            <div class="column is-8" id="category_input">
+                            <div class="w-8/12" id="category_input">
                                 <SetCategory></SetCategory>
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="flex">
                             <div class="field">
-                                <div class="columns">
-                                    <div class="column is-3">
+                                <div class="flex">
+                                    <div class="w-3/12">
                                         <label class="label">Difficulté</label>
                                     </div>
-                                    <div class="column">
+                                    <div class="w-9/12">
                                         <SetDifficulty></SetDifficulty>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                 <div id="ingredients-list">
                     <section class="ingredients">
                         <div id="ingr">
-                            <div class="column is-3" style="text-align: left;">
+                            <div class="w-3/12" style="text-align: left;">
                                 <p class="title is-4">Ingredients</p>
                             </div>
                             <Ingredients></Ingredients>
@@ -89,7 +89,7 @@
             <div id="timing" class="columns">
                 <div class="column is-paddingless pags" style="margin-bottom: 2rem;">
                     <div class="padding-sides columns timing">
-                        <div class="column is-12">
+                        <div class="w-full">
                             <SetTimePreparation></SetTimePreparation>
                             <SetTimeCooking></SetTimeCooking>
                             <SetTimeRest></SetTimeRest>
@@ -108,7 +108,7 @@
             </div>
             <div id="comment">
                 <div class="columns" style="margin-bottom: 2rem;">
-                    <div class="column is-12 ">
+                    <div class="w-full ">
                         <SetVideo></SetVideo>
                     </div>
                 </div>

@@ -998,11 +998,12 @@ img.tovalidate {
 }
 
 #medaillon_index {
+  z-index: 10;
   position: absolute;
-  right: 4px;
-  opacity: 0.4;
-  top: 4px;
-  z-index: 900;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+  padding: 0.25rem;
 }
 
 #medaillon_index:hover {

@@ -7,7 +7,7 @@
                 <?php $typeuniv = DB::table('categunivers')->get(); ?>
                 @foreach($typeuniv as $type)
                     <a class="navbar-item " href="{{route("media.show", lcfirst($type->name))}}">
-                        <figure class="image is-32x32">
+                        <figure class="w-6 h-6">
                             <img src="/img/pictos/icones_menu/{{ $type->name }}.svg"
                                  alt="{{ strip_tags(clean($type->name)) }}"/>
                         </figure>

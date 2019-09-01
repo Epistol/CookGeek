@@ -110,7 +110,7 @@ class LoginController extends Controller
                     $existingUser->pseudo = $pseudo;
                     $existingUser->save();
                     $existingUser->update(['pseudo' => $pseudo]);
-                    dd($existingUser->pseudo);
+//                    dd($existingUser->pseudo);
                 }
             }
             if ($existingUser->email !== $user->getEmail()) {

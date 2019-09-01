@@ -19,10 +19,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @include("layouts.style")
+    @include("layouts.app_element.style")
 </head>
 <body>
-<div id="app" style="background: black;"> @include("layouts.menu")
+<div id="app" style="background: black;"> @include("layouts.app_element.menu")
     <div class="main-error-404">
         @yield('content')
     </div>
@@ -30,7 +30,7 @@
 
 </div>
 
-@include("layouts.footer")
+@include("layouts.app_element.footer")
 
 <!-- Scripts -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

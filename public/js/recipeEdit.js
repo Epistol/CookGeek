@@ -7750,10 +7750,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     recipe_id: {
@@ -79186,12 +79182,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "column" },
+    {},
     [
       _vm._l(_vm.liste, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-3" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-3/12" }, [
               _c("input", {
                 directives: [
                   {
@@ -79224,7 +79220,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "column is-7" },
+              { staticClass: "w-7/12" },
               [
                 index === _vm.liste.length - 1
                   ? [
@@ -79303,7 +79299,7 @@ var render = function() {
             ),
             _vm._v(" "),
             index === _vm.liste.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center " }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center " }, [
                   _c(
                     "a",
                     {
@@ -79325,7 +79321,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             index === _vm.liste.length - 2
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center" }, [
                   _c(
                     "a",
                     {
@@ -79380,14 +79376,14 @@ var render = function() {
     [
       _vm._l(_vm.steps, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-2" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-2/12" }, [
               _c("span", [_vm._v(" Etape " + _vm._s(index + 1))])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column is-11" }, [
+              _c("div", { staticClass: "flex" }, [
+                _c("div", { staticClass: "w-11/12" }, [
                   _c("textarea", {
                     directives: [
                       {
@@ -79426,7 +79422,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 index === _vm.steps.length - 1
-                  ? _c("div", { staticClass: "column is-3 is-flex-center" }, [
+                  ? _c("div", { staticClass: "w-3/12 is-flex-center" }, [
                       _c(
                         "a",
                         {
@@ -79447,7 +79443,7 @@ var render = function() {
                       )
                     ])
                   : index === _vm.steps.length - 2
-                  ? _c("div", { staticClass: "column is-3  is-flex-center" }, [
+                  ? _c("div", { staticClass: "w-3/12  is-flex-center" }, [
                       _c(
                         "a",
                         {

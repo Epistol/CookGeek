@@ -100,12 +100,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "column" },
+    {},
     [
       _vm._l(_vm.liste, function(item, index) {
         return [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-3" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "w-3/12" }, [
               _c("input", {
                 directives: [
                   {
@@ -138,7 +138,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "column is-7" },
+              { staticClass: "w-7/12" },
               [
                 index === _vm.liste.length - 1
                   ? [
@@ -217,7 +217,7 @@ var render = function() {
             ),
             _vm._v(" "),
             index === _vm.liste.length - 1
-              ? _c("div", { staticClass: "column is-2 is-flex-center " }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center " }, [
                   _c(
                     "a",
                     {
@@ -239,7 +239,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             index === _vm.liste.length - 2
-              ? _c("div", { staticClass: "column is-2 is-flex-center" }, [
+              ? _c("div", { staticClass: "w-2/12 is-flex-center" }, [
                   _c(
                     "a",
                     {

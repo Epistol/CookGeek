@@ -17,8 +17,8 @@
             <form class="form-horizontal recipe-add" enctype="multipart/form-data" method="POST"
                   action="{{ route('recipe.store') }}">
                 @csrf
-                <div class="flex mb-4" style="margin-bottom: 2rem;">
-                    <div class="flex-1  recipe-right-add w-8/12  ">
+                <div class="flex mb-4 bg-white mb-8">
+                    <div class="flex-1  recipe-right-add w-8/12">
                         {{--Titre recette--}}
                         <div class="flex mb-4">
                             <div class="flex-1 bg-white p-3">
