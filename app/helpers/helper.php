@@ -45,6 +45,6 @@ if (!function_exists('cleanInput')) {
      */
     function cleanInput($input)
     {
-        return strip_tags(clean($input));
+        return strip_tags($input);
     }
 }

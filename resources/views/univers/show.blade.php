@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage',   strip_tags(clean($univers->name)) )
+@section('titrepage',   strip_tags($univers->name) )
 @section('content')
 
     @if($univers->picture)
@@ -16,13 +16,13 @@
 
             <section class="section">
                 <h1 class="title">
-                    {{ strip_tags(clean($univers->name)) }}
+                    {{ strip_tags($univers->name) }}
                 </h1>
             </section>
 
             @if($univers->description)
                 <div role="navigation" class="second-menu">
-                    {{strip_tags(clean($univers->description))}}
+                    {{strip_tags($univers->description)}}
                 </div>
             @endif
 

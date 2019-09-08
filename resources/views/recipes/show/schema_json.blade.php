@@ -21,7 +21,7 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
     {
       "@context": "http://schema.org/",
       "@type": "Recipe",
-      "name": "{{strip_tags(clean($recipe->title))}}",
+      "name": "{{strip_tags($recipe->title)}}",
 
       "image": [
         @if(collect($pic)->isNotEmpty())
@@ -32,7 +32,7 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
         ],
         "author": {
           "@type": "Person",
-          "name": "{{strip_tags(clean($nom))}}"
+          "name": "{{strip_tags($nom)}}"
         },
         "datePublished": "{{$date}}",
         "description": "{{$recipe->title . " - CDG"}}",
@@ -43,8 +43,8 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
         "recipeIngredient": [
         @foreach ($recipe->ingredients as $key => $ingredient)
             <?php
-            $qtt = strip_tags(clean(app('profanityFilter')->filter($ingredient->qtt)));
-            $nom_in = strip_tags(clean(app('profanityFilter')->filter($ingredient->name)));
+            $qtt = strip_tags(app('profanityFilter')->filter($ingredient->qtt));
+            $nom_in = strip_tags(app('profanityFilter')->filter($ingredient->name));
             ?>
             @if($loop->last)
 
@@ -59,7 +59,7 @@ $totaliso = "PT" . $recipe->sumerise($recipe->prep_time + $recipe->cook_time + $
           @foreach ($steps = $recipe->steps()->get() as $key => $etape)
             {
                 "@type": "HowToStep",
-<?php $nom_in = strip_tags(clean(app('profanityFilter')->filter($steps[$key]->instruction)));?>
+<?php $nom_in = strip_tags(app('profanityFilter')->filter($steps[$key]->instruction));?>
             "text": "{{$nom_in}}"
             @if($loop->last)
                 }

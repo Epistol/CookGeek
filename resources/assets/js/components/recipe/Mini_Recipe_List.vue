@@ -1,7 +1,7 @@
 <template v-cloak>
     <div class="recipe-list-object is-flex">
         <template v-if="picture">
-            <figure class="image is-64x64 radiused">
+            <figure class="image is-64x64 rounded">
                 <!--TODO : recuperer l'image crop square (et la generer aussi du coup) -->
                 <img :src="picture"
                      style="background-picture : 'https://picsum.photos/64/?random'" alt=""/>

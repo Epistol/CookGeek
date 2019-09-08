@@ -28,31 +28,31 @@
                 @foreach($recipes as $key => $r)
                     <tr>
                         <td><input type="checkbox"/></td>
-                        <td>{{strip_tags(clean($r->id)) }}</td>
-                        <td>{{strip_tags(clean( $r->title ))}}</td>
-                        <td>{{ strip_tags(clean($r->difficulty)) }}</td>
+                        <td>{{strip_tags($r->id) }}</td>
+                        <td>{{strip_tags( $r->title )}}</td>
+                        <td>{{ strip_tags($r->difficulty) }}</td>
                         <td>
-                            {{strip_tags(clean($r->types->name))}}
+                            {{strip_tags($r->types->name)}}
                         </td>
                         <td>
-                            {{strip_tags(clean($r->cost))}}
+                            {{strip_tags($r->cost)}}
                         </td>
                         <td>
                             @if($r->universes->count() > 0)
                             @foreach($r->universes as $universe)
                                     <a href="{{route('univers.show', $universe->id)}}">
-                                        {{strip_tags(clean($universe->name))}}
+                                        {{strip_tags($universe->name)}}
                                     </a>
                                 @endforeach
                             @endif
                         </td>
                         <td>
-                                {{strip_tags(clean($r->typeuniverse->name))}}
+                                {{strip_tags($r->typeuniverse->name)}}
                         </td>
 
                         <td>{{ Carbon\Carbon::parse($r->created_at)->format('d/m/Y') }} </td>
                         <td>
-                            {{strip_tags(clean($r->nb_views))}}
+                            {{strip_tags($r->nb_views)}}
                         </td>
                         @if($r->validated === 1)
                             <td class="valid" style="background:green">
@@ -77,7 +77,7 @@
                                         </button>
                                     </form>
                                 @endcan
-                                <a href="{{route("admin.recipe.edit", strip_tags(clean($r->id)))}}"
+                                <a href="{{route("admin.recipe.edit", strip_tags($r->id))}}"
                                    class="button is-info"><i class="fas fa-edit"></i></a>
                             </td>
                     </tr>

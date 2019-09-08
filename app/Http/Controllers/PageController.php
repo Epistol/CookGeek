@@ -78,7 +78,7 @@ class PageController extends Controller
             ]
         );
         // Partie SLUG
-        $slug = $this->slugtitre(strip_tags(clean($request->name)), $idRecette);
+        $slug = $this->slugtitre(strip_tags($request->name), $idRecette);
 
         Page::where('id', $idRecette)
           ->update(['slug' => $slug]);
@@ -94,7 +94,7 @@ class PageController extends Controller
      */
     private function slugtitre($titre, $idrecipe)
     {
-        $titreslug = str_slug(strip_tags(clean($titre)), '-');
+        $titreslug = str_slug(strip_tags($titre), '-');
 
         return $titreslug . '-' . $idrecipe;
     }
@@ -185,7 +185,7 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        $page->name    = strip_tags(clean($request->name));
+        $page->name    = strip_tags($request->name);
         $page->content = $request->contenu;
         $page->slug    = $this->slugtitre($request->name, $page->id);
 

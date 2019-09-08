@@ -5,11 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
-use Waavi\Sanitizer\Laravel\SanitizesInput;
 class AppServiceProvider extends ServiceProvider
 {
-    use SanitizesInput;
-
 
     /**
      * Bootstrap any application services.

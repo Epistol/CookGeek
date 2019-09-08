@@ -38,13 +38,6 @@
       'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
     ),
   ),
-  'binarytorch/blogged' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'BinaryTorch\\Blogged\\BloggedServiceProvider',
-    ),
-  ),
   'cybercog/laravel-ban' => 
   array (
     'providers' => 
@@ -52,22 +45,22 @@
       0 => 'Cog\\Laravel\\Ban\\Providers\\BanServiceProvider',
     ),
   ),
+  'facade/ignition' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
+    ),
+  ),
   'fideloper/proxy' => 
   array (
     'providers' => 
     array (
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
-  'htmlmin/htmlmin' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'HTMLMin\\HTMLMin\\HTMLMinServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'HTMLMin' => 'HTMLMin\\HTMLMin\\Facades\\HTMLMin',
     ),
   ),
   'intervention/image' => 
@@ -163,17 +156,6 @@
       0 => 'MartinLindhe\\VueInternationalizationGenerator\\GeneratorProvider',
     ),
   ),
-  'mews/purifier' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Mews\\Purifier\\PurifierServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Purifier' => 'Mews\\Purifier\\Facades\\Purifier',
-    ),
-  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -186,17 +168,6 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\PhpInsights\\Application\\Adapters\\Laravel\\InsightsServiceProvider',
-    ),
-  ),
-  'pragmarx/firewall' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'PragmaRX\\Firewall\\Vendor\\Laravel\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Firewall' => 'PragmaRX\\Firewall\\Vendor\\Laravel\\Facade',
     ),
   ),
   'sentry/sentry-laravel' => 
@@ -293,17 +264,6 @@
     'aliases' => 
     array (
       'Hashids' => 'Vinkla\\Hashids\\Facades\\Hashids',
-    ),
-  ),
-  'waavi/sanitizer' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Waavi\\Sanitizer\\Laravel\\SanitizerServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Sanitizer' => 'Waavi\\Sanitizer\\Laravel\\Facade',
     ),
   ),
 );

@@ -28,17 +28,15 @@
                 </div>
             </transition>--}}
         <section class="section ">
-
-            <div class="flex mb-4" id="results">
+            <div class="flex mb-4 bg-fog">
                 <div class="flex-1 w-7/12 searchresult">
                     @if($result['recipe']->count() > 0)
                         @include("search.elements.recipe_name")
                     @else
                         <div style="position: relative;">
-                            <h1 class="title">{{ucfirst(strip_tags(clean($result['value'])))}}</h1>
+                            <h1 class="title">{{ucfirst(strip_tags($result['value']))}}</h1>
                             <span style="position: absolute;bottom: -1.5rem;left: 0px;"><i>0 recette trouvé :/ </i></span>
                         </div>
-
                     @endif
                 </div>
                 <div class="flex-1 w-4/12 is-offset-1 searchresult">

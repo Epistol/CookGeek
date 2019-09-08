@@ -26,7 +26,7 @@
             {
               "@type":"ListItem",
               "position":{{$nombre + 1}},
-      "url":"{{route('recipe.show', strip_tags(clean($recipe->slug)))}}"
+      "url":"{{route('recipe.show', strip_tags($recipe->slug))}}"
       @if($loop->last)
                 }
             @else

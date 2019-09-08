@@ -3,9 +3,8 @@
         <div class="field-label" style="text-align: left;padding-bottom: 2rem;">
             <label class="title w-4/12">@lang('common.media')</label>
         </div>
-
         <div class="flex mb-4 is-multiline">
-            @foreach ($types as $key=>$type)
+            @foreach ($types as $key => $type)
                 @php(++$key)
                 <div class="flex-1 has-text-centered">
                     <label class="radio">
@@ -31,9 +30,7 @@
                             </p>
                         @endif
                     </label>
-
                 </div>
-
             @endforeach
         </div>
     </div>

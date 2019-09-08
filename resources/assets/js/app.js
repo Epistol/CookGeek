@@ -28,7 +28,6 @@ Vue.use(InstantSearch);
 import VeeValidate from 'vee-validate';
 import draggable from 'vuedraggable';
 import Password from 'vue-password-strength-meter';
-//import InstantSearch from 'vue-instantsearch';
 import VueClazyLoad from 'vue-clazy-load';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 //import Affix from 'vue-affix';
@@ -36,7 +35,6 @@ import Affix from 'vue-affix';
 
 Vue.use(Affix);
 
-// import 'semantic-ui-sass';
 // AUTRE
 
 const lang = document.documentElement.lang.substr(0, 2);

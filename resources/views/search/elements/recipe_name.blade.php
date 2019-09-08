@@ -21,7 +21,7 @@
                     <div class="top is-flex">
                         <a href="{{route('recipe.show', $recipe->slug)}}">
                             <h2 class="title">
-                                {{strip_tags(clean($recipe->title))}}
+                                {{strip_tags($recipe->title)}}
                             </h2>
                         </a>
                     </div>

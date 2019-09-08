@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage', ucfirst(strip_tags(clean($recipe->title))))
+@section('titrepage', ucfirst(strip_tags($recipe->title)))
 
 @if ($urlToFirstListImage = $recipe->getFirstMediaUrl('images', 'thumb'))
     @php

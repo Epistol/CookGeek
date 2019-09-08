@@ -19,7 +19,7 @@
                         <a property="item" typeof="WebPage"
                            style="margin-left: 0.5rem; margin-right:0.5rem"
                            href="{{ route("type.show", lcfirst($type->name)) }}">
-                            <span property="name">{{ strip_tags(clean($type->name ))}}</span>
+                            <span property="name">{{ strip_tags($type->name )}}</span>
                         </a>
                         <meta property="position" content="3">
                     </li>
@@ -30,7 +30,7 @@
             @if(Route::is('*.edit'))
                 <input value="{{$recipe->title}}"/>
             @else
-                <h1 class="title ">{{ strip_tags(clean($recipe->title)) }}</h1>
+                <h1 class="title ">{{ strip_tags($recipe->title) }}</h1>
             @endif
         </div>
         <div class="flex-1 " style="display:flex;justify-content:flex-end;align-items:center;">

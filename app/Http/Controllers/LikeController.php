@@ -34,7 +34,7 @@ class LikeController extends Controller
      */
     public function toggleLikeRecipe(Request $request)
     {
-        $recipe = Recipe::find(intval(strip_tags(clean($request->recipeid))));
+        $recipe = Recipe::find(intval(strip_tags($request->recipeid)));
         $likes = $recipe->likes->where('user_id', Auth::user()->id);
 
         // si un id existe, on le supprime et renvoie false
@@ -55,7 +55,7 @@ class LikeController extends Controller
     private function likeRecipe($recipe_id)
     {
         $like = new Like(['user_id' => Auth::user()->id]);
-        $recipe = Recipe::find(strip_tags(clean($recipe_id)));
+        $recipe = Recipe::find(strip_tags($recipe_id));
         $recipe->likes()->save($like);
 
         if ($like) {

@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="flex-1 w-11/12 is-lateral ">
-                    <p > {{ strip_tags(clean(app('profanityFilter')->filter($step->instruction))) }} </p>
+                    <p > {{ strip_tags(app('profanityFilter')->filter($step->instruction)) }} </p>
             </div>
         @empty
         @endforelse

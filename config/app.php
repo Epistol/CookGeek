@@ -186,7 +186,6 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\UniverseProvider::class,
-        PragmaRX\Firewall\Vendor\Laravel\ServiceProvider::class,
     ],
 
     /*
@@ -237,10 +236,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Clockwork'    => Clockwork\Support\Laravel\Facade::class,
-        'Firewall'     => PragmaRX\Firewall\Vendor\Laravel\Facade::class,
-        'HTMLMin'      => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
-        'Sanitizer' => Waavi\Sanitizer\Laravel\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 

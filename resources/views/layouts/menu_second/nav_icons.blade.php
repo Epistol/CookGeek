@@ -6,7 +6,7 @@
                     <a class="navbar-item items-center" href="{{route("media.show", lcfirst($type->name))}}">
                         <figure class="image w-8 h-8">
                             <img class="w-8 h-8" src="/img/pictos/icones_menu/{{ $type->name }}.svg"
-                                 alt="{{ strip_tags(clean($type->name)) }}"/>
+                                 alt="{{ strip_tags($type->name) }}"/>
                         </figure>
                         @if($type->name !== "anime")
                             <span class="navbar-secondaire-item">{{ ucfirst ($type->name ) }}</span>

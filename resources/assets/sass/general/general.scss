@@ -1,11 +1,6 @@
-/*p {
-  padding-bottom: 1rem;
-}*/
-
 html, body {
-  height: 100%;
   box-sizing: border-box;
-  background-color: $body-bg;
+  @apply bg-white h-full;
 }
 
 body, button, input, select, textarea {
@@ -17,110 +12,73 @@ body, button, input, select, textarea {
 }
 
 .blockcontent {
-  @apply bg-white p-8 m-8 mt-0 shadow-md ;
+  @apply bg-white shadow-md ;
 
-  &.is-paddingless {
-    padding: 0rem;
+  @screen sm {
+
   }
 
-  &.is-marginless {
-    margin: 0rem;
+  @screen md {
+    @apply p-8 m-8 mt-0;
   }
 }
+
+
 
 .searchresult {
-  background: $white;
-  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
-  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
-}
-
-.results {
-  background: $body-bg;
+  @apply bg-white shadow;
 }
 
 .not-active {
-  display: none;
-  visibility: hidden;
-  height: 0px;
+  @apply hidden h-0;
 }
 
 .active {
-  display: block;
-  visibility: visible;
+  @apply block visible;
   height: initial;
 }
 
 .likedanimation {
-
   -webkit-animation: pulse;
   animation: pulse;
   animation-duration: .55s;
-
 }
 
 a.tag.like:hover {
-  text-decoration: none;
+  @apply no-underline;
 }
 
-// LIKE BUTTON
-.liked > i {
-  color: #fa3283;
-}
-
-.liked > span > i {
-  color: #fa3283;
-}
-
-// IMAGE HAND
-
-.image.is-256x256 {
-  height: 256px;
-  width: 256px;
-
-}
 
 // NAVBAR
 .navbar-item.has-dropdown.is-hoverable {
-  z-index: 800;
+  @apply z-30;
   @include transition_all();
 }
 
 .content li + li {
-  margin-top: 0em;
+  @apply mt-0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply text-purple;
-  padding-top: 0.7rem;
-  padding-bottom: 0.2rem;
+  @apply text-main pt-3 pb-1;
 }
 
 .section-nomargin-side {
-  padding: 2.5rem 1rem;
+  @apply px-10 py-6;
 }
 
 .hero-body {
-  padding: 2rem 1.5rem;
+  @apply px-8 py-6;
 }
 
 .is-accent {
-  color: $accent;
+  @apply text-secondary;
 }
 
 .breadcrumb:not(:last-child) {
   @apply flex mb-2;
   & ul {
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
+    @apply flex items-start flex-wrap justify-start;
   }
 
   & li {
@@ -131,15 +89,13 @@ h1, h2, h3, h4, h5, h6 {
     @apply text-lightpurple items-center flex justify-center py-0 px-2 ;
   }
 
-  & li+li:before {
-    color: #b5b5b5;
+  & li + li:before {
+    @apply text-black;
     content: "/";
   }
 
   & li.is-active a {
-    color: #363636;
-    cursor: default;
-    pointer-events: none;
+    @apply text-black cursor-default pointer-events-none;
   }
 
 }
@@ -149,23 +105,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container .navbar-brand {
-  margin-left: 0 !important;
+  @apply ml-0;
 }
 
 
-[v-cloak] > * { display:none; }
+[v-cloak] > * {
+  display: none;
+}
 
 .button.is-round.is-small {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  @apply rounded-full w-8 h-8;
 }
 
 
 .advanced {
-  padding: 2rem;
+  @apply p-8;
 }
 
 .univers-element {
@@ -174,47 +128,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .univers-element > ul, .univers-element > ul > li {
-  list-style-type: none;
+  @apply list-none;
 }
 
 .categ-univers-recette {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  @apply my-8;
 }
 
 .univers-media-titre {
   border-bottom: 1px solid #ebeaf5;
 }
 
-.radiused {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
 .navbar-item.user_profile img {
   max-height: initial !important;
 }
 
-
 .change-picture {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  z-index: 99;
-  background: hsla(245, 35%, 94%, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  @apply text-2xl  text-purple rounded-full max-h-5 min-h-5;
+  @apply text-2xl  text-purple rounded-full max-h-5 min-h-5 items-center flex z-20 absolute hidden opacity-0 bg-fog justify-center;
   min-width: 64px;
   top: 25%;
   left: 25%;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  @include transition_all();
+
 }
 
 figure.image:hover {
@@ -223,52 +158,38 @@ figure.image:hover {
   & > .change-picture {
     opacity: 1;
     visibility: visible;
-
   }
 
   & img {
     opacity: 0.8;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    @include transition_all();
   }
 }
 
 figure.image img {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  @include transition_all();
 }
 
-.sous_cat {
-  margin-bottom: 2rem;
-}
 
 nav.breadcrumb {
-  padding: 1rem;
-  color: $brand-primary !important;
+  @apply p-4 text-main;
 }
 
 .breadcrumb a {
-  color: $lavender;
+  @apply text-main;
 }
 
 
 .right-side-recipe {
-  min-height: 100%;
+  @apply min-h-full;
 
   & #ingredients {
     border-bottom: 1px solid #ebeaf5;
+    @apply border-b border-fog;
   }
 
   & #author {
-    position: relative;
-    display: flex;
-    align-items: center;
+    @apply relative flex items-center;
 
     & .author {
       border: 0px solid;
@@ -277,13 +198,14 @@ nav.breadcrumb {
 }
 
 h2#recipe-user {
-  padding-left: 0.7rem;
+  @apply pl-3;
 }
 
 .affix {
-  position: fixed;
+  @apply fixed;
   width: inherit;
 }
+
 .full-height {
-  min-height:90vh;
+  @apply min-h-screen;
 }

@@ -140,12 +140,12 @@ class User extends Authenticatable implements HasMedia
 
     public function setNameAttribute()
     {
-        return strip_tags(clean($this->name));
+        return strip_tags($this->name);
     }
 
     public function setPseudoAttribute()
     {
-        return strip_tags(clean($this->pseudo));
+        return strip_tags($this->pseudo);
     }
 
     /**

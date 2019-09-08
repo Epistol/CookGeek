@@ -38,10 +38,10 @@
                             {{--Nom de l'univers--}}
                             <li class="flex-1 w-2/12" style="margin: 1%;">
                                 <div class="card">
-                                    @if(strip_tags(clean($univers_data->name)))
+                                    @if(strip_tags($univers_data->name))
                                     <header class="card-header">
                                         <p class="card-header-title">
-                                            <a href="{{route('univers.show', $univers_data->name)}}">{{str_limit(strip_tags(clean($univers_data->name)), 20)}}</a>
+                                            <a href="{{route('univers.show', $univers_data->name)}}">{{str_limit(strip_tags($univers_data->name)), 20}}</a>
                                         </p>
                                     </header>
                                     @endif
@@ -53,7 +53,7 @@
                                                     <figure class="image is-128x128 ">
                                                         <img class="fit-cover"
                                                              src="http://via.placeholder.com/300x200?text={{ strip_tags($recipe->title)}}"
-                                                             alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
+                                                             alt="{{ strip_tags($recipe->title) }} / CDG">
                                                         @else
                                                             @if(collect($img->first()->urls)->firstWhere('name', 'index')['url'] == "")
                                                                 <clazy-load
@@ -61,14 +61,14 @@
                                                                     <!-- The image slot renders after the image loads. -->
                                                                     <img class="fit-cover"
                                                                          src="{{collect($img->first()->urls)->firstWhere('name', 'normal')['url']}}"
-                                                                         alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
+                                                                         alt="{{ strip_tags($recipe->title) }} / CDG">
                                                                     @else
                                                                         <clazy-load
                                                                                 src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}">
                                                                             <!-- The image slot renders after the image loads. -->
                                                                             <img class="fit-cover"
                                                                                  src="{{collect($img->first()->urls)->firstWhere('name', 'webp')['url']}}"
-                                                                                 alt="{{ strip_tags(clean($recipe->title)) }} / CDG">
+                                                                                 alt="{{ strip_tags($recipe->title) }} / CDG">
                                                                         @endif
                                                                         <!-- The placeholder slot displays while the image is loading. -->
                                                                             <div slot="placeholder">

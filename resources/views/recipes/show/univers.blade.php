@@ -1,6 +1,6 @@
 @if($recipe->universes->isNotEmpty())
     @foreach($recipe->universes as $index => $universe)
-        @if(strip_tags(clean($universe->name)))
+        @if(strip_tags($universe->name))
             <p class="is-brand show-recipe-title"> @lang("recipe.univers")</p>
             @foreach($recipe->universes as $universe)
             <a href="{{route('univers.show', $universe->name)}}"

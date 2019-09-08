@@ -94,7 +94,7 @@ class GestionUtil extends Controller
             $formatted = '+1 week';
         }
 
-        $raison = $request->raison ? strip_tags(clean($request->raison)) : '';
+        $raison = $request->raison ? strip_tags($request->raison) : '';
 
         if ($request->permaban == 'on') {
             $ban = $user->ban([

@@ -10,8 +10,8 @@
     </div>
 
     <div class="menu">
-        <h1 class="title" style="text-align:center">{{strip_tags(clean($user->name))}}</h1>
-        <div class="sous_cat">
+        <h1 class="title" style="text-align:center">{{strip_tags($user->name)}}</h1>
+        <div class="mb_8">
             <p class="menu-label">
                 @lang('common.registered') {{Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
             </p>

@@ -17,7 +17,7 @@
         @foreach($univers as $key => $value)
             <tr>
                 <td>{{ $value->id }}</td>
-                <td><a href="{{route('univers.show', $value->name)}}">{{ strip_tags(clean($value->name)) }}</a></td>
+                <td><a href="{{route('univers.show', $value->name)}}">{{ strip_tags($value->name) }}</a></td>
                 <td>{{ Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s ') }} </td>
                 <td> {{ $value->first_creator }}
                 </td>
@@ -36,7 +36,7 @@
                             </button>
                         </form>
                     @endcan
-                    <a href="{{route("admin.universe.edit", strip_tags(clean($value->id)))}}"
+                    <a href="{{route("admin.universe.edit", strip_tags($value->id))}}"
                        class="button is-info"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>

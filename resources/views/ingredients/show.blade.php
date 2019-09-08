@@ -1,5 +1,5 @@
 @extends('layouts.app.app')
-@section('titrepage', strip_tags(clean($ingredient->name)) . " | " . __('recipe.ingredient'))
+@section('titrepage', strip_tags($ingredient->name) . " | " . __('recipe.ingredient'))
 @section('content')
 
     <div class="container">
@@ -16,7 +16,7 @@
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
-                                    {{strip_tags(clean($ingredient->name))}}
+                                    {{strip_tags($ingredient->name)}}
                                 </h1>
                             </div>
                         </div>

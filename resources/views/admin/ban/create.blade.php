@@ -8,12 +8,12 @@
             <form method="POST" action="{{route('admin.ban.store')}}">
                 @csrf
                 <h1><i class="fas fa-ban"></i>Bannir utilisateur </h1>
-                <input name="user_id" type="hidden" value="{{strip_tags(clean($user->id))}}">
+                <input name="user_id" type="hidden" value="{{strip_tags($user->id)}}">
                 <div class="field">
                     <label class="label">Pseudo</label>
                     <div class="control">
                         <input disabled="yes" class="input" type="text" name="username"
-                               placeholder="{{strip_tags(clean($user->name))}}">
+                               placeholder="{{strip_tags($user->name)}}">
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                     <label class="label">Email</label>
                     <div class="control">
                         <input disabled="yes" class="input" type="text" name="usermail"
-                               placeholder="{{strip_tags(clean($user->email))}}">
+                               placeholder="{{strip_tags($user->email)}}">
                     </div>
                 </div>
 

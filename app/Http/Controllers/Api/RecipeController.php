@@ -25,7 +25,7 @@ class RecipeController extends Controller
      */
     public function get_picture(Request $request)
     {
-        $recipe_id = strip_tags(clean($request->recipeid));
+        $recipe_id = strip_tags($request->recipeid);
 
         $pic = DB::table('recipe_imgs')
                  ->where('recipe_id',  $recipe_id)
@@ -82,7 +82,7 @@ class RecipeController extends Controller
             $all[$index]['id']          = $step->id;
             $all[$index]['recipe_id']   = $step->recipe_id;
             $all[$index]['step_number'] = $step->step_number;
-            $all[$index]['instruction'] = strip_tags(clean($step->instruction));
+            $all[$index]['instruction'] = strip_tags($step->instruction);
         }
 
         // si un id existe, on le supprime et renvoie false
@@ -100,16 +100,16 @@ class RecipeController extends Controller
      */
     public function alerte(Request $request)
     {
-        $recipe_id    = intval(strip_tags(clean($request->recipeid)));
-        $type_alerte  = strip_tags(clean($request->type_alerte));
-        $userid       = intval(strip_tags(clean($request->userid)));
-        $user_content = strip_tags(clean($request->user_content));
+        $recipe_id    = intval(strip_tags($request->recipeid));
+        $type_alerte  = strip_tags($request->type_alerte);
+        $userid       = intval(strip_tags($request->userid));
+        $user_content = strip_tags($request->user_content);
 
         $signalement               = new Signalements();
         $signalement->recipe_id    = $recipe_id;
         $signalement->user_id      = $userid;
         $signalement->option       = $type_alerte;
-        $signalement->user_content = clean($user_content);
+        $signalement->user_content = $user_content;
         $signalement->status       = 0;
         $signalement->save();
 

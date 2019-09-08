@@ -12,6 +12,6 @@ trait HasUserInput
 {
     public function cleanInput($text)
     {
-        return strip_tags(clean(app('profanityFilter')->filter($text)));
+        return strip_tags(app('profanityFilter')->filter($text));
     }
 }

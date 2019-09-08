@@ -5,7 +5,6 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use PragmaRX\Firewall\Firewall;
 
 class LogSuccessfulLogin
 {
@@ -40,9 +39,7 @@ class LogSuccessfulLogin
             $state = 0;
         }
 
-        if ($state == 2) {
-            Firewall::blacklist($client_ip, true); /// true = force in case IP is whitelisted
-        }
+        // TODO LATER
 
         if ($event->user != null) {
             Log::notice('IP ' . $client_ip . '  logged in ' . $event->user->id . ' on ' . now());

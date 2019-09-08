@@ -210,9 +210,6 @@ a.navbar-item, a.navbar-link {
 a.navbar-item, a.navbar-link {
   @apply text-purple;
 }
-#first-navbar {
-  @apply items-center  mx-auto justify-between flex flex-wrap flex-shrink-0 visible w-full ;
-}
 
 #logo-navbar {
   @apply flex items-center flex-shrink-0 text-white mr-6 ;
@@ -223,7 +220,7 @@ a.navbar-item, a.navbar-link {
 }
 
 #iconsMenu {
-  @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full bg-fog;
+  @apply items-center justify-between flex-wrap flex-shrink-0 w-full bg-fog;
 }
 #navIcons {
   @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  ;

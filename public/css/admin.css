@@ -490,14 +490,10 @@ section.entete {
   word-break: break-all;
 }
 
-/*p {
-  padding-bottom: 1rem;
-}*/
-
 html, body {
-  height: 100%;
   box-sizing: border-box;
-  background-color: #eeedf5;
+  background-color: #fff;
+  height: 100%;
 }
 
 body, button, input, select, textarea {
@@ -510,34 +506,28 @@ body, button, input, select, textarea {
 
 .blockcontent {
   background-color: #fff;
-  padding: 2rem;
-  margin: 2rem;
-  margin-top: 0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.blockcontent.is-paddingless {
-  padding: 0rem;
+@media (min-width: 640px) {
 }
 
-.blockcontent.is-marginless {
-  margin: 0rem;
+@media (min-width: 768px) {
+  .blockcontent {
+    padding: 2rem;
+    margin: 2rem;
+    margin-top: 0;
+  }
 }
 
 .searchresult {
-  background: white;
-  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.052);
-  -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.05), 0 1.5px 6px rgba(0, 0, 0, 0.05);
-}
-
-.results {
-  background: #eeedf5;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .not-active {
   display: none;
-  visibility: hidden;
-  height: 0px;
+  height: 0;
 }
 
 .active {
@@ -557,44 +547,37 @@ a.tag.like:hover {
   text-decoration: none;
 }
 
-.liked > i {
-  color: #fa3283;
-}
-
-.liked > span > i {
-  color: #fa3283;
-}
-
-.image.is-256x256 {
-  height: 256px;
-  width: 256px;
-}
-
 .navbar-item.has-dropdown.is-hoverable {
-  z-index: 800;
+  z-index: 30;
   transition: all 0.3s ease-in-out;
 }
 
 .content li + li {
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #7f5fbf;
-  padding-top: 0.7rem;
-  padding-bottom: 0.2rem;
+  color: #FF8C42;
+  padding-top: 0.75rem;
+  padding-bottom: 0.25rem;
 }
 
 .section-nomargin-side {
-  padding: 2.5rem 1rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .hero-body {
-  padding: 2rem 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .is-accent {
-  color: #4c6ee6;
+  color: #FF3C38;
 }
 
 .breadcrumb:not(:last-child) {
@@ -603,8 +586,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .breadcrumb:not(:last-child) ul {
-  align-items: flex-start;
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
@@ -626,12 +609,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .breadcrumb:not(:last-child) li + li:before {
-  color: #b5b5b5;
+  color: #615D6C;
   content: "/";
 }
 
 .breadcrumb:not(:last-child) li.is-active a {
-  color: #363636;
+  color: #615D6C;
   cursor: default;
   pointer-events: none;
 }
@@ -641,7 +624,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container .navbar-brand {
-  margin-left: 0 !important;
+  margin-left: 0;
 }
 
 [v-cloak] > * {
@@ -649,9 +632,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button.is-round.is-small {
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  border-radius: 9999px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .advanced {
@@ -676,29 +659,24 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #ebeaf5;
 }
 
-.radiused {
-  border-radius: 10px;
-}
-
 .navbar-item.user_profile img {
   max-height: initial !important;
 }
 
 .change-picture {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  z-index: 99;
-  background: rgba(235, 234, 245, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
   font-size: 1.5rem;
   color: #7f5fbf;
   border-radius: 9999px;
   max-height: 1.25rem;
   min-height: 1.25rem;
+  align-items: center;
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  background-color: #ebeaf5;
+  justify-content: center;
   min-width: 64px;
   top: 25%;
   left: 25%;
@@ -723,17 +701,13 @@ figure.image img {
   transition: all 0.3s ease-in-out;
 }
 
-.sous_cat {
-  margin-bottom: 2rem;
-}
-
 nav.breadcrumb {
   padding: 1rem;
-  color: #7F5FBF !important;
+  color: #FF8C42;
 }
 
 .breadcrumb a {
-  color: #CBC2F6;
+  color: #FF8C42;
 }
 
 .right-side-recipe {
@@ -742,6 +716,8 @@ nav.breadcrumb {
 
 .right-side-recipe #ingredients {
   border-bottom: 1px solid #ebeaf5;
+  border-bottom-width: 1px;
+  border-color: #ebeaf5;
 }
 
 .right-side-recipe #author {
@@ -755,7 +731,7 @@ nav.breadcrumb {
 }
 
 h2#recipe-user {
-  padding-left: 0.7rem;
+  padding-left: 0.75rem;
 }
 
 .affix {
@@ -764,7 +740,7 @@ h2#recipe-user {
 }
 
 .full-height {
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .main-error-404 {
@@ -968,7 +944,7 @@ a.print:hover {
   border-radius: 10px;
 }
 
-.radiused > img {
+.rounded > img {
   border-radius: 10px;
 }
 
@@ -1336,18 +1312,6 @@ a.navbar-item, a.navbar-link {
   color: #7f5fbf;
 }
 
-#first-navbar {
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-  visibility: visible;
-  width: 100%;
-}
-
 #logo-navbar {
   display: flex;
   align-items: center;
@@ -1370,10 +1334,8 @@ a.navbar-item, a.navbar-link {
 #iconsMenu {
   align-items: center;
   justify-content: space-between;
-  display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
-  visibility: visible;
   width: 100%;
   background-color: #ebeaf5;
 }
@@ -1446,6 +1408,14 @@ a.navbar-item, a.navbar-link {
 figure.menu-avatar {
   position: absolute;
   top: 0px;
+}
+
+.liked > i {
+  color: #fa3283;
+}
+
+.liked > span > i {
+  color: #fa3283;
 }
 
 .show-dan {
@@ -2029,18 +1999,6 @@ a.navbar-item, a.navbar-link {
   color: #7f5fbf;
 }
 
-#first-navbar {
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-  visibility: visible;
-  width: 100%;
-}
-
 #logo-navbar {
   display: flex;
   align-items: center;
@@ -2063,10 +2021,8 @@ a.navbar-item, a.navbar-link {
 #iconsMenu {
   align-items: center;
   justify-content: space-between;
-  display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
-  visibility: visible;
   width: 100%;
   background-color: #ebeaf5;
 }

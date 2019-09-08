@@ -66,6 +66,6 @@ class Ingredient extends Model
     public function setNameAttribute($value)
     {
         $value = app('profanityFilter')->filter($value);
-        $this->attributes['name'] = strip_tags(clean($value));
+        $this->attributes['name'] = strip_tags($value);
     }
 }

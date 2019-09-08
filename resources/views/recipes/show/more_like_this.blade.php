@@ -19,9 +19,9 @@
                         </div>
                         <div class="recipe-header">
                             <p class="card-header-title">
-                                <a href="{{route('recipe.show', strip_tags(clean($recipe->slug)))}}"
+                                <a href="{{route('recipe.show', strip_tags($recipe->slug))}}"
                                    class="home-text">
-                                    {{ (str_limit(strip_tags(clean($recipe->title)), 40, ' (...)'))  }}
+                                    {{ (str_limit(strip_tags($recipe->title)), 40, ' (...)')  }}
                                 </a>
                             </p>
                         </div>

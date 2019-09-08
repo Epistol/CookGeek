@@ -8,7 +8,7 @@
         @endif
     </figure>
     <div class="menu">
-        <div class="sous_cat">
+        <div class="mb-8">
             <p class="menu-label">
                 @lang('account.my-account')
             </p>
@@ -28,7 +28,7 @@
                 </li>
             </ul>
         </div>
-        <div class="sous_cat">
+        <div class="mb-8">
             <p class="menu-label">
                 {{trans_choice('recipe.recipe', 2)}}
             </p>

@@ -24,7 +24,7 @@
 
                             <a href="{{route('recipe.show', $recipe->slug)}}" style="margin-left: 2%">
                                 <h2 class="title">
-                                    {{ strip_tags(clean($recipe->title))}}
+                                    {{ strip_tags($recipe->title)}}
                                 </h2></a>
                         </div>
                         <div class="middle">
@@ -40,7 +40,7 @@
                                     <?php
                                     $nom_in = DB::table('ingredients')->where('id', $in->id_ingredient)->value('name');
                                     ?>
-                                    {{ str_limit(strip_tags(clean($nom_in)), 20, "...") }},
+                                    {{ str_limit(strip_tags($nom_in), 20, "...") }},
                                 @endforeach
                             </p>
                         </div>

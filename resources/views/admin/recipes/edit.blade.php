@@ -13,7 +13,7 @@
                     <div class="field">
                         <label class="label">{{$key}}</label>
                         <div class="control">
-                            <input class="input" value="{{strip_tags(clean($r)) }}" name="{{$key}}">
+                            <input class="input" value="{{strip_tags($r) }}" name="{{$key}}">
                         </div>
                     </div>
                 @endforeach

@@ -15,7 +15,6 @@ module.exports = {
         extend: {
             colors: {
                 cyan: '#9cdbff',
-                fog: '#ebeaf5',
                 purple: '#7f5fbf',
                 purpleclear : '#9c83ce',
                 lightpurple : '#cbc2f6',
@@ -25,7 +24,8 @@ module.exports = {
                 secondary : '#FF3C38',
                 yellow : '#FFF275',
                 blue : '#3A86FF',
-                black : '#615D6C'
+                black : '#615D6C',
+                fog: '#ebeaf5',
             },
             minHeight: {
                 full: '100%',

@@ -2,7 +2,7 @@
 @section('titrepage', 'Admin')
 @section('content')
     <div class="container">
-        <h1>Edit l'utilisateur : {{str_limit(strip_tags(clean($user->name)), 20, '...')}}</h1>
+        <h1>Edit l'utilisateur : {{str_limit(strip_tags($user->name), 20, '...')}}</h1>
 
         <section class="section">
 
@@ -11,7 +11,7 @@
                 <div class="field">
                     <label class="label">{{$key}}</label>
                     <div class="control">
-                        <input class="input" value="{{strip_tags(clean($r)) }}">
+                        <input class="input" value="{{strip_tags($r)}}">
                     </div>
                 </div>
                 @endif

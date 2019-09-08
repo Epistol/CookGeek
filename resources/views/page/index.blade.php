@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ $value->id }}</td>
                 <td><a href="{{route('page.show', $value->id)}}">{{ $value->name }}</a></td>
-                <td>{{ strip_tags(clean($value->slug)) }}</td>
+                <td>{{ strip_tags($value->slug) }}</td>
                 <td>{{ Carbon\Carbon::parse($value->created_at)->format('d-m-Y H:i:s ') }} </td>
                 <td><a class="btn btn-small btn-info"
                        href="{{ route('page.edit',  $value->id ) }}">Editer</a>

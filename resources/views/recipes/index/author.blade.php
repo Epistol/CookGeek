@@ -13,7 +13,7 @@
                 @else
                     <figure class="image w-12">
                         <img class="rounded-full"
-                             src="https://api.adorable.io/avatars/64/{{ strip_tags(clean($recipe->user->name))}}">
+                             src="https://api.adorable.io/avatars/64/{{ strip_tags($recipe->user->name)}}">
                     </figure>
                 @endif
 

@@ -45,7 +45,7 @@
                                     </button>
                                 </form>
                             @endcan
-                            <a href="{{route("admin.ingredient.edit", strip_tags(clean($ingredient->id)))}}"
+                            <a href="{{route("admin.ingredient.edit", strip_tags($ingredient->id))}}"
                                class="button is-info"><i class="fas fa-edit"></i></a>
                         </td>
                     </tr>

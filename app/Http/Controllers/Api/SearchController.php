@@ -46,19 +46,19 @@ class SearchController extends Controller
      */
     public function search($recherche)
     {
-        $rq = clean($recherche);
+        $rq = $recherche;
         $pieces = explode(' ', $rq);
         $recipe = [];
         if ($rq !== null) {
             foreach ($pieces as $p) {
                 // Searching in recipes
-                $ingredient = DB::table('ingredients')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                $ingredient = DB::table('ingredients')->where('name', 'like', '%' . strip_tags($p) . '%')
                     ->paginate(10);
-                $media = DB::table('categunivers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                $media = DB::table('categunivers')->where('name', 'like', '%' . strip_tags($p) . '%')
                     ->paginate(10);
-                $type_recipes = DB::table('type_recipes')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                $type_recipes = DB::table('type_recipes')->where('name', 'like', '%' . strip_tags($p) . '%')
                     ->paginate(10);
-                $univers = DB::table('univers')->where('name', 'like', '%' . strip_tags(clean($p)) . '%')
+                $univers = DB::table('univers')->where('name', 'like', '%' . strip_tags($p) . '%')
                     ->paginate(10);
                 if ($univers) {
                     foreach ($univers as $univer) {
@@ -66,7 +66,7 @@ class SearchController extends Controller
                             $recipe_ingredients = $this->load_recipe_ingredient($ingredient);
                         } else {
                             $recipe = DB::table('recipes')->where('univers', $univer->id)
-                                ->orwhere('title', 'like', '%' . strip_tags(clean($p)) . '%')
+                                ->orwhere('title', 'like', '%' . strip_tags($p) . '%')
                                 ->where('validated', 1)->paginate(10);
                         }
                     }
@@ -89,7 +89,7 @@ class SearchController extends Controller
 
         return collect([
             'recipe' => $recipe, 'ingredient' => $ingredient, 'categunivers' => $media,
-            'type_recipes' => $type_recipes, 'univers' => $univers, 'value' => strip_tags(clean($rq))
+            'type_recipes' => $type_recipes, 'univers' => $univers, 'value' => strip_tags($rq)
         ]);
 
     }
@@ -122,7 +122,7 @@ class SearchController extends Controller
      */
     private function load_recipes_titre($titre)
     {
-        return Recipe::where('title', 'like', '%' . strip_tags(clean($titre)) . '%')
+        return Recipe::where('title', 'like', '%' . strip_tags($titre) . '%')
             ->where('validated', 1)
             ->paginate(10);
 
@@ -134,9 +134,9 @@ class SearchController extends Controller
      */
     public function search_univers(Request $recherche)
     {
-        $searchquery = strip_tags(clean($recherche->searchquery));
+        $searchquery = strip_tags($recherche->searchquery);
         $univers = DB::table('univers')
-            ->where('name', 'like', '%' . strip_tags(clean($searchquery)) . '%')
+            ->where('name', 'like', '%' . strip_tags($searchquery) . '%')
             ->join('recipes', 'univers.id', 'recipes.univers')
             ->where('validated', 1)
             ->get();

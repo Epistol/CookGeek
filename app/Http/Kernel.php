@@ -23,9 +23,6 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use PragmaRX\Firewall\Middleware\BlockAttacks;
-use PragmaRX\Firewall\Middleware\FirewallBlacklist;
-use PragmaRX\Firewall\Middleware\FirewallWhitelist;
 use Spatie\Permission\Middlewares\PermissionMiddleware;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
@@ -75,8 +72,7 @@ class Kernel extends HttpKernel
             ],
 
             'firewall' => [
-                FirewallBlacklist::class,
-                BlockAttacks::class,
+
             ],
 
         ];
@@ -102,8 +98,6 @@ class Kernel extends HttpKernel
             'permission'           => PermissionMiddleware::class,
             'doNotCacheResponse'   => DoNotCacheResponse::class,
             'cacheResponse'        => CacheResponse::class,
-            'fw-only-whitelisted'  => FirewallWhitelist::class,
-            'fw-block-blacklisted' => FirewallBlacklist::class,
             'fw-block-attacks'     => BlockAttacks::class,
             'forbid-banned-user'   => ForbidBannedUser::class,
         ];

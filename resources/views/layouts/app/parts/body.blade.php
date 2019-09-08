@@ -1,10 +1,9 @@
-<body class="">
 @include("layouts.app_element.menuMobile")
 <div id="app">
     <div v-cloak>
         <div id="bodyWebsite">
             @include("layouts.app_element.menu")
-            <div class="container mt-2 mx-auto">
+            <div class="container mx-auto">
                 @include('layouts.app_element.alerts')
                 @yield('content')
             </div>
@@ -13,4 +12,3 @@
     </div>
 </div>
 @include("layouts.app.parts.scripts")
-</body>

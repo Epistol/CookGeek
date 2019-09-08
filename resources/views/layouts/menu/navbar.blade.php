@@ -6,22 +6,22 @@
         <div slot="menuelems">
             <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
                href="{{ route('recipe.create') }}">
-                <img src="{{asset('/img/icons/add_round.svg')}}" style="padding-right: 0.5rem"/>
+                <img src="{{asset('/img/icons/add_round.svg')}}" class="pr-2"/>
                 @lang('recipe.add-new')
             </a>
             <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
                href="{{ route('recipe.index') }}">
-                <img src="{{asset('/img/icons/a_to_z.svg')}}" style="padding-right: 0.5rem"/>
+                <img src="{{asset('/img/icons/a_to_z.svg')}}" class="pr-2"/>
                 @lang('recipe.all-recipes')
             </a>
             <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
                href="{{ route('recipe.index') }}">
-                <img src="{{asset('/img/icons/news.svg')}}" style="padding-right: 0.5rem"/>
+                <img src="{{asset('/img/icons/news.svg')}}" class="pr-2"/>
                 @lang('recipe.last-recipes')
             </a>
             <a class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-pink mr-4"
                href="{{route('ingredient.index')}}">
-                <img src="{{asset('/img/icons/ingredients.svg')}}" style="padding-right: 0.5rem"/>
+                <img src="{{asset('/img/icons/ingredients.svg')}}" class="pr-2"/>
                 @lang('recipe.ingredients')
             </a>
         </div>
