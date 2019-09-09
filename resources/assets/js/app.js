@@ -35,6 +35,8 @@ import Affix from 'vue-affix';
 
 Vue.use(Affix);
 
+
+
 // AUTRE
 
 const lang = document.documentElement.lang.substr(0, 2);

@@ -1,7 +1,10 @@
 <div class="is-fixed-bottom sm:hidden md:hidden lg:hidden">
     <nav class="w-full mobile-bottom-menu" role="navigation" aria-label="main navigation">
         <div class="p-4 h-16 flex w-full items-center flex-row justify-between">
-            <a class="" href="{{ route('home') }}">
+
+            <MobileMenuComponent></MobileMenuComponent>
+
+           {{-- <a class="" href="{{ route('home') }}">
                 <i class="fas fa-home"></i>
             </a>
             <a class="" href="{{ route('recipe.index') }}">
@@ -28,7 +31,9 @@
                         </figure>
                     @endif
                 </div>
-            @endauth
+            @endauth--}}
         </div>
+
+
     </nav>
 </div>
