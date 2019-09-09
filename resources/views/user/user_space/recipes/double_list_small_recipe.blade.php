@@ -1,6 +1,6 @@
 {{--Recettes ayant dans le nom la recherche --}}
 
-<div class="flex mb-4 is-multiline" style="margin-top: 2rem; margin-bottom: 2rem;">
+<div class="flex flex-wrap mb-4 is-multiline my-8">
     @foreach ($recipes as $i => $recipe)
         <?php
         $starsget = (new \App\Search)->explode_star($recipe->id);
@@ -8,7 +8,7 @@
         ?>
         <div class="flex-1 w-6/12  ">
             <div class="is-result">
-                <div class="flex mb-4   m-0">
+                <div class="flex mb-4 m-0">
                     <div class="flex-1 w-4/12 to-hover  m-0">
                         @if(isset($type))
                             <div class="hovered">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="flex-1 w-8/12 ">
                         <div class="top is-flex">
-                            @include("recipes.show.type_univers_no_tool")
+                            @include("recipes.show.type_univers")
 
                             <a href="{{route('recipe.show', $recipe->slug)}}" style="margin-left: 2%">
                                 <h2 class="title">

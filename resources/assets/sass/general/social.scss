@@ -17,28 +17,23 @@
 
 
 a.like {
+  @apply rounded-full text-white h-8 w-8;
   background-color: #FCBEE1;
-  border-radius: 100%;
-  border: 0px solid white;
-  color:white;
-  height:2rem;
-  width:2rem;
   @include transition_all();
 
   &:hover {
-    color:white;
-    box-shadow: 0 0 15px 0px #7f5fbf;
-    -webkit-box-shadow: 0 0 15px 0px #7f5fbf;
+    @apply text-white;
+    @apply shadow;
     @include transition_all();
-
   }
 }
 
 a.print {
   @apply rounded-full bg-lightpurple border-0 mx-4 text-white;
   @include transition_all();
+
   &:hover {
-    color:white;
+    color: white;
     box-shadow: 0 0 15px 0px #7f5fbf;
     -webkit-box-shadow: 0 0 15px 0px #7f5fbf;
     @include transition_all();

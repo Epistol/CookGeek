@@ -1,16 +1,16 @@
 {{--Recettes ayant dans le nom la recherche --}}
-<div class="flex mb-4 is-multiline is-flex" style="margin-top: 2rem; margin-bottom: 2rem;">
+<div class="flex flex-wrap mb-4 my-8">
     @foreach($recipes as $recipe)
         <?php
         $starsget = (new \App\Search)->explode_star($recipe->id);
         ?>
         {{--Séparation en deux du nombre de colonne--}}
-        <div class="flex-1 w-6/12">
+        <div class="flex-1 w-10/12">
             {{--Une recette--}}
-            <div class="flex mb-4  m-0 is-result is-flex">
+            <div class="flex mb-4 m-0 is-result is-flex">
                 @if($recipe->universes->count() > 0)
                     <div class="recipe-category">
-                        @include("recipes.show.type_univers_no_tool")
+                        @include("recipes.show.type_univers")
                     </div>
                 @endif
                 {{--L'image--}}
@@ -26,7 +26,7 @@
                     @include('recipes.elements.picture')
                 </div>
                 {{--Les infos--}}
-                <div class="flex-1 ">
+                <div class="flex-1">
                     <div class="flex mb-4 m-0  is-multiline is-mobile right-side-recipe">
                         {{--Titre--}}
                         <div class="flex-1 is-full" id="titre">

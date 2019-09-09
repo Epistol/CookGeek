@@ -1,6 +1,7 @@
-@include("layouts.app_element.menuMobile")
 <div id="app">
     <div v-cloak>
+        @include("layouts.app_element.menuMobile")
+
         <div id="bodyWebsite">
             @include("layouts.app_element.menu")
             <div class="container mx-auto">

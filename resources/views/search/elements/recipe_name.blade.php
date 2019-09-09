@@ -62,7 +62,7 @@
                             ->where('id', $recipe->type_univers)
                             ->first();
                         ?>
-                        @include("recipes.show.type_univers_no_tool")
+                        @include("recipes.show.type_univers")
                     </div>
                     <div class="middle">
 

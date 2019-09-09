@@ -1,8 +1,8 @@
 <template v-cloak>
     <div>
-        <a class="button tag like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== 0 }"
+        <a class="rounded-full like tooltip" :data-tooltip="nbLike" :class="{ 'liked': retour !== 0 }"
            @click="toggleLike()">
-            <i class="material-icons">favorite</i><span hidden>Ajouter aux favoris</span>
+            <i class="fas fa-heart"></i><span hidden>Ajouter aux favoris</span>
         </a>
         <template v-if="!userid && clicked">
             <login-modal :showModal="this.clicked" @close="closing()"></login-modal>

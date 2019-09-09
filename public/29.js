@@ -188,7 +188,7 @@ var render = function() {
       _c(
         "a",
         {
-          staticClass: "button tag like tooltip",
+          staticClass: "rounded-full like tooltip",
           class: { liked: _vm.retour !== 0 },
           attrs: { "data-tooltip": _vm.nbLike },
           on: {
@@ -198,7 +198,7 @@ var render = function() {
           }
         },
         [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("favorite")]),
+          _c("i", { staticClass: "fas fa-heart" }),
           _c("span", { attrs: { hidden: "" } }, [_vm._v("Ajouter aux favoris")])
         ]
       ),

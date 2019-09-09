@@ -35,8 +35,6 @@ import Affix from 'vue-affix';
 
 Vue.use(Affix);
 
-
-
 // AUTRE
 
 const lang = document.documentElement.lang.substr(0, 2);
@@ -80,8 +78,11 @@ const app = new Vue({
         'stepsadd': () => import("./components/recipe/steps/StepsAdd"),
         'line-chart': () => import("./components/charts/LineComponent"),
         'switch-light': () => import("./components/SwitchLight.vue"),
-        'menu-element': () => import("./components/menu/DropDown.vue"),
         'drop-picture': () => import("./components/picture/DropPicturePreview"),
+
+        'menu-element': () => import("./components/menu/DropDown.vue"),
+        'mobile-menu': () => import("./components/menu/MobileMenuComponent"),
+        'navigation-link': () => import("./components/menu/MobileLinkComponent"),
     },
 
     data: {

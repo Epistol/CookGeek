@@ -2,7 +2,7 @@
 
 @foreach($recipes->chunk(2)  as  $recipechunk)
 
-    <div class=" flex mb-4 is-flex" style="margin-top: 2rem; margin-bottom: 2rem;">
+    <div class=" flex mb-4 is-flex my-8">
 
         @foreach ($recipechunk as $recipe)
             <?php
@@ -14,14 +14,14 @@
                 {{--Une recette--}}
                 <div class="flex mb-4  m-0 is-result is-flex">
                     <div class="recipe-category">
-                        @include("recipes.show.type_univers_no_tool")
+                        @include("recipes.show.type_univers")
                     </div>
                     {{--L'image--}}
                     <div class="flex-1 w-5/12 to-hover m-0 ">
                         @if(isset($type))
                             <div class="bottom-right-aligned">
                                 <div class="hovered">
-                                    <a class="tag" style="margin:0.5rem"
+                                    <a class="tag m-1" style="margin:0.5rem"
                                        href="{{route("type.show", lcfirst($type->name))}}">{{$type->name}}</a>
                                 </div>
                             </div>

@@ -2,7 +2,6 @@
   @apply min-h-screen w-full;
 }
 
-
 .navbar {
   @apply w-full z-10 top-0;
   @include transition_all();
@@ -46,6 +45,7 @@ span.navbar-secondaire-item {
   flex-direction: column;
   justify-content: center;
 }
+
 .navbar-start {
   @apply justify-start mr-auto flex items-stretch;
 }
@@ -56,7 +56,7 @@ span.navbar-secondaire-item {
 
 .logo {
   font-family: $typotitle;
- @apply text-3xl text-purple;
+  @apply text-3xl text-purple;
   padding: 0.5rem 1rem;
   @include transition_all();
 
@@ -122,55 +122,15 @@ span.navbar-secondaire-item {
 }
 
 
-.mobile-only {
-  @include mobile {
-    display: inherit;
-  }
-
-  @include tablet {
-    display: inherit;
-  }
-
-  @include laptop {
-    display: none;
-  }
-
-}
-
-.is-fixed-bottom {
-  position: fixed;
-  @apply bg-white;
-  z-index: 9999;
-  top: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 100%;
-  box-shadow: 0 0 1px 1px #e2dfe2;
-}
-
-.navbar-menu.mobile-only {
-  @include mobile {
-    display: inherit;
-  }
-  @include tablet {
-    display: inherit;
-  }
-
-  @include small-laptop {
-    display: inherit;
-
-  }
-}
-
-
 a.navbar-item, a.navbar-link {
+
+  @apply text-purple text-lg;
+
 
   @screen sm {
     color: white;
   }
-  @include small-laptop {
+  @screen md {
     color: grey;
   }
 
@@ -181,10 +141,7 @@ a.navbar-item, a.navbar-link {
     }
   }
 
-  @apply text-purple;
-@apply text-lg;
   @include transition_all();
-
 }
 
 
@@ -207,6 +164,7 @@ a.navbar-item, a.navbar-link {
     @apply text-purple;
   }
 }
+
 a.navbar-item, a.navbar-link {
   @apply text-purple;
 }
@@ -222,6 +180,7 @@ a.navbar-item, a.navbar-link {
 #iconsMenu {
   @apply items-center justify-between flex-wrap flex-shrink-0 w-full bg-fog;
 }
+
 #navIcons {
   @apply items-center justify-between flex flex-wrap flex-shrink-0 visible w-full  ;
 }
