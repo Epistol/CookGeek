@@ -28,7 +28,7 @@
     "docz": "latest",
     "dropcss": "^0.3.0",
     "eslint": "^6.0.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "kss": "^3.0.0-beta.23",
     "laravel-mix": "^4.0.0",
     "laravel-mix-tailwind": "^0.1.0",
