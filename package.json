@@ -80,7 +80,7 @@
     "vue2-dropzone": "^3.5.9",
     "vuedraggable": "^2.16.0",
     "vuejs-datepicker": "^1.5.4",
-    "webpack": "^4.35.3",
+    "webpack": "^5.1.1",
     "workbox-webpack-plugin": "^4.3.1",
     "zxcvbn": "^4.4.2"
   }
